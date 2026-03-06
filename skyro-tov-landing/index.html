@@ -543,6 +543,79 @@ table.tbl.name-tbl td.bad { color: var(--red); font-weight: 500; }
 }
 .prompt-block .copy-btn:hover { background: rgba(201,168,76,.35); }
 
+/* ── COPY CHECKER ─────────────────────────────── */
+.checker-wrap { margin: 20px 0; }
+
+.checker-input {
+  width: 100%;
+  min-height: 140px;
+  background: var(--forest-dark);
+  color: var(--cream);
+  border: 1px solid rgba(201,168,76,.25);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  resize: vertical;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color .2s;
+}
+.checker-input:focus { border-color: rgba(201,168,76,.6); }
+.checker-input::placeholder { color: rgba(248,244,238,.32); }
+
+.checker-btn {
+  margin-top: 12px;
+  background: var(--gold);
+  color: var(--forest-dark);
+  border: none;
+  border-radius: var(--r);
+  padding: 13px 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.checker-btn:hover { opacity: .82; }
+
+.checker-result { margin-top: 20px; }
+
+.checker-score-wrap {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: var(--forest-dark);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-md);
+}
+
+.checker-score-circle {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+}
+.checker-score-circle .score-num  { font-size: 28px; font-weight: 700; line-height: 1; }
+.checker-score-circle .score-denom { font-size: 11px; opacity: .55; margin-top: 2px; }
+.checker-score-circle.score-high { background: rgba(77,191,154,.12); border: 2px solid #4dbf9a; color: #4dbf9a; }
+.checker-score-circle.score-mid  { background: rgba(232,168,112,.12); border: 2px solid #e8a870; color: #e8a870; }
+.checker-score-circle.score-low  { background: rgba(192,96,96,.12);   border: 2px solid #c06060; color: #c06060; }
+
+.checker-score-label { font-family: 'Fraunces', serif; font-size: 19px; color: var(--cream); }
+.checker-score-sub   { font-size: 13px; color: rgba(248,244,238,.52); margin-top: 5px; }
+
+.checker-issues { display: flex; flex-direction: column; gap: 7px; }
+
 /* ── ARCHETYPE WIDGET ─────────────────────────────── */
 #archetype-widget {
   margin: 32px 0;
@@ -1796,31 +1869,17 @@ const S = [
 `
   },
   {
-    id: "ai",
+    id: "copychecker",
     n: "15",
-    t: "AI Writing Assistant Prompt",
+    t: "Copy Checker",
     h: `
-<p class="lead">When using an AI assistant to draft Skyro copy, use the following prompt to configure the output. Results will vary, and all AI-generated copy should be reviewed and edited by a human before use.</p>
+<p class="lead">Paste any draft copy below. We'll flag jargon, banned phrases, and missed opportunities.</p>
 
-<div class="prompt-block" id="aiPrompt">You are a copywriter for Skyro, a global fintech brand that serves users across the Philippines, Saudi Arabia, the UAE, and beyond. Skyro's voice is warm, specific, direct, and culturally fluent. Write in a conversational style using short sentences, active voice, and everyday language. Be concrete — name places, amounts, and real moments rather than using vague abstractions. Maintain a respectful tone at all times, especially in any communications involving financial difficulty. Express genuine enthusiasm through specificity rather than through exclamation marks or empty superlatives.
-
-Avoid all of the following words and phrases: innovative, seamless, empower, leverage, synergy, holistic, best-in-class, world-class, cutting-edge, utilise, optimise, amortisation, endeavour, obtain, prior to, in order to, at this time.
-
-On nature metaphors: Skyro's brand is rooted in the idea that nature is a partner — not a threat, not a backdrop, but a living system that human beings already understand intuitively. A rice farmer reads the sky before planting. A Kenyan family plans around the harvest. A Saudi household reorganises its entire budget around Ramadan. These rhythms are wisdom, not inefficiency — and Skyro's language reflects that. Use nature metaphors when they make a financial concept more tangible and familiar — saving maps to planting and growth, repayment flexibility maps to seasons and weather, transparency maps to clear skies, trust maps to roots and foundations. Use one metaphor per piece of copy, chosen deliberately. Never stack multiple nature metaphors in a single message. Never use nature metaphors in support communications, collections messages, decline notifications, or error states — these moments call for plain clarity, not imagery. Never use generic fintech nature puns ("watch your money blossom," "branch out with savings," "it's interest-ing"). The metaphor should illuminate a specific idea, not decorate the writing.
-
-On wordplay: a quiet, earned wit is part of Skyro's character — a smile rather than a laugh. Wordplay is welcome in campaign headlines, taglines, and social media copy. It should be rooted in the Skyro brand world (nature, rhythm, seasons, growth) and intelligible across markets. Structural wordplay — double meanings, parallel constructions — works better than puns. Puns about money or numbers are banned entirely. Never attempt to play on the brand name itself.
-
-Reference examples of the desired style:
-
-"Apply once, get approved in minutes, and pick your own repayment date."
-"We can't offer this right now. Here's why, and here's what might change that."
-"Your payment is due tomorrow. Need to adjust the schedule? Here are your options."
-"Ramadan is six weeks away. Your budget planner is ready when you are."
-"₱4,200 saved since March — enough for school enrolment in June. That's what steady looks like."
-"Life shifts. Rainy seasons happen. Your repayment schedule can move with you."
-
-Task: [Insert specific copy brief here, including channel, audience, key message, and any relevant cultural context.]
-<button class="copy-btn" id="copyBtn">Copy</button></div>
+<div class="checker-wrap">
+  <textarea class="checker-input" id="checkerInput" placeholder="Paste any draft copy below. We'll flag jargon, banned phrases, and missed opportunities." rows="7"></textarea>
+  <button class="checker-btn" id="checkerBtn">Check my copy</button>
+</div>
+<div class="checker-result" id="checkerResult" style="display:none"></div>
 `
   },
   {
@@ -1942,17 +2001,181 @@ function initChannels() {
   });
 }
 
-// ─── COPY PROMPT ──────────────────────────────────────────────────────────────
+// ─── COPY CHECKER ─────────────────────────────────────────────────────────────
 
-function initCopyBtn() {
+var BANNED_WORDS = [
+  { word: 'innovative solution', alt: 'say specifically what it does' },
+  { word: 'innovative solutions', alt: 'say specifically what it does' },
+  { word: 'seamless experience', alt: 'say specifically what feels easy and why' },
+  { word: 'seamless', alt: 'say specifically what feels easy and why' },
+  { word: 'innovative', alt: 'say specifically what is new about it' },
+  { word: 'empower', alt: 'say specifically what users can now do' },
+  { word: 'leverage', alt: 'use "use" or say what specifically is being applied' },
+  { word: 'synergy', alt: 'say what actually happens when the two things work together' },
+  { word: 'game-changing', alt: 'say what specifically changes, and for whom' },
+  { word: 'best-in-class', alt: 'back this with a specific, verifiable claim' },
+  { word: 'disruptive', alt: 'say what specifically it challenges or replaces' },
+  { word: 'world-class', alt: 'back this with a specific, verifiable claim' },
+  { word: 'cutting-edge', alt: 'say what the technology or approach actually does' },
+  { word: 'holistic', alt: 'say which specific aspects are covered' },
+  { word: 'utilise', alt: '"use"' },
+  { word: 'utilize', alt: '"use"' },
+  { word: 'optimise', alt: '"improve"' },
+  { word: 'optimize', alt: '"improve"' },
+  { word: 'endeavour', alt: '"try"' },
+  { word: 'endeavor', alt: '"try"' },
+  { word: 'amortisation', alt: '"repayment"' },
+  { word: 'amortization', alt: '"repayment"' },
+  { word: 'obtain', alt: '"get"' },
+  { word: 'commence', alt: '"start"' },
+  { word: 'financial journey', alt: 'describe the specific moment or decision instead' }
+];
+
+var FORMAL_WORDS = [
+  { word: 'assist', alt: '"help"' },
+  { word: 'require', alt: '"need"' },
+  { word: 'prior to', alt: '"before"' },
+  { word: 'in order to', alt: '"to"' },
+  { word: 'at this time', alt: '"now"' },
+  { word: 'subsequently', alt: '"then"' },
+  { word: 'the customer', alt: '"you"' },
+  { word: 'the company', alt: '"we"' },
+  { word: 'provide', alt: '"give"' },
+  { word: 'however,', alt: '"but"' }
+];
+
+var GENERIC_FINTECH = [
+  'financial solution', 'financial services', 'banking experience',
+  'digital platform', 'financial product', 'customer experience',
+  'digital transformation', 'financial ecosystem', 'end-to-end'
+];
+
+var VAGUE_WORDS = [
+  'various', 'several solutions', 'many solutions', 'multiple options',
+  'a number of', 'comprehensive', 'robust', 'dynamic', 'unique offering', 'value-added'
+];
+
+function analyzeText(text) {
+  var issues = [];
+  var score = 10;
+  var lower = text.toLowerCase();
+  var seen = {};
+
+  // Banned words
+  BANNED_WORDS.forEach(function(b) {
+    if (lower.indexOf(b.word) !== -1 && !seen[b.word]) {
+      seen[b.word] = true;
+      score -= 0.7;
+      issues.push({ type: 'warn', text: 'Banned: <strong>"' + b.word + '"</strong> — ' + b.alt + '.' });
+    }
+  });
+
+  // Formal language
+  FORMAL_WORDS.forEach(function(f) {
+    if (lower.indexOf(f.word) !== -1) {
+      score -= 0.4;
+      issues.push({ type: 'tip', text: 'Formal: <strong>"' + f.word + '"</strong> → try ' + f.alt + '.' });
+    }
+  });
+
+  // Generic fintech
+  GENERIC_FINTECH.forEach(function(g) {
+    if (lower.indexOf(g) !== -1) {
+      score -= 0.5;
+      issues.push({ type: 'warn', text: 'Golden Rule fail: <strong>"' + g + '"</strong> — any fintech could have written this. Make it Skyro-specific.' });
+    }
+  });
+
+  // Vague language
+  VAGUE_WORDS.forEach(function(v) {
+    if (lower.indexOf(v) !== -1) {
+      score -= 0.4;
+      issues.push({ type: 'tip', text: 'Vague: <strong>"' + v + '"</strong> — name what is actually there.' });
+    }
+  });
+
+  // Sentence length
+  var sentences = text.split(/[.!?]+/).filter(function(s) { return s.trim().split(/\s+/).length > 2; });
+  var longSentences = sentences.filter(function(s) { return s.trim().split(/\s+/).length > 28; });
+  if (longSentences.length > 0) {
+    score -= Math.min(longSentences.length * 0.5, 1.5);
+    issues.push({ type: 'tip', text: longSentences.length + ' sentence' + (longSentences.length > 1 ? 's are' : ' is') + ' over 28 words. Skyro writes short. Break it up.' });
+  }
+
+  // Passive voice
+  var passiveHits = ['is being', 'has been', 'been processed', 'been approved', 'been declined', 'been submitted', 'are being', 'will be processed', 'will be approved'].filter(function(p) { return lower.indexOf(p) !== -1; });
+  if (passiveHits.length >= 2) {
+    score -= 0.8;
+    issues.push({ type: 'tip', text: 'Passive voice detected. Skyro prefers active sentences — "We approved it" over "It was approved."' });
+  }
+
+  // No specificity
+  var hasNumbers = /\d/.test(text);
+  var hasPlaces = /(philippines|manila|cebu|saudi|riyadh|jeddah|uae|dubai|nairobi|kenya|indonesia|jakarta|ramadan|₱|\$|aed|sar|april|may|june|january|march)/i.test(text);
+  var wordCount = text.trim().split(/\s+/).length;
+  if (!hasNumbers && !hasPlaces && wordCount > 30) {
+    score -= 0.8;
+    issues.push({ type: 'tip', text: 'No specific numbers, places, or cultural moments. Skyro earns trust through specificity — name real amounts, real places, real timing.' });
+  }
+
+  // Positive signals
+  var good = [];
+  if (/\byou\b/i.test(text)) good.push('Uses "you" — feels personal and direct');
+  if (/\bwe\b/i.test(text)) good.push('Uses "we" — human and accountable');
+  if (hasNumbers) good.push('Contains specific numbers — grounded and credible');
+  if (hasPlaces) good.push('References a real place or cultural moment — culturally fluent');
+  if (sentences.length > 0 && sentences.every(function(s) { return s.trim().split(/\s+/).length <= 20; })) {
+    good.push('All sentences are short — clear and readable');
+  }
+
+  score = Math.max(1, Math.min(10, Math.round(score * 10) / 10));
+  return { score: score, issues: issues, good: good };
+}
+
+function renderCheckerResult(data) {
+  var result = document.getElementById('checkerResult');
+  if (!result) return;
+  var s = data.score;
+  var cls   = s >= 7.5 ? 'score-high' : s >= 5 ? 'score-mid' : 'score-low';
+  var label = s >= 8 ? 'Strong Skyro voice' : s >= 6 ? 'Mostly on-brand' : s >= 4 ? 'Needs work' : 'Off-brand';
+  var sub   = s >= 8 ? 'This copy sounds like Skyro.' : s >= 6 ? 'A few adjustments will sharpen it.' : s >= 4 ? 'Several issues pulling it off-brand.' : 'Significant revision needed.';
+
+  var html = '<div class="checker-score-wrap">' +
+    '<div class="checker-score-circle ' + cls + '"><span class="score-num">' + s.toFixed(1) + '</span><span class="score-denom">/ 10</span></div>' +
+    '<div><div class="checker-score-label">' + label + '</div><div class="checker-score-sub">' + sub + '</div></div>' +
+    '</div><div class="checker-issues">';
+
+  data.good.forEach(function(g) {
+    html += '<div class="flag good"><b>✓</b><span>' + g + '</span></div>';
+  });
+
+  if (data.issues.length === 0) {
+    html += '<div class="flag good"><b>✓</b><span>No issues flagged. This copy passes the Skyro filters.</span></div>';
+  } else {
+    data.issues.forEach(function(issue) {
+      html += '<div class="flag ' + issue.type + '"><b>' + (issue.type === 'warn' ? '✗' : '→') + '</b><span>' + issue.text + '</span></div>';
+    });
+  }
+
+  html += '</div>';
+  result.innerHTML = html;
+  result.style.display = 'block';
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function initCopyChecker() {
   document.addEventListener('click', function(e) {
-    if (e.target && e.target.id === 'copyBtn') {
-      var block = document.getElementById('aiPrompt');
-      var text = block ? block.innerText.replace('Copy','').replace('Copied!','').trim() : '';
-      navigator.clipboard.writeText(text).then(function() {
-        e.target.textContent = 'Copied!';
-        setTimeout(function() { e.target.textContent = 'Copy'; }, 1800);
-      });
+    if (e.target && e.target.id === 'checkerBtn') {
+      var input = document.getElementById('checkerInput');
+      var text = input ? input.value.trim() : '';
+      if (!text) return;
+      renderCheckerResult(analyzeText(text));
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      var btn = document.getElementById('checkerBtn');
+      if (btn) btn.click();
     }
   });
 }
@@ -2015,7 +2238,7 @@ buildNav();
 buildContent();
 initScrollSpy();
 initChannels();
-initCopyBtn();
+initCopyChecker();
 initToTop();
 initMobileNav();
 requestAnimationFrame(function() { setTimeout(initArchetypes, 200); });
