@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro — Global Tone of Voice Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-sky: #0E1F3D;
+  --c-sky-mid: #1A3260;
+  --c-sky-light: #2A4A8A;
+  --c-horizon: #4A7FBF;
+  --c-dawn: #7BB5E8;
+  --c-cloud: #C8DFF5;
+  --c-mist: #EAF2FB;
+  --c-earth: #6B5744;
+  --c-moss: #3A6B4A;
+  --c-leaf: #5A9B6A;
+  --c-sun: #E8A830;
+  --c-warm: #F5F0E8;
+  --c-white: #FFFFFF;
+  --c-ink: #0D0D0D;
+  --c-text: #1A1A2E;
+  --c-muted: #5A6A7A;
+  --c-border: rgba(14,31,61,0.1);
+  --c-accent: #E05A2B;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --max: 1200px;
+  --section-gap: 120px;
+  --radius: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--c-white);
+  color: var(--c-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NOISE TEXTURE */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(14,31,61,0.95);
+  backdrop-filter: blur(20px);
+  padding: 14px 40px;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.3);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--c-white);
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--c-white); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--c-sky);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(42,74,138,0.6) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 80% at 20% 100%, rgba(58,107,74,0.3) 0%, transparent 60%),
+              radial-gradient(ellipse 40% 60% at 80% 80%, rgba(74,127,191,0.2) 0%, transparent 60%);
+}
+.hero-tag {
+  display: inline-block;
+  color: var(--c-dawn);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  position: relative;
+  padding: 8px 16px;
+  border: 1px solid rgba(123,181,232,0.3);
+  border-radius: 100px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 108px);
+  font-weight: 300;
+  color: var(--c-white);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  position: relative;
+  margin-bottom: 12px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--c-dawn);
+}
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 48px;
+  position: relative;
+}
+.hero-desc {
+  max-width: 560px;
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
+  line-height: 1.7;
+  position: relative;
+  margin-bottom: 60px;
+}
+.hero-scroll {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.8); }
+}
+
+/* SECTION BASE */
+section {
+  padding: var(--section-gap) 40px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-horizon);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--c-sky);
+  margin-bottom: 24px;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--c-horizon);
+}
+.section-intro {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--c-muted);
+  max-width: 680px;
+  margin-bottom: 60px;
+}
+
+/* FULL-WIDTH SECTIONS */
+.section-full {
+  padding: var(--section-gap) 40px;
+}
+.section-full-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+/* DIVIDER */
+hr.section-divider {
+  border: none;
+  height: 1px;
+  background: var(--c-border);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+/* REVEAL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* BIG IDEA BLOCK */
+.big-idea {
+  background: var(--c-sky);
+  color: var(--c-white);
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.big-idea::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(42,74,138,0.8) 0%, transparent 70%);
+}
+.big-idea-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-dawn);
+  margin-bottom: 24px;
+  position: relative;
+}
+.big-idea-text {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 6vw, 80px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--c-white);
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 32px;
+}
+.big-idea-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  line-height: 1.7;
+}
+
+/* BELIEFS GRID */
+.beliefs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+  margin-top: 48px;
+}
+.belief-item {
+  background: var(--c-warm);
+  padding: 40px 32px;
+  position: relative;
+}
+.belief-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--c-horizon);
+  transition: height 0.5s ease;
+}
+.belief-item:hover::before { height: 100%; }
+.belief-number {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  color: rgba(14,31,61,0.1);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.belief-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--c-text);
+}
+
+/* TONE QUALITIES */
+.tone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+@media (max-width: 768px) {
+  .tone-grid { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .hero h1 { font-size: 44px; }
+}
+.tone-card {
+  background: var(--c-mist);
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.tone-card:hover { background: var(--c-cloud); }
+.tone-card::after {
+  content: attr(data-number);
+  position: absolute;
+  top: -20px;
+  right: 24px;
+  font-family: var(--font-display);
+  font-size: 120px;
+  font-weight: 300;
+  color: rgba(14,31,61,0.05);
+  line-height: 1;
+  pointer-events: none;
+}
+.tone-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.tone-card-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--c-sky);
+  letter-spacing: -0.02em;
+}
+.tone-card-vs {
+  font-size: 12px;
+  color: var(--c-muted);
+  font-style: italic;
+}
+.tone-card-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--c-muted);
+  margin-bottom: 32px;
+}
+
+/* EXAMPLES */
+.example-block {
+  margin-top: 24px;
+}
+.example-block + .example-block { margin-top: 16px; }
+.example-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.example-label.good { color: var(--c-moss); }
+.example-label.bad { color: var(--c-accent); }
+.example-label::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.example-quotes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.example-quote {
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border-left: 3px solid;
+}
+.example-quote.good {
+  background: rgba(58,107,74,0.06);
+  border-color: var(--c-moss);
+  color: var(--c-text);
+}
+.example-quote.bad {
+  background: rgba(224,90,43,0.06);
+  border-color: var(--c-accent);
+  color: var(--c-muted);
+  text-decoration: none;
+  font-style: italic;
+}
+
+/* DIMENSIONS */
+.dimensions-section {
+  background: var(--c-sky);
+  color: var(--c-white);
+  padding: var(--section-gap) 40px;
+}
+.dimensions-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.dimensions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+@media (max-width: 900px) {
+  .dimensions-grid { grid-template-columns: repeat(2, 1fr); }
+  .tone-grid { grid-template-columns: 1fr; }
+}
+.dimension-card {
+  background: rgba(255,255,255,0.05);
+  padding: 40px 32px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.3s;
+}
+.dimension-card:hover { background: rgba(255,255,255,0.1); }
+.dimension-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--c-dawn);
+  margin-bottom: 16px;
+}
+.dimension-body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+}
+
+/* TIPS */
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 60px;
+}
+.tip-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  padding: 48px 48px;
+  background: var(--c-warm);
+  transition: background 0.3s;
+}
+.tip-item:hover { background: var(--c-mist); }
+.tip-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--c-sky);
+  letter-spacing: -0.01em;
+  padding-top: 4px;
+}
+.tip-content { font-size: 15px; line-height: 1.7; color: var(--c-muted); }
+.tip-examples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+  .tip-item { grid-template-columns: 1fr; gap: 16px; padding: 32px; }
+  .tip-examples { grid-template-columns: 1fr; }
+}
+
+/* TAGLINE */
+.tagline-hero {
+  background: linear-gradient(135deg, var(--c-sky) 0%, var(--c-sky-mid) 50%, var(--c-moss) 100%);
+  padding: var(--section-gap) 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.tagline-hero::before {
+  content: '"Naturally, it\'s yours."';
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 200px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.03);
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.tagline-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  position: relative;
+}
+.tagline-display {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--c-white);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 32px;
+}
+.tagline-analysis {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.65);
+  max-width: 680px;
+  margin: 0 auto 60px;
+}
+.tagline-examples-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+  text-align: left;
+}
+@media (max-width: 768px) { .tagline-examples-grid { grid-template-columns: 1fr; } }
+.tagline-example-card {
+  background: rgba(255,255,255,0.07);
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.tagline-market {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-dawn);
+  margin-bottom: 20px;
+}
+.tagline-line {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--c-white);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+/* TAGLINE RULES */
+.tagline-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 48px;
+}
+.tagline-rule {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 32px;
+  background: var(--c-warm);
+  padding: 36px 40px;
+  align-items: start;
+  transition: background 0.3s;
+}
+.tagline-rule:hover { background: var(--c-mist); }
+.tagline-rule-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 300;
+  color: rgba(14,31,61,0.15);
+  line-height: 1;
+}
+.tagline-rule-content h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-sky);
+  margin-bottom: 8px;
+}
+.tagline-rule-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--c-muted);
+}
+
+/* NATURE SECTION */
+.nature-section {
+  background: var(--c-warm);
+  padding: var(--section-gap) 40px;
+}
+.nature-inner { max-width: var(--max); margin: 0 auto; }
+.nature-map {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+@media (max-width: 768px) { .nature-map { grid-template-columns: 1fr; } }
+.nature-card {
+  background: var(--c-white);
+  padding: 40px;
+}
+.nature-card-concept {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--c-moss);
+  margin-bottom: 8px;
+}
+.nature-card-maps {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.nature-card-examples { display: flex; flex-direction: column; gap: 8px; }
+
+/* WORDPLAY */
+.wordplay-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+@media (max-width: 768px) { .wordplay-grid { grid-template-columns: 1fr; } }
+.wordplay-col {
+  padding: 40px;
+}
+.wordplay-col.works { background: rgba(58,107,74,0.06); }
+.wordplay-col.doesnt { background: rgba(224,90,43,0.06); }
+.wordplay-col-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.wordplay-col.works .wordplay-col-title { color: var(--c-moss); }
+.wordplay-col.doesnt .wordplay-col-title { color: var(--c-accent); }
+.wordplay-item {
+  margin-bottom: 20px;
+}
+.wordplay-line {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--c-sky);
+  margin-bottom: 6px;
+}
+.wordplay-note { font-size: 13px; color: var(--c-muted); line-height: 1.5; }
+
+/* BRAND NAME TABLE */
+.brand-name-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  font-size: 15px;
+}
+.brand-name-table th {
+  background: var(--c-sky);
+  color: var(--c-white);
+  padding: 16px 24px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.brand-name-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--c-border);
+}
+.brand-name-table tr:nth-child(odd) td { background: var(--c-warm); }
+.brand-name-table .correct {
+  color: var(--c-moss);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+}
+.brand-name-table .incorrect {
+  color: var(--c-accent);
+  text-decoration: line-through;
+  font-size: 15px;
+}
+
+/* TOV FORMULA */
+.formula-section {
+  background: var(--c-sky);
+  padding: var(--section-gap) 40px;
+}
+.formula-inner { max-width: var(--max); margin: 0 auto; }
+.formula-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 60px;
+}
+.formula-step {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  align-items: start;
+  transition: background 0.3s;
+}
+.formula-step:hover { background: rgba(255,255,255,0.09); }
+.formula-step-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.2);
+  line-height: 1;
+}
+.formula-step-quality {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-dawn);
+  margin-bottom: 12px;
+}
+.formula-step-text {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--c-white);
+  line-height: 1.5;
+}
+
+/* WRITING EXAMPLES */
+.context-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 60px;
+}
+.context-example {
+  background: var(--c-warm);
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  transition: background 0.3s;
+}
+.context-example:hover { background: var(--c-mist); }
+.context-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-horizon);
+  padding-top: 4px;
+}
+.context-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--c-sky);
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .context-example { grid-template-columns: 1fr; gap: 12px; padding: 32px; }
+}
+
+/* WORDS TABLE */
+.words-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 48px;
+  font-size: 15px;
+}
+.words-table th {
+  background: var(--c-sky);
+  color: var(--c-white);
+  padding: 16px 24px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.words-table td {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--c-border);
+  vertical-align: middle;
+}
+.words-table tr:nth-child(odd) td { background: var(--c-warm); }
+.words-table .avoid {
+  color: var(--c-accent);
+  text-decoration: line-through;
+}
+.words-table .use {
+  color: var(--c-moss);
+  font-weight: 500;
+}
+.words-table .note {
+  color: var(--c-muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* CHANNEL GUIDE */
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+@media (max-width: 900px) { .channel-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .channel-grid { grid-template-columns: 1fr; } }
+.channel-card {
+  background: var(--c-warm);
+  padding: 36px 32px;
+  transition: background 0.3s;
+}
+.channel-card:hover { background: var(--c-mist); }
+.channel-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--c-sky);
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--c-border);
+}
+.channel-desc { font-size: 14px; line-height: 1.7; color: var(--c-muted); }
+
+/* FIVE FILTERS */
+.filters-section {
+  background: var(--c-sky);
+  padding: var(--section-gap) 40px;
+}
+.filters-inner { max-width: var(--max); margin: 0 auto; }
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+@media (max-width: 1000px) { .filters-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .filters-grid { grid-template-columns: 1fr; } }
+.filter-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 40px 28px;
+  transition: background 0.3s;
+}
+.filter-card:hover { background: rgba(255,255,255,0.12); }
+.filter-num {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.12);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.filter-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-dawn);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.filter-question {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--c-white);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.filter-desc { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.5); }
+
+/* AI PROMPT */
+.ai-prompt-section {
+  padding: var(--section-gap) 40px;
+}
+.ai-prompt-inner { max-width: var(--max); margin: 0 auto; }
+.ai-prompt-box {
+  background: var(--c-sky);
+  border-radius: var(--radius);
+  padding: 56px;
+  margin-top: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.ai-prompt-box::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(74,127,191,0.3) 0%, transparent 70%);
+}
+.ai-prompt-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-dawn);
+  margin-bottom: 24px;
+}
+.ai-prompt-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+  position: relative;
+  font-style: italic;
+}
+.ai-prompt-text strong {
+  color: var(--c-white);
+  font-style: normal;
+}
+
+/* FINAL NOTE */
+.final-note {
+  padding: var(--section-gap) 40px;
+  text-align: center;
+}
+.final-note-inner { max-width: 780px; margin: 0 auto; }
+.final-note-text {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 40px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--c-sky);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
+}
+.final-note-close {
+  font-size: 16px;
+  color: var(--c-muted);
+  line-height: 1.7;
+}
+
+/* BANNED WORDS */
+.banned-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.banned-word {
+  background: rgba(224,90,43,0.08);
+  color: var(--c-accent);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  text-decoration: line-through;
+  border: 1px solid rgba(224,90,43,0.2);
+}
+
+/* POSITIONING */
+.positioning-block {
+  background: var(--c-warm);
+  padding: 48px;
+  border-left: 4px solid var(--c-horizon);
+  margin-top: 32px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--c-sky);
+  line-height: 1.5;
+}
+
+/* FOOTER */
+footer {
+  background: var(--c-sky);
+  padding: 40px;
+  text-align: center;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+.footer-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.05em;
+}
+
+/* FIGMA BUTTON */
+#figma-capture-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #1e1e1e;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 9999;
+}
+#figma-capture-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Skyro</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tone">Tone of Voice</a></li>
+    <li><a href="#tagline">Tagline</a></li>
+    <li><a href="#nature">Nature</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#filters">Filters</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Brand Communication</div>
+  <h1>Skyro — Global<br><em>Tone of Voice</em></h1>
+  <p class="hero-tagline">Naturally, it's yours.</p>
+  <p class="hero-desc">Guidelines for everyone at Skyro — and everyone who writes on behalf of Skyro — to communicate in a way that's clear, consistent, and unmistakably ours.</p>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll to explore</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <div class="section-label">Getting Started</div>
+  <h2 class="section-title">Getting the most<br>out of <em>this guide</em></h2>
+  <p class="section-intro">This guide applies to any content that reaches our audience: product copy, onboarding flows, campaigns, emails, support scripts, social media posts, investor materials, partner communications, and everything in between.</p>
+
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px">When we speak consistently, our brand becomes stronger and easier to trust. When we communicate clearly, we remove friction from people's financial lives — which is precisely the point of what we build. And when we share a common understanding of how Skyro sounds, we spend less time debating drafts and more time creating work that matters.</p>
+
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px;margin-top:24px">Treat this as a guide rather than a rigid rulebook. There will always be moments where context calls for a slight adjustment in register. That's fine — your good judgment is part of the system. But the closer every piece of writing stays to these principles, the more coherent and trustworthy Skyro becomes as a global brand.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- SKYRO IN BRIEF -->
+<section id="brief" class="reveal">
+  <div class="section-label">Skyro in Brief</div>
+  <h2 class="section-title">Who <em>we are</em></h2>
+  <p class="section-intro">Skyro gives people the financial freedom to live by their own rhythms — through technology that understands seasons, cultures, and real life.</p>
+
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px">We operate across multiple markets and serve millions of people whose relationship with money is shaped by community, celebration, harvest cycles, family obligation, and faith — all of the things that traditional finance has historically ignored.</p>
+
+  <div class="positioning-block reveal reveal-delay-1">
+    Our positioning is simple: built for how you live, not how you "should." We celebrate cultural spending. We honour the way people actually manage money. We provide tools that adapt to their lives rather than demanding their lives adapt to our systems.
+  </div>
+</section>
+
+<!-- BIG IDEA -->
+<div class="big-idea reveal">
+  <div class="big-idea-label">Our Brand Big Idea</div>
+  <div class="big-idea-text">Celebrate who you are.<br>Grow from where you stand.</div>
+  <p class="big-idea-sub">Your spending reflects your values. Your culture carries wisdom worth honouring. Your rhythm is natural — something to work with, not against.</p>
+</div>
+
+<!-- BELIEFS -->
+<section class="reveal">
+  <div class="section-label">What we believe</div>
+  <h2 class="section-title">You are a person to be<br><em>celebrated</em></h2>
+  <div class="beliefs-grid">
+    <div class="belief-item reveal reveal-delay-1">
+      <div class="belief-number">01</div>
+      <p class="belief-text">Your spending reflects your values.</p>
+    </div>
+    <div class="belief-item reveal reveal-delay-2">
+      <div class="belief-number">02</div>
+      <p class="belief-text">Your culture carries wisdom worth honouring.</p>
+    </div>
+    <div class="belief-item reveal reveal-delay-3">
+      <div class="belief-number">03</div>
+      <p class="belief-text">Your rhythm is natural — something to work with, not against.</p>
+    </div>
+    <div class="belief-item reveal reveal-delay-4">
+      <div class="belief-number">04</div>
+      <p class="belief-text">You are a person to be celebrated, understood, and supported — and Skyro exists to do exactly that.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PERSONALITY -->
+<section id="personality" class="reveal">
+  <div class="section-label">Our Personality</div>
+  <h2 class="section-title">Warm, precise,<br><em>genuinely curious</em></h2>
+  <p class="section-intro">Skyro communicates with warmth, precision, and a genuine sense of curiosity about the world our users live in. We bring a conversational energy to every touchpoint, grounded in real substance and specific detail.</p>
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px">We're excited about what we're building and about the people we're building it for — and that comes through in the way we write.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- TONE OF VOICE -->
+<section id="tone" class="reveal">
+  <div class="section-label">Our Tone of Voice</div>
+  <h2 class="section-title">Four qualities.<br><em>One voice.</em></h2>
+  <p class="section-intro">Skyro's tone lives across four qualities. They work together rather than separately, and the balance between them shifts depending on the context and channel.</p>
+
+  <div class="tone-grid">
+
+    <!-- WARM -->
+    <div class="tone-card reveal reveal-delay-1" data-number="01">
+      <div class="tone-card-header">
+        <div class="tone-card-title">Warm</div>
+        <div class="tone-card-vs">rather than formal</div>
+      </div>
+      <p class="tone-card-body">Warmth in writing comes from making people feel seen and at ease. Skyro speaks the way a knowledgeable friend would — someone who understands finance deeply but explains it in the way they'd talk over a cup of coffee. We use everyday language, short sentences, and the kind of phrasing that sounds natural when spoken aloud. We address users directly as "you" rather than as "the customer," and we write as "we" rather than "the company."</p>
+      <p class="tone-card-body">In practice, this means reaching for the simpler, more human word in every situation: "help" instead of "assist," "need" instead of "require," "get" instead of "obtain," "use" instead of "utilise," "before" instead of "prior to," "start" instead of "commence," "improve" instead of "optimise." We use contractions freely — "you're," "we'll," "it's" — because they reflect the way people actually speak.</p>
+
+      <div class="example-block">
+        <div class="example-label good">What warmth sounds like</div>
+        <div class="example-quotes">
+          <div class="example-quote good">"Welcome. Let's get you set up — it takes about two minutes."</div>
+          <div class="example-quote good">"Your payment is due tomorrow. Need to adjust the schedule? Here are your options."</div>
+          <div class="example-quote good">"Thanks for reaching out. We'll be in touch shortly. In the meantime, you might find what you need in our help centre."</div>
+        </div>
+      </div>
+      <div class="example-block">
+        <div class="example-label bad">What warmth does not sound like</div>
+        <div class="example-quotes">
+          <div class="example-quote bad">"Dear Valued Customer, we acknowledge receipt of your inquiry and will endeavour to respond in due course."</div>
+          <div class="example-quote bad">"Prior to commencing the application process, please ensure all required documentation has been obtained."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUNDED -->
+    <div class="tone-card reveal reveal-delay-2" data-number="02">
+      <div class="tone-card-header">
+        <div class="tone-card-title">Grounded</div>
+        <div class="tone-card-vs">rather than vague</div>
+      </div>
+      <p class="tone-card-body">Trust in financial services is built through specificity, not through impressive-sounding language. Skyro earns credibility by being concrete — naming real places, real moments, and real amounts rather than hiding behind abstractions. When we make a claim, we back it up. When we describe a product, we describe what it actually does.</p>
+      <p class="tone-card-body">Vague language — "innovative solutions," "seamless experience," "empowering your financial journey" — erodes trust because it says nothing. Any fintech in the world could have written those phrases. At Skyro, if a sentence could have come from any other financial company without changing a word, it needs to be rewritten.</p>
+
+      <div class="example-block">
+        <div class="example-label good">What grounded writing sounds like</div>
+        <div class="example-quotes">
+          <div class="example-quote good">"Apply once, get approved in minutes, and pick your own repayment date."</div>
+          <div class="example-quote good">"See exactly what you'll pay before you confirm. No hidden fees, no surprises."</div>
+          <div class="example-quote good">"₱4,200 saved since March — enough for school enrolment in June. That's what steady looks like."</div>
+          <div class="example-quote good">"In the Philippines, school fees arrive in June. Families start saving in January. We built for that."</div>
+        </div>
+      </div>
+      <div class="example-block">
+        <div class="example-label bad">What it does not sound like</div>
+        <div class="example-quotes">
+          <div class="example-quote bad">"Our holistic, best-in-class transparency framework delivers a world-class customer experience."</div>
+          <div class="example-quote bad">"Leverage our dynamic repayment optimisation to align your cashflow with your amortisation schedule."</div>
+          <div class="example-quote bad">"Our seamless end-to-end digital onboarding empowers users with innovative credit solutions."</div>
+        </div>
+      </div>
+
+      <p style="font-size:14px;color:var(--c-muted);margin-top:24px;line-height:1.6">The following words are banned at Skyro. If you find one in a draft, delete it and say what you actually mean:</p>
+      <div class="banned-list">
+        <span class="banned-word">innovative solutions</span>
+        <span class="banned-word">seamless experience</span>
+        <span class="banned-word">empower</span>
+        <span class="banned-word">leverage</span>
+        <span class="banned-word">synergy</span>
+        <span class="banned-word">game-changing</span>
+        <span class="banned-word">best-in-class</span>
+        <span class="banned-word">disruptive</span>
+        <span class="banned-word">world-class</span>
+        <span class="banned-word">cutting-edge</span>
+        <span class="banned-word">holistic</span>
+        <span class="banned-word">utilise</span>
+        <span class="banned-word">optimise</span>
+        <span class="banned-word">endeavour</span>
+        <span class="banned-word">amortisation</span>
+        <span class="banned-word">obtain</span>
+        <span class="banned-word">commence</span>
+      </div>
+    </div>
+
+    <!-- RESPECTFUL -->
+    <div class="tone-card reveal reveal-delay-3" data-number="03">
+      <div class="tone-card-header">
+        <div class="tone-card-title">Respectful</div>
+        <div class="tone-card-vs">rather than dismissive</div>
+      </div>
+      <p class="tone-card-body">Skyro serves people across cultures, income levels, and life stages — all of them equally deserving of the same quality of communication. Respect at Skyro is not a performative softness; it's a genuine acknowledgment that every user is an intelligent adult navigating a complex world.</p>
+      <p class="tone-card-body">We never condescend. We never shame users for financial difficulty. We never use someone's vulnerability as a story beat or frame a late payment as a character flaw. When we personalise communication, it's to be more relevant and more helpful — not to make someone feel watched or judged.</p>
+      <p class="tone-card-body">We use inclusive language that acknowledges the diversity of our audience. We are mindful of cultural differences — especially in markets like Saudi Arabia, where interest-based language should be replaced with profit-sharing framing, or in communities where the word "debt" carries stigma and "balance" or "repayment" serves better.</p>
+
+      <div class="example-block">
+        <div class="example-label good">What respectful writing sounds like</div>
+        <div class="example-quotes">
+          <div class="example-quote good">"We can't offer this right now. Here's why, and here's what might change that."</div>
+          <div class="example-quote good">"We know life doesn't always go to plan. Here are three paths we can take together."</div>
+          <div class="example-quote good">"Your payment is overdue. Here are your options — pick what works for your situation."</div>
+        </div>
+      </div>
+      <div class="example-block">
+        <div class="example-label bad">What it does not sound like</div>
+        <div class="example-quotes">
+          <div class="example-quote bad">"Unfortunately your application was unsuccessful. We wish you all the best on your financial journey!"</div>
+          <div class="example-quote bad">"You haven't been saving lately. Time to get back on track!"</div>
+          <div class="example-quote bad">"Don't worry — you've got this! Just a friendly reminder to pay up 😊"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTHUSIASTIC -->
+    <div class="tone-card reveal reveal-delay-4" data-number="04">
+      <div class="tone-card-header">
+        <div class="tone-card-title">Enthusiastic</div>
+        <div class="tone-card-vs">rather than matter-of-fact</div>
+      </div>
+      <p class="tone-card-body">Skyro is genuinely excited about what we're building and about the lives of the people we serve. That energy should come through in our writing as genuine enthusiasm for real, specific moments in our users' lives. We celebrate when a user reaches a savings milestone. We acknowledge the significance of a first loan repayment. We recognise that a remittance sent home isn't just a transaction — it's a commitment.</p>
+      <p class="tone-card-body">Enthusiasm at Skyro is specific and earned. We create it by paying close attention to what's actually meaningful in someone's financial life and writing to that moment with precision. A campaign headline that captures a real cultural event will carry more energy than any amount of "Amazing! Incredible! Don't miss out!" copy.</p>
+      <p class="tone-card-body">Exclamation marks are permitted — one per message, when the moment genuinely calls for it. Double exclamation marks are not. Emojis are used sparingly, only when they add genuine meaning rather than performing enthusiasm.</p>
+
+      <div class="example-block">
+        <div class="example-label good">What Skyro enthusiasm sounds like</div>
+        <div class="example-quotes">
+          <div class="example-quote good">"You just sent your first remittance home. Someone's day just changed."</div>
+          <div class="example-quote good">"Your savings just passed ₱10,000. Growing."</div>
+          <div class="example-quote good">"Ramadan is six weeks away. Your budget planner is ready when you are."</div>
+        </div>
+      </div>
+      <div class="example-block">
+        <div class="example-label bad">What it does not sound like</div>
+        <div class="example-quotes">
+          <div class="example-quote bad">"Congratulations!! You're on your way to a brighter financial future! 🎉🌟"</div>
+          <div class="example-quote bad">"Amazing milestone! Keep up the great work!! You're killing it!! 🙌🔥"</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOUR DIMENSIONS -->
+<div class="dimensions-section" id="dimensions">
+  <div class="dimensions-inner">
+    <div class="section-label" style="color:var(--c-dawn)">Brand Dimensions</div>
+    <h2 class="section-title" style="color:var(--c-white)">The four brand<br><em>dimensions</em></h2>
+    <p class="section-intro" style="color:rgba(255,255,255,0.6)">Beyond the four tonal qualities, Skyro's voice is further shaped by four dimensions that describe the deeper character of our writing.</p>
+
+    <div class="dimensions-grid">
+      <div class="dimension-card reveal reveal-delay-1">
+        <div class="dimension-name">Campfire</div>
+        <p class="dimension-body">Captures the conversational warmth of our brand. Skyro speaks like a smart friend who happens to know finance — present, unhurried, and genuinely interested. The opposite of a corporate boardroom.</p>
+      </div>
+      <div class="dimension-card reveal reveal-delay-2">
+        <div class="dimension-name">Grounded</div>
+        <p class="dimension-body">Describes our commitment to substance and specificity. We use real numbers, real place names, and real moments. Credibility comes from detail, not from formality.</p>
+      </div>
+      <div class="dimension-card reveal reveal-delay-3">
+        <div class="dimension-name">Celebrating</div>
+        <p class="dimension-body">Reflects our respect for the cultures, choices, and rhythms of our users. Every market, every cultural calendar, every way of managing money is worth honouring. This dimension never drops below high — respect for users is non-negotiable.</p>
+      </div>
+      <div class="dimension-card reveal reveal-delay-4">
+        <div class="dimension-name">Alive</div>
+        <p class="dimension-body">Means that Skyro copy should be distinctive and surprising. If a sentence could have come from any other fintech, it needs to be rewritten. This dimension is what keeps the brand from becoming generic.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS ON WRITING -->
+<section id="writing" class="reveal">
+  <div class="section-label">Craft</div>
+  <h2 class="section-title">Tips on<br><em>writing well</em></h2>
+  <p class="section-intro">Good Skyro copy is built from the same craft principles that make all writing effective — just applied consistently and with our particular brand voice in mind.</p>
+
+  <div class="tips-list">
+
+    <div class="tip-item reveal">
+      <div class="tip-title">Use active voice</div>
+      <div class="tip-content">
+        <p>Write sentences where the subject performs the action. Active voice is cleaner, more direct, and more human.</p>
+        <div class="tip-examples">
+          <div>
+            <div class="example-label good" style="margin-bottom:8px">Active</div>
+            <div class="example-quote good">"We reviewed your application and here's where things stand."</div>
+            <div class="example-quote good" style="margin-top:8px">"Skyro calculates your limit based on how you actually earn and spend."</div>
+          </div>
+          <div>
+            <div class="example-label bad" style="margin-bottom:8px">Passive</div>
+            <div class="example-quote bad">"Your application has been reviewed by our team and an assessment has been made."</div>
+            <div class="example-quote bad" style="margin-top:8px">"Your credit limit is determined by an algorithmic scoring process."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-item reveal">
+      <div class="tip-title">Keep sentences short</div>
+      <div class="tip-content">
+        <p>Aim for an average of 15 to 20 words per sentence. Long sentences carry more cognitive load — especially for users reading in a second language or in a moment of financial stress.</p>
+        <div class="tip-examples">
+          <div>
+            <div class="example-label good" style="margin-bottom:8px">Short</div>
+            <div class="example-quote good">"Your payment is due Friday. Need more time? Here are your options."</div>
+            <div class="example-quote good" style="margin-top:8px">"Approved. Your limit is ₱15,000. Pick your repayment date and you're set."</div>
+          </div>
+          <div>
+            <div class="example-label bad" style="margin-bottom:8px">Long</div>
+            <div class="example-quote bad">"Please be advised that your upcoming payment instalment is scheduled for this Friday, and should you require an extension or wish to discuss alternative arrangements, our team is available to assist you."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-item reveal">
+      <div class="tip-title">Be specific</div>
+      <div class="tip-content">
+        <p>Ground every claim in a concrete amount, a real place, and a tangible moment — vague language sounds like every other fintech, while specificity is what makes Skyro feel real.</p>
+        <div class="tip-examples">
+          <div>
+            <div class="example-label good" style="margin-bottom:8px">Specific</div>
+            <div class="example-quote good">"₱4,200 saved since March — enough for school enrolment in June."</div>
+            <div class="example-quote good" style="margin-top:8px">"3,700 merchants in Cebu, Jeddah, and Nairobi accept Skyro."</div>
+          </div>
+          <div>
+            <div class="example-label bad" style="margin-bottom:8px">Vague</div>
+            <div class="example-quote bad">"You've been making great progress on your savings goals."</div>
+            <div class="example-quote bad" style="margin-top:8px">"Skyro is accepted at a growing network of global partner merchants."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-item reveal">
+      <div class="tip-title">Write one idea per sentence</div>
+      <div class="tip-content">
+        <p>Each sentence should carry one clear thought. If you find a sentence doing two or three jobs at once, split it.</p>
+        <div class="tip-examples">
+          <div>
+            <div class="example-label good" style="margin-bottom:8px">One idea</div>
+            <div class="example-quote good">"Your limit just increased. That's based on six months of on-time payments — your track record did that."</div>
+          </div>
+          <div>
+            <div class="example-label bad" style="margin-bottom:8px">Too much</div>
+            <div class="example-quote bad">"Based on your positive repayment history over the past six months, which has been assessed by our system, your credit limit has been increased to reflect your improved financial standing."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-item reveal">
+      <div class="tip-title">Find the real moment</div>
+      <div class="tip-content">
+        <p>A transaction is never just a transaction. A first deposit is a seed planted. Twenty months of repayments is a commitment. Look for what's actually happening in someone's life and write to that — not to the data point. Don't tell the reader how to feel — create the conditions for them to feel it.</p>
+        <div class="tip-examples">
+          <div>
+            <div class="example-label good" style="margin-bottom:8px">Real moment</div>
+            <div class="example-quote good">"You just sent your first remittance home. Someone's day just changed."</div>
+            <div class="example-quote good" style="margin-top:8px">"Twenty months of payments. That's twenty months of someone back home knowing this month is covered."</div>
+          </div>
+          <div>
+            <div class="example-label bad" style="margin-bottom:8px">Generic</div>
+            <div class="example-quote bad">"Congratulations! You've completed your first international transfer. You're on your way to a brighter financial future!"</div>
+            <div class="example-quote bad" style="margin-top:8px">"You've been a loyal Skyro user for 20 months. Thank you for your continued trust in our platform!"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-item reveal">
+      <div class="tip-title">Kill empty language</div>
+      <div class="tip-content">
+        <p>If a phrase could have been written by any fintech on earth, it hasn't earned its place. Delete it and say specifically what you mean.</p>
+        <div class="tip-examples">
+          <div>
+            <div class="example-label good" style="margin-bottom:8px">Specific</div>
+            <div class="example-quote good">"Apply once, get approved in minutes, and pick your own repayment date."</div>
+            <div class="example-quote good" style="margin-top:8px">"A loan that adjusts when your income does. Earn less one month, pay less that month."</div>
+          </div>
+          <div>
+            <div class="example-label bad" style="margin-bottom:8px">Empty</div>
+            <div class="example-quote bad">"Our seamless end-to-end digital onboarding empowers users with innovative credit solutions."</div>
+            <div class="example-quote bad" style="margin-top:8px">"Leverage our dynamic repayment optimisation to align your cashflow with your amortisation schedule."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-item reveal">
+      <div class="tip-title">Write for every market</div>
+      <div class="tip-content">
+        <p>Would this sentence make sense to a user in Cebu, Jeddah, and Nairobi? If it only makes sense to someone following Western media, cut it. If it references a cultural moment, make sure it's genuine — not trending.</p>
+        <div class="tip-examples">
+          <div>
+            <div class="example-label good" style="margin-bottom:8px">Culturally specific</div>
+            <div class="example-quote good">"Ramadan is six weeks away. Your budget planner is ready — Zakat calculations, family meal budgets, and everything in between."</div>
+            <div class="example-quote good" style="margin-top:8px">"In Kenya, harvest season shapes how families save. Skyro moves with that rhythm."</div>
+          </div>
+          <div>
+            <div class="example-label bad" style="margin-bottom:8px">Generic / Performative</div>
+            <div class="example-quote bad">"Ramadan deals are HERE! 🔥 Don't miss out on our limited-time Ramadan offer!"</div>
+            <div class="example-quote bad" style="margin-top:8px">"Skyro serves emerging market customers with variable income streams across multiple geographies."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-item reveal">
+      <div class="tip-title">Handle hard moments with quiet steadiness</div>
+      <div class="tip-content">
+        <p>Money stress is personal and deeply felt. When someone is facing a missed payment, a declined application, or a financial setback, be steady, clear, and kind. Forced optimism in these moments feels dismissive — and it is.</p>
+        <div class="tip-examples">
+          <div>
+            <div class="example-label good" style="margin-bottom:8px">Steady</div>
+            <div class="example-quote good">"We can't offer this right now. Here's why, and here's what might change that."</div>
+            <div class="example-quote good" style="margin-top:8px">"We know life doesn't always go to plan. Here are three paths we can take together."</div>
+          </div>
+          <div>
+            <div class="example-label bad" style="margin-bottom:8px">Forced optimism</div>
+            <div class="example-quote bad">"Unfortunately your application was unsuccessful. We wish you all the best on your financial journey!"</div>
+            <div class="example-quote bad" style="margin-top:8px">"Don't worry — you've got this! Just a friendly reminder that your payment is overdue 😊"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TAGLINE -->
+<div id="tagline" class="tagline-hero">
+  <div class="tagline-inner">
+    <div class="section-label" style="color:var(--c-dawn);position:relative">The Global Tagline</div>
+    <div class="tagline-display reveal">Naturally,<br>it's yours.</div>
+    <p class="tagline-analysis reveal reveal-delay-1">Skyro returns finance to its natural state — one that feels instinctively right rather than engineered or imposed. No overbuilt systems, no forced habits, no financial product that demands you reshape your life to fit it. Just an organic harmony between a person and their money.</p>
+    <p class="tagline-analysis reveal reveal-delay-2">"Naturally" carries the confident, conversational sense of "of course" — something self-evident and unquestionable. At the same time, it reaches back to the heart of the Skyro brand platform: the idea that the best financial tools move with the rhythms of nature and real life, rather than against them. "It's yours" completes the thought by making the claim personal and unconditional.</p>
+
+    <div style="max-width:var(--max);margin:80px auto 0;text-align:left">
+      <div class="section-label" style="color:var(--c-dawn);margin-bottom:24px">Using the Tagline in Market-Specific Communications</div>
+      <p style="color:rgba(255,255,255,0.65);font-size:16px;line-height:1.7;max-width:680px;margin-bottom:40px">The most effective approach is to lead with the single most relevant product truth or cultural insight for each market, then close with "Naturally, it's yours." The opening line does the specific work; the tagline closes with the universal one.</p>
+
+      <div class="tagline-examples-grid">
+        <div class="tagline-example-card reveal reveal-delay-1">
+          <div class="tagline-market">Saudi Arabia — Sharia Compliance</div>
+          <div class="tagline-line">Finance that aligns with your faith. Naturally, it's yours.</div>
+          <div class="tagline-line">Profit-sharing, not interest. The way it should be. Naturally, it's yours.</div>
+          <div class="tagline-line">Built on principles you've always lived by. Naturally, it's yours.</div>
+        </div>
+        <div class="tagline-example-card reveal reveal-delay-2">
+          <div class="tagline-market">Kenya — Mobile-First Finance</div>
+          <div class="tagline-line">Every financial need. One tap away. Naturally, it's yours.</div>
+          <div class="tagline-line">Your bank is wherever your phone is. Naturally, it's yours.</div>
+        </div>
+        <div class="tagline-example-card reveal reveal-delay-3">
+          <div class="tagline-market">Product-Led — BNPL</div>
+          <div class="tagline-line">Split into 4. No interest, no catch. Naturally, it's yours.</div>
+          <div class="tagline-line">0% instalments. Up to 24 months. Naturally, it's yours.</div>
+          <div class="tagline-line">Buy it today. Pay when it makes sense for you. Naturally, it's yours.</div>
+        </div>
+        <div class="tagline-example-card reveal reveal-delay-4">
+          <div class="tagline-market">Product-Led — Insurance</div>
+          <div class="tagline-line">Coverage that starts the moment you need it — not a week later. Naturally, it's yours.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:var(--max);margin:80px auto 0;text-align:left">
+      <div class="section-label" style="color:var(--c-dawn);margin-bottom:32px">How to Generate Brand Taglines in the Future</div>
+      <div class="tagline-rules" style="margin-top:0">
+        <div class="tagline-rule">
+          <div class="tagline-rule-num">1</div>
+          <div class="tagline-rule-content">
+            <h4>Anchor every line in the two core brand themes.</h4>
+            <p>Every new Skyro tagline should carry at least one — and ideally both — of the brand platform's foundational ideas: <em>Celebrate who you are</em> and <em>Grow from where you stand</em>. A line that connects to neither theme is not a Skyro line.</p>
+          </div>
+        </div>
+        <div class="tagline-rule">
+          <div class="tagline-rule-num">2</div>
+          <div class="tagline-rule-content">
+            <h4>Nature metaphors and wordplay are welcome — when they're earned.</h4>
+            <p>Dual meanings, quiet wit, and nature-rooted imagery are part of Skyro's language. The standard is a word or image that does more than one job at once — bridging the natural world and the personal financial one without announcing the connection. Decoration for its own sake weakens rather than strengthens a tagline.</p>
+          </div>
+        </div>
+        <div class="tagline-rule">
+          <div class="tagline-rule-num">3</div>
+          <div class="tagline-rule-content">
+            <h4>Check cultural fit across all markets before publishing.</h4>
+            <p>A tagline that works in Manila can carry unintended connotations in Riyadh or Nairobi. Before any new line is approved for global or multi-market use, verify that no word, image, or phrase is offensive, awkward, or carries a different primary meaning in the relevant languages and cultural contexts.</p>
+          </div>
+        </div>
+        <div class="tagline-rule">
+          <div class="tagline-rule-num">4</div>
+          <div class="tagline-rule-content">
+            <h4>Check for trademark and competitive conflicts.</h4>
+            <p>Verify that the candidate line is not already in use by another fintech or major financial player — in any market Skyro operates in. A strong line that belongs to a competitor is worse than no tagline at all.</p>
+          </div>
+        </div>
+        <div class="tagline-rule">
+          <div class="tagline-rule-num">5</div>
+          <div class="tagline-rule-content">
+            <h4>Keep it short.</h4>
+            <p>A Skyro tagline should be short enough to hold in memory after one reading. If it needs more than six or seven words to land, it hasn't been edited enough yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:var(--max);margin:80px auto 0;text-align:left">
+      <div class="section-label" style="color:var(--c-dawn);margin-bottom:32px">Examples of lines that work</div>
+      <div class="wordplay-grid">
+        <div>
+          <div class="wordplay-item">
+            <div class="tagline-line">"Rise on your own way."</div>
+            <p class="wordplay-note" style="color:rgba(255,255,255,0.5)">Carries both brand themes simultaneously: personal path and organic, unforced growth. "Rise" connects to Skyro's upward energy without forcing a brand-name pun.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="tagline-line">"Look up. The sky is yours."</div>
+            <p class="wordplay-note" style="color:rgba(255,255,255,0.5)">Grounds the brand's belief in quiet, universal happiness and the right to what's already above you — available to everyone. The connection to the brand name works because it's incidental rather than announced.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="tagline-line">"Centred in your nature."</div>
+            <p class="wordplay-note" style="color:rgba(255,255,255,0.5)">Places Skyro at the intersection of inner self and the outside world. "Nature" carries both the personal and the ecological meaning; "centred" suggests stability and self-knowledge rather than ambition.</p>
+          </div>
+        </div>
+        <div>
+          <div class="section-label" style="color:var(--c-accent);margin-bottom:24px">Examples of lines that don't work — and why</div>
+          <div class="wordplay-item">
+            <div class="tagline-line" style="color:rgba(255,255,255,0.4);text-decoration:line-through">"Find your horizon."</div>
+            <p class="wordplay-note" style="color:rgba(255,255,255,0.4)">The nature imagery is right, but "Horizon" is already the name of an established bank. Fails Rule 4.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="tagline-line" style="color:rgba(255,255,255,0.4);text-decoration:line-through">"Your guiding star."</div>
+            <p class="wordplay-note" style="color:rgba(255,255,255,0.4)">The navigational metaphor evokes something aspirational and distant. Skyro is about accessible, everyday life — quiet achievements, real rhythms. This line aims too high and misses the brand's grounded register.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="tagline-line" style="color:rgba(255,255,255,0.4);text-decoration:line-through">"It pays to be you."</div>
+            <p class="wordplay-note" style="color:rgba(255,255,255,0.4)">Communicates the <em>Celebrate who you are</em> idea and uses wordplay effectively in isolation, but the construction is already too familiar in fintech marketing to feel distinctive. Fails Rule 4 in spirit: another company could have written it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NATURE METAPHORS -->
+<div id="nature" class="nature-section">
+  <div class="nature-inner">
+    <div class="section-label">Language</div>
+    <h2 class="section-title">Nature Metaphors<br>and <em>Wordplay</em></h2>
+    <p class="section-intro">Skyro's brand insight is that nature is a partner — not a threat, a backdrop, but a living system that human beings already understand intuitively. A rice farmer reads the sky before planting. A Kenyan family plans around the harvest. A Saudi household reorganises its entire budget around Ramadan.</p>
+    <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px;margin-bottom:48px">Nature metaphors allow us to talk about financial concepts in ways that feel familiar, grounded, and culturally resonant across all of our markets. The goal is not to sound poetic for its own sake; it's to translate abstract financial ideas into the vocabulary of things people already understand and trust. The test is always: does the metaphor make the idea more tangible, or does it just add words?</p>
+
+    <div class="nature-map">
+      <div class="nature-card reveal reveal-delay-1">
+        <div class="nature-card-concept">Saving</div>
+        <p class="nature-card-maps">Maps to: planting, seeds, growth cycles</p>
+        <div class="nature-card-examples">
+          <div class="example-quote good">"₱200 a week, every week. You planted this in January — it's been growing since."</div>
+          <div class="example-quote good">"Small deposits, steady rhythm. Gardens don't grow overnight, and neither does financial security."</div>
+          <div class="example-quote bad">"Watch your money blossom into a beautiful financial future with Skyro!" — decorative, generic, forced</div>
+        </div>
+      </div>
+      <div class="nature-card reveal reveal-delay-2">
+        <div class="nature-card-concept">Repayment Flexibility</div>
+        <p class="nature-card-maps">Maps to: seasons and weather</p>
+        <div class="nature-card-examples">
+          <div class="example-quote good">"Life shifts. Rainy seasons happen. Your repayment schedule can move with you."</div>
+          <div class="example-quote good">"When the harvest is lean, Skyro adjusts. Pay less this month, make it up when things pick up."</div>
+          <div class="example-quote bad">"Like the changing seasons, your Skyro journey is full of growth opportunities!" — vague, meaningless</div>
+        </div>
+      </div>
+      <div class="nature-card reveal reveal-delay-3">
+        <div class="nature-card-concept">Financial Transparency</div>
+        <p class="nature-card-maps">Maps to: clear skies, visible paths, predictable cycles</p>
+        <div class="nature-card-examples">
+          <div class="example-quote good">"See exactly what you'll pay before you commit. No fog, no fine print."</div>
+          <div class="example-quote good">"Clear terms from the start. Like reading the sky before you plant — you deserve to know what's coming."</div>
+          <div class="example-quote bad">"At Skyro, we're as clear as a mountain stream, delivering best-in-class transparency!" — mixed metaphor, broken</div>
+        </div>
+      </div>
+      <div class="nature-card reveal reveal-delay-4">
+        <div class="nature-card-concept">Trust and Reliability</div>
+        <p class="nature-card-maps">Maps to: roots, foundations, things that hold</p>
+        <div class="nature-card-examples">
+          <div class="example-quote good">"A palm tree bends in the storm — it doesn't break. We built Skyro to hold the same way."</div>
+          <div class="example-quote good">"Some things don't move. Your Skyro balance, your repayment terms, the fee you were quoted — these are roots."</div>
+        </div>
+      </div>
+      <div class="nature-card reveal reveal-delay-1" style="grid-column: 1 / -1">
+        <div class="nature-card-concept">Growth on Your Own Terms</div>
+        <p class="nature-card-maps">Maps to: different ecosystems producing different things</p>
+        <div class="nature-card-examples" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="example-quote good">"A desert isn't a broken forest. A monsoon is right for what it is. Every path grows something."</div>
+          <div class="example-quote good">"Not every ecosystem looks the same. Neither does every financial life. Skyro works with what's yours."</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:64px" class="reveal">
+      <div class="section-label">Wordplay</div>
+      <h3 style="font-family:var(--font-display);font-size:32px;font-weight:300;color:var(--c-sky);margin-bottom:16px">Where it works and<br>where it <em>doesn't</em></h3>
+      <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px;margin-bottom:8px">Skyro's voice allows for a quiet wit — the kind of wordplay that rewards attention without trying to be funny. The standard here is a smile rather than a laugh, and only in the right contexts.</p>
+      <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px;margin-bottom:8px"><strong style="color:var(--c-sky)">Where wordplay is appropriate:</strong> Campaign headlines and taglines. These are our biggest personality moments. Social media posts, especially those tied to cultural moments, also have room for this kind of lightness.</p>
+      <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px;margin-bottom:8px"><strong style="color:var(--c-sky)">Where wordplay is not appropriate:</strong> Support communications, collections messages, decline notifications, error states, and anything involving financial difficulty. These are moments for clarity and respect — levity undermines trust when someone is stressed or struggling.</p>
+      <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px"><strong style="color:var(--c-accent)">Puns about money, finance, or numbers are banned.</strong> "Interest-ing offer," "savings that really grow," "make cents of your budget" — these are the clichés of lazy fintech copy, and they undermine the credibility we've worked to build.</p>
+
+      <div class="wordplay-grid" style="margin-top:40px">
+        <div class="wordplay-col works">
+          <div class="wordplay-col-title">Wordplay that works</div>
+          <div class="wordplay-item">
+            <div class="wordplay-line">"Your money, your rhythm."</div>
+            <p class="wordplay-note">The double meaning of "rhythm" (both musical and natural) creates resonance without forcing it.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="wordplay-line">"It's worth being you."</div>
+            <p class="wordplay-note">A popular idiom connected with finance topics.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="wordplay-line">"It's in your nature."</div>
+            <p class="wordplay-note">A popular and clear idiom connected with nature.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="wordplay-line">"Rise on your own way."</div>
+            <p class="wordplay-note">Carries both brand themes simultaneously. "Rise" connects to Skyro's upward energy without forcing a brand-name pun.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="wordplay-line">"Flow with it."</div>
+            <p class="wordplay-note">Line for a flexible repayment feature. "Flow" is one of Skyro's values and a nature metaphor. Short enough that the double meaning lands cleanly.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="wordplay-line">"Clear skies, clear terms."</div>
+            <p class="wordplay-note">The parallel structure does the work; no pun, but the wordplay is structural.</p>
+          </div>
+        </div>
+        <div class="wordplay-col doesnt">
+          <div class="wordplay-col-title">Wordplay that doesn't work</div>
+          <div class="wordplay-item">
+            <div class="wordplay-line" style="text-decoration:line-through">"Skyro — because your money should fly high!"</div>
+            <p class="wordplay-note">Tries to pun on the brand name. Never do this.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="wordplay-line" style="text-decoration:line-through">"It's time to branch out with Skyro savings!"</div>
+            <p class="wordplay-note">Generic fintech nature pun. Could have been written by anyone.</p>
+          </div>
+          <div class="wordplay-item">
+            <div class="wordplay-line" style="text-decoration:line-through">"Get growing with Skyro — it's interest-ing!"</div>
+            <p class="wordplay-note">A money pun. Banned.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;padding:32px;background:var(--c-white);border-left:3px solid var(--c-earth)">
+        <p style="font-size:15px;line-height:1.7;color:var(--c-muted)"><strong style="color:var(--c-sky)">How not to overdo it:</strong> The most common failure mode with nature metaphors is overloading a single piece of copy with too many of them. One well-chosen metaphor grounds a message. Three competing metaphors make it feel like a nature documentary.</p>
+        <p style="font-size:15px;line-height:1.7;color:var(--c-muted);margin-top:12px">The second failure mode is forcing a metaphor onto a context where it doesn't belong. Nature metaphors earn their place in brand-led and product-led copy. They have no place in legally sensitive, operationally critical, or distress-related communications.</p>
+        <p style="font-size:15px;line-height:1.7;color:var(--c-muted);margin-top:12px">A final check: if the metaphor requires explanation to understand, it isn't working. The best ones are immediately clear — they make the reader nod, not stop and decipher.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WRITING "SKYRO" -->
+<section class="reveal">
+  <div class="section-label">Brand Name</div>
+  <h2 class="section-title">Writing<br><em>"Skyro"</em></h2>
+  <p class="section-intro">Consistent treatment of our brand name is a small detail that signals professionalism and care.</p>
+
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:680px;margin-bottom:8px">Always write "Skyro" with an initial capital and lowercase thereafter. This applies everywhere: headlines, body copy, UI text, social posts, legal documents, email subject lines, and internal communications.</p>
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:680px;margin-bottom:8px">Never write the brand name in all capitals. SKYRO is not acceptable under any circumstances — not for emphasis, not in headlines, not in ad copy, not as a stylistic choice. If you feel the urge to shout the brand name, find a different way to create emphasis.</p>
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:680px">Never write the brand name in all lowercase. "skyro" is not our brand — it looks like an error or an unofficial handle.</p>
+
+  <table class="brand-name-table">
+    <thead>
+      <tr>
+        <th>Correct</th>
+        <th>Incorrect</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="correct">Skyro</td>
+        <td class="incorrect">SKYRO</td>
+      </tr>
+      <tr>
+        <td class="correct">Skyro</td>
+        <td class="incorrect">skyro</td>
+      </tr>
+      <tr>
+        <td class="correct">Skyro Credit</td>
+        <td class="incorrect">SKYRO CREDIT</td>
+      </tr>
+      <tr>
+        <td class="correct">Powered by Skyro</td>
+        <td class="incorrect">powered by SKYRO</td>
+      </tr>
+      <tr>
+        <td class="correct">Meet Skyro</td>
+        <td class="incorrect">meet skyro</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:14px;color:var(--c-muted);margin-top:16px">The same rules apply to any sub-products or branded features: Skyro Credit, Skyro Save, Skyro Pay — always title case for the brand name, followed by the product descriptor.</p>
+</section>
+
+<!-- TOV FORMULA IN PRACTICE -->
+<div class="formula-section">
+  <div class="formula-inner">
+    <div class="section-label" style="color:var(--c-dawn)">The TOV Formula</div>
+    <h2 class="section-title" style="color:var(--c-white)">The formula<br>in <em>practice</em></h2>
+    <p class="section-intro" style="color:rgba(255,255,255,0.6)">To show how these principles work together, here is a step-by-step example — starting from a generic system message and progressively making it sound more like Skyro. The scenario: a loan application has been declined.</p>
+
+    <div class="formula-steps">
+      <div class="formula-step reveal reveal-delay-1">
+        <div class="formula-step-num">1</div>
+        <div>
+          <div class="formula-step-quality">Make it more warm — remove the corporate register</div>
+          <div class="formula-step-text">"We've looked at your application carefully, but we're unable to offer you a loan at this time."</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.45);margin-top:12px">Using contractions and "we/you" language immediately reduces formality and creates a more human connection.</p>
+        </div>
+      </div>
+      <div class="formula-step reveal reveal-delay-2">
+        <div class="formula-step-num">2</div>
+        <div>
+          <div class="formula-step-quality">Make it more grounded — add specific, useful information</div>
+          <div class="formula-step-text">"We can't offer this right now. Your current credit activity shows two missed payments in the last six months — that's the main factor."</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.45);margin-top:12px">Removing vague language and adding a specific reason gives the user something real to work with. It respects their intelligence.</p>
+        </div>
+      </div>
+      <div class="formula-step reveal reveal-delay-3">
+        <div class="formula-step-num">3</div>
+        <div>
+          <div class="formula-step-quality">Make it more respectful — acknowledge the difficulty without judgment</div>
+          <div class="formula-step-text">"We can't offer this right now. Your recent credit activity — two missed payments in the last six months — is the main factor. We know that life doesn't always go to plan."</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.45);margin-top:12px">Adding acknowledgment of the user's situation without condescension or false positivity creates genuine empathy.</p>
+        </div>
+      </div>
+      <div class="formula-step reveal reveal-delay-4">
+        <div class="formula-step-num">4</div>
+        <div>
+          <div class="formula-step-quality">Make it more enthusiastic — forward-looking, not deflating</div>
+          <div class="formula-step-text">"We can't offer this right now. Two missed payments in the last six months is the main factor. Clear those, and we'd encourage you to apply again — your situation can change, and so can our answer."</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.45);margin-top:12px">Replacing resignation with a specific, actionable path forward injects energy without manufacturing false hope.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WRITING EXAMPLES BY CONTEXT -->
+<section class="reveal">
+  <div class="section-label">Examples</div>
+  <h2 class="section-title">Writing examples<br>by <em>context</em></h2>
+  <p class="section-intro">The same four tonal qualities in practice, applied to real moments across the product experience.</p>
+
+  <div class="context-examples">
+    <div class="context-example reveal">
+      <div class="context-label">Onboarding — First Screen</div>
+      <div class="context-text">"Welcome. Let's get you set up. It takes about two minutes, and you're in control of every step."</div>
+    </div>
+    <div class="context-example reveal">
+      <div class="context-label">Loan Approval</div>
+      <div class="context-text">"You're approved. Here are your terms — plain and simple. Take a moment to read them before you confirm."</div>
+    </div>
+    <div class="context-example reveal">
+      <div class="context-label">Loan Decline</div>
+      <div class="context-text">"We can't offer this right now. Here's why, and here's what might change that."</div>
+    </div>
+    <div class="context-example reveal">
+      <div class="context-label">Savings Milestone</div>
+      <div class="context-text">"Your savings just passed ₱10,000. You started in January with ₱200 a week. That's what steady looks like."</div>
+    </div>
+    <div class="context-example reveal">
+      <div class="context-label">Late Payment Reminder</div>
+      <div class="context-text">"Your payment is due tomorrow. Need to adjust the schedule? Here are your options."</div>
+    </div>
+    <div class="context-example reveal">
+      <div class="context-label">Overdue Payment</div>
+      <div class="context-text">"We know life doesn't always go to plan. Here are three paths we can take together — choose whichever works for your situation."</div>
+    </div>
+    <div class="context-example reveal">
+      <div class="context-label">System Error</div>
+      <div class="context-text">"Something went wrong on our end. We're fixing it, and your money is safe."</div>
+    </div>
+    <div class="context-example reveal">
+      <div class="context-label">Cultural Moment — Ramadan (KSA)</div>
+      <div class="context-text">"Ramadan is six weeks away. Your budget planner is ready — Zakat calculations, family meal budgets, and everything in between."</div>
+    </div>
+    <div class="context-example reveal">
+      <div class="context-label">Feedback Request</div>
+      <div class="context-text">"How did we do? A few honest answers would help us improve — it takes less than two minutes."</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- WORDS WE USE -->
+<section class="reveal">
+  <div class="section-label">Vocabulary</div>
+  <h2 class="section-title">Words we use<br>and words we <em>avoid</em></h2>
+  <table class="words-table">
+    <thead>
+      <tr>
+        <th>Instead of this</th>
+        <th>We say this</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="avoid">Assist</td><td class="use">Help</td></tr>
+      <tr><td class="avoid">Require</td><td class="use">Need</td></tr>
+      <tr><td class="avoid">Obtain</td><td class="use">Get</td></tr>
+      <tr><td class="avoid">Utilise</td><td class="use">Use</td></tr>
+      <tr><td class="avoid">Enable</td><td class="use">Let</td></tr>
+      <tr><td class="avoid">Provide</td><td class="use">Give</td></tr>
+      <tr><td class="avoid">Commence</td><td class="use">Start</td></tr>
+      <tr><td class="avoid">However</td><td class="use">But</td></tr>
+      <tr><td class="avoid">In order to</td><td class="use">To</td></tr>
+      <tr><td class="avoid">At this time</td><td class="use">Now</td></tr>
+      <tr><td class="avoid">Prior to</td><td class="use">Before</td></tr>
+      <tr><td class="avoid">Subsequently</td><td class="use">Then</td></tr>
+      <tr><td class="avoid">Optimise</td><td class="use">Improve</td></tr>
+      <tr><td class="avoid">Endeavour</td><td class="use">Try</td></tr>
+      <tr><td class="avoid">Amortisation</td><td class="use">Repayment</td></tr>
+      <tr><td class="avoid">The customer</td><td class="use">You</td></tr>
+      <tr><td class="avoid">The company</td><td class="use">We</td></tr>
+      <tr><td class="avoid">Allocation</td><td class="use">Spread</td></tr>
+      <tr><td class="avoid">Innovative solution</td><td class="note">[Say specifically what it does]</td></tr>
+      <tr><td class="avoid">Seamless experience</td><td class="note">[Say specifically what is easy]</td></tr>
+      <tr><td class="avoid">Empower</td><td class="note">[Say specifically what users can do]</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CHANNEL GUIDANCE -->
+<section class="reveal">
+  <div class="section-label">Channels</div>
+  <h2 class="section-title">Channel<br><em>guidance</em></h2>
+  <p class="section-intro">The same four tonal qualities apply across all channels, but the balance between them shifts depending on context.</p>
+
+  <div class="channel-grid">
+    <div class="channel-card reveal reveal-delay-1">
+      <div class="channel-name">In-App Product Copy</div>
+      <p class="channel-desc">Prioritises clarity above all else. Warmth is high; playfulness is low. Every word should help a user make a confident financial decision — nothing should get in the way of that.</p>
+    </div>
+    <div class="channel-card reveal reveal-delay-2">
+      <div class="channel-name">Support Communications</div>
+      <p class="channel-desc">Require maximum warmth and empathy. When something has gone wrong — a missed payment, a declined transaction, a disputed charge — the tone should be steady, clear, and kind. Lightness is inappropriate in these moments.</p>
+    </div>
+    <div class="channel-card reveal reveal-delay-3">
+      <div class="channel-name">Marketing Campaigns</div>
+      <p class="channel-desc">Where Skyro's personality can be expressed most fully. Warmth is high, enthusiasm is high, and the "Alive" dimension should be pushed. If a campaign headline could have come from any other fintech, it goes back.</p>
+    </div>
+    <div class="channel-card reveal reveal-delay-1">
+      <div class="channel-name">Social Media</div>
+      <p class="channel-desc">Carries maximum energy and cultural fluency. Real cultural moments are welcome; trending internet humour that doesn't translate across markets is not.</p>
+    </div>
+    <div class="channel-card reveal reveal-delay-2">
+      <div class="channel-name">Investor & Partner Materials</div>
+      <p class="channel-desc">Grounded in substance — specific numbers, real market data, honest ambition framed as targets rather than facts. The warmth doesn't disappear, but the Alive dimension dials down in favour of credibility.</p>
+    </div>
+    <div class="channel-card reveal reveal-delay-3">
+      <div class="channel-name">Regulatory & Legal</div>
+      <p class="channel-desc">Precise, factual, and verifiable. Even these documents can sound human — passive voice and unnecessarily complex sentence structures are still worth avoiding — but playfulness has no place here.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- LOCALISATION -->
+<section class="reveal">
+  <div class="section-label">Localisation</div>
+  <h2 class="section-title">Localisation<br><em>principles</em></h2>
+  <p class="section-intro">Skyro operates as a single global brand with light, purposeful localisation. The brand voice does not change between markets — but the specific cultural references, calendar events, taboo topics, and language register adapt to serve each community authentically.</p>
+
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px;margin-bottom:16px">The core of the brand never changes regardless of market: the promise ("Be who you are"), the values (Flow, Growth, Celebration, Innovation, Trust), and the Six Rules of writing. What adapts is the specific texture — the events we reference, the financial rhythms we acknowledge, the words we choose to avoid in markets where they carry stigma.</p>
+  <p style="font-size:16px;line-height:1.8;color:var(--c-muted);max-width:780px">Before launching in any new market, Skyro spends time listening — to local partners, local staff, and local users — before publishing a single word of copy. Every ecosystem has its own wisdom. Writing that serves a user in Cebu will not automatically serve a user in Riyadh or Nairobi.</p>
+  <p style="font-size:14px;color:var(--c-muted);margin-top:16px;font-style:italic">*Detailed localization features for each market are presented in separate files.</p>
+</section>
+
+<!-- FIVE FILTERS -->
+<div id="filters" class="filters-section">
+  <div class="filters-inner">
+    <div class="section-label" style="color:var(--c-dawn)">Quality Control</div>
+    <h2 class="section-title" style="color:var(--c-white)">The Five<br><em>Filters</em></h2>
+    <p class="section-intro" style="color:rgba(255,255,255,0.6)">Before any piece of writing leaves Skyro, run it through these five questions.</p>
+
+    <div class="filters-grid">
+      <div class="filter-card reveal reveal-delay-1">
+        <div class="filter-num">1</div>
+        <div class="filter-name">The Golden Rule</div>
+        <div class="filter-question">Could any other fintech have written this sentence word for word?</div>
+        <p class="filter-desc">If yes, rewrite it until the answer is no.</p>
+      </div>
+      <div class="filter-card reveal reveal-delay-2">
+        <div class="filter-num">2</div>
+        <div class="filter-name">The Kitchen Table</div>
+        <div class="filter-question">Would a rice farmer in Mindanao, a small business owner in Jeddah, and a young professional in Nairobi all understand this clearly?</div>
+        <p class="filter-desc">If not, simplify.</p>
+      </div>
+      <div class="filter-card reveal reveal-delay-3">
+        <div class="filter-num">3</div>
+        <div class="filter-name">The Promise Check</div>
+        <div class="filter-question">Does this copy judge, shame, or suggest that the user should change who they are?</div>
+        <p class="filter-desc">If yes, delete and start again.</p>
+      </div>
+      <div class="filter-card reveal reveal-delay-4">
+        <div class="filter-num">4</div>
+        <div class="filter-name">The Substance Test</div>
+        <div class="filter-question">Does this copy contain a verifiable claim or a specific, real example?</div>
+        <p class="filter-desc">If not, add one.</p>
+      </div>
+      <div class="filter-card reveal reveal-delay-4">
+        <div class="filter-num">5</div>
+        <div class="filter-name">The Channel Fit</div>
+        <div class="filter-question">Does the tone match the channel and the moment?</div>
+        <p class="filter-desc">A collections message is not a campaign. An error screen is not an opportunity for humour.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI PROMPT -->
+<div class="ai-prompt-section">
+  <div class="ai-prompt-inner">
+    <div class="section-label">Tools</div>
+    <h2 class="section-title reveal">AI Writing<br>Assistant <em>Prompt</em></h2>
+    <p class="section-intro reveal reveal-delay-1">When using an AI assistant to draft Skyro copy, use the following prompt to configure the output. Results will vary, and all AI-generated copy should be reviewed and edited by a human before use.</p>
+
+    <div class="ai-prompt-box reveal reveal-delay-2">
+      <div class="ai-prompt-label">Copy this prompt</div>
+      <div class="ai-prompt-text">
+        <p>You are a copywriter for Skyro, a global fintech brand that serves users across the Philippines, Saudi Arabia, the UAE, and beyond. <strong>Skyro's voice is warm, specific, direct, and culturally fluent.</strong> Write in a conversational style using short sentences, active voice, and everyday language. Be concrete — name places, amounts, and real moments rather than using vague abstractions. Maintain a respectful tone at all times, especially in any communications involving financial difficulty. Express genuine enthusiasm through specificity rather than through exclamation marks or empty superlatives.</p>
+        <p style="margin-top:16px">Avoid all of the following words and phrases: <em>innovative, seamless, empower, leverage, synergy, holistic, best-in-class, world-class, cutting-edge, utilise, optimise, amortisation, endeavour, obtain, prior to, in order to, at this time.</em></p>
+        <p style="margin-top:16px">On nature metaphors: Skyro's brand is rooted in the idea that nature is a partner — human beings already understand planting seasons, harvest cycles, monsoons, and roots intuitively. Use nature metaphors when they make a financial concept more tangible and familiar. Use one metaphor per piece of copy, chosen deliberately. Never stack multiple nature metaphors in a single message. Never use nature metaphors in support communications, collections messages, decline notifications, or error states.</p>
+        <p style="margin-top:16px">On wordplay: a quiet, earned wit is part of Skyro's character — a smile rather than a laugh. Wordplay is welcome in campaign headlines, taglines, and social media copy. Puns about money or numbers are banned entirely. Never attempt to play on the brand name itself.</p>
+        <p style="margin-top:24px"><strong>Reference examples of the desired style:</strong></p>
+        <p style="margin-top:12px"><em>"Apply once, get approved in minutes, and pick your own repayment date."</em><br>
+        <em>"We can't offer this right now. Here's why, and here's what might change that."</em><br>
+        <em>"Your payment is due tomorrow. Need to adjust the schedule? Here are your options."</em><br>
+        <em>"Ramadan is six weeks away. Your budget planner is ready when you are."</em><br>
+        <em>"₱4,200 saved since March — enough for school enrolment in June. That's what steady looks like."</em><br>
+        <em>"Life shifts. Rainy seasons happen. Your repayment schedule can move with you."</em></p>
+        <p style="margin-top:24px"><strong>Task:</strong> [Insert specific copy brief here, including channel, audience, key message, and any relevant cultural context.]</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL NOTE -->
+<div class="final-note">
+  <div class="final-note-inner reveal">
+    <div class="section-label" style="text-align:center;margin-bottom:32px">A Final Note</div>
+    <div class="final-note-text">"When in doubt, read your copy aloud. If it sounds like something a real, thoughtful person would actually say to a friend who needed financial guidance, you're on the right track. If it sounds like it was generated by a committee trying to sound like a fintech, go back and try again."</div>
+    <p class="final-note-close">A tone of voice guide is only as useful as the culture that surrounds it. The writing principles here reflect what Skyro actually believes — that people deserve financial tools built around their lives, and that the language we use should honour that belief at every single touchpoint.</p>
+    <p class="final-note-close" style="margin-top:16px">The goal is simple: every word Skyro publishes should make the person reading it feel seen, respected, and capable of making a good decision. That's what our voice is for.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Skyro</div>
+  <div class="footer-note">Global Tone of Voice Guide · Brand Communications</div>
+</footer>
+
+<!-- FIGMA BUTTON -->
+<button id="figma-capture-btn" onclick="captureToFigma()">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M5.5 2H8V5.5H5.5C4.67 5.5 4 4.83 4 4C4 3.17 4.67 2.5 5.5 2.5V2Z" fill="#F24E1E"/>
+    <path d="M8 2H10.5C11.33 2 12 2.67 12 3.5C12 4.33 11.33 5 10.5 5H8V2Z" fill="#FF7262"/>
+    <path d="M8 5.5H10.5C11.33 5.5 12 6.17 12 7C12 7.83 11.33 8.5 10.5 8.5C9.67 8.5 9 7.83 9 7C9 6.45 9.22 5.96 9.59 5.5H8Z" fill="#A259FF"/>
+    <path d="M5.5 5.5H8V9H5.5C4.67 9 4 8.33 4 7.5C4 6.67 4.67 6 5.5 6V5.5Z" fill="#1ABCFE"/>
+    <path d="M4 10.5C4 9.67 4.67 9 5.5 9H8V12H5.5C4.67 12 4 11.33 4 10.5Z" fill="#0ACF83"/>
+  </svg>
+  Открыть в Figma
+</button>
+
+<script>
+// NAV SCROLL
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// REVEAL ON SCROLL
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+// FIGMA CAPTURE
+function captureToFigma() {
+  const btn = document.getElementById('figma-capture-btn');
+  btn.textContent = 'Захватываем страницу...';
+  btn.disabled = true;
+  window.__FIGMA_CAPTURE__ = { url: window.location.href, timestamp: Date.now() };
+  setTimeout(() => {
+    btn.innerHTML = '✓ Открыто в Figma';
+    btn.style.background = '#0ACF83';
+  }, 1500);
+}
+</script>
+</body>
+</html>
