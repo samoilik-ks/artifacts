@@ -448,7 +448,7 @@ export default function KenyaReport() {
             <Prose>The competitive structure is oligopolistic around M-Pesa: Safaricom holds approximately 65%+ of mobile money market share by users and significantly more by transaction value.<Ref n={2} /> Airtel Money is the primary challenger. In banking, Equity Bank leads by customer count, KCB leads by assets, and Co-operative Bank dominates the rural agricultural cooperative segment. The Hustler Fund (government-backed digital credit) entered as an unexpected market disruptor in 2022, setting a KES 50 daily credit floor for any Kenyan with a national ID.</Prose>
           </Card>
           <Card>
-            <SubHead>CBK Regulatory Environment</SubKey>
+            <SubHead>CBK Regulatory Environment</SubHead>
             <Prose>The Central Bank of Kenya operates a progressive but increasingly assertive digital finance regulatory framework. Key regulatory pillars:<Ref n={2} /></Prose>
             {[
               { label: "Mobile Money Regulation", text: "Safaricom and Airtel Money operate under CBK's National Payment System Regulations (2014, updated 2021). CBK mandated mobile money interoperability in 2023 — M-Pesa and Airtel Money users can now transact across networks, reducing the network effect advantage M-Pesa previously held." },
