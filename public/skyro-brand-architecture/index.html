@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro — Brand Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --skyro: #00B4D8;
+    --skyro-dark: #0090B0;
+    --mission: #D97706;
+    --mission-bg: #FFFBEB;
+    --mission-border: #FCD34D;
+    --b2c: #2563EB;
+    --b2c-bg: #EFF6FF;
+    --b2c-border: #BFDBFE;
+    --b2b2c: #EA580C;
+    --b2b2c-bg: #FFF7ED;
+    --b2b2c-border: #FED7AA;
+    --b2b: #16A34A;
+    --b2b-bg: #F0FDF4;
+    --b2b-border: #BBF7D0;
+    --b2e: #7C3AED;
+    --b2e-bg: #F5F3FF;
+    --b2e-border: #DDD6FE;
+    --infra-bg: #F9FAFB;
+    --text: #111;
+    --text-sec: #555;
+    --text-ter: #999;
+    --border: #E5E7EB;
+    --bg: #FAFAFA;
+    --white: #fff;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 48px 40px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* —— HEADER —— */
+  .doc-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-title {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-ter);
+    margin-bottom: 6px;
+  }
+  .doc-name {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -.03em;
+    color: var(--text);
+  }
+  .doc-name span { color: var(--skyro); }
+  .doc-meta {
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-ter);
+    font-family: var(--mono);
+    line-height: 1.8;
+  }
+
+  /* —— PRINCIPLE —— */
+  .principle {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--skyro);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 12px;
+  }
+  .principle-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--skyro);
+    margin-bottom: 10px;
+  }
+  .principle-main {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -.02em;
+  }
+  .principle-body {
+    font-size: 12px;
+    color: var(--text-sec);
+    line-height: 1.7;
+  }
+
+  /* —— MASTERBRAND —— */
+  .masterbrand {
+    background: var(--skyro);
+    border-radius: var(--radius);
+    padding: 16px 24px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masterbrand-name {
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -.04em;
+  }
+  .masterbrand-right {
+    text-align: right;
+  }
+  .masterbrand-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,.8);
+    margin-bottom: 4px;
+  }
+  .const-pills { display: flex; gap: 6px; justify-content: flex-end; }
+  .const-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    background: rgba(255,255,255,.2);
+    border-radius: 20px;
+    color: #fff;
+    font-family: var(--mono);
+  }
+
+  /* —— CONNECTOR —— */
+  .connector {
+    width: 1px;
+    height: 16px;
+    background: var(--border);
+    margin: 0 0 0 32px;
+  }
+
+  /* —— INFRA BAND —— */
+  .infra-band {
+    border: 1.5px dashed #D1D5DB;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    background: var(--infra-bg);
+  }
+  .band-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-ter);
+    margin-bottom: 10px;
+  }
+
+  /* —— MISSION BAND —— */
+  .mission-band {
+    border: 2px solid var(--mission);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    background: var(--mission-bg);
+  }
+  .mission-band .band-label { color: #92400E; }
+  .mission-row { display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 560px; }
+
+  /* —— CHANNELS —— */
+  .channel-block {
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border: 2px solid;
+  }
+  .channel-block.b2c  { border-color: var(--b2c);   background: var(--b2c-bg); }
+  .channel-block.b2b2c{ border-color: var(--b2b2c); background: var(--b2b2c-bg); }
+  .channel-block.b2b  { border-color: var(--b2b);   background: var(--b2b-bg); }
+  .channel-block.b2e  { border-color: var(--b2e);   background: var(--b2e-bg); }
+
+  .channel-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+  }
+  .b2c  .channel-header { border-color: var(--b2c-border); }
+  .b2b2c .channel-header { border-color: var(--b2b2c-border); }
+  .b2b  .channel-header { border-color: var(--b2b-border); }
+  .b2e  .channel-header { border-color: var(--b2e-border); }
+
+  .channel-title {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .b2c  .channel-title { color: var(--b2c); }
+  .b2b2c .channel-title { color: var(--b2b2c); }
+  .b2b  .channel-title { color: var(--b2b); }
+  .b2e  .channel-title { color: var(--b2e); }
+
+  .channel-note {
+    font-size: 11px;
+    color: var(--text-ter);
+    font-style: italic;
+    max-width: 60%;
+    text-align: right;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .products-grid.two { grid-template-columns: repeat(2, 1fr); }
+  .products-grid.six { grid-template-columns: repeat(3, 1fr); }
+
+  /* —— PRODUCT CARD —— */
+  .pc {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 11px 13px;
+    border: .5px solid;
+    display: flex;
+    flex-direction: column;
+  }
+  .b2c  .pc { border-color: var(--b2c-border); }
+  .b2b2c .pc { border-color: var(--b2b2c-border); }
+  .b2b  .pc { border-color: var(--b2b-border); }
+  .b2e  .pc { border-color: var(--b2e-border); }
+  .infra-band .pc { border-color: var(--border); background: var(--white); }
+  .mission-band .pc { border: 1px solid var(--mission-border); background: var(--mission-bg); }
+
+  .pc-top { display: flex; align-items: baseline; gap: 5px; margin-bottom: 6px; }
+  .pc-skyro { font-size: 15px; font-weight: 500; color: var(--skyro); letter-spacing: -.03em; }
+  .pc-name  { font-size: 15px; letter-spacing: -.02em; }
+  .pc-endorsed-tag { font-size: 10px; color: #047857; margin-bottom: 4px; }
+  .pc-endorsed-tag span { color: var(--skyro); font-weight: 500; }
+
+  .pc-desc {
+    font-size: 11.5px;
+    color: var(--text-sec);
+    line-height: 1.5;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: .5px solid #F0F0F0;
+    flex: 1;
+  }
+
+  .pc-vars {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 8px;
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+  .vk { color: var(--text-ter); white-space: nowrap; }
+  .vv { color: var(--text-sec); }
+  .vv.def { color: #BBBBBB; }
+  .vv.bold { color: var(--text); font-weight: 500; }
+  .vv.tbd  { color: var(--text-ter); font-style: italic; }
+  .vv.dash { color: #CCCCCC; }
+
+  .pc-sub {
+    font-size: 10px;
+    color: var(--text-ter);
+    margin-bottom: 6px;
+  }
+
+  .pc-markets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-bottom: 6px;
+    padding-top: 6px;
+    border-top: .5px solid #F0F0F0;
+  }
+  .market-tag {
+    font-size: 9.5px;
+    padding: 1px 6px;
+    border-radius: 20px;
+    border: .5px solid;
+  }
+  .m-af  { background: #FFF9E6; border-color: #D4B000; color: #7A6000; }
+  .m-gcc { background: #F0F4FF; border-color: #6680CC; color: #2A3F8A; }
+  .m-sea { background: #E8F8F0; border-color: #40A870; color: #1A5E38; }
+  .m-sa  { background: #FFF0F5; border-color: #CC5580; color: #7A1F40; }
+  .m-all { background: #E0F7FA; border-color: var(--skyro); color: #005A6E; }
+  .m-tbd { background: #F9FAFB; border-color: #D1D5DB; color: #9CA3AF; font-style: italic; }
+
+  .pc-bottom { display: flex; align-items: flex-start; gap: 6px; margin-top: auto; padding-top: 6px; }
+  .abadge {
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .a-infra    { background: #F3F4F6; color: #6B7280; }
+  .a-func     { background: #DBEAFE; color: #1E40AF; }
+  .a-sub      { background: #E0F7FA; color: #006064; }
+  .a-mission  { background: #FEF3C7; color: #92400E; }
+  .a-endorsed { background: #D1FAE5; color: #065F46; }
+  .a-standalone { background: #EDE9FE; color: #4C1D95; }
+
+  .areason {
+    font-size: 10px;
+    color: var(--text-ter);
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  /* —— MISSION CARD (Rise) special —— */
+  .rise-formula {
+    font-size: 11px;
+    color: #78350F;
+    background: #FEF3C7;
+    border-radius: 5px;
+    padding: 6px 9px;
+    margin: 6px 0;
+    line-height: 1.6;
+    border: .5px solid var(--mission-border);
+  }
+  .rise-formula b { font-weight: 500; }
+  .rise-principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 6px;
+  }
+  .rp {
+    font-size: 10px;
+    color: #78350F;
+    padding: 3px 7px;
+    background: #FEF9EC;
+    border-radius: 4px;
+    border-left: 2px solid var(--mission);
+    line-height: 1.4;
+  }
+
+  /* —— SDIV (B2E section dividers) —— */
+  .sdiv {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--b2e);
+    opacity: .6;
+    margin: 8px 0 4px;
+    padding-top: 8px;
+    border-top: .5px dashed var(--b2e-border);
+  }
+  .sdiv:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+
+  /* —— ENDORSED / STANDALONE special cards —— */
+  .pc.endorsed { border-color: #6EE7B7; }
+  .pc.standalone { border-color: #C4B5FD; }
+  .pc.dashed { border-style: dashed; border-color: var(--border); background: var(--infra-bg); }
+
+  /* —— CONNECT special —— */
+  .pc.connect { border-color: var(--skyro); }
+
+  /* —— B2E note —— */
+  .b2e-note {
+    font-size: 11px;
+    background: #EDE9FE;
+    border: .5px solid #C4B5FD;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    color: #4C1D95;
+    line-height: 1.6;
+  }
+  .b2e-note b { font-weight: 500; }
+  .b2e-examples { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .b2e-ex {
+    font-size: 9.5px;
+    background: #F3F0FF;
+    border: .5px solid #C4B5FD;
+    border-radius: 10px;
+    padding: 1px 7px;
+    color: #5B21B6;
+  }
+
+  /* —— FOOTER —— */
+  .doc-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-legend { display: flex; flex-wrap: wrap; gap: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--text-ter); }
+  .legend-swatch {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    border: 1.5px solid;
+    flex-shrink: 0;
+  }
+  .footer-note { font-size: 10px; color: var(--text-ter); font-family: var(--mono); }
+
+  .pc-risk {
+    font-size: 10px;
+    color: #B91C1C;
+    background: #FEF2F2;
+    border: .5px solid #FECACA;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .pc-risk b { font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div>
+    <div class="doc-title">Brand Architecture</div>
+    <div class="doc-name"><span>Skyro</span> — Country X</div>
+  </div>
+  <div class="doc-meta">
+    Version 7.0<br>
+    Five-variable logo system<br>
+    Six autonomy levels<br>
+    Four go-to-market channels
+  </div>
+</div>
+
+<!-- POSITIONING PRINCIPLE -->
+<div class="principle">
+  <div class="principle-label">Positioning principle</div>
+  <div class="principle-main">Skyro helps people move forward on their terms, not under pressure.</div>
+  <div class="principle-body">
+    A product earns its own name only if it carries its own ideology. If it describes what the product does — descriptor. If it carries a belief — manifesto. The five variables (icon · name · typeface · color · weight) measure distance from the masterbrand. More variables changed = more autonomy = more ideology. Changing variables without a substantive reason is not permitted — this is not a design system, it is a system of arguments.
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- MASTERBRAND -->
+<div class="masterbrand">
+  <div class="masterbrand-name">Skyro</div>
+  <div class="masterbrand-right">
+    <div class="masterbrand-sub">Masterbrand · constant across all products and markets</div>
+    <div class="const-pills">
+      <span class="const-pill">Color #00B4D8 — always</span>
+      <span class="const-pill">Weight 500 — always</span>
+      <span class="const-pill">Sans — always</span>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- INFRA -->
+<div class="infra-band">
+  <div class="band-label">⓪ Infrastructure · cross-channel layer · not a brand</div>
+  <div class="products-grid two" style="max-width:560px;">
+
+    <div class="pc">
+      <div class="pc-top">
+        <span class="pc-skyro">Skyro</span>
+        <span class="pc-name" style="color:#9CA3AF;">ID</span>
+      </div>
+      <div class="pc-desc">Unified digital identity across all products. Invisible in UI — works under the hood. No audience, no brand.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv dash">—</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor</span>
+        <span class="vk">③ Typeface</span><span class="vv def">Sans — default</span>
+        <span class="vk">④ Color</span><span class="vv def">Muted — default</span>
+        <span class="vk">⑤ Weight</span><span class="vv def">400 — default</span>
+      </div>
+      <div class="pc-markets"><span class="market-tag m-all">🌐 All markets</span></div>
+      <div class="pc-bottom">
+        <span class="abadge a-infra">Not a brand</span>
+        <span class="areason">Invisible — no audience, only function.</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- MISSION LAYER -->
+<div class="mission-band">
+  <div class="band-label">⭐⭐ Mission layer · ideological products · own color + weight 500</div>
+  <div class="mission-row">
+
+    <!-- RISE -->
+    <div class="pc">
+      <div class="pc-top">
+        <span class="pc-skyro">Skyro</span>
+        <span class="pc-name" style="color:#D97706;font-weight:500;">Rise (Loyalty program)</span>
+      </div>
+      <div class="pc-desc">Loyalty as relationship model, not a transaction engine. Encourages client progress, not transaction frequency. Control, confidence and forward movement — not pressure and urgency.</div>
+      <div class="rise-formula">
+        <b>Not:</b> Spend more → get more<br>
+        <b>But:</b> Build a stronger, more confident relationship with Skyro → unlock more
+      </div>
+      <div class="rise-principles">
+        <div class="rp">① Progress is rewarded — not frequency</div>
+        <div class="rp">② No pressure, urgency or impulse triggers</div>
+        <div class="rp">③ Value = access, recognition, priority, personalisation</div>
+        <div class="rp">④ Full transparency — that is the brand</div>
+      </div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv tbd">TBD (horizon · forward arrow)</span>
+        <span class="vk">② Name</span><span class="vv bold">Rise — manifesto, not descriptor</span>
+        <span class="vk">③ Typeface</span><span class="vv def">Sans — default</span>
+        <span class="vk">④ Color</span><span class="vv bold">TBD — warm amber · not urgent</span>
+        <span class="vk">⑤ Weight</span><span class="vv bold">500 — elevated</span>
+      </div>
+      <div class="pc-markets">
+        <span class="market-tag m-all">🌐 All markets — B2C</span>
+        <span class="market-tag m-tbd">B2B2C only if partner accepts philosophy</span>
+      </div>
+      <div class="pc-bottom">
+        <span class="abadge a-mission">Ideology</span>
+        <span class="areason">Carries its own position — partnership without pressure as brand promise. Changes color and weight. Analog: Stripe Climate.</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- B2C -->
+<div class="channel-block b2c">
+  <div class="channel-header">
+    <div class="channel-title">B2C — direct to user</div>
+    <div class="channel-note">Products the user interacts with directly through the Skyro app or web</div>
+  </div>
+  <div class="products-grid">
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#1D4ED8;">Credit</span></div>
+      <div class="pc-desc">Credit products for individuals: credit line, payday loans, BNPL, instalment plans at point of sale. Digital wallet: store, transfer, pay. Base container for the user's financial life in Skyro Credit.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv tbd">TBD (card)</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor — function</span>
+        <span class="vk">④ Color</span><span class="vv tbd">TBD (blue)</span>
+        <span class="vk">⑤ Weight</span><span class="vv def">400 — default</span>
+      </div>
+      <div class="pc-sub">Sub: Credit Line (CL) · Cash Loan · PDL · BNPL · PoS Financing · Embedded Finance · Wallet</div>
+      <div class="pc-markets">
+        <span class="market-tag m-af">🇲🇦 Morocco</span>
+        <span class="market-tag m-af">🇰🇪 Kenya</span>
+        <span class="market-tag m-gcc">🇦🇪 UAE</span>
+        <span class="market-tag m-gcc">🇸🇦 Saudi</span>
+        <span class="market-tag m-sea">🇲🇾 Malaysia</span>
+        <span class="market-tag m-sea">🇵🇭 Philippines</span>
+      </div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Credit describes what the product does — not what it believes.</span></div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#1D4ED8;">Invest</span></div>
+      <div class="pc-desc">Investment account: savings deposits, funds, retail portfolio management.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv tbd">TBD (chart)</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor — function</span>
+        <span class="vk">④ Color</span><span class="vv tbd">TBD (green = growth)</span>
+        <span class="vk">⑤ Weight</span><span class="vv def">400 — default</span>
+      </div>
+      <div class="pc-markets">
+        <span class="market-tag m-gcc">🇦🇪 UAE</span>
+        <span class="market-tag m-sea">🇵🇭 Philippines — TBD</span>
+      </div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Verb-noun but still describes action — not a position.</span></div>
+    </div>
+
+    <div class="pc endorsed">
+      <div class="pc-top" style="flex-direction:column;align-items:flex-start;gap:2px;">
+        <span class="pc-name" style="color:#065F46;font-size:14px;">Lipa Mdogo Mdogo</span>
+        <div class="pc-endorsed-tag">by <span>Skyro</span></div>
+      </div>
+      <div class="pc-desc">Local brand in Swahili: own identity, visuals, tone of voice. Skyro = silent guarantor behind the name.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv bold">Full freedom</span>
+        <span class="vk">② Name</span><span class="vv bold">Lipa Mdogo Mdogo</span>
+        <span class="vk">③ Typeface</span><span class="vv bold">Any</span>
+        <span class="vk">④ Color</span><span class="vv bold">Any</span>
+        <span class="vk">⑤ Weight</span><span class="vv bold">Any</span>
+      </div>
+      <div class="pc-markets"><span class="market-tag m-af">🇰🇪 Kenya — only market</span></div>
+      <div class="pc-bottom"><span class="abadge a-endorsed">Endorsed</span><span class="areason">Local trust outweighs global brand — Skyro guarantees, not dominates.</span></div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#1D4ED8;">PoS Financing</span></div>
+      <div class="pc-desc">Physical payment terminal sold or leased to merchants. Only hardware product in the portfolio.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv tbd">TBD (terminal device)</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor — hardware</span>
+        <span class="vk">④ Color</span><span class="vv tbd">TBD (orange = physical world)</span>
+        <span class="vk">⑤ Weight</span><span class="vv def">400 — default</span>
+      </div>
+      <div class="pc-markets">
+        <span class="market-tag m-sea">🇵🇭 Philippines</span>
+      </div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Acronym-descriptor. Icon color marks its physical nature. Hardware is always a descriptor.</span></div>
+    </div>
+
+    <div class="pc standalone">
+      <div class="pc-top">
+        <span class="pc-name" style="color:#4C1D95;font-size:15px;font-weight:500;">Skyro PDL</span>
+      </div>
+      <div class="pc-desc">Financial services for the underbanked: microloans, group savings, financial education. A different audience and a different temperature.</div>
+      <div class="pc-risk">* May carry reputational risks — potential spin-off into a separate standalone brand is under consideration.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv bold">Full freedom</span>
+        <span class="vk">② Name</span><span class="vv bold">Any</span>
+        <span class="vk">③ Typeface</span><span class="vv bold">Any</span>
+        <span class="vk">④ Color</span><span class="vv bold">Any</span>
+        <span class="vk">⑤ Weight</span><span class="vv bold">Any</span>
+      </div>
+      <div class="pc-markets"><span class="market-tag m-sea">🇵🇭 Philippines</span></div>
+      <div class="pc-bottom"><span class="abadge a-standalone">Standalone</span><span class="areason">Strength held through distance from Skyro — like Venmo not wanting to be PayPal.</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- B2B2C -->
+<div class="channel-block b2b2c">
+  <div class="channel-header">
+    <div class="channel-title">B2B2C — through partner</div>
+    <div class="channel-note">Partner is the distribution channel, end user is the customer</div>
+  </div>
+  <div class="products-grid two">
+
+    <div class="pc connect">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#00B4D8;font-weight:500;">Connect</span></div>
+      <div class="pc-desc">API platform for embedding Skyro products into partner ecosystems: retail, telco, agri, marketplaces.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv tbd">TBD (connection)</span>
+        <span class="vk">② Name</span><span class="vv bold">Connect — own name</span>
+        <span class="vk">③ Typeface</span><span class="vv def">Sans — default</span>
+        <span class="vk">④ Color</span><span class="vv bold">#00B4D8 — masterbrand color</span>
+        <span class="vk">⑤ Weight</span><span class="vv bold">500 — elevated</span>
+      </div>
+      <div class="pc-markets">
+        <span class="market-tag m-gcc">🇸🇦 Saudi Arabia</span>
+        <span class="market-tag m-tbd">+ others TBD</span>
+      </div>
+      <div class="pc-bottom"><span class="abadge a-sub">Sub-brand</span><span class="areason">Own name + weight 500, but masterbrand color intentionally — Connect builds Skyro awareness, not its own.</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- B2B -->
+<div class="channel-block b2b">
+  <div class="channel-header">
+    <div class="channel-title">B2B — direct to business</div>
+    <div class="channel-note">Business owners and corporate finance teams are the end customer</div>
+  </div>
+  <div class="products-grid two">
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#15803D;">Business</span></div>
+      <div class="pc-desc">Business account, payment tools, financial management for SME and corporate.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv tbd">TBD (briefcase)</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor — audience</span>
+        <span class="vk">④ Color</span><span class="vv tbd">TBD (amber)</span>
+        <span class="vk">⑤ Weight</span><span class="vv def">400 — default</span>
+      </div>
+      <div class="pc-sub">Sub: SME · Corporate</div>
+      <div class="pc-markets">
+        <span class="market-tag m-sea">🇵🇭 Philippines — TBD</span>
+      </div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">«Business» describes the audience — not a narrative.</span></div>
+    </div>
+
+    <div class="pc standalone">
+      <div class="pc-top">
+        <span class="pc-name" style="color:#4C1D95;font-size:15px;font-weight:500;">Tadum</span>
+      </div>
+      <div class="pc-desc">Fully independent brand. Own audience, narrative, palette. Skyro = invisible corporate owner.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv bold">Full freedom</span>
+        <span class="vk">② Name</span><span class="vv bold">Tadum — independent</span>
+        <span class="vk">③ Typeface</span><span class="vv bold">Any</span>
+        <span class="vk">④ Color</span><span class="vv bold">#00B4D8 absent entirely</span>
+        <span class="vk">⑤ Weight</span><span class="vv bold">Any</span>
+      </div>
+      <div class="pc-markets"><span class="market-tag m-gcc">🇸🇦 Saudi Arabia — only market</span></div>
+      <div class="pc-bottom"><span class="abadge a-standalone">Standalone</span><span class="areason">Strength held through distance from Skyro — like Venmo not wanting to be PayPal.</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- B2E -->
+<div class="channel-block b2e">
+  <div class="channel-header">
+    <div class="channel-title">B2E — attract and retain top talent</div>
+    <div class="channel-note">Employer is the partner, employee is the end user</div>
+  </div>
+
+  <div class="b2e-note">
+    <b>Why this belongs in brand architecture:</b> Top engineers choose their environment and tools, not just salary. AI stack and device budget are now the standard in fintech offers. A team that builds a product "without pressure" must itself work without pressure.
+    <div class="b2e-examples">
+      <span class="b2e-ex">Cleo — ChatGPT Plus for all staff</span>
+      <span class="b2e-ex">Brex — 225+ AI spot bonuses</span>
+      <span class="b2e-ex">Clockwise — team AI budget by role</span>
+      <span class="b2e-ex">Revolut — AI-driven HR platform</span>
+    </div>
+  </div>
+
+  <div class="sdiv">AI division</div>
+  <div class="products-grid two" style="margin-bottom:8px;">
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#5B21B6;">AI Stack</span></div>
+      <div class="pc-desc">Corporate AI subscriptions for all staff: ChatGPT · Claude · Copilot · Perplexity. Monthly AI budget by role ($20–74). Cash bonuses for AI workflow improvements.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv dash">—</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor</span>
+        <span class="vk">③④⑤</span><span class="vv def">Sans · Muted · 400</span>
+      </div>
+      <div class="pc-markets"><span class="market-tag m-all">🌐 All markets — internal benefit</span></div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Productivity tool — the signal is in the offering, not the name.</span></div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#5B21B6;">Devices</span></div>
+      <div class="pc-desc">Device budget on hire: MacBook or ThinkPad by role. Refresh every 2–3 years. Peripherals + home office stipend for remote staff.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv dash">—</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor</span>
+        <span class="vk">③④⑤</span><span class="vv def">Sans · Muted · 400</span>
+      </div>
+      <div class="pc-markets"><span class="market-tag m-all">🌐 All markets</span></div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Hardware is always a descriptor.</span></div>
+    </div>
+
+  </div>
+
+  <div class="sdiv">Financial instruments</div>
+  <div class="products-grid" style="margin-bottom:0;">
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#5B21B6;">Learn</span></div>
+      <div class="pc-desc">L&D budget: courses, conferences, certifications. Spot cash bonuses for AI projects deployed in workflow.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv dash">—</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor</span>
+        <span class="vk">③④⑤</span><span class="vv def">Sans · Muted · 400</span>
+      </div>
+      <div class="pc-markets"><span class="market-tag m-all">🌐 All markets</span></div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Utilitarian benefit — no narrative to elevate.</span></div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#5B21B6;">Salary</span></div>
+      <div class="pc-desc">Payroll account with Earned Wage Access — early access to earned wages without changing the employer's payroll system.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv dash">—</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor</span>
+        <span class="vk">③④⑤</span><span class="vv def">Sans · Muted · 400</span>
+      </div>
+      <div class="pc-sub">Sub: Salary Advance · Earned Wage Access</div>
+      <div class="pc-markets"><span class="market-tag m-all">🌐 All markets</span></div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Base payroll infrastructure — most utilitarian B2E element.</span></div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#5B21B6;">Benefits</span></div>
+      <div class="pc-desc">Flexible benefits pack: insurance, mental health, remote allowance, perks. Lifestyle Spending Account — employee sets own priorities.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv dash">—</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor</span>
+        <span class="vk">③④⑤</span><span class="vv def">Sans · Muted · 400</span>
+      </div>
+      <div class="pc-sub">Sub: Insurance · Mental Health · Remote Allowance · Perks</div>
+      <div class="pc-markets"><span class="market-tag m-all">🌐 All markets</span></div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Umbrella term — no single narrative, so no own name.</span></div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#5B21B6;">Credit</span></div>
+      <div class="pc-desc">Employee credit line and payroll loan. Risk model uses employer data — lower rate than B2C Credit.</div>
+      <div class="pc-vars">
+        <span class="vk">① Icon</span><span class="vv dash">—</span>
+        <span class="vk">② Name</span><span class="vv def">Descriptor</span>
+        <span class="vk">③④⑤</span><span class="vv def">Sans · Muted · 400</span>
+      </div>
+      <div class="pc-sub">Sub: Employee Credit Line · Payroll Loan</div>
+      <div class="pc-markets"><span class="market-tag m-all">🌐 All markets</span></div>
+      <div class="pc-bottom"><span class="abadge a-func">Function</span><span class="areason">Same product as B2C — different risk engine. No reason to rename.</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER LEGEND -->
+<div class="doc-footer">
+  <div class="footer-legend">
+    <div class="legend-item"><div class="legend-swatch" style="border-color:#9CA3AF;border-style:dashed;background:#F9FAFB;"></div>Not a brand</div>
+    <div class="legend-item"><div class="legend-swatch" style="border-color:#D97706;background:#FFFBEB;"></div>Mission layer · ideology</div>
+    <div class="legend-item"><div class="legend-swatch" style="border-color:#2563EB;background:#EFF6FF;"></div>B2C channel</div>
+    <div class="legend-item"><div class="legend-swatch" style="border-color:#EA580C;background:#FFF7ED;"></div>B2B2C channel</div>
+    <div class="legend-item"><div class="legend-swatch" style="border-color:#16A34A;background:#F0FDF4;"></div>B2B channel</div>
+    <div class="legend-item"><div class="legend-swatch" style="border-color:#7C3AED;background:#F5F3FF;"></div>B2E channel</div>
+    <div class="legend-item"><div class="legend-swatch" style="border-color:#4ADE80;background:#F0FDF4;"></div>Endorsed brand</div>
+    <div class="legend-item"><div class="legend-swatch" style="border-color:#C4B5FD;background:#F5F3FF;"></div>Standalone brand</div>
+  </div>
+  <div class="footer-note">Skyro Brand Architecture v7.0 · Country X</div>
+</div>
+
+</body>
+</html>
