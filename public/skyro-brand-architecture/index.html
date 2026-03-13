@@ -434,15 +434,50 @@
     line-height: 1.5;
   }
   .pc-risk b { font-weight: 500; }
+
+  /* —— FIGMA PREVIEW —— */
+  .figma-preview {
+    margin-bottom: 48px;
+  }
+  .figma-preview a {
+    display: block;
+    text-decoration: none;
+  }
+  .figma-preview iframe {
+    width: 100%;
+    height: 560px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .figma-preview .figma-caption {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--skyro-dark);
+    font-family: var(--mono);
+    letter-spacing: .02em;
+  }
+  .figma-preview .figma-caption:hover {
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
+
+<!-- FIGMA SCHEMA PREVIEW -->
+<div class="figma-preview">
+  <a href="https://www.figma.com/design/joKq3vnMz1lWYI5aBP4u6U/Skyro-x-Shuka-Client?node-id=450-40&p=f&t=pkpIgLNXhaMUXN1B-0" target="_blank" rel="noopener">
+    <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FjoKq3vnMz1lWYI5aBP4u6U%2FSkyro-x-Shuka-Client%3Fnode-id%3D450-40%26p%3Df%26t%3DpkpIgLNXhaMUXN1B-0" allowfullscreen></iframe>
+  </a>
+  <a class="figma-caption" href="https://www.figma.com/design/joKq3vnMz1lWYI5aBP4u6U/Skyro-x-Shuka-Client?node-id=450-40&p=f&t=pkpIgLNXhaMUXN1B-0" target="_blank" rel="noopener">Click to see the full version of the schema</a>
+</div>
 
 <!-- HEADER -->
 <div class="doc-header">
   <div>
     <div class="doc-title">Brand Architecture</div>
-    <div class="doc-name"><span>Skyro</span> — Country X</div>
+    <div class="doc-name"><span>Skyro</span> Brand Architecture</div>
   </div>
   <div class="doc-meta">
     Version 7.0<br>
@@ -631,7 +666,7 @@
 
     <div class="pc standalone">
       <div class="pc-top">
-        <span class="pc-name" style="color:#4C1D95;font-size:15px;font-weight:500;">Skyro PDL</span>
+        <span class="pc-name" style="color:#4C1D95;font-size:15px;font-weight:500;">Skyro PDL</span><sup style="font-size:9px;color:#999;margin-left:4px;font-family:var(--mono);vertical-align:super;">naming TBD</sup>
       </div>
       <div class="pc-desc">Financial services for the underbanked: microloans, group savings, financial education. A different audience and a different temperature.</div>
       <div class="pc-risk">* May carry reputational risks — potential spin-off into a separate standalone brand is under consideration.</div>
@@ -660,7 +695,7 @@
   <div class="products-grid two">
 
     <div class="pc connect">
-      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#00B4D8;font-weight:500;">Connect</span></div>
+      <div class="pc-top"><span class="pc-skyro">Skyro</span><span class="pc-name" style="color:#00B4D8;font-weight:500;">Connect</span><sup style="font-size:9px;color:#999;margin-left:4px;font-family:var(--mono);vertical-align:super;">naming TBD</sup></div>
       <div class="pc-desc">API platform for embedding Skyro products into partner ecosystems: retail, telco, agri, marketplaces.</div>
       <div class="pc-vars">
         <span class="vk">① Icon</span><span class="vv tbd">TBD (connection)</span>
@@ -841,7 +876,7 @@
     <div class="legend-item"><div class="legend-swatch" style="border-color:#4ADE80;background:#F0FDF4;"></div>Endorsed brand</div>
     <div class="legend-item"><div class="legend-swatch" style="border-color:#C4B5FD;background:#F5F3FF;"></div>Standalone brand</div>
   </div>
-  <div class="footer-note">Skyro Brand Architecture v7.0 · Country X</div>
+  <div class="footer-note">Skyro Brand Architecture v7.0</div>
 </div>
 
 </body>
