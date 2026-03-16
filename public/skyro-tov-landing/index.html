@@ -1224,7 +1224,7 @@ const S = [
 
 <h2 class="sub">Grounded Rather Than Vague</h2>
 <p>Trust in financial services is built through specificity, not through impressive-sounding language. Skyro earns credibility by being concrete — naming real places, real moments, and real amounts rather than hiding behind abstractions. When we make a claim, we back it up. When we describe a product, we describe what it actually does.</p>
-<p>Vague language — "innovative solutions," "seamless experience," "empowering your financial journey" — erodes trust because it says nothing. Any fintech in the world could have written those phrases. At Skyro, if a sentence could have come from any other financial company without changing a word, it needs to be rewritten.</p>
+<p>Vague language — "innovative solutions," "seamless experience," "empowering your financial journey" — erodes trust because it says nothing.</p>
 
 <div class="dd">
   <div class="dd-col do-col">
@@ -1329,7 +1329,7 @@ const S = [
   <div class="dim-card">
     <span class="dim-icon">⚡</span>
     <div class="dim-name">Alive</div>
-    <div class="dim-desc">Skyro copy should be distinctive and surprising. If a sentence could have come from any other fintech, it needs to be rewritten. This dimension is what keeps the brand from becoming generic.</div>
+    <div class="dim-desc">Brand communication should feel like a dialogue with a real person.</div>
   </div>
 </div>
 `
@@ -1393,7 +1393,7 @@ const S = [
 </div>
 
 <h2 class="sub">Kill empty language</h2>
-<p>If a phrase could have been written by any fintech on earth, it hasn't earned its place. Delete it and say specifically what you mean.</p>
+<p>We avoid empty, fintech-specific cliches and complex words. We speak concretely and explain everything in simple terms. We cut out all unnecessary details, leaving only the essence.</p>
 <div class="swap">
   <div class="swap-col after"><div class="swap-hdr">✓ Real</div><div class="swap-body">"Apply once, get approved in minutes, and pick your own repayment date."</div></div>
   <div class="swap-col before"><div class="swap-hdr">✗ Empty</div><div class="swap-body">"Our seamless end-to-end digital onboarding empowers users with innovative credit solutions."</div></div>
@@ -1847,7 +1847,7 @@ const S = [
 <div class="filters-grid">
   <div class="filter-item">
     <div class="filter-num">1</div>
-    <div class="filter-body"><div class="filter-name">The Golden Rule</div><div class="filter-q">Could any other fintech have written this sentence word for word? If yes, rewrite it until the answer is no.</div></div>
+    <div class="filter-body"><div class="filter-name">The Golden Rule</div><div class="filter-q">For slogans, campaign headlines, and major external communications — check whether competitors have used something similar. If so, rethink and rewrite. Uniqueness matters most where visibility is highest.</div></div>
   </div>
   <div class="filter-item">
     <div class="filter-num">2</div>
@@ -1960,6 +1960,12 @@ function buildContent() {
     inner.appendChild(sec);
   });
   main.appendChild(inner);
+
+  // Disclaimer
+  var disclaimer = document.createElement('div');
+  disclaimer.style.cssText = 'max-width:860px;padding:40px 60px 20px;margin:0 auto;border-top:1px solid var(--border);';
+  disclaimer.innerHTML = '<p style="font-size:12px;color:var(--muted);line-height:1.7;font-style:italic;">Disclaimer: The world changes fast. Cultural context, political climate, and public sentiment shift constantly across markets. Beyond following the guidelines in this document, always apply critical thinking and double-check any communication that could be perceived as sensitive or risky in the context of today\u2019s reality in any given country. When in doubt — pause, review, and consult your team before publishing.</p>';
+  main.appendChild(disclaimer);
 }
 
 // ─── ARCHETYPE WIDGET ─────────────────────────────────────────────────────────
