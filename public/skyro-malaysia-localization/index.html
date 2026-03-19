@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro Malaysia — Brand Communication Localization Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #0A265A;
+  --forest-light: #123270;
+  --forest-dark: #071c45;
+  --cream: #F8F4EE;
+  --cream-dark: #EDE7DD;
+  --gold: #C9A84C;
+  --gold-light: #e0c070;
+  --gold-pale: #F5EDD4;
+  --charcoal: #1C1C1A;
+  --ink: #2D2D2A;
+  --muted: #6B6860;
+  --border: #D8D0C4;
+  --red: #C0392B;
+  --red-pale: #FDECEA;
+  --green-ok: #1A7A52;
+  --green-pale: #E8F5EE;
+  --amber: #D4711A;
+  --amber-pale: #FDF3E7;
+  --nav-w: 260px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+  --r: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .025;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── HERO ──────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  background-color: var(--forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  opacity: .8;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--gold-light);
+  font-weight: 300;
+  font-style: italic;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(248,244,238,.5);
+  font-weight: 300;
+  max-width: 500px;
+  position: relative;
+  letter-spacing: .01em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(248,244,238,.35);
+  font-size: 11px;
+  letter-spacing: .12em;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll svg { opacity: .5; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.page-wrap {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────── */
+nav.side {
+  width: var(--nav-w);
+  height: 100%;
+  overflow-y: auto;
+  background: var(--forest-dark);
+  flex-shrink: 0;
+  padding: 28px 0 40px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.3) transparent;
+  z-index: 100;
+}
+
+nav.side::-webkit-scrollbar { width: 4px; }
+nav.side::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radius: 2px; }
+
+.nav-logo {
+  padding: 0 24px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 16px;
+}
+
+.nav-logo span {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.nav-logo small {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,.6);
+  margin-top: 2px;
+}
+
+.nav-item {
+  display: block;
+  padding: 9px 24px;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-item:hover { background: rgba(255,255,255,.05); }
+
+.nav-item.active {
+  border-left-color: var(--gold);
+  background: rgba(201,168,76,.08);
+}
+
+.nav-n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(201,168,76,.5);
+  letter-spacing: .1em;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.nav-t {
+  font-size: 12.5px;
+  color: rgba(248,244,238,.75);
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.nav-item.active .nav-t { color: var(--cream); }
+
+/* ── HAMBURGER (mobile) ─────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  width: 40px; height: 40px;
+  background: var(--forest);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+  transition: transform .2s, opacity .2s;
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+/* ── MAIN ─────────────────────────────────────────── */
+main {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 120px;
+  min-width: 0;
+  scroll-behavior: smooth;
+}
+
+.main-inner {
+  max-width: 860px;
+  padding: 64px 60px 0;
+}
+
+/* ── SECTIONS ─────────────────────────────────────── */
+.sec {
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.sec.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sec-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+}
+
+h2.sub {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 40px 0 16px;
+  line-height: 1.3;
+}
+
+h3.sub2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin: 28px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+p { margin-bottom: 16px; color: var(--ink); font-size: 15.5px; }
+p:last-child { margin-bottom: 0; }
+
+p.lead {
+  font-size: 17.5px;
+  color: var(--ink);
+  line-height: 1.75;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+em { font-style: italic; }
+strong { font-weight: 600; color: var(--charcoal); }
+
+/* ── CALLOUT ─────────────────────────────────────── */
+.call {
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  margin: 24px 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.call.big {
+  font-size: 20px;
+  text-align: center;
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  border-left: none;
+  padding: 32px 40px;
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── INSIGHT QUOTE ────────────────────────────────── */
+.insight-quote {
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.5;
+  padding: 40px 32px;
+  margin: 32px 0;
+  background: var(--gold-pale);
+  border-radius: var(--r);
+  border: 1px solid rgba(201,168,76,.3);
+}
+
+/* ── PERSONA CARD ─────────────────────────────────── */
+.persona-card {
+  background: var(--cream-dark);
+  border-radius: var(--r);
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+
+.persona-summary {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.persona-summary strong { color: var(--gold-light); }
+
+/* ── CARDS / GRID ────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.card p, .card li { font-size: 14px; color: var(--muted); }
+.card ol { padding-left: 18px; margin-bottom: 16px; }
+.card ol li { margin-bottom: 6px; line-height: 1.5; }
+
+/* ── VALUE CARD ──────────────────────────────────── */
+.value-block {
+  margin: 40px 0;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+}
+
+.value-block h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.value-block .value-sub {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.value-block .what-means {
+  background: var(--cream);
+  border-radius: var(--r);
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 3px solid var(--gold);
+}
+
+.value-block .what-means h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.value-block .what-means ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.value-block .what-means li {
+  font-size: 14.5px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.copy-dir {
+  margin: 16px 0;
+  padding: 16px 20px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.copy-dir .copy-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+  font-style: normal;
+}
+
+/* ── DO/DON'T ────────────────────────────────────── */
+.dd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.dd-col { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm); }
+
+.dd-hdr {
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dd-hdr.do { background: var(--forest); color: var(--gold-light); }
+.dd-hdr.dont { background: #3a1010; color: #e88; }
+
+.dd-i {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.55;
+}
+
+.dd-i strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14.5px;
+}
+
+.dd-col.do-col .dd-i { border-left: 3px solid var(--green-ok); background: var(--green-pale); }
+.dd-col.dont-col .dd-i { border-left: 3px solid var(--red); background: var(--red-pale); }
+
+.dd-i:last-child { border-bottom: none; }
+
+/* ── TABLES ──────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--r); box-shadow: var(--shadow-sm); }
+
+table.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+table.tbl thead tr { background: var(--forest); color: var(--cream); }
+
+table.tbl thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+table.tbl tbody tr { border-bottom: 1px solid var(--border); background: #fff; }
+table.tbl tbody tr:nth-child(even) { background: var(--cream); }
+table.tbl tbody tr:hover { background: var(--gold-pale); }
+table.tbl td { padding: 11px 16px; color: var(--ink); vertical-align: top; }
+table.tbl td:first-child { font-weight: 600; color: var(--forest); }
+
+/* ── BADGE ───────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.badge.peak { background: var(--red); color: #fff; }
+.badge.very-high { background: var(--amber); color: #fff; }
+.badge.high { background: var(--gold); color: var(--charcoal); }
+.badge.medium { background: var(--cream-dark); color: var(--muted); }
+.badge.constant { background: var(--forest); color: var(--gold-light); }
+
+/* ── ACCORDION ───────────────────────────────────── */
+.acc-item {
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.acc-header {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  transition: background .15s;
+  user-select: none;
+}
+
+.acc-header:hover { background: var(--cream); }
+
+.acc-header .acc-arrow {
+  transition: transform .25s;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.acc-item.open .acc-header { background: var(--cream); border-bottom: 1px solid var(--border); }
+.acc-item.open .acc-arrow { transform: rotate(180deg); }
+
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.acc-body-inner {
+  padding: 20px;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.acc-body-inner h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 16px 0 8px;
+}
+
+.acc-body-inner h4:first-child { margin-top: 0; }
+
+.acc-body-inner blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 10px 16px;
+  margin: 10px 0;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ── CHANNEL CARD ────────────────────────────────── */
+.channel-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.channel-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.channel-card p { font-size: 14.5px; color: var(--ink); }
+
+/* ── ACTIVATION CARD ─────────────────────────────── */
+.activation-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.activation-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.activation-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+
+.activation-card .act-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.activation-card h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 18px 0 8px;
+}
+
+.activation-card p { font-size: 14.5px; }
+
+/* ── FILTER CARD ─────────────────────────────────── */
+.filter-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--r);
+  padding: 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-card .filter-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.filter-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.filter-card p { font-size: 14.5px; }
+
+/* ── CLOSING ─────────────────────────────────────── */
+.closing-block {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 40px;
+  margin: 40px 0;
+}
+
+.closing-block p { color: rgba(248,244,238,.85); font-size: 15.5px; }
+.closing-block strong { color: var(--cream); }
+
+.closing-questions {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.closing-questions li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.5;
+}
+
+/* ── WARNING BOX ─────────────────────────────────── */
+.warning-box {
+  background: var(--amber-pale);
+  border: 1px solid var(--amber);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.warning-box strong { color: var(--amber); }
+
+/* ── RTB CARD ────────────────────────────────────── */
+.rtb-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rtb-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.rtb-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.rtb-card li {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .08em;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .dd { grid-template-columns: 1fr; }
+  .main-inner { padding: 40px 24px 0; }
+
+  nav.side {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    height: 100%;
+    transition: left .3s ease;
+    z-index: 150;
+  }
+
+  nav.side.open { left: 0; }
+
+  .hamburger { display: flex; }
+
+  .page-wrap { display: block; height: auto; overflow: auto; }
+  main { height: auto; overflow: visible; }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 32px; }
+  .hero-sub { font-size: 20px; }
+  .main-inner { padding: 32px 16px 0; }
+  .value-block { padding: 20px; }
+  .activation-card { padding: 20px; }
+  .closing-block { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     PAGE WRAP: SIDEBAR + MAIN
+     ════════════════════════════════════════════════════ -->
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrap">
+
+<!-- ── SIDEBAR ──────────────────────────────────────── -->
+<nav class="side" id="sidebar">
+  <div class="nav-logo">
+    <span>Skyro</span>
+    <small>Malaysia Localization</small>
+  </div>
+  <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
+  <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
+  <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
+  <a class="nav-item" href="#s03b"><span class="nav-n">03b</span><span class="nav-t">Local Human Values</span></a>
+  <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
+  <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
+  <a class="nav-item" href="#s05b"><span class="nav-n">05b</span><span class="nav-t">Do / Don't — Visual</span></a>
+  <a class="nav-item" href="#s06"><span class="nav-n">06</span><span class="nav-t">Communication Examples</span></a>
+  <a class="nav-item" href="#s07"><span class="nav-n">07</span><span class="nav-t">Values Quick Reference</span></a>
+  <a class="nav-item" href="#s08"><span class="nav-n">08</span><span class="nav-t">Ambassador Strategy</span></a>
+  <a class="nav-item" href="#s09"><span class="nav-n">09</span><span class="nav-t">Seasonal Calendar</span></a>
+  <a class="nav-item" href="#s10"><span class="nav-n">10</span><span class="nav-t">Channel Guidance</span></a>
+  <a class="nav-item" href="#s11"><span class="nav-n">11</span><span class="nav-t">Creative Activations</span></a>
+  <a class="nav-item" href="#s12"><span class="nav-n">12</span><span class="nav-t">The Five Filters</span></a>
+  <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+</nav>
+
+<!-- ── MAIN CONTENT ─────────────────────────────────── -->
+<main id="main">
+
+<!-- ════════ HERO ════════ -->
+<div id="hero">
+  <div class="hero-eyebrow">Skyro · Malaysia · Q1 2026</div>
+  <h1 class="hero-title">Brand Communication<br><em>Localization Guide</em></h1>
+  <div class="hero-sub">Skyro Malaysia</div>
+  <div class="hero-desc">How the Global Brand Platform Lives on the Malaysian Market</div>
+  <div class="hero-scroll">
+    Scroll
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+  </div>
+</div>
+
+<div class="main-inner">
+
+<!-- PRE-NOTES -->
+<div class="sec visible">
+  <div class="warning-box">
+    <p><strong>⚠️ Before you use this document — two important notes:</strong></p>
+    <p><strong>1. The world is not static.</strong> This guide reflects market intelligence, cultural dynamics, and competitive context as of Q1 2026. Malaysia's digital finance landscape is moving fast — new players, new regulations, new scam patterns, new cultural moments. No guide can be a substitute for critical thinking. Before publishing any communication that feels complex, sensitive, or on the edge of what's described here — double-check it. Run it past the local team. Apply judgment. The rules in this document are a foundation, not a ceiling.</p>
+    <p><strong>2. Language of this document.</strong> All copy examples and guidelines are written in English so the entire global and local team can read, validate, and give feedback on meaning and tone. Actual execution is translated and adapted into local languages — Bahasa Malaysia, Mandarin, Tamil, Manglish — by the local team. Translate the spirit, not just the words.</p>
+  </div>
+
+  <div class="call">
+    <strong>How to Use This Document</strong><br><br>
+    This guide is built for the Skyro Malaysia team. Its purpose is to show how the global brand platform translates, sounds, and behaves specifically on this market — not to replace the Global TOV Guide or the master brand, but to sit on top of them as a layer of cultural interpretation.<br><br>
+    <strong>The core principle: we don't change the brand to fit the market. We find where the brand and the market already meet — and amplify that intersection.</strong>
+  </div>
+</div>
+
+<!-- ════════ 01 · GLOBAL MIND, LOCAL HEART ════════ -->
+<div class="sec" id="s01">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h1 class="sec-title">Global Mind, Local Heart</h1>
+  </div>
+
+  <h2 class="sub">The Global Promise, Read Through Malaysian Eyes</h2>
+
+  <p class="lead"><em>Celebrate who you are. Grow from where you stand.</em></p>
+
+  <p>In Malaysia, this line lands in a market that is simultaneously one of the most digitally advanced in Southeast Asia and one of the most culturally complex. Three communities — Malay/Bumiputera, Chinese Malaysian, Indian Malaysian — each navigate money through a distinct cultural lens, with distinct seasonal rhythms, distinct language preferences, and distinct financial behaviors. There is no single "Malaysian consumer."</p>
+
+  <p>What unites all three communities is not language or tradition — it is <em>kepercayaan</em>: trustworthiness. In a country where RM2B+ was lost to financial fraud in 2024 alone, the most powerful thing a fintech brand can offer is the certainty that it will not betray you.</p>
+
+  <p>Skyro is built for this three-layered reality. <em>Celebrate who you are</em> means your Hari Raya spending, your ang pow gifting, your Deepavali obligations — these are not budget problems. They are expressions of who you are. <em>Grow from where you stand</em> is an invitation to the 33 million people already here, not a distant aspiration for someone else's idea of a financially responsible Malaysian.</p>
+
+  <h2 class="sub">The Malaysian Consumer Insight</h2>
+
+  <p>Malaysian consumers are digitally capable and financially experienced — but they carry real and well-founded distrust. They've been let down by opaque fees, overwhelmed by scam warnings, and underserved by products designed for someone else's life.</p>
+
+  <div class="insight-quote">
+    "I want to manage my money my way, without judgment — but I don't trust financial services and feel they were not made for someone like me."
+  </div>
+
+  <p>This is the tension Skyro resolves.</p>
+</div>
+
+<!-- ════════ 02 · BRAND PERSONA ════════ -->
+<div class="sec" id="s02">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h1 class="sec-title">Brand Persona — Who Is Skyro on the Malaysian Market?</h1>
+  </div>
+
+  <p class="lead">If Skyro were a person on this market, who would they be?</p>
+
+  <div class="persona-card">
+    <p>Her name is <strong>Aisha</strong>. She's 28, grew up in Shah Alam in a Malay family that celebrated every Hari Raya with genuine generosity — and spent the weeks after quietly recalibrating. Her mother ran a small catering business from home, managing income that came in waves and required a specific kind of financial creativity that no bank ever acknowledged. Aisha watched her mother navigate this with grace and resented that the financial system gave her so little credit for it.</p>
+
+    <p>She studied finance at UiTM and graduated with a degree that taught her how the system works — and a growing conviction that the system could be better. She now works at a fintech startup in Bangsar South, and her friend group is a genuinely Malaysian mix: her colleague Wei Ling, who compares savings rates across three apps before making a decision; her university roommate Kavya, who sends money home to her parents in Ipoh every month; her younger brother Hafiz, who uses TNG for everything and has never set foot in a bank branch.</p>
+
+    <p>Aisha navigates all three worlds fluently. She knows that "bank" means something different to each of her friends. She knows that a good savings rate gets Wei Ling in the door, but it's the UX that keeps her there. She knows that Kavya doesn't need a flashy campaign — she needs low remittance fees and a transfer that actually arrives. She knows that Hafiz needs simplicity and speed, and will forgive almost anything except confusion.</p>
+
+    <p>She is warm and direct. She doesn't talk down to people, and she doesn't perform expertise. When she explains a financial product, she starts with what it does for you — not what it is. She has a dry sense of humour that lands equally in Bahasa Malaysia, English, and Manglish. She code-switches effortlessly and considers this a feature, not an inconsistency.</p>
+
+    <p>Aisha takes <em>kepercayaan</em> seriously. She has seen too many people she loves lose money to scams, to hidden fees, to products that promised one thing and delivered another. She does not overpromise. She shows receipts.</p>
+
+    <div class="persona-summary">
+      <strong>In communication terms, this means:</strong> Skyro Malaysia is warm but specific — real numbers, real outcomes. Skyro is culturally fluent — it speaks Hari Raya with genuine feeling, Chinese New Year with genuine respect, Deepavali with genuine attention. Skyro earns trust through consistency. And Skyro treats the financial diversity of Malaysia's three communities as an opportunity to be more useful, not a complexity to be flattened.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 03 · FOCUS VALUES ════════ -->
+<div class="sec" id="s03">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h1 class="sec-title">Focus Values — The Skyro Brand Values in Malaysian Context</h1>
+  </div>
+
+  <p>Skyro's five global brand values do not change from market to market. What changes is the specific texture of how they are expressed — the cultural references, the emotional register, the moments they speak to. Here is how each value lives on the Malaysian market.</p>
+
+  <!-- FLOW -->
+  <div class="value-block">
+    <h2>Flow</h2>
+    <div class="value-sub">Move with your rhythm</div>
+
+    <p>Globally, Flow is about rhythm — working with the natural patterns of life rather than imposing artificial structures on top of them.</p>
+
+    <p>In Malaysia, the first and most defining rhythm is not seasonal — it is structural. It is multiculturalism itself. Malaysia is the only market in Southeast Asia where three major ethnic communities with distinct languages, religions, financial cultures, and seasonal calendars coexist within a single daily life. The queue at the hawker centre includes a Malay woman finishing Ramadan prep, a Chinese Malaysian businessman calculating his CNY ang pow budget, and an Indian Malaysian worker planning a Deepavali remittance — simultaneously, in the same place, on the same day. This is not complexity. This is the Malaysian flow. It is the natural state of the market, and any financial brand that imposes a single-culture rhythm on top of it immediately rings false.</p>
+
+    <p>Skyro's Flow in Malaysia begins with respecting and moving with this multicultural coexistence — not as a marketing message about unity, but as an operational reality. Three calendars. Three seasonal financial peaks. Three registers. One brand that knows how to be present in all of them without flattening any.</p>
+
+    <p>Layered within this are the community-specific rhythms. For Malay/Bumiputera consumers, the rhythm is shaped by the Islamic calendar — Ramadan's month of restraint followed by Hari Raya's season of generosity and gifting, by the obligation of zakat, by the Tabung Haji savings discipline that 10M+ Malaysians participate in. For Chinese Malaysian consumers, the rhythm is shaped by Chinese New Year's ang pow season, by the <em>kiasu</em> cycle of rate-watching and app-switching, by auspicious dates and financial decisions tied to lunar timing. For Indian Malaysian consumers, the rhythm is shaped by Deepavali's season of family spending and celebration, by monthly remittance obligations, and by the Tamil community's financial calendar.</p>
+
+    <p>Traditional financial products were built on one rhythm: monthly salary, monthly statement, monthly fee. This does not describe how most Malaysian consumers actually experience money — and it certainly does not describe the Malaysian year.</p>
+
+    <div class="what-means">
+      <h4>What Flow means in Malaysian communication:</h4>
+      <ul>
+        <li>Acknowledging the multicultural seasonal layering as the basic reality of Malaysian financial life — not an edge case</li>
+        <li>Never flattening three distinct cultural calendars into one generic "festive season"</li>
+        <li>Building product language around <em>musim</em> (season) and <em>masa</em> (time) — money that moves with your community's year, not an imported template</li>
+        <li>Showing up in each community's season with specific knowledge of that season — not generic warmth</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction</span>
+      "Skyro moves with your year — three calendars, three peaks, one financial partner that's ready for all of them."
+    </div>
+  </div>
+
+  <!-- GROWTH -->
+  <div class="value-block">
+    <h2>Growth</h2>
+    <div class="value-sub">Like a garden, not a machine</div>
+
+    <p>In Malaysia, Growth carries the specific texture of a market where 90%+ are banked but many remain underserved in the ways that actually matter — in credit access for informal workers, in financial products that understand seasonal income, in the dignity of financial growth that does not require conforming to a template.</p>
+
+    <p>The garden metaphor resonates strongly in Malaysian culture — <em>kebun</em> (garden) carries connotations of patient, organic growth, of tending something that will take time. In contrast with the machine-like efficiency of institutional banking, Skyro's Growth says: your financial progress does not have to look like someone else's.</p>
+
+    <p>For the 3M+ foreign workers in Malaysia whose RM40B+ in outward remittances are processed at 3–6% fees, Growth means simply keeping more of what they earn. For the Gen Z Malaysian opening their first savings account via a digital bank, Growth means a rate that actually rewards them. For the SME owner who pays themselves irregularly, Growth means a financial partner that does not require a payslip to prove they exist.</p>
+
+    <div class="what-means">
+      <h4>What Growth means in Malaysian communication:</h4>
+      <ul>
+        <li>Framing financial progress as personal, organic, and culturally respected</li>
+        <li>Specific: name the product, name the rate, name the outcome</li>
+        <li>Avoiding any implied judgment that someone's current financial position is a failure to be corrected</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction</span>
+      "Every ringgit you grow here belongs entirely to you."
+    </div>
+  </div>
+
+  <!-- CELEBRATION -->
+  <div class="value-block">
+    <h2>Celebration</h2>
+    <div class="value-sub">Honor who you are, not who you should be</div>
+
+    <p>This is the value where Malaysia's market complexity becomes Skyro's greatest creative opportunity — and where the risk of getting it wrong is highest.</p>
+
+    <p>Celebration in Malaysia is not a single cultural moment. It is three. Hari Raya Aidilfitri is the financial and emotional centrepiece of the Malay Muslim year — a season of <em>duit raya</em> gifting, family reunion, new clothing, and generous hospitality. Chinese New Year's ang pow tradition digitises beautifully and is already a major engagement moment for TNG and GrabPay. Deepavali's family-first celebrations carry deep emotional weight for Indian Malaysian consumers — a community that remains genuinely underserved by financial communications and deserves real, specific attention.</p>
+
+    <p>The risk: treating all three as interchangeable seasonal marketing moments decorated with the right colours and a generic message about togetherness. Malaysian consumers will notice. Research consistently shows that brands treating Malaysia as culturally monolithic underperform in brand affinity.</p>
+
+    <p>The opportunity: being the first fintech brand that celebrates all three seasonal moments with genuine cultural intelligence — not because it covers all demographics, but because it genuinely understands why each one matters.</p>
+
+    <div class="what-means">
+      <h4>What Celebration means in Malaysian communication:</h4>
+      <ul>
+        <li><strong>Hari Raya:</strong> emotionally rich, family-centred, <em>duit raya</em> as a meaningful financial ritual, never trivialised</li>
+        <li><strong>Chinese New Year:</strong> sharp, celebratory, <em>kiasu</em>-aware (the best ang pow, the best rate), with real product hooks</li>
+        <li><strong>Deepavali:</strong> warm, family-first, Tamil-language respect, acknowledgment of the community's specific financial patterns</li>
+        <li><em>Muhibbah</em> — the spirit of goodwill between communities — is a genuine Malaysian value; it can be expressed when it feels earned, not when it is performed</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction — Hari Raya</span>
+      "Kirim duit raya digital. Rasa macam pegang duit tunai."<br>
+      <span style="font-size:13px;color:rgba(248,244,238,.6);font-style:normal;">(Send digital duit raya. Feels like handing it yourself.)</span>
+    </div>
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction — CNY</span>
+      "The sharpest ang pow is the one that arrives instantly."
+    </div>
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction — Deepavali</span>
+      "This Deepavali, every ringgit you send home arrives in full. Our remittance fee is [X]% — among the lowest on the market."
+    </div>
+  </div>
+
+  <!-- INNOVATION -->
+  <div class="value-block">
+    <h2>Innovation</h2>
+    <div class="value-sub">Technology that anticipates, not just reacts</div>
+
+    <p>Malaysia's digital infrastructure is genuinely impressive: 97% internet penetration, DuitNow QR accepted at 2 million merchants, five digital banking licences fully issued, 83% of retail transactions already digital. Malaysian consumers are not new to fintech. They are sophisticated, comparative, and increasingly demanding.</p>
+
+    <p>This means Innovation for Skyro in Malaysia is not about introducing digital finance — it is about being better at it in ways that matter. DuitNow has levelled the payments infrastructure: every licensed player has access to the same rails. The race is for financial depth and emotional brand preference. Innovation that anticipates means products that are already thinking about what Malaysian consumers need before they have articulated it.</p>
+
+    <p>The trust deficit is the most important innovation challenge in this market. A fintech that innovates in trust — through radical transparency, through visible security, through plain-language product terms that remove ambiguity — will outcompete one that innovates in features alone.</p>
+
+    <div class="what-means">
+      <h4>What Innovation means in Malaysian communication:</h4>
+      <ul>
+        <li>Specificity as innovation: real rates, real transfer speeds, real security architecture — named and verifiable</li>
+        <li>Anti-scam positioning: Skyro's transparency is itself a product feature in a market defined by trust deficit</li>
+        <li>Plain Bahasa Malaysia product descriptions: complexity simplified, never dumbed-down</li>
+        <li><strong>UX as innovation:</strong> in a market where every major player offers similar rails, the quality of the experience is a genuine differentiator. Skyro should be the financial app Malaysians find the most intuitive — fast to understand, easy to complete, with zero friction at the moments that matter. "Easier to use than any bank you've tried" is a technology claim, not just a design one</li>
+        <li>Speed and clarity at the moment of decision — the innovation is the feeling of confidence that accompanies a fast, visible, understandable transaction</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction</span>
+      "Fast. Clear. Nothing hidden. Easier than anything you've used before."
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="value-block">
+    <h2>Trust</h2>
+    <div class="value-sub">You know best. We walk beside you.</div>
+
+    <p>In Malaysia, Trust is not earned through advertising. It is earned through the absence of the things that destroyed it.</p>
+
+    <p><em>Kepercayaan</em> — the Malay concept of trustworthiness — is described by Malaysian consumer research as the single most important brand evaluation criterion across all three ethnic communities. It is a moral category. A brand with high <em>kepercayaan</em> is one that will not betray you.</p>
+
+    <p><em>Malu</em> — the shame and face-preservation dynamic — shapes the Trust value in a specific way. Financial difficulty is not discussed openly in Malaysian culture. The shame of debt, of overdraft, of a declined transaction, sits heavily. Skyro's Trust is expressed not through affirmations about money management but through the consistent absence of judgment.</p>
+
+    <div class="what-means">
+      <h4>What Trust means in Malaysian communication:</h4>
+      <ul>
+        <li>Never imply that the user has made a bad financial decision; offer options, not verdicts</li>
+        <li>Anti-scam clarity: be explicit about what Skyro will never ask for, what is always secure</li>
+        <li>Zero hidden fees as a brand commitment, communicated constantly and specifically</li>
+        <li>Support communications as brand-building moments: a rejection handled with warmth and a clear path forward is more powerful than any campaign</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction</span>
+      "We'll never ask for your TAC. We'll never hide a fee. If something goes wrong, we'll be here."
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 03b · LOCAL HUMAN VALUES ════════ -->
+<div class="sec" id="s03b">
+  <div class="sec-header">
+    <span class="sec-num">03b</span>
+    <h1 class="sec-title">Local Human Values — What Malaysian Life Is Actually Built On</h1>
+  </div>
+
+  <p>These are the values that shape how people in each community think, make decisions, relate to each other, and judge the world around them. They are not marketing insights — they are human truths. Skyro's communication should be aware of them at all times: not to exploit them, but to avoid tone-deafness and to speak in a register that feels genuinely aligned with how people live.</p>
+
+  <div class="call">
+    <strong>A note on what research tells us:</strong> At the level of core values, the three Malaysian communities have more in common than is often assumed — respect for elders, face-preservation, family as the primary unit, religious orientation, and the importance of personal relationships cross all three. The differences are real, but they are largely about <em>expression</em>, emphasis, and context — not about fundamentally different human priorities. This matters for Skyro: the brand does not need to radically change its character between communities. It needs to understand how the same human values are lived differently.
+  </div>
+
+  <div class="grid-3">
+    <!-- MALAY -->
+    <div class="card">
+      <h4>Malay / Bumiputera</h4>
+      <ol>
+        <li><strong>Islam as an organising principle of daily life</strong> — not merely as a religious affiliation but as a framework for behaviour, time, finance, and community. Halal, <em>solat</em>, Ramadan, zakat: these are not edge cases. They are the structure of the week and the year.</li>
+        <li><strong>Keluarga (family) as the primary social unit</strong> — collective wellbeing over individual ambition. Financial decisions are rarely personal; they involve parents, siblings, children.</li>
+        <li><strong>Adab and budi</strong> — courtesy, grace, and refined conduct in social interactions. Directness without warmth is read as rudeness.</li>
+        <li><strong>Malu (face-preservation)</strong> — shame around financial difficulty is real and shapes how people discuss (or don't discuss) debt, declined applications, and financial stress.</li>
+        <li><strong>Hormat (respect for elders and authority)</strong> — hierarchy is respected, especially in financial contexts.</li>
+        <li><strong>Gotong-royong (communal cooperation)</strong> — the instinct to build and sustain community, to contribute to shared goals.</li>
+        <li><strong>Leisure, quality of life, and joy</strong> — financial freedom is not only framed as security — it is also framed as time: time to be present, to celebrate, to rest.</li>
+      </ol>
+      <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">
+        <h4 style="font-size:13px;font-family:'Outfit',sans-serif;text-transform:uppercase;letter-spacing:.06em;">How Skyro uses this</h4>
+        <p><strong>Visually:</strong> multi-generational family scenes at home, at the dinner table, at the kampung; Ramadan lighting; <em>kenduri</em> contexts; warm, unhurried photography</p>
+        <p><strong>Verbally:</strong> language that is deferential but not distant — "Skyro faham" rather than "Skyro knows best"; terms like <em>jaga, bantu, bersama</em></p>
+        <p><strong>Product framing:</strong> Islamic finance options presented as natural, not specialist; zakat calculation tools; family-oriented savings goals</p>
+      </div>
+    </div>
+
+    <!-- CHINESE -->
+    <div class="card">
+      <h4>Chinese Malaysian</h4>
+      <ol>
+        <li><strong>Family, with a strong thread of individual achievement</strong> — family is the foundation, but personal accomplishment is deeply valued and expected.</li>
+        <li><strong>Guanxi (relationships and network)</strong> — business and financial decisions are embedded in personal trust networks. Recommendations carry more weight than advertising.</li>
+        <li><strong>Education as the highest investment</strong> — the single most universal financial priority across the Chinese Malaysian community.</li>
+        <li><strong>Kiasu (competitive diligence)</strong> — the drive to compare options carefully, to make the best decision available. This is the behaviour of an informed consumer.</li>
+        <li><strong>Hard work and long-term planning</strong> — sustained effort, delayed gratification, and building systematically over time.</li>
+        <li><strong>Respect for hierarchy and seniority</strong> — despite a strong entrepreneurial streak, clear respect for age and status within family and business.</li>
+        <li><strong>Buddhism and Taoism as quiet orientations</strong> — concepts of balance, fortune, and auspicious timing influence financial decision-making.</li>
+      </ol>
+      <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">
+        <h4 style="font-size:13px;font-family:'Outfit',sans-serif;text-transform:uppercase;letter-spacing:.06em;">How Skyro uses this</h4>
+        <p><strong>Visually:</strong> family achievement moments (graduation, business milestone, first property); CNY ang pow rituals; precise, clean design</p>
+        <p><strong>Verbally:</strong> specific numbers, specific rates, specific comparisons — the <em>kiasu</em> consumer reads the fine print; Mandarin-language content for trust-depth</p>
+        <p><strong>Product framing:</strong> education savings features; savings rates with full daily compounding detail; family wealth goals; business owner products</p>
+      </div>
+    </div>
+
+    <!-- INDIAN -->
+    <div class="card">
+      <h4>Indian Malaysian</h4>
+      <ol>
+        <li><strong>Family and community as the anchor</strong> — family bonds are deep and extend to the wider Tamil community. Financial decisions that help the family are never questioned.</li>
+        <li><strong>Sense of belonging and brotherhood</strong> — community solidarity is a core value. Internal community bonds and mutual support networks are strong.</li>
+        <li><strong>Hinduism as a living practice</strong> — temples, festivals, prayer, and spiritual timing influence significant life decisions. Deepavali is the community's most important annual expression.</li>
+        <li><strong>Hard work and loyalty</strong> — a strong ethic of sustained effort and long-term commitment.</li>
+        <li><strong>Emotional warmth and expressiveness</strong> — connection is made through genuine feeling. A brand that communicates with warmth is more trusted.</li>
+        <li><strong>Education and upward mobility</strong> — education is seen as the most reliable vehicle for generational improvement.</li>
+        <li><strong>Remittance and extended family obligation</strong> — income flowing to family in Tamil Nadu, Sri Lanka, or South Asia is an expression of love and obligation.</li>
+      </ol>
+      <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">
+        <h4 style="font-size:13px;font-family:'Outfit',sans-serif;text-transform:uppercase;letter-spacing:.06em;">How Skyro uses this</h4>
+        <p><strong>Visually:</strong> warm, expressive family scenes; Deepavali oil lamps and kolam; Tamil community gathering contexts; genuine warmth — not stock photography composure</p>
+        <p><strong>Verbally:</strong> Tamil-language options as genuine service, not tokenism; warm, human tone; no condescension around remittance behaviour</p>
+        <p><strong>Product framing:</strong> remittance as a core product, not a side feature; family financial planning tools; education savings; Deepavali season communications</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARED VALUES -->
+  <h2 class="sub">Values All Three Communities Share — The Common Ground</h2>
+  <p>These cross-community values are the foundation Skyro builds on before it differentiates by ethnic context:</p>
+  <div class="call">
+    <ul style="padding-left:18px;">
+      <li><strong>Respect for elders and age-based hierarchy</strong> — present across all three communities, expressed differently but consistently</li>
+      <li><strong>Face-preservation (Malu / Face / Maanam)</strong> — the avoidance of public shame around financial difficulty is universal</li>
+      <li><strong>The importance of personal relationships in trust-building</strong> — transactional trust is not enough; relational trust is required</li>
+      <li><strong>Religiosity as an active part of life</strong> — all three communities maintain living religious practice</li>
+      <li><strong>Patriarchal household structure as still-common context</strong> — Skyro should neither reinforce this uncritically nor lecture about it</li>
+      <li><strong>Integration with preservation of identity</strong> — Malaysians take pride in their specific cultural identity while valuing peaceful coexistence; they notice when a brand tries to homogenise them</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ 04 · RTBs ════════ -->
+<div class="sec" id="s04">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <h1 class="sec-title">Reasons to Believe (RTBs) — Malaysian Proof Points</h1>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"Built for how you live"</h4>
+    <ul>
+      <li>Products that understand Hari Raya, CNY, and Deepavali as distinct financial seasons, not generic "festive season" moments</li>
+      <li>Bahasa Malaysia, English, Mandarin, and Tamil communications — all four, not as tokenism but as genuine service</li>
+    </ul>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"Transparent. No hidden fees."</h4>
+    <ul>
+      <li>In a market defined by RM2B+ annual scam losses, Skyro's fee transparency is not just a product feature — it is the most powerful brand differentiator available</li>
+      <li>Every communication leads with the real number, the real rate, the real cost</li>
+    </ul>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"Instant. Reliable. DuitNow-connected."</h4>
+    <ul>
+      <li>Full DuitNow QR and DuitNow Transfer integration — the differentiation is the confidence and clarity of the experience around it</li>
+    </ul>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"The easiest financial app you'll use"</h4>
+    <ul>
+      <li>UX designed for one-handed use, fast loading on mid-range devices, minimal steps from intent to completion</li>
+      <li>Onboarding in under 5 minutes, account setup without a branch visit</li>
+    </ul>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"Kepercayaan — before we sell you anything"</h4>
+    <ul>
+      <li>Trust established through consistency before any product offer</li>
+      <li>Educational content about scam prevention, anti-fraud features, plain-language Shariah disclosure where relevant</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ 05 · DO/DON'T VERBAL ════════ -->
+<div class="sec" id="s05">
+  <div class="sec-header">
+    <span class="sec-num">05</span>
+    <h1 class="sec-title">The Malaysian Do / Don't Guide — Verbal</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Do</div>
+      <div class="dd-i"><strong>Speak to each ethnic community with genuine cultural intelligence.</strong> Hari Raya creative is not "festive season" creative with green and gold. CNY creative is not "festive season" creative with red. Deepavali creative earns its place by being specifically Deepavali.</div>
+      <div class="dd-i"><strong>Use <em>kepercayaan</em> as a design principle, not a tagline.</strong> Trustworthiness is earned through behaviour — fee transparency, product simplicity, communications that never make a promise that cannot be kept. Say less. Prove more.</div>
+      <div class="dd-i"><strong>Acknowledge the trust deficit directly.</strong> Anti-scam communications are not negative — they are the most positive brand statement Skyro can make. Brands that name the threat build significantly more affinity than brands that ignore it.</div>
+      <div class="dd-i"><strong>Serve the foreign worker remittance corridor.</strong> 3M+ documented foreign workers, RM40B+ in outward remittances, 3–6% fees from existing players. A Skyro that solves remittance well earns a user base that transacts frequently and recommends actively.</div>
+      <div class="dd-i"><strong>Use Manglish in the right contexts.</strong> "Eh, this savings rate confirm boleh." — this is not a mistake. This is how Malaysians actually talk about money. Authentic code-switching builds more genuine connection.</div>
+      <div class="dd-i"><strong>Respect Islamic finance as a mainstream choice.</strong> 30%+ of Malaysian banking assets are Islamic. 68.8% of the population is Muslim. Islamic product terms — murabahah, wadiah, takaful — should be explained plainly, not avoided.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Don't</div>
+      <div class="dd-i"><strong>Don't treat Malaysia as a single cultural market.</strong> Campaigns that speak to "Malaysians" as if they are culturally uniform consistently underperform. The brand that wins earns trust community by community, season by season.</div>
+      <div class="dd-i"><strong>Don't use scarcity or pressure language.</strong> "Limited time." "Don't miss out." "Act now." In a market shaped by <em>malu</em> and deep wariness of financial manipulation, pressure tactics read as red flags. Skyro's communications are invitations.</div>
+      <div class="dd-i"><strong>Don't celebrate financial aspiration without grounding it in reality.</strong> Show real outcomes for real people. Not a penthouse. A better rate on what you're already saving.</div>
+      <div class="dd-i"><strong>Don't ignore Deepavali.</strong> Indian Malaysian consumers (~7% of the population) represent a community that most fintech brands give minimal, generic attention. Skyro's differentiation includes being the brand that actually shows up.</div>
+      <div class="dd-i"><strong>Don't over-promise on security.</strong> "100% secure" — never say it. "We use [specific technology] to protect your account. Here is exactly what that means." — this is Skyro.</div>
+      <div class="dd-i"><strong>Don't make Islamic finance feel like a special-use product.</strong> Shariah compliance is mainstream in Malaysia. Islamic product options should be integrated naturally, communicated plainly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 05b · DO/DON'T VISUAL ════════ -->
+<div class="sec" id="s05b">
+  <div class="sec-header">
+    <span class="sec-num">05b</span>
+    <h1 class="sec-title">The Malaysian Do / Don't Guide — Visual</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Show This</div>
+      <div class="dd-i"><strong>Multi-ethnic visual representation as the default, not the exception.</strong> Every campaign featuring Malaysian people should reflect the country's ethnic mix — not as a quota but as an accurate portrait of the society Skyro operates in.</div>
+      <div class="dd-i"><strong>Real Malaysian environments.</strong> Hawker centres, LRT platforms, pasar malam, kedai runcit, housing estates in Subang, shophouses in George Town, paddy fields in Kedah — these are the contexts Malaysian consumers recognise.</div>
+      <div class="dd-i"><strong>Seasonal visual specificity.</strong> Each festive moment has its own visual language. Hari Raya: warm gold and green, ketupat, family gathering at the kampung. CNY: red and gold, lanterns, ang pow envelopes. Deepavali: oil lamps, vibrant kolam rangoli patterns, the family dinner.</div>
+      <div class="dd-i"><strong>Intergenerational moments.</strong> Malaysian financial decisions involve parents, grandparents, and children. Visuals that show this texture communicate that Skyro understands the structure of Malaysian family life.</div>
+      <div class="dd-i"><strong>Physical moments of transaction.</strong> The satisfaction of a completed transfer, the notification of an arrival, the ease of scanning a DuitNow QR at a pasar. Show the moment, the feeling, the simplicity.</div>
+      <div class="dd-i"><strong>Warmth in lighting and colour.</strong> Malaysian visual culture is warm, layered, and richly textured. Skyro's brand palette should breathe in campaign photography — complemented by environments that carry warmth in natural light.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Avoid This</div>
+      <div class="dd-i"><strong>Stock photography that reads as non-Malaysian.</strong> Images of ambiguously Asian people in neutral, stateless contexts immediately break the audience's identification. One image in the wrong register can undermine an otherwise strong campaign.</div>
+      <div class="dd-i"><strong>Aspirational luxury aesthetics as the primary visual register.</strong> High-rise condominiums, business-class airport lounges, luxury cars as background props. These signal that Skyro is for someone else — and actively alienate the mass-market B40/M40 audiences.</div>
+      <div class="dd-i"><strong>Ethnically monochrome casting.</strong> A campaign featuring only Malay faces communicates to 30%+ of the market that this brand is not for them. A campaign featuring only Chinese Malaysian faces does the same. This is about commercial effectiveness.</div>
+      <div class="dd-i"><strong>Generic "happy person with phone" photography.</strong> This is the most overused visual shortcut in Malaysian fintech. It communicates nothing specific and disappears instantly in a feed full of identical images.</div>
+      <div class="dd-i"><strong>Visual design language associated with scam aesthetics.</strong> Heavy starburst graphics, large red "LIMITED OFFER" typography, aggressive countdown timers — this is the visual language of financial manipulation in Malaysia.</div>
+      <div class="dd-i"><strong>Culturally mixed-up seasonal imagery.</strong> Using generic "Asian festive" stock photos for a specific Hari Raya or CNY campaign signals carelessness. Each celebration has earned its own distinct visual identity.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 06 · COMMUNICATION EXAMPLES ════════ -->
+<div class="sec" id="s06">
+  <div class="sec-header">
+    <span class="sec-num">06</span>
+    <h1 class="sec-title">Communication Examples</h1>
+  </div>
+
+  <p>All examples below are written in English to communicate intended meaning, tone, and register. In actual execution, Bahasa Malaysia, Manglish, Mandarin, or Tamil is recommended depending on the audience and channel. Local copywriters should adapt the spirit, not just translate the words.</p>
+
+  <h2 class="sub">The Tagline in Market-Specific Communications — "Naturally, It's Yours"</h2>
+  <p>The most effective approach: lead with the single most relevant product truth or cultural insight for the Malaysian market, then close with <em>Naturally, it's yours.</em></p>
+
+  <h3 class="sub2">Approach 1 — Lead with a cultural or emotional insight</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>Duit raya sent in seconds. Felt in the heart the same way. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Your savings grow through Ramadan and Hari Raya alike. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>For the ang pow that arrives before the countdown ends. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Send it home to Ipoh in time for Deepavali. Naturally, it's yours.</div>
+
+  <h3 class="sub2">Approach 2 — Lead with a specific product offer</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>3.5% p.a. Paid daily. No minimum balance. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Transfer to any Malaysian bank in seconds via DuitNow. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Remittance to Indonesia: RM2 flat fee. Arrives same day. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Open an account in 4 minutes. No branch, no paperwork. Naturally, it's yours.</div>
+
+  <h2 class="sub">Product and Campaign Copy</h2>
+
+  <!-- ACCORDION -->
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Hari Raya — Duit Raya Season <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Social / Emotional (Bahasa Malaysia register)</h4>
+      <blockquote>Duit raya tahun ni, hantar dalam sekelip mata. Rasa macam letak dalam sampul sendiri. Skyro — hantar dengan hati, sampai dengan cepat.<br><br><em>(Duit raya this year, sent in an instant. Feels like you put it in the envelope yourself. Skyro — sent with heart, arrives fast.)</em></blockquote>
+      <h4>Push Notification — Pre-Raya</h4>
+      <blockquote>Hari Raya is 3 days away. Your duit raya is ready to send — to everyone on your list, at once, from your phone.</blockquote>
+      <h4>In-App Banner</h4>
+      <blockquote>Duit Raya Digital. Tap. Send. Done. The feeling is exactly the same.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Chinese New Year — Ang Pow Season <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Social / Energetic</h4>
+      <blockquote>Your ang pow arrives before they finish the lion dance. CNY from Skyro — the fastest way to give well.</blockquote>
+      <h4>Rate-Led / <em>Kiasu</em> Angle</h4>
+      <blockquote>While everyone's comparing ang pow apps — yours already sent. Skyro: [X]% savings rate, instant transfers. Gong Xi Fa Cai.</blockquote>
+      <h4>Push Notification</h4>
+      <blockquote>CNY countdown: [X] days. Your savings rate is running. Your ang pow list is waiting. You're ready.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Deepavali <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Remittance Angle</h4>
+      <blockquote>This Deepavali, everything you send home arrives in full. Skyro's remittance fee: [X]%. Flat. No surprises.</blockquote>
+      <h4>Tamil-language headline (example direction)</h4>
+      <blockquote>இந்த தீபாவளியில், வீட்டிற்கு அனுப்புவது முழுவதும் சேரட்டும்.<br><em>(This Deepavali, let everything you send home arrive fully.)</em></blockquote>
+      <h4>Emotional / Family</h4>
+      <blockquote>The Deepavali table looks a certain way when the family is all there. Make sure the money gets there first. Skyro — same day, full amount, no fee surprises.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Savings / General Product <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Rate-led</h4>
+      <blockquote>[X]% p.a. Paid daily. Starts the moment you deposit. No minimum, no lock-in, no conditions you'll find out about later.</blockquote>
+      <h4>Trust / Transparency</h4>
+      <blockquote>Here is exactly what Skyro charges. Here is exactly what you earn. That's all there is. No page 4.</blockquote>
+      <h4>Savings Milestone (Push)</h4>
+      <blockquote>RM5,000 reached. You set this target in March. It's June. That's what showing up every month looks like.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Remittance — Foreign Worker Corridor <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Functional</h4>
+      <blockquote>Send money home. Indonesia, Bangladesh, Nepal, Philippines — arrives same day. Fee: [X]%. That's it.</blockquote>
+      <h4>Multilingual direction (Bahasa Indonesia)</h4>
+      <blockquote>Kirim uang ke rumah hari ini. Tiba hari yang sama. Biaya [X]% — tidak ada yang tersembunyi.</blockquote>
+      <h4>Trust</h4>
+      <blockquote>Skyro will never add a fee you didn't see before you sent. The amount shown is the amount that arrives.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Anti-Scam / Trust Building <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Proactive</h4>
+      <blockquote>Skyro will never ask for your TAC code. Never ask you to click a link in a text. Never call and ask for your account details. If someone says they're from Skyro and asks for any of these — end the call. Report it to 997.</blockquote>
+      <h4>In-App Security Moment</h4>
+      <blockquote>New device login detected. If this was you, you're all good. If it wasn't — tap here and we'll lock your account in 10 seconds.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Support / Service Communications <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Payment Reminder — No Pressure</h4>
+      <blockquote>Your payment is due tomorrow. If you need to adjust the schedule or talk through options, here's how to reach us. No late judgment — just options.</blockquote>
+      <h4>Loan Declined — Respectful</h4>
+      <blockquote>We can't approve this one right now. Here is the specific reason: [concrete reason]. Here is what would change it — and we'll be ready when you are.</blockquote>
+      <h4>First Successful Transfer</h4>
+      <blockquote>Transfer complete. RM[amount] sent. Arrived. That's what fast and certain feels like — and we'll be here for every one after this.</blockquote>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 07 · VALUES QUICK REFERENCE ════════ -->
+<div class="sec" id="s07">
+  <div class="sec-header">
+    <span class="sec-num">07</span>
+    <h1 class="sec-title">Brand Values in Malaysian Context — Quick Reference</h1>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Global Value</th><th>Malaysian Expression</th><th>Local Proof Point</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Flow</strong></td><td>Money that moves with your year — Ramadan, Hari Raya, CNY, Deepavali</td><td>Seasonal product features, Islamic calendar awareness, ang pow / duit raya integration</td></tr>
+        <tr><td><strong>Growth</strong></td><td>Organic, patient, yours alone</td><td>Real savings rates published daily; remittance fees named specifically; SME and gig worker access</td></tr>
+        <tr><td><strong>Celebration</strong></td><td>Three cultures, three celebrations — all real</td><td>Hari Raya, CNY, Deepavali each with distinct creative, language, and product hooks</td></tr>
+        <tr><td><strong>Innovation</strong></td><td>Technology that earns trust, not just attention; the most intuitive app in the market</td><td>DuitNow integration, instant transfers, plain-language Shariah options, anti-scam architecture, UX designed for ease and speed on any device</td></tr>
+        <tr><td><strong>Trust</strong></td><td><em>Kepercayaan</em> — before we sell you anything</td><td>Zero hidden fees, no pressure language, specific anti-scam commitments, <em>malu</em>-aware support communications</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ 08 · AMBASSADOR STRATEGY ════════ -->
+<div class="sec" id="s08">
+  <div class="sec-header">
+    <span class="sec-num">08</span>
+    <h1 class="sec-title">Ambassador Strategy — Malaysian Market</h1>
+  </div>
+
+  <p>Malaysia's celebrity and influencer ecosystem does not map cleanly onto the brand's goals with a single-track strategy. The market is too ethnically diverse for one national face to carry all of the brand's trust across all communities — and at the same time, there are moments where wide cross-cultural reach is exactly what's needed. The strategy therefore runs on two parallel tracks.</p>
+
+  <h2 class="sub">Track 1 — National Reach Anchors</h2>
+  <p><strong>When to use:</strong> Brand awareness campaigns, major product launches, general brand-building moments where the goal is broad trust across the whole Malaysian market. This track is not the right vehicle for festive seasonal campaigns — those require community-specific depth and belong in Track 2.</p>
+  <p><strong>Profile:</strong> A national-reach ambassador should be known and genuinely liked across all three communities, have no partisan political adjacency, speak naturally in Bahasa Malaysia and English (Manglish fluency is a plus), and have a public image that is grounded rather than aspirational-luxury.</p>
+  <p><strong>Directional examples</strong> <em>(not confirmed partnerships — illustrate the profile):</em></p>
+  <ul style="padding-left:18px;margin-bottom:20px;">
+    <li><strong>Yuna</strong> — Malaysian singer with genuine cross-ethnic fan base, internationally respected but deeply rooted in Malaysian identity, Muslim with a secular-facing public persona, natural Manglish communicator</li>
+    <li><strong>Harith Iskander</strong> — Malaysia's most recognised stand-up comedian, warmly trusted across ethnic communities, financial literacy advocacy would feel authentic</li>
+  </ul>
+
+  <h2 class="sub">Track 2 — Community-Embedded Voices</h2>
+  <p><strong>When to use:</strong> Deepening loyalty and trust within each specific ethnic community. Festive seasonal campaigns. Education and product-specific content. The goal: three simultaneous but distinct seeding streams, each speaking to one community in its own language, its own cultural register, its own seasonal financial moment.</p>
+
+  <div class="grid-3" style="margin-top:20px;">
+    <div class="card">
+      <h4>Malay / Bumiputera</h4>
+      <p>Personal finance educators and <em>bisnes online</em> creators who speak to young Malay entrepreneurs and families. Creators in the <em>usahawan muda</em> (young entrepreneur) content space.</p>
+    </div>
+    <div class="card">
+      <h4>Chinese Malaysian</h4>
+      <p>Mandarin-language finance and lifestyle creators who cover savings rates, investment products, and fintech comparisons. Bilingual (Mandarin/English) personal finance YouTube creators based in KL or Penang.</p>
+    </div>
+    <div class="card">
+      <h4>Indian Malaysian</h4>
+      <p>Tamil-language creators — a significantly underserved creator category in Malaysian fintech, which means Skyro can be a first-mover. Family lifestyle creators. Tamil-speaking lifestyle and family content creators on YouTube and Facebook.</p>
+    </div>
+  </div>
+
+  <h2 class="sub">Ambassador Do / Don't</h2>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Do</div>
+      <div class="dd-i"><strong>Give ambassadors genuine creative input</strong> — the brief should communicate the spirit, not every word. Scripts that feel scripted are detected instantly.</div>
+      <div class="dd-i"><strong>Build sustained relationships across multiple campaigns.</strong> Trust infrastructure takes time. A six-month partnership outperforms six one-off endorsements.</div>
+      <div class="dd-i"><strong>Look for non-trivial content mechanics</strong> that sit at the intersection of the ambassador's natural territory and Skyro's values. Understand the person's content world deeply before the brief is written. The right test: would this person have made something like this anyway?</div>
+      <div class="dd-i"><strong>Verify that the person is genuinely close to people</strong> — grounded, without arrogance or social distance from the audience they're supposed to represent. A person effortlessly at ease with a hawker stall owner in the same way they are with a TV host is the profile.</div>
+      <div class="dd-i"><strong>Confirm no history of dismissive remarks</strong> about any ethnic community, religion, or socioeconomic group. In a market as diverse as Malaysia, one resurfaced comment can undo months of brand-building.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Don't</div>
+      <div class="dd-i"><strong>Don't use any ambassador whose aesthetic resembles scam aesthetics</strong> — high-pressure, high-promise register associated with financial manipulation in Malaysia.</div>
+      <div class="dd-i"><strong>Don't choose based solely on follower count.</strong> Engagement quality and cultural authenticity within the target community are more predictive of real brand impact than raw reach.</div>
+      <div class="dd-i"><strong>Don't use the ambassador purely for launch awareness and then step back.</strong> The most common waste in Malaysian celebrity partnerships is the awareness spike with no sustained trust-building behind it.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 09 · SEASONAL CALENDAR ════════ -->
+<div class="sec" id="s09">
+  <div class="sec-header">
+    <span class="sec-num">09</span>
+    <h1 class="sec-title">The Malaysian Seasonal Calendar</h1>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Period</th><th>Priority</th><th>Tone and Angle</th></tr></thead>
+      <tbody>
+        <tr><td>January — New Year</td><td><span class="badge medium">Medium</span></td><td>Fresh start, financial resolution energy. Both Gregorian and Chinese New Year prep begins. "The year has two beginnings in Malaysia. Start strong in both."</td></tr>
+        <tr><td>January–February — Chinese New Year</td><td><span class="badge very-high">Very High</span></td><td><em>Kiasu</em> energy, ang pow digital gifting, rate comparisons. Energetic, celebratory, product-specific. "Your ang pow arrives before the lion dance ends."</td></tr>
+        <tr><td>March–April — Ramadan begins</td><td><span class="badge very-high">Very High</span></td><td>Sensitive, warm, community-first. Savings and Hari Raya preparation spending both increase. Islamic product angle. "This month, your savings earn more — because you're already putting in the work."</td></tr>
+        <tr><td>April — Hari Raya Aidilfitri</td><td><span class="badge peak">Peak</span></td><td>Maximum emotional register. <em>Duit raya</em> digital gifting as emotional equivalent of physical cash. Family reunion as the core visual and narrative.</td></tr>
+        <tr><td>October–November — Deepavali</td><td><span class="badge high">High</span></td><td>Tamil-community aware, family-first, remittance angle. "This Deepavali, more reaches home." Tamil-language execution recommended.</td></tr>
+        <tr><td>November — Hari Raya Haji</td><td><span class="badge medium">Medium</span></td><td>Quieter than Aidilfitri, but meaningful for the Muslim community. Tabung Haji savings angle. Reflective tone.</td></tr>
+        <tr><td>December — Year-end</td><td><span class="badge medium">Medium</span></td><td>Urban, multicultural, spending season. Year-end financial reflection. "2025 showed you what you need. 2026, let's build it."</td></tr>
+        <tr><td>Ongoing — Remittance corridor</td><td><span class="badge constant">Constant</span></td><td>3M+ foreign workers transact every month. Low-fee remittance communications always-on, in multiple languages: Bahasa Indonesia, Bengali, Tagalog, Tamil.</td></tr>
+        <tr><td>Ongoing — Savings rate moments</td><td><span class="badge constant">Constant</span></td><td>Rate-comparison behaviour is a persistent Malaysian fintech habit. Regular, specific savings rate communications keep Skyro visible to the <em>kiasu</em> segment.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ 10 · CHANNEL GUIDANCE ════════ -->
+<div class="sec" id="s10">
+  <div class="sec-header">
+    <span class="sec-num">10</span>
+    <h1 class="sec-title">Channel Guidance</h1>
+  </div>
+
+  <p>One voice, different registers — depending on the platform and the moment.</p>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Facebook <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">85% internet user penetration — primary platform</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>The non-negotiable channel. Malay-language and Manglish content outperforms English-only for emotional engagement. Long-form family and community stories outperform short product posts. Hari Raya season content posted during Ramadan builds the relationship before the purchase moment arrives. The 40–60% increase in advertising spend during Hari Raya season means Skyro needs to be earlier and more genuine — not louder — to cut through.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">TikTok <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">accelerating — the Gen Z channel</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>The Manglish register is natural here. Trending sounds in Malay, Mandarin, and Tamil create three distinct Gen Z entry points. Finance content creators in Malaysia are growing — find the ones with real credibility. If it sounds like it was written in a brief, it doesn't belong on TikTok.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">YouTube <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">#1 per capita in SEA for long-form video</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>This is where Skyro builds durable brand perception. Hari Raya short films (Maybank pioneered this format; it is the most emotionally potent creative vehicle in Malaysian advertising). Documentary-style multi-community stories. Anti-scam explainers with genuine educational value. Long-form is not a liability here — it is an opportunity.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">WhatsApp <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">dominant messaging platform — trust channel</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>WhatsApp is where Malaysians share financial warnings, deals, and recommendations with family and community groups. Skyro content designed to be shared in family WhatsApp groups — clear, trustworthy, specific, anti-scam — travels in a distribution channel that no paid media can replicate. Every piece of Skyro communication should pass the test: would a Malaysian parent share this in their family group?</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Push notifications and in-app <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Ultra-short, genuinely useful — or they will be disabled. <em>Duit raya</em> sending reminders work. Savings milestone notifications work. "Exciting offer inside!" does not. Anti-scam prompts in-app at moments of high engagement create trust at the right time.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Customer support <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>The highest-stakes channel in Malaysia, given the trust deficit. A support interaction that resolves a problem clearly and warmly creates advocacy that no campaign can replicate. Multilingual support — Bahasa Malaysia, English, Mandarin, Tamil — is not optional. Rejections must be handled with most care: specific reason, specific alternative, zero shame. A declined transaction handled with <em>kepercayaan</em> builds more long-term loyalty than a hundred acquisition ads.</p>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 11 · CREATIVE ACTIVATIONS ════════ -->
+<div class="sec" id="s11">
+  <div class="sec-header">
+    <span class="sec-num">11</span>
+    <h1 class="sec-title">Creative Activations</h1>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 01</div>
+    <h4>George Town Festival — "The Street Remembers"</h4>
+    <div class="act-meta">August · George Town, Penang · Annual international arts festival</div>
+    <h5>The insight</h5>
+    <p>George Town is already one of the most mural-dense cities in Southeast Asia. Its streets carry 200 years of economic history — Hokkien merchant houses, Indian money changers, Malay textile traders, all operating within walking distance of each other. The walls already tell stories. Skyro's job is to commission one more — and make sure it's the right kind.</p>
+    <h5>What Skyro does</h5>
+    <p>Commission a mural from a George Town-based artist — someone who grew up in Penang, whose family has history on these streets. The subject: the financial life of one specific street. Not abstract — specific. Whose shop was on this corner in 1960? Who paid the first month's rent in the shophouse that's now a café? Who saved for twenty years to buy the building their grandfather rented? The mural documents the economic memory of a real place, in a visual language that belongs to that place.</p>
+    <p>A small plaque at the edge: <em>This story was commissioned by Skyro. Naturally, it's yours.</em></p>
+    <h5>The film</h5>
+    <p>A short documentary shot during the research and creation process — the artist talking to the families, finding the old photographs, deciding what goes on the wall and why. The film lives longer than the festival. It becomes the record of how the mural came to exist.</p>
+    <h5>Why it works</h5>
+    <p>Every other brand at George Town Festival is a sponsor. Skyro is the one that made something that was never there before — and left it behind. The mural becomes a point on the city map, photographed and shared for years. The film becomes the brand's deepest proof that <em>celebrate who you are</em> is not a tagline but a genuine commitment.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 02</div>
+    <h4>Mid-Autumn Festival — "The Same Moon"</h4>
+    <div class="act-meta">September–October · The full moon of the 15th day of the 8th lunar month</div>
+    <h5>The insight</h5>
+    <p>Mid-Autumn is the reunion festival. Its central image — families gathering to look at the same full moon — is also a perfect description of the Malaysian diaspora experience. A mother in KL and her son working in Singapore are looking at the same moon. A Chinese Malaysian family and their relatives in Fujian are looking at the same moon. The distance is real. The moon is one.</p>
+    <h5>What Skyro does</h5>
+    <p>Build a feature — <em>The Same Moon</em> — as a limited seasonal mechanic inside the app. When you send a transfer during Mid-Autumn, you can attach a digital lantern: choose its colour, add a short message, send it alongside the money. The recipient gets a notification with the lantern before the transfer confirmation. The money arrives. So does the feeling.</p>
+    <p>The lantern is Skyro Blue — lit from within, not a cartoon, designed by a Chinese Malaysian artist commissioned for the feature.</p>
+    <h5>For ambassador and community seeding</h5>
+    <p>A curated delivery of handmade mooncakes — from a real George Town or KL Chinatown bakery — goes to community-embedded Chinese Malaysian creators. No brief inside the box. Just the mooncakes, a card that says <em>The same moon</em>, and a QR code that opens the in-app feature.</p>
+    <h5>Why it works</h5>
+    <p>No Malaysian fintech brand owns Mid-Autumn the way TNG owns duit raya and GrabPay owns ang pow. The window is open. The mechanic — digital lantern + transfer — is simple enough to build, specific enough to be memorable, and true enough to the festival's emotional core to feel earned rather than opportunistic.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 03</div>
+    <h4>Rainforest World Music Festival — "Your Sound, Your Way"</h4>
+    <div class="act-meta">June · Kuching, Sarawak · Three days in an actual rainforest</div>
+    <h5>The insight</h5>
+    <p>RWMF is one of the most genuinely multicultural events in Southeast Asia — indigenous Dayak music, international world music, Malaysian artists from every tradition, all sharing the same stage in a rainforest. It attracts a crowd that is already tuned to the idea that different sounds belong together.</p>
+    <h5>What Skyro does</h5>
+    <p><strong>The installation — "Make Your Rain":</strong> Inside the festival grounds, Skyro builds an open installation where anyone can compose a short soundscape from recorded sounds of the Malaysian rainforest — rain on different surfaces, river water, forest insects, traditional instruments. The result is a unique audio piece, 20–30 seconds long, that can be downloaded instantly via QR as a phone ringtone or notification sound. For Skyro users, the custom sound becomes an in-app notification tone — the transfer arrival sound, the savings milestone ping — so the rainforest lives in the product.</p>
+    <p><strong>The merch — custom rain ponchos:</strong> Skyro produces a limited run of rain ponchos — properly designed, not cheap branded plastic — in collaboration with a local Sarawak textile artist, with a detail drawn from traditional Iban or Bidayuh pattern work. Available at the Skyro installation, and as a limited item in-app for festival attendees. The inner lining carries a small <em>Naturally, it's yours</em> label.</p>
+    <h5>Why it works</h5>
+    <p>Skyro shows up in East Malaysia — a market that mainland fintech brands consistently ignore — with something genuinely useful (ponchos in a rainforest), something genuinely playful (build your own sound), and something genuinely rooted in the place (local textile artist, local sounds). The product connection is real: the sounds live in the app. And being at RWMF at all signals that Skyro's Malaysia is not just KL.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 04</div>
+    <h4>"Naturally, It's Yours" — Real Malaysian Stories Documentary Series</h4>
+    <div class="act-meta">Year-round · Two to three films per quarter</div>
+    <h5>The insight</h5>
+    <p>Malaysia has a deeply developed culture of personal narrative — the shared story, the honest admission, the moment of truth that arrives after a slow build. Malaysians consume and share long-form content at a rate that surprises most media planners. The stories that travel furthest are the ones that feel real.</p>
+    <h5>What Skyro does</h5>
+    <p>A documentary film series — each film 90 seconds to three minutes — about real Malaysians who made a financial choice that was theirs, not the expected one. Not success stories in the conventional sense. Stories about the decision itself: the <em>kedai runcit</em> owner in Kelantan who added DuitNow and never lost a regular customer. The Tamil-speaking single mother in Klang who sends 40% of her income to Tamil Nadu every month and finally built a savings buffer for the first time. The Gen Z Chinese Malaysian entrepreneur in Penang who turned down a corporate job to open a hawker stall.</p>
+    <p>Each film is shot in the person's actual environment — their shop, their kitchen, their morning routine. No studio. No aspirational set dressing. The camera is close and warm.</p>
+    <p>Near the end of each film, one moment: the subject says something true about the financial reality of their choice.</p>
+    <div class="copy-dir" style="margin-top:16px;">
+      <span class="copy-label">Final frame example</span>
+      "She kept the kedai. Added DuitNow. Her regulars never noticed the change — they just stopped having to search for coins."<br>Naturally, it's yours.
+    </div>
+    <h5>How subjects are found</h5>
+    <p>Through Skyro's existing user base and community group nominations — Malaysians nominating someone in their neighbourhood whose story deserves to be seen. The nomination process itself becomes content.</p>
+    <h5>Why it works</h5>
+    <p>The series does three things no rate campaign can do. It proves that Skyro genuinely knows what Malaysian financial life looks like — in Kelantan, in Klang, in Penang. It builds a cumulative archive: each film compounds the brand's credibility over time. And the cast of subjects across the series is simply Malaysia as it actually is — three communities, dozens of stories, one brand present in all of them.</p>
+  </div>
+</div>
+
+<!-- ════════ 12 · THE FIVE FILTERS ════════ -->
+<div class="sec" id="s12">
+  <div class="sec-header">
+    <span class="sec-num">12</span>
+    <h1 class="sec-title">The Five Filters — Malaysian Version</h1>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 01</div>
+    <h4>The Competitive Originality Test — Has anyone in this market already done something like this?</h4>
+    <p>Before any major campaign launch, significant creative concept, or brand platform communication, check it against the key competitors in the Malaysian digital finance market: <strong>Touch 'n Go eWallet, Maybank, CIMB, GXBank, Boost Bank, AEON Bank, BigPay, GrabPay.</strong></p>
+    <p>The question is not just "is this similar?" — it is "would a Malaysian consumer who has seen this campaign and ours notice a meaningful difference?" If TNG already owns digital duit raya gifting with a campaign in the same emotional register, Skyro needs a different angle, not a better-executed version of the same idea.</p>
+    <p>When in doubt: brief the local team to audit the specific campaign concept against recent competitive activity before sign-off. A great idea executed second is not a great idea.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 02</div>
+    <h4>The Three Communities Test — Does this communication work for a Malay grandmother in Kelantan, a Chinese Malaysian SME owner in Penang, and an Indian Malaysian gig worker in Klang Valley?</h4>
+    <p>If the language, imagery, cultural reference, or tone of a communication would feel alien or exclusionary to any of these three people — simplify, localise, or commission three separate executions. The temptation to find a lowest-common-denominator "Malaysian" communication should be resisted.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 03</div>
+    <h4>The <em>Kepercayaan</em> Check — Does this communication contain any element that could read as manipulative, opaque, or pressure-based?</h4>
+    <p>In a market defined by RM2B+ in annual scam losses, the threshold for trust-damaging communication is lower than anywhere else Skyro operates. Any urgency framing, vague promise, omitted fee, or unverifiable claim is not just bad practice — it is brand-destroying. Ask: if someone who lost money to a scam last year read this, would they trust it?</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 04</div>
+    <h4>The Substance Test — Is there a specific, verifiable claim here?</h4>
+    <p>Malaysian fintech consumers compare rates across multiple apps, screenshot offers, and share them with communities that will validate or debunk them. Generic brand language is not merely ineffective — it actively reduces credibility. Every Skyro communication in Malaysia should be able to point to a real number, a real product feature, a real outcome.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 05</div>
+    <h4>The <em>Malu</em> Filter — Does this communication, even implicitly, shame the reader?</h4>
+    <p>Face-preservation is a powerful cultural dynamic across all three Malaysian communities. Any communication that implies the reader has made a bad financial decision, that their current position is embarrassing, or that they should have done something differently — will be felt. Ask: if someone quietly struggling with debt read this in public on their phone, would they feel judged? If yes, rewrite.</p>
+  </div>
+</div>
+
+<!-- ════════ CLOSING ════════ -->
+<div class="sec" id="closing">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Closing</h1>
+  </div>
+
+  <div class="closing-block">
+    <p>Skyro came to Malaysia not as a foreign fintech adapting to a local market — but as a brand built, from the beginning, around the reality of people whose financial lives do not fit the standard template. The Malaysian market is not an edge case. It is the core case — and it is perhaps the most complex version of it, because the financial diversity that exists in Malaysia does not divide neatly along demographic lines. It lives inside the same streets, the same shopping malls, the same family WhatsApp groups.</p>
+    <p>The local team's job is to express the brand — fluently, specifically, and with genuine respect for the three communities it is speaking to. Not as three separate brands. As one brand with the cultural intelligence to be genuinely present in three distinct worlds.</p>
+    <p><strong>Every piece of communication should be able to answer three questions:</strong></p>
+    <ul class="closing-questions">
+      <li>Does this respect the intelligence and the culture of the person reading it?</li>
+      <li>Does this make financial life feel lighter and more manageable — not heavier, not more shameful?</li>
+      <li>Does this sound like something a real, thoughtful Malaysian person would actually say to a friend?</li>
+    </ul>
+    <p style="margin-top:24px;font-family:'Fraunces',serif;font-size:18px;color:var(--gold-light);">If yes — it is Skyro.</p>
+  </div>
+
+  <div class="footer">
+    Skyro Malaysia · Brand & Communications Team · Q1 2026<br>
+    This document is a living guide — it should be updated as the market evolves, as new research becomes available, and as the team learns what resonates.
+  </div>
+</div>
+
+</div><!-- .main-inner -->
+</main>
+</div><!-- .page-wrap -->
+
+<!-- ════════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════════ -->
+<script>
+// ── Accordion ──
+function toggleAcc(header) {
+  const item = header.parentElement;
+  const body = item.querySelector('.acc-body');
+  const isOpen = item.classList.contains('open');
+
+  if (isOpen) {
+    body.style.maxHeight = '0';
+    item.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
+}
+
+// ── Observers ──
+(function() {
+  const mainEl = document.getElementById('main');
+  const sections = mainEl.querySelectorAll('.sec[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  // Active nav highlighting
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(n => {
+          n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => navObs.observe(s));
+
+  // Fade-up on scroll
+  const allSecs = mainEl.querySelectorAll('.sec');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.05
+  });
+
+  allSecs.forEach(s => fadeObs.observe(s));
+})();
+
+// ── Sidebar nav smooth scroll ──
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = item.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      document.getElementById('main').scrollTo({
+        top: target.offsetTop - 40,
+        behavior: 'smooth'
+      });
+    }
+
+    // Close mobile nav
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+// ── Hamburger ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+});
+</script>
+</body>
+</html>
