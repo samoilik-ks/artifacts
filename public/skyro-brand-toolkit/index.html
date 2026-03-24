@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro Brand Toolkit</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--g900:#0F2921;--g800:#1A3C34;--g700:#1E5240;--g600:#2D6A4F;
+--g500:#40916C;--g400:#52B788;--g300:#74C69D;--g200:#95D5B2;
+--g100:#B7E4C7;--g50:#D8F3DC;--g25:#F0FAF4;
+--cream:#FAF8F4;--cream2:#F3F0EA;--sand:#E8E4DB;
+--txt:#1E1E1E;--txt2:#4A4A4A;--txt3:#7A7A7A;
+--red:#D94F4F;--red-bg:#FFF4F4;--red-light:#FFEAEA;
+--amber:#E8A33D;--amber-bg:#FFF8EE;
+--radius:12px;--radius-sm:8px;--radius-lg:16px;
+--shadow-sm:0 1px 3px rgba(0,0,0,.06);
+--shadow-md:0 4px 16px rgba(0,0,0,.08);
+--shadow-lg:0 8px 32px rgba(0,0,0,.12);
+--header-h:60px;--sidebar-w:260px;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--txt);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.5;
+background:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E")}
+header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:var(--g900);display:flex;align-items:center;padding:0 24px;gap:16px;overflow:visible}
+.logo{font-family:Georgia,'Times New Roman',serif;font-size:20px;color:#fff;font-weight:700;letter-spacing:-.5px;flex-shrink:0}
+.logo i{color:var(--g300);font-style:normal}
+.search-box{flex:0 1 280px;position:relative}
+.search-box input{width:100%;padding:8px 14px 8px 36px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-sm);color:#fff;font:14px 'Outfit',sans-serif;outline:none;transition:.2s}
+.search-box input:focus{background:rgba(255,255,255,.14);border-color:var(--g400)}
+.search-box input::placeholder{color:rgba(255,255,255,.35)}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:rgba(255,255,255,.35)}
+.af{margin-left:auto;display:flex;align-items:center;gap:4px;flex-shrink:0}
+.af-btn{border:1.5px solid rgba(255,255,255,.25);background:transparent;color:rgba(255,255,255,.6);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;transition:.15s;letter-spacing:.3px}
+.af-btn:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.af-btn.on.af-r{background:var(--red);border-color:var(--red);color:#fff}
+.af-btn.on.af-a{background:#D4A017;border-color:#D4A017;color:#fff}
+.af-btn.on.af-g{background:var(--g500);border-color:var(--g500);color:#fff}
+.sub-block{transition:all .3s}.sub-block.hidden{display:none}
+.menu-toggle{display:none;background:none;border:none;color:#fff;cursor:pointer;padding:6px}
+.sr-overlay{display:none;position:fixed;inset:0;top:var(--header-h);background:rgba(0,0,0,.3);z-index:99}
+.sr-overlay.on{display:block}
+.sr-panel{display:none;position:fixed;top:calc(var(--header-h) + 6px);left:50%;transform:translateX(-50%);width:520px;max-height:400px;overflow-y:auto;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:101;padding:6px}
+.sr-panel.on{display:block}
+.sr-item{padding:10px 14px;border-radius:var(--radius-sm);cursor:pointer;transition:.1s}
+.sr-item:hover{background:var(--g25)}
+.sr-item .sr-sec{font-size:10px;font-weight:600;color:var(--g600);text-transform:uppercase;letter-spacing:.5px}
+.sr-item .sr-txt{font-size:14px;color:var(--txt);margin-top:2px}
+.sr-empty{padding:24px;text-align:center;color:var(--txt3);font-size:14px}
+nav.side{position:fixed;top:var(--header-h);left:0;bottom:0;width:var(--sidebar-w);background:#fff;border-right:1px solid var(--sand);overflow-y:auto;z-index:90;padding:20px 0;transition:transform .3s}
+nav.side::-webkit-scrollbar{width:3px}
+nav.side::-webkit-scrollbar-thumb{background:var(--sand);border-radius:3px}
+.nav-a{display:flex;align-items:center;gap:10px;padding:9px 20px;font-size:13px;font-weight:500;color:var(--txt2);text-decoration:none;border-left:3px solid transparent;transition:.15s;cursor:pointer}
+.nav-a:hover{background:var(--g25);color:var(--g700)}
+.nav-a.on{color:var(--g700);border-left-color:var(--g600);background:var(--g25);font-weight:600}
+.nav-a .n{width:20px;height:20px;border-radius:5px;background:var(--cream2);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--txt3);flex-shrink:0}
+.nav-a.on .n{background:var(--g600);color:#fff}
+.nav-sub{overflow:hidden;max-height:0;transition:max-height .3s}
+.nav-sub.open{max-height:600px}
+.nav-sub div,.nav-sub-item{display:block;padding:6px 20px 6px 50px;font-size:12px;color:var(--txt3);text-decoration:none;transition:.1s;cursor:pointer}
+.nav-sub div:hover,.nav-sub-item:hover{color:var(--g600);background:var(--g25)}
+main{margin-left:var(--sidebar-w);margin-top:var(--header-h);padding:40px 48px 120px;max-width:860px}
+.sec{margin-bottom:64px;scroll-margin-top:calc(var(--header-h) + 20px)}
+.sec-num{font-family:'Courier New',Courier,monospace;font-size:11px;color:var(--g500);letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-bottom:4px}
+.sec h1{font-family:Georgia,'Times New Roman',serif;font-size:34px;color:var(--g900);font-weight:700;letter-spacing:-.5px;line-height:1.15;margin-bottom:12px}
+.sec h2{font-family:'Fraunces',serif;font-size:24px;color:var(--g800);font-weight:500;margin:36px 0 10px;letter-spacing:-.3px;line-height:1.2}
+.sec h3{font-size:17px;font-weight:700;color:var(--g800);margin:28px 0 6px}
+p{margin-bottom:12px}
+.lead{font-size:16.5px;color:var(--txt2);line-height:1.7}
+.call{background:var(--g25);border-left:3px solid var(--g500);padding:14px 18px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:18px 0;font-size:14px;font-style:italic;color:var(--g800);line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0}
+.card{background:#fff;border:1px solid var(--sand);border-radius:var(--radius);padding:18px;transition:.25s;cursor:default}
+.card:hover{border-color:var(--g200);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.card h4{font-family:'Fraunces',serif;font-size:17px;color:var(--g800);margin-bottom:4px;font-weight:500}
+.card p{font-size:13px;color:var(--txt2);margin:0;line-height:1.5}
+.qr{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:16px 0}
+.qr-c{background:#fff;border:1px solid var(--sand);border-radius:var(--radius-sm);padding:14px}
+.qr-c .l{font-size:10px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.qr-c .v{font-size:13.5px;color:var(--txt);line-height:1.4}
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;border:1px solid var(--sand);border-radius:var(--radius-sm);overflow:hidden}
+.tbl th{background:var(--g600);color:#fff;padding:10px 14px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--sand)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--g25)}
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--sand);border-radius:var(--radius);overflow:hidden;margin:14px 0}
+.dd-hdr{padding:10px 18px;font-weight:700;font-size:13px}
+.dd-hdr.do{background:var(--g600);color:#fff}
+.dd-hdr.dont{background:var(--g900);color:#fff}
+.dd-i{padding:10px 18px;font-size:13.5px;border-bottom:1px solid var(--sand);color:var(--txt2)}
+.flip-pair{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--sand);border-radius:var(--radius);overflow:hidden;margin:14px 0}
+.flip-side{padding:18px;position:relative}
+.flip-side.good{background:var(--g25)}
+.flip-side.bad{background:var(--red-bg)}
+.flip-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.flip-lbl.good{color:var(--g600)}
+.flip-lbl.bad{color:var(--red)}
+.flip-txt{font-size:14px;font-style:italic;line-height:1.6;color:var(--txt)}
+.pill{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600}
+.pill-max{background:var(--g600);color:#fff}
+.pill-hi{background:var(--g50);color:var(--g800)}
+.pill-med{background:var(--cream2);color:var(--txt2)}
+.pill-lo{background:#f0f0f0;color:var(--txt3)}
+.pill-g{background:var(--g25);color:var(--g800)}
+.pill-a{background:#FFF4D6;color:#9A6700}
+.pill-r{background:var(--red-light);color:var(--red)}
+h2 .pill{vertical-align:middle;margin-right:6px;position:relative;top:-2px}
+.ch-matrix{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;border:1px solid var(--sand);border-radius:var(--radius-sm);overflow:hidden}
+.ch-matrix th{background:var(--g600);color:#fff;padding:10px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;text-align:center}
+.ch-matrix th:first-child{text-align:left;padding-left:14px}
+.ch-matrix td{padding:8px;border-bottom:1px solid var(--sand);text-align:center}
+.ch-matrix td:first-child{text-align:left;padding-left:14px;font-weight:600;font-size:13px}
+.ch-matrix tr:hover td{background:var(--g25)}
+.aud{background:#fff;border:1px solid var(--sand);border-radius:var(--radius);padding:20px;margin:14px 0}
+.aud h4{font-family:'Fraunces',serif;font-size:18px;color:var(--g800);font-weight:500;margin-bottom:4px}
+.dim{background:#fff;border:1px solid var(--sand);border-radius:var(--radius);padding:20px;margin:10px 0;transition:.2s}
+.dim:hover{border-color:var(--g200);box-shadow:var(--shadow-sm)}
+.checker{background:#fff;border:1px solid var(--sand);border-radius:var(--radius-lg);padding:28px;margin:20px 0;box-shadow:var(--shadow-sm)}
+.checker h3{font-family:'Fraunces',serif;font-size:20px;color:var(--g800);margin-bottom:4px;font-weight:500}
+.checker .sub{font-size:13px;color:var(--txt3);margin-bottom:16px}
+.checker textarea{width:100%;min-height:120px;padding:14px;border:2px solid var(--sand);border-radius:var(--radius-sm);font:15px 'Outfit',sans-serif;color:var(--txt);resize:vertical;outline:none;transition:.2s;background:var(--cream)}
+.checker textarea:focus{border-color:var(--g400);background:#fff}
+.check-btn{display:block;margin:12px 0 0;padding:10px 28px;background:var(--g600);color:#fff;border:none;border-radius:var(--radius-sm);font:600 14px 'Outfit',sans-serif;cursor:pointer;transition:.2s}
+.check-btn:hover{background:var(--g800)}
+.check-results{margin-top:16px;display:none}
+.check-results.on{display:block}
+.check-score{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.score-ring{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;border:3px solid}
+.score-ring.great{border-color:var(--g400);color:var(--g600);background:var(--g25)}
+.score-ring.ok{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}
+.score-ring.bad{border-color:var(--red);color:var(--red);background:var(--red-bg)}
+.flag{padding:10px 14px;border-radius:var(--radius-sm);margin-bottom:8px;font-size:13.5px;display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.flag.warn{background:var(--red-light);color:var(--red)}
+.flag.tip{background:var(--amber-bg);color:#8B6914}
+.flag.good{background:var(--g25);color:var(--g700)}
+.flag b{flex-shrink:0}
+.ch-sim{background:#fff;border:1px solid var(--sand);border-radius:var(--radius-lg);padding:28px;margin:20px 0;box-shadow:var(--shadow-sm)}
+.ch-sim h3{font-family:'Fraunces',serif;font-size:20px;color:var(--g800);margin-bottom:4px;font-weight:500}
+.ch-sim .sub{font-size:13px;color:var(--txt3);margin-bottom:16px}
+.ch-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.ch-pill{padding:7px 16px;border-radius:20px;font-size:13px;font-weight:500;border:1.5px solid var(--sand);cursor:pointer;transition:.2s;background:#fff;color:var(--txt2)}
+.ch-pill:hover{border-color:var(--g400);color:var(--g700)}
+.ch-pill.on{background:var(--g600);color:#fff;border-color:var(--g600)}
+.dial-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.dial{text-align:center}
+.dial-label{font-size:12px;font-weight:600;color:var(--txt2);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.dial-bar{height:120px;width:32px;background:var(--cream2);border-radius:16px;margin:0 auto;position:relative;overflow:hidden}
+.dial-fill{position:absolute;bottom:0;left:0;right:0;background:var(--g500);border-radius:16px;transition:height .5s cubic-bezier(.34,1.56,.64,1)}
+.dial-val{margin-top:6px;font-size:12px;font-weight:600;color:var(--g700)}
+.ch-advice{margin-top:16px;font-size:14px;color:var(--txt2);padding:12px 16px;background:var(--g25);border-radius:var(--radius-sm);line-height:1.6;transition:opacity .3s;min-height:50px}
+.to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;background:var(--g600);color:#fff;border:none;border-radius:50%;cursor:pointer;opacity:0;transition:.3s;z-index:80;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md)}
+.to-top.show{opacity:1}
+.to-top:hover{background:var(--g800);transform:translateY(-2px)}
+.pm{position:relative;width:100%;max-width:480px;aspect-ratio:1;margin:0 auto 32px;background:#fff;border-radius:var(--radius)}
+.pm-grid{position:absolute;inset:40px;border-left:2px solid var(--sand);border-bottom:2px solid var(--sand)}
+.pm-grid::before{content:'';position:absolute;top:0;right:0;left:0;border-top:1px dashed var(--sand)}
+.pm-grid::after{content:'';position:absolute;top:0;bottom:0;right:0;border-right:1px dashed var(--sand)}
+.pm-mid-h,.pm-mid-v{position:absolute;border:0;border-style:dashed;border-color:rgba(0,0,0,.06)}
+.pm-mid-h{left:0;right:0;top:50%;border-top-width:1px}
+.pm-mid-v{top:0;bottom:0;left:50%;border-left-width:1px}
+.pm-lbl{position:absolute;font-size:11px;font-weight:600;color:var(--txt3);letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+.pm-lbl.top{top:12px;left:50%;transform:translateX(-50%)}
+.pm-lbl.bottom{bottom:12px;left:50%;transform:translateX(-50%)}
+.pm-lbl.left{left:8px;top:50%;transform:translateY(-50%) rotate(-90deg)}
+.pm-lbl.right{right:8px;top:50%;transform:translateY(-50%) rotate(90deg)}
+.pm-dot{position:absolute;width:14px;height:14px;border-radius:50%;transform:translate(-50%,-50%);transition:all .3s;z-index:2}
+.pm-dot.skyro{width:22px;height:22px;background:var(--g500);box-shadow:0 0 0 4px rgba(45,106,79,.2);z-index:3}
+.pm-dot.other{background:var(--sand);border:2px solid var(--txt3)}
+.pm-dot-label{position:absolute;font-size:11px;font-weight:600;white-space:nowrap;transform:translate(-50%,0);top:calc(100% + 4px);left:50%;color:var(--txt2)}
+.pm-dot.skyro .pm-dot-label{color:var(--g700);font-weight:700}
+.pm-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin:20px 0 32px}
+.pm-title{font-family:'Fraunces',serif;font-size:17px;font-weight:500;color:var(--g800);margin-bottom:4px;text-align:center}
+.pm-sub{font-size:12px;color:var(--txt3);text-align:center;margin-bottom:16px}
+.pq-prog{display:flex;gap:3px;margin-bottom:16px}
+.pq-pip{flex:1;height:4px;border-radius:2px;background:var(--sand);transition:background .3s}
+.pq-pip.hit{background:var(--g400)}
+.pq-pip.miss{background:var(--red)}
+.pq-card{background:#fff;border:1px solid var(--sand);border-radius:var(--radius);padding:20px 24px;margin-bottom:12px;transition:all .3s}
+.pq-card.answered{pointer-events:none;opacity:.85}
+.pq-card.correct{border-color:var(--g400);background:var(--g25)}
+.pq-card.wrong{border-color:var(--red);background:var(--red-light)}
+.pq-stmt{font-size:15px;font-weight:600;color:var(--g900);margin-bottom:12px;line-height:1.4}
+.pq-labels{display:flex;justify-content:space-between;margin-bottom:4px}
+.pq-labels span{font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px}
+.pq-scale{display:flex;gap:0;justify-content:space-between;align-items:center}
+.pq-dot{width:36px;height:36px;border-radius:50%;border:2.5px solid var(--sand);cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;background:#fff;flex-shrink:0}
+.pq-dot:hover{border-color:var(--g400);background:var(--g25);transform:scale(1.15)}
+.pq-dot.correct-dot{background:var(--g400);border-color:var(--g400)}
+.pq-dot.wrong-dot{background:var(--red);border-color:var(--red)}
+.pq-dot.was-right{border-color:var(--g400);border-style:dashed;background:var(--g25)}
+.pq-fb{margin-top:10px;font-size:13px;line-height:1.5;display:none;padding:10px 14px;border-radius:var(--radius-sm)}
+.pq-card.answered .pq-fb{display:block}
+.pq-fb.ok{color:var(--g700);background:var(--g25)}
+.pq-fb.no{color:var(--red);background:var(--red-light)}
+.pq-result{text-align:center;padding:32px 24px;background:#fff;border:1px solid var(--sand);border-radius:var(--radius-lg);margin-top:20px}
+@media(max-width:900px){
+nav.side{transform:translateX(-100%)}
+nav.side.open{transform:translateX(0);box-shadow:var(--shadow-lg)}
+main{margin-left:0;padding:28px 20px 100px}
+.menu-toggle{display:block}
+.search-box{max-width:180px}
+.af-btn{padding:4px 8px;font-size:9px}
+.flip-pair,.dd,.dial-grid{grid-template-columns:1fr}
+.dial-bar{height:80px}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.sec{animation:fadeUp .4s ease both}
+</style>
+</head>
+<body>
+<header>
+<button class="menu-toggle" onclick="document.querySelector('nav.side').classList.toggle('open')">
+<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+</button>
+<div class="logo">Skyro<i>.</i> Brand Toolkit</div>
+<div class="search-box">
+<svg fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="6"/><path d="m13 13 3 3"/></svg>
+<input id="si" placeholder="Search the guide..." autocomplete="off">
+</div>
+<div class="af" id="accessFilter">
+<button class="af-btn af-r on" data-level="r" onclick="setAccess('r')">Internal</button>
+<button class="af-btn af-a" data-level="a" onclick="setAccess('a')">Partner</button>
+<button class="af-btn af-g" data-level="g" onclick="setAccess('g')">Public</button>
+</div>
+</header>
+<div class="sr-overlay" id="sro"></div>
+<div class="sr-panel" id="srp"></div>
+<nav class="side" id="nav"></nav>
+<main id="m"></main>
+<button class="to-top" id="tt" onclick="scrollTo({top:0,behavior:'smooth'})">
+<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 14V4M4 8l5-5 5 5"/></svg>
+</button>
+<script>
+var SECTIONS = [];
+var CH = [
+["In-App","High","Medium","High","High","Clarity first. Celebrate real moments. Never get in the way of a financial decision."],
+["Support","High","High","High","Low","Empathy and clarity at maximum. No lightness. Solve the problem, then step back."],
+["Partner/B2B","Medium","High","High","Medium","Still Skyro, not a corporate robot. Lead with numbers and proof."],
+["Marketing","High","Medium","High","High","Land the message first. Room for craft and a light touch, but clarity always wins."],
+["Campaigns","Maxed","Medium","Maxed","Maxed","Our biggest personality moments. If it could come from any other fintech, it doesn't ship."],
+["Social","Maxed","Medium","High","Maxed","Maximum personality and energy. Cultural moments welcome, trending nonsense isn't."],
+["Event/BTL/Offline","High","Medium","Maxed","High","Face-to-face is where trust is built. Warm, present, culturally fluent."],
+["Investor","Medium","High","High","Medium","The Skyro story backed by hard numbers. Engaging, not salesy."],
+["Regulatory","Low","High","High","Low","Pure substance. Precise. Respectful. Every claim verifiable."]
+];
+var LEVEL_MAP = {Maxed:100,High:75,Medium:50,Low:25};
+var LEVEL_CLS = {Maxed:"pill-max",High:"pill-hi",Medium:"pill-med",Low:"pill-lo"};
+var SV = [
+["We prioritise telling the truth over protecting people's feelings",4,"Agree, not strongly. We are honest but never blunt for blunt's sake. Rule 6 means truth delivered with care."],
+["We like to create a light-hearted and fun atmosphere",4,"Agree. Campfire warmth is core but we are not comedians."],
+["We focus on substance over style",4,"Agree. Grounded = specificity and proof. But Alive is one of our four dimensions too."],
+["We challenge norms and question authority",5,"Strongly agree. Rebel at 20%. We challenge traditional banking openly."],
+["We prefer conversational language over formal language",5,"Strongly agree. Kitchen-table test always applies."],
+["We go to extra lengths to encourage and inspire others",4,"Agree. Lover archetype = genuine warmth. But never forced optimism."],
+["We prefer to be straightforward and direct",5,"Strongly agree. No hedging, no filler, no corporate softening."],
+["We prioritise being as inclusive as possible",5,"Strongly agree. Be who you are is the promise."],
+["We like a good pun or witty headline",3,"Neither. We can be playful but puns about money are banned."],
+["We are comfortable using edgy or provocative language",4,"Agree. We provoke the system, never the user."],
+["Details are extremely important",5,"Strongly agree. Specificity IS credibility."],
+["We are relaxed and approachable",4,"Agree, not strongly. Relaxed energy, serious purpose."],
+["_div_"],
+["We prioritise facts and data over speculation",5,"Strongly agree. Every claim must be verifiable."],
+["It is important to always be positive and optimistic",4,"Agree. But we don't force optimism when someone is struggling."],
+["We avoid making provocative remarks",2,"Disagree. Rebel at 20%. We challenge traditional banking openly."],
+["We try to make our audience laugh occasionally",3,"Neither. A smile, not a laugh track."],
+["We avoid emojis and double exclamation marks",4,"Agree. One emoji max, only when it adds meaning."],
+["We use professional language for credibility",2,"Disagree. Credibility through specificity, not formal language."],
+["We don't try to fit in",5,"Strongly agree. The golden rule: if any other fintech could say it, rewrite."],
+["We base decisions on concrete evidence",4,"Agree. AI scoring uses dozens of real data points."],
+["We share motivational and aspirational content",4,"Agree carefully. Celebrating real milestones only."],
+["We are warm and welcoming",5,"Strongly agree. Lover archetype at 30%, Campfire always present."],
+["We use precise grammar and industry terminology",1,"Strongly disagree. Industry terminology is exactly what we ban."],
+["Content should be easy for a broad audience",5,"Strongly agree. If a farmer in Mindanao wouldn't understand it, simplify."]
+];
+var BANNED = ["innovative solution","seamless experience","empower","leverage","synergy","game-changing","best-in-class","disruptive","world-class","cutting-edge","next-generation","unlock","holistic","paradigm","scalable","robust","agile","ecosystem","value proposition","pain point","journey","brighter financial future","we're thrilled","we're excited to announce","state-of-the-art"];
+var JARGON_SWAPS = {"assistance":"help","require":"need","enable":"let","obtain":"get","provide":"give","utilise":"use","utilize":"use","however":"but","commence":"start","in order to":"to","at this time":"now","prior to":"before","subsequently":"then","optimise":"improve","optimize":"improve","amortisation":"repayment","amortization":"repayment","allocation":"spread","endeavour":"try","endeavor":"try"};
+</script>
+<script>
+function addSec(id,n,t,subs,h) {
+  SECTIONS.push({id:id,n:n,t:t,subs:subs,h:h});
+}
+</script>
+<div id="sec-data" style="display:none">
+<div data-id="entry" data-n="00" data-t="Entry &amp; Rules" data-subs="audience,access,quickstart,glossary">
+
+<div class="call" style="font-size:20px;text-align:center;border-color:var(--g500)">Welcome to Skyro. If you're reading this, you're one of us now.</div>
+
+<p class="lead">This is not a style guide. This is how Skyro thinks, speaks, and makes decisions. Every screen, every campaign, every support ticket, every investor call &mdash; this document is the single source of truth for what sounds like us and what doesn't.</p>
+
+<h2 id="audience"><span class="pill pill-g">Public</span> 0.1 Who This Is For</h2>
+<div class="grid">
+<div class="card"><h4>1. Product</h4><p>Feature naming, UI copy, onboarding flows, error messages, product announcements.</p></div>
+<div class="card"><h4>2. Marketing</h4><p>Campaigns, landing pages, emails, social media, paid ads.</p></div>
+<div class="card"><h4>3. Support</h4><p>Help centre, chat scripts, complaint handling, escalation language.</p></div>
+<div class="card"><h4>4. PR &amp; Comms</h4><p>Press releases, media Q&amp;A, crisis response, leadership positioning.</p></div>
+<div class="card"><h4>5. Risk &amp; Compliance</h4><p>Regulatory comms, licence applications, investor decks, audit language.</p></div>
+<div class="card"><h4>6. Partners &amp; Agencies</h4><p>Co-branded materials, merchant comms, affiliate guidelines.</p></div>
+<div class="card"><h4>7. B2B Clients</h4><p>Merchants and businesses who embed Skyro.</p></div>
+<div class="card"><h4>8. Designers</h4><p>Visual identity, UI/UX design, illustration style, motion design. You shape how Skyro looks and feels &mdash; sections 6 (Psychology), 9 (Product as Brand), and 20 (Brand Identity) are your core references.</p></div>
+<div class="card"><h4>9. Competitors</h4><p>We know you'll read this. Good. We'd rather compete on execution than on secrets.</p></div>
+</div>
+
+<h2 id="access"><span class="pill pill-a">Partner</span> 0.2 Access Levels</h2>
+<table class="tbl"><thead><tr><th>Level</th><th>What it means</th><th>Examples</th></tr></thead><tbody>
+<tr><td><span class="pill pill-g">Public</span></td><td>Can be quoted, shared, published externally</td><td>Mission, values, product descriptions</td></tr>
+<tr><td><span class="pill pill-a">Partner</span></td><td>Shared with merchants, agencies, B2B partners under NDA</td><td>Brand guidelines, tone rules</td></tr>
+<tr><td><span class="pill pill-r">Internal</span></td><td>Skyro team only</td><td>Risk appetite, crisis playbook</td></tr>
+</tbody></table>
+
+<h2 id="quickstart"><span class="pill pill-a">Partner</span> 0.3 Quick Start</h2>
+<div class="dd"><div class="dd-col"><div class="dd-hdr do">5-MINUTE START</div>
+<div class="dd-i">Read Section 1 (Skyro in One Breath)</div>
+<div class="dd-i">Scan the positioning matrices (Section 18)</div>
+<div class="dd-i">Read the Six Rules (Section 7.5)</div>
+<div class="dd-i">Run the Copy Checker on your draft</div>
+</div><div class="dd-col"><div class="dd-hdr dont">60-SECOND DECISION</div>
+<div class="dd-i">Could any other fintech say it? Rewrite</div>
+<div class="dd-i">Would a farmer in Mindanao understand it? Simplify</div>
+<div class="dd-i">Does it judge, shame, or prescribe? Delete</div>
+<div class="dd-i">Is it corporate or kitchen-table? Swap</div>
+</div></div>
+
+<h2 id="glossary"><span class="pill pill-g">Public</span> 0.4 Glossary</h2>
+<table class="tbl"><thead><tr><th>Term</th><th>What we mean</th></tr></thead><tbody>
+<tr><td>B2B2C</td><td>We embed financial services inside partner businesses</td></tr>
+<tr><td>Campfire</td><td>Our warmth dimension &mdash; conversational, like talking to a smart friend</td></tr>
+<tr><td>Grounded</td><td>Our substance dimension &mdash; specificity, proof, no empty claims</td></tr>
+<tr><td>Celebrating</td><td>Our respect dimension &mdash; honouring cultures, choices, and rhythms</td></tr>
+<tr><td>Alive</td><td>Our energy dimension &mdash; distinctive, surprising, unmistakably Skyro</td></tr>
+<tr><td>Global South</td><td>People in emerging economies whose financial lives don't fit Western banking models</td></tr>
+<tr><td>Wild Explorer</td><td>Our brand archetype: 50% Explorer, 30% Lover, 20% Rebel</td></tr>
+<tr><td>RTB</td><td>Reason to Believe &mdash; evidence that backs up a claim</td></tr>
+<tr><td>Dark pattern</td><td>UX tricks that manipulate users &mdash; we ban them</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="breath" data-n="01" data-t="Skyro in One Breath" data-subs="oneliner,category,differ,nongol">
+
+<h2 id="oneliner"><span class="pill pill-g">Public</span> 1.1 One-Liner</h2>
+<div class="call" style="font-size:18px">Skyro is a B2B2C neobank that embeds loans, BNPL, savings, investments, and remittance inside partner businesses &mdash; built around the real financial rhythms of people the traditional system ignores.</div>
+<p class="lead">Skyro is a neobank that provides loans, buy-now-pay-later, savings, investments, and money transfers through a mobile app. We operate in the Philippines, Saudi Arabia, the UAE, Malaysia, Morocco, Kenya, and Bahrain, with plans to expand to 15 countries by 2030.</p>
+<p>Our tagline is: <strong>Celebrate who you are. Grow from where you stand.</strong></p>
+
+<div class="qr">
+<div class="qr-c"><div class="l">Founded</div><div class="v">August 2022</div></div>
+<div class="qr-c"><div class="l">First market</div><div class="v">Philippines</div></div>
+<div class="qr-c"><div class="l">HQ</div><div class="v">Bahrain (Breeze Ventures Holding)</div></div>
+<div class="qr-c"><div class="l">Customers</div><div class="v">640,000+ active</div></div>
+<div class="qr-c"><div class="l">Credit portfolio</div><div class="v">$200M+</div></div>
+<div class="qr-c"><div class="l">Total funding</div><div class="v">$200M+ (PE + international debt)</div></div>
+<div class="qr-c"><div class="l">Partners</div><div class="v">3,700+ merchants</div></div>
+<div class="qr-c"><div class="l">Team</div><div class="v">~600 core + 1,600 field sales</div></div>
+<div class="qr-c"><div class="l">Growth</div><div class="v">3x business volume every year, 3 years running</div></div>
+<div class="qr-c"><div class="l">Markets</div><div class="v">7 countries, 15 by 2030</div></div>
+<div class="qr-c"><div class="l">Products</div><div class="v">5 in one app: loans, BNPL, savings, investments, remittance</div></div>
+<div class="qr-c"><div class="l">Approval speed</div><div class="v">AI credit decision in under 3 minutes</div></div>
+<div class="qr-c"><div class="l">Values</div><div class="v">Flow, Growth, Celebration, Innovation, Trust</div></div>
+<div class="qr-c"><div class="l">Personality</div><div class="v">Wild Explorer: 50% Explorer, 30% Lover, 20% Rebel</div></div>
+<div class="qr-c"><div class="l">Tone</div><div class="v">Campfire, Grounded, Celebrating, Alive</div></div>
+<div class="qr-c"><div class="l">Promise</div><div class="v">Be who you are. You don't need to become someone else to qualify.</div></div>
+<div class="qr-c"><div class="l">2030 goal</div><div class="v">15 countries. 200 million active customers.</div></div>
+<div class="qr-c"><div class="l">Model</div><div class="v">B2B2C &mdash; embedded inside partner businesses at point of sale</div></div>
+</div>
+
+<h2 id="category"><span class="pill pill-g">Public</span> 1.2 Competitive Category</h2>
+<table class="tbl"><thead><tr><th>Category</th><th>Typical players</th><th>How Skyro differs</th></tr></thead><tbody>
+<tr><td>Traditional banks</td><td>Local banks, global banks</td><td>We approve in minutes via AI, embedded at point of sale.</td></tr>
+<tr><td>Digital neobanks</td><td>Revolut, Nubank, Monzo</td><td>We build for variable-income users in the Global South.</td></tr>
+<tr><td>BNPL</td><td>Klarna, Afterpay, Tamara</td><td>We offer full financial lifecycle.</td></tr>
+<tr><td>Microfinance</td><td>Grameen, local MFIs</td><td>We are AI-native, mobile-first, culturally designed.</td></tr>
+</tbody></table>
+
+<h2 id="differ"><span class="pill pill-g">Public</span> 1.3 Key Differentiator</h2>
+<div class="call">Product truth, not poetry: Skyro's AI scoring analyses dozens of real-life data points to make fast, fair decisions.</div>
+<div class="grid">
+<div class="card"><h4>Income is irregular</h4><p>Farmers, fishermen, gig workers don't earn the same amount every month.</p></div>
+<div class="card"><h4>Cultural spending is essential</h4><p>Weddings, Eid, Diwali, harvest celebrations create family alliances and redistribute wealth.</p></div>
+<div class="card"><h4>Family IS the financial system</h4><p>Global remittances exceed $600 billion per year.</p></div>
+<div class="card"><h4>Trust is earned face-to-face</h4><p>That's why we embed inside businesses users already know.</p></div>
+<div class="card"><h4>Mobile-first isn't optional</h4><p>Every interaction must work on a low-end phone on 3G.</p></div>
+</div>
+
+<h2 id="nongol"><span class="pill pill-a">Partner</span> 1.4 What Skyro Will Never Be</h2>
+<table class="tbl"><thead><tr><th>We will never be...</th><th>Because...</th></tr></thead><tbody>
+<tr><td>A payday lender</td><td>We build repayment around income rhythms, not against them.</td></tr>
+<tr><td>A "financial education" platform</td><td>Our users are experts in their own lives. We don't lecture.</td></tr>
+<tr><td>A copy-paste of Western neobanks</td><td>Every market gets culturally native design.</td></tr>
+<tr><td>A growth-at-all-costs machine</td><td>Profitability = proof the model works.</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="core" data-n="02" data-t="Strategic Core" data-subs="role,tensions,promise-s,rtbs,invariants">
+
+<p class="lead">Section 1 told you what Skyro is. This section tells you what Skyro stands for.</p>
+
+<h2 id="role"><span class="pill pill-a">Partner</span> 2.1 Brand Role in the World</h2>
+<table class="tbl"><thead><tr><th>We decrease...</th><th>We increase...</th></tr></thead><tbody>
+<tr><td>Financial exclusion</td><td>Access on people's own terms</td></tr>
+<tr><td>Shame around money habits</td><td>Dignity and cultural respect</td></tr>
+<tr><td>Dependence on middlemen</td><td>Direct, transparent financial tools</td></tr>
+<tr><td>Jargon and opacity</td><td>Kitchen-table language and full fee transparency</td></tr>
+</tbody></table>
+
+<h2 id="tensions"><span class="pill pill-r">Internal</span> 2.2 Strategic Tensions</h2>
+<div class="grid">
+<div class="card"><h4>Speed vs Responsibility</h4><p>Fast approvals, but never at the cost of informed consent.</p></div>
+<div class="card"><h4>Automation vs User Control</h4><p>AI makes it fast. Humans keep it honest. The user always sees why.</p></div>
+<div class="card"><h4>Accessibility vs Discipline</h4><p>Easy to access, hard to over-extend. Conscious friction at the right moments.</p></div>
+<div class="card"><h4>Scale vs Localisation</h4><p>Same tech stack, locally adapted product.</p></div>
+<div class="card"><h4>Warmth vs Precision</h4><p>We sound human AND we are accurate.</p></div>
+<div class="card"><h4>Data vs Privacy</h4><p>We use data to serve users better, never to manipulate.</p></div>
+</div>
+
+<h2 id="promise-s"><span class="pill pill-g">Public</span> 2.3 Brand Promise</h2>
+<div class="call" style="font-size:20px;text-align:center"><strong>Be who you are.</strong></div>
+<p>The test: if anything we build, write, or say makes a user feel judged, shamed, or like they need to become someone else to use our product, we have broken this promise.</p>
+
+<h2 id="rtbs"><span class="pill pill-a">Partner</span> 2.4 Reasons to Believe</h2>
+<table class="tbl"><thead><tr><th>Type</th><th>Evidence</th></tr></thead><tbody>
+<tr><td><strong>Product</strong></td><td>AI scoring, adaptive repayment, cultural calendar integration, nature-metaphor UX.</td></tr>
+<tr><td><strong>Process</strong></td><td>3-minute approvals. 3,700+ merchants. Single mobile-first app.</td></tr>
+<tr><td><strong>Legal</strong></td><td>SEC-licensed in Philippines. Licensed in Saudi Arabia and UAE.</td></tr>
+<tr><td><strong>Behavioural</strong></td><td>3x growth for 3 years. Break-even achieved. $200M+ portfolio.</td></tr>
+</tbody></table>
+
+<h2 id="invariants"><span class="pill pill-a">Partner</span> 2.5 What Never Changes</h2>
+<div class="grid">
+<div class="card"><h4>Promise</h4><p>"Be who you are" &mdash; non-negotiable.</p></div>
+<div class="card"><h4>Five Values</h4><p>Flow, Growth, Celebration, Innovation, Trust.</p></div>
+<div class="card"><h4>Celebrating: always on</h4><p>Never drops below "High" in any channel.</p></div>
+<div class="card"><h4>No dark patterns</h4><p>No manipulative defaults, guilt-driven notifications, or hidden fees.</p></div>
+<div class="card"><h4>Nature over machines</h4><p>Products use nature-based language. Specific metaphors adapt per market.</p></div>
+<div class="card"><h4>The golden rule</h4><p>If it could have come from any other fintech, it doesn't ship.</p></div>
+</div>
+
+<h3>When the golden rule applies</h3>
+<table class="tbl"><thead><tr><th></th><th>Signature moments</th><th>Functional moments</th></tr></thead><tbody>
+<tr><td><strong>What</strong></td><td>First impressions, milestones, campaigns, onboarding</td><td>Login, payment confirmation, settings</td></tr>
+<tr><td><strong>Golden rule</strong></td><td>Applies fully. If Revolut could say it, rewrite.</td><td>Doesn't apply. Clarity and warmth are enough.</td></tr>
+<tr><td><strong>Goal</strong></td><td>Make them feel something. Be unmistakably Skyro.</td><td>Get out of the way. Be clear, warm, and fast.</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="trust" data-n="03" data-t="Trust Brief" data-subs="trust-arch,trust-proof,trust-transparency,trust-faq">
+
+<p class="lead">How we earn trust systematically &mdash; not through claims, but through architecture.</p>
+
+<h2 id="trust-arch"><span class="pill pill-r">Internal</span> 3.1 Trust Architecture</h2>
+<table class="tbl"><thead><tr><th>Layer</th><th>What it means</th><th>Skyro implementation</th></tr></thead><tbody>
+<tr><td><strong>Regulatory</strong></td><td>Licensed, audited, compliant</td><td>SEC-licensed in Philippines, licensed in Saudi Arabia and UAE</td></tr>
+<tr><td><strong>Data security</strong></td><td>User data protected by design</td><td>Zero Trust security policy. ADVANCE.AI identity verification.</td></tr>
+<tr><td><strong>Transparency</strong></td><td>Users see what's happening and why</td><td>Full fee transparency. Plain-language terms.</td></tr>
+<tr><td><strong>UX signals</strong></td><td>Interface reduces anxiety</td><td>Nature-based language. No countdown timers.</td></tr>
+<tr><td><strong>Support</strong></td><td>Mistakes get fixed, not hidden</td><td>AI-assisted support. Clear escalation paths.</td></tr>
+</tbody></table>
+
+<h2 id="trust-proof"><span class="pill pill-a">Partner</span> 3.2 How We Prove, Not Claim</h2>
+<div class="dd"><div class="dd-col"><div class="dd-hdr do">WE PROVE BY</div>
+<div class="dd-i">Publishing licence details on every market page</div>
+<div class="dd-i">Showing fee breakdowns before any commitment</div>
+<div class="dd-i">Explaining scoring decisions in plain language</div>
+<div class="dd-i">Making withdrawal as easy as deposit</div>
+</div><div class="dd-col"><div class="dd-hdr dont">WE NEVER</div>
+<div class="dd-i">Claim "bank-level security" without specifying what that means</div>
+<div class="dd-i">Hide terms in small print</div>
+<div class="dd-i">Use urgency to force financial decisions</div>
+<div class="dd-i">Say "trust us" &mdash; instead we show why</div>
+</div></div>
+
+<h2 id="trust-transparency"><span class="pill pill-g">Public</span> 3.3 Transparency Standards</h2>
+<table class="tbl"><thead><tr><th>Information</th><th>Where it appears</th><th>When</th></tr></thead><tbody>
+<tr><td>Total cost of loan</td><td>Loan offer screen</td><td>Before acceptance</td></tr>
+<tr><td>Repayment schedule</td><td>Loan detail + push notification</td><td>At acceptance + before each due date</td></tr>
+<tr><td>Why approved/declined</td><td>Decision screen</td><td>At decision</td></tr>
+<tr><td>Savings growth + fees</td><td>Savings view</td><td>Always visible</td></tr>
+<tr><td>Data we collect and why</td><td>Privacy section in app</td><td>At onboarding + always accessible</td></tr>
+</tbody></table>
+
+<h2 id="trust-faq"><span class="pill pill-g">Public</span> 3.4 Trust FAQ</h2>
+<div class="aud"><h4>"Aren't you profiting from vulnerable people?"</h4><p>We profit from helping people build financial lives they're proud of. Transparent terms, flexible repayment, no hidden fees.</p></div>
+<div class="aud"><h4>"Why these specific markets?"</h4><p>Billions of people underserved by finance built for Western spending patterns.</p></div>
+</div>
+
+<div data-id="risk" data-n="04" data-t="Brand Risk Framework" data-subs="risk-appetite,risk-banned,risk-vuln,risk-friction">
+
+<p class="lead"><span class="pill pill-r">Internal</span> The lines we never cross, the growth mechanics we ban, and where we deliberately add friction.</p>
+
+<h2 id="risk-appetite"><span class="pill pill-r">Internal</span> 4.1 Risk Appetite</h2>
+<table class="tbl"><thead><tr><th>Area</th><th>Appetite</th><th>Rationale</th></tr></thead><tbody>
+<tr><td>Tone &amp; personality</td><td><span class="pill pill-g">Bold</span></td><td>Our competitive edge</td></tr>
+<tr><td>Product claims</td><td><span class="pill pill-a">Moderate</span></td><td>Every claim must be verifiable</td></tr>
+<tr><td>Political commentary</td><td><span class="pill pill-r">Conservative</span></td><td>We challenge the financial system, not political systems</td></tr>
+<tr><td>User data in marketing</td><td><span class="pill pill-r">Conservative</span></td><td>Aggregated insights only</td></tr>
+</tbody></table>
+
+<h2 id="risk-banned"><span class="pill pill-r">Internal</span> 4.2 Banned Growth Mechanics</h2>
+<div class="grid">
+<div class="card" style="border-color:var(--red)"><h4>Artificial urgency</h4><p>No countdown timers on financial decisions.</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Social proof pressure</h4><p>No "4,000 people took this loan today."</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Guilt-driven re-engagement</h4><p>No "you haven't saved this week."</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Friction to leave</h4><p>Closing must be as easy as opening.</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Hidden upsells</h4><p>No pre-checked boxes or buried terms.</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Gamification of debt</h4><p>No streaks for borrowing, no badges for spending.</p></div>
+</div>
+
+<h2 id="risk-vuln"><span class="pill pill-r">Internal</span> 4.3 Financial Vulnerability Guard</h2>
+<table class="tbl"><thead><tr><th>Risk</th><th>Our safeguard</th></tr></thead><tbody>
+<tr><td>User over-extends on BNPL</td><td>AI-driven limits. Proactive notification.</td></tr>
+<tr><td>Repeat borrowing cycle</td><td>Cooling-off periods. Offer savings tools alongside credit.</td></tr>
+<tr><td>Seasonal income crash</td><td>Repayment schedules adjust automatically.</td></tr>
+<tr><td>Celebration overspend</td><td>Pre-season budget planning tools.</td></tr>
+</tbody></table>
+
+<h2 id="risk-friction"><span class="pill pill-r">Internal</span> 4.4 Conscious Friction Policy</h2>
+<table class="tbl"><thead><tr><th>Moment</th><th>Friction we add</th><th>Why</th></tr></thead><tbody>
+<tr><td>First large loan</td><td>Plain-language summary + review step</td><td>Informed consent matters more than conversion speed</td></tr>
+<tr><td>Withdrawing savings</td><td>Confirmation showing growth + positive framing</td><td>To celebrate what they built</td></tr>
+<tr><td>Multiple loans in short period</td><td>Pause + budget tool offer</td><td>Offer alternatives before deeper credit</td></tr>
+<tr><td>Account closure</td><td>Clear reason capture + immediate processing</td><td>We learn, they leave easily</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="ethics" data-n="05" data-t="Ethical Tension Map" data-subs="dilemmas,persuade,emotions">
+
+<p class="lead"><span class="pill pill-r">Internal</span> The grey areas where both sides have merit.</p>
+
+<h2 id="dilemmas"><span class="pill pill-r">Internal</span> 5.1 Our Dilemmas</h2>
+<table class="tbl"><thead><tr><th>Dilemma</th><th>Skyro's position</th></tr></thead><tbody>
+<tr><td>"You profit when people borrow"</td><td>We also profit when people save, invest, and send money home.</td></tr>
+<tr><td>"BNPL normalises debt"</td><td>BNPL at 0% interest replaces high-interest informal credit.</td></tr>
+<tr><td>"AI scoring is a black box"</td><td>We explain every decision in plain language.</td></tr>
+<tr><td>"Financial inclusion is colonialism with an app"</td><td>We embed in local platforms, hire locally, spend 90 days listening.</td></tr>
+</tbody></table>
+
+<h2 id="persuade"><span class="pill pill-r">Internal</span> 5.2 Persuade vs Pressure</h2>
+<table class="tbl"><thead><tr><th>Persuasion (allowed)</th><th>Pressure (banned)</th></tr></thead><tbody>
+<tr><td>"Your savings have grown 12% this month"</td><td>"Your savings are shrinking &mdash; deposit now!"</td></tr>
+<tr><td>"Ramadan budget tool is now available"</td><td>"Everyone is preparing for Ramadan &mdash; are you?"</td></tr>
+<tr><td>"You're pre-approved for up to X"</td><td>"Act now &mdash; this offer expires in 2 hours"</td></tr>
+</tbody></table>
+
+<h2 id="emotions"><span class="pill pill-r">Internal</span> 5.3 Emotions We Don't Trade On</h2>
+<div class="grid">
+<div class="card" style="border-color:var(--red)"><h4>Shame</h4><p>We celebrate where they are, not where they aren't.</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Fear</h4><p>We inform about options, never weaponise anxiety.</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Artificial urgency</h4><p>Financial decisions deserve time, not panic.</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Social comparison</h4><p>Everyone's rhythm is their own.</p></div>
+</div>
+</div>
+
+<div data-id="psych" data-n="06" data-t="Brand Psychology" data-subs="contract,attachment,energy,shadow">
+
+<p class="lead">Who Skyro IS &mdash; the personality, the emotional contract, and the shadow behaviours under pressure.</p>
+
+<h2 id="contract"><span class="pill pill-r">Internal</span> 6.1 Relationship Contract</h2>
+<table class="tbl"><thead><tr><th>Role</th><th>What it means</th><th>What it doesn't mean</th></tr></thead><tbody>
+<tr><td><strong>Partner</strong></td><td>We walk beside them. Give options, not instructions.</td><td>We're not their friend &mdash; we're a tool they can trust.</td></tr>
+<tr><td><strong>Advisor</strong></td><td>We inform and surface patterns.</td><td>We never tell them what to do.</td></tr>
+<tr><td><strong>Instrument</strong></td><td>We work when needed, invisible when not.</td><td>We're not a lifestyle brand.</td></tr>
+</tbody></table>
+
+<h2 id="attachment"><span class="pill pill-r">Internal</span> 6.2 Attachment Style</h2>
+<div class="dd"><div class="dd-col"><div class="dd-hdr do">SECURE SIGNALS</div>
+<div class="dd-i">"We're here when you need us"</div>
+<div class="dd-i">"Here are your options"</div>
+<div class="dd-i">"Your savings are growing"</div>
+<div class="dd-i">Silence when nothing useful to say</div>
+</div><div class="dd-col"><div class="dd-hdr dont">AVOIDANT / ANXIOUS</div>
+<div class="dd-i">"We miss you!" (needy)</div>
+<div class="dd-i">"You haven't opened the app in 5 days" (surveillance)</div>
+<div class="dd-i">"Are you sure about that?" (doubting)</div>
+<div class="dd-i">Constant notifications (clingy)</div>
+</div></div>
+
+<h2 id="energy"><span class="pill pill-a">Partner</span> 6.3 Energy Signature</h2>
+<div class="grid">
+<div class="card"><h4>Calm competence</h4><p>We know what we're doing. No need to shout about it.</p></div>
+<div class="card"><h4>Precise clarity</h4><p>Every word earns its place.</p></div>
+<div class="card"><h4>Respectful warmth</h4><p>We care &mdash; and we show it through design, not declarations.</p></div>
+<div class="card"><h4>Quiet surprise</h4><p>Moments of delight that reward attention.</p></div>
+<div class="card"><h4>Grounded confidence</h4><p>The work speaks.</p></div>
+<div class="card"><h4>Cultural fluency</h4><p>Actual knowledge of Ramadan budgets, wedding seasons, harvest cycles.</p></div>
+</div>
+
+<h2 id="shadow"><span class="pill pill-r">Internal</span> 6.4 Shadow Behaviour</h2>
+<table class="tbl"><thead><tr><th>Stress</th><th>Shadow response</th><th>Prevention</th></tr></thead><tbody>
+<tr><td>Growth targets pressure</td><td>Aggressive push notifications</td><td>Review against Banned Growth Mechanics</td></tr>
+<tr><td>Bad press</td><td>Defensive, over-explaining</td><td>Follow Crisis Playbook</td></tr>
+<tr><td>Competitor launch</td><td>Comparison marketing</td><td>Return to Golden Rule</td></tr>
+<tr><td>Low engagement</td><td>Gamification, artificial urgency</td><td>Financial tools should be used when needed, not addictively</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="lang" data-n="07" data-t="Language System" data-subs="vocab,situations,humour,microcopy,clarity,checker-sec,dimensions,ch-matrix,ch-sim-sec">
+
+<p class="lead">The strategy, trust system, guardrails, and personality became words. Everything you need to write like Skyro.</p>
+
+<h2 id="vocab"><span class="pill pill-a">Partner</span> 7.1 Brand Vocabulary</h2>
+<table class="tbl"><thead><tr><th>Don't say</th><th>Say</th></tr></thead><tbody>
+<tr><td>Assistance</td><td>Help</td></tr>
+<tr><td>Require</td><td>Need</td></tr>
+<tr><td>Enable</td><td>Let</td></tr>
+<tr><td>Obtain / Provide</td><td>Get / Give</td></tr>
+<tr><td>Utilise / Utilize</td><td>Use</td></tr>
+<tr><td>However</td><td>But</td></tr>
+<tr><td>Commence</td><td>Start</td></tr>
+<tr><td>In order to</td><td>To</td></tr>
+<tr><td>At this time</td><td>Now</td></tr>
+<tr><td>Prior to</td><td>Before</td></tr>
+<tr><td>Subsequently</td><td>Then</td></tr>
+<tr><td>Optimise</td><td>Improve</td></tr>
+<tr><td>Amortisation</td><td>Repayment</td></tr>
+</tbody></table>
+
+<h2 id="situations"><span class="pill pill-a">Partner</span> 7.2 Tone by Situation</h2>
+<table class="tbl"><thead><tr><th>Situation</th><th>Tone</th><th>Example</th></tr></thead><tbody>
+<tr><td>Onboarding</td><td>Warm, clear, zero jargon</td><td>"Welcome. Let's get you set up. It takes about 2 minutes."</td></tr>
+<tr><td>Approval</td><td>Quiet celebration</td><td>"You're approved. Here are your terms &mdash; plain and simple."</td></tr>
+<tr><td>Decline</td><td>Honest, respectful, forward-looking</td><td>"We can't offer this right now. Here's why, and here's what might change that."</td></tr>
+<tr><td>Late payment</td><td>Direct, no guilt</td><td>"Your payment is due tomorrow. Need to adjust?"</td></tr>
+<tr><td>Error</td><td>Honest about the problem</td><td>"Something went wrong on our end. We're fixing it. Your money is safe."</td></tr>
+<tr><td>Collections</td><td>Firm but human</td><td>"We know life doesn't always go to plan. Here are three paths."</td></tr>
+</tbody></table>
+
+<h2 id="humour"><span class="pill pill-a">Partner</span> 7.3 Humour Policy</h2>
+<div class="dd"><div class="dd-col"><div class="dd-hdr do">ALLOWED</div>
+<div class="dd-i">Lightness and warmth</div>
+<div class="dd-i">Self-aware copy</div>
+<div class="dd-i">Gentle absurdity in social media</div>
+</div><div class="dd-col"><div class="dd-hdr dont">BANNED</div>
+<div class="dd-i">Puns about money or nature metaphors</div>
+<div class="dd-i">Humour in support or collections</div>
+<div class="dd-i">Sarcasm &mdash; ever, anywhere</div>
+<div class="dd-i">Pop culture references that don't translate</div>
+</div></div>
+
+<h2 id="microcopy"><span class="pill pill-a">Partner</span> 7.4 Microcopy Library</h2>
+<table class="tbl"><thead><tr><th>Context</th><th>Copy</th></tr></thead><tbody>
+<tr><td>CTA: Start saving</td><td>"Start growing"</td></tr>
+<tr><td>CTA: Take a loan</td><td>"See what's available"</td></tr>
+<tr><td>Empty state</td><td>"Nothing here yet. Your story starts with the first step."</td></tr>
+<tr><td>Loading</td><td>"Getting things ready..."</td></tr>
+<tr><td>Success</td><td>"Done. Payment sent."</td></tr>
+<tr><td>Error: Network</td><td>"We lost connection. Check your signal and try again."</td></tr>
+<tr><td>Push: Milestone</td><td>"Your savings just passed [amount]. Growing."</td></tr>
+<tr><td>Push: Re-engagement</td><td>"Your savings are still here whenever you're ready."</td></tr>
+</tbody></table>
+
+<h2 id="clarity"><span class="pill pill-a">Partner</span> 7.5 Six Rules for Writing</h2>
+
+<h3>Rule 1. Use human words</h3>
+<p>If a word sounds like a legal contract, swap it for the one you'd use talking to a friend.</p>
+
+<h3>Rule 2. Be specific, not vague</h3>
+<div class="flip-pair">
+<div class="flip-side good"><div class="flip-lbl good">Skyro</div><div class="flip-txt">"A rice farmer in Mindanao checking the sky before monsoon season."</div></div>
+<div class="flip-side bad"><div class="flip-lbl bad">Not Skyro</div><div class="flip-txt">"Emerging market customers with variable income streams."</div></div>
+</div>
+
+<h3>Rule 3. Find the real moment</h3>
+<div class="flip-pair">
+<div class="flip-side good"><div class="flip-lbl good">Skyro</div><div class="flip-txt">"You just sent your first remittance home. That's a big moment."</div></div>
+<div class="flip-side bad"><div class="flip-lbl bad">Not Skyro</div><div class="flip-txt">"Congratulations! You're on your way to a brighter financial future!"</div></div>
+</div>
+
+<h3>Rule 4. Kill empty marketing language</h3>
+<div class="flip-pair">
+<div class="flip-side good"><div class="flip-lbl good">Skyro</div><div class="flip-txt">"A loan that adjusts when your income does."</div></div>
+<div class="flip-side bad"><div class="flip-lbl bad">Not Skyro</div><div class="flip-txt">"Leverage our dynamic repayment optimisation."</div></div>
+</div>
+<p>Banned: "innovative solutions," "seamless experience," "empower," "leverage," "synergy," "game-changing," "best-in-class," "disruptive," "world-class."</p>
+
+<h3>Rule 5. Write about our users' world</h3>
+<div class="flip-pair">
+<div class="flip-side good"><div class="flip-lbl good">Skyro</div><div class="flip-txt">"Ramadan is 6 weeks away. Your budget planner is ready."</div></div>
+<div class="flip-side bad"><div class="flip-lbl bad">Not Skyro</div><div class="flip-txt">"Trending now: Ramadan deals! Don't miss out!"</div></div>
+</div>
+
+<h3>Rule 6. Handle hard moments with quiet respect</h3>
+<div class="flip-pair">
+<div class="flip-side good"><div class="flip-lbl good">Skyro</div><div class="flip-txt">"Your payment is overdue. Here are three options."</div></div>
+<div class="flip-side bad"><div class="flip-lbl bad">Not Skyro</div><div class="flip-txt">"Don't worry &mdash; you've got this! Just a friendly reminder to pay up."</div></div>
+</div>
+
+<h2 id="checker-sec"><span class="pill pill-a">Partner</span> 7.6 Copy Checker</h2>
+<div class="checker">
+<div class="sub">Paste any draft copy below. We'll flag jargon, banned phrases, and missed opportunities.</div>
+<textarea id="copyIn" placeholder="Paste your copy here..."></textarea>
+<button class="check-btn" id="checkBtn">Check my copy</button>
+<div class="check-results" id="checkOut"></div>
+</div>
+
+<h2 id="dimensions"><span class="pill pill-a">Partner</span> 7.7 The Four Dimensions</h2>
+<div class="grid">
+<div class="card"><h4>Campfire</h4><p>Conversational warmth. Like talking to a smart friend who happens to know finance.</p></div>
+<div class="card"><h4>Grounded</h4><p>Substance and specificity. Real proof, not claims.</p></div>
+<div class="card"><h4>Celebrating</h4><p>Honour cultures, choices, rhythms. Never drops below "High."</p></div>
+<div class="card"><h4>Alive</h4><p>Distinctive, surprising, unmistakably Skyro.</p></div>
+</div>
+
+<h2 id="ch-matrix"><span class="pill pill-a">Partner</span> 7.8 Channel Matrix</h2>
+<table class="ch-matrix" id="chm"></table>
+
+<h2 id="ch-sim-sec"><span class="pill pill-a">Partner</span> 7.9 Channel Simulator</h2>
+<p>Click a channel to see how the dials shift:</p>
+<div class="ch-sim" id="chSim">
+<div class="ch-pills" id="chPills"></div>
+<div class="dial-grid" id="dials"></div>
+<div class="ch-advice" id="chAdv"></div>
+</div>
+</div>
+
+<div data-id="narrative" data-n="08" data-t="Narrative Kit" data-subs="storylines,why-stories,proof-stories,anti-narr">
+
+<p class="lead">The stories that make Skyro's voice consistent across campaigns, pitches, and press.</p>
+
+<h2 id="storylines"><span class="pill pill-a">Partner</span> 8.1 Core Storylines</h2>
+<div class="grid">
+<div class="card"><h4>Control</h4><p>"You decide. We build the tools."</p></div>
+<div class="card"><h4>Flexibility</h4><p>"Life doesn't follow a schedule. Neither should your finances."</p></div>
+<div class="card"><h4>Predictability</h4><p>"No surprises. Full transparency."</p></div>
+<div class="card"><h4>Respect</h4><p>"Your rhythm is your own."</p></div>
+<div class="card"><h4>Growth on your terms</h4><p>"Start from where you are."</p></div>
+<div class="card"><h4>Speed without shortcuts</h4><p>"3 minutes to approved &mdash; with full transparency."</p></div>
+</div>
+
+<h2 id="why-stories"><span class="pill pill-g">Public</span> 8.2 "Why We Do It This Way"</h2>
+<div class="aud"><h4>Why nature-based language?</h4><p>Machines imply extraction and control. Nature implies patience, seasons, and growth on its own terms.</p></div>
+<div class="aud"><h4>Why B2B2C?</h4><p>We don't ask users to find us. We meet them where they already are.</p></div>
+<div class="aud"><h4>Why "Be who you are"?</h4><p>Every other financial product asks you to become someone else to qualify. We flipped it.</p></div>
+
+<h2 id="proof-stories"><span class="pill pill-g">Public</span> 8.3 Proof Stories</h2>
+<div class="aud"><h4>3-minute approval</h4><p>"She got approved in three minutes. Every other app had rejected her."</p></div>
+<div class="aud"><h4>Triple growth</h4><p>Business volumes tripled every year for three consecutive years, all products hit positive NPV.</p></div>
+
+<h2 id="anti-narr"><span class="pill pill-r">Internal</span> 8.4 Anti-Narratives</h2>
+<table class="tbl"><thead><tr><th>Attack</th><th>Our response</th></tr></thead><tbody>
+<tr><td>"They're too small to trust"</td><td>$200M+ portfolio, SEC-licensed. Small by choice.</td></tr>
+<tr><td>"AI scoring is risky"</td><td>3 years of profitable growth and disciplined underwriting.</td></tr>
+<tr><td>"Just another microfinance app"</td><td>Full lifecycle neobank: savings, investments, loans, BNPL, remittance.</td></tr>
+<tr><td>"Cultural sensitivity is just marketing"</td><td>Ramadan mode in the budget planner. 90-day listening period. It's in the product.</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="product" data-n="09" data-t="Product as Brand" data-subs="prod-principles,ux-ethics,control-signals,feat-comms,support-exp">
+
+<p class="lead">The product IS the brand. Every screen expresses what Skyro believes.</p>
+
+<h2 id="prod-principles"><span class="pill pill-a">Partner</span> 9.1 Product Principles</h2>
+<table class="tbl"><thead><tr><th>Product</th><th>Principle</th><th>Metaphor</th></tr></thead><tbody>
+<tr><td>Savings</td><td>Any amount, any time. Growth is visible.</td><td>The Garden</td></tr>
+<tr><td>Budgets</td><td>Expand and contract with life.</td><td>Breathing</td></tr>
+<tr><td>Loans</td><td>Right amount, right time, right place.</td><td>Rain</td></tr>
+<tr><td>Investments</td><td>Diverse by nature, slow to grow, built to last.</td><td>The Forest</td></tr>
+</tbody></table>
+
+<h2 id="ux-ethics"><span class="pill pill-r">Internal</span> 9.2 UX Ethics</h2>
+<div class="dd"><div class="dd-col"><div class="dd-hdr do">DO</div>
+<div class="dd-i">Celebrate cultural spending as milestones</div>
+<div class="dd-i">Give options: "Here are three paths"</div>
+<div class="dd-i">Frame withdrawals as achievements</div>
+<div class="dd-i">Use full fee transparency</div>
+</div><div class="dd-col"><div class="dd-hdr dont">DON'T</div>
+<div class="dd-i">Label celebrations as "unnecessary expenses"</div>
+<div class="dd-i">Give instructions: "You should do this"</div>
+<div class="dd-i">Use dark patterns or hidden fees</div>
+<div class="dd-i">Treat users as naive</div>
+</div></div>
+
+<h2 id="control-signals"><span class="pill pill-r">Internal</span> 9.3 Control Signals</h2>
+<table class="tbl"><thead><tr><th>Moment</th><th>Control signal</th></tr></thead><tbody>
+<tr><td>Loan offer</td><td>User adjusts amount + term. System suggests, user decides.</td></tr>
+<tr><td>Repayment schedule</td><td>"Adjust my schedule" always visible.</td></tr>
+<tr><td>Data sharing</td><td>Granular opt-in. Clear what each permission enables.</td></tr>
+<tr><td>Account closure</td><td>One clear path. No "are you sure?" dark patterns.</td></tr>
+</tbody></table>
+
+<h2 id="feat-comms"><span class="pill pill-a">Partner</span> 9.4 Communicating Features</h2>
+<div class="flip-pair">
+<div class="flip-side good"><div class="flip-lbl good">Skyro</div><div class="flip-txt">"She got approved in three minutes. Every other app had rejected her."</div></div>
+<div class="flip-side bad"><div class="flip-lbl bad">Not Skyro</div><div class="flip-txt">"Our AI/ML-driven scoring models leverage multi-dimensional feature engineering."</div></div>
+</div>
+<div class="flip-pair">
+<div class="flip-side good"><div class="flip-lbl good">Skyro</div><div class="flip-txt">"Send money home in seconds. No queues, no forms, no branch visits."</div></div>
+<div class="flip-side bad"><div class="flip-lbl bad">Not Skyro</div><div class="flip-txt">"Our seamless cross-border remittance infrastructure enables real-time fund transfers."</div></div>
+</div>
+
+<h2 id="support-exp"><span class="pill pill-a">Partner</span> 9.5 Support Experience</h2>
+<table class="tbl"><thead><tr><th>Dimension</th><th>Standard</th></tr></thead><tbody>
+<tr><td>Speed</td><td>First response under 5 minutes</td></tr>
+<tr><td>Tone</td><td>Campfire: High. Grounded: High. Celebrating: High. Alive: Low.</td></tr>
+<tr><td>Structure</td><td>Acknowledge, Clarify, Solve, Confirm</td></tr>
+<tr><td>Recovery</td><td>"We made a mistake. Here's how we're fixing it."</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="algo" data-n="10" data-t="Algorithm Personality" data-subs="algo-voice,algo-when,algo-explain,algo-prompt">
+
+<p class="lead">AI that talks to users IS the brand in many interactions.</p>
+
+<h2 id="algo-voice"><span class="pill pill-r">Internal</span> 10.1 How the Algorithm Sounds</h2>
+<div class="grid">
+<div class="card"><h4>Supports</h4><p>"Based on your pattern, Ramadan expenses usually rise. Want to plan ahead?"</p></div>
+<div class="card"><h4>Explains</h4><p>"Your approval considered 42 signals &mdash; here's a summary."</p></div>
+<div class="card"><h4>Doesn't dominate</h4><p>"This is a suggestion. You know your life better than we do."</p></div>
+</div>
+
+<h2 id="algo-when"><span class="pill pill-r">Internal</span> 10.2 When AI Speaks / When Silent</h2>
+<table class="tbl"><thead><tr><th>AI speaks</th><th>AI is silent</th></tr></thead><tbody>
+<tr><td>Pattern detected that could help user plan</td><td>User is browsing without intent signal</td></tr>
+<tr><td>Upcoming payment + relevant options</td><td>User just completed a transaction</td></tr>
+<tr><td>Significant savings milestone</td><td>Minor balance changes</td></tr>
+<tr><td>Risk of over-extension detected</td><td>Normal usage within comfortable range</td></tr>
+</tbody></table>
+
+<h2 id="algo-explain"><span class="pill pill-r">Internal</span> 10.3 Explainability Rules</h2>
+<div class="flip-pair">
+<div class="flip-side good"><div class="flip-lbl good">Explainable</div><div class="flip-txt">"We looked at your income pattern and spending history. Based on that, we can offer you up to P25,000."</div></div>
+<div class="flip-side bad"><div class="flip-lbl bad">Black box</div><div class="flip-txt">"Based on your score of 742, you qualify for Tier 3 products."</div></div>
+</div>
+
+<h2 id="algo-prompt"><span class="pill pill-r">Internal</span> 10.4 Prompt Philosophy</h2>
+<div class="call">Core prompt instruction: "Write as Skyro &mdash; a warm, specific, culturally respectful fintech that uses kitchen-table language and nature metaphors. Never use jargon, never shame, never prescribe."</div>
+</div>
+
+<div data-id="govern" data-n="11" data-t="Decision Engine" data-subs="filters,approval,exceptions">
+
+<p class="lead"><span class="pill pill-r">Internal</span> Who approves what, which filters every piece of content passes through.</p>
+
+<h2 id="filters"><span class="pill pill-r">Internal</span> 11.1 Five Brand Filters</h2>
+<table class="tbl"><thead><tr><th>#</th><th>Filter</th><th>Kill question</th></tr></thead><tbody>
+<tr><td>1</td><td>Golden Rule</td><td>Could any other fintech have written this?</td></tr>
+<tr><td>2</td><td>Kitchen Table</td><td>Would a farmer in Mindanao understand it?</td></tr>
+<tr><td>3</td><td>Promise Check</td><td>Does it judge, shame, or ask users to change?</td></tr>
+<tr><td>4</td><td>Substance Test</td><td>Is there a verifiable claim or real example?</td></tr>
+<tr><td>5</td><td>Channel Fit</td><td>Does the tone match the channel matrix?</td></tr>
+</tbody></table>
+
+<h2 id="approval"><span class="pill pill-r">Internal</span> 11.2 Approval Map</h2>
+<table class="tbl"><thead><tr><th>Content type</th><th>Creates</th><th>Reviews</th><th>Approves</th></tr></thead><tbody>
+<tr><td>In-app copy</td><td>Product</td><td>Brand</td><td>Product Lead</td></tr>
+<tr><td>Marketing campaigns</td><td>Marketing</td><td>Brand + Legal</td><td>CMO</td></tr>
+<tr><td>Investor materials</td><td>Finance + Marketing</td><td>Legal + CEO</td><td>CEO</td></tr>
+<tr><td>Press statements</td><td>PR</td><td>Legal + CEO</td><td>CEO</td></tr>
+</tbody></table>
+
+<h2 id="exceptions"><span class="pill pill-r">Internal</span> 11.3 When to Break the Rules</h2>
+<div class="grid">
+<div class="card"><h4>Strategic intent</h4><p>The break serves a clear business objective.</p></div>
+<div class="card"><h4>Conscious decision</h4><p>Someone senior approved it knowingly.</p></div>
+<div class="card"><h4>Documented</h4><p>The exception and rationale are recorded.</p></div>
+<div class="card"><h4>Temporary</h4><p>Exceptions have an expiry date.</p></div>
+</div>
+</div>
+
+<div data-id="crisis" data-n="12" data-t="Crisis Playbook" data-subs="scenarios,timeline,scripts,silence">
+
+<p class="lead"><span class="pill pill-r">Internal</span> Pre-approved scripts, response timelines, and the silence policy.</p>
+
+<h2 id="scenarios"><span class="pill pill-r">Internal</span> 12.1 Crisis Scenarios</h2>
+<table class="tbl"><thead><tr><th>Scenario</th><th>Severity</th><th>Owner</th></tr></thead><tbody>
+<tr><td>Data breach</td><td><span class="pill pill-r">Critical</span></td><td>CTO &rarr; CEO &rarr; Legal</td></tr>
+<tr><td>Payment system failure</td><td><span class="pill pill-r">Critical</span></td><td>CTO &rarr; Support &rarr; CEO</td></tr>
+<tr><td>"Predatory lending" accusation</td><td><span class="pill pill-a">High</span></td><td>PR &rarr; CEO &rarr; Legal</td></tr>
+<tr><td>Viral negative social media</td><td><span class="pill pill-a">High</span></td><td>Social &rarr; PR &rarr; CMO</td></tr>
+</tbody></table>
+
+<h2 id="timeline"><span class="pill pill-r">Internal</span> 12.2 Response Timeline</h2>
+<table class="tbl"><thead><tr><th>Window</th><th>Action</th></tr></thead><tbody>
+<tr><td><strong>15 min</strong></td><td>Incident confirmed. Response owner identified.</td></tr>
+<tr><td><strong>60 min</strong></td><td>Facts gathered. Holding statement drafted.</td></tr>
+<tr><td><strong>4 hours</strong></td><td>First external statement published. Support team briefed.</td></tr>
+<tr><td><strong>24 hours</strong></td><td>Full response published. Affected users contacted.</td></tr>
+</tbody></table>
+
+<h2 id="scripts"><span class="pill pill-r">Internal</span> 12.3 Response Scripts</h2>
+<table class="tbl"><thead><tr><th>Type</th><th>Template</th></tr></thead><tbody>
+<tr><td>Acknowledge</td><td>"We're aware of [issue]. We're investigating and will update within [timeframe]."</td></tr>
+<tr><td>Apologise</td><td>"We made a mistake. [What happened]. [What we're doing]. [What changes]."</td></tr>
+<tr><td>Compensate</td><td>"This shouldn't have happened. We're [specific remedy] for all affected users."</td></tr>
+</tbody></table>
+
+<h2 id="silence"><span class="pill pill-r">Internal</span> 12.4 Strategic Silence Policy</h2>
+<div class="grid">
+<div class="card"><h4>Competitor actions</h4><p>We don't punch down, up, or sideways.</p></div>
+<div class="card"><h4>Political events</h4><p>We're a financial tool, not a commentator.</p></div>
+<div class="card"><h4>Rumours</h4><p>"We don't comment on speculation" is a complete answer.</p></div>
+<div class="card"><h4>Industry drama</h4><p>When competitors fail, silence IS the statement.</p></div>
+</div>
+</div>
+
+<div data-id="partners" data-n="13" data-t="Partnerships" data-subs="partner-ethics,partner-cobrand,partner-affiliate">
+
+<p class="lead"><span class="pill pill-a">Partner</span> When partners represent us, they need clear rules.</p>
+
+<h2 id="partner-ethics"><span class="pill pill-a">Partner</span> 13.1 Partner Ethics Criteria</h2>
+<table class="tbl"><thead><tr><th>Must align on</th><th>What we check</th></tr></thead><tbody>
+<tr><td>User treatment</td><td>No dark patterns, no exploitative pricing</td></tr>
+<tr><td>Data practices</td><td>Compliant with local data protection</td></tr>
+<tr><td>Regulatory standing</td><td>Licensed or compliant</td></tr>
+<tr><td>Reputational fit</td><td>No conflicting industries</td></tr>
+</tbody></table>
+
+<h2 id="partner-cobrand"><span class="pill pill-a">Partner</span> 13.2 Co-Branded Rules</h2>
+<div class="dd"><div class="dd-col"><div class="dd-hdr do">ALLOWED</div>
+<div class="dd-i">"Skyro + [Partner]: [specific benefit]"</div>
+<div class="dd-i">Joint data points</div>
+<div class="dd-i">Partner logo alongside Skyro with clear roles</div>
+</div><div class="dd-col"><div class="dd-hdr dont">NOT ALLOWED</div>
+<div class="dd-i">Partner speaking as Skyro</div>
+<div class="dd-i">Implying Skyro endorses partner's non-financial products</div>
+<div class="dd-i">Partner making claims about Skyro's AI or rates</div>
+</div></div>
+
+<h2 id="partner-affiliate"><span class="pill pill-a">Partner</span> 13.3 Affiliate Policy</h2>
+<table class="tbl"><thead><tr><th>Rule</th><th>Detail</th></tr></thead><tbody>
+<tr><td>Disclosure</td><td>All paid relationships must be disclosed.</td></tr>
+<tr><td>Claims</td><td>No guarantees of approval or rates.</td></tr>
+<tr><td>Tone</td><td>Must match Skyro voice. No urgency or shame.</td></tr>
+<tr><td>Veto</td><td>Skyro has final approval before publication.</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="markets" data-n="14" data-t="Market Adaptation" data-subs="mkt-invariants,mkt-adapts,mkt-risks">
+
+<p class="lead">What stays the same everywhere. What adapts. What we watch out for.</p>
+
+<h2 id="mkt-invariants"><span class="pill pill-g">Public</span> 14.1 What Never Changes</h2>
+<div class="grid">
+<div class="card"><h4>Promise</h4><p>"Be who you are"</p></div>
+<div class="card"><h4>Values</h4><p>Flow, Growth, Celebration, Innovation, Trust</p></div>
+<div class="card"><h4>Nature-based language</h4><p>Specific metaphors adapt per market</p></div>
+<div class="card"><h4>No dark patterns</h4><p>Non-negotiable in every jurisdiction</p></div>
+<div class="card"><h4>Kitchen-table language</h4><p>Six Rules apply everywhere</p></div>
+</div>
+
+<h2 id="mkt-adapts"><span class="pill pill-a">Partner</span> 14.2 What Adapts</h2>
+<table class="tbl"><thead><tr><th>Element</th><th>How it adapts</th></tr></thead><tbody>
+<tr><td>Language register</td><td>Philippines (warm, informal), Saudi (respectful formality), Morocco (French/Arabic nuance)</td></tr>
+<tr><td>Cultural calendar</td><td>Ramadan, Eid, Diwali, harvest, school enrollment</td></tr>
+<tr><td>Taboo topics</td><td>Debt stigma varies. Some markets: never say "debt."</td></tr>
+<tr><td>Visual design</td><td>Right-to-left for Arabic. Colour associations differ.</td></tr>
+</tbody></table>
+
+<h2 id="mkt-risks"><span class="pill pill-r">Internal</span> 14.3 Regional Trust Risks</h2>
+<table class="tbl"><thead><tr><th>Market</th><th>What triggers distrust</th><th>How Skyro addresses it</th></tr></thead><tbody>
+<tr><td>Philippines</td><td>Foreign-owned fintech, hidden fees</td><td>SEC licensing. Full fee transparency. Filipino support team.</td></tr>
+<tr><td>Saudi Arabia</td><td>Non-Shariah compliance</td><td>Shariah-compliant options. Local data residency. Arabic-first UI.</td></tr>
+<tr><td>UAE</td><td>"Another neobank" fatigue</td><td>Differentiate on cultural sensitivity. Premium UX.</td></tr>
+<tr><td>Morocco</td><td>Distrust of digital finance</td><td>Partner with trusted local entities. Darija and French.</td></tr>
+<tr><td>Kenya</td><td>"Another lending app" fatigue</td><td>Full lifecycle, not just loans. No contact-list access.</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="measure" data-n="15" data-t="Measurement" data-subs="ms-trust,ms-consistency">
+
+<p class="lead"><span class="pill pill-r">Internal</span> How we know the brand is working.</p>
+
+<h2 id="ms-trust"><span class="pill pill-r">Internal</span> 15.1 Trust Metrics</h2>
+<table class="tbl"><thead><tr><th>Metric</th><th>What it measures</th><th>Target signal</th></tr></thead><tbody>
+<tr><td>NPS by market</td><td>Would users recommend Skyro?</td><td>Trending up quarter-over-quarter</td></tr>
+<tr><td>Trust score</td><td>"I trust Skyro with my money"</td><td>&gt;70% agree</td></tr>
+<tr><td>Complaint resolution</td><td>How fast and well we fix problems</td><td>&gt;90% within SLA</td></tr>
+</tbody></table>
+
+<h2 id="ms-consistency"><span class="pill pill-r">Internal</span> 15.2 Brand Consistency</h2>
+<table class="tbl"><thead><tr><th>Channel</th><th>Common break</th><th>Fix</th></tr></thead><tbody>
+<tr><td>Support</td><td>Reverting to corporate scripts</td><td>Regular training</td></tr>
+<tr><td>Partner co-branded</td><td>Partner voice overriding Skyro</td><td>Pre-approved templates</td></tr>
+<tr><td>Investor materials</td><td>Over-claiming</td><td>Brand review before every pitch deck</td></tr>
+<tr><td>Social media</td><td>Chasing trends</td><td>Content calendar with brand filter</td></tr>
+</tbody></table>
+</div>
+
+<div data-id="faq" data-n="16" data-t="FAQ: Hard Questions" data-subs="faq-hard">
+
+<h2 id="faq-hard"><span class="pill pill-a">Partner</span> 16.1 The Hard Questions</h2>
+<div class="aud"><h4>"Aren't you just profiting from desperate people?"</h4><p>We profit from helping people build financial lives they're proud of. Revenue diversified across savings, investments, remittance &mdash; not just lending.</p></div>
+<div class="aud"><h4>"BNPL normalises debt."</h4><p>BNPL at 0% interest with transparent terms replaces high-interest informal credit.</p></div>
+<div class="aud"><h4>"Your AI scoring is a black box."</h4><p>Every decision is explainable in plain language. Quarterly bias audits.</p></div>
+<div class="aud"><h4>"You celebrate spending &mdash; that's irresponsible."</h4><p>We celebrate cultural spending that builds social capital. We never encourage spending; we help plan for it.</p></div>
+<div class="aud"><h4>"Financial inclusion is colonialism with an app."</h4><p>We embed in local platforms, hire locally, spend 90 days listening before launching.</p></div>
+<div class="aud"><h4>"Why should I trust a company with a Russian founding team?"</h4><p>International company, team across 5 countries, Bahrain HQ reflects GCC focus.</p></div>
+<div class="aud"><h4>"You're too small to trust."</h4><p>$200M+ portfolio, $200M+ raised, 640K+ customers, SEC-licensed.</p></div>
+<div class="aud"><h4>"Your growth rate is unsustainable."</h4><p>3x growth AND break-even AND positive NPV. Growth comes from product-market fit.</p></div>
+</div>
+
+<div data-id="rtb" data-n="17" data-t="RTB Vault" data-subs="rtb-claims,rtb-flags">
+
+<p class="lead"><span class="pill pill-r">Internal</span> Everything we can claim publicly and what we can never say.</p>
+
+<h2 id="rtb-claims"><span class="pill pill-a">Partner</span> 17.1 Claims Library</h2>
+<table class="tbl"><thead><tr><th>Claim</th><th>Status</th><th>Evidence</th></tr></thead><tbody>
+<tr><td>"640,000+ active customers"</td><td><span class="pill pill-g">Approved</span></td><td>Internal metrics, updated quarterly</td></tr>
+<tr><td>"$200M+ credit portfolio"</td><td><span class="pill pill-g">Approved</span></td><td>Financial reports</td></tr>
+<tr><td>"3,700+ merchants"</td><td><span class="pill pill-g">Approved</span></td><td>Partnership database</td></tr>
+<tr><td>"3x growth, 3 years running"</td><td><span class="pill pill-g">Approved</span></td><td>Audited financials</td></tr>
+<tr><td>"SEC-licensed in Philippines"</td><td><span class="pill pill-g">Approved</span></td><td>SEC registration</td></tr>
+<tr><td>"15 countries by 2030"</td><td><span class="pill pill-a">Goal</span></td><td>Always frame as target</td></tr>
+<tr><td>"Fastest-growing neobank"</td><td><span class="pill pill-r">Banned</span></td><td>Unverifiable superlative</td></tr>
+<tr><td>"Guaranteed approval"</td><td><span class="pill pill-r">Banned</span></td><td>AI decisions can't be guaranteed</td></tr>
+</tbody></table>
+
+<h2 id="rtb-flags"><span class="pill pill-r">Internal</span> 17.2 Red Flags: Always Banned</h2>
+<div class="grid">
+<div class="card" style="border-color:var(--red)"><h4>Unverifiable superlatives</h4><p>"Best," "first," "only," "fastest" &mdash; unless Legal approved.</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Guarantee language</h4><p>"Guaranteed," "risk-free," "always approved."</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Future as fact</h4><p>"We will be in 15 countries" &rarr; "Our target is 15 countries by 2030."</p></div>
+<div class="card" style="border-color:var(--red)"><h4>Competitor comparisons</h4><p>Never name competitors.</p></div>
+</div>
+</div>
+
+<div data-id="positioning" data-n="18" data-t="Where Skyro Sits" data-subs="">
+
+<p class="lead">Four maps to show what makes Skyro different.</p>
+<div class="pm-row">
+<div>
+<div class="pm-title">Voice &amp; Focus</div>
+<div class="pm-sub">How we sound vs what we centre on</div>
+<div class="pm">
+<div class="pm-lbl top">Culture-led</div><div class="pm-lbl bottom">Product-led</div>
+<div class="pm-lbl left">Corporate</div><div class="pm-lbl right">Conversational</div>
+<div class="pm-grid"><div class="pm-mid-h"></div><div class="pm-mid-v"></div>
+<div class="pm-dot skyro" style="left:82%;top:18%"><span class="pm-dot-label">Skyro</span></div>
+<div class="pm-dot other" style="left:18%;top:75%"><span class="pm-dot-label">Trad. banks</span></div>
+<div class="pm-dot other" style="left:72%;top:68%"><span class="pm-dot-label">Revolut</span></div>
+<div class="pm-dot other" style="left:28%;top:28%"><span class="pm-dot-label">Microfinance</span></div>
+</div></div></div>
+<div>
+<div class="pm-title">Technology &amp; Localisation</div>
+<div class="pm-sub">How smart vs how adapted</div>
+<div class="pm">
+<div class="pm-lbl top">Locally adapted</div><div class="pm-lbl bottom">One-size-fits-all</div>
+<div class="pm-lbl left">Traditional scoring</div><div class="pm-lbl right">AI-native</div>
+<div class="pm-grid"><div class="pm-mid-h"></div><div class="pm-mid-v"></div>
+<div class="pm-dot skyro" style="left:85%;top:15%"><span class="pm-dot-label">Skyro</span></div>
+<div class="pm-dot other" style="left:22%;top:78%"><span class="pm-dot-label">Trad. banks</span></div>
+<div class="pm-dot other" style="left:75%;top:70%"><span class="pm-dot-label">Revolut</span></div>
+<div class="pm-dot other" style="left:58%;top:42%"><span class="pm-dot-label">Nubank</span></div>
+</div></div></div>
+<div>
+<div class="pm-title">User Relationship</div>
+<div class="pm-sub">How we treat people vs how we show up</div>
+<div class="pm">
+<div class="pm-lbl top">Empowering</div><div class="pm-lbl bottom">Prescriptive</div>
+<div class="pm-lbl left">Safe / Expected</div><div class="pm-lbl right">Bold / Distinctive</div>
+<div class="pm-grid"><div class="pm-mid-h"></div><div class="pm-mid-v"></div>
+<div class="pm-dot skyro" style="left:80%;top:15%"><span class="pm-dot-label">Skyro</span></div>
+<div class="pm-dot other" style="left:20%;top:72%"><span class="pm-dot-label">Trad. banks</span></div>
+<div class="pm-dot other" style="left:68%;top:52%"><span class="pm-dot-label">Monzo</span></div>
+</div></div></div>
+<div>
+<div class="pm-title">Market Position</div>
+<div class="pm-sub">Who we serve vs how we reach them</div>
+<div class="pm">
+<div class="pm-lbl top">Underserved / Global South</div><div class="pm-lbl bottom">Mass affluent</div>
+<div class="pm-lbl left">Direct to consumer</div><div class="pm-lbl right">Embedded / B2B2C</div>
+<div class="pm-grid"><div class="pm-mid-h"></div><div class="pm-mid-v"></div>
+<div class="pm-dot skyro" style="left:82%;top:14%"><span class="pm-dot-label">Skyro</span></div>
+<div class="pm-dot other" style="left:25%;top:72%"><span class="pm-dot-label">Revolut</span></div>
+<div class="pm-dot other" style="left:38%;top:18%"><span class="pm-dot-label">M-Pesa</span></div>
+<div class="pm-dot other" style="left:70%;top:60%"><span class="pm-dot-label">Klarna</span></div>
+</div></div></div>
+</div>
+</div>
+
+<div data-id="quiz" data-n="19" data-t="Do You Know Skyro?" data-subs="">
+<p class="lead">25 statements. Guess where Skyro lands on the scale. Within 1 step = correct.</p>
+<div class="pq-prog" id="pqProg"></div>
+<div id="pqBox"></div>
+<div id="pqResult" style="display:none"></div>
+</div>
+
+<div data-id="identity" data-n="20" data-t="Brand Identity" data-subs="">
+<p class="lead">Logo, colours, typography, iconography, and visual system.</p>
+<div class="call" style="text-align:center;font-size:18px">TBD &mdash; Brand identity guidelines are in development.</div>
+</div>
+
+</div>
+
+<script>
+// Read sections from DOM instead of JS template literals
+(function(){
+  var container = document.getElementById("sec-data");
+  var divs = container.children;
+  for(var i=0; i<divs.length; i++){
+    var d = divs[i];
+    if(!d.dataset || !d.dataset.id) continue;
+    var subsStr = d.dataset.subs || "";
+    var subsArr = subsStr ? subsStr.split(",") : [];
+    SECTIONS.push({
+      id: d.dataset.id,
+      n: d.dataset.n,
+      t: d.dataset.t,
+      subs: subsArr,
+      h: d.innerHTML
+    });
+  }
+  container.style.display = "none";
+})();
+
+var subNames = {
+  audience:"Who This Is For",access:"Access Levels",quickstart:"Quick Start",glossary:"Glossary",
+  oneliner:"One-Liner",category:"Category",differ:"Differentiator",nongol:"Non-Goals",
+  role:"Brand Role",tensions:"Tensions","promise-s":"Promise",rtbs:"RTBs",invariants:"Invariants",
+  "trust-arch":"Architecture","trust-proof":"Prove Not Claim","trust-transparency":"Standards","trust-faq":"Trust FAQ",
+  "risk-appetite":"Appetite","risk-banned":"Banned Mechanics","risk-vuln":"Vulnerability Guard","risk-friction":"Conscious Friction",
+  dilemmas:"Dilemmas",persuade:"Persuade vs Pressure",emotions:"Banned Emotions",
+  contract:"Contract",attachment:"Attachment",energy:"Energy",shadow:"Shadow",
+  vocab:"Vocabulary",situations:"Tone by Situation",humour:"Humour Policy",microcopy:"Microcopy",clarity:"Six Rules","checker-sec":"Copy Checker",dimensions:"Four Dimensions","ch-matrix":"Channel Matrix","ch-sim-sec":"Channel Sim",
+  storylines:"Storylines","why-stories":"Why Stories","proof-stories":"Proof Stories","anti-narr":"Anti-Narratives",
+  "prod-principles":"Principles","ux-ethics":"UX Ethics","control-signals":"Control","feat-comms":"Feature Comms","support-exp":"Support",
+  "algo-voice":"Voice","algo-when":"When","algo-explain":"Explainability","algo-prompt":"Prompts",
+  filters:"Filters",approval:"Approvals",exceptions:"Exceptions",
+  scenarios:"Scenarios",timeline:"Timeline",scripts:"Scripts",silence:"Silence Policy",
+  "partner-ethics":"Ethics","partner-cobrand":"Co-Branding","partner-affiliate":"Affiliate",
+  "mkt-invariants":"What Never Changes","mkt-adapts":"What Adapts","mkt-risks":"Regional Risks",
+  "ms-trust":"Trust Metrics","ms-consistency":"Consistency",
+  "faq-hard":"Hard Questions",
+  "rtb-claims":"Claims Library","rtb-flags":"Red Flags"
+};
+
+var currentAccess = "r";
+var ACCESS_HIERARCHY = {r:["g","a","r"],a:["g","a"],g:["g"]};
+var spyPaused = false;
+
+function setAccess(level){
+  currentAccess = level;
+  var btns = document.querySelectorAll(".af-btn");
+  for(var i=0;i<btns.length;i++) btns[i].classList.remove("on");
+  document.querySelector('.af-btn[data-level="'+level+'"]').classList.add("on");
+  var visible = ACCESS_HIERARCHY[level];
+  var blocks = document.querySelectorAll(".sub-block");
+  for(var i=0;i<blocks.length;i++){
+    var show = visible.indexOf(blocks[i].dataset.access) > -1;
+    blocks[i].classList.toggle("hidden", !show);
+  }
+  var secs = document.querySelectorAll(".sec");
+  for(var i=0;i<secs.length;i++){
+    var sb = secs[i].querySelectorAll(".sub-block");
+    if(!sb.length) continue;
+    var allHidden = true;
+    for(var j=0;j<sb.length;j++){ if(!sb[j].classList.contains("hidden")){allHidden=false;break;} }
+    secs[i].style.display = allHidden ? "none" : "";
+  }
+}
+
+function buildNav(){
+  var html = '<div style="margin:8px 12px;padding:10px 14px;background:var(--g500);color:#fff;border-radius:var(--radius-sm);cursor:pointer;font-size:13px;font-weight:600;text-align:center" onclick="jumpTo(\'checker-sec\')">COPY CHECKER</div>';
+  for(var i=0;i<SECTIONS.length;i++){
+    var s = SECTIONS[i];
+    html += '<div><div class="nav-a" data-id="'+s.id+'"><span class="n">'+s.n+'</span>'+s.t+'</div>';
+    if(s.subs.length){
+      html += '<div class="nav-sub" data-p="'+s.id+'">';
+      for(var j=0;j<s.subs.length;j++){
+        var u = s.subs[j];
+        html += '<div class="nav-sub-item" data-sub="'+u+'">'+(subNames[u]||u)+'</div>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+  document.getElementById("nav").innerHTML = html;
+
+  var navAs = document.querySelectorAll(".nav-a");
+  for(var i=0;i<navAs.length;i++){
+    navAs[i].addEventListener("click", function(){
+      var id = this.dataset.id;
+      spyPaused = true;
+      var all = document.querySelectorAll(".nav-a");
+      for(var k=0;k<all.length;k++) all[k].classList.remove("on");
+      this.classList.add("on");
+      var allSub = document.querySelectorAll(".nav-sub");
+      for(var k=0;k<allSub.length;k++) allSub[k].classList.remove("open");
+      var sub = document.querySelector('.nav-sub[data-p="'+id+'"]');
+      if(sub) sub.classList.add("open");
+      jumpTo(id);
+      setTimeout(function(){spyPaused=false},800);
+    });
+  }
+  var subItems = document.querySelectorAll(".nav-sub-item");
+  for(var i=0;i<subItems.length;i++){
+    subItems[i].addEventListener("click", function(e){
+      e.stopPropagation();
+      spyPaused = true;
+      jumpTo(this.dataset.sub);
+      setTimeout(function(){spyPaused=false},800);
+    });
+  }
+}
+
+function buildMain(){
+  var html = "";
+  for(var i=0;i<SECTIONS.length;i++){
+    var s = SECTIONS[i];
+    html += '<div class="sec" id="'+s.id+'"><div class="sec-num">Section '+s.n+'</div><h1>'+s.t+'</h1>'+s.h+'</div>';
+  }
+  document.getElementById("m").innerHTML = html;
+  buildMatrix();
+  buildChSim();
+  setupChecker();
+  buildPQ();
+}
+
+function wrapSubBlocks(){
+  var secs = document.querySelectorAll(".sec");
+  for(var s=0;s<secs.length;s++){
+    var sec = secs[s];
+    var h2s = sec.querySelectorAll("h2[id]");
+    if(!h2s.length){
+      var wrap = document.createElement("div");
+      wrap.className = "sub-block";
+      wrap.dataset.access = "a";
+      var h1 = sec.querySelector("h1");
+      var nodes = [];
+      var n = h1 ? h1.nextSibling : sec.firstChild;
+      while(n){nodes.push(n);n=n.nextSibling;}
+      if(h1) h1.after(wrap); else sec.prepend(wrap);
+      for(var k=0;k<nodes.length;k++) wrap.appendChild(nodes[k]);
+      continue;
+    }
+    for(var i=0;i<h2s.length;i++){
+      var h2 = h2s[i];
+      var level = "g";
+      if(h2.querySelector(".pill-r")) level = "r";
+      else if(h2.querySelector(".pill-a")) level = "a";
+      var wrap = document.createElement("div");
+      wrap.className = "sub-block";
+      wrap.dataset.access = level;
+      h2.before(wrap);
+      wrap.appendChild(h2);
+      var next = wrap.nextSibling;
+      while(next){
+        if(next.nodeType===1 && next.tagName==="H2") break;
+        if(next.nodeType===1 && next.classList && next.classList.contains("sub-block")) break;
+        var move = next;
+        next = next.nextSibling;
+        wrap.appendChild(move);
+      }
+    }
+  }
+}
+
+function buildMatrix(){
+  var t = document.getElementById("chm");
+  if(!t) return;
+  var html = "<thead><tr><th>Channel</th><th>Campfire</th><th>Grounded</th><th>Celebrating</th><th>Alive</th></tr></thead><tbody>";
+  for(var i=0;i<CH.length;i++){
+    var r = CH[i];
+    html += "<tr><td>"+r[0]+"</td>";
+    for(var j=1;j<=4;j++) html += '<td><span class="pill '+LEVEL_CLS[r[j]]+'">'+r[j]+'</span></td>';
+    html += "</tr>";
+  }
+  t.innerHTML = html + "</tbody>";
+}
+
+function buildChSim(){
+  var pills = document.getElementById("chPills");
+  var dials = document.getElementById("dials");
+  if(!pills || !dials) return;
+  var ph = "";
+  for(var i=0;i<CH.length;i++) ph += '<div class="ch-pill" data-i="'+i+'">'+CH[i][0]+'</div>';
+  pills.innerHTML = ph;
+  var dims = ["Campfire","Grounded","Celebrating","Alive"];
+  var dh = "";
+  for(var i=0;i<dims.length;i++){
+    dh += '<div class="dial"><div class="dial-label">'+dims[i]+'</div><div class="dial-bar"><div class="dial-fill" id="df-'+dims[i]+'" style="height:0%"></div></div><div class="dial-val" id="dv-'+dims[i]+'">-</div></div>';
+  }
+  dials.innerHTML = dh;
+  pills.addEventListener("click", function(e){
+    var p = e.target.closest(".ch-pill");
+    if(!p) return;
+    var all = pills.querySelectorAll(".ch-pill");
+    for(var k=0;k<all.length;k++) all[k].classList.remove("on");
+    p.classList.add("on");
+    var row = CH[parseInt(p.dataset.i)];
+    var vals = [row[1],row[2],row[3],row[4]];
+    for(var k=0;k<dims.length;k++){
+      var pct = LEVEL_MAP[vals[k]] || 0;
+      document.getElementById("df-"+dims[k]).style.height = pct+"%";
+      document.getElementById("dv-"+dims[k]).textContent = vals[k];
+    }
+    document.getElementById("chAdv").textContent = row[5];
+  });
+}
+
+function setupChecker(){
+  var btn = document.getElementById("checkBtn");
+  if(!btn) return;
+  btn.addEventListener("click", function(){
+    runCheck(document.getElementById("copyIn").value, document.getElementById("checkOut"));
+  });
+}
+
+function runCheck(text, el){
+  if(!text.trim()){el.classList.remove("on");return;}
+  el.classList.add("on");
+  var lower = text.toLowerCase();
+  var flags = [];
+  var score = 100;
+
+  for(var i=0;i<BANNED.length;i++){
+    if(lower.indexOf(BANNED[i]) > -1){
+      flags.push({t:"warn",msg:"<b>Banned phrase:</b> \""+BANNED[i]+"\" - delete it."});
+      score -= 12;
+    }
+  }
+  var jkeys = Object.keys(JARGON_SWAPS);
+  for(var i=0;i<jkeys.length;i++){
+    if(lower.indexOf(jkeys[i]) > -1){
+      flags.push({t:"tip",msg:"<b>Swap:</b> \""+jkeys[i]+"\" to <strong>\""+JARGON_SWAPS[jkeys[i]]+"\"</strong>"});
+      score -= 5;
+    }
+  }
+  var GENERIC = ["we're proud","we believe","our mission","leading provider","committed to","passionate about","delighted to","pleased to announce","your fingertips","one-stop","end-to-end","customer-centric","data-driven","forward-thinking","valued customer","dear customer"];
+  for(var i=0;i<GENERIC.length;i++){
+    if(lower.indexOf(GENERIC[i]) > -1){
+      flags.push({t:"warn",msg:"<b>Generic fintech:</b> \""+GENERIC[i]+"\" - any bank could say this."});
+      score -= 8;
+    }
+  }
+  if(text.indexOf("!!") > -1){
+    flags.push({t:"tip",msg:"<b>Tone:</b> Double exclamation marks feel over-the-top."});
+    score -= 4;
+  }
+  var words = text.split(/\s+/).filter(function(w){return w.length>0;});
+  var avgLen = 0;
+  for(var i=0;i<words.length;i++) avgLen += words[i].replace(/[^a-zA-Z]/g,"").length;
+  avgLen = avgLen / (words.length || 1);
+  if(avgLen > 6.5){
+    flags.push({t:"tip",msg:"<b>Complex vocabulary:</b> Average word length is "+avgLen.toFixed(1)+". Use shorter words."});
+    score -= 8;
+  }
+
+  score = Math.max(0, Math.min(100, score));
+  var grade = score >= 80 ? "great" : score >= 50 ? "ok" : "bad";
+  var msg = score >= 80 ? "Clean, human copy. Skyro-approved." : score >= 50 ? "Getting there - fix the flagged items." : "Needs a rewrite. Too corporate or too much jargon.";
+
+  var html = '<div class="check-score"><div class="score-ring '+grade+'">'+score+'</div><div class="score-msg">'+msg+'</div></div>';
+  for(var i=0;i<flags.length;i++){
+    html += '<div class="flag '+flags[i].t+'">'+flags[i].msg+'</div>';
+  }
+  el.innerHTML = html;
+}
+
+// Personality Quiz
+var PQ_LABELS = ["Strongly disagree","Disagree","Neither","Agree","Strongly agree"];
+var pqScore = 0, pqDone = 0, pqItems = [];
+
+function buildPQ(){
+  var box = document.getElementById("pqBox");
+  var prog = document.getElementById("pqProg");
+  if(!box) return;
+  pqItems = [];
+  for(var i=0;i<SV.length;i++){
+    if(SV[i][0] !== "_div_") pqItems.push(SV[i]);
+  }
+  var ph = "";
+  for(var i=0;i<pqItems.length;i++) ph += '<div class="pq-pip" id="pqp'+i+'"></div>';
+  prog.innerHTML = ph;
+
+  var bh = "";
+  for(var i=0;i<pqItems.length;i++){
+    bh += '<div class="pq-card" id="pqc'+i+'">';
+    bh += '<div class="pq-stmt">'+pqItems[i][0]+'</div>';
+    bh += '<div class="pq-labels"><span>Strongly disagree</span><span>Strongly agree</span></div>';
+    bh += '<div class="pq-scale">';
+    for(var n=1;n<=5;n++){
+      if(n>1) bh += '<div style="flex:1;height:2px;background:var(--sand)"></div>';
+      bh += '<div class="pq-dot" data-qi="'+i+'" data-val="'+n+'" id="pqd'+i+'_'+n+'"></div>';
+    }
+    bh += '</div>';
+    bh += '<div class="pq-fb" id="pqfb'+i+'"></div>';
+    bh += '</div>';
+  }
+  box.innerHTML = bh;
+
+  box.addEventListener("click", function(e){
+    var dot = e.target.closest(".pq-dot");
+    if(!dot) return;
+    var qi = parseInt(dot.dataset.qi);
+    var picked = parseInt(dot.dataset.val);
+    pickPQ(qi, picked);
+  });
+}
+
+function pickPQ(qi, picked){
+  var item = pqItems[qi];
+  var correct = item[1];
+  var explain = item[2] || "";
+  var card = document.getElementById("pqc"+qi);
+  if(card.classList.contains("answered")) return;
+  var pip = document.getElementById("pqp"+qi);
+  var fb = document.getElementById("pqfb"+qi);
+  var hit = Math.abs(picked - correct) <= 1;
+  if(hit){pqScore++;pip.classList.add("hit");}
+  else{pip.classList.add("miss");}
+  pqDone++;
+  var pickedEl = document.getElementById("pqd"+qi+"_"+picked);
+  var correctEl = document.getElementById("pqd"+qi+"_"+correct);
+  if(hit){pickedEl.classList.add("correct-dot");}
+  else{pickedEl.classList.add("wrong-dot");correctEl.classList.add("was-right");}
+  fb.className = "pq-fb " + (hit ? "ok" : "no");
+  var verdict = hit ? (picked===correct ? "Exact match. " : "Close enough. ") : "Skyro is at \""+PQ_LABELS[correct-1]+".\" ";
+  fb.innerHTML = "<strong>"+(hit?"V ":"X ")+verdict+"</strong>"+explain;
+  card.classList.add("answered", hit?"correct":"wrong");
+  if(pqDone < pqItems.length){
+    setTimeout(function(){
+      var next = document.getElementById("pqc"+(qi+1));
+      if(next) next.scrollIntoView({behavior:"smooth",block:"center"});
+    },500);
+  }
+  if(pqDone === pqItems.length) setTimeout(showPQResult, 600);
+}
+
+function showPQResult(){
+  var el = document.getElementById("pqResult");
+  var pct = Math.round(pqScore/pqItems.length*100);
+  var msg;
+  if(pct>=85) msg = "You feel Skyro in your bones.";
+  else if(pct>=65) msg = "Strong intuition. A few calibrations off.";
+  else if(pct>=40) msg = "General direction right, fine-tuning needs work.";
+  else msg = "Skyro surprised you. Re-read sections 6 and 7.";
+  el.style.display = "block";
+  el.innerHTML = '<div class="pq-result"><div style="font-family:Fraunces,serif;font-size:36px;color:var(--g800)">'+pqScore+' / '+pqItems.length+'</div><div style="font-size:14px;color:var(--txt3);margin:4px 0 16px">'+pct+'% personality match</div><p style="font-size:15px;color:var(--txt2);max-width:440px;margin:0 auto;line-height:1.6">'+msg+'</p></div>';
+  el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function jumpTo(id){
+  var el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+  document.querySelector("nav.side").classList.remove("open");
+}
+
+function setupSpy(){
+  var obs = new IntersectionObserver(function(entries){
+    if(spyPaused) return;
+    for(var i=0;i<entries.length;i++){
+      if(entries[i].isIntersecting){
+        var secEl = entries[i].target;
+        var secId = secEl.id;
+        var navAs = document.querySelectorAll(".nav-a");
+        for(var j=0;j<navAs.length;j++){
+          var isOn = navAs[j].dataset.id === secId;
+          navAs[j].classList.toggle("on", isOn);
+          if(isOn){
+            var allSub = document.querySelectorAll(".nav-sub");
+            for(var k=0;k<allSub.length;k++) allSub[k].classList.remove("open");
+            var sub = document.querySelector('.nav-sub[data-p="'+secId+'"]');
+            if(sub) sub.classList.add("open");
+          }
+        }
+      }
+    }
+  },{rootMargin:"-70px 0px -60% 0px"});
+  var secs = document.querySelectorAll(".sec");
+  for(var i=0;i<secs.length;i++) obs.observe(secs[i]);
+}
+
+window.addEventListener("scroll",function(){
+  document.getElementById("tt").classList.toggle("show", window.scrollY > 300);
+});
+
+buildNav();
+buildMain();
+wrapSubBlocks();
+setupSpy();
+</script>
+
+<script>
+// Search - isolated script block
+(function(){
+  var si = document.getElementById("si");
+  var sro = document.getElementById("sro");
+  var srp = document.getElementById("srp");
+  var idx = [];
+
+  function buildIdx(){
+    if(idx.length > 0) return;
+    var secs = document.querySelectorAll(".sec");
+    for(var i=0; i<secs.length; i++){
+      var sec = secs[i];
+      var numEl = sec.querySelector(".sec-num");
+      var h1El = sec.querySelector("h1");
+      idx.push({
+        id: sec.id,
+        n: numEl ? numEl.textContent : "",
+        t: h1El ? h1El.textContent : "",
+        txt: sec.textContent || ""
+      });
+    }
+  }
+
+  function closeS(){
+    sro.classList.remove("on");
+    srp.classList.remove("on");
+    si.value = "";
+  }
+
+  si.addEventListener("input", function(){
+    buildIdx();
+    var q = si.value.trim().toLowerCase();
+    if(q.length < 2){ sro.classList.remove("on"); srp.classList.remove("on"); return; }
+    sro.classList.add("on");
+    srp.classList.add("on");
+    var results = [];
+    for(var i=0; i<idx.length; i++){
+      if(idx[i].txt.toLowerCase().indexOf(q) > -1 || idx[i].t.toLowerCase().indexOf(q) > -1){
+        results.push(idx[i]);
+      }
+    }
+    if(results.length === 0){ srp.innerHTML = "<div class='sr-empty'>No results</div>"; return; }
+    var html = "";
+    var max = Math.min(results.length, 8);
+    for(var j=0; j<max; j++){
+      var r = results[j];
+      var pos = r.txt.toLowerCase().indexOf(q);
+      var start = Math.max(0, pos - 40);
+      var end = Math.min(r.txt.length, pos + q.length + 60);
+      var snippet = r.txt.slice(start, end);
+      if(start > 0) snippet = "..." + snippet;
+      if(end < r.txt.length) snippet = snippet + "...";
+      html += "<div class='sr-item' data-target='" + r.id + "'>";
+      html += "<div class='sr-sec'>" + r.n + " - " + r.t + "</div>";
+      html += "<div class='sr-txt'>" + snippet + "</div></div>";
+    }
+    srp.innerHTML = html;
+  });
+
+  si.addEventListener("keydown", function(e){ if(e.key === "Escape") closeS(); });
+  sro.addEventListener("click", closeS);
+  srp.addEventListener("click", function(e){
+    var item = e.target.closest(".sr-item");
+    if(!item) return;
+    var tid = item.getAttribute("data-target");
+    closeS();
+    var el = document.getElementById(tid);
+    if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+  });
+})();
+</script>
+</body>
+</html>
