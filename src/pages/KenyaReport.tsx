@@ -19,6 +19,7 @@ const SECTIONS = [
   { id: "comms", label: "Communication Landscape", num: "07" },
   { id: "islamic", label: "Islamic Finance", num: "08" },
   { id: "appendix", label: "Appendices & Materials", num: "09" },
+  { id: "visual", label: "Visual Audit Gallery", num: "10" },
 ];
 
 const SOURCES = {
@@ -237,6 +238,882 @@ const Severity = ({ level }) => {
   return <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, padding: "3px 10px", borderRadius: 5, background: (c[level] || "#888") + "15", color: c[level] || "#888" }}>{(level || "").toUpperCase()}</span>;
 };
 
+// ─── SECTION 10: VISUAL AUDIT GALLERY ───────────────────────────────────────
+// LAYER 1 — Brand Screenshots: fill in BRAND_SHOTS below with real URLs
+// LAYER 2 — Context Photos: auto-loaded from loremflickr.com (free, no API key)
+
+const VISUAL_CATS = [
+  { id: "app",    label: "📱 App UI",      flick: "mobile,banking,smartphone,kenya" },
+  { id: "ads",    label: "📺 Advertising", flick: "advertising,billboard,marketing,africa" },
+  { id: "social", label: "📲 Social",      flick: "social,media,phone,kenya,youth" },
+  { id: "ooh",    label: "🏙 OOH & Retail",flick: "nairobi,street,market,kenya,city" },
+  { id: "web",    label: "🖥 Website",     flick: "technology,computer,digital,africa" },
+];
+
+const BRAND_COLORS_V = {
+  "M-Pesa": "#16A34A", "Equity Bank": "#E53935", "KCB Group": "#1565C0",
+  "NCBA / Loop": "#0D9488", "Co-op Bank": "#15803D",
+  "Tala": "#7C3AED", "Airtel Money": "#DC2626",
+  "Gulf African Bank": "#059669", "Absa Kenya": "#EF4444",
+};
+
+// ────────────────────────────────────────────────────────────────────────────
+// 🖼  PASTE YOUR SCREENSHOT URLs HERE
+// Each entry: { url, caption, source, year }
+// source = where you got it (e.g. "Google Play", "Twitter/X", "Field photo")
+// Leave url: "" to show an empty "add screenshot" slot
+// ────────────────────────────────────────────────────────────────────────────
+const BRAND_SHOTS = {
+  "M-Pesa": {
+    app: [
+      { url: "", caption: "M-Pesa home screen — send money flow", source: "Google Play Store", year: "2025" },
+      { url: "", caption: "Fuliza overdraft activation screen", source: "Google Play Store", year: "2025" },
+      { url: "", caption: "Lipa na M-Pesa QR merchant payment", source: "App Store", year: "2025" },
+      { url: "", caption: "M-Pesa Global remittance screen", source: "Google Play Store", year: "2024" },
+    ],
+    ads: [
+      { url: "", caption: "Twaweza campaign — smallholder farmer TVC still", source: "Safaricom press", year: "2024" },
+      { url: "", caption: "Fuliza 'Fulizia Maisha Yako' outdoor", source: "Field photo", year: "2024" },
+      { url: "", caption: "DigiFarm agricultural season ad", source: "Safaricom press", year: "2024" },
+    ],
+    social: [
+      { url: "", caption: "Safaricom Instagram — Diwali / CNY seasonal post", source: "Instagram @Safaricom_Care", year: "2025" },
+      { url: "", caption: "M-Pesa Twitter/X merchant spotlight", source: "Twitter/X @MpesaKe", year: "2025" },
+    ],
+    ooh: [
+      { url: "", caption: "M-Pesa agent signage — rural duka", source: "Field photo", year: "2024" },
+      { url: "", caption: "M-Pesa billboard — Mombasa Road Nairobi", source: "Field photo", year: "2024" },
+    ],
+    web: [
+      { url: "", caption: "safaricom.co.ke/mpesa homepage", source: "Web screenshot", year: "2025" },
+      { url: "", caption: "M-Pesa developer API portal", source: "Web screenshot", year: "2025" },
+    ],
+  },
+  "Equity Bank": {
+    app: [
+      { url: "", caption: "EazzyBanking app — dashboard view", source: "Google Play Store", year: "2025" },
+      { url: "", caption: "EazzyBanking loan application flow", source: "App Store", year: "2025" },
+    ],
+    ads: [
+      { url: "", caption: "Wings to Fly scholarship announcement TVC", source: "Equity press", year: "2024" },
+      { url: "", caption: "Equity Bank billboard — Nairobi CBD", source: "Field photo", year: "2024" },
+    ],
+    social: [
+      { url: "", caption: "Equity Bank Kenya Instagram — scholarship winners", source: "Instagram @EquityBankKenya", year: "2024" },
+    ],
+    ooh: [
+      { url: "", caption: "Equity Bank branch — Westlands Nairobi", source: "Field photo", year: "2024" },
+    ],
+    web: [
+      { url: "", caption: "equitybankgroup.com Kenya homepage", source: "Web screenshot", year: "2025" },
+    ],
+  },
+  "KCB Group": {
+    app: [
+      { url: "", caption: "KCB MoBangi app — account overview", source: "Google Play Store", year: "2025" },
+      { url: "", caption: "KCB Vooma USSD interface", source: "Field photo", year: "2024" },
+    ],
+    ads: [
+      { url: "", caption: "KCB 2Jiajiri entrepreneurship campaign", source: "KCB press", year: "2024" },
+      { url: "", caption: "KCB 'Together We Can' billboard", source: "Field photo", year: "2024" },
+    ],
+    social: [
+      { url: "", caption: "KCB Kenya Twitter/X — SME campaign", source: "Twitter/X @KCBGroup", year: "2025" },
+    ],
+    ooh: [
+      { url: "", caption: "KCB branch — Tom Mboya Street Nairobi", source: "Field photo", year: "2024" },
+    ],
+    web: [
+      { url: "", caption: "kcbgroup.com Kenya homepage", source: "Web screenshot", year: "2025" },
+    ],
+  },
+  "Tala": {
+    app: [
+      { url: "", caption: "Tala app — loan application screen", source: "Google Play Store", year: "2025" },
+      { url: "", caption: "Tala Wallet — savings dashboard", source: "App Store", year: "2025" },
+      { url: "", caption: "Tala credit score screen", source: "Google Play Store", year: "2025" },
+    ],
+    ads: [
+      { url: "", caption: "'Duka Yangu, Nguvu Yangu' campaign visual", source: "Tala press", year: "2024" },
+      { url: "", caption: "Tala digital ad — boda boda rider", source: "Meta Ads Library", year: "2024" },
+    ],
+    social: [
+      { url: "", caption: "Tala TikTok — financial literacy reel", source: "TikTok @TalaKenya", year: "2025" },
+    ],
+    ooh: [
+      { url: "", caption: "Tala billboard — Ngong Road Nairobi", source: "Field photo", year: "2024" },
+    ],
+    web: [
+      { url: "", caption: "tala.co Kenya website", source: "Web screenshot", year: "2025" },
+    ],
+  },
+  "Airtel Money": {
+    app: [
+      { url: "", caption: "Airtel Money app — send money screen", source: "Google Play Store", year: "2025" },
+      { url: "", caption: "Airtel Money interoperability flow (to M-Pesa)", source: "App Store", year: "2025" },
+    ],
+    ads: [
+      { url: "", caption: "Airtel Money interoperability launch campaign", source: "Airtel press", year: "2024" },
+    ],
+    social: [
+      { url: "", caption: "Airtel Kenya Instagram — bundle promotion", source: "Instagram @AirtelKE", year: "2025" },
+    ],
+    ooh: [
+      { url: "", caption: "Airtel shop exterior — Mombasa", source: "Field photo", year: "2024" },
+    ],
+    web: [
+      { url: "", caption: "airtel.co.ke/money homepage", source: "Web screenshot", year: "2025" },
+    ],
+  },
+  "NCBA / Loop": {
+    app: [
+      { url: "", caption: "Loop app — dashboard design", source: "Google Play Store", year: "2025" },
+      { url: "", caption: "M-Shwari savings screen (within M-Pesa)", source: "App Store", year: "2025" },
+    ],
+    ads: [
+      { url: "", caption: "Loop 'Banking for the Next Generation' campaign", source: "NCBA press", year: "2024" },
+    ],
+    social: [{ url: "", caption: "NCBA Kenya Instagram — Loop launch", source: "Instagram @NCBABankKenya", year: "2024" }],
+    ooh: [{ url: "", caption: "NCBA branch — Upperhill Nairobi", source: "Field photo", year: "2024" }],
+    web: [{ url: "", caption: "ncbagroup.com Loop page", source: "Web screenshot", year: "2025" }],
+  },
+  "Co-op Bank": {
+    app: [
+      { url: "", caption: "MCo-op Cash app — home screen", source: "Google Play Store", year: "2025" },
+    ],
+    ads: [
+      { url: "", caption: "'Jibu ni Co-op' tea season campaign", source: "Field photo", year: "2024" },
+    ],
+    social: [{ url: "", caption: "Co-op Bank Kenya Facebook — Sacco announcement", source: "Facebook @CoopBankKenya", year: "2025" }],
+    ooh: [{ url: "", caption: "Co-op Bank branch — Kericho (tea county)", source: "Field photo", year: "2024" }],
+    web: [{ url: "", caption: "co-opbank.co.ke homepage", source: "Web screenshot", year: "2025" }],
+  },
+  "Gulf African Bank": {
+    app: [
+      { url: "", caption: "Gulf African Bank mobile app", source: "Google Play Store", year: "2025" },
+    ],
+    ads: [
+      { url: "", caption: "Ramadan takaful & savings campaign", source: "GAB press", year: "2024" },
+    ],
+    social: [{ url: "", caption: "Gulf African Bank Facebook — Eid greeting", source: "Facebook @GulfAfricanBank", year: "2025" }],
+    ooh: [{ url: "", caption: "Gulf African Bank branch — Mombasa Old Town", source: "Field photo", year: "2024" }],
+    web: [{ url: "", caption: "gulfafricanbank.com homepage", source: "Web screenshot", year: "2025" }],
+  },
+  "Absa Kenya": {
+    app: [
+      { url: "", caption: "Absa Mobile Banking app — dashboard", source: "Google Play Store", year: "2025" },
+    ],
+    ads: [
+      { url: "", caption: "'Africanacity' brand campaign visual", source: "Absa press", year: "2024" },
+    ],
+    social: [{ url: "", caption: "Absa Kenya Instagram — FlexiPay BNPL launch", source: "Instagram @AbsaKenya", year: "2025" }],
+    ooh: [{ url: "", caption: "Absa branch — Westlands Nairobi", source: "Field photo", year: "2024" }],
+    web: [{ url: "", caption: "absa.co.ke homepage", source: "Web screenshot", year: "2025" }],
+  },
+};
+
+// Contextual photo pool — loremflickr.com, free, no API key, keyword-matched
+// Uses a stable seed so same slot always loads the same image
+function ctxPhotoUrl(keywords, seed) {
+  return `https://loremflickr.com/480/320/${encodeURIComponent(keywords)}?lock=${seed}`;
+}
+
+const CTX_PHOTOS = {
+  app: [
+    { url: ctxPhotoUrl("mobile,banking,smartphone,africa", 101), caption: "Mobile banking in sub-Saharan Africa context", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("mobile,payment,kenya,market", 102), caption: "Mobile payment — market vendor scenario", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("smartphone,fintech,young,africa", 103), caption: "Young Kenyan using fintech app", note: "Contextual illustration" },
+  ],
+  ads: [
+    { url: ctxPhotoUrl("advertising,billboard,nairobi,kenya", 201), caption: "Nairobi outdoor advertising landscape", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("marketing,campaign,africa,brand", 202), caption: "Financial services campaign imagery", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("kenya,city,street,commercial", 203), caption: "Nairobi commercial district environment", note: "Contextual illustration" },
+  ],
+  social: [
+    { url: ctxPhotoUrl("social,media,phone,young,kenya", 301), caption: "Social media usage — Kenyan youth context", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("tiktok,phone,africa,youth", 302), caption: "TikTok financial content — Gen Z context", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("instagram,phone,africa,business", 303), caption: "Instagram business promotion context", note: "Contextual illustration" },
+  ],
+  ooh: [
+    { url: ctxPhotoUrl("nairobi,street,city,kenya", 401), caption: "Nairobi street environment — OOH context", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("kenya,market,outdoor,vendors", 402), caption: "Kenyan open-air market — retail context", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("nairobi,cbd,buildings,africa", 403), caption: "Nairobi CBD — financial district context", note: "Contextual illustration" },
+  ],
+  web: [
+    { url: ctxPhotoUrl("digital,technology,computer,africa", 501), caption: "Digital technology — East Africa context", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("laptop,finance,banking,work", 502), caption: "Digital banking workspace context", note: "Contextual illustration" },
+    { url: ctxPhotoUrl("internet,mobile,wifi,kenya", 503), caption: "Internet access — Kenyan context", note: "Contextual illustration" },
+  ],
+};
+
+function VisualAuditSection({ sectionRefs }) {
+  const [activeBrand, setActiveBrand] = useState("M-Pesa");
+  const [activeCat, setActiveCat]   = useState("app");
+  const [viewMode, setViewMode]     = useState("brand"); // "brand" | "context"
+  const [copied, setCopied]         = useState(null);
+
+  const brandColor = BRAND_COLORS_V[activeBrand] || ACCENT;
+  const shots = BRAND_SHOTS[activeBrand]?.[activeCat] || [];
+  const filled = shots.filter(s => s.url);
+  const empty  = shots.filter(s => !s.url);
+  const ctxPhotos = CTX_PHOTOS[activeCat] || [];
+
+  const copySnippet = (shot) => {
+    const snippet = `{ url: "PASTE_URL_HERE", caption: "${shot.caption}", source: "${shot.source}", year: "${shot.year}" }`;
+    navigator.clipboard?.writeText(snippet).then(() => {
+      setCopied(shot.caption);
+      setTimeout(() => setCopied(null), 2000);
+    });
+  };
+
+  const totalFilled = Object.values(BRAND_SHOTS).reduce((acc, cats) =>
+    acc + Object.values(cats).reduce((a, arr) => a + arr.filter(s => s.url).length, 0), 0);
+  const totalSlots = Object.values(BRAND_SHOTS).reduce((acc, cats) =>
+    acc + Object.values(cats).reduce((a, arr) => a + arr.length, 0), 0);
+
+  return (
+    <section id="visual" ref={(el) => (sectionRefs.current["visual"] = el)} style={{ marginBottom: 80 }}>
+      {/* Header */}
+      <div style={{ marginBottom: 28 }}>
+        <div style={{ fontSize: 11, letterSpacing: 4, color: ACCENT, fontWeight: 700, marginBottom: 6, fontFamily: "sans-serif" }}>SECTION 10</div>
+        <h2 style={{ fontSize: 30, fontWeight: 300, color: TEXT, margin: "0 0 8px", letterSpacing: "-0.02em" }}>Visual Audit Gallery</h2>
+        <p style={{ fontSize: 14, color: TEXT_MUTED, margin: 0, lineHeight: 1.6, maxWidth: 680 }}>
+          Two layers: <strong>Brand Screenshots</strong> — paste real URLs from Google Play, Twitter/X, field photos, and press kits.
+          <strong> Context Photos</strong> — auto-loaded illustrative imagery via Flickr (no API key needed).
+        </p>
+      </div>
+
+      {/* Progress bar */}
+      <div style={{ padding: "14px 18px", background: CARD_BG, border: `1px solid ${BORDER}`, borderRadius: 10, marginBottom: 20, display: "flex", alignItems: "center", gap: 16 }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: TEXT, fontFamily: "sans-serif" }}>Screenshot Collection Progress</span>
+            <span style={{ fontSize: 12, color: totalFilled > 0 ? ACCENT : TEXT_MUTED, fontWeight: 700, fontFamily: "sans-serif" }}>{totalFilled} / {totalSlots} slots filled</span>
+          </div>
+          <div style={{ height: 6, background: "#F3F4F6", borderRadius: 3, overflow: "hidden" }}>
+            <div style={{ width: `${(totalFilled / totalSlots) * 100}%`, height: "100%", background: totalFilled > 0 ? ACCENT : "#E5E7EB", borderRadius: 3, transition: "width 0.5s ease" }} />
+          </div>
+        </div>
+        <div style={{ fontSize: 10, color: TEXT_MUTED, fontFamily: "sans-serif", textAlign: "right", whiteSpace: "nowrap" }}>
+          Target: 50–100 images<br />across all brands & categories
+        </div>
+      </div>
+
+      {/* Mode toggle */}
+      <div style={{ display: "flex", gap: 6, marginBottom: 18 }}>
+        {[{ v: "brand", l: "🖼 Brand Screenshots", desc: "Paste your own URLs" }, { v: "context", l: "📸 Context Photos", desc: "Auto-loaded from Flickr" }].map(m => (
+          <button key={m.v} onClick={() => setViewMode(m.v)} style={{
+            padding: "10px 18px", borderRadius: 10, cursor: "pointer", fontFamily: "sans-serif", textAlign: "left",
+            border: viewMode === m.v ? `2px solid ${ACCENT}` : `1px solid ${BORDER}`,
+            background: viewMode === m.v ? ACCENT_BG : CARD_BG,
+            color: viewMode === m.v ? ACCENT : TEXT_SECONDARY,
+          }}>
+            <div style={{ fontSize: 13, fontWeight: 700 }}>{m.l}</div>
+            <div style={{ fontSize: 10, opacity: 0.7, marginTop: 2 }}>{m.desc}</div>
+          </button>
+        ))}
+      </div>
+
+      {/* Category tabs */}
+      <div style={{ display: "flex", gap: 4, marginBottom: 16, background: "#F3F4F6", borderRadius: 10, padding: 4 }}>
+        {VISUAL_CATS.map(c => (
+          <button key={c.id} onClick={() => setActiveCat(c.id)} style={{
+            flex: 1, padding: "8px 4px", borderRadius: 7, cursor: "pointer", fontFamily: "sans-serif", fontSize: 12,
+            fontWeight: activeCat === c.id ? 700 : 500, border: "none",
+            background: activeCat === c.id ? CARD_BG : "transparent",
+            color: activeCat === c.id ? TEXT : TEXT_MUTED,
+            boxShadow: activeCat === c.id ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
+          }}>{c.label}</button>
+        ))}
+      </div>
+
+      {/* BRAND MODE */}
+      {viewMode === "brand" && (
+        <>
+          {/* Brand pills */}
+          <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
+            {Object.keys(BRAND_SHOTS).map(b => {
+              const count = (BRAND_SHOTS[b]?.[activeCat] || []).filter(s => s.url).length;
+              const total = (BRAND_SHOTS[b]?.[activeCat] || []).length;
+              const color = BRAND_COLORS_V[b] || ACCENT;
+              return (
+                <button key={b} onClick={() => setActiveBrand(b)} style={{
+                  padding: "7px 13px", borderRadius: 20, cursor: "pointer", fontFamily: "sans-serif", fontSize: 12,
+                  fontWeight: activeBrand === b ? 700 : 500,
+                  border: activeBrand === b ? `2px solid ${color}` : `1px solid ${BORDER}`,
+                  background: activeBrand === b ? color + "12" : CARD_BG,
+                  color: activeBrand === b ? color : TEXT_SECONDARY,
+                  display: "flex", alignItems: "center", gap: 6,
+                }}>
+                  {b.split(" ")[0]}
+                  <span style={{ fontSize: 9, padding: "1px 5px", borderRadius: 8, background: count > 0 ? color + "20" : "#F3F4F6", color: count > 0 ? color : TEXT_MUTED, fontWeight: 700 }}>{count}/{total}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* How to add instruction */}
+          <div style={{ padding: "12px 16px", background: "#FFFBEB", borderRadius: 8, border: "1px solid #FDE68A", marginBottom: 16, display: "flex", gap: 10, alignItems: "flex-start" }}>
+            <span style={{ fontSize: 16 }}>💡</span>
+            <div>
+              <p style={{ fontSize: 12, fontWeight: 700, color: "#92400E", margin: "0 0 3px", fontFamily: "sans-serif" }}>How to add screenshots</p>
+              <p style={{ fontSize: 11, color: "#78350F", margin: 0, lineHeight: 1.6 }}>
+                Open <code style={{ background: "#FEF3C7", padding: "1px 4px", borderRadius: 3 }}>kenya-report.jsx</code> → find <code style={{ background: "#FEF3C7", padding: "1px 4px", borderRadius: 3 }}>BRAND_SHOTS</code> → paste your direct image URL into the matching slot's <code style={{ background: "#FEF3C7", padding: "1px 4px", borderRadius: 3 }}>url: ""</code> field.
+                Good sources: Google Play screenshot, <strong>Imgur</strong> (free hosting), <strong>Twitter/X</strong> media URLs, press kit downloads, field photos uploaded to Drive → share link → use direct URL.
+              </p>
+            </div>
+          </div>
+
+          {/* Filled screenshots */}
+          {filled.length > 0 && (
+            <div style={{ marginBottom: 14 }}>
+              <div style={{ fontSize: 10, letterSpacing: 2, color: "#10B981", fontWeight: 700, fontFamily: "sans-serif", marginBottom: 8 }}>✅ ADDED ({filled.length})</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
+                {filled.map((shot, i) => <ShotCard key={i} shot={shot} brandColor={brandColor} index={i} type="filled" />)}
+              </div>
+            </div>
+          )}
+
+          {/* Empty slots */}
+          {empty.length > 0 && (
+            <div>
+              <div style={{ fontSize: 10, letterSpacing: 2, color: TEXT_MUTED, fontWeight: 700, fontFamily: "sans-serif", marginBottom: 8 }}>⬜ NEEDS SCREENSHOT ({empty.length})</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
+                {empty.map((shot, i) => (
+                  <div key={i} style={{ borderRadius: 10, border: `1.5px dashed ${BORDER}`, background: "#FAFAFA", overflow: "hidden" }}>
+                    <div style={{ padding: "28px 16px", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: brandColor + "15", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>📷</div>
+                      <p style={{ fontSize: 11, color: TEXT, fontWeight: 600, margin: 0, textAlign: "center", lineHeight: 1.4 }}>{shot.caption}</p>
+                      <p style={{ fontSize: 10, color: TEXT_MUTED, margin: 0, fontFamily: "sans-serif" }}>Source hint: {shot.source}</p>
+                    </div>
+                    <div style={{ padding: "8px 12px", borderTop: `1px solid ${BORDER}`, background: CARD_BG, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ fontSize: 9, color: TEXT_MUTED, fontFamily: "sans-serif" }}>{shot.year}</span>
+                      <button onClick={() => copySnippet(shot)} style={{ fontSize: 10, color: brandColor, background: brandColor + "12", border: "none", borderRadius: 5, padding: "3px 8px", cursor: "pointer", fontFamily: "sans-serif", fontWeight: 700 }}>
+                        {copied === shot.caption ? "✓ Copied!" : "Copy slot →"}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* CONTEXT MODE */}
+      {viewMode === "context" && (
+        <>
+          <div style={{ padding: "12px 16px", background: "#F0FDF4", borderRadius: 8, border: "1px solid #BBF7D0", marginBottom: 16 }}>
+            <p style={{ fontSize: 12, color: "#166534", margin: 0, lineHeight: 1.6 }}>
+              <strong>Auto-loaded from loremflickr.com</strong> — free service, no API key, keyword-matched images from Flickr Creative Commons. These are contextual illustrations only, not brand screenshots. Keyword: <em>{VISUAL_CATS.find(c => c.id === activeCat)?.flick}</em>
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
+            {ctxPhotos.map((p, i) => <ShotCard key={i} shot={p} brandColor="#6B7280" index={i} type="context" />)}
+          </div>
+          <p style={{ fontSize: 11, color: TEXT_MUTED, marginTop: 14, lineHeight: 1.6, fontStyle: "italic" }}>
+            ⚠️ Context photos are illustrative only. Replace with specific brand assets in the Brand Screenshots tab as your research collection grows.
+          </p>
+        </>
+      )}
+
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </section>
+  );
+}
+
+function ShotCard({ shot, brandColor, index, type }) {
+  const [status, setStatus] = useState("loading");
+  return (
+    <div style={{ borderRadius: 10, overflow: "hidden", border: `1px solid ${BORDER}`, background: CARD_BG, boxShadow: "0 1px 4px rgba(0,0,0,0.05)" }}>
+      <div style={{ position: "relative", width: "100%", paddingTop: "65%", background: "#F3F4F6" }}>
+        {status === "loading" && (
+          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ width: 22, height: 22, border: `3px solid ${brandColor}20`, borderTop: `3px solid ${brandColor}`, borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+          </div>
+        )}
+        {status === "error" && (
+          <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5 }}>
+            <span style={{ fontSize: 24 }}>🖼</span>
+            <span style={{ fontSize: 10, color: TEXT_MUTED, fontFamily: "sans-serif" }}>Image unavailable</span>
+          </div>
+        )}
+        <img
+          src={shot.url}
+          alt={shot.caption}
+          onLoad={() => setStatus("loaded")}
+          onError={() => setStatus("error")}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: status === "error" ? "none" : "block" }}
+        />
+        <div style={{ position: "absolute", top: 6, left: 6, fontSize: 9, padding: "2px 7px", background: type === "context" ? "rgba(107,114,128,0.75)" : "rgba(0,0,0,0.6)", color: "#fff", borderRadius: 4, fontFamily: "sans-serif", fontWeight: 700 }}>
+          {type === "context" ? "CONTEXT" : `#${index + 1}`}
+        </div>
+      </div>
+      <div style={{ padding: "9px 12px" }}>
+        <p style={{ fontSize: 11, fontWeight: 600, color: TEXT, margin: "0 0 3px", lineHeight: 1.4 }}>{shot.caption}</p>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ fontSize: 10, color: TEXT_MUTED, fontFamily: "sans-serif" }}>{shot.source || shot.note}</span>
+          {shot.url && <a href={shot.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 9, color: brandColor, textDecoration: "none", fontFamily: "sans-serif" }}>↗</a>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+const NEED_SEGMENTS = [
+  {
+    id: "hustler",
+    icon: "⚡",
+    name: "The Urban Hustler",
+    sub: "Informal micro-entrepreneur, 18–35, Nairobi / Mombasa",
+    tam: "8M+",
+    color: ACCENT,
+    desc: "Kenya's most culturally visible segment — the young person running a mama mboga stall, a phone repair kiosk, a small salon, or a clothing cart in a busy market. Their financial life is entirely informal: daily cash income with no payslip, no pension, and no formal credit history. M-Pesa is their bank account, Fuliza is their overdraft, and WhatsApp is their marketing channel. The Hustler Fund was named after them — yet the formal financial system has largely designed them out of its products. They are extremely financially aware (counting every shilling), highly digitally connected (smartphones, TikTok, Facebook), and deeply distrustful of any financial product that requires documentation or charges hidden fees.",
+    needs: ["Income smoothing — irregular daily earnings need weekly aggregation", "Working capital credit — KES 2,000–20,000, same-day, no paperwork", "Merchant payment acceptance — receive M-Pesa from customers seamlessly", "Micro-savings — save KES 50–200/day automatically", "Business tools — simple invoicing, stock tracking, basic P&L"],
+    products: [
+      { name: "M-Pesa Pochi la Biashara", desc: "Merchant wallet — separates business and personal M-Pesa. Zero setup cost. Accept payments via QR or till number.", fit: "✅ Strong fit" },
+      { name: "Hustler Fund", desc: "Government micro-credit KES 500–50,000 at 8% annual. 21M+ registered. No collateral, instant via M-Pesa.", fit: "✅ Strong fit" },
+      { name: "Tala / Branch", desc: "ML-based credit KES 500–30,000 within 3 minutes. Repayment builds credit score for higher future limits.", fit: "✅ Strong fit" },
+      { name: "Equity EazzyBanking", desc: "Business current account with overdraft. Requires minimal documentation. Wings to Fly brand creates aspiration.", fit: "⚡ Moderate fit" },
+    ],
+    competitors: [
+      { brand: "M-Pesa", role: "Payment rails + Fuliza overdraft + Pochi merchant wallet", coverage: "Dominant", color: "#16A34A" },
+      { brand: "Tala", role: "Working capital credit, credit score building", coverage: "Strong", color: "#7C3AED" },
+      { brand: "Hustler Fund", role: "Government credit floor — benchmarks price expectations", coverage: "Strong", color: "#F59E0B" },
+      { brand: "Equity Bank", role: "Business account + aspirational brand", coverage: "Moderate", color: "#E53935" },
+    ],
+    gap: "No single product combines merchant QR payments + daily micro-savings + working capital credit + basic business analytics in one mobile-first interface. The Hustler needs a 'business in a phone' — not a bank account with a loan attached.",
+    channels: [
+      { ch: "WhatsApp", role: "Primary — business group chats, peer referrals, word of mouth for new products" },
+      { ch: "TikTok", role: "Financial literacy content, 'money hack' videos, side hustle inspiration reels" },
+      { ch: "Facebook", role: "Market women's groups, business networks, community pages" },
+      { ch: "Radio (vernacular)", role: "Background listening while working — Kikuyu FM, Luo Radio, Kameme FM" },
+      { ch: "Peer referral", role: "Chama members, market stall neighbours — most trusted activation channel" },
+    ],
+    commsExample: {
+      brand: "Tala",
+      campaign: "'Duka Yangu, Nguvu Yangu' (My Shop, My Strength)",
+      why: "Reframed credit as personal empowerment rather than financial transaction. 'Your shop proves you're creditworthy' — reversed the shame-credit narrative. Kiswahili campaign name made it culturally owned.",
+      hook: "A mama mboga in Gikomba market gets her first Tala loan and doubles her stock. Three weeks later she repays and gets a higher limit. The ad ends with her expanding to a second stall.",
+    },
+  },
+  {
+    id: "chama",
+    icon: "🤝",
+    name: "The Chama Saver",
+    sub: "Community savings group member, predominantly women, 25–55",
+    tam: "4.5M+",
+    color: "#8B5CF6",
+    desc: "Kenya's most financially disciplined segment — participating in one or more chamas (rotating savings and credit groups), contributing KES 500–10,000 monthly into a pooled fund that circulates among members for investments, emergencies, and celebrations. Chamas are governed by constitutions, minutes-taking, and formal treasurer roles — yet 95% operate with cash in a tin or a basic shared M-Pesa account. The chama member's financial trust hierarchy is: chama first, Sacco second, bank third. They are predominantly women (60%+ of chama participation is female), run small businesses or hold formal employment, and use the chama as their primary investment vehicle — buying land, building rental properties, and funding children's school fees collectively.",
+    needs: ["Group treasury management — track each member's contribution, loan, and balance automatically", "Rotating credit automation — digital merry-go-round with SMS reminders", "Meeting scheduling and minutes recording in Kiswahili", "Group investment tracking — shares, property, money market", "Transparent reporting — every member sees every transaction"],
+    products: [
+      { name: "Chamasoft / Kachoo", desc: "Dedicated chama management apps — contribution tracking, loan management, digital minutes. Early-stage but growing.", fit: "✅ Strong fit" },
+      { name: "M-Pesa group account", desc: "Shared M-Pesa wallet — simple but no treasury automation, no loan tracking, no meeting tools.", fit: "⚡ Partial fit" },
+      { name: "Co-op Bank MCo-op Cash", desc: "Sacco integration and group accounts. Strong in agricultural co-operative segment.", fit: "⚡ Moderate fit" },
+      { name: "Equity Chama Account", desc: "Group savings account with joint signatories. Branch-dependent setup. No digital-first chama tools.", fit: "⚠️ Weak fit" },
+    ],
+    competitors: [
+      { brand: "Chamasoft", role: "Only dedicated chama management platform — but limited bank/M-Pesa integration", coverage: "Niche", color: "#8B5CF6" },
+      { brand: "M-Pesa", role: "Payment rails for contributions — not a chama product", coverage: "Infrastructure", color: "#16A34A" },
+      { brand: "Co-op Bank", role: "Strongest institutional relationship with Sacco/co-operative sector", coverage: "Moderate", color: "#15803D" },
+      { brand: "Equity Bank", role: "Chama accounts exist but digital tools absent", coverage: "Weak", color: "#E53935" },
+    ],
+    gap: "No major bank or fintech has built a genuinely chama-native digital product. The gap is enormous: 300,000 chamas × 15 members = 4.5M+ high-savings-rate adults waiting for a product that actually fits their financial institution of choice.",
+    channels: [
+      { ch: "WhatsApp groups", role: "Primary — chama meeting reminders, contribution notices, voting on decisions" },
+      { ch: "Facebook groups", role: "Market women networks, investment groups, chama recruitment" },
+      { ch: "Word of mouth at chama meetings", role: "Most powerful activation — chairlady or treasurer endorsement reaches all members instantly" },
+      { ch: "Radio (vernacular, community)", role: "Women's programmes on regional stations — Inooro FM, Radio Salaam, Mulembe FM" },
+      { ch: "Church / mosque networks", role: "Community trust amplification — financial products endorsed by community leaders" },
+    ],
+    commsExample: {
+      brand: "Co-op Bank",
+      campaign: "'Jibu ni Co-op' — Annual Sacco Congress activation",
+      why: "Co-op Bank's presence at Kenya's annual Sacco Congress (the gathering of all co-operative societies) turns a B2B event into mass awareness — 14,000+ co-operative societies attend or receive materials. The 'the answer is Co-op' tagline resonates because co-operatives already understand collective financial power.",
+      hook: "A chama chairlady presents a 'digital treasury' tool at the annual meeting. Members vote to adopt it. Six months later the chama has KES 500K tracked digitally — and applies for a group business loan.",
+    },
+  },
+  {
+    id: "bodaboda",
+    icon: "🏍",
+    name: "The Boda Boda Rider",
+    sub: "Motorcycle taxi operator, male, 20–40, nationwide",
+    tam: "1.5M+",
+    color: "#F59E0B",
+    desc: "Kenya's most financially active yet most poorly served segment. 1.5 million boda boda riders generate KES 200B+ annually in collective income — but each individual earns KES 600–1,200 per day with zero formal employment protections. They are hyper-connected to M-Pesa (collect fares, pay fuel, send money home daily) and to their peer networks (boda boda stages, WhatsApp groups, and riding associations are their information ecosystem). Financially, they face a specific and brutal set of constraints: no payslip means no bank loan; no loan means renting a motorcycle from a shylock at 20–30% per month; no insurance means a single accident can destroy their income and saddle their family with debt. The boda boda rider is Kenya's most urgent financial inclusion challenge — not because they are poor, but because the system has designed products that systematically exclude them.",
+    needs: ["Motorcycle asset financing — own their bike within 12–24 months without shylock rates", "Accident & liability insurance — daily micro-premium affordable on KES 1,000/day income", "Income smoothing — daily earnings aggregated into weekly digital savings automatically", "Emergency fund — 30-day income equivalent saved for bike repair, hospitalisation", "Credit building — formal credit history from regular daily micro-savings"],
+    products: [
+      { name: "M-Pesa Fuliza / Pochi", desc: "Overdraft for fuel and parts emergencies. Pochi la Biashara for fare collection. Widely used but not purpose-built.", fit: "⚡ Partial fit" },
+      { name: "Tala", desc: "Emergency credit KES 500–30,000. Fast but interest-bearing, not income-smoothing.", fit: "⚡ Partial fit" },
+      { name: "Little / Sendy", desc: "Ride-hailing platforms that offer embedded financial services for registered riders. Early stage.", fit: "⚡ Emerging fit" },
+      { name: "Hustler Fund", desc: "Government credit access. Popular for emergency repairs but not motorcycle financing scale.", fit: "⚡ Partial fit" },
+    ],
+    competitors: [
+      { brand: "M-Pesa", role: "Payment utility — fare collection, fuel payments, remittances home", coverage: "Dominant (utility)", color: "#16A34A" },
+      { brand: "Tala", role: "Emergency credit — widely used by boda boda for urgent cash needs", coverage: "Moderate", color: "#7C3AED" },
+      { brand: "Little / Sendy", role: "Platform-embedded financial services — rider loans, insurance partnerships", coverage: "Emerging", color: "#F59E0B" },
+      { brand: "Hustler Fund", role: "Government credit floor — most accessible to unbanked riders", coverage: "Moderate", color: "#D97706" },
+    ],
+    gap: "No dedicated boda boda financial product exists at scale. The opportunity: a ride-hailing or SACCO-backed motorcycle asset financing product that replaces shylock arrangements, bundled with micro-insurance and daily auto-savings. Estimated addressable credit market: KES 100B+.",
+    channels: [
+      { ch: "Boda boda stage networks (peer)", role: "Highest-trust channel — news travels instantly at the stage waiting area" },
+      { ch: "WhatsApp riding associations", role: "Stage WhatsApp groups share insurance tips, platform offers, finance alerts" },
+      { ch: "Radio (vernacular, morning)", role: "Listen while waiting for fares — Kikuyu FM, Radio Lake Victoria, Ramogi FM" },
+      { ch: "SMS / USSD", role: "Smartphone and feature phone compatible — essential for riders without data bundles" },
+      { ch: "Peer referral at petrol station", role: "Fuel queues and petrol stations are social hubs — product word-of-mouth spreads here" },
+    ],
+    commsExample: {
+      brand: "Little (ride-hailing)",
+      campaign: "Little Riders Insurance Partnership activation",
+      why: "Little offered boda boda riders on its platform access to group accident insurance at reduced premiums through its app. Distribution via an existing trust relationship (the rider's earning platform) reduced adoption friction dramatically.",
+      hook: "Radio ad: 'Kama boda boda driver, una bima? Na Little app, bima yako ni KES 50 tu kwa siku.' (As a boda boda driver, do you have insurance? With Little app, your insurance is just KES 50 per day.)",
+    },
+  },
+  {
+    id: "farmer",
+    icon: "🌾",
+    name: "The Agricultural Smallholder",
+    sub: "Smallholder farmer, 35–65, rural Kenya — tea, coffee, maize, dairy",
+    tam: "7M+",
+    color: "#15803D",
+    desc: "Kenya's largest economic segment by headcount — approximately 7 million smallholder farming households managing 1–5 acres of land and participating in agricultural value chains: tea in the highlands of Kericho, Nandi, and Nyeri; coffee in Central Province; maize in the Rift Valley; dairy across Central and Rift Valley counties. Their financial calendar is determined by nature: income arrives at harvest (2–3 times per year), expenses are year-round. This mismatch — abundant cash post-harvest, acute shortage pre-planting — is the central financial design problem of rural Kenya. They are deeply embedded in agricultural co-operative structures (Kenya has 3,000+ agricultural co-operative societies) and use M-Pesa as their primary financial tool, often via USSD on feature phones.",
+    needs: ["Agricultural input financing — seeds, fertiliser, agrochemicals pre-planting on credit", "Harvest insurance — index-based weather/yield insurance to protect against drought or flooding", "Income smoothing — deposit and lock post-harvest earnings, release monthly for household expenses", "Co-operative payroll receipt — receive tea/coffee/dairy payments directly to mobile wallet", "Asset financing — water tanks, irrigation equipment, small greenhouse construction"],
+    products: [
+      { name: "DigiFarm (Safaricom × Syngenta)", desc: "Integrated agricultural platform: input financing on M-Pesa credit, crop insurance, market linkage. Covers tea, maize, horticulture.", fit: "✅ Strong fit" },
+      { name: "MCo-op Cash", desc: "Integrated with Kenya's 3,000+ agricultural co-operative societies. Tea/coffee/dairy co-operative payroll via MCo-op Cash. Rural reach is unmatched.", fit: "✅ Strong fit" },
+      { name: "Equity EazzyBanking", desc: "Agricultural loans and savings. Wings to Fly brand resonates in rural communities. 60,000+ agent network.", fit: "⚡ Moderate fit" },
+      { name: "KCB MoBangi / Vooma", desc: "Government agricultural credit partnerships. KCB Vooma USSD-based access for feature phone users.", fit: "⚡ Moderate fit" },
+    ],
+    competitors: [
+      { brand: "Co-op Bank / MCo-op Cash", role: "Dominant in tea, coffee, dairy co-operative payroll and savings", coverage: "Dominant", color: "#15803D" },
+      { brand: "DigiFarm / M-Pesa", role: "Agricultural input financing, insurance, market linkage on M-Pesa rails", coverage: "Strong and growing", color: "#16A34A" },
+      { brand: "Equity Bank", role: "Rural agent network, agricultural loans, co-operative banking windows", coverage: "Moderate", color: "#E53935" },
+      { brand: "KCB Group", role: "Government agricultural credit, rural Sacco partnerships", coverage: "Moderate", color: "#1565C0" },
+    ],
+    gap: "Harvest income smoothing at scale — a product that automatically ringfences 50% of the farmer's co-operative harvest payment into a 12-month income smoothing fund, releasing monthly in equal amounts. No bank or M-Pesa has built this simple product despite its obvious demand.",
+    channels: [
+      { ch: "Radio (vernacular, agricultural programmes)", role: "Primary — Inooro FM, Radio Salaam, Mulembe FM, Ramogi FM. Agricultural shows are highest-trust content." },
+      { ch: "Co-operative society meetings", role: "Monthly and quarterly meetings are the highest-concentration, highest-trust audience for financial product launches" },
+      { ch: "Agricultural extension officers", role: "Government field officers who visit farms — trusted product recommendation channel" },
+      { ch: "USSD / SMS (feature phone)", role: "Smartphone penetration in rural agricultural areas is 30–40% — USSD essential" },
+      { ch: "Market day (soko)", role: "Weekly market days are social hubs — financial product awareness via traders and agents at market" },
+    ],
+    commsExample: {
+      brand: "DigiFarm",
+      campaign: "'Panda Smart, Vuna Zaidi' (Plant Smart, Harvest More) — planting season campaign",
+      why: "DigiFarm's input financing campaign is timed to the planting season — when farmers face acute cash needs and are most receptive to input credit. Distribution via Safaricom agents in agricultural counties collapses the distance between awareness and activation.",
+      hook: "SMS in Kiswahili to all Safaricom users in Kericho county: 'Mbolea na mbegu kwa mkopo — lipa baada ya mavuno. Piga *269# sasa.' (Fertiliser and seeds on credit — pay after harvest. Dial *269# now.)",
+    },
+  },
+  {
+    id: "diaspora",
+    icon: "✈️",
+    name: "The Diaspora Connector",
+    sub: "Kenyan abroad sending money home — US, UK, Gulf, Australia",
+    tam: "~1M senders (Kenya diaspora)",
+    color: "#3B82F6",
+    desc: "Kenya's diaspora — concentrated in the US (30%), UK (25%), Gulf states (20%), and a growing cohort in Australia, Canada, and Germany — sent $4B+ back to Kenya in 2024. The diaspora remittance sender is typically 28–45, professionally employed, highly financially literate by international standards, and deeply emotionally connected to family obligations back home (school fees, medical emergencies, land purchases, home construction). They use multiple transfer channels — M-Pesa Global, WorldRemit, Wise, Remitly, Western Union — and make selection decisions primarily on cost, speed, and reliability. The recipient (parent, sibling, spouse in Kenya) receives via M-Pesa in 95%+ of cases. The emotional driver of remittances is acute — many diaspora Kenyans feel financial guilt, obligation, and love simultaneously when sending.",
+    needs: ["Fast, low-cost transfer to M-Pesa — under 2% total cost, under 10 minutes delivery", "Scheduled/recurring transfers — automatic monthly school fee or rent payments", "USD/GBP savings account in Kenya — diaspora wants to save in hard currency while investing in Kenya", "Property and investment facilitation — buy land, fund construction remotely", "Family financial management — control how funds are spent by recipient"],
+    products: [
+      { name: "M-Pesa Global", desc: "Direct to M-Pesa in Kenya. 200+ countries. Safaricom branded trust. Slightly higher cost than pure-play remittance apps.", fit: "✅ Strong fit" },
+      { name: "Equity Bank Diaspora", desc: "Diaspora banking accounts, mortgage products for Kenyans abroad investing in Kenya, USD accounts.", fit: "✅ Strong fit" },
+      { name: "Wise / Remitly / WorldRemit", desc: "International challengers — lower cost than M-Pesa Global, high reliability, strong brand among tech-literate diaspora.", fit: "✅ Strong fit (competitive)" },
+      { name: "KCB Diaspora Banking", desc: "KCB account for diaspora, home loan for Kenyans abroad, investment products.", fit: "⚡ Moderate fit" },
+    ],
+    competitors: [
+      { brand: "M-Pesa Global", role: "Dominant in-country receipt mechanism — ~95% of remittances arrive via M-Pesa", coverage: "Dominant (recipient side)", color: "#16A34A" },
+      { brand: "Equity Bank", role: "Strongest diaspora investment product suite — property financing, USD accounts", coverage: "Strong", color: "#E53935" },
+      { brand: "Wise / Remitly", role: "Lowest-cost transfer challengers — winning tech-literate diaspora on sender side", coverage: "Growing", color: "#3B82F6" },
+      { brand: "KCB Group", role: "Government-adjacent trust for diaspora home financing", coverage: "Moderate", color: "#1565C0" },
+    ],
+    gap: "The 'family financial manager' product — a tool where the diaspora sender can set spending categories (school fees: 30%, food: 40%, savings: 20%, medical: 10%) and the Kenyan recipient receives funds pre-allocated to purpose. No major player has built this, yet the emotional need is acute on both sides.",
+    channels: [
+      { ch: "WhatsApp (diaspora groups)", role: "Kenyan diaspora WhatsApp communities — recommendation of transfer apps travels fast here" },
+      { ch: "YouTube (Kenyan diaspora content)", role: "Finance and property investment content for Kenyans abroad — 'how to buy land in Kenya from the UK'" },
+      { ch: "Facebook diaspora groups", role: "Kenyans in UK, Kenyans in US, etc. — financial product recommendations and warnings" },
+      { ch: "Instagram", role: "Aspirational Kenya investment content — aerial property photos, construction progress updates" },
+      { ch: "Kenyan church networks abroad", role: "Kenyan churches in London, Houston, Dubai — community trust amplification for financial products" },
+    ],
+    commsExample: {
+      brand: "Equity Bank",
+      campaign: "'Nyumbani' (Home) Diaspora Banking Campaign",
+      why: "Equity's 'Nyumbani' diaspora messaging targets the emotional core of diaspora financial motivation — not the transaction cost, but the aspiration to eventually come home. Property investment, home construction financing, and 'building your future' in Kenya resonates more powerfully than basis-point fee comparisons.",
+      hook: "YouTube pre-roll targeting Kenyan IP addresses abroad: a diaspora professional in London signs a title deed for their Nairobi apartment via Equity's digital platform. Voice-over: 'Hata ukiwa mbali, nyumbani iko karibu.' (Even when you're far away, home is near.)",
+    },
+  },
+  {
+    id: "sacco",
+    icon: "🏦",
+    name: "The SACCO Member",
+    sub: "Formal co-operative savings member, 30–60, urban and rural",
+    tam: "14M+",
+    color: "#0D9488",
+    desc: "Kenya's SACCOs (Savings and Credit Co-operatives) are the world's most developed per-capita co-operative financial system — 14M+ members managing KES 900B+ in assets. SACCO members are Kenya's most disciplined savers: they contribute a fixed monthly amount (typically 5–10% of salary or farming income), build shares over time, and access loans at 1–1.5% per month (far below commercial bank rates) against their share value. SACCOs are particularly dominant among Kenya's civil servants (teachers, police, military, nurses), cooperative farmers, and formal private sector employees. The SACCO member values institutional loyalty, predictable returns, and community governance — but increasingly demands digital access to services that previously required branch visits.",
+    needs: ["Mobile SACCO statement access — check shares, loan balance, dividends without branch visit", "Digital loan application — apply for SACCO loan from phone, track approval status", "M-Pesa integration for monthly contributions — auto-debit contribution to SACCO account", "Investment diversification advice — where to invest SACCO dividend beyond traditional deposits", "Inter-SACCO transfers — move between SACCOs as employment changes"],
+    products: [
+      { name: "MCo-op Cash", desc: "Co-operative Bank's SACCO integration platform — 14,000+ co-operative societies, digital contribution and loan access.", fit: "✅ Strong fit" },
+      { name: "SACCO mobile apps (individual)", desc: "Mwalimu SACCO, Stima SACCO, Kenya Police SACCO — each with their own apps of varying digital maturity.", fit: "⚡ Variable fit" },
+      { name: "Equity EazzyBanking", desc: "Equity serves many SACCO members as individuals — Wings to Fly aspirational brand resonates with teachers/civil servants.", fit: "⚡ Moderate fit" },
+      { name: "M-Pesa paybill", desc: "Many SACCOs accept M-Pesa contributions via paybill number — basic but widely used where no app exists.", fit: "⚡ Partial fit" },
+    ],
+    competitors: [
+      { brand: "Co-op Bank / MCo-op Cash", role: "Structural monopoly — the banker of Kenya's SACCO sector since 1968", coverage: "Dominant", color: "#15803D" },
+      { brand: "Equity Bank", role: "Individual banking for SACCO members — cross-sells personal products to SACCO-employed demographics", coverage: "Moderate", color: "#E53935" },
+      { brand: "M-Pesa", role: "Contribution rails — paybill-based SACCO monthly payments", coverage: "Infrastructure", color: "#16A34A" },
+      { brand: "KCB Group", role: "Government civil service banking — SACCO members are often civil servants who bank with KCB", coverage: "Moderate", color: "#1565C0" },
+    ],
+    gap: "A universal SACCO digital layer — one app that connects any of Kenya's 5,000+ registered SACCOs, allows digital loan applications, provides investment portfolio visibility, and integrates M-Pesa for contributions. Currently every SACCO has its own fragmented digital approach.",
+    channels: [
+      { ch: "SACCO newsletters and meetings", role: "AGMs, SGMs, and monthly delegate meetings — highest-trust institutional channel" },
+      { ch: "Workplace/employer channels", role: "Teachers via TSC bulletins, civil servants via ministry communications — SACCO news travels via employer" },
+      { ch: "Radio (vernacular, afternoon programmes)", role: "SACCO financial literacy shows — Inooro FM, KBC County programming" },
+      { ch: "WhatsApp (SACCO member groups)", role: "Individual SACCO WhatsApp groups for dividend announcements, AGM reminders, product launches" },
+      { ch: "SACCO magazine / print", role: "Co-operative sector has active print tradition — SACCO Outlook, Co-op News" },
+    ],
+    commsExample: {
+      brand: "Co-op Bank",
+      campaign: "Annual Sacco Congress + MCo-op Cash SACCO digitisation push",
+      why: "Co-op Bank's presence at the Kenya National Co-operative Congress is uniquely powerful — it is the only bank present by right, not by sponsorship. Their MCo-op Cash digitisation campaign ('Take your SACCO digital') positions the bank as the technology partner of the co-operative movement.",
+      hook: "Banner at Sacco Congress: 'Sacco yako, digital sasa. MCo-op Cash inaunganisha wanachama wako wote.' (Your SACCO, digital now. MCo-op Cash connects all your members.)",
+    },
+  },
+  {
+    id: "muslim",
+    icon: "☪️",
+    name: "The Islamic Finance Seeker",
+    sub: "Muslim Kenyan seeking Shariah-compliant financial products, Coast + North Eastern + Eastleigh",
+    tam: "~5.5M",
+    color: "#059669",
+    desc: "Kenya's ~5.5M Muslim population — approximately 11% of the national total — is concentrated in three geographic clusters: the Coast Province (Mombasa, Malindi, Kilifi, Lamu), North Eastern Province (Garissa, Wajir, Mandera), and Eastleigh in Nairobi (home to one of East Africa's largest Somali communities, estimated 250,000+ residents, managing significant trade and business activity). The Islamic Finance Seeker is financially excluded not by poverty but by principle: conventional banking's interest-based structure (riba) is prohibited in Islamic law, yet every conventional digital product available in Kenya — Fuliza, M-Shwari, Tala, the Hustler Fund — is interest-bearing. Gulf African Bank and First Community Bank are the only dedicated Islamic banking institutions. No Islamic digital product exists on M-Pesa. The Somali business community in Eastleigh, with significant trade finance and real estate financing needs, represents the highest-value sub-segment.",
+    needs: ["Shariah-compliant savings account — Wadiah (safekeeping) or Mudarabah (profit-sharing) returns, not interest", "Islamic personal financing — Murabahah for asset purchases, Tawarruq for general purpose", "Halal investment products — Shariah-screened equity funds, Sukuk", "M-Pesa-compatible Islamic wallet — receive/send M-Pesa but savings held in Shariah-compliant structure", "Takaful (Islamic insurance) — accident, health, business interruption coverage"],
+    products: [
+      { name: "Gulf African Bank", desc: "Full Islamic bank — Wadiah savings, Murabahah financing, takaful referral. Branch-heavy, limited digital.", fit: "✅ Compliance fit, ⚠️ Digital gap" },
+      { name: "First Community Bank", desc: "Second dedicated Islamic bank — rural and Coast Province focus. Limited technology.", fit: "✅ Compliance fit, ⚠️ Digital gap" },
+      { name: "KCB Islamic Window", desc: "Conventional bank with Shariah-compliant product window. Broader digital access than GAB.", fit: "⚡ Moderate fit" },
+      { name: "No product", desc: "M-Pesa / Fuliza / Tala / Hustler Fund are all interest-bearing — leaving 5.5M Kenyans without Shariah-compliant digital credit.", fit: "❌ Market gap" },
+    ],
+    competitors: [
+      { brand: "Gulf African Bank", role: "Kenya's first Islamic bank — highest Shariah credibility, limited digital reach", coverage: "Moderate (branch-dependent)", color: "#059669" },
+      { brand: "First Community Bank", role: "Rural and coastal Islamic banking — strong in North Eastern Province", coverage: "Niche", color: "#10B981" },
+      { brand: "KCB Islamic Window", role: "Broader digital access with Shariah-compliant product window", coverage: "Emerging", color: "#1565C0" },
+      { brand: "No player", role: "Digital Islamic finance on M-Pesa does not exist — the segment is unserved by any digital-first product", coverage: "❌ Gap", color: "#EF4444" },
+    ],
+    gap: "A Shariah-compliant M-Pesa wallet — where the 'interest' is reframed as hibah (gift) on a Wadiah structure — technically buildable on Safaricom's API today. The first mover would access 5.5M+ potential users with zero digital competition.",
+    channels: [
+      { ch: "Mosque networks (Friday Khutbah)", role: "Imam endorsement is the highest-trust channel for Islamic financial products — reaches 5.5M in one communication" },
+      { ch: "Eastleigh business community (Somali networks)", role: "Eastleigh WhatsApp groups, business associations — Somali diaspora financial product word-of-mouth is powerful" },
+      { ch: "Islamic radio stations", role: "Radio Salaam (Nairobi), Radio Baraka (Mombasa), Memon Radio — dedicated Muslim listener base" },
+      { ch: "Ramadan seasonal activation", role: "Ramadan is the highest-spending and highest-savings period — product launches in Ramadan reach maximum Muslim audience" },
+      { ch: "WhatsApp (Muslim community groups)", role: "Ummah WhatsApp groups, Islamic finance interest groups — Shariah-compliant product recommendations spread here" },
+    ],
+    commsExample: {
+      brand: "Gulf African Bank",
+      campaign: "Ramadan 'Baraka ya Akiba' (Blessings of Savings) Campaign",
+      why: "Ramadan is when financial conversations are most culturally natural in Muslim communities — giving, saving, and investment for family are Ramadan themes. Gulf African Bank's Ramadan campaigns align product messaging with religious values rather than positioning as a purely commercial transaction.",
+      hook: "Radio Salaam Ramadan ad: 'Akiba yako, halali. Mkopo wako, halali. Maisha yako, baraka. Gulf African Bank — benki yako, njia yako ya Kiislamu.' (Your savings, halal. Your financing, halal. Your life, blessed. Gulf African Bank — your bank, your Islamic way.)",
+    },
+  },
+  {
+    id: "professional",
+    icon: "💼",
+    name: "The Urban Professional",
+    sub: "Formally employed, 27–45, Nairobi / Mombasa / Kisumu",
+    tam: "~3M",
+    color: "#1565C0",
+    desc: "Kenya's fastest-growing formal employment segment — corporate employees, civil servants, NGO workers, tech professionals, and SME managers concentrated in Nairobi's Westlands, Upper Hill, Kilimani, and CBD corridors. They hold formal bank accounts (often multiple), use multiple digital financial apps simultaneously, and have the highest financial literacy of any segment. They compare product features, read CBK press releases, and make conscious brand choices rather than defaulting to M-Pesa. They are Kenya's most valuable financial services customer — highest balances, lowest default risk, highest product cross-sell opportunity — yet also the most fickle: they will move banks for a 0.5% better savings rate or a superior app UX. The Nairobi tech professional is increasingly influenced by international fintech comparisons (Monzo, Revolut, N26) and expects product design to match global standards.",
+    needs: ["Premium digital banking UX — biometric login, instant push notifications, clean dashboard", "Investment products — money market funds, equity portfolios, pension optimization", "Mortgage and property financing — home loan application and tracking via app", "BNPL for higher-value purchases — electronics, travel, professional development", "Multi-currency account — USD savings alongside KES for inflation protection"],
+    products: [
+      { name: "Absa Kenya / Timiza", desc: "Premium banking for urban professionals. Africanacity positioning. FlexiPay BNPL. Trade finance for business owners.", fit: "✅ Strong fit" },
+      { name: "NCBA Loop", desc: "Digital-first banking designed for urban professional segment. Clean UX, modern app, Loop sub-brand.", fit: "✅ Strong fit" },
+      { name: "Equity EazzyBanking", desc: "Strong digital platform with broad product suite. Wings to Fly brand creates some tension with premium positioning.", fit: "⚡ Moderate fit" },
+      { name: "Stanbic / Standard Chartered", desc: "Premium international bank positioning. Trade finance, wealth management, USD accounts.", fit: "✅ Strong fit (upper professional)" },
+    ],
+    competitors: [
+      { brand: "Absa Kenya", role: "Premium brand positioning — Africanacity, FlexiPay, corporate banking", coverage: "Strong", color: "#EF4444" },
+      { brand: "NCBA / Loop", role: "Best digital UX in Kenyan market — Loop specifically designed for this segment", coverage: "Strong", color: "#0D9488" },
+      { brand: "Equity Bank", role: "Broad product suite but brand skews mass-market rather than premium", coverage: "Moderate", color: "#E53935" },
+      { brand: "Standard Chartered / Stanbic", role: "Ultra-premium international banking for senior professionals and expats", coverage: "Niche (high income)", color: "#1565C0" },
+    ],
+    gap: "A genuinely global-standard digital banking experience built for Kenya's growing tech professional class — one that combines Kenyan regulatory compliance with the UX quality of Monzo or Revolut, multi-currency capability, automated investment, and seamless M-Pesa integration. No current player delivers all four.",
+    channels: [
+      { ch: "LinkedIn", role: "Primary professional network — financial product ads, brand thought leadership, CEO content" },
+      { ch: "Twitter/X (Kenyan finance community)", role: "Kenya's most financially active social media conversation — #KenyanFintech, CBK announcements, investment debates" },
+      { ch: "Podcasts / YouTube (finance content)", role: "Financial literacy podcasts (Money254, Centonomy), YouTube investment channels — high-trust content environment" },
+      { ch: "Corporate partnership (employer)", role: "Payroll banking partnerships with employers — DHL Kenya, Safaricom, EABL, Equity staff banking" },
+      { ch: "Out-of-home (Westlands / Upper Hill)", role: "Premium OOH in professional districts — Absa and Standard Chartered own this channel" },
+    ],
+    commsExample: {
+      brand: "Absa Kenya",
+      campaign: "'Africanacity' — Professional Identity Campaign",
+      why: "Absa's post-Barclays rebrand needed to answer: 'why should a Nairobi professional choose an African bank over international peers?' Africanacity positioned Pan-African identity as a professional virtue — working with distinctly African energy and ambition. Resonates with Kenya's growing sense of economic pride.",
+      hook: "LinkedIn video ad targeting Nairobi professionals: a Kenyan woman clinches a cross-border trade deal via Absa's digital platform from her Westlands office. Voice-over: 'It's not just how we bank. It's how we build Africa.' English-first, premium aesthetic, no Kiswahili.",
+    },
+  },
+];
+
+function NeedSegments() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [activeTab, setActiveTab] = useState("needs"); // needs | products | competitors | channels | comms
+  const seg = NEED_SEGMENTS[activeIdx];
+  const color = seg.color;
+
+  const tabs = [
+    { id: "needs", label: "🎯 Needs" },
+    { id: "products", label: "📦 Products" },
+    { id: "competitors", label: "🏁 Competitors" },
+    { id: "channels", label: "📡 Channels" },
+    { id: "comms", label: "💬 Comms example" },
+  ];
+
+  return (
+    <div style={{ marginBottom: 0 }}>
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 10, letterSpacing: 2.5, textTransform: "uppercase", color: ACCENT, fontWeight: 700, marginBottom: 10, fontFamily: "sans-serif" }}>6.2 — Need-Based Segments</div>
+        <p style={{ fontSize: 13, color: TEXT_MUTED, margin: 0, lineHeight: 1.6 }}>8 segments defined by financial behaviour and unmet needs — each with product fit mapping, competitive coverage, communication channels, and real campaign examples.</p>
+      </div>
+
+      {/* Segment pills */}
+      <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 16 }}>
+        {NEED_SEGMENTS.map((s, i) => (
+          <button key={i} onClick={() => { setActiveIdx(i); setActiveTab("needs"); }} style={{
+            padding: "7px 13px", borderRadius: 20, cursor: "pointer", fontFamily: "sans-serif", fontSize: 12, fontWeight: activeIdx === i ? 700 : 500,
+            border: activeIdx === i ? `2px solid ${s.color}` : `1px solid ${BORDER}`,
+            background: activeIdx === i ? s.color + "12" : CARD_BG,
+            color: activeIdx === i ? s.color : TEXT_SECONDARY,
+            display: "flex", alignItems: "center", gap: 5,
+          }}>
+            <span>{s.icon}</span>{s.name.split(" ").slice(1).join(" ")}
+          </button>
+        ))}
+      </div>
+
+      {/* Active segment card */}
+      <div style={{ background: CARD_BG, borderRadius: 14, border: `1px solid ${color}30`, boxShadow: "0 2px 8px rgba(0,0,0,0.05)", overflow: "hidden", marginBottom: 16 }}>
+        {/* Header */}
+        <div style={{ padding: "20px 24px 16px", borderBottom: `1px solid ${BORDER}`, background: color + "06" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                <span style={{ fontSize: 22 }}>{seg.icon}</span>
+                <h3 style={{ fontSize: 20, fontWeight: 600, color: TEXT, margin: 0 }}>{seg.name}</h3>
+              </div>
+              <p style={{ fontSize: 12, color: TEXT_MUTED, margin: 0, fontFamily: "sans-serif" }}>{seg.sub}</p>
+            </div>
+            <div style={{ padding: "8px 14px", background: color + "15", borderRadius: 10, textAlign: "center", flexShrink: 0 }}>
+              <div style={{ fontSize: 18, fontWeight: 300, color }}>{seg.tam}</div>
+              <div style={{ fontSize: 9, color, fontWeight: 700, letterSpacing: 1, fontFamily: "sans-serif" }}>TAM</div>
+            </div>
+          </div>
+          <p style={{ fontSize: 13, color: TEXT_SECONDARY, lineHeight: 1.75, margin: "12px 0 0" }}>{seg.desc}</p>
+        </div>
+
+        {/* Inner tabs */}
+        <div style={{ display: "flex", borderBottom: `1px solid ${BORDER}`, background: "#FAFAFA" }}>
+          {tabs.map(t => (
+            <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
+              flex: 1, padding: "10px 4px", border: "none", cursor: "pointer", fontFamily: "sans-serif", fontSize: 11,
+              fontWeight: activeTab === t.id ? 700 : 500, background: "transparent",
+              color: activeTab === t.id ? color : TEXT_MUTED,
+              borderBottom: activeTab === t.id ? `2px solid ${color}` : "2px solid transparent",
+            }}>{t.label}</button>
+          ))}
+        </div>
+
+        {/* Tab content */}
+        <div style={{ padding: "18px 22px" }}>
+          {activeTab === "needs" && (
+            <div>
+              <div style={{ fontSize: 10, letterSpacing: 2, color: TEXT_MUTED, fontWeight: 700, fontFamily: "sans-serif", marginBottom: 10 }}>FINANCIAL NEEDS & PAIN POINTS</div>
+              {seg.needs.map((n, i) => (
+                <div key={i} style={{ display: "flex", gap: 10, marginBottom: 8 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: color, marginTop: 6, flexShrink: 0 }} />
+                  <p style={{ fontSize: 13, color: TEXT_SECONDARY, margin: 0, lineHeight: 1.65 }}>{n}</p>
+                </div>
+              ))}
+              <div style={{ marginTop: 14, padding: "12px 16px", background: "#FFF7ED", borderRadius: 8, borderLeft: `3px solid #F59E0B` }}>
+                <div style={{ fontSize: 10, letterSpacing: 2, color: "#D97706", fontWeight: 700, fontFamily: "sans-serif", marginBottom: 5 }}>MARKET GAP</div>
+                <p style={{ fontSize: 12, color: "#92400E", margin: 0, lineHeight: 1.6 }}>{seg.gap}</p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "products" && (
+            <div>
+              <div style={{ fontSize: 10, letterSpacing: 2, color: TEXT_MUTED, fontWeight: 700, fontFamily: "sans-serif", marginBottom: 10 }}>PRODUCT MAPPING — WHAT FITS THIS SEGMENT</div>
+              {seg.products.map((p, i) => (
+                <div key={i} style={{ padding: "12px 14px", background: "#F9FAFB", borderRadius: 8, marginBottom: 6, borderLeft: `3px solid ${color}` }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: TEXT }}>{p.name}</span>
+                    <span style={{ fontSize: 10, color, fontWeight: 700, fontFamily: "sans-serif", whiteSpace: "nowrap", marginLeft: 8 }}>{p.fit}</span>
+                  </div>
+                  <p style={{ fontSize: 12, color: TEXT_SECONDARY, margin: 0, lineHeight: 1.55 }}>{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {activeTab === "competitors" && (
+            <div>
+              <div style={{ fontSize: 10, letterSpacing: 2, color: TEXT_MUTED, fontWeight: 700, fontFamily: "sans-serif", marginBottom: 10 }}>COMPETITIVE COVERAGE BY SEGMENT</div>
+              <div style={{ marginBottom: 14 }}>
+                {seg.competitors.map((c, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", borderRadius: 8, marginBottom: 6, background: "#F9FAFB", border: `1px solid ${BORDER}` }}>
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: c.color, flexShrink: 0 }} />
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: TEXT, fontFamily: "sans-serif" }}>{c.brand}</div>
+                      <div style={{ fontSize: 11, color: TEXT_SECONDARY }}>{c.role}</div>
+                    </div>
+                    <span style={{ fontSize: 10, padding: "3px 8px", borderRadius: 5, fontWeight: 700, fontFamily: "sans-serif", whiteSpace: "nowrap",
+                      background: c.coverage === "Dominant" ? "#DCFCE7" : c.coverage.includes("Strong") ? "#EFF6FF" : c.coverage.includes("❌") ? "#FEF2F2" : "#F3F4F6",
+                      color: c.coverage === "Dominant" ? "#166534" : c.coverage.includes("Strong") ? "#1D4ED8" : c.coverage.includes("❌") ? "#991B1B" : "#4B5563",
+                    }}>{c.coverage}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeTab === "channels" && (
+            <div>
+              <div style={{ fontSize: 10, letterSpacing: 2, color: TEXT_MUTED, fontWeight: 700, fontFamily: "sans-serif", marginBottom: 10 }}>COMMUNICATION CHANNELS BY REACH & TRUST</div>
+              {seg.channels.map((c, i) => (
+                <div key={i} style={{ display: "flex", gap: 12, padding: "10px 14px", background: i === 0 ? color + "08" : "#F9FAFB", borderRadius: 8, marginBottom: 6, borderLeft: `3px solid ${i === 0 ? color : BORDER}` }}>
+                  <div style={{ minWidth: 130, fontSize: 12, fontWeight: 700, color: i === 0 ? color : TEXT, fontFamily: "sans-serif" }}>{c.ch}</div>
+                  <p style={{ fontSize: 12, color: TEXT_SECONDARY, margin: 0, lineHeight: 1.55 }}>{c.role}</p>
+                </div>
+              ))}
+              <div style={{ marginTop: 10, padding: "10px 14px", background: "#F0FDF4", borderRadius: 8, borderLeft: "3px solid #10B981" }}>
+                <p style={{ fontSize: 11, color: "#166534", margin: 0 }}>💡 Priority channel highlighted in green — highest trust + reach combination for this segment</p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "comms" && (
+            <div>
+              <div style={{ fontSize: 10, letterSpacing: 2, color: TEXT_MUTED, fontWeight: 700, fontFamily: "sans-serif", marginBottom: 10 }}>BEST-IN-CLASS COMMS EXAMPLE FOR THIS SEGMENT</div>
+              <div style={{ padding: "16px 18px", background: color + "08", borderRadius: 10, borderLeft: `4px solid ${color}`, marginBottom: 10 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color, fontFamily: "sans-serif", marginBottom: 2 }}>{seg.commsExample.brand}</div>
+                <div style={{ fontSize: 15, fontWeight: 600, color: TEXT, marginBottom: 10 }}>{seg.commsExample.campaign}</div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                  <div style={{ padding: "10px 14px", background: CARD_BG, borderRadius: 8, border: `1px solid ${BORDER}` }}>
+                    <div style={{ fontSize: 10, letterSpacing: 1.5, color: "#10B981", fontWeight: 700, fontFamily: "sans-serif", marginBottom: 5 }}>WHY IT WORKS</div>
+                    <p style={{ fontSize: 12, color: TEXT_SECONDARY, margin: 0, lineHeight: 1.55 }}>{seg.commsExample.why}</p>
+                  </div>
+                  <div style={{ padding: "10px 14px", background: CARD_BG, borderRadius: 8, border: `1px solid ${BORDER}` }}>
+                    <div style={{ fontSize: 10, letterSpacing: 1.5, color: "#F59E0B", fontWeight: 700, fontFamily: "sans-serif", marginBottom: 5 }}>EXAMPLE HOOK / CREATIVE</div>
+                    <p style={{ fontSize: 12, color: TEXT_SECONDARY, margin: 0, lineHeight: 1.55, fontStyle: "italic" }}>{seg.commsExample.hook}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function KenyaReport() {
   const [activeSection, setActiveSection] = useState("exec");
   const [compIdx, setCompIdx] = useState(0);
@@ -343,6 +1220,7 @@ export default function KenyaReport() {
                 { num: "07", title: "Communication Landscape", id: "comms", subs: ["7.1 Media Consumption Patterns", "7.2 Advertising Landscape", "7.3 Kiswahili vs English Strategy", "7.4 Messaging Themes Audit", "7.5 Visual & Brand Personality Index", "7.6 Best-in-Class Campaigns"] },
                 { num: "08", title: "Islamic Finance", id: "islamic", subs: ["Regulatory Framework (CBK Windows + Sukuk Outlook)", "Market Size (~5.5M Muslim Kenyans, 11%)", "Product Architecture", "Digital Disruption Opportunity", "Non-Muslim Ethical Banking"] },
                 { num: "09", title: "Appendices", id: "appendix", subs: ["A — CBK Regulatory Reference", "B — Data Sources (67 cited)", "C — Glossary (35+ terms)", "D — Visual Audit Index", "E — Research Design & Hypotheses"] },
+                { num: "10", title: "Visual Audit Gallery", id: "visual", subs: ["App Screenshots (AI-powered)", "Advertising & Campaigns", "Social Media Presence", "OOH & Retail", "Website & Digital Assets"] },
               ]
             ].map((col, ci) => (
               <div key={ci}>
@@ -448,7 +1326,7 @@ export default function KenyaReport() {
             <Prose>The competitive structure is oligopolistic around M-Pesa: Safaricom holds approximately 65%+ of mobile money market share by users and significantly more by transaction value.<Ref n={2} /> Airtel Money is the primary challenger. In banking, Equity Bank leads by customer count, KCB leads by assets, and Co-operative Bank dominates the rural agricultural cooperative segment. The Hustler Fund (government-backed digital credit) entered as an unexpected market disruptor in 2022, setting a KES 50 daily credit floor for any Kenyan with a national ID.</Prose>
           </Card>
           <Card>
-            <SubHead>CBK Regulatory Environment</SubHead>
+            <SubHead>CBK Regulatory Environment</SubKey>
             <Prose>The Central Bank of Kenya operates a progressive but increasingly assertive digital finance regulatory framework. Key regulatory pillars:<Ref n={2} /></Prose>
             {[
               { label: "Mobile Money Regulation", text: "Safaricom and Airtel Money operate under CBK's National Payment System Regulations (2014, updated 2021). CBK mandated mobile money interoperability in 2023 — M-Pesa and Airtel Money users can now transact across networks, reducing the network effect advantage M-Pesa previously held." },
@@ -552,7 +1430,9 @@ export default function KenyaReport() {
 
         {/* SECTION 06 */}
         <section id="consumer" ref={(el) => (sectionRefs.current["consumer"] = el)} style={{ marginBottom: 80 }}>
-          <SectionTitle num="06" title="Consumer Insights" subtitle="Kenya's financial consumer is the youngest, most mobile-money-dependent, and most entrepreneurially oriented in East Africa — shaped by a median age of 20, the chama savings culture, the boda boda informal economy, and a digital credit over-indebtedness crisis that has reset trust expectations." />
+          <SectionTitle num="06" title="Consumer Insights" subtitle="Kenya's financial consumer is the youngest, most mobile-money-dependent, and most entrepreneurially oriented in East Africa. Eight need-based segments define the market — each with distinct financial pain points, product requirements, competitor coverage gaps, and communication channel preferences." />
+
+          {/* Key stats */}
           <Card accent>
             <SubHead color={ACCENT}>Key Consumer Data Points</SubHead>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
@@ -564,6 +1444,8 @@ export default function KenyaReport() {
               ))}
             </div>
           </Card>
+
+          {/* Generational & Geographic (kept) */}
           <Card>
             <SubHead>Generational & Geographic Segmentation</SubHead>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8, marginBottom: 16 }}>
@@ -588,36 +1470,11 @@ export default function KenyaReport() {
               ))}
             </div>
           </Card>
-          <Card accent>
-            <SubHead color={ACCENT}>The Chama: Kenya's Most Important Undigitised Financial Institution</SubHead>
-            <Prose>The chama (Kiswahili for 'group' or 'club') is Kenya's defining financial institution — more trusted by more Kenyans than any bank, mobile money service, or government savings programme. An estimated 300,000+ active chamas manage $2B+ in annual savings flows, primarily as merry-go-round (rotating savings and credit), joint investment accounts, or emergency mutual aid funds.<Ref n={27} /></Prose>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, marginBottom: 14 }}>
-              {[{ v: "300K+", l: "Active chamas in Kenya", a: true }, { v: "$2B+", l: "Estimated annual savings under management", a: true }, { v: "~15", l: "Average members per chama", a: false }, { v: "60%+", l: "Adult Kenyan women participate in a chama", a: false }, { v: "95%", l: "Chamas that still operate cash-in-hand or basic M-Pesa", a: false }, { v: "$400M+", l: "Estimated chama savings digitisation opportunity", a: true }].map((s, i) => (
-                <div key={i} style={{ padding: "12px", background: s.a ? ACCENT_BG : "#F9FAFB", borderRadius: 8, borderLeft: `3px solid ${s.a ? ACCENT : BORDER}` }}>
-                  <div style={{ fontSize: 18, fontWeight: 300, color: s.a ? ACCENT : TEXT }}>{s.v}</div>
-                  <div style={{ fontSize: 10, color: TEXT_MUTED, marginTop: 3 }}>{s.l}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{ padding: "14px 18px", background: "#FFF7ED", borderRadius: 8, borderLeft: "3px solid #F59E0B" }}>
-              <Label color="#D97706">Strategic Whitespace</Label>
-              <p style={{ fontSize: 12, color: "#92400E", lineHeight: 1.6, margin: 0 }}>No major bank, M-Pesa, or fintech has built a genuinely chama-native digital product — one that manages rotating savings rounds, tracks loan repayments, sends Kiswahili-language meeting reminders, and provides group investment portfolios in a single mobile interface. The player that wins chama treasury digitisation will acquire 300,000 community financial institutions as distribution partners — each serving 10–30 of Kenya's highest-savings-rate adults.</p>
-            </div>
-          </Card>
-          <Card>
-            <SubHead>The Boda Boda Economy: Kenya's Informal Financial Frontier</SubHead>
-            <Prose>Kenya's boda boda (motorcycle taxi) industry employs approximately 1.5 million riders and generates KES 200B+ in annual income.<Ref n={55} /> The boda boda economy is Kenya's most visible informal financial segment — high daily cash flow, no formal employment contract, no payslip for bank loan applications, and primary financial management via M-Pesa. Platforms like M-Pesa Pochi la Biashara, Little (ride-hailing), and Sendy (logistics) have begun building digital financial products for boda boda riders. The boda boda rider is Kenya's archetype of the Hustler demographic: hard-working, digitally connected, financially excluded by traditional banking criteria, and acutely aware of every shilling's value.<Ref n={24} /></Prose>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-              <div style={{ padding: "14px 16px", background: "#F9FAFB", borderRadius: 8, borderLeft: "3px solid #3B82F6" }}>
-                <Label color="#3B82F6">Unmet Needs</Label>
-                <p style={{ fontSize: 12, color: TEXT_SECONDARY, lineHeight: 1.6, margin: 0 }}>Income smoothing across daily/weekly earnings. Motorcycle asset financing (current loan options are loan-shark rates). Accident and liability insurance. Pension/retirement savings that accommodate irregular income. Credit building without payslip-dependent underwriting.</p>
-              </div>
-              <div style={{ padding: "14px 16px", background: "#F9FAFB", borderRadius: 8, borderLeft: "3px solid #10B981" }}>
-                <Label color="#10B981">TAM</Label>
-                <p style={{ fontSize: 12, color: TEXT_SECONDARY, lineHeight: 1.6, margin: 0 }}>1.5M+ boda boda riders. Average daily income KES 600–1,200. Annual income pool: KES 300–600B. Addressable financial services (insurance, credit, savings): estimated KES 100B+ annually. Currently largely served by informal money lenders and basic M-Pesa.</p>
-              </div>
-            </div>
-          </Card>
+
+          {/* ── NEED-BASED SEGMENTS ── */}
+          <NeedSegments />
+
+          {/* Trust deficit */}
           <Card style={{ borderTop: "4px solid #EF4444" }}>
             <SubHead color="#EF4444">The Digital Credit Trust Deficit</SubHead>
             <Prose>Kenya's digital lending crisis is one of the most documented consumer protection failures in global fintech. Between 2015–2022, over 100 unregulated digital lenders operated with effective APRs of 60–500%. CGAP estimated that 14–50% of borrowers were over-indebted.<Ref n={58} /> CRB Kenya's blacklist reached 4M+ negative listings — driven by defaults as small as KES 100 ($0.60). The social damage — relationships broken over digital loan shame, suicides linked to CRB blacklisting — led to CBK's 2022 intervention and a presidential directive to write off Hustler Fund penalties.</Prose>
@@ -625,14 +1482,16 @@ export default function KenyaReport() {
               <p style={{ fontSize: 12, color: "#991B1B", margin: 0, lineHeight: 1.6 }}><strong>Brand implication:</strong> Any fintech entering Kenya with a credit product faces a recovery-of-trust challenge. Transparent pricing, CRB-safe grace periods, and human-readable terms are not differentiators — they are minimum entry requirements. The brand that most credibly signals 'we are different from the predatory lenders' has a structural advantage in a market traumatised by credit.<Ref n={66} /></p>
             </div>
           </Card>
+
+          {/* Customer Journey */}
           <Card>
             <SubHead>Customer Journey Map</SubHead>
             {[
-              { stage: "Awareness", icon: "🔍", color: "#3B82F6", text: "Radio remains Kenya's highest-reach mass media — approximately 80% of adults listen weekly, including in rural areas with no electricity (battery/solar radios).<Ref n={53} /> Facebook reaches ~15M Kenyans; YouTube is rapidly growing among urban Gen Z; TikTok is the primary financial literacy platform for the 18–28 demographic. WhatsApp is the primary community communication channel — chama updates, Sacco meeting reminders, and financial product referrals happen primarily via WhatsApp groups. For the 65%+ of Kenyans outside Nairobi/Mombasa, radio advertising in local languages (Kikuyu, Luo, Luhya, Kamba, Kalenjin) is more effective than digital media." },
-              { stage: "Consideration", icon: "🤔", color: "#A78BFA", text: "Ranked decision factors for Kenyan digital financial services: (1) Security & fraud protection — 82%, (2) Cost of transactions — 76%, (3) M-Pesa compatibility (can I receive/send to M-Pesa?) — 72%, (4) Ease of use (USSD fallback for non-smartphone) — 68%, (5) Community endorsement (has my chama or someone I trust used this?) — 63%, (6) Agent availability for cash in/out — 55%.<Ref n={66} /> CRB reporting transparency has become a new consideration factor post-2022 regulation. Kiswahili-language customer service is a strong differentiator outside urban Nairobi." },
-              { stage: "Activation", icon: "⚡", color: "#10B981", text: "Five activation triggers: (1) M-Pesa ecosystem — existing M-Pesa users are offered an embedded product (Fuliza, M-Shwari) that requires zero new account opening. This is the most frictionless activation in Kenyan fintech. (2) Chama referral — trusted peer in a savings group recommends a financial product. (3) Harvest payroll — agricultural cooperative pays season earnings via a specific financial platform. (4) Hustler credit need — a time-sensitive need (repair bike, purchase stock, cover school fee) drives first digital credit application. (5) Diaspora receipt — receiving money from abroad via a specific platform prompts account creation." },
-              { stage: "Usage Patterns", icon: "🔄", color: "#F59E0B", text: "The median M-Pesa user transacts 27 times per month — overwhelmingly small-value: airtime purchase, small merchant payment, transport fare, low-value P2P transfer.<Ref n={23} /> Agricultural users show extreme seasonal concentration: 80%+ of a smallholder farmer's annual savings deposit may occur in a single 2-week post-harvest window. December is Kenya's highest transaction month — school fees, Christmas, and end-of-year chama distributions converge. Ramadan creates a spending and savings spike for Kenya's 5.5M+ Muslim population (approximately 11% of national total)." },
-              { stage: "Churn Triggers", icon: "🚪", color: "#EF4444", text: "Five churn drivers: (1) CRB negative listing — customers who receive a CRB blacklisting from a digital product often exit that platform permanently and warn their chama. (2) M-Pesa fee increase — even small transaction cost increases drive comparative behaviour. (3) Agent unavailability — if a product requires cash in/out and the local agent is consistently unavailable, the product fails in practice. (4) Hidden fees — undisclosed charges are the single most trust-destroying product design failure in Kenya's post-predatory-lending market. (5) Network failure — USSD downtime during critical payment moments (rent due, market day) creates lasting negative association.<Ref n={66} />" },
+              { stage: "Awareness", icon: "🔍", color: "#3B82F6", text: "Radio remains Kenya's highest-reach mass media — approximately 80% of adults listen weekly, including in rural areas with no electricity (battery/solar radios). Facebook reaches ~15M Kenyans; YouTube is rapidly growing among urban Gen Z; TikTok is the primary financial literacy platform for the 18–28 demographic. WhatsApp is the primary community communication channel — chama updates, Sacco meeting reminders, and financial product referrals happen primarily via WhatsApp groups. For the 65%+ of Kenyans outside Nairobi/Mombasa, radio advertising in local languages (Kikuyu, Luo, Luhya, Kamba, Kalenjin) is more effective than digital media." },
+              { stage: "Consideration", icon: "🤔", color: "#A78BFA", text: "Ranked decision factors for Kenyan digital financial services: (1) Security & fraud protection — 82%, (2) Cost of transactions — 76%, (3) M-Pesa compatibility (can I receive/send to M-Pesa?) — 72%, (4) Ease of use (USSD fallback for non-smartphone) — 68%, (5) Community endorsement (has my chama or someone I trust used this?) — 63%, (6) Agent availability for cash in/out — 55%. CRB reporting transparency has become a new consideration factor post-2022 regulation. Kiswahili-language customer service is a strong differentiator outside urban Nairobi." },
+              { stage: "Activation", icon: "⚡", color: "#10B981", text: "Five activation triggers: (1) M-Pesa ecosystem — existing M-Pesa users are offered an embedded product (Fuliza, M-Shwari) that requires zero new account opening. (2) Chama referral — trusted peer in a savings group recommends a financial product. (3) Harvest payroll — agricultural cooperative pays season earnings via a specific financial platform. (4) Hustler credit need — a time-sensitive need (repair bike, purchase stock, cover school fee) drives first digital credit application. (5) Diaspora receipt — receiving money from abroad via a specific platform prompts account creation." },
+              { stage: "Usage Patterns", icon: "🔄", color: "#F59E0B", text: "The median M-Pesa user transacts 27 times per month — overwhelmingly small-value: airtime purchase, small merchant payment, transport fare, low-value P2P transfer. Agricultural users show extreme seasonal concentration: 80%+ of a smallholder farmer's annual savings deposit may occur in a single 2-week post-harvest window. December is Kenya's highest transaction month — school fees, Christmas, and end-of-year chama distributions converge. Ramadan creates a spending and savings spike for Kenya's 5.5M+ Muslim population." },
+              { stage: "Churn Triggers", icon: "🚪", color: "#EF4444", text: "Five churn drivers: (1) CRB negative listing — customers who receive a CRB blacklisting from a digital product often exit that platform permanently and warn their chama. (2) M-Pesa fee increase — even small transaction cost increases drive comparative behaviour. (3) Agent unavailability — if a product requires cash in/out and the local agent is consistently unavailable, the product fails in practice. (4) Hidden fees — the single most trust-destroying product design failure in Kenya's post-predatory-lending market. (5) Network failure — USSD downtime during critical payment moments (rent due, market day) creates lasting negative association." },
             ].map((j, i) => (
               <div key={i} style={{ padding: "14px 18px", borderLeft: `4px solid ${j.color}`, marginBottom: 10, background: i === 4 ? "#FEF2F2" : "#F9FAFB", borderRadius: "0 10px 10px 0" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
@@ -979,6 +1838,8 @@ export default function KenyaReport() {
           </Card>
         </section>
 
+        <VisualAuditSection sectionRefs={sectionRefs} />
+
         <footer style={{ marginTop: 48, padding: "24px 0", borderTop: `2px solid ${TEXT}`, textAlign: "center" }}>
           <p style={{ fontSize: 12, color: TEXT_MUTED, margin: 0, fontFamily: "sans-serif" }}>
             Kenya Digital Finance — Market Intelligence & Brand Landscape Analysis — Q1 2026 — {Object.keys(SOURCES).length}+ sources cited
@@ -989,7 +1850,7 @@ export default function KenyaReport() {
         </footer>
       </div>
 
-      <style>{`* { box-sizing: border-box; } html { scroll-behavior: smooth; scroll-padding-top: 64px; } button:hover { filter: brightness(0.96); }`}</style>
+      <style>{`* { box-sizing: border-box; } html { scroll-behavior: smooth; scroll-padding-top: 64px; } button:hover { filter: brightness(0.96); } @keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 }
