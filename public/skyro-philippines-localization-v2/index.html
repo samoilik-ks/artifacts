@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro Philippines — Brand Communication Localization Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #0B3D2E;
+  --forest-light: #14503C;
+  --forest-dark: #072A1F;
+  --cream: #F8F4EE;
+  --cream-dark: #EDE7DD;
+  --gold: #D4A843;
+  --gold-light: #E2BF6A;
+  --gold-pale: #F5EDD4;
+  --charcoal: #1C1C1A;
+  --ink: #2D2D2A;
+  --muted: #6B6860;
+  --border: #D8D0C4;
+  --red: #C0392B;
+  --red-pale: #FDECEA;
+  --green-ok: #1A7A52;
+  --green-pale: #E8F5EE;
+  --amber: #D4711A;
+  --amber-pale: #FDF3E7;
+  --nav-w: 260px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+  --r: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .025;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── HERO ──────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  background-color: var(--forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  opacity: .8;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--gold-light);
+  font-weight: 300;
+  font-style: italic;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(248,244,238,.5);
+  font-weight: 300;
+  max-width: 500px;
+  position: relative;
+  letter-spacing: .01em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(248,244,238,.35);
+  font-size: 11px;
+  letter-spacing: .12em;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll svg { opacity: .5; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.page-wrap {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────── */
+nav.side {
+  width: var(--nav-w);
+  height: 100%;
+  overflow-y: auto;
+  background: var(--forest-dark);
+  flex-shrink: 0;
+  padding: 28px 0 40px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212,168,67,.3) transparent;
+  z-index: 100;
+}
+
+nav.side::-webkit-scrollbar { width: 4px; }
+nav.side::-webkit-scrollbar-thumb { background: rgba(212,168,67,.3); border-radius: 2px; }
+
+.nav-logo {
+  padding: 0 24px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 16px;
+}
+
+.nav-logo span {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.nav-logo small {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(212,168,67,.6);
+  margin-top: 2px;
+}
+
+.nav-item {
+  display: block;
+  padding: 9px 24px;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-item:hover { background: rgba(255,255,255,.05); }
+
+.nav-item.active {
+  border-left-color: var(--gold);
+  background: rgba(212,168,67,.08);
+}
+
+.nav-n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(212,168,67,.5);
+  letter-spacing: .1em;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.nav-t {
+  font-size: 12.5px;
+  color: rgba(248,244,238,.75);
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.nav-item.active .nav-t { color: var(--cream); }
+
+/* ── NAV GROUPS (collapsible sections) ────────────── */
+.nav-group { margin-bottom: 4px; }
+
+.nav-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+
+.nav-group-header:hover { background: rgba(255,255,255,.05); }
+
+.nav-group-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.nav-group-arrow {
+  font-size: 10px;
+  color: rgba(212,168,67,.5);
+  transition: transform .25s;
+}
+
+.nav-group.open .nav-group-arrow { transform: rotate(180deg); }
+
+.nav-group-items {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.nav-group.open .nav-group-items {
+  max-height: 600px;
+}
+
+.nav-group .nav-item {
+  padding: 6px 24px 6px 36px;
+}
+
+.nav-group .nav-item .nav-n {
+  font-size: 8px;
+}
+
+.nav-group .nav-item .nav-t {
+  font-size: 11.5px;
+}
+
+/* ── NAV TBD BADGE ─────────────────────────────────── */
+.nav-tbd {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(212,168,67,.15);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ── SCENARIO BUTTONS ──────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.scenario-btn {
+  display: block;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+  cursor: pointer;
+}
+
+.scenario-btn:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+.scenario-btn .sc-icon {
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.scenario-btn .sc-title {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.scenario-btn .sc-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ── MILESTONE STEPS ───────────────────────────────── */
+.milestone-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin: 32px 0;
+  position: relative;
+}
+
+.milestone-track::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 40px;
+  right: 40px;
+  height: 2px;
+  background: rgba(212,168,67,.3);
+  z-index: 0;
+}
+
+.ms-step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 8px;
+}
+
+.ms-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--gold-light);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  border: 3px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+
+.ms-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.ms-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ── DESIGN KIT TBD ────────────────────────────────── */
+.tbd-placeholder {
+  text-align: center;
+  padding: 60px 40px;
+  background: var(--cream-dark);
+  border: 2px dashed var(--border);
+  border-radius: var(--r);
+  margin: 24px 0;
+}
+
+.tbd-placeholder .tbd-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: .5;
+}
+
+.tbd-placeholder h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.tbd-placeholder p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 700px) {
+  .milestone-track { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .milestone-track::before { display: none; }
+  .scenario-grid { grid-template-columns: 1fr; }
+}
+
+/* ── HAMBURGER (mobile) ─────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  width: 40px; height: 40px;
+  background: var(--forest);
+  border: 1px solid rgba(212,168,67,.3);
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+  transition: transform .2s, opacity .2s;
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+/* ── MAIN ─────────────────────────────────────────── */
+main {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 120px;
+  min-width: 0;
+  scroll-behavior: smooth;
+}
+
+.main-inner {
+  max-width: 860px;
+  padding: 64px 60px 0;
+}
+
+/* ── SECTIONS ─────────────────────────────────────── */
+.sec {
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.sec.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sec-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+}
+
+h2.sub {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 40px 0 16px;
+  line-height: 1.3;
+}
+
+h3.sub2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin: 28px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+p { margin-bottom: 16px; color: var(--ink); font-size: 15.5px; }
+p:last-child { margin-bottom: 0; }
+
+p.lead {
+  font-size: 17.5px;
+  color: var(--ink);
+  line-height: 1.75;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+em { font-style: italic; }
+strong { font-weight: 600; color: var(--charcoal); }
+
+/* ── CALLOUT ─────────────────────────────────────── */
+.call {
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  margin: 24px 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.call.big {
+  font-size: 20px;
+  text-align: center;
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  border-left: none;
+  padding: 32px 40px;
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── INSIGHT QUOTE ────────────────────────────────── */
+.insight-quote {
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.5;
+  padding: 40px 32px;
+  margin: 32px 0;
+  background: var(--gold-pale);
+  border-radius: var(--r);
+  border: 1px solid rgba(212,168,67,.3);
+}
+
+/* ── PERSONA CARD ─────────────────────────────────── */
+.persona-card {
+  background: var(--cream-dark);
+  border-radius: var(--r);
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+
+.persona-summary {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.persona-summary strong { color: var(--gold-light); }
+
+/* ── CARDS / GRID ────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.card p, .card li { font-size: 14px; color: var(--muted); }
+.card ol { padding-left: 18px; margin-bottom: 16px; }
+.card ol li { margin-bottom: 6px; line-height: 1.5; }
+
+/* ── VALUE CARD ──────────────────────────────────── */
+.value-block {
+  margin: 40px 0;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+}
+
+.value-block h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.value-block .value-sub {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.value-block .what-means {
+  background: var(--cream);
+  border-radius: var(--r);
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 3px solid var(--gold);
+}
+
+.value-block .what-means h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.value-block .what-means ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.value-block .what-means li {
+  font-size: 14.5px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.copy-dir {
+  margin: 16px 0;
+  padding: 16px 20px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.copy-dir .copy-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+  font-style: normal;
+}
+
+/* ── DO/DON'T ────────────────────────────────────── */
+.dd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.dd-col { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm); }
+
+.dd-hdr {
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dd-hdr.do { background: var(--forest); color: var(--gold-light); }
+.dd-hdr.dont { background: #3a1010; color: #e88; }
+
+.dd-i {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.55;
+}
+
+.dd-i strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14.5px;
+}
+
+.dd-col.do-col .dd-i { border-left: 3px solid var(--green-ok); background: var(--green-pale); }
+.dd-col.dont-col .dd-i { border-left: 3px solid var(--red); background: var(--red-pale); }
+
+.dd-i:last-child { border-bottom: none; }
+
+/* ── TABLES ──────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--r); box-shadow: var(--shadow-sm); }
+
+table.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+table.tbl thead tr { background: var(--forest); color: var(--cream); }
+
+table.tbl thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+table.tbl tbody tr { border-bottom: 1px solid var(--border); background: #fff; }
+table.tbl tbody tr:nth-child(even) { background: var(--cream); }
+table.tbl tbody tr:hover { background: var(--gold-pale); }
+table.tbl td { padding: 11px 16px; color: var(--ink); vertical-align: top; }
+table.tbl td:first-child { font-weight: 600; color: var(--forest); }
+
+/* ── BADGE ───────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.badge.peak { background: var(--red); color: #fff; }
+.badge.very-high { background: var(--amber); color: #fff; }
+.badge.high { background: var(--gold); color: var(--charcoal); }
+.badge.medium { background: var(--cream-dark); color: var(--muted); }
+.badge.constant { background: var(--forest); color: var(--gold-light); }
+
+/* ── ACCORDION ───────────────────────────────────── */
+.acc-item {
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.acc-header {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  transition: background .15s;
+  user-select: none;
+}
+
+.acc-header:hover { background: var(--cream); }
+
+.acc-header .acc-arrow {
+  transition: transform .25s;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.acc-item.open .acc-header { background: var(--cream); border-bottom: 1px solid var(--border); }
+.acc-item.open .acc-arrow { transform: rotate(180deg); }
+
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.acc-body-inner {
+  padding: 20px;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.acc-body-inner h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 16px 0 8px;
+}
+
+.acc-body-inner h4:first-child { margin-top: 0; }
+
+.acc-body-inner blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 10px 16px;
+  margin: 10px 0;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ── CHANNEL CARD ────────────────────────────────── */
+.channel-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.channel-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.channel-card p { font-size: 14.5px; color: var(--ink); }
+
+/* ── ACTIVATION CARD ─────────────────────────────── */
+.activation-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.activation-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.activation-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+
+.activation-card .act-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.activation-card h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 18px 0 8px;
+}
+
+.activation-card p { font-size: 14.5px; }
+
+/* ── FILTER CARD ─────────────────────────────────── */
+.filter-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--r);
+  padding: 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-card .filter-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.filter-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.filter-card p { font-size: 14.5px; }
+
+/* ── CLOSING ─────────────────────────────────────── */
+.closing-block {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 40px;
+  margin: 40px 0;
+}
+
+.closing-block p { color: rgba(248,244,238,.85); font-size: 15.5px; }
+.closing-block strong { color: var(--cream); }
+
+.closing-questions {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.closing-questions li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.5;
+}
+
+/* ── WARNING BOX ─────────────────────────────────── */
+.warning-box {
+  background: var(--amber-pale);
+  border: 1px solid var(--amber);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.warning-box strong { color: var(--amber); }
+
+/* ── RTB CARD ────────────────────────────────────── */
+.rtb-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rtb-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.rtb-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.rtb-card li {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .08em;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .dd { grid-template-columns: 1fr; }
+  .main-inner { padding: 40px 24px 0; }
+
+  nav.side {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    height: 100%;
+    transition: left .3s ease;
+    z-index: 150;
+  }
+
+  nav.side.open { left: 0; }
+
+  .hamburger { display: flex; }
+
+  .page-wrap { display: block; height: auto; overflow: auto; }
+  main { height: auto; overflow: visible; }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 32px; }
+  .hero-sub { font-size: 20px; }
+  .main-inner { padding: 32px 16px 0; }
+  .value-block { padding: 20px; }
+  .activation-card { padding: 20px; }
+  .closing-block { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     PAGE WRAP: SIDEBAR + MAIN
+     ════════════════════════════════════════════════════ -->
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrap">
+<!-- ── SIDEBAR ──────────────────────────────────────── -->
+<nav class="side" id="sidebar">
+  <div class="nav-logo">
+    <span>Skyro</span>
+    <small>Philippines Localization</small>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="nav-group open" data-group="overview">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Overview</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
+      <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
+      <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
+      <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
+    </div>
+  </div>
+
+  <!-- BRAND VOICE -->
+  <div class="nav-group" data-group="voice">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Brand Voice</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
+      <a class="nav-item" href="#s05b"><span class="nav-n">06</span><span class="nav-t">Do / Don't — Visual</span></a>
+      <a class="nav-item" href="#s06"><span class="nav-n">07</span><span class="nav-t">Communication Examples</span></a>
+    </div>
+  </div>
+
+  <!-- MARKETING & ACTIVATIONS -->
+  <div class="nav-group" data-group="marketing">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Marketing & Activations</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s07"><span class="nav-n">08</span><span class="nav-t">Ambassador Strategy</span></a>
+      <a class="nav-item" href="#s08"><span class="nav-n">09</span><span class="nav-t">Creative Activations</span></a>
+      <a class="nav-item" href="#s09"><span class="nav-n">10</span><span class="nav-t">Communication Calendar</span></a>
+      <a class="nav-item" href="#s10"><span class="nav-n">11</span><span class="nav-t">Channel Guidance</span></a>
+      <a class="nav-item" href="#s-competitors"><span class="nav-n">12</span><span class="nav-t">Competitor Communications</span></a>
+      <a class="nav-item" href="#s-adrestrictions"><span class="nav-n">13</span><span class="nav-t">Advertising Restrictions</span></a>
+    </div>
+  </div>
+
+  <!-- QUALITY CONTROL -->
+  <div class="nav-group" data-group="quality">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Quality Control</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s12"><span class="nav-n">14</span><span class="nav-t">The Five Filters</span></a>
+      <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+    </div>
+  </div>
+
+  <!-- DESIGN KIT -->
+  <div class="nav-group" data-group="designkit">
+    <a class="nav-item" href="#designkit" style="padding:10px 24px;">
+      <span class="nav-group-title" style="display:inline;">Design Kit</span>
+      <span class="nav-tbd">TBD</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ── MAIN CONTENT ─────────────────────────────────── -->
+<main id="main">
+
+<!-- ════════ HERO ════════ -->
+<div id="hero">
+  <div class="hero-eyebrow">Skyro · Philippines · Q1 2026</div>
+  <h1 class="hero-title">Brand Communication<br><em>Localization Guide</em></h1>
+  <div class="hero-sub">Skyro Philippines</div>
+  <div class="hero-desc">How the Global Brand Platform Lives on the Philippine Market</div>
+  <div class="hero-scroll">
+    Scroll
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+  </div>
+</div>
+
+<div class="main-inner">
+
+<!-- PRE-NOTES -->
+<div class="sec visible">
+  <div class="warning-box">
+    <p><strong>⚠️ Before you use this document — two important notes:</strong></p>
+    <p><strong>1. The world is not static.</strong> This guide reflects market intelligence, cultural dynamics, and competitive context as of Q1 2026. The Philippines' digital finance landscape is evolving rapidly — new players, new regulations, new fraud patterns, new cultural moments. No guide can substitute for critical thinking. Before publishing any communication that feels complex, sensitive, or on the edge of what's described here — double-check it. Run it past the local team. Apply judgment. The rules in this document are a foundation, not a ceiling.</p>
+    <p><strong>2. Language of this document.</strong> All copy examples and guidelines are written in English so the entire global and local team can read, validate, and give feedback on meaning and tone. Actual execution should be adapted into Taglish for mass-market and emotionally resonant communications — the closer a message is to the emotional core of the brand, the more Filipino the language should be. Regional languages — Cebuano, Ilonggo, Bisaya — for provincial market targeting. Translate the spirit, not just the words.</p>
+  </div>
+
+  <div class="call">
+    <strong>How to Use This Document</strong><br><br>
+    This guide is built for the Skyro Philippines team. Its purpose is to show how the global brand platform translates, sounds, and behaves specifically on this market — not to replace the Global TOV Guide or the master brand, but to sit on top of them as a layer of cultural interpretation.<br><br>
+    <strong>The core principle: we don't change the brand to fit the market. We find where the brand and the market already meet — and amplify that intersection.</strong>
+  </div>
+
+  <h2 class="sub" style="margin-top:36px;">Where Do You Start?</h2>
+  <p>Depending on what you're working on right now — jump straight to the section that helps most:</p>
+
+  <div class="scenario-grid">
+    <a class="scenario-btn" href="#s01" onclick="smoothNav(event,'s01')">
+      <span class="sc-icon">🌏</span>
+      <span class="sc-title">Dive into the market</span>
+      <span class="sc-desc">Audience, values, cultural context — everything you need to understand the Philippines</span>
+    </a>
+    <a class="scenario-btn" href="#s05" onclick="smoothNav(event,'s05')">
+      <span class="sc-icon">✍️</span>
+      <span class="sc-title">Write copy</span>
+      <span class="sc-desc">Tone of voice, Do/Don't, communication examples and templates</span>
+    </a>
+    <a class="scenario-btn" href="#s07" onclick="smoothNav(event,'s07')">
+      <span class="sc-icon">📡</span>
+      <span class="sc-title">Plan a campaign</span>
+      <span class="sc-desc">Ambassadors, channels, seasonal calendar, activation ideas</span>
+    </a>
+    <a class="scenario-btn" href="#s12" onclick="smoothNav(event,'s12')">
+      <span class="sc-icon">✅</span>
+      <span class="sc-title">Review before launch</span>
+      <span class="sc-desc">Five Filters checklist — every creative must pass all five</span>
+    </a>
+    <a class="scenario-btn" href="#s08" onclick="smoothNav(event,'s08')">
+      <span class="sc-icon">💡</span>
+      <span class="sc-title">Get activation ideas</span>
+      <span class="sc-desc">Ready-made creative concepts tied to Filipino cultural moments</span>
+    </a>
+  </div>
+</div>
+<!-- ════════ 01 · GLOBAL MIND, LOCAL HEART ════════ -->
+<div class="sec" id="s01">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h1 class="sec-title">Global Mind, Local Heart</h1>
+  </div>
+
+  <h2 class="sub">The Global Promise, Read Through Filipino Eyes</h2>
+
+  <p class="lead"><em>Celebrate who you are. Grow from where you stand.</em></p>
+
+  <p>This is what Skyro believes everywhere it operates. But in the Philippines, this line carries a particular weight — because the reality it speaks to is not abstract. It is specific, daily, and deeply felt.</p>
+
+  <p>Life in the Philippines is shaped by forces that most financial products ignore. Incomes arrive unevenly — on the 15th and the 30th, or when a remittance lands from abroad, or when harvest season brings a short window of relative abundance before leaner months return. Typhoons reshape household budgets overnight. Medical emergencies hit without warning and without net. Fiesta season, Christmas, school enrollment — these are not optional expenses but expressions of who Filipino families are and how they take care of each other. And through all of it, the country's 117 million people keep showing up — with warmth, with humor, with a profound capacity to find joy in ordinary moments and community in difficulty.</p>
+
+  <p>Traditional finance was not built for this reality. It was built for predictable incomes, stable months, and a financial life that looks the same in January as it does in October. It was built, essentially, for someone else.</p>
+
+  <p>Skyro is built for this reality. Every Filipino story is different — shaped by where you grew up, what family you carry, what dreams you're working toward, and what challenges arrived without asking permission. Skyro moves with people — confidently, responsibly, and in their own rhythm. Skyro believes financial technology should meet people where they are, not where the system expects them to be.</p>
+
+  <p>This is what <em>celebrate who you are</em> means here: your culture, your spending, your seasonal rhythms, your family obligations — these are not problems to be managed. They are the shape of your life, and they deserve a financial partner that respects them.</p>
+
+  <p>This is what <em>grow from where you stand</em> means here: not a distant aspiration, but a practical invitation. Start from today. From your sari-sari store, your OFW income, your first smartphone, your payday on the 30th. Growth doesn't require becoming someone else first.</p>
+
+  <h2 class="sub">The Filipino Consumer Insight</h2>
+
+  <p>Filipinos face real financial pressures and unexpected challenges — yet they still choose to enjoy life. They find joy in everyday moments, in celebrations large and small, in time with family and community. Financial difficulty is not a reason to stop living; it is a condition to navigate while continuing to live fully.</p>
+
+  <p>This means that the right financial partner for Filipino consumers is not one that tells them to sacrifice, delay, or suppress who they are in order to be financially responsible. It is one that makes financial tools fit around the life already being lived — and helps that life get a little lighter, a little steadier, and a little freer over time.</p>
+
+  <div class="insight-quote">
+    "My life is unpredictable enough — I don't need my finances to be another source of stress. I want to keep celebrating, keep showing up for my family, and feel lighter doing it."
+  </div>
+
+  <p>Skyro exists to be exactly that partner.</p>
+</div>
+
+<!-- ════════ 02 · BRAND PERSONA ════════ -->
+<div class="sec" id="s02">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h1 class="sec-title">Brand Persona — Who Is Skyro on the Philippine Market?</h1>
+  </div>
+
+  <p class="lead">If Skyro were a person on this market, who would he be?</p>
+
+  <div class="persona-card">
+    <p>His name is <strong>Marco</strong>. He's 29, grew up in a middle-class family in Quezon City with roots in Cebu on his mother's side. His father spent several years working in Dubai, sending money home while Marco finished school. His mother managed the household with careful, creative precision — stretching what arrived, making celebrations happen anyway, keeping the family steady through seasons that weren't always generous. Marco learned early that money is not just a resource. It is responsibility, love, sacrifice, and hope all at once.</p>
+
+    <p>He studied information technology at a state university, but what he carries with him is curiosity more than credentials. He reads about how financial systems work in other countries. He notices when something works and asks why. He is equally comfortable talking with a UP professor and a sari-sari store owner, and he listens to both with the same attention.</p>
+
+    <p>Marco is smart and capable — and he is careful never to let that create distance between himself and the people around him. When a friend asks him to explain how a loan works, he doesn't start from first principles. He sits down, asks what the situation actually is, and figures it out together with them. He knows that financial knowledge is not evenly distributed, and he feels no pride in knowing more — only a desire to share what he knows in a way that leaves the other person feeling capable.</p>
+
+    <p>He laughs easily. Humor is how he connects with people — acknowledging the absurdity of adulting, relieving the tension in a hard conversation, finding the shared human truth in a difficult situation. He understands where the line is between laughing with someone and laughing at them, and he stays on the right side of it.</p>
+
+    <p>Marco is community-oriented in the Filipino sense — deeply. His success feels incomplete if the people around him are not also doing better. He worries about his family's health, his parents' retirement, his younger sister's tuition. He is proud to be Filipino in a way that is genuine and celebratory, with no defensiveness in it.</p>
+
+    <p>He is not flashy. He doesn't perform aspiration. He understands that most Filipino lives exist in the honest space between not-yet-where-we-want-to-be and grateful-for-where-we-are — and he lives there too, without apology.</p>
+
+    <div class="persona-summary">
+      <strong>In communication terms, this means:</strong> Skyro Philippines is curious and open-minded — willing to ask, listen, and learn before speaking. Skyro is grounded in real life — specific, concrete, present. Skyro is warm and supportive — a presence that makes financial conversations feel lighter. Skyro's humor comes from genuine connection with the audience. And Skyro is deeply community-focused — speaking always to the person inside the context of the people they love.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 03 · FOCUS VALUES ════════ -->
+<div class="sec" id="s03">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h1 class="sec-title">Focus Values — The Skyro Brand Values in Philippine Context</h1>
+  </div>
+
+  <p>Skyro's five global brand values do not change from market to market. What changes is the specific texture of how they are expressed — the cultural references, the emotional register, the moments they speak to. Here is how each value lives on the Philippine market.</p>
+
+  <!-- FLOW -->
+  <div class="value-block">
+    <h2>Flow</h2>
+    <div class="value-sub">Move with nature, not against it</div>
+
+    <p>Globally, Flow is about rhythm — working with the natural patterns of life rather than imposing artificial structures on top of them.</p>
+
+    <p>In the Philippines, Flow is the recognition that financial life does not move in straight lines. Money arrives in pulses — payday on the 15th and 30th, remittance when an OFW sends their monthly padala, harvest income in November, Christmas bonuses in December. Expenses cluster, then ease, then cluster again. The school enrollment bill arrives just as the holiday celebrations begin.</p>
+
+    <p>Most financial products treat this unevenness as a problem to be corrected. Skyro treats it as the shape of real Filipino financial life — and builds tools that move with that shape rather than against it. Flexible repayment schedules, adjustable payment dates, products designed around actual income cycles: these are not features. They are an expression of this value.</p>
+
+    <div class="what-means">
+      <h4>What Flow means in Philippine communication:</h4>
+      <ul>
+        <li>Speak to the real rhythms of Filipino life without romanticizing the difficulty</li>
+        <li>Acknowledge the unevenness of income without shaming it</li>
+        <li>Show that Skyro adjusts — because that is what a good financial partner does</li>
+        <li>Build product language around payday cycles, BER season peaks, and the harvest-to-enrollment rhythm</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction</span>
+      "Payday on the 15th. Payday on the 30th. Finance that keeps up."
+    </div>
+  </div>
+
+  <!-- GROWTH -->
+  <div class="value-block">
+    <h2>Growth</h2>
+    <div class="value-sub">Like a garden, not a machine</div>
+
+    <p>Globally, Growth is about organic, sustainable progress — growth that has roots, that happens at the right pace, that does not require you to become something you are not.</p>
+
+    <p>In the Philippines, Growth carries the specific weight of aspiration in a country where most people are at an early stage of wealth accumulation, where the median age is 25, and where the most common financial dream is not wealth for its own sake but security for the family. Growth here is about enabling the next chapter: paying for a child's education in Manila, building a house in the province, turning a sari-sari store into a small retail business, finally having a cushion that means a medical emergency doesn't mean starting over.</p>
+
+    <p>Growth for Filipino users is not abstract. It has a face — usually a parent's, a sibling's, a child's. Skyro's role is to be a quiet but reliable presence on that journey, not an obstacle to navigate or a creditor to fear.</p>
+
+    <div class="what-means">
+      <h4>What Growth means in Philippine communication:</h4>
+      <ul>
+        <li>Make growth concrete and personal — not "reach your financial goals" but "₱4,200 saved since March. Enough for enrollment in June."</li>
+        <li>Celebrate small milestones as genuinely as large ones</li>
+        <li>Never imply that someone's current financial position is a failure to be corrected</li>
+        <li>Frame financial progress as tied to family and community, not individual ambition alone</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction</span>
+      "₱4,200 saved since March. Enough for enrollment in June. That's growth on your terms."
+    </div>
+  </div>
+
+  <!-- CELEBRATION -->
+  <div class="value-block">
+    <h2>Celebration</h2>
+    <div class="value-sub">Honor who you are, not who you should be</div>
+
+    <p>This is the value where the Philippines' cultural richness becomes Skyro's greatest creative opportunity — and where the risk of getting it wrong is highest.</p>
+
+    <p>In the Philippines, this value is not an abstraction. The country's Christmas season runs from September to January — five months of celebrations, family gatherings, gift-giving, and shared meals that carry enormous emotional and cultural significance. Fiestas in every barangay. Baptisms, debuts, and weddings where showing up for each other is not optional. The padala sent home from abroad that is not just money but proof that the sacrifice is worth it and the family is not forgotten.</p>
+
+    <p>Conventional finance treats these as budget problems. "Have you considered spending less on Christmas?" Skyro's answer is different: help people celebrate fully, within a structure they can manage. Make pamasko a moment to plan for with confidence. Make the fiesta season something the family looks forward to all year.</p>
+
+    <div class="what-means">
+      <h4>What Celebration means in Philippine communication:</h4>
+      <ul>
+        <li>Never imply that Filipino cultural spending is impractical or excessive</li>
+        <li>Do not frame celebrations as the reason for financial difficulty</li>
+        <li>Frame Skyro's products as the tools that make celebration possible without the aftermath of financial stress</li>
+        <li><strong>BER season (September–January):</strong> pamasko, Aguinaldo, Simbang Gabi, Noche Buena — each with financial dimensions Skyro speaks to specifically</li>
+        <li>Padala as love made concrete — not a transaction but an expression of sacrifice and devotion</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction — BER Season</span>
+      "Ber na. The list is already forming. We're with you from here."
+    </div>
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction — OFW</span>
+      "You send love home every month. Naturally, it's yours."
+    </div>
+  </div>
+
+  <!-- INNOVATION -->
+  <div class="value-block">
+    <h2>Innovation</h2>
+    <div class="value-sub">Technology that anticipates, not just reacts</div>
+
+    <p>The Philippines has 98 million internet users, 91% of whom access the web only via smartphone. Fintech adoption is at 91%. Yet 37 million adults remain unbanked, digital fraud losses total $8.29 billion annually, and the average victim loses ₱44,700 — more than two months' salary. The gap between access and trust is one of the defining tensions of this market.</p>
+
+    <p>For Skyro, Innovation on the Philippine market means: fast approvals that respect people's time; a seamless mobile experience that doesn't punish users for being on a lower-end device or a slower connection; proactive communication about payment schedules that helps users plan rather than react; transparent conditions shown upfront, before commitment. It means technology that feels like it was designed by someone who understands Filipino life — not imported from a market with different infrastructure, different incomes, and different risks.</p>
+
+    <div class="what-means">
+      <h4>What Innovation means in Philippine communication:</h4>
+      <ul>
+        <li>Show technology through what it enables, not what it is — "Approved in 3 minutes" over "AI-powered credit assessment"</li>
+        <li>Show the interface, show the result, let the simplicity speak</li>
+        <li>Anti-fraud positioning: Skyro's transparency is itself a product feature in a market defined by trust deficit</li>
+        <li>UX as innovation: the most intuitive financial app for Filipinos — fast, clear, works on any device and connection</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction</span>
+      "Approved in 3 minutes. No paperwork, no branch. On any phone, any connection."
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="value-block">
+    <h2>Trust</h2>
+    <div class="value-sub">You know best. We walk beside you.</div>
+
+    <p>In the Philippines, Trust has to be earned before it is assumed. The country has the second-highest digital fraud rate globally. 74% of Filipinos encountered an attempted fraud in the past three months. 61% have reduced their use of digital payments because of fear. In this environment, trust is not a differentiator — it is the prerequisite for the conversation to happen at all.</p>
+
+    <p>But Trust in the Skyro sense goes deeper than security. It means not shaming users who have missed payments. It means explaining a loan rejection with a real reason and a real path forward. It means showing conditions clearly and completely before anyone signs anything. It means treating a user's financial difficulty as a situation to navigate together — not evidence of a character flaw. The Filipino concept of <em>malasakit</em> — a deep, empathetic care for another person's wellbeing — is the emotional expression of this value on this market.</p>
+
+    <div class="what-means">
+      <h4>What Trust means in Philippine communication:</h4>
+      <ul>
+        <li>Always lead with the user's intelligence and capability — never frame financial products as a rescue</li>
+        <li>Frame products as tools in the hands of someone who already knows what they're doing</li>
+        <li>In every difficult moment — rejection, late payment, account issue — be the most human voice in the room</li>
+        <li>SEC-licensed, transparent on every screen — security is front-page content, not fine print</li>
+      </ul>
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">Copy direction</span>
+      "Conditions shown upfront. Before you sign anything. The amount, the schedule, the total cost. No surprises later."
+    </div>
+  </div>
+</div>
+<!-- ════════ 04 · REASONS TO BELIEVE ════════ -->
+<div class="sec" id="s04">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <h1 class="sec-title">Reasons to Believe (RTBs) — Philippine Proof Points</h1>
+  </div>
+
+  <p>RTBs are the specific, verifiable claims that make Skyro's promise concrete and credible. In the Philippines, the emotional layer is particularly important: 60% of resonant fintech brand messaging in this market is emotional, not functional.</p>
+
+  <h2 class="sub">Rational RTBs — What Skyro Delivers</h2>
+
+  <div class="rtb-card">
+    <h4>"Finance tailored to local habits, cultural expectations, and real lives"</h4>
+    <ul>
+      <li>Over 1 million loans disbursed, totaling ₱5.2 billion+</li>
+      <li>More than 4,500 merchant partner locations across 16 regions, 76 municipalities, and 139 cities</li>
+      <li>Skyro is not a Manila product that happens to operate elsewhere — it is present in the same communities it serves</li>
+    </ul>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"Flexible solutions shaped by your goals — not by ours"</h4>
+    <ul>
+      <li>Lending, payments, and Flexi options that can be adjusted to fit the user's actual repayment timeline</li>
+      <li>Choose your payment date. Adjust your schedule if your situation changes</li>
+      <li>Skyro's flexibility is a design decision reflecting the reality of irregular income and seasonal spending peaks</li>
+    </ul>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"Products that understand cultural rhythms: BER season, harvest cycles, payday spikes"</h4>
+    <ul>
+      <li>Products timed to the payday cycles on the 15th and 30th, school enrollment in June and November, BER months (September–January), agricultural cycles in the provinces</li>
+      <li>Products timed to these rhythms are not novelties — they are respect</li>
+    </ul>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"Smart, reliable technology: fast approvals, seamless performance, 24/7 access"</h4>
+    <ul>
+      <li>Application in minutes. Approval fast. No paperwork. No branch visit. On any smartphone, on any connection</li>
+      <li>SEC-licensed. FinTech Alliance Philippines member. Transparent on every screen</li>
+    </ul>
+  </div>
+
+  <div class="rtb-card">
+    <h4>"Clear, upfront conditions: no hidden fees, no surprises"</h4>
+    <ul>
+      <li>Every condition shown before any commitment is made — the amount, the schedule, the total cost</li>
+      <li>In a market where ₱44,700 is the average loss per fraud victim, transparency is a moral obligation</li>
+    </ul>
+  </div>
+
+  <h2 class="sub">Emotional RTBs — How Skyro Makes People Feel</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Seen and understood, not judged</h4>
+      <p>Financial products in the Philippines have historically been designed for the formally employed, the urban, the credit-visible. Everyone else was either invisible or treated as a risk. Skyro says: your financial life, whatever shape it takes, is valid. We designed for you specifically.</p>
+    </div>
+    <div class="card">
+      <h4>Pride in a financial partner that respects your culture</h4>
+      <p>It matters that your lender understands why you send padala every month, why you cannot skip the family reunion, why the fiesta budget is not negotiable. When a brand demonstrates genuine understanding of Filipino life, it generates loyalty that no interest rate can replicate.</p>
+    </div>
+    <div class="card">
+      <h4>Freedom to grow your way, without shame</h4>
+      <p>For one user, it's their first loan for a laptop that opens a freelance career. For another, it's financing an appliance that saves five hours of domestic labor per week. For another, it's merchant financing for a sari-sari store expansion. Skyro provides the tool and trusts the user.</p>
+    </div>
+    <div class="card">
+      <h4>Lightness and peace of mind</h4>
+      <p>The emotional goal of a Skyro interaction is not excitement — it is relief. The quiet confidence that comes from having a financial plan that actually works, from knowing what you owe and when. Money should be a quiet helper in the background of a life being lived.</p>
+    </div>
+    <div class="card">
+      <h4>Confidence in your own choices — finance that trusts you back</h4>
+      <p>Skyro does not position itself as the adult in the room. The user knows their own life. Skyro provides the tools, the information, and the support — and then steps back. In a cultural context where financial products have historically been gatekeeping mechanisms, this inversion is meaningful.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 05 · DO/DON'T VERBAL ════════ -->
+<div class="sec" id="s05">
+  <div class="sec-header">
+    <span class="sec-num">05</span>
+    <h1 class="sec-title">The Philippine Do / Don't Guide — Verbal</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Do</div>
+      <div class="dd-i"><strong>Treat OFW stories with the weight they carry.</strong> Ten million Filipinos work abroad. Their remittances total $35.6 billion annually — 8% of GDP. Padala is love made concrete. Any brand that treats it with the respect it deserves will be remembered.</div>
+      <div class="dd-i"><strong>Speak to family as the unit of financial decision-making.</strong> A loan decision involves parents. A savings goal involves children's education. A purchase involves the whole household. Speak to the person inside the context of the people they love.</div>
+      <div class="dd-i"><strong>Name the BER season and its specific cultural textures.</strong> Pamasko, Aguinaldo, Simbang Gabi, Noche Buena — each has financial dimensions that Skyro can speak to specifically and respectfully.</div>
+      <div class="dd-i"><strong>Use specific numbers, real places, concrete timelines.</strong> "Already in Zamboanga" beats "nationwide." "Approved in 3 minutes" beats "fast approval." "₱15,000 approved — pick your repayment date" beats "flexible financial solutions."</div>
+      <div class="dd-i"><strong>Respect sari-sari store culture.</strong> Over one million sari-sari stores in the Philippines — their owners are the nano-financial infrastructure of their communities. For this audience, Skyro is a business tool. Speak to them accordingly.</div>
+      <div class="dd-i"><strong>Use Taglish for emotional and mass-market communications.</strong> The more emotionally significant the message, the more Filipino the language should be. Pure English reads as corporate or foreign. Regional languages for provincial targeting.</div>
+      <div class="dd-i"><strong>Lead with security and transparency — proactively.</strong> With 74% of Filipinos encountering fraud recently, mention the SEC license. Show conditions upfront. Explain how protection works. This is front-page content.</div>
+      <div class="dd-i"><strong>Speak to payday cycles.</strong> The 15th and 30th are emotional and financial inflection points. Content timed to these moments has organically higher engagement.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Don't</div>
+      <div class="dd-i"><strong>Don't commoditize padala.</strong> Never reduce OFW remittance to a neutral financial transfer or a cost-saving opportunity without acknowledging the human reality. The OFW is the Filipino cultural hero. Brands that reduce this to a transaction face severe reputational consequences.</div>
+      <div class="dd-i"><strong>Don't shame or imply judgment around financial difficulty.</strong> The Filipino concept of <em>hiya</em> (shame) is a deep cultural mechanism. Any communication implying bad choices — even gently — will be felt as an attack. Financial difficulty is often structural, not behavioral.</div>
+      <div class="dd-i"><strong>Don't make promises without proof.</strong> Post-fraud-era Filipino consumers are highly sensitive to unverifiable claims. "The best loan in the Philippines," "guaranteed approval" — any claim without a demonstrable basis will be shared as a warning.</div>
+      <div class="dd-i"><strong>Don't use pure corporate English for mass-market.</strong> "Apply now and enjoy the benefits of financial flexibility." Nobody reads this. Nobody shares it. Nobody feels anything about it.</div>
+      <div class="dd-i"><strong>Don't touch religious themes without deep expertise.</strong> The Philippines is deeply Catholic. BARMM has a significant Muslim minority. Using religious references without genuine cultural grounding is a source of backlash.</div>
+      <div class="dd-i"><strong>Don't import Western luxury narratives.</strong> "Live like you deserve it." In a culture where <em>bayanihan</em> is a genuine operating value, aspirational messaging must be collective, grounded, and tied to real Filipino definitions of success.</div>
+      <div class="dd-i"><strong>Don't make humor at the expense of financial stress.</strong> There is a difference between humor that acknowledges universal absurdity and humor that trivializes genuine hardship. Filipino audiences will not forgive the second kind.</div>
+      <div class="dd-i"><strong>Don't put the product before the person.</strong> "Maria needed to restock her store before Christmas. She had the money in four hours" is Skyro. "Skyro's POS financing solution enables rapid credit disbursement" is not.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 05b · DO/DON'T VISUAL ════════ -->
+<div class="sec" id="s05b">
+  <div class="sec-header">
+    <span class="sec-num">05b</span>
+    <h1 class="sec-title">The Philippine Do / Don't Guide — Visual</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Show This</div>
+      <div class="dd-i"><strong>Real people in recognisable Filipino contexts.</strong> A family at a carinderia, a sari-sari store during the morning rush, a student at an enrollment window, a couple choosing an appliance in a hardware store. Authenticity in setting carries more trust than production quality alone.</div>
+      <div class="dd-i"><strong>Multi-generational family dynamics.</strong> A son helping a parent set up an app, a grandmother handing a grandchild their Aguinaldo, a family gathered around a new appliance — these communicate that Skyro understands the structure of Filipino life.</div>
+      <div class="dd-i"><strong>The joy that coexists with financial pressure.</strong> A family laughing at a cramped dinner table is more true to the Filipino experience than a stock-photo couple in a clean apartment with expressions of manufactured delight.</div>
+      <div class="dd-i"><strong>Provincial and regional visual diversity.</strong> Metro Manila is not the Philippines. Show Cebu, Davao, Iloilo, Mindanao, Bicol. Different architecture, different landscapes, different textures.</div>
+      <div class="dd-i"><strong>Physical product moments at the point of sale.</strong> The decision in the store aisle, the phone at the counter, the item being carried out. The product in the bag is more powerful than a graphic of a credit line.</div>
+      <div class="dd-i"><strong>Color and visual energy matching Filipino warmth.</strong> Filipino visual culture is warm, bright, and textured. Skyro's blue palette can carry warmth in lighting, clothing, and context.</div>
+      <div class="dd-i"><strong>Humorous visual storytelling from recognition.</strong> Filipino internet humor — the exaggerated reaction, the relatable fail, the knowing look — is a legitimate creative register. The bar: does this laugh acknowledge a shared truth?</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Avoid This</div>
+      <div class="dd-i"><strong>Stock photography that reads as non-Filipino.</strong> Images of ambiguously Asian people in stateless contexts immediately break identification. Filipino audiences are very good at recognizing when a campaign was made for them versus adapted from another market.</div>
+      <div class="dd-i"><strong>Aspirational luxury aesthetics as primary register.</strong> Marble countertops, rooftop pools, designer bags. These signal that Skyro is for someone else. Aspiration in Skyro's visual world: a new ref, a better phone, a store with more stock, a family getting dinner out.</div>
+      <div class="dd-i"><strong>The "happy person looking at phone" template.</strong> The most overused shortcut in Philippine fintech advertising. Communicates nothing specific about Skyro and disappears instantly in a feed of identical images.</div>
+      <div class="dd-i"><strong>Corporate group shots in consumer communications.</strong> Suited executives, corporate offices — deeply wrong for mass-market consumers where they read as distant and tone-deaf.</div>
+      <div class="dd-i"><strong>Individual financial success without community.</strong> A single person alone with money runs against the Filipino value of collective success. Financial achievement in Philippine visual culture is almost always shared.</div>
+      <div class="dd-i"><strong>Visual humor making financial difficulty the punchline.</strong> An empty wallet as comedy, an exaggerated reaction to a bill — the line is crossed when the financial situation itself becomes the joke rather than the universal experience of navigating it.</div>
+      <div class="dd-i"><strong>Heavy promotional graphic design obscuring the human element.</strong> Starburst graphics, "LIMITED TIME OFFER" in large red type — this is the visual language of loan sharks, not a brand that respects its audience.</div>
+    </div>
+  </div>
+</div>
+<!-- ════════ 06 · COMMUNICATION EXAMPLES ════════ -->
+<div class="sec" id="s06">
+  <div class="sec-header">
+    <span class="sec-num">06</span>
+    <h1 class="sec-title">Communication Examples</h1>
+  </div>
+
+  <p>All examples below are written in English to communicate intended meaning, tone, and register. In actual execution, Taglish is the recommended default for mass-market and emotionally resonant communications. Local copywriters should adapt the spirit, not just translate the words.</p>
+
+  <h2 class="sub">The Tagline in Market-Specific Communications — "Naturally, It's Yours"</h2>
+  <p>The most effective approach: lead with the single most relevant product truth or cultural insight for the Filipino market, then close with <em>Naturally, it's yours.</em></p>
+
+  <h3 class="sub2">Approach 1 — Lead with a cultural or emotional insight</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>You send love home every month. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Payday on the 15th. Payday on the 30th. Finance that keeps up. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>From your sari-sari store to something bigger. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>For the family at home and the one working far from it. Naturally, it's yours.</div>
+
+  <h3 class="sub2">Approach 2 — Lead with a specific product offer</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>Approved in minutes. No paperwork, no branch. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Buy it today. Pay on your next payday. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>0% interest for the first 3 months. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Take it home today. Sort the rest over 24 months. Naturally, it's yours.</div>
+
+  <h2 class="sub">Product and Campaign Copy</h2>
+
+  <!-- ACCORDION -->
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">POS Financing — Core Product <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Facebook / Mass Reach</h4>
+      <blockquote>You've been looking at that ref for three months. Today it's yours. Walk in, apply, walk out — done. 4,500+ partner stores across the country. Approval in minutes.</blockquote>
+      <h4>In-Store Banner / Point of Sale</h4>
+      <blockquote>Take it home today. Pay it out over the months that work for you. No long forms. No waiting.</blockquote>
+      <h4>TikTok / Gen Z Slice-of-Life</h4>
+      <blockquote>POV: You found the phone you've been wanting since forever. Your budget said no. Skyro said yes. [Show real flow: found it → applied → approved → walked out with it. No voice-over needed — let the screen do the work.]</blockquote>
+      <h4>Payday Moment (15th / 30th) — Push Notification</h4>
+      <blockquote>Payday. If there's something you've been holding off on — a phone, an appliance, anything at a partner store — you're approved-ready. Check what's available near you.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Cash Loans <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Emotional / Family Situation</h4>
+      <blockquote>Sometimes things can't wait. Enrollment. A hospital bill. A roof that gave up in the last typhoon. We're here — fast, straightforward, and without judgment.</blockquote>
+      <h4>Functional / Trust</h4>
+      <blockquote>SEC-licensed. Conditions shown upfront, before you sign anything. You'll know exactly what you're committing to — total amount, schedule, date. No surprises later.</blockquote>
+      <h4>Loan Declined — Respectful Tone</h4>
+      <blockquote>We can't approve this one right now. Here's the specific reason: [concrete reason]. Here are the steps that would change this — and we'll be ready when you are.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">BER Season / Pamasko Context <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>September — Opening BER Season</h4>
+      <blockquote>Ber na. The Christmas playlist is already on somewhere. The ref is going to need stocking. The list is already forming in your head. We're with you from here.</blockquote>
+      <h4>November — Pre-Christmas</h4>
+      <blockquote>Noche buena won't buy itself. Neither will the gifts, the new outfit for Media Noche, or the school supplies waiting in January. Start now — Christmas hits harder when you're ready for it.</blockquote>
+      <h4>December — Emotional</h4>
+      <blockquote>Some families are sending pamasko from Dubai right now. Some are stretching the 13th month to cover everyone on the list. However you celebrate — we're here to make sure the season feels the way it's supposed to.</blockquote>
+      <h4>December — Simbang Gabi</h4>
+      <blockquote>You're up at 4am for Simbang Gabi. The puto bumbong is worth it. So is everything you're working toward this Christmas.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">OFW Context <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>OFW Family — Receiver at Home</h4>
+      <blockquote>Even with someone far away, you don't have to wait to handle what needs handling. Skyro is here for the things that come up between payday and padala. Steady, fast, and safe.</blockquote>
+      <h4>OFW Sender Abroad</h4>
+      <blockquote>You send money home because you love them. Make sure they have access to more than just what you send — give them a financial tool they can use on their own terms.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Support / Service Communications <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Payment Due Reminder — No Pressure</h4>
+      <blockquote>Your payment is due tomorrow. If you need more time or need to adjust the schedule, here are your options. Pick what works for your situation.</blockquote>
+      <h4>First Successful Payment</h4>
+      <blockquote>First payment cleared. ₱[amount] done. That's what steady looks like — and it's a better feeling than we can explain in a push notification.</blockquote>
+      <h4>Savings Milestone</h4>
+      <blockquote>₱10,000 reached. You set a goal and you hit it. Whatever comes next — you're already ahead of where you were.</blockquote>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 07 · BRAND VALUES QUICK REFERENCE ════════ -->
+<div class="sec" id="s06b">
+  <div class="sec-header">
+    <span class="sec-num">07</span>
+    <h1 class="sec-title">Brand Values in Philippine Context — Quick Reference</h1>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Global Value</th><th>Philippine Expression</th><th>Local Proof Point</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Flow</strong></td><td>Money that moves with your rhythm — payday cycles, BER season, harvest months</td><td>Flexible repayment dates, adjustable schedules, products timed to real income cycles</td></tr>
+        <tr><td><strong>Growth</strong></td><td>Organic, family-centered, yours to define</td><td>₱5.2B+ disbursed; sari-sari store financing; education and family-goal savings milestones</td></tr>
+        <tr><td><strong>Celebration</strong></td><td>Five-month Christmas, fiestas, padala — all honored, not judged</td><td>BER season communications, pamasko planning tools, OFW-specific products</td></tr>
+        <tr><td><strong>Innovation</strong></td><td>Technology that works on any phone, any connection, for any Filipino</td><td>3-minute approvals, seamless mobile UX, SEC-licensed, anti-fraud architecture</td></tr>
+        <tr><td><strong>Trust</strong></td><td><em>Malasakit</em> — deep care made visible through transparency</td><td>Upfront conditions, no hidden fees, respectful support communications, fraud prevention</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- ════════ 08 · AMBASSADOR STRATEGY ════════ -->
+<div class="sec" id="s07">
+  <div class="sec-header">
+    <span class="sec-num">08</span>
+    <h1 class="sec-title">Ambassador Strategy — Philippine Market</h1>
+  </div>
+
+  <p>In the Philippines, celebrity and influencer endorsement is not a vanity exercise. It is trust-transfer infrastructure. Maya's partnership with Liza Soberano drove ₱10 billion in deposits in five months. The interest rate was secondary — the audience trusted the person speaking. In a market where trust is the primary barrier to adoption, the right ambassador does more than increase awareness: they lend their credibility to the brand at a point where the audience's skepticism is high and their loyalty, once earned, is fierce.</p>
+
+  <p>The question is not "who is famous?" but "who feels genuinely like us, and who does our audience genuinely trust?"</p>
+
+  <h2 class="sub">Ambassador Selection Criteria</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Embodies the Filipino aspirational story — without losing the ground</h4>
+      <p>Has achieved something meaningful, but reads as someone who remembers where they came from. Not polished into unreachability. Genuinely still connected to the everyday reality of Filipino life.</p>
+    </div>
+    <div class="card">
+      <h4>Trusted across generations</h4>
+      <p>On Facebook (95% penetration) and television (67% daily viewers), cross-generational recognition matters. Known and trusted by parents and children simultaneously.</p>
+    </div>
+    <div class="card">
+      <h4>Authentically Filipino in speech and bearing</h4>
+      <p>Not scripted-Taglish. Not code-switching for effect. Natural in the language, the humor, the warmth. Audiences recognize and reject performance.</p>
+    </div>
+    <div class="card">
+      <h4>Clear connection to community, family, or service</h4>
+      <p>The cultural value of <em>malasakit</em> should be readable in the ambassador's public persona. Community work, family-oriented image, honest about difficulty as well as success.</p>
+    </div>
+    <div class="card">
+      <h4>No association with financial fraud or controversy</h4>
+      <p>In a country where 74% have recently encountered fraud, any ambassador with financial controversy carries contamination risk that no creative can neutralize.</p>
+    </div>
+    <div class="card">
+      <h4>Demonstrated durability over time</h4>
+      <p>The celebrity-as-trust-infrastructure model requires a sustained relationship. Consistent public trust over time matters more than viral moments.</p>
+    </div>
+  </div>
+
+  <h2 class="sub">Ambassador Examples</h2>
+  <p><em>Directional examples — not confirmed partnerships. The goal is to illustrate the profile.</em></p>
+
+  <div class="grid-3" style="margin-top:20px;">
+    <div class="card">
+      <h4>Tier 1 — National Trust Anchors</h4>
+      <p><strong>Alden Richards</strong> — cross-generational warmth, Filipino dream narrative, no political adjacency</p>
+      <p><strong>Kathryn Bernardo</strong> — powerful female audience, self-made family-responsible image, OFW-adjacent background</p>
+      <p><strong>Vice Ganda</strong> — maximum cross-demographic reach, resilience and Filipino humor, authentic warmth across class lines</p>
+    </div>
+    <div class="card">
+      <h4>Tier 2 — Segment & Community</h4>
+      <p>Filipino personal finance creators with genuine audience trust (e.g., peso-sense style educators)</p>
+      <p>Real merchant partners with visible local community standing</p>
+      <p>OFW content creators based in Saudi Arabia, Dubai, or Singapore speaking to Filipino families at home</p>
+    </div>
+    <div class="card">
+      <h4>Tier 2 — Regional Voices</h4>
+      <p>Regional creators in Cebu, Davao, or Mindanao who communicate in Cebuano or Bisaya</p>
+      <p>Genuine sari-sari store owners who became visible success stories</p>
+      <p>These create credibility in communities that a national celebrity cannot reach authentically</p>
+    </div>
+  </div>
+
+  <h2 class="sub">Ambassador Do / Don't</h2>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Do</div>
+      <div class="dd-i"><strong>Use the ambassador to make Skyro's values emotionally accessible</strong> — they translate the brand promise into something the audience can feel before they can articulate it.</div>
+      <div class="dd-i"><strong>Give the ambassador real creative input.</strong> Scripts that feel scripted are detected instantly. The brief should communicate the spirit of the message, not every word.</div>
+      <div class="dd-i"><strong>Build a sustained partnership across multiple campaigns.</strong> Trust infrastructure takes time. A six-month relationship outperforms six separate endorsements.</div>
+      <div class="dd-i"><strong>Create content showing the ambassador using the product naturally</strong> — not demonstrating it like an instruction video, but referencing it the way a real person would.</div>
+      <div class="dd-i"><strong>Engage regional and niche ambassadors alongside Tier 1.</strong> A Cebuano influencer, a genuine sari-sari store owner, an OFW content creator — these create credibility a national celebrity cannot.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Don't</div>
+      <div class="dd-i"><strong>Don't use the ambassador purely for launch awareness and then step back.</strong> The most common waste in Philippine celebrity partnerships is the awareness spike with no sustained relationship behind it.</div>
+      <div class="dd-i"><strong>Don't attach Skyro to any ambassador associated with political figures.</strong> The Philippine political environment is turbulent — partisan adjacency immediately segments the audience in ways that are very hard to undo.</div>
+      <div class="dd-i"><strong>Don't choose solely based on follower count.</strong> Engagement quality, audience composition, and genuine alignment with Skyro's values are more predictive than raw reach.</div>
+      <div class="dd-i"><strong>Don't cast ambassadors known primarily for wealth aesthetics</strong> — luxury cars, designer goods, premium lifestyle content. This conflicts with Skyro's value of Growth as something organic and grounded.</div>
+      <div class="dd-i"><strong>Don't treat the ambassador's community as a captive audience.</strong> Skyro's communication should feel like something the ambassador genuinely believes in — not a paid placement wearing a human face.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 09 · CREATIVE ACTIVATIONS ════════ -->
+<div class="sec" id="s08">
+  <div class="sec-header">
+    <span class="sec-num">09</span>
+    <h1 class="sec-title">Creative Activations</h1>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 01</div>
+    <h4>Christmas Lantern Season Partnership — San Fernando Giant Lantern Festival</h4>
+    <div class="act-meta">November–December · San Fernando, Pampanga · The world capital of the Christmas lantern</div>
+    <h5>The insight</h5>
+    <p>The parol (traditional Filipino Christmas star lantern) is Filipino Christmas identity. The San Fernando Giant Lantern Festival is its most spectacular expression — artisan-crafted lanterns from a community that has been making them for generations.</p>
+    <h5>What Skyro does</h5>
+    <p>Skyro sponsors a parol at the Giant Lantern Festival, co-created with local artisan crafters from the community. The parol is designed collaboratively, not branded generically. A social challenge invites Filipino families to share their own parol designs with a dedicated tag. Online: a digital parol builder where users can create, share, and send personalized versions.</p>
+    <h5>Why it works</h5>
+    <p>This is not a logo on a banner — it is participation in a cultural ritual that has been central to Filipino Christmas for generations. The collaboration with local artisans signals that Skyro understands this and respects it. The creative challenge extends the activation into homes, schools, and community groups that no paid media placement could reach.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 02</div>
+    <h4>Mangrove Planting — "Every Loan Grows Something"</h4>
+    <div class="act-meta">Year-round · Tied to loan disbursements · Peak visibility during Earth Month (April) and typhoon season (May–June)</div>
+    <h5>The insight</h5>
+    <p>The Philippines loses mangrove forest faster than almost anywhere in the world, and coastal communities feel this directly — in storm exposure, in fishing yields, in flooding. This is not a distant environmental concern; it is a local, lived one.</p>
+    <h5>What Skyro does</h5>
+    <p>Every loan taken with Skyro results in one mangrove tree planted on a Philippine coastline — tracked, named, and visible to the user inside the app. The user receives GPS coordinates and can follow its growth over time. Planting done in partnership with established local environmental organizations. The activation has a quiet campaign line: <em>"Your loan grows. So does the coast."</em></p>
+    <p>The in-app experience draws a natural parallel between the user's financial journey and the tree's growth — without forcing the metaphor. The tree is simply there, rooted, growing alongside the repayment timeline. For users who complete a loan, the tree remains — a permanent marker of something they built.</p>
+    <h5>TOV note</h5>
+    <p>This activation should never be loud or self-congratulatory. The communication is quiet and specific — coordinates, growth data, the name of the coastal area. Let the action speak.</p>
+    <h5>Why it works</h5>
+    <p>A brand that does something tangible and lasting earns a different kind of respect. The long-term, visible nature — a tree that actually grows — creates a durable emotional connection that no seasonal campaign can replicate. And the in-app tracking mechanic creates ongoing engagement that brings users back for reasons beyond a payment reminder.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 03</div>
+    <h4>Inter-Island Ferry Presence — "We've Got You Covered"</h4>
+    <div class="act-meta">Year-round · Peak during Holy Week, Christmas, summer inter-island season (March–May)</div>
+    <h5>The insight</h5>
+    <p>Inter-island ferry travel is a mass-market, cross-demographic experience reaching exactly the provincial and regional audiences where Skyro has deep merchant penetration but lower brand recognition. Passengers spend hours on open decks under direct tropical sun.</p>
+    <h5>What Skyro does</h5>
+    <p>Skyro-branded presence on major inter-island ferry routes (Cebu–Bohol, Manila–Batangas, Cebu–Leyte). Two practical items distributed to passengers on open-air decks: SPF sunscreen and lightweight woven hats, both produced with local makers. Both carry: <em>"We've got you covered. On the water and off it."</em></p>
+    <p>QR codes on packaging link to the Skyro product most relevant to the traveler's context: financing for the purchase they're traveling to make, tools for the business they're heading home to, or simply the app download.</p>
+    <h5>Why it works</h5>
+    <p>Physical, extended dwell time — passengers are sitting for two to six hours. A useful object that solves a real problem (sun exposure) creates a moment of genuine <em>malasakit</em>. The local production angle — hats made by regional weavers, sunscreen for tropical skin — signals Skyro is paying attention. And being present in inter-island travel signals that Skyro's Philippines is not just Manila.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 04</div>
+    <h4>"Naturally, It's Yours" — Real Filipino Stories Documentary Series</h4>
+    <div class="act-meta">Year-round · Two to three films per quarter · YouTube, Facebook, TikTok</div>
+    <h5>The insight</h5>
+    <p>The Philippines has a deeply developed culture of personal narrative — <em>hugot</em>, the shared story, the emotional punchline that arrives after a build. Filipinos consume and share long-form content at a rate that surprises most global media planners.</p>
+    <h5>What Skyro does</h5>
+    <p>A documentary film series — each 90 seconds to three minutes — about real Filipinos who chose their own direction. Not success stories in the conventional sense. Stories about the choice itself: the moment someone decided to stay in the province instead of leaving for Manila, to open a café instead of taking the office job, to build something small and their own instead of something large and someone else's.</p>
+    <p>Each film shot in the person's actual environment — their store, their kitchen, their morning routine. No studio. No aspirational set dressing. The subject speaks directly without a script. Near the end, one moment where the subject says something true about the financial reality of their choice.</p>
+    <div class="copy-dir" style="margin-top:16px;">
+      <span class="copy-label">Final frame example</span>
+      "She went back to Cebu. Opened the café she always talked about. Three years in, she's never looked back."<br><br>
+      <span style="font-size:17px;color:var(--gold-light);font-style:normal;font-weight:600;">Skyro. Naturally, it's yours.</span>
+    </div>
+    <h5>How subjects are found</h5>
+    <p>Through Skyro's existing merchant network, regional community groups, and open submissions — Filipinos nominating someone in their community whose story deserves to be heard. The nomination process itself becomes content.</p>
+    <h5>Why it works</h5>
+    <p>The series proves Skyro genuinely knows Filipino financial life — in Cebu, in Davao, in the provinces. Each film compounds the brand's credibility over time. And the cast of subjects is simply the Philippines as it actually is — dozens of stories, one brand present in all of them.</p>
+  </div>
+</div>
+<!-- ════════ 10 · SEASONAL CALENDAR ════════ -->
+<div class="sec" id="s09">
+  <div class="sec-header">
+    <span class="sec-num">10</span>
+    <h1 class="sec-title">The Philippine Communication Calendar</h1>
+  </div>
+
+  <p><em>The financial rhythms of Filipino life are predictable — use that predictability to be present at the right time, with the right message.</em></p>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Period</th><th>Priority</th><th>Tone and Angle</th></tr></thead>
+      <tbody>
+        <tr><td>January — New Year, enrollment prep</td><td><span class="badge high">High</span></td><td>New start energy, practical. "The year starts now. What are you working toward?"</td></tr>
+        <tr><td>February — Valentine's</td><td><span class="badge medium">Medium</span></td><td>Light, warm, Filipino-style romantic humor. "The best gift is the one you can actually give."</td></tr>
+        <tr><td>April — Holy Week (Semana Santa)</td><td><span class="badge medium">Low / Careful</span></td><td>Respect the period. Minimal product push. If communicating, tone should be reflective and quiet.</td></tr>
+        <tr><td>June–August — Enrollment season</td><td><span class="badge high">High</span></td><td>Education as family investment. OFW angle. Concrete, practical support.</td></tr>
+        <tr><td>1st–7th &amp; 16th–22nd every month — Pre-payday window</td><td><span class="badge constant">Constant</span></td><td>The week before payday when money runs thin. Short-term loan offers framed around the gap: "Payday is a week away. We can help you bridge it." Calm, practical, zero pressure.</td></tr>
+        <tr><td>15th and 30th every month — Payday</td><td><span class="badge constant">Constant</span></td><td>Energetic, celebratory, specific offers. The brand that's always there on payday.</td></tr>
+        <tr><td>September — BER season opens</td><td><span class="badge high">High</span></td><td>Anticipation, planning. "Ber na. The list is already forming. We're with you from here."</td></tr>
+        <tr><td>October–November — Pre-Christmas</td><td><span class="badge very-high">Very High</span></td><td>Warmth, family, preparation. OFW return season begins. Merchant activation.</td></tr>
+        <tr><td>December — Pamasko, Simbang Gabi, Noche Buena</td><td><span class="badge peak">Peak</span></td><td>Maximum emotional register. Family-first. Quiet warmth. Morning content for Simbang Gabi (4am mass peaks).</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ 11 · CHANNEL GUIDANCE ════════ -->
+<div class="sec" id="s10">
+  <div class="sec-header">
+    <span class="sec-num">11</span>
+    <h1 class="sec-title">Channel Guidance</h1>
+  </div>
+
+  <p>One voice, different registers — depending on the platform and the moment.</p>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Facebook <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">95% penetration — the primary platform</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>The non-negotiable channel. Taglish mandatory for all emotionally significant content. Long-form family and merchant stories outperform short product posts. Engagement rates of 4–7% are achievable — use interactive content, questions, and genuine storytelling. Post daily; quality is more important than frequency, but consistency builds brand recognition.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">TikTok <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">80%+ and growing — the Gen Z channel</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Maximum energy, minimum script. Slice-of-life format. Real product demos through real-scenario storytelling. The rule: if it sounds like it was written in a brief, it doesn't belong on TikTok. Trending sounds are fine; the Filipino context has to be real. Finance content creators are growing fast — find them, understand them, work with them authentically.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">YouTube <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">Top 5 globally per capita — the storytelling channel</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Long-form is not a liability here — it is an opportunity. Documentary-style merchant stories, OFW family reunion content, financial literacy series with genuine utility. Invest in production quality for this channel; it is where considered, durable brand content lives.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Television <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">67% daily viewers — the mass trust channel</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Still the most powerful trust-transfer medium in the Philippines, particularly outside Metro Manila. Prime time 7–9 PM. Celebrity ambassador format performs best. Emotional, family-centered narratives. This is where Skyro builds mass-market credibility — the kind that earns sustained customer relationships.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">In-store / POS <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Minimum text, maximum clarity. Show what the product does in the moment of decision. QR codes that lead to a fast, seamless experience. The physical presence of Skyro branding in a trusted merchant location is itself a trust signal — treat it as one. Branding should feel like it belongs in the store, not like it was placed there.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Push notifications and SMS <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Ultra-short, concrete, and genuinely useful — or they will be disabled. Payday reminders work. Payment due notices with clear options work. "Exciting offer inside!" does not. The rule: if it contains nothing the user could not have learned more quickly themselves, do not send it.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Customer support <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>The most human channel in the Skyro ecosystem. A support interaction gone wrong can undo months of brand-building. A support interaction done right — warm, specific, respectful, with a real resolution — creates advocacy that no campaign can buy. Rejections and difficult messages require the most care: specific reason, specific path forward, no judgment.</p>
+    </div></div>
+  </div>
+</div>
+<!-- ════════ 12 · COMPETITOR COMMUNICATIONS ════════ -->
+<div class="sec" id="s-competitors">
+  <div class="sec-header">
+    <span class="sec-num">12</span>
+    <h1 class="sec-title">Competitor Communications — How They Sound, How We Don't</h1>
+  </div>
+
+  <p class="lead">Understanding how the five key players communicate helps Skyro avoid borrowed territory and find the white space that no one owns yet.</p>
+
+  <!-- GCash -->
+  <div class="card" style="margin-bottom:16px; border-left:4px solid #1a73e8;">
+    <h4>GCash — The Infrastructure Brand</h4>
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px; margin:12px 0 0;">
+      <div>
+        <p style="font-size:13px;"><strong>Core message:</strong> <em>"Parang tubig"</em> (like water — ubiquitous, everywhere, expected). 81M+ users, 95% brand recognition.</p>
+        <p style="font-size:13px;"><strong>Tone:</strong> Functional, promo-heavy, cashback offers, merchant integrations, seasonal campaigns. Corporate blue — so dominant every competitor avoids the color.</p>
+      </div>
+      <div>
+        <p style="font-size:13px;"><strong>Communication pattern:</strong> Mass-market, built for reach rather than resonance. Informative, mid-formality.</p>
+        <p style="font-size:13px;"><strong>Gap:</strong> Expected, not loved. Has the network but no emotional bond. Users keep it because everyone does, not because it means something. Infrastructure — like electricity.</p>
+      </div>
+    </div>
+    <div class="call" style="margin-top:12px;font-size:13px;">
+      <strong>How Skyro sounds different:</strong> Skyro speaks to the specific person, not the market. Where GCash says "pay anywhere," Skyro says "for the store on your street, the ref your family has been waiting for, the payment schedule that fits the 15th and the 30th." Specificity is the distance.
+    </div>
+  </div>
+
+  <!-- Maya -->
+  <div class="card" style="margin-bottom:16px; border-left:4px solid #00b14f;">
+    <h4>Maya — The Celebrity Brand</h4>
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px; margin:12px 0 0;">
+      <div>
+        <p style="font-size:13px;"><strong>Core message:</strong> <em>"Maya mo 'yan"</em> (That's your Maya). Liza Soberano partnership drove ₱10B in deposits in five months.</p>
+        <p style="font-size:13px;"><strong>Tone:</strong> Green gradients, bold photography, Taglish copy. Emotionally energized. Aspiration, youth, entertainment.</p>
+      </div>
+      <div>
+        <p style="font-size:13px;"><strong>Communication pattern:</strong> Celebrity-dependent trust transfer. Promotional rates as hooks. Entertainment-first positioning.</p>
+        <p style="font-size:13px;"><strong>Gap:</strong> When the ambassador changes, the brand wobbles. Promotional rates attract users who leave for the next rate. Warmth is conditional on the face carrying it. Fun to download, easy to leave.</p>
+      </div>
+    </div>
+    <div class="call" style="margin-top:12px;font-size:13px;">
+      <strong>How Skyro sounds different:</strong> Skyro's warmth is not borrowed from a celebrity. It is structural — embedded in every product message, every support interaction. The emotional connection is earned through genuine cultural intelligence, not transferred from an endorser.
+    </div>
+  </div>
+
+  <!-- GoTyme -->
+  <div class="card" style="margin-bottom:16px; border-left:4px solid #9b59b6;">
+    <h4>GoTyme — The Human-Touch Brand</h4>
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px; margin:12px 0 0;">
+      <div>
+        <p style="font-size:13px;"><strong>Core message:</strong> "A digital bank with a human touch." 1,200+ mall kiosks, 250–300K new accounts per month.</p>
+        <p style="font-size:13px;"><strong>Tone:</strong> Warm, accessible, patient. Photography centers real Filipinos at real kiosks. Warm purple palette.</p>
+      </div>
+      <div>
+        <p style="font-size:13px;"><strong>Communication pattern:</strong> Physical-first humanity — the kiosk interaction, the bank ambassador. Targets the unbanked 32%.</p>
+        <p style="font-size:13px;"><strong>Gap:</strong> Humanity is physical-first. Translated to digital channels, becomes somewhat generic. "Human touch" is good inside a mall, less distinctive on a Facebook feed. No strong narrative core beyond the kiosk mechanic.</p>
+      </div>
+    </div>
+    <div class="call" style="margin-top:12px;font-size:13px;">
+      <strong>How Skyro sounds different:</strong> GoTyme's humanity is a service promise. Skyro's humanity is a cultural position — rooted in <em>malasakit</em>, in understanding the OFW calendar, in knowing what parol means and what padala costs emotionally. GoTyme makes banking accessible. Skyro makes banking feel like it was designed by someone who knows your life.
+    </div>
+  </div>
+
+  <!-- Tonik -->
+  <div class="card" style="margin-bottom:16px; border-left:4px solid #e74c3c;">
+    <h4>Tonik — The Challenger Brand</h4>
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px; margin:12px 0 0;">
+      <div>
+        <p style="font-size:13px;"><strong>Core message:</strong> "Save smarter." First neobank in the Philippines. Coral/orange palette, 95/100 playfulness index.</p>
+        <p style="font-size:13px;"><strong>Tone:</strong> Irreverent, anti-bank, TikTok-native. Stash mechanic (named savings goals, social savings circles). Directed at urban Gen Z.</p>
+      </div>
+      <div>
+        <p style="font-size:13px;"><strong>Communication pattern:</strong> Challenger tone, savings-first positioning, limited brand awareness outside Metro Manila.</p>
+        <p style="font-size:13px;"><strong>Gap:</strong> Niche and knows it. Challenger tone ages quickly. A 45-year-old sari-sari store owner in Iloilo is not the Tonik audience, and Tonik's communication makes that obvious.</p>
+      </div>
+    </div>
+    <div class="call" style="margin-top:12px;font-size:13px;">
+      <strong>How Skyro sounds different:</strong> Skyro's playfulness comes from warmth and cultural fluency, not from rebellion. Where Tonik shouts, Skyro speaks directly. Where Tonik performs irreverence, Skyro earns familiarity. Skyro's audience is the whole market; Tonik's audience is a segment.
+    </div>
+  </div>
+
+  <!-- BPI / Legacy -->
+  <div class="card" style="margin-bottom:16px; border-left:4px solid #2c3e50;">
+    <h4>BPI / Legacy Banks — The Heritage Brand</h4>
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px; margin:12px 0 0;">
+      <div>
+        <p style="font-size:13px;"><strong>Core message:</strong> "Trusted for generations." BPI, BDO, Metrobank. Heritage, stability, comprehensive service.</p>
+        <p style="font-size:13px;"><strong>Tone:</strong> Formal, corporate, television-built. BPI scores 95/100 for trust, 15/100 for playfulness.</p>
+      </div>
+      <div>
+        <p style="font-size:13px;"><strong>Communication pattern:</strong> Institutional credibility, middle-class audience, comprehensive service narrative.</p>
+        <p style="font-size:13px;"><strong>Gap:</strong> Trusted like a municipal building — present, not beloved. Young Filipinos regard them as their parents' banks. "Innovation theatre" — fresh app skin on unchanged product logic. Stiff language, slow processes.</p>
+      </div>
+    </div>
+    <div class="call" style="margin-top:12px;font-size:13px;">
+      <strong>How Skyro sounds different:</strong> Skyro earns trust through transparency and consistent presence, not 170 years of heritage. Where legacy banks communicate downward, Skyro communicates sideways — between equals. The gap in warmth is Skyro's permanent advantage.
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <h2 class="sub">Competitive Landscape — At a Glance</h2>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th></th><th>GCash</th><th>Maya</th><th>GoTyme</th><th>Tonik</th><th>BPI/Legacy</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Owns</strong></td><td>Ubiquity, utility</td><td>Celebrity warmth</td><td>Physical accessibility</td><td>Gen Z irreverence</td><td>Institutional trust</td></tr>
+        <tr><td><strong>Leaves Open</strong></td><td>Emotional connection</td><td>Non-celebrity trust</td><td>Digital humanity</td><td>Mass-market warmth</td><td>Youth relevance</td></tr>
+        <tr><td><strong>Emotion</strong></td><td>Habit</td><td>Aspiration</td><td>Accessibility</td><td>Rebellion</td><td>Security</td></tr>
+        <tr><td><strong>Hook</strong></td><td>Cashback</td><td>Celebrity</td><td>Kiosk onboarding</td><td>Savings product</td><td>Heritage</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WHITE SPACE -->
+  <h2 class="sub">Where Skyro Lives — The White Space</h2>
+
+  <div class="closing-block" style="margin:24px 0;">
+    <p><strong>Genuine cultural intelligence at scale.</strong> A brand that is warm without being celebrity-dependent. Specific without being niche. Modern without being anti-establishment. Trusted without being institutional. Present in Filipino life — in its language, its rhythms, its values — in a way that no competitor has yet managed consistently, structurally, and across every touchpoint.</p>
+    <p style="margin-top:24px;font-family:'Fraunces',serif;font-size:18px;color:var(--gold-light);">Skyro's territory: genuine cultural intelligence, warmth at scale, substance over noise.</p>
+  </div>
+</div>
+<!-- ════════ 13 · ADVERTISING RESTRICTIONS ════════ -->
+<div class="sec" id="s-adrestrictions">
+  <div class="sec-header">
+    <span class="sec-num">13</span>
+    <h1 class="sec-title">Advertising Restrictions — What You Cannot Do in the Philippines</h1>
+  </div>
+
+  <p class="lead">Skyro operates in a regulated communications environment. The BSP, SEC, and broader legal frameworks affect what can and cannot appear in financial brand communications. Treat this section as a standing reference.</p>
+
+  <div class="warning-box" style="margin-bottom:32px;">
+    <p><strong>⚠️ This is not optional guidance — these are legal and regulatory boundaries.</strong> Any communication that violates them puts Skyro's market licence, reputation, and user trust at risk. Every person creating content for Skyro Philippines must know these rules.</p>
+  </div>
+
+  <!-- RULE 1 -->
+  <div class="filter-card" style="border-left-color: var(--red);">
+    <div class="filter-num" style="color: var(--red);">RULE 01</div>
+    <h4>Financial Advertising Regulations (BSP and SEC)</h4>
+    <p>All advertised interest rates, fees, and charges must be accurate, current, and presented in a way that is not misleading. Any promotional rate must clearly state its duration and the revert rate. Claims about "zero interest" or "no hidden fees" must be strictly verifiable. The Lending Company Regulation Act requires clear identification of the lending entity and display of the SEC or BSP registration number.</p>
+    <div class="dd" style="margin-top:16px;">
+      <div class="dd-col dont-col">
+        <div class="dd-hdr dont">🚩 Prohibited Examples</div>
+        <div class="dd-i">"100% guaranteed approval"</div>
+        <div class="dd-i">"Zero risk loan"</div>
+        <div class="dd-i">"Instant cash — no questions asked"</div>
+        <div class="dd-i">"The best loan in the Philippines" (without verified data)</div>
+      </div>
+      <div class="dd-col do-col">
+        <div class="dd-hdr do">✓ What Skyro Does Instead</div>
+        <div class="dd-i">Name the specific rate, the specific fee, the specific condition</div>
+        <div class="dd-i">Show SEC license number in all consumer-facing materials</div>
+        <div class="dd-i">Let the product speak — facts over claims</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 2 -->
+  <div class="filter-card" style="border-left-color: var(--red);">
+    <div class="filter-num" style="color: var(--red);">RULE 02</div>
+    <h4>Religious Considerations</h4>
+    <p>The Philippines is the third-largest Catholic country in the world (~86% Roman Catholic). Financial advertising touching religious symbols, language, or imagery carries substantial risk. Using imagery of the cross, the Santo Niño, the Black Nazarene, or Catholic icons in promotional contexts can be perceived as disrespectful.</p>
+    <div class="dd" style="margin-top:16px;">
+      <div class="dd-col dont-col">
+        <div class="dd-hdr dont">🚩 Prohibited</div>
+        <div class="dd-i">Religious imagery (cross, Santo Niño, Black Nazarene) used commercially</div>
+        <div class="dd-i">Religious references used as marketing hooks without genuine grounding</div>
+        <div class="dd-i">Islamic themes in BARMM communications without separate protocol</div>
+      </div>
+      <div class="dd-col do-col">
+        <div class="dd-hdr do">✓ Skyro's Approach</div>
+        <div class="dd-i">Respectful acknowledgment of religious moments as cultural events (Simbang Gabi, Holy Week, fiestas)</div>
+        <div class="dd-i">Tone that honors significance without co-opting symbolism</div>
+        <div class="dd-i">Test: would a devout Catholic feel respected, or feel their faith is being used to sell?</div>
+      </div>
+    </div>
+    <div class="call" style="margin-top:16px;">
+      <strong>Muslim community note:</strong> ~6% of the Filipino population is Muslim, concentrated in BARMM. If Skyro develops Islamic finance products, a separate communications protocol is required. Ramadan and Eid must be treated with full understanding, not as seasonal marketing occasions.
+    </div>
+  </div>
+
+  <!-- RULE 3 -->
+  <div class="filter-card" style="border-left-color: var(--red);">
+    <div class="filter-num" style="color: var(--red);">RULE 03</div>
+    <h4>Political Neutrality</h4>
+    <p>The Philippines has highly polarized political dynamics. Skyro must maintain strict political neutrality across all communications.</p>
+    <div class="dd" style="margin-top:16px;">
+      <div class="dd-col dont-col">
+        <div class="dd-hdr dont">🚩 Prohibited</div>
+        <div class="dd-i">Endorsements of political figures or parties — direct or implied, at any level</div>
+        <div class="dd-i">Campaign imagery with political colors or aesthetics from recent elections</div>
+        <div class="dd-i">Messaging referencing government programs implying endorsement of the administration</div>
+        <div class="dd-i">Any politically interpretable content around election periods (April–May)</div>
+      </div>
+      <div class="dd-col do-col">
+        <div class="dd-hdr do">✓ Skyro's Approach</div>
+        <div class="dd-i">Strict political neutrality at all times</div>
+        <div class="dd-i">Ambassador political association = immediate review</div>
+        <div class="dd-i">Focus on financial empowerment, never political positioning</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 4 -->
+  <div class="filter-card" style="border-left-color: var(--red);">
+    <div class="filter-num" style="color: var(--red);">RULE 04</div>
+    <h4>Gender and Representation</h4>
+    <p>The Magna Carta of Women (RA 9710) prohibits content that demeans, objectifies, or stereotypes women. The Advertising Standards Council enforces guidelines against sexist advertising.</p>
+    <div class="dd" style="margin-top:16px;">
+      <div class="dd-col dont-col">
+        <div class="dd-hdr dont">🚩 Avoid</div>
+        <div class="dd-i">Messaging implying women are less capable of financial decision-making</div>
+        <div class="dd-i">Positioning women primarily as household managers rather than economic agents</div>
+        <div class="dd-i">OFW communications ignoring women's financial agency (majority of domestic workers abroad are women)</div>
+      </div>
+      <div class="dd-col do-col">
+        <div class="dd-hdr do">✓ Skyro's Approach</div>
+        <div class="dd-i">Acknowledge women's financial agency explicitly</div>
+        <div class="dd-i">LGBTQ+ inclusion as a default, not a statement — representation in the visual world without making it the campaign</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 5 -->
+  <div class="filter-card" style="border-left-color: var(--red);">
+    <div class="filter-num" style="color: var(--red);">RULE 05</div>
+    <h4>Sensitive Language and Terminology</h4>
+    <p>Several words carry specific risks in Philippine financial communications:</p>
+    <div class="grid" style="grid-template-columns: 1fr; gap:8px; margin-top:12px;">
+      <div class="card" style="border-left:3px solid var(--amber); padding:14px 18px;">
+        <p style="margin:0;font-size:14px;"><strong>"Utang"</strong> (debt) carries strong stigma. Favor "installment," "repayment plan," or "loan schedule" in all consumer-facing communications.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--amber); padding:14px 18px;">
+        <p style="margin:0;font-size:14px;"><strong>"Guaranteed"</strong> and <strong>"zero risk"</strong> carry regulatory exposure — closely monitored by SEC and BSP.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--amber); padding:14px 18px;">
+        <p style="margin:0;font-size:14px;"><strong>"Easy money"</strong> — prohibited legally and by Skyro brand standards. Reads as scam-adjacent to Filipino audiences targeted by informal lenders.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--amber); padding:14px 18px;">
+        <p style="margin:0;font-size:14px;"><strong>"Exclusive"</strong> and <strong>"limited"</strong> — high-pressure scarcity tactics are associated with social media scams. Use sparingly, only when genuine.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 6 -->
+  <div class="filter-card" style="border-left-color: var(--red);">
+    <div class="filter-num" style="color: var(--red);">RULE 06</div>
+    <h4>No Competitor Comparison</h4>
+    <p>Comparative advertising is legally permissible but carries significant risk in a market where interpersonal relationships and face-saving are cultural priorities. A campaign making GCash or Maya look bad will generate backlash and invite retaliation. Skyro's competitive positioning should be achieved through differentiation, not comparison.</p>
+  </div>
+
+  <!-- RULE 7 -->
+  <div class="filter-card" style="border-left-color: var(--red);">
+    <div class="filter-num" style="color: var(--red);">RULE 07</div>
+    <h4>No Pressure Tactics or "Easy Money" Messaging</h4>
+    <p>Promoting careless borrowing, consequence-free financial decisions, or urgency-driven manipulation is both legally restricted and brand-destructive. Countdown timers, starburst graphics, "LIMITED OFFER" typography — this is the visual language of loan sharks in the Philippines.</p>
+  </div>
+
+  <div class="call big" style="margin-top:32px;">
+    In the Philippines, everything that misleads, pressures emotionally, commoditizes sacrifice, or disrespects culture or religion — is off-limits. Not by preference. By brand standard and by law.
+  </div>
+</div>
+<!-- ════════ 14 · THE FIVE FILTERS ════════ -->
+<div class="sec" id="s12">
+  <div class="sec-header">
+    <span class="sec-num">14</span>
+    <h1 class="sec-title">The Five Filters — Philippine Version</h1>
+  </div>
+
+  <p class="lead">Before you apply the filters — here is the process every piece of localized advertising should go through:</p>
+
+  <div class="milestone-track">
+    <div class="ms-step">
+      <div class="ms-num">1</div>
+      <div class="ms-title">Take the Insight</div>
+      <div class="ms-desc">Start with the Overview — market context, values, brand persona. Ground your idea in local reality.</div>
+    </div>
+    <div class="ms-step">
+      <div class="ms-num">2</div>
+      <div class="ms-title">Build the Creative</div>
+      <div class="ms-desc">Use Brand Voice as your compass — check the Do/Don't guides for tone and cultural guardrails.</div>
+    </div>
+    <div class="ms-step">
+      <div class="ms-num">3</div>
+      <div class="ms-title">Legal & Compliance</div>
+      <div class="ms-desc">Run it past Legal. BSP and SEC requirements are non-negotiable. Religious sensitivity review if applicable.</div>
+    </div>
+    <div class="ms-step">
+      <div class="ms-num">4</div>
+      <div class="ms-title">Run the Five Filters</div>
+      <div class="ms-desc">Every creative must pass all five filters below. If it fails one — rework, don't ship.</div>
+    </div>
+  </div>
+
+  <div class="call" style="margin-bottom:32px;">
+    <strong>The filters below are your final quality gate.</strong> They are not a substitute for the process above — they are the last check before anything goes live. Apply them rigorously.
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 01</div>
+    <h4>The Golden Rule — Could GCash or Maya have written this?</h4>
+    <p>If the answer is yes, rewrite it. What makes Skyro PH distinctive is not just what it offers but how it speaks: with specific cultural intelligence, genuine <em>malasakit</em> in the details, and a voice that treats financial communication as a conversation between equals. If a line could belong to any fintech, it does not yet belong to Skyro.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 02</div>
+    <h4>The Kitchen Table — Would a sari-sari store owner in Davao and an OFW family in Cebu both understand this clearly?</h4>
+    <p>If the answer is no — if the language is too urban, too formal, too Manila, too abstract — simplify. Use Taglish. Use concrete numbers. Use real situations. Financial literacy varies enormously across this market; the best Skyro communication works for everyone from the first read.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 03</div>
+    <h4>The Promise Check — Does this communication imply that the user needs to change who they are?</h4>
+    <p>In a market with deep <em>hiya</em> (shame) sensitivity, this filter matters especially. Any hint of judgment — about spending habits, debt levels, financial choices, or cultural practices — will be felt and remembered. The question to ask: if someone read this while already anxious about money, would they feel seen and supported?</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 04</div>
+    <h4>The Substance Test — Is there a specific, verifiable claim here?</h4>
+    <p>Post-scam-era Filipino consumers are sophisticated readers of financial communication. Vague promises are actively distrusted. Every claim needs a real proof point. "₱5.2 billion disbursed to over one million Filipinos" is real. "We help Filipinos achieve their financial dreams" is not. If a piece of copy cannot pass this test, it is not ready.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 05</div>
+    <h4>The Channel Fit — Does the tone match the moment?</h4>
+    <p>A payday social post and a payment overdue notification are not the same moment. A BER season campaign and a loan decline message are not the same moment. Christmas content and a fraud warning are not the same moment. Before publishing anything, ask whether this piece of communication would feel appropriate at the specific time and context it will reach its audience. If it would feel wrong, it is wrong.</p>
+  </div>
+</div>
+
+<!-- ════════ DESIGN KIT (TBD) ════════ -->
+<div class="sec" id="designkit">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Design Kit</h1>
+  </div>
+
+  <div class="tbd-placeholder">
+    <div class="tbd-icon">🎨</div>
+    <h3>Coming Soon</h3>
+    <p>Visual assets, templates, colour palettes, and typography guidelines for the Philippine market will be added here.<br>This section is currently under development by the design team.</p>
+  </div>
+</div>
+
+<!-- ════════ CLOSING ════════ -->
+<div class="sec" id="closing">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Closing</h1>
+  </div>
+
+  <div class="closing-block">
+    <p>Skyro came to the Philippines not as a foreign fintech adapting to a local market — but as a brand that was built, from the beginning, around the reality of people whose financial lives do not fit the standard template. The Filipino market is not an edge case. It is the core case.</p>
+    <p>The local team's job is to express the brand — fluently, specifically, and with genuine care for the people it is speaking to.</p>
+    <p><strong>Every piece of communication should be able to answer three questions:</strong></p>
+    <ul class="closing-questions">
+      <li>Does this respect the intelligence and the culture of the person reading it?</li>
+      <li>Does this make financial life feel lighter and more manageable — not heavier, not more shameful?</li>
+      <li>Does this sound like something a real, thoughtful person would actually say to a friend?</li>
+    </ul>
+    <p style="margin-top:24px;font-family:'Fraunces',serif;font-size:18px;color:var(--gold-light);">If yes — it is Skyro.</p>
+  </div>
+
+  <div class="footer">
+    Skyro Philippines · Brand & Communications Team · Q1 2026<br>
+    This document is a living guide — it should be updated as the market evolves, as new research becomes available, and as the team learns what resonates. The best localization insights will always come from listening to real Filipino users.
+  </div>
+</div>
+
+</div><!-- .main-inner -->
+</main>
+</div><!-- .page-wrap -->
+
+<!-- ════════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════════ -->
+<script>
+// ── Accordion ──
+function toggleAcc(header) {
+  const item = header.parentElement;
+  const body = item.querySelector('.acc-body');
+  const isOpen = item.classList.contains('open');
+
+  if (isOpen) {
+    body.style.maxHeight = '0';
+    item.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
+}
+
+// ── Nav group toggle ──
+function toggleNavGroup(header) {
+  const group = header.parentElement;
+  group.classList.toggle('open');
+}
+
+// ── Smooth scroll helper (for scenario buttons) ──
+function smoothNav(e, id) {
+  e.preventDefault();
+  const target = document.getElementById(id);
+  if (target) {
+    document.getElementById('main').scrollTo({
+      top: target.offsetTop - 40,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// ── Observers ──
+(function() {
+  const mainEl = document.getElementById('main');
+  const sections = mainEl.querySelectorAll('.sec[id]');
+  const navItems = document.querySelectorAll('.nav-group .nav-item');
+
+  // Active nav highlighting + auto-open parent group
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(n => {
+          const isActive = n.getAttribute('href') === '#' + id;
+          n.classList.toggle('active', isActive);
+          if (isActive) {
+            const group = n.closest('.nav-group');
+            if (group && !group.classList.contains('open')) {
+              group.classList.add('open');
+            }
+          }
+        });
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => navObs.observe(s));
+
+  // Fade-up on scroll
+  const allSecs = mainEl.querySelectorAll('.sec');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.05
+  });
+
+  allSecs.forEach(s => fadeObs.observe(s));
+})();
+
+// ── Sidebar nav smooth scroll ──
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const href = item.getAttribute('href');
+    if (!href) return;
+    const id = href.slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      document.getElementById('main').scrollTo({
+        top: target.offsetTop - 40,
+        behavior: 'smooth'
+      });
+    }
+
+    // Close mobile nav
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+// ── Hamburger ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+});
+</script>
+</body>
+</html>
