@@ -347,7 +347,8 @@ strong { font-weight: 600; color: var(--charcoal); }
   border-radius: 0 var(--r) var(--r) 0;
   margin: 24px 0;
   font-size: 15px;
-  color: var(--ink);
+  color: #4A4A46;
+  line-height: 1.7;
 }
 
 .call.big {
@@ -884,6 +885,53 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
 
 .warning-box strong { color: var(--amber); }
 
+/* ── SCENARIO NAV ───────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.scenario-btn {
+  display: block;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+  cursor: pointer;
+}
+
+.scenario-btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+.scenario-btn .sc-icon {
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.scenario-btn .sc-title {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.scenario-btn .sc-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 /* ── FOOTER ──────────────────────────────────────── */
 .footer {
   text-align: center;
@@ -899,6 +947,7 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
   .grid-3 { grid-template-columns: 1fr; }
   .dd { grid-template-columns: 1fr; }
   .main-inner { padding: 40px 24px 0; }
+  .scenario-grid { grid-template-columns: 1fr; }
 
   nav.side {
     position: fixed;
@@ -996,6 +1045,42 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
     <strong>Phase 2 (expat remittance product):</strong> Add Urdu. One language that opens two of the largest corridors — Pakistani (~1.5M, $5B) and a significant portion of the Indian (Urdu-speaking Muslims are the largest single segment among Indian blue-collar workers). One language, $13–15B corridor.<br>
     <strong>Phase 3 (scaling):</strong> Bengali and Hindi as the product grows. Amharic only if the Ethiopian corridor becomes a strategic priority.<br><br>
     <strong>A cost-effective accelerator:</strong> full app localization in 4+ languages is expensive. But marketing campaigns in corridor languages — with the app remaining in Arabic + English — deliver 80% of the emotional effect at a fraction of the cost. A Snapchat ad in Urdu costs the same as one in Arabic but communicates something fundamentally different: <em>"we made this for you."</em> This tactic can and should launch ahead of full product localization.
+  </div>
+
+  <h2 class="sub" style="margin-top:36px;">Where Do You Start?</h2>
+  <p>Depending on what you're working on right now — jump straight to the section that helps most:</p>
+
+  <div class="scenario-grid">
+    <a class="scenario-btn" href="#s01" onclick="smoothNav(event,'s01')">
+      <span class="sc-icon">🕌</span>
+      <span class="sc-title">Dive into the market</span>
+      <span class="sc-desc">Audience, values, cultural context — everything you need to understand Saudi Arabia</span>
+    </a>
+    <a class="scenario-btn" href="#s05" onclick="smoothNav(event,'s05')">
+      <span class="sc-icon">✍️</span>
+      <span class="sc-title">Write copy</span>
+      <span class="sc-desc">Tone of voice, Do/Don't, communication examples and templates</span>
+    </a>
+    <a class="scenario-btn" href="#s09" onclick="smoothNav(event,'s09')">
+      <span class="sc-icon">📡</span>
+      <span class="sc-title">Plan a campaign</span>
+      <span class="sc-desc">Calendar, channels, ambassadors, seasonal activations</span>
+    </a>
+    <a class="scenario-btn" href="#s11" onclick="smoothNav(event,'s11')">
+      <span class="sc-icon">⚔️</span>
+      <span class="sc-title">Know the competition</span>
+      <span class="sc-desc">Al Rajhi, STC Bank, Tabby, Tamara, D360, Urpay — how they sound, how we don't</span>
+    </a>
+    <a class="scenario-btn" href="#s13" onclick="smoothNav(event,'s13')">
+      <span class="sc-icon">✅</span>
+      <span class="sc-title">Review before launch</span>
+      <span class="sc-desc">Five Filters checklist — every creative must pass all five</span>
+    </a>
+    <a class="scenario-btn" href="#s08" onclick="smoothNav(event,'s08')">
+      <span class="sc-icon">💡</span>
+      <span class="sc-title">Get activation ideas</span>
+      <span class="sc-desc">Ready-made creative concepts tied to Saudi cultural moments</span>
+    </a>
   </div>
 </div>
 
@@ -1755,7 +1840,7 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
   </div>
 
   <div class="call big">
-    The white space Skyro can own: <strong>genuine cultural intelligence that serves everyone on this market.</strong> A brand that is warm without being heritage-dependent. Shariah-compliant without being institutional. Modern without being cold. Present in Saudi life — in its rhythms, its faith, its transformation — and present in expat life — in its languages, its sacrifices, its hopes — in a way that no competitor has yet managed to be consistently, structurally, and across every touchpoint.
+    The white space Skyro can own: <strong>the brand that actually gets how people here live.</strong> Warm without being heritage-dependent. Shariah-compliant without being institutional. Modern without being cold. Present in Saudi life — in its prayer rhythms, its Ramadan transformation, its Eid joy — and present in expat life — in its languages, its family sacrifices, its quiet hopes. Not smarter than the competition. Just closer. The kind of brand people describe as "ours" — because it speaks like it belongs here.
   </div>
 </div>
 
@@ -1880,6 +1965,18 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
      JAVASCRIPT
      ════════════════════════════════════════════════════ -->
 <script>
+// ── Smooth scroll helper (for scenario buttons) ──
+function smoothNav(e, id) {
+  e.preventDefault();
+  var target = document.getElementById(id);
+  if (target) {
+    document.getElementById('main').scrollTo({
+      top: target.offsetTop - 40,
+      behavior: 'smooth'
+    });
+  }
+}
+
 // ── Accordion ──
 function toggleAcc(header) {
   const item = header.parentElement;
