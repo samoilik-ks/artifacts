@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro UAE — Brand Communication Localization Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2E1503;
+  --forest-light: #4A2508;
+  --forest-dark: #1E0D02;
+  --cream: #FDF8F3;
+  --cream-dark: #F3EAE0;
+  --gold: #D4782C;
+  --gold-light: #E8954A;
+  --gold-pale: #FBF0E4;
+  --charcoal: #1C1C1A;
+  --ink: #2D2D2A;
+  --muted: #6B6860;
+  --border: #DDD0C2;
+  --red: #C0392B;
+  --red-pale: #FDECEA;
+  --green-ok: #1A7A52;
+  --green-pale: #E8F5EE;
+  --amber: #D4711A;
+  --amber-pale: #FDF3E7;
+  --nav-w: 260px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+  --r: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .025;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── HERO ──────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  background-color: var(--forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  opacity: .8;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--gold-light);
+  font-weight: 300;
+  font-style: italic;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(248,244,238,.5);
+  font-weight: 300;
+  max-width: 500px;
+  position: relative;
+  letter-spacing: .01em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(248,244,238,.35);
+  font-size: 11px;
+  letter-spacing: .12em;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll svg { opacity: .5; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.page-wrap {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────── */
+nav.side {
+  width: var(--nav-w);
+  height: 100%;
+  overflow-y: auto;
+  background: var(--forest-dark);
+  flex-shrink: 0;
+  padding: 28px 0 40px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.3) transparent;
+  z-index: 100;
+}
+
+nav.side::-webkit-scrollbar { width: 4px; }
+nav.side::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radius: 2px; }
+
+.nav-logo {
+  padding: 0 24px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 16px;
+}
+
+.nav-logo span {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.nav-logo small {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,.6);
+  margin-top: 2px;
+}
+
+.nav-item {
+  display: block;
+  padding: 9px 24px;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-item:hover { background: rgba(255,255,255,.05); }
+
+.nav-item.active {
+  border-left-color: var(--gold);
+  background: rgba(201,168,76,.08);
+}
+
+.nav-n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(201,168,76,.5);
+  letter-spacing: .1em;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.nav-t {
+  font-size: 12.5px;
+  color: rgba(248,244,238,.75);
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.nav-item.active .nav-t { color: var(--cream); }
+
+/* ── HAMBURGER (mobile) ─────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  width: 40px; height: 40px;
+  background: var(--forest);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+  transition: transform .2s, opacity .2s;
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+/* ── MAIN ─────────────────────────────────────────── */
+main {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 120px;
+  min-width: 0;
+  scroll-behavior: smooth;
+}
+
+.main-inner {
+  max-width: 860px;
+  padding: 64px 60px 0;
+}
+
+/* ── SECTIONS ─────────────────────────────────────── */
+.sec {
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.sec.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sec-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+}
+
+h2.sub {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 40px 0 16px;
+  line-height: 1.3;
+}
+
+h3.sub2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin: 28px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+p { margin-bottom: 16px; color: var(--ink); font-size: 15.5px; }
+p:last-child { margin-bottom: 0; }
+
+p.lead {
+  font-size: 17.5px;
+  color: var(--ink);
+  line-height: 1.75;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+em { font-style: italic; }
+strong { font-weight: 600; color: var(--charcoal); }
+
+/* ── CALLOUT ─────────────────────────────────────── */
+.call {
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  margin: 24px 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.call.big {
+  font-size: 20px;
+  text-align: center;
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  border-left: none;
+  padding: 32px 40px;
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── INSIGHT QUOTE ────────────────────────────────── */
+.insight-quote {
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.5;
+  padding: 40px 32px;
+  margin: 32px 0;
+  background: var(--gold-pale);
+  border-radius: var(--r);
+  border: 1px solid rgba(201,168,76,.3);
+}
+
+/* ── PERSONA CARD ─────────────────────────────────── */
+.persona-card {
+  background: var(--cream-dark);
+  border-radius: var(--r);
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+
+.persona-summary {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.persona-summary strong { color: var(--gold-light); }
+
+/* ── CARDS / GRID ────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.card p, .card li { font-size: 14px; color: var(--muted); }
+.card ol { padding-left: 18px; margin-bottom: 16px; }
+.card ol li { margin-bottom: 6px; line-height: 1.5; }
+
+/* ── VALUE CARD ──────────────────────────────────── */
+.value-block {
+  margin: 40px 0;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+}
+
+.value-block h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.value-block .value-sub {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.value-block .what-means {
+  background: var(--cream);
+  border-radius: var(--r);
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 3px solid var(--gold);
+}
+
+.value-block .what-means h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.value-block .what-means ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.value-block .what-means li {
+  font-size: 14.5px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.copy-dir {
+  margin: 16px 0;
+  padding: 16px 20px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.copy-dir .copy-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+  font-style: normal;
+}
+
+/* ── DO/DON'T ────────────────────────────────────── */
+.dd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.dd-col { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm); }
+
+.dd-hdr {
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dd-hdr.do { background: var(--forest); color: var(--gold-light); }
+.dd-hdr.dont { background: #3a1010; color: #e88; }
+
+.dd-i {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.55;
+}
+
+.dd-i strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14.5px;
+}
+
+.dd-col.do-col .dd-i { border-left: 3px solid var(--green-ok); background: var(--green-pale); }
+.dd-col.dont-col .dd-i { border-left: 3px solid var(--red); background: var(--red-pale); }
+
+.dd-i:last-child { border-bottom: none; }
+
+/* ── TABLES ──────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--r); box-shadow: var(--shadow-sm); }
+
+table.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+table.tbl thead tr { background: var(--forest); color: var(--cream); }
+
+table.tbl thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+table.tbl tbody tr { border-bottom: 1px solid var(--border); background: #fff; }
+table.tbl tbody tr:nth-child(even) { background: var(--cream); }
+table.tbl tbody tr:hover { background: var(--gold-pale); }
+table.tbl td { padding: 11px 16px; color: var(--ink); vertical-align: top; }
+table.tbl td:first-child { font-weight: 600; color: var(--forest); }
+
+/* ── BADGE ───────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.badge.peak { background: var(--red); color: #fff; }
+.badge.very-high { background: var(--amber); color: #fff; }
+.badge.high { background: var(--gold); color: var(--charcoal); }
+.badge.medium { background: var(--cream-dark); color: var(--muted); }
+.badge.constant { background: var(--forest); color: var(--gold-light); }
+
+/* ── ACCORDION ───────────────────────────────────── */
+.acc-item {
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.acc-header {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  transition: background .15s;
+  user-select: none;
+}
+
+.acc-header:hover { background: var(--cream); }
+
+.acc-header .acc-arrow {
+  transition: transform .25s;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.acc-item.open .acc-header { background: var(--cream); border-bottom: 1px solid var(--border); }
+.acc-item.open .acc-arrow { transform: rotate(180deg); }
+
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.acc-body-inner {
+  padding: 20px;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.acc-body-inner h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 16px 0 8px;
+}
+
+.acc-body-inner h4:first-child { margin-top: 0; }
+
+.acc-body-inner blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 10px 16px;
+  margin: 10px 0;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ── CHANNEL CARD ────────────────────────────────── */
+.channel-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.channel-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.channel-card p { font-size: 14.5px; color: var(--ink); }
+
+/* ── ACTIVATION CARD ─────────────────────────────── */
+.activation-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.activation-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.activation-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+
+.activation-card .act-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.activation-card h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 18px 0 8px;
+}
+
+.activation-card p { font-size: 14.5px; }
+
+/* ── FILTER CARD ─────────────────────────────────── */
+.filter-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--r);
+  padding: 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-card .filter-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.filter-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.filter-card p { font-size: 14.5px; }
+
+/* ── CLOSING ─────────────────────────────────────── */
+.closing-block {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 40px;
+  margin: 40px 0;
+}
+
+.closing-block p { color: rgba(248,244,238,.85); font-size: 15.5px; }
+.closing-block strong { color: var(--cream); }
+
+.closing-questions {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.closing-questions li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.5;
+}
+
+/* ── SCENARIO BUTTONS ──────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.scenario-btn {
+  display: block;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+  cursor: pointer;
+}
+
+.scenario-btn:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+.scenario-btn .sc-icon {
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.scenario-btn .sc-title {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  display: block;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.scenario-btn .sc-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ── WARNING BOX ─────────────────────────────────── */
+.warning-box {
+  background: var(--amber-pale);
+  border: 1px solid var(--amber);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.warning-box strong { color: var(--amber); }
+
+/* ── RTB CARD ────────────────────────────────────── */
+.rtb-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rtb-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.rtb-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.rtb-card li {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.rtb-card p { font-size: 14.5px; }
+
+/* ── FOOTER ──────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .08em;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .dd { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .main-inner { padding: 40px 24px 0; }
+
+  nav.side {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    height: 100%;
+    transition: left .3s ease;
+    z-index: 150;
+  }
+
+  nav.side.open { left: 0; }
+
+  .hamburger { display: flex; }
+
+  .page-wrap { display: block; height: auto; overflow: auto; }
+  main { height: auto; overflow: visible; }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 32px; }
+  .hero-sub { font-size: 20px; }
+  .main-inner { padding: 32px 16px 0; }
+  .value-block { padding: 20px; }
+  .activation-card { padding: 20px; }
+  .closing-block { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     PAGE WRAP: SIDEBAR + MAIN
+     ════════════════════════════════════════════════════ -->
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrap">
+
+<!-- ── SIDEBAR ──────────────────────────────────────── -->
+<nav class="side" id="sidebar">
+  <div class="nav-logo">
+    <span>Skyro</span>
+    <small>UAE Localization</small>
+  </div>
+  <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
+  <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
+  <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
+  <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
+  <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
+  <a class="nav-item" href="#s05b"><span class="nav-n">05b</span><span class="nav-t">Do / Don't — Visual</span></a>
+  <a class="nav-item" href="#s06"><span class="nav-n">06</span><span class="nav-t">Communication Examples</span></a>
+  <a class="nav-item" href="#s07"><span class="nav-n">07</span><span class="nav-t">Ambassador Strategy</span></a>
+  <a class="nav-item" href="#s08"><span class="nav-n">08</span><span class="nav-t">Creative Activations</span></a>
+  <a class="nav-item" href="#s09"><span class="nav-n">09</span><span class="nav-t">Communication Calendar</span></a>
+  <a class="nav-item" href="#s10"><span class="nav-n">10</span><span class="nav-t">Channel Guidance</span></a>
+  <a class="nav-item" href="#s11"><span class="nav-n">11</span><span class="nav-t">Competitor Communications</span></a>
+  <a class="nav-item" href="#s12"><span class="nav-n">12</span><span class="nav-t">Advertising Restrictions</span></a>
+  <a class="nav-item" href="#s13"><span class="nav-n">13</span><span class="nav-t">The Five Filters</span></a>
+  <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+</nav>
+
+<!-- ── MAIN CONTENT ─────────────────────────────────── -->
+<main id="main">
+
+<!-- ════════ HERO ════════ -->
+<div id="hero">
+  <div class="hero-eyebrow">Skyro · UAE · Q1 2026</div>
+  <h1 class="hero-title">Brand Communication<br><em>Localization Guide</em></h1>
+  <div class="hero-sub">Skyro UAE</div>
+  <div class="hero-desc">How the Global Brand Platform Lives on the UAE Market</div>
+  <div class="hero-scroll">
+    Scroll
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+  </div>
+</div>
+
+<div class="main-inner">
+
+<!-- PRE-NOTES -->
+<div class="sec visible">
+  <div class="call">
+    <strong>How to Use This Document</strong><br><br>
+    This guide is built for the Skyro UAE team. Its purpose is to show how the global brand platform translates, sounds, and behaves specifically on this market — not to replace the Global TOV Guide or the master brand, but to sit on top of them as a layer of cultural interpretation.<br><br>
+    The structure is straightforward: we start by grounding the global brand promise in the UAE reality (Global Mind, Local Heart). We then move to a brand persona, brand values, RTBs, do/don'ts, communication examples, ambassador criteria, and creative activations.<br><br>
+    <strong>The core principle: we don't change the brand to fit the market. We find where the brand and the market already meet — and amplify that intersection.</strong>
+  </div>
+
+  <div class="warning-box">
+    <p><strong>A note on language:</strong> All copy examples in this document are written in English, which is the primary language of the UAE's expat majority and the language of business across the emirates. In actual execution, English is the default for the core target audience (professional expats). Arabic is used for Emirati-facing and institutional communications, as well as for regulatory and cultural-respect purposes. Hindi, Urdu, and Tagalog may be deployed for specific segment-targeting campaigns where reach into blue-collar communities is strategically relevant. The examples here show the idea and the register; local copywriters should adapt tone and idiom for each language track.</p>
+  </div>
+
+  <h2 class="sub" style="margin-top:36px;">Where Do You Start?</h2>
+  <p>Depending on what you're working on right now — jump straight to the section that helps most:</p>
+
+  <div class="scenario-grid">
+    <a class="scenario-btn" href="#s01" onclick="smoothNav(event,'s01')">
+      <span class="sc-icon">🌏</span>
+      <span class="sc-title">Dive into the market</span>
+      <span class="sc-desc">Audience, values, cultural context — everything you need to understand the UAE expat reality</span>
+    </a>
+    <a class="scenario-btn" href="#s06" onclick="smoothNav(event,'s06')">
+      <span class="sc-icon">✍️</span>
+      <span class="sc-title">Write copy</span>
+      <span class="sc-desc">Tone of voice, Do/Don't, communication examples and templates</span>
+    </a>
+    <a class="scenario-btn" href="#s07" onclick="smoothNav(event,'s07')">
+      <span class="sc-icon">📡</span>
+      <span class="sc-title">Plan a campaign</span>
+      <span class="sc-desc">Ambassadors, channels, seasonal calendar, activation ideas</span>
+    </a>
+    <a class="scenario-btn" href="#s13" onclick="smoothNav(event,'s13')">
+      <span class="sc-icon">✅</span>
+      <span class="sc-title">Review before launch</span>
+      <span class="sc-desc">Five Filters checklist — every creative must pass all five</span>
+    </a>
+    <a class="scenario-btn" href="#s08" onclick="smoothNav(event,'s08')">
+      <span class="sc-icon">💡</span>
+      <span class="sc-title">Get activation ideas</span>
+      <span class="sc-desc">Ready-made creative concepts tied to UAE cultural moments</span>
+    </a>
+    <a class="scenario-btn" href="#s12" onclick="smoothNav(event,'s12')">
+      <span class="sc-icon">⚖️</span>
+      <span class="sc-title">Check regulations</span>
+      <span class="sc-desc">CBUAE, DFSA, Mu'lin — advertising restrictions and compliance</span>
+    </a>
+  </div>
+</div>
+
+<!-- ════════ 01 · GLOBAL MIND, LOCAL HEART ════════ -->
+<div class="sec" id="s01">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h1 class="sec-title">Global Mind, Local Heart</h1>
+  </div>
+
+  <h2 class="sub">The Global Promise, Read Through UAE Eyes</h2>
+
+  <p class="lead"><em>Celebrate who you are. Grow from where you stand.</em></p>
+
+  <p>This is what Skyro believes everywhere it operates. But in the UAE, this line carries a particular weight — because the reality it speaks to is shaped by a condition that defines nearly every life in this country: impermanence.</p>
+
+  <p>The UAE is a country where 89% of the population are foreign nationals. Ten million residents, two hundred nationalities, and for the vast majority, no path to citizenship. People come to Dubai, Abu Dhabi, and Sharjah to build careers, accumulate capital, provide for families back home, and create a chapter of their lives that is defined by ambition and opportunity — but also by the quiet, persistent awareness that it could end with a single employment decision. Lose your job, and the clock starts on your visa. The financial cushion you've been building is not a luxury; it is the difference between a planned next chapter and an emergency exit.</p>
+
+  <p>This creates a financial psychology unlike any other market Skyro serves. In the Philippines, financial pressure comes from structural inequality and income volatility. In the UAE, it comes from the tension between extraordinary earning potential and structural insecurity. The salaries are high. The cost of living is high. The stakes of a single misstep are very high. And through all of it, millions of expats keep showing up — building lives, raising families, sending money home, and investing in a future that will mostly be lived somewhere else.</p>
+
+  <p>Traditional finance was not built for this reality. It was built for residents with permanent addresses, stable employment timelines, and a linear relationship between where they earn and where they retire. It was built for someone whose life happens in one country.</p>
+
+  <p>Skyro is built for the life that happens across borders. For the McKinsey consultant in DIFC who will be in Singapore in three years. For the product manager in Dubai Marina who splits her savings between a London deposit fund and her parents' retirement account in Mumbai. For the entrepreneur who moved here because the tax regime makes it possible to build something real — but who knows that "here" is always conditional.</p>
+
+  <p>This is what <em>celebrate who you are</em> means in the UAE: your international ambition, your cross-border financial life, your decision to build wealth in a place where you will always be a guest — these are not complications to be managed. They are the shape of your financial life, and they deserve a partner that respects them.</p>
+
+  <p>This is what <em>grow from where you stand</em> means here: not a distant aspiration, but a practical commitment. Start from your current salary. From your current visa status. From your existing portfolio — or the absence of one. Growth doesn't require permanence. It requires a partner that understands how wealth is actually built in a transient market.</p>
+
+  <h2 class="sub">The UAE Consumer Insight</h2>
+
+  <p>UAE expats live with a fundamental paradox: they are earning more than they ever have, in one of the most dynamic economies on earth, and they are doing it without the safety net that citizens of most countries take for granted. There is no state pension. There is no unemployment insurance that lasts. There is no guarantee that the life they have built here will still be available next year.</p>
+
+  <p>This means the right financial partner for UAE consumers is not one that sells dreams of limitless wealth — Dubai already does that. It is one that makes the financial complexity of cross-border life feel manageable, that helps them build real security despite structural impermanence, and that treats their sophistication with respect rather than condescension.</p>
+
+  <p>Skyro exists to be exactly that partner.</p>
+
+  <h2 class="sub">The Core Consumer Tension</h2>
+
+  <div class="insight-quote">
+    "I want to make my money work while I'm here — invest, grow, build real security — but the financial products available to me either treat me like a tourist, overwhelm me with complexity I don't have time for, or feel like they weren't designed for someone whose life will be in a different country in three years."
+  </div>
+
+  <p>This tension sits at the center of Skyro's UAE positioning. The desire is clear: expats want to convert the UAE's extraordinary earning conditions into lasting financial security. The barrier is equally clear: the existing financial infrastructure does not serve cross-border, time-limited, financially literate professionals with the simplicity and intelligence they need. Skyro closes that gap.</p>
+</div>
+
+<!-- ════════ 02 · BRAND PERSONA ════════ -->
+<div class="sec" id="s02">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h1 class="sec-title">Brand Persona — Who Is Skyro on the UAE Market?</h1>
+  </div>
+
+  <p class="lead">If Skyro were a person on this market, who would he be?</p>
+
+  <div class="persona-card">
+    <p>His name is <strong>Ravi</strong>. He's 33, born in Bangalore, educated in London, and living in Dubai Hills for the past four years. He came for a fintech role at a DIFC-based firm. His mother was an accountant; his father ran a small import business. He learned early that money is not just a number — it is optionality. The ability to choose. The freedom to leave on your own terms, or to stay because you want to.</p>
+
+    <p>Ravi has worked across three countries and held savings accounts in four currencies. He understands exchange rates not as an abstraction but as a reality that affects how much his parents' retirement fund actually grows each month. He reads the financial press, but he doesn't have time to manage a complex portfolio himself — and he doesn't trust anyone who pretends that managing one is simple.</p>
+
+    <p>He is sharp and direct — the Dubai professional ecosystem rewards clarity, and Ravi has learned to communicate without wasting time. But directness, for him, never means coldness. When a friend asks him how to set up their first investment, he doesn't lecture. He asks what they're trying to achieve, how long they're staying, and what keeps them up at night. Then he offers two or three concrete options and explains the trade-offs honestly.</p>
+
+    <p>Ravi laughs easily, but his humor is dry and observational — the wry recognition of Dubai's contradictions, the absurdity of paying AED 90 for a coffee while simultaneously worrying about visa renewal. He understands the city's aspirational energy without being consumed by it. He appreciates the Lamborghinis on Sheikh Zayed Road the way you appreciate a sunset — it's impressive, but it's not why he's here.</p>
+
+    <p>He is not flashy. He admires competence, not display. He respects the hustle that built Dubai but is privately skeptical of anyone whose entire identity is built around it. He knows that the most financially secure people in his circle are the ones who talk about money the least.</p>
+
+    <p>Ravi is a Muslim — and his faith shapes his financial ethics, his sense of community, and his calendar. But his circle is as wide as Dubai itself: Egyptians, Filipinos, Brits, Nigerians, and Emiratis. He respects every tradition at the table and expects the same respect in return. He code-switches effortlessly between cultures and sees this as the ordinary texture of Dubai life, not something to celebrate performatively.</p>
+
+    <div class="persona-summary">
+      <strong>In communication terms, this means:</strong> Skyro UAE is intelligent and direct — it respects the audience's financial literacy and never talks down to them. Skyro is internationally fluent — it speaks to a multicultural audience without performing multiculturalism. Skyro is calm and confident — a presence that makes financial complexity feel manageable. Skyro's warmth is expressed through competence and honesty, not through effusiveness. And Skyro is grounded in real cross-border life — speaking always to the person who is building a future across more than one country.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 03 · FOCUS VALUES ════════ -->
+<div class="sec" id="s03">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h1 class="sec-title">Focus Values — The Skyro Brand Values in UAE Context</h1>
+  </div>
+
+  <p>Skyro's five global brand values do not change from market to market. What changes is the specific texture of how they are expressed — the cultural references, the emotional register, the moments they speak to. Here is how each value lives on the UAE market.</p>
+
+  <!-- FLOW -->
+  <div class="value-block">
+    <h2>Flow</h2>
+    <div class="value-sub">Move with nature, not against it</div>
+
+    <p>Globally, Flow is about rhythm — working with the natural patterns of life rather than imposing artificial structures on top of them.</p>
+
+    <p>In the UAE, Flow is the recognition that financial life for expats operates across multiple time zones, currencies, and regulatory systems simultaneously. Money moves in complex patterns: salary in dirhams, mortgage payments in pounds or euros, remittances to parents in rupees or pesos, investments in dollars. The school fees are due in September. The end-of-service gratuity arrives in a lump sum that must be deployed intelligently across jurisdictions. Ramadan reshapes household spending for a month. Summer (May to October) empties the city as expats escape the heat — and reshapes the financial calendar entirely.</p>
+
+    <p>Most financial products treat each of these movements as a separate problem requiring a separate solution. Skyro treats them as the natural rhythm of cross-border life — and builds tools that move with that rhythm rather than against it. An investment account that lets you save, invest, and manage a portfolio through seasonal shifts. A credit line that absorbs the spikes — September school fees, summer travel, Eid generosity — without forcing you to liquidate positions or rearrange your plans. These are not features. They are an expression of this value.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Speak to the real rhythms of UAE expat life without romanticizing the complexity. Acknowledge the multi-currency, multi-country reality without making it sound overwhelming. Show that Skyro adjusts — because that is what a partner built for international lives does.
+    </div>
+  </div>
+
+  <!-- GROWTH -->
+  <div class="value-block">
+    <h2>Growth</h2>
+    <div class="value-sub">Like a garden, not a machine</div>
+
+    <p>Globally, Growth is about organic, sustainable progress — growth that has roots, that happens at the right pace, that does not require you to become something you are not.</p>
+
+    <p>In the UAE, Growth carries the specific weight of a market where wealth accumulation is the stated purpose of being here — but where the definition of "enough" is distorted by the city's culture of visible excess. Dubai's skyline promises limitless upside. The reality for most professional expats is more measured: build a diversified portfolio, secure the children's education fund, put enough aside that leaving the UAE is a choice rather than a crisis.</p>
+
+    <p>Growth for UAE expats is not about getting rich quick — despite the city's narrative. It is about building real financial security in a place that offers extraordinary earning potential but zero permanent safety net. It is about making the years here count — converting high salaries into lasting wealth that works regardless of which country you live in next.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Make growth concrete and tied to real cross-border goals. Not "maximize your returns" — but "Your portfolio just passed the milestone you set when you moved here. Two more years at this rate and the London deposit is covered." Celebrate steady progress. Never promise overnight transformation.
+    </div>
+  </div>
+
+  <!-- CELEBRATION -->
+  <div class="value-block">
+    <h2>Celebration</h2>
+    <div class="value-sub">Honor who you are, not who you should be</div>
+
+    <p>Globally, Celebration is the value that most directly challenges the conventional finance narrative. It says: the way you live, the things you spend on, the cultural obligations you honor — these are not financial mistakes. They are expressions of your values.</p>
+
+    <p>In the UAE, this value speaks to something deeper than any single cultural tradition. It speaks to the extraordinary fact that two hundred nationalities live and work side by side in a single country — each bringing their own definition of success, their own financial rhythms, their own celebrations. A Diwali celebration for an Indian family in Sharjah, a Filipino community gathering during Christmas, a Kenyan family's contribution to a harambee back home, an Emirati family's National Day traditions, the generosity that defines Ramadan and Eid across the Muslim community — these are all expressions of identity that carry real financial weight.</p>
+
+    <p>Dubai is not one culture. It is a place where every culture has the right to exist, to work, to grow, and to define ambition on its own terms. That is the most powerful expression of <em>celebrate who you are</em> on any market Skyro serves. A Nigerian engineer and a Lebanese architect and a Filipino nurse and a British banker are all building something here — and none of them should have to adopt someone else's version of what "making it" looks like in order to feel served by their financial partner.</p>
+
+    <p>And in a city where many people feel pressure to conform to a single aspirational lifestyle template — the brunch culture, the mall culture, the visible consumption culture — the permission to celebrate in your own way, according to your own traditions, is genuinely meaningful.</p>
+
+    <p>Conventional finance treats cultural spending as a budget leak. Skyro's answer is different: help people honor their traditions and their communities within a financial structure they can manage. Make Eid gifts, Diwali preparations, Christmas padala, and summer travel home things to plan for with confidence — not sources of financial anxiety.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Never imply that cultural or community spending is impractical. Do not frame celebrations as the reason for financial difficulty. Frame Skyro's products as the tools that make celebration possible without the aftermath of financial stress. And never flatten the UAE's two hundred nationalities into a single "expat" experience.
+    </div>
+  </div>
+
+  <!-- INNOVATION -->
+  <div class="value-block">
+    <h2>Innovation</h2>
+    <div class="value-sub">Technology that anticipates, not just reacts</div>
+
+    <p>Globally, Innovation is about technology that is genuinely useful — that solves real problems before they become crises, that learns from how people actually behave rather than how they are supposed to behave.</p>
+
+    <p>In the UAE, this takes a specific form. The country has one of the highest smartphone penetration rates in the world. The regulatory architecture is among the most progressive globally — CBUAE, DFSA, and FSRA operate a sandbox framework that actively encourages fintech innovation. The market expects digital-first experiences. And yet, for all its sophistication, the UAE's financial infrastructure still forces expats to maintain separate relationships for banking, investing, saving, and credit — each with its own onboarding, its own KYC, and its own interface.</p>
+
+    <p>For Skyro, Innovation on the UAE market means: an investment account that offers savings deposits, curated funds, and portfolio management in a single, clean interface — designed for people who are financially literate but time-constrained. A credit line that flexes with the rhythm of expat life — available when tuition, travel, or a new apartment deposit arrives ahead of schedule. Onboarding that respects the user's time and intelligence — no twelve-step processes, no condescending tutorials, no patronizing gamification.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Show technology through what it enables, not what it is. "Your investments and your credit line — one app, full visibility" over "AI-powered cross-border financial orchestration platform." Show the interface. Show the result. Let the simplicity speak for itself — this audience will notice and appreciate it.
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="value-block">
+    <h2>Trust</h2>
+    <div class="value-sub">You know best. We walk beside you</div>
+
+    <p>Globally, Trust is the value that defines Skyro's relationship with its users: we do not position ourselves as the authority. We position ourselves as a partner who respects the user's intelligence, their choices, and their knowledge of their own life.</p>
+
+    <p>In the UAE, Trust has a specific and urgent dimension: online fraud. Despite the country's physical safety — one of the highest in the world — financial fraud and scam activity in the digital space are a persistent concern. The interview data confirms this directly: physical safety is valued highly, but online fraud creates genuine anxiety. In a market where much of the population is transient, where regulatory relationships are complex, and where many people are managing financial products across multiple jurisdictions, trust is not a brand attribute. It is the prerequisite.</p>
+
+    <p>But Trust in the Skyro sense goes deeper than security features. It means respecting the financial intelligence of an audience that is, on average, significantly more financially literate than most markets Skyro serves. It means not oversimplifying. It means showing the full picture — costs, risks, and trade-offs — and trusting the user to make their own informed decision. It means being transparent about what Skyro can and cannot do in the UAE's specific regulatory environment. And it means never pretending that a financial product is a substitute for the user's own judgment.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Always lead with the user's intelligence and capability. Never frame financial products as a rescue or a revelation. Frame them as tools in the hands of someone who already knows what they're doing — and who is choosing Skyro because it respects that. In every interaction — from onboarding to support to decline notifications — be the clearest, most honest voice in the room.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 04 · RTBs ════════ -->
+<div class="sec" id="s04">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <h1 class="sec-title">Reasons to Believe (RTBs) — UAE Proof Points</h1>
+  </div>
+
+  <p>RTBs are the specific, verifiable claims that make Skyro's promise concrete and credible. They are divided into rational RTBs (what the product does) and emotional RTBs (how it makes people feel). Both are necessary. In the UAE, the rational layer is particularly important: this is a financially sophisticated audience that responds to substance over sentiment. Emotion matters — but only after credibility has been established.</p>
+
+  <h2 class="sub">Rational RTBs — What Skyro Delivers</h2>
+
+  <div class="rtb-card">
+    <h4>Skyro Invest: an investment account built for expats who know what they want but don't have the time.</h4>
+    <p>Savings deposits, curated funds, and retail portfolio management — designed for the professional who understands compound interest and diversification but doesn't have six hours a week to manage positions. Ready-made portfolios mapped to real expat goals: the "leaving in two years" portfolio is not the same as the "building long-term wealth" portfolio. Skyro Invest treats that difference as a design input, not an afterthought.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Investment that accounts for the UAE's structural advantages.</h4>
+    <p>Zero personal income tax means every dirham earned can compound faster here than in almost any other country. Most financial products leave this for the user to figure out. Skyro Invest builds this context into the experience — not as financial advice, but as the background intelligence that helps users see the full value of their position. The advantage is yours. Skyro helps you use it.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Skyro Credit Line: flexible credit for the moments between plans.</h4>
+    <p>A personal credit line that adjusts to the rhythm of expat financial life — tuition payments in September, summer travel in May, a deposit on a new apartment when the lease cycle turns over. Not a loan with a fixed purpose. A line that's available when life moves faster than the next salary cycle. Clear rates, visible conditions, no hidden structures.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Regulated, transparent, and operationally clear.</h4>
+    <p>Licensing status shown upfront. Fee structures visible before commitment. No hidden charges, no surprise conditions. In a market with a dual regulatory architecture (CBUAE mainland and DIFC/ADGM freezone), clarity about where Skyro operates and under whose regulation is not a footnote — it is front-page content.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Smart, reliable technology built for a digitally sophisticated market.</h4>
+    <p>Fast onboarding. Clean interface. Performance that matches the expectations of an audience accustomed to world-class digital products. The UAE user will not tolerate slow apps, confusing flows, or interfaces that feel like they were designed for a less demanding market. Skyro's UX is the first proof point of its competence.</p>
+  </div>
+
+  <h2 class="sub">Emotional RTBs — How Skyro Makes People Feel</h2>
+
+  <div class="rtb-card">
+    <h4>In control of a complex financial life.</h4>
+    <p>The emotional goal of a Skyro interaction in the UAE is not excitement and not relief — it is control. The quiet confidence that comes from seeing everything in one place, understanding what's working and what isn't, and knowing that the tools are good enough that you don't need to think about them constantly.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Respected as someone who already understands money.</h4>
+    <p>Most financial products in the UAE talk to their users as if financial literacy were a destination the product would help them reach. Skyro talks to its users as if they've already arrived — because, on this market, they largely have. The emotional payoff is the absence of condescension.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Understood as someone building a life across borders.</h4>
+    <p>The specific emotional reality of the UAE expat — the ambition, the impermanence, the complexity of maintaining financial lives in multiple countries — is rarely acknowledged by financial brands. Most either ignore the cross-border reality or treat it as a problem. Skyro treats it as the defining feature of the user's financial life, and designs accordingly.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Free to celebrate your own way — not Dubai's way.</h4>
+    <p>In a city with intense social pressure toward a particular vision of success (the car, the brunch, the apartment tower), the permission to define your own version of the good life — and to have a financial partner that supports that version without judgment — is quietly powerful.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Confident that this partner will still be useful when you leave.</h4>
+    <p>The ultimate test of a financial product in the UAE: does it work after you leave? Skyro is designed for international lives — not just international lives in the UAE. The emotional promise is continuity: the financial partner you chose in Dubai still makes sense in London, Singapore, or back home.</p>
+  </div>
+</div>
+
+<!-- ════════ 05 · DO/DON'T VERBAL ════════ -->
+<div class="sec" id="s05">
+  <div class="sec-header">
+    <span class="sec-num">05</span>
+    <h1 class="sec-title">The UAE Do / Don't Guide — Verbal</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">Do — Speak About This</div>
+      <div class="dd-i"><strong>The cross-border financial life as a specific, daily reality.</strong> The majority of UAE expats manage financial commitments in at least two countries — often three or four. Rent in Dubai, mortgage in Manchester, school fees in dirhams, parents' healthcare in rupees, savings in dollars. Any brand that acknowledges this complexity specifically — not as a problem to be solved but as a life to be supported — earns immediate credibility.</div>
+      <div class="dd-i"><strong>The impermanence tension — honestly and without drama.</strong> Visa dependency, end-of-service calculations, the ever-present awareness that your time here is finite. These are real and deeply felt realities. Speak to them with calm competence. "Whether you're here for two more years or ten, your portfolio should work either way" is the register. Not fear. Not false permanence. Honest planning.</div>
+      <div class="dd-i"><strong>Financial sophistication as the baseline.</strong> The UAE's professional expat audience is, on average, highly financially literate. They understand compound interest, diversification, and risk-adjusted returns. Communication that treats them as beginners will be dismissed immediately. Speak to them as peers.</div>
+      <div class="dd-i"><strong>The UAE's tax advantage — as context, not as a sales pitch.</strong> Zero personal income tax is a genuine structural advantage. Skyro can acknowledge this as part of the user's financial landscape — "You're earning tax-free. Let's make sure that advantage compounds" — without crossing into territory that could be construed as tax advice.</div>
+      <div class="dd-i"><strong>Seasonal rhythms specific to the UAE.</strong> Ramadan and Eid reshape spending, social life, and business activity. Summer (May–October) empties the city and changes the financial calendar. The winter season (November–March) is when the population returns and activity peaks. Content timed to these rhythms has organically higher engagement because it speaks to what people are actually experiencing.</div>
+      <div class="dd-i"><strong>Specific numbers, real claims, concrete product truths.</strong> "AED 25,000 invested since March — here's how it's tracking" beats "watch your wealth grow." "Three funds, one savings deposit, full visibility" beats "integrated wealth management solutions." Specificity is the language of credibility on a market that has heard every superlative the advertising industry can produce.</div>
+      <div class="dd-i"><strong>Security and transparency — as substance, not as decoration.</strong> Online fraud is a genuine concern. A brand that speaks openly and specifically about its regulatory status, its security architecture, and its data practices earns trust in a way that a vague "your security is our priority" never will.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">Don't — Avoid This at All Costs</div>
+      <div class="dd-i"><strong>Sell Dubai dreams.</strong> "Live the life you deserve." "The luxury you've been waiting for." "Unlock your Dubai lifestyle." The city already provides an unlimited supply of aspirational messaging. Skyro's role is not to add to it but to cut through it — with calm, intelligent, grounded communication that treats the user as someone who has already moved past the marketing.</div>
+      <div class="dd-i"><strong>Patronize the audience's financial intelligence.</strong> Any communication that explains basic financial concepts without being asked — "Did you know that diversification means spreading your investments across different asset classes?" — will be immediately identified as condescending. This audience knows. Speak accordingly.</div>
+      <div class="dd-i"><strong>Flatten the expat experience into a single story.</strong> The Indian tech worker in Dubai Marina, the Filipino nurse in Sharjah, the British consultant in DIFC, and the Egyptian entrepreneur in Abu Dhabi do not have the same financial life. They do not have the same cultural priorities. They do not respond to the same communication. Any messaging that treats "expats" as a monolithic segment will fail to resonate with any of them.</div>
+      <div class="dd-i"><strong>Touch political or geopolitical subjects.</strong> The UAE is a meeting point for nationalities whose home countries are in active conflict with each other. India/Pakistan, Israel/Palestine, Russia/Ukraine — all of these communities coexist in the UAE. Any brand communication that references, implies alignment with, or could be perceived as taking a side in any geopolitical conflict will cause immediate and lasting damage. Absolute political neutrality is non-negotiable.</div>
+      <div class="dd-i"><strong>Trivialize Islamic cultural and religious practices.</strong> Ramadan is not a marketing moment. Eid is not a spending event. These are deeply significant religious observances for the country's Muslim population — both Emirati and expat. Any reference to Islamic holidays must be grounded in genuine respect and cultural understanding. Using Ramadan as a promotional hook ("Ramadan deals!") is both culturally offensive and brand-damaging.</div>
+      <div class="dd-i"><strong>Disrespect Islamic culture and traditions — in any form, however subtle.</strong> The UAE is an Islamic country, and respect for its cultural and religious foundations is non-negotiable. This goes beyond avoiding obviously offensive content. It includes avoiding imagery or idioms that carry unacceptable connotations: no piggy banks, no imagery of alcohol in financial success contexts, no casual use of Islamic calligraphy or Quranic references as decorative elements, no depictions that could be read as mocking or trivializing Islamic dress, prayer, or family structures. <strong>The test is simple: would a devout Muslim see this and feel respected? If there is any doubt, consult local cultural advisors before publishing.</strong></div>
+      <div class="dd-i"><strong>Make promises without proof.</strong> The UAE's professional expat audience is highly attuned to marketing overreach. "Best returns in the UAE," "guaranteed growth," "zero risk" — any claim without a specific, demonstrable basis will be noticed, doubted, and shared as a warning. Every claim needs a concrete RTB behind it.</div>
+
+      <div class="dd-i"><strong>Import Western casual-brunch tone as default.</strong> The "Hey bestie! Let's talk money" register that works for some Western neobanks does not translate to a market where financial communication is expected to demonstrate competence and seriousness. Skyro's warmth comes from clarity and honesty, not from performed casualness.</div>
+      <div class="dd-i"><strong>Put the product before the person in any scenario.</strong> In every communication, the person and their situation come first. The product is a supporting character. "Priya has been here four years. She just crossed the savings target she set when she landed" is Skyro communication. "Skyro's investment platform enables cross-border wealth accumulation for international professionals" is not.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 05b · DO/DON'T VISUAL ════════ -->
+<div class="sec" id="s05b">
+  <div class="sec-header">
+    <span class="sec-num">05b</span>
+    <h1 class="sec-title">The UAE Do / Don't Guide — Visual</h1>
+  </div>
+
+  <p>The verbal do/don'ts above define what Skyro says. This section defines what Skyro shows — the visual and creative logic that should guide banner design, photography direction, campaign concepts, and promotional materials on the UAE market.</p>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">Do — Show This</div>
+      <div class="dd-i"><strong>Real people in recognisable UAE contexts.</strong> The most effective Skyro visuals on this market show people in situations the audience can place themselves in immediately: a morning coffee at a cafe in JLT, a family at a park in Al Barsha on a winter Friday, a professional checking their phone on the Metro, a couple at a Dubai Mall appliance store doing the mental math. Authenticity in setting carries more trust than production polish alone.</div>
+      <div class="dd-i"><strong>Genuine multinational diversity — without performing it.</strong> The UAE is one of the most diverse places on earth. Visuals should reflect this naturally: South Asian, Southeast Asian, Arab, African, European faces appearing in the same campaign because that is what Dubai actually looks like — not because the brand is making a statement about inclusion. Diversity is a default here, not a differentiator.</div>
+      <div class="dd-i"><strong>The quiet confidence of the competent professional.</strong> The UAE's core expat audience responds to images of people who look like they have their life together — not in the aspirational-luxury sense, but in the organized, intelligent, purposeful sense. A person reviewing their portfolio on a laptop. A couple having a calm conversation about their financial plan. A professional walking through DIFC with the energy of someone who knows where they're going.</div>
+      <div class="dd-i"><strong>Architectural and environmental textures specific to the UAE.</strong> The Marina skyline at dusk. The creek in Deira. A Friday morning in JBR. The desert road to Al Ain. These are specific visual markers that signal "this brand knows this place" — as opposed to generic "Middle East" imagery that could be anywhere in the Gulf.</div>
+      <div class="dd-i"><strong>The family unit in its UAE-specific form.</strong> Many expat families in the UAE are nuclear families living far from extended family. Visuals that show this specific dynamic — a small family unit creating its own traditions in a new country, a parent on a video call with grandparents abroad, children growing up between cultures — communicate that Skyro understands the emotional texture of expat life, not just its financial mechanics.</div>
+      <div class="dd-i"><strong>Local symbols beyond the obvious — the sail, the palm, the coast.</strong> The UAE's visual identity is deeper than its skyline. The dhow sail is a powerful local symbol — movement, journey, wind as an ally, progress with patience. Palm trees carry connotations of abundance and oasis. The coastline is a shared space across all emirates. Arabic coffee, the date palm, maritime motifs — these are cultural symbols that residents of the UAE genuinely recognize and connect with. Used with care and subtlety, they signal that Skyro sees beyond the tourist postcard. A sail in a brand illustration says "this brand understands where this country comes from." A Burj Khalifa silhouette says "this brand googled Dubai."</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">Don't — Avoid This</div>
+      <div class="dd-i"><strong>Stock photography that reads as generic "Middle East" or "luxury lifestyle."</strong> Images of ambiguously Middle Eastern settings, gold-drenched interiors, or anonymous skylines do not create identification. UAE audiences are very good at recognizing when a campaign was made for them versus adapted from a Gulf-wide brief.</div>
+      <div class="dd-i"><strong>The Burj Khalifa, the desert dunes, and the camel as default visual shorthand.</strong> These are the images that every international brand uses when it enters the UAE. They signal "we just arrived" rather than "we understand this place." The Burj Khalifa skyline is visual wallpaper — it communicates nothing about Skyro's relationship with the market. Camels read as stereotypical and, to residents, mildly patronizing. The desert can be used — but only if it carries a real metaphor (vastness, open road, journey), not as a generic "Middle East" backdrop. Think deeper: the creek, the souk, the marina at dawn, the neighborhood park on a winter evening. These are the textures of lived UAE life.</div>
+      <div class="dd-i"><strong>Aspirational luxury as the primary visual register.</strong> Supercars. Yacht marinas. Penthouse terraces. Gold watches. These images signal that Skyro is for a segment of the population it is not primarily serving — the ultra-high-net-worth international segment. Aspiration in the Skyro visual world should be achievable and specific: a growing savings balance on a phone screen, a family booking summer flights home, a clean apartment in a good neighborhood with a view of the city they're building a life in.</div>
+      <div class="dd-i"><strong>The "happy person looking at phone" template.</strong> Every fintech in the UAE has a version of this. It communicates nothing. The situation that surrounds the product — the kitchen table where financial decisions happen, the cafe where a friend explains how their investment is doing — is what matters.</div>
+      <div class="dd-i"><strong>Imagery that centers individual wealth without context.</strong> A single person counting money, admiring a large balance, or standing alone in front of an expensive car runs against Skyro's values. Financial achievement in the Skyro visual world is purposeful and connected — to family, to plans, to the life being built.</div>
+      <div class="dd-i"><strong>Imagery of women that does not respect local norms.</strong> The UAE is more liberal than much of the Gulf, but modesty in visual representation remains important, particularly during Ramadan and in communications that may reach Emirati audiences. Women should be shown as financially capable and independent — never as secondary to men in financial decision-making contexts — while respecting the visual norms of the market.</div>
+      <div class="dd-i"><strong>Visual humor at the expense of financial stress or the expat condition.</strong> "Running out of money before visa renewal" as a meme, "Can't afford Dubai brunch" as a punchline — these trivialize genuine anxieties. The line between relatable and insensitive is crossed when the financial or immigration situation itself becomes the joke.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 06 · COMMUNICATION EXAMPLES ════════ -->
+<div class="sec" id="s06">
+  <div class="sec-header">
+    <span class="sec-num">06</span>
+    <h1 class="sec-title">Communication Examples</h1>
+  </div>
+
+  <p>All examples below are written in English, the primary language of the core target audience. In actual execution, tone and idiom should be adapted for Arabic.</p>
+
+  <h2 class="sub">The Tagline in Market-Specific Communications — "Naturally, It's Yours"</h2>
+  <p>The global tagline is built to carry localisation gracefully. The most effective approach is to lead with the single most relevant product truth or cultural insight for the UAE market, then close with <em>Naturally, it's yours.</em> The opening line does the specific work; the tagline closes with the universal one.</p>
+
+  <h3 class="sub2">Approach 1 — Lead with a cultural or cross-border insight</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>You already do the hard part — earning here. Now make it count. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>You didn't move here to stand still. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Friday morning. Beach. Coffee. And a portfolio that runs itself. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>You work smart. Your money should keep up. Naturally, it's yours.</div>
+
+  <h3 class="sub2">Approach 2 — Lead with a specific product offer</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>Ready-made portfolios built for the way you actually invest. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>A credit line that moves when life does. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Your portfolio, your risk profile, your timeline. Set it once. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Dirhams here. Rupees there. One screen for all of it. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Earned in Dubai. Invested across borders. Tracked in your pocket. Naturally, it's yours.</div>
+
+  <h2 class="sub">Product and Campaign Copy</h2>
+
+  <!-- ACCORDION -->
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Investment — Core Product <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Instagram / Core Audience Reach</h4>
+      <blockquote>You know what you want your money to do. You just don't have the hours to manage it yourself. Ready-made portfolios. Transparent fees. Full visibility across every position. Built for people who understand investing — and value their time.</blockquote>
+      <h4>LinkedIn / Professional Audience</h4>
+      <blockquote>Four years in Dubai. An investment account that works across currencies. A credit line for the moments in between. Skyro brings your financial life into a single place — savings, funds, portfolio, credit. See the full picture before you make the next move.</blockquote>
+      <h4>App Onboarding — First Investment</h4>
+      <blockquote>Your first position is live. Here's what you own, what it cost, and what you'll see from here. No surprises. Check back anytime — or don't. It works either way.</blockquote>
+      <h4>End-of-Year Portfolio Review — Push Notification</h4>
+      <blockquote>Your year in review is ready. Total invested. Total returned. Fees paid. Everything, in one screen. Take a look when you have two minutes.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Credit Line <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Situational / Family Life</h4>
+      <blockquote>September hits. School fees, new uniforms, the apartment deposit that came two weeks early. Your credit line is already there — use what you need, repay on your schedule, and keep your investments exactly where they are.</blockquote>
+      <h4>Functional / Trust</h4>
+      <blockquote>A credit line with clear rates and no hidden structure. See the total cost before you draw. Adjust repayment when your situation changes. No paperwork. No branch visit. Available in the app, now.</blockquote>
+      <h4>Summer Travel — Seasonal</h4>
+      <blockquote>Flights home. Summer rent. The life that happens when Dubai's on pause. Your credit line covers the gap so your portfolio doesn't have to.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Ramadan Context <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Pre-Ramadan — Planning</h4>
+      <blockquote>Ramadan is three weeks away. Your budget planner is ready — Zakat calculations, family meal budgets, Eid gift planning, and everything in between. Start when you're ready.</blockquote>
+      <h4>Eid al-Fitr — Celebration</h4>
+      <blockquote>Eid Mubarak. However you celebrate — family at home, family on screen, gifts sent across borders — may this season bring lightness and clarity. Skyro is here when you need us, and quiet when you don't.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Summer / Off-Season Context <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>May — Pre-Summer</h4>
+      <blockquote>Summer plans taking shape? Whether you're heading home for three months or staying through the heat, your financial plan shouldn't take a vacation. Review your portfolio, check your credit line balance, and let things run while you're away.</blockquote>
+      <h4>September — Return Season</h4>
+      <blockquote>Welcome back. The city's waking up. Your portfolio didn't sleep — here's how the summer went.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Support / Service Communications <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Payment Due Reminder — No Pressure</h4>
+      <blockquote>Your payment is due tomorrow. If you need to adjust the schedule, here are your options. Pick what works.</blockquote>
+      <h4>Account Milestone</h4>
+      <blockquote>AED 50,000 invested since you started. That's the goal you set in month one. Whatever comes next — you've already proved you can do this.</blockquote>
+      <h4>Onboarding Complete</h4>
+      <blockquote>You're set up. Everything's visible — your investment account, your credit line, your portfolio options. Take a look around. It's yours.</blockquote>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 07 · AMBASSADOR STRATEGY ════════ -->
+<div class="sec" id="s07">
+  <div class="sec-header">
+    <span class="sec-num">07</span>
+    <h1 class="sec-title">Ambassador Criteria and Approach</h1>
+  </div>
+
+  <p>In the UAE, the ambassador model operates differently than in markets like the Philippines, where celebrity endorsement functions as trust infrastructure. The UAE's expat audience is less responsive to local celebrity and more responsive to credibility — professional expertise, international recognition, and authentic alignment with the values the brand represents.</p>
+
+  <p>The question is not "who is famous in Dubai?" but "who does this audience genuinely respect, and who represents the kind of financial intelligence Skyro stands for?"</p>
+
+  <h2 class="sub">Ambassador Selection Criteria</h2>
+
+  <div class="rtb-card">
+    <h4>Embodies the cross-border professional story authentically.</h4>
+    <p>The right Skyro ambassador has lived the expat financial life — not as a theoretical construct, but as a daily reality. They have managed money across borders. They understand visa dependency. They know what it means to build wealth in a place where permanence is not guaranteed.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Is respected across the UAE's multinational audience.</h4>
+    <p>International recognition matters more than local fame. A respected finance content creator with a global following is more effective than a Dubai-based Instagram personality. The ideal ambassador is known for substance, not for lifestyle display.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Communicates with the intelligence and directness that UAE professionals value.</h4>
+    <p>No scripted enthusiasm. No performed financial wisdom. The ambassador should speak the way a smart, honest friend would — with clarity, with real knowledge, and without condescension.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Has no political, religious, or geopolitical associations.</h4>
+    <p>In a market where two hundred nationalities coexist, any ambassador with public political positions — on any conflict, any government, any partisan issue — carries contamination risk. Absolute neutrality is required.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Has demonstrated financial credibility.</h4>
+    <p>The ambassador should not be known primarily for lifestyle content, luxury purchases, or aspirational display. A background in finance, technology, entrepreneurship, or a related field adds credibility. If the ambassador's audience trusts them on money, they will trust them on Skyro.</p>
+  </div>
+
+  <h2 class="sub">Ambassador Approach: Do / Don't</h2>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">Do</div>
+      <div class="dd-i"><strong>Use the ambassador to make Skyro's values credible</strong> — they demonstrate that the brand's promise of intelligent, cross-border financial partnership is real, not aspirational.</div>
+      <div class="dd-i"><strong>Build a sustained relationship.</strong> A single campaign with a credible financial voice is less effective than an ongoing partnership that compounds trust over time.</div>
+      <div class="dd-i"><strong>Engage segment-specific voices alongside any Tier 1 face:</strong> a respected Indian personal finance creator for the South Asian diaspora, a Filipino OFW content creator for the Southeast Asian community, a regional Arabic-language finance educator for the Arab expat segment.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">Don't</div>
+      <div class="dd-i"><strong>Don't use ambassadors known primarily for Dubai luxury content.</strong> This conflicts directly with Skyro's positioning as grounded and intelligent.</div>
+      <div class="dd-i"><strong>Don't rely on local Emirati social media celebrities for the expat audience.</strong> The cultural codes and audience overlap are minimal.</div>
+      <div class="dd-i"><strong>Don't cast ambassadors whose primary appeal is physical appearance or lifestyle display.</strong></div>
+    </div>
+  </div>
+
+  <h2 class="sub">Ambassador Examples</h2>
+
+  <p><em>These are directional examples, not confirmed partnerships. The goal is to illustrate the profile, not prescribe the name.</em></p>
+
+  <div class="rtb-card">
+    <h4>Tier 1 — International Credibility Anchor</h4>
+    <p>A globally recognized finance or tech thought leader with genuine UAE experience. International podcast hosts, fintech founders, business journalists with cross-border credibility. The face should be recognizable beyond Dubai — because the audience lives beyond Dubai.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Tier 2 — Segment and Community</h4>
+    <p>Indian personal finance creators with genuine audience trust (particularly those addressing NRI financial planning); Filipino OFW content creators speaking to families managing money across borders; Arabic-language finance educators with credibility across the Arab expat community; European/international fintech commentators with UAE-specific content.</p>
+  </div>
+</div>
+
+<!-- ════════ 08 · CREATIVE ACTIVATIONS ════════ -->
+<div class="sec" id="s08">
+  <div class="sec-header">
+    <span class="sec-num">08</span>
+    <h1 class="sec-title">Creative Activations</h1>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 01</div>
+    <h4>"Compound Interest" — Specialty Coffee Collab x First Investment Mechanic</h4>
+    <div class="act-meta">November–March · Nightjar Coffee, Alserkal Avenue, Al Quoz · Winter high season</div>
+    <h5>When</h5>
+    <p>November–March (winter high season, peak footfall at Alserkal Avenue and Dubai's specialty coffee scene).</p>
+    <h5>Where</h5>
+    <p>Nightjar Coffee, Alserkal Avenue, Al Quoz — one of Dubai's most respected specialty roasters, located in the heart of the city's creative cluster. Audience: creative professionals, digital nomads, art community, fintech workers — a near-exact overlap with the Skyro Invest target profile. The format scales to 3–5 additional specialty partners (RAW Coffee Company, The Espresso Lab in d3, Boon Coffee), each with its own neighbourhood and audience.</p>
+    <h5>What</h5>
+    <p>A limited-edition collaboration blend — <strong>Skyro x Nightjar</strong>. The name: <strong>"Compound Interest"</strong> — a quiet piece of wordplay that works both as a coffee descriptor (complex, layered, multi-origin flavour) and as a financial concept (the quiet engine of long-term wealth). The blend is built from beans sourced from three countries that represent the UAE's expat origins — for example, Ethiopia x Colombia x India. Each origin contributes a distinct note; together they create something none of them could produce alone. It is a metaphor for Dubai itself — a city where mixing creates new value.</p>
+    <p>Inside the collaboration sits the core mechanic: <strong>"Mirror Investment."</strong> Buying the coffee triggers the user's first real investment.</p>
+    <h5>How it works for the person</h5>
+    <p>You buy a cup of Compound Interest (AED 28). On the cup — minimal Skyro branding and a QR code with a single line:</p>
+    <blockquote style="border-left:3px solid var(--gold);padding:10px 16px;margin:10px 0;background:var(--gold-pale);border-radius:0 var(--r) var(--r) 0;font-style:italic;font-size:14px;line-height:1.6;color:var(--ink);">"Your coffee: AED 28. Your first investment: AED 28. One's in your hand. The other's in your account. →"</blockquote>
+    <p>Scan → Skyro Invest landing page → fast onboarding (4 minutes, KYC) → account opens → AED 28 from Skyro already allocated in a ready-made portfolio. Your first investment is done — and it happened while you were drinking coffee.</p>
+    <h5>Why this is stronger than a standard sign-up bonus</h5>
+    <p>A conventional promotion — "Register and get AED 50" — is a discount. It is abstract and forgotten the same day. This mechanic is different: the person performed a real action (bought coffee for a specific amount), and the brand mirrored that action as an investment. The sum is not arbitrary — it is tied to a concrete moment, a concrete purchase, a concrete cup in their hand. It is not a bonus. It is a gesture.</p>
+    <p>And critically, it is a behavioural nudge that works at the level of awareness: if AED 28 a day feels like a reasonable spend on coffee, why does the same amount feel too small to invest? AED 28 a day is AED 10,220 a year. The cup makes that arithmetic physically tangible.</p>
+    <h5>Physical presence in the cafe</h5>
+    <p>Minimal and organic. One Skyro-branded table by the window — not a stand, not a banner, a table where you sit with your coffee. On the table — a card holder with the same QR. The collaboration blend is also sold retail: a 250g craft bag with minimal Skyro branding and a one-liner on the front: <em>"Three origins. One blend. Like this city."</em> On the back — a QR linking to a compound interest calculator.</p>
+    <h5>Regulatory checklist</h5>
+    <p>The AED 28 promotional credit is a marketing bonus from Skyro, not the user's own money. Clear disclosure required: "Promotional deposit credited by Skyro. Subject to T&C." Withdrawal condition: the starter deposit becomes available for withdrawal after the user makes their own first top-up (standard sign-up bonus mechanic). Campaign capped: first 5,000 registrations via QR code. Advertiser Permit (Mu'lin) mandatory for all promotional content, including cup and packaging copy. All materials require regulatory clearance (DFSA or SCA, depending on Skyro Invest's licensing jurisdiction).</p>
+    <h5>Why specialty coffee</h5>
+    <p>The UAE specialty coffee market exceeds $3.2 billion, and its audience is a near-perfect overlay of the Skyro Invest user profile: high income, educated, intentional about quality, willing to pay for substance. Nightjar on Alserkal Avenue is not just a cafe — it is a cultural institution: it supplies coffee across the city, hosts collaborations with fashion and art brands, and houses an independent cinema. A collaboration with Nightjar is a credential, not an advertisement. And the name "Compound Interest" is exactly the kind of wordplay that the Skyro TOV Guide permits: quiet, structural, rooted in the brand world, intelligible without explanation.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 02</div>
+    <h4>"The Longest Layover" — Art Installation at Art Dubai / Alserkal Avenue</h4>
+    <div class="act-meta">April (Art Dubai) or January (Quoz Arts Fest) · Alserkal Avenue / Madinat Jumeirah</div>
+    <h5>When</h5>
+    <p>Art Dubai (April, Madinat Jumeirah) or Quoz Arts Fest (January, Alserkal Avenue).</p>
+    <h5>Where</h5>
+    <p>Alserkal Avenue — Dubai's creative cluster, home to the art community and creative professionals. Or Art Dubai — the region's premier contemporary art fair, attracting an international audience of collectors, curators, and creative-class professionals. Both venues gather precisely the audience Skyro is built for: educated, internationally mobile, culturally engaged, and financially active.</p>
+    <h5>What</h5>
+    <p>Skyro commissions an installation from a local artist — or a collaboration between two or three artists from different countries — titled <strong>"The Longest Layover."</strong> The concept: for most expats, Dubai is not a final destination. It is the longest layover of their lives. People arrive for two years and stay for ten. They build lives, families, careers, and wealth in a place that is, by definition, temporary.</p>
+    <p>The installation makes this visible. Oversized boarding passes — wall-scale — each carrying a real, anonymised expat story. Date of arrival. The original plan ("two years, save up, go home"). The actual duration ("nine years and counting"). What changed. What was built. What comes next. The boarding passes are rendered in different materials — brass, paper, fabric, ceramic — reflecting the different textures of each story.</p>
+    <p>The interactive element: visitors write their own boarding pass. Date of arrival. What they came for. What they've built. These cards fill a dedicated wall over the course of the exhibition — a living, growing archive of what Dubai actually is, told by the people who built it.</p>
+    <p>Skyro branding: on one wall, quiet. <em>"Some layovers change everything. Naturally, it's yours."</em></p>
+    <h5>Why it works</h5>
+    <p>Art Dubai and Alserkal Avenue attract exactly the audience Skyro is built for. The installation is not about finance — it is about the emotional reality of expat life in the UAE. But the emotion it evokes — I am building something real here, despite the impermanence — is precisely the emotion that translates into an investment decision. Content from the installation — photos, video, the stories on the boarding passes — is a ready-made series for Instagram, LinkedIn, and YouTube. And Skyro positions itself not as a fintech running a promotion, but as a brand that understands this life deeply enough to commission art about it.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 03</div>
+    <h4>"The Morning Port" — Winter Beach Pop-Up</h4>
+    <div class="act-meta">November–February · Kite Beach, Dubai · Winter high season</div>
+    <h5>When</h5>
+    <p>November–February (winter high season, +25C, beaches at peak).</p>
+    <h5>Where</h5>
+    <p>Kite Beach — the most "expat" beach in Dubai. Audience: 25–40, active, professional, multinational. Alternatives: JBR, La Mer.</p>
+    <h5>What</h5>
+    <p>A small branded presence in maritime visual language — a sail as the central structural element (not a tent, but actual sailcloth on a wooden mast, referencing the dhow tradition). Inside: complimentary Arabic coffee (gahwa) and dates — a gesture of respect for local hospitality culture. Minimal branding: Skyro logo on the sail, on the cups. No direct product advertising.</p>
+    <p>The hook: each cup carries a single short financial insight, tied to the reality of cross-border expat life. Not advertising — conversation starters:</p>
+    <p><em>"The average expat in Dubai manages money in 3.2 countries. How many are you at?"</em></p>
+    <p><em>"Your end-of-service gratuity: do you know the number?"</em></p>
+    <p><em>"What's the real cost of not investing tax-free for one year?"</em></p>
+    <p>The QR code on the cup links not to a product page but to a calculator — a simple tool that shows what one year of uninvested tax-free income actually costs in foregone compound growth. Content format: a photo zone with a clean sea view and minimal branding — designed to generate organic UGC.</p>
+    <h5>Why it works</h5>
+    <p>Morning coffee on the beach is a ritual of winter Dubai. Skyro does not sell here — it is present in the moment that expats associate with the best part of living in this city. Arabic coffee and dates are a gesture of respect for the country that hosts the expat community, not a promotional giveaway. The sail as a visual element is a local symbol — not a tourist cliche — that signals cultural intelligence. And the calculator on the cup works as lead generation more quietly and more effectively than any banner.</p>
+    <h5>Regulatory checklist</h5>
+    <p>Kiosk license (Dubai Municipality), beach operator approval, food permit for coffee and dates, Advertiser Permit (Mu'lin) for any content published from the activation zone.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 04</div>
+    <h4>"Naturally, It's Yours" — Documentary Film Series</h4>
+    <div class="act-meta">Year-round · Two to three films per quarter</div>
+    <h5>When</h5>
+    <p>Year-round rolling release. Two to three films per quarter. Seeded on Instagram, YouTube, and LinkedIn with platform-specific cuts.</p>
+    <h5>What</h5>
+    <p>A series of short documentary films — 90 seconds to three minutes each — about real people in the UAE who defined their own path in a city that constantly tells you what success should look like. Not conventional success stories. Stories about the choice itself: the moment someone decided to stop chasing the next promotion and start a business from their apartment in JLT, to invest the money they would have spent on a luxury car into a portfolio for their daughter's education, to stay in Dubai for a seventh year when the original plan was two, because the life they built here turned out to be the one they actually wanted.</p>
+    <p>Each film is shot in the person's real environment — their apartment, their office, their morning commute, the cafe where they made the decision. No studio. No aspirational set dressing. The visual grammar is close, calm, and observational: the laptop on the kitchen counter, the school run in the morning heat, the video call with parents back home. The subject speaks directly and without a script — the filmmaking captures what they actually say, not what a brief tells them to say.</p>
+    <p>The films have no voiceover. No product demonstration. Near the end, one moment where the subject says something honest about how they manage the financial complexity of their cross-border life — not as a Skyro endorsement, but as a genuine part of their story. The final frame holds on the subject, then cuts to black with a single line and the tagline.</p>
+    <div class="copy-dir" style="margin-top:16px;">
+      <span class="copy-label">Final frame example</span>
+      "He came from Lagos for a two-year contract. That was six years ago. The portfolio he started in year one is the reason year seven feels like a choice, not an accident."<br><br>
+      <span style="font-size:17px;color:var(--gold-light);font-style:normal;font-weight:600;">Naturally, it's yours.</span>
+    </div>
+    <div class="copy-dir" style="margin-top:12px;">
+      <span class="copy-label">Final frame example</span>
+      "She left London because the numbers made sense. Stayed because the life did too. Three currencies, one plan, and a Tuesday morning where she realised she wasn't worried anymore."<br><br>
+      <span style="font-size:17px;color:var(--gold-light);font-style:normal;font-weight:600;">Naturally, it's yours.</span>
+    </div>
+    <h5>How subjects are found</h5>
+    <p>Subjects are found through Skyro's user base, through professional community networks (DIFC networking groups, coworking spaces, expat business clubs), and through open submissions — residents nominating someone in their circle whose story deserves to be told. This widens the talent pool and generates organic community investment in the series before a single film is released.</p>
+    <h5>Why it works</h5>
+    <p>Dubai's media landscape is dominated by two narratives: the arrival story (the dream, the move, the ambition) and the luxury story (the lifestyle, the purchase, the display). The quiet, competent, honest story of someone who made smart financial decisions over time — and what that gave them — is a narrative that no brand in this market currently owns. Skyro can own it.</p>
+    <p>The UAE's two hundred nationalities mean that every film adds a new origin, a new perspective, a new version of what <em>celebrate who you are</em> looks like in practice. A Nigerian engineer. A Filipino nurse. A Lebanese architect. A British teacher. Each story is specific; together they build a portrait of Dubai that is truer than anything the tourism board produces — and far more emotionally resonant than any product campaign.</p>
+    <p>The documentary format also builds a content archive that compounds over time. Each film adds to the brand's story. Each subject becomes a genuine community advocate. And the series creates a pipeline for future ambassador relationships — people who were already telling their story authentically before Skyro found them.</p>
+    <p><strong>TOV note:</strong> these films should never be loud or self-congratulatory. The communication is quiet and specific — a real person, a real choice, a real outcome. Let the story speak. Skyro's presence is the frame, not the subject.</p>
+  </div>
+</div>
+
+<!-- ════════ 09 · COMMUNICATION CALENDAR ════════ -->
+<div class="sec" id="s09">
+  <div class="sec-header">
+    <span class="sec-num">09</span>
+    <h1 class="sec-title">Communication Calendar — Key Annual Moments</h1>
+  </div>
+
+  <p>The following moments are where Skyro UAE should have its communication ready, active, and tuned to the right register.</p>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Period</th><th>Priority</th><th>Tone and Angle</th></tr></thead>
+      <tbody>
+        <tr><td>January — New Year, financial reset</td><td><span class="badge high">High</span></td><td>New year energy, practical. "The calendar reset. Did your financial plan?"</td></tr>
+        <tr><td>February–March — Pre-Ramadan</td><td><span class="badge medium">Medium</span></td><td>Respectful planning. Zakat calculator, Ramadan budget tools. Quiet, useful, never promotional.</td></tr>
+        <tr><td>Ramadan (varies)</td><td><span class="badge very-high">Very High</span></td><td>Deep respect. Minimal product push. Giving tools. Family-first content. Zero promotional tone.</td></tr>
+        <tr><td>Eid al-Fitr</td><td><span class="badge high">High</span></td><td>Warm celebration. Gift-sending features. "Eid Mubarak" — genuine, not branded.</td></tr>
+        <tr><td>April–May — Pre-summer preparation</td><td><span class="badge very-high">Very High</span></td><td>"Summer Proof" activation. Financial check-ups. Remittance automation. Travel budgeting.</td></tr>
+        <tr><td>May–September — Summer off-season</td><td><span class="badge medium">Medium</span></td><td>Reduced activity. Automated content. Portfolio updates for those who stayed. Light-touch engagement. Budget should be significantly reduced.</td></tr>
+        <tr><td>Eid al-Adha (varies)</td><td><span class="badge medium">Medium</span></td><td>Respectful. Family and community focus. Travel-related financial tools.</td></tr>
+        <tr><td>September–October — Return season</td><td><span class="badge very-high">Very High</span></td><td>"Welcome back." Portfolio reviews. Financial restart energy. "The Years That Count" content push.</td></tr>
+        <tr><td>November — UAE National Day (Dec 2)</td><td><span class="badge medium">Medium</span></td><td>Respectful acknowledgment. Not a promotional event. Tone should honor the country that hosts the expat community.</td></tr>
+        <tr><td>December — Year-end, holiday season</td><td><span class="badge high">High</span></td><td>Multi-cultural holiday acknowledgment. Year-in-review features. Christmas, Hanukkah, and New Year — without favoring one celebration over another. Portfolio review season.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ 10 · CHANNEL GUIDANCE ════════ -->
+<div class="sec" id="s10">
+  <div class="sec-header">
+    <span class="sec-num">10</span>
+    <h1 class="sec-title">Channel Guidance</h1>
+  </div>
+
+  <p>One voice, different registers — depending on the platform and the moment.</p>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Instagram <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">primary platform for UAE expat audience</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>The UAE is Instagram-first, not Facebook-first — a critical distinction from the Philippines and most of Southeast Asia. High-quality visual content performs best. Carousel posts with data-driven insights outperform promotional posts. Stories and Reels for lighter, moment-based content. English default; Arabic for institutional and Emirati-audience content.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">LinkedIn <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">the professional credibility channel</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>The UAE's professional expat community is heavily active on LinkedIn. Thought leadership content about cross-border finance, market commentary, and product announcements belong here. Tone is confident and substantive — this is where Skyro builds B2B and employer-brand credibility alongside B2C reach.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">TikTok <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">growing rapidly, especially Gen Z and younger Millennials</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Finance TikTok is growing in the UAE. Short-form content that explains real financial concepts — exchange rate comparisons, investment basics for expats, "the cost of not planning for summer" — performs well when executed with intelligence and without condescension. Never use TikTok trends that trivialize financial topics.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">YouTube <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">the long-form storytelling channel</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>"The Years That Count" documentary series lives here. Financial education content with genuine depth. Product walkthroughs that respect the audience's intelligence. The UAE audience will watch long-form content if the quality justifies the time investment.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Snapchat <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">surprisingly effective for advertising in the UAE</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Interview data from local market experts confirms that Snapchat performs unexpectedly well for advertising in the UAE — more effectively than Meta and Google in some segments. Worth testing for targeted campaigns, particularly for younger demographics.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Push notifications and in-app messaging <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Ultra-short, concrete, and genuinely useful — or they will be disabled. Portfolio updates work. Payment reminders with clear options work. "Exciting new feature!" does not. The rule: if it contains nothing the user could not have learned more quickly themselves, do not send it.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Customer support <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>The most human channel. A support interaction done right — clear, specific, respectful, with a real resolution — creates advocacy that no campaign can buy. This audience expects competence. Anything less is a brand failure.</p>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 11 · COMPETITOR COMMUNICATIONS ════════ -->
+<div class="sec" id="s11">
+  <div class="sec-header">
+    <span class="sec-num">11</span>
+    <h1 class="sec-title">Competitor Communications — How They Sound, How We Don't</h1>
+  </div>
+
+  <p>Understanding how key UAE competitors communicate helps Skyro avoid borrowed territory and find the white space that no one owns yet.</p>
+
+  <div class="rtb-card" style="margin-top:24px;">
+    <h4>Revolut — The Feature-Dense Global Brand</h4>
+    <p><strong>Core message:</strong> "All your money. One app."</p>
+    <p>Revolut has strong brand recognition among the UAE's international professional audience. Its communication is feature-forward, product-dense, and built around the promise of doing everything in one place. The visual language is dark, tech-forward, and minimalist. The tone is confident and slightly aggressive — a brand that leads with capability.</p>
+    <p><strong>The gap:</strong> Revolut communicates globally, not locally. Its UAE presence feels like its UK presence wearing a different flag. There is no cultural intelligence, no acknowledgment of the specific rhythms of UAE expat life, and no emotional layer beneath the feature list. It is a powerful tool. It is not a partner.</p>
+    <p><strong>How Skyro sounds different:</strong> Skyro speaks to the UAE specifically — to summer, to Ramadan, to visa dependency, to the tension between earning here and building elsewhere. Where Revolut says "we do everything," Skyro says "we understand the life you're actually living."</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Wio — The Local Digital Bank</h4>
+    <p><strong>Core message:</strong> Modern banking, UAE-built.</p>
+    <p>Wio is the UAE's first fully digital platform bank, launched in Abu Dhabi in 2022 and backed by ADQ, Alpha Dhabi Holding, e&, and First Abu Dhabi Bank. It has scaled rapidly — 250,000+ retail customers, 120,000+ business clients, profitable since 2024 — and now offers personal banking, business banking, investment services (3,000+ stocks and ETFs), and multi-currency balances. Its communication emphasizes local identity, speed, and modern technology. The visual language is clean and corporate.</p>
+    <p><strong>The gap:</strong> Wio's ambition is impressive but its user experience, according to both interview data and public user reviews, remains inconsistent — complex onboarding for business accounts, support delays, and an interface that does not yet match the seamlessness its positioning promises. The brand says "modern" but the product experience can feel frustrating. And critically, Wio now competes directly with Skyro Invest on the investment side — but treats investing as a feature, not a core proposition.</p>
+    <p><strong>How Skyro sounds different:</strong> Skyro's promise of simplicity and clarity is delivered in the product, not just in the marketing. The interface is the communication. Where Wio adds investment as one more feature in an expanding product list, Skyro Invest makes it the centre of a focused, intelligently designed experience. When the product is genuinely easy to use, the brand doesn't need to claim it — users feel it.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Emirates NBD / FAB — The Heritage Banks</h4>
+    <p><strong>Core message:</strong> "Trusted for generations." (Emirates NBD) / "The region's largest bank." (FAB)</p>
+    <p>The UAE's legacy banks communicate on the axis of scale, heritage, and institutional credibility. Their tone is formal, their visual language corporate, and their digital offerings are add-ons to a branch-first model. Emirati nationals, who benefit from dedicated relationship managers and exclusive products, are the emotional core of their audience.</p>
+    <p><strong>The gap:</strong> For expats — particularly the professional, internationally mobile segment — legacy banks are a necessity, not a choice. The relationship is functional, not emotional. Digital products feel like afterthoughts. The communication is directed at the wrong audience.</p>
+    <p><strong>How Skyro sounds different:</strong> Skyro is built for the people legacy banks serve as an afterthought. The expat audience. The cross-border financial life. The user who wants a digital-first experience that actually works — not a branch experience with a mobile companion.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Liv (by Emirates NBD) — The Lifestyle Digital Bank</h4>
+    <p><strong>Core message:</strong> "Live life, bank less."</p>
+    <p>Liv is Emirates NBD's digital banking platform, launched in 2017, and the most widely adopted digital bank in the UAE with close to 500,000 users. Its communication centres on youth, lifestyle, and simplicity — positioned as banking for people who don't want to think about banking. The app offers budgeting tools, savings goals, UAE equities trading, crypto, and digital gold. The visual language is bright, lifestyle-forward, and Instagram-native. The Liv X upgrade (2025) added crypto trading and international transfers.</p>
+    <p><strong>The gap:</strong> Liv is a lifestyle companion, not a financial partner. Its communication is designed to make banking invisible — which is a strength for payments and spending, but a weakness for investment. The brand has no depth on the cross-border financial life, no acknowledgment of expat-specific complexity, and no credibility in the investment space beyond basic stock trading. It is cheerful, well-designed, and completely generic about the financial realities of the audience it serves.</p>
+    <p><strong>How Skyro sounds different:</strong> Skyro acknowledges the financial complexity that Liv pretends doesn't exist. Where Liv says "don't think about money," Skyro says "think about it clearly, in one place, and then get back to your life." The audience that has outgrown Liv — the 30-something professional who wants their money to actually work, not just be managed — is Skyro's core audience.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Zand / Emerging Neobanks — The Challenger Tier</h4>
+    <p><strong>Core message:</strong> Varies — "Digital banking, reimagined" (Zand), "Banking for the future" (Mbank / Al Maryah Community Bank).</p>
+    <p>A growing tier of UAE-licensed digital banks — Zand, Mbank, and smaller players — are positioning themselves as alternatives to legacy banking with cleaner interfaces, faster onboarding, and targeted product offerings. Zand (backed by Al Hail Holding, Emirates NBD, and Lulu Group founder Yusuff Ali) focuses on both personal and corporate digital banking. Mbank has explored stablecoin payments and innovative partnerships. Several of these players remain in early growth phases, building awareness and trust.</p>
+    <p><strong>The gap:</strong> Most are still building differentiation. Their communication tends toward generic neobank language — "reimagined," "reinvented," "built different" — without specific cultural or audience insight. They sound like they were launched in London and rebranded for the Gulf. None has established a distinctive voice or a specific position on the expat cross-border financial life.</p>
+    <p><strong>How Skyro sounds different:</strong> Skyro's cultural intelligence is specific and earned. It is not "banking reimagined" — it is finance designed for the way two hundred nationalities actually manage money in a country that none of them permanently belong to. That specificity is the permanent advantage.</p>
+  </div>
+
+  <h2 class="sub">What the Competitive Landscape Reveals — Skyro's White Space</h2>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Brand</th><th>Owns</th><th>Leaves Open</th></tr></thead>
+      <tbody>
+        <tr><td>Revolut</td><td>Feature density, global brand</td><td>Local cultural intelligence, emotional connection</td></tr>
+        <tr><td>Wio</td><td>Local identity, institutional backing, scale</td><td>UX consistency, expat-specific investment depth</td></tr>
+        <tr><td>Emirates NBD / FAB</td><td>Heritage trust, Emirati relationships</td><td>Expat engagement, digital-first experience</td></tr>
+        <tr><td>Liv</td><td>Youth lifestyle, adoption scale, design</td><td>Financial depth, cross-border complexity, investment credibility</td></tr>
+        <tr><td>Zand / Neobanks</td><td>Modern positioning, niche innovation</td><td>Cultural specificity, distinctive voice, cross-border depth</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:24px;">The white space Skyro can own: <strong>genuine cross-border financial intelligence for the world's most international market.</strong> A brand that is intelligent without being cold. Specific without being niche. Culturally fluent without performing diversity. Trusted because it demonstrates competence, transparency, and a deep understanding of what it actually means to build a financial life across borders in a country where you will always be a guest.</p>
+
+  <p>That is the position. The work of this guide is to help Skyro UAE hold it.</p>
+</div>
+
+<!-- ════════ 12 · ADVERTISING RESTRICTIONS ════════ -->
+<div class="sec" id="s12">
+  <div class="sec-header">
+    <span class="sec-num">12</span>
+    <h1 class="sec-title">Advertising Restrictions in the UAE Market</h1>
+  </div>
+
+  <p>Skyro operates in a complex regulatory communications environment. The UAE's multi-layered regulatory architecture — CBUAE for mainland, DFSA for DIFC, FSRA for ADGM, and SCA for securities and capital markets — means that advertising restrictions vary depending on where Skyro is licensed and operating. The team should treat this section as a standing reference and consult legal counsel before any campaign.</p>
+
+  <h2 class="sub">The New CBUAE Law (Federal Decree-Law No. 6 of 2025)</h2>
+
+  <p>On 16 September 2025, the UAE enacted Federal Decree-Law No. 6 of 2025, the most significant overhaul of the country's financial regulatory framework in over a decade. This law repeals and replaces the 2018 Central Bank Law and consolidates regulation of banks, payment providers, and insurers under a single statute.</p>
+
+  <div class="warning-box">
+    <p><strong>Critical:</strong> The single most important provision for Skyro's communications: <strong>"promoting" financial activities is now explicitly listed as a Licensed Financial Activity</strong> under Article 61. This means that marketing and promotional communications directed at UAE residents about regulated financial products — including investments and credit — are directly within the CBUAE's regulatory perimeter. Conducting such promotional activity without proper licensing authorization is a criminal offence, with penalties up to AED 500 million.</p>
+  </div>
+
+  <p>All entities subject to the New CBUAE Law have until 16 September 2026 to ensure full compliance. Skyro's marketing team must work with legal counsel to confirm that all promotional activities — from social media posts to coffee-cup copy to event activations — are conducted within the scope of Skyro's license and in compliance with the new law.</p>
+
+  <h2 class="sub">UAE Advertiser Permit (Mu'lin System)</h2>
+
+  <p>From 1 February 2026, all promotional content published in the UAE — including social media posts, event materials, influencer collaborations, and branded content — requires a valid Advertiser Permit issued by the UAE Media Council under Federal Decree-Law No. 55 of 2023. The requirement applies regardless of follower count, campaign size, or whether compensation is involved. The permit number must be displayed on social media profiles used for promotional activity.</p>
+
+  <div class="warning-box">
+    <p><strong>Important:</strong> This applies to Skyro directly (all brand accounts, all campaign content) and to any ambassadors, influencers, or content partners who create promotional content on Skyro's behalf. Non-resident creators producing content while physically present in the UAE must obtain a Visitor Advertiser Permit through a UAE-licensed agency. Penalties for non-compliance include fines of up to AED 5,000 per violation, content removal, and potential license suspension.</p>
+  </div>
+
+  <h2 class="sub">Financial Advertising Regulations</h2>
+
+  <p>The CBUAE, DFSA, and FSRA regulate financial advertising with specific requirements:</p>
+
+  <p>All advertised rates, fees, and conditions must be accurate, current, and presented in a way that is not misleading. Investment product advertising carries additional disclosure requirements — risk warnings, past-performance disclaimers, and regulatory status must be prominently displayed. The specific requirements differ between mainland CBUAE regulation and DIFC/ADGM freezone regulation; Skyro must comply with whichever jurisdiction applies to its operations.</p>
+
+  <div class="call">
+    According to local market expert guidance, outdoor advertising (OOH) for investment products faces significant licensing restrictions and may be effectively unavailable for this product category. Television advertising is also likely excluded. The available channels for investment-related communications are predominantly digital — performance marketing, social media, events, and referral programs. Legal counsel should confirm these restrictions based on Skyro's specific licensing status.
+  </div>
+
+  <p>Comparative advertising — directly naming competitors — carries risk in any market and should be avoided in the UAE, where business relationships are closely interconnected and reputational sensitivities are high.</p>
+
+  <h2 class="sub">Religious Considerations</h2>
+
+  <p>The UAE is a Muslim-majority country, and Islamic values are embedded in the national identity and legal framework. Financial advertising must respect these values at all times:</p>
+
+  <p>No imagery or language that could be perceived as disrespectful to Islam, the Prophet, or Islamic traditions. Ramadan-period advertising requires particular care: content should be subdued, family-oriented, and genuinely respectful. Promotional campaigns during Ramadan that appear to capitalize on the holy month for commercial gain will generate backlash.</p>
+
+  <p>Sharia compliance is important to many consumers — both Emirati nationals and Muslim expats — but is not a universal requirement across all segments. Skyro's approach should acknowledge the importance of Sharia-compliant options where they exist, without implying that non-Sharia products are inappropriate. The UAE operates a dual financial system; Skyro's communication should respect both.</p>
+
+  <p>Visual representation of women requires sensitivity. While the UAE is more liberal than Saudi Arabia, modesty norms apply — particularly in content that may be seen by Emirati audiences or during religious periods.</p>
+
+  <h2 class="sub">Political Restrictions and Considerations</h2>
+
+  <p>The UAE has a stable political environment with clear expectations around public discourse. Criticism of the ruling families, the government, or the political system is not permitted and carries serious legal consequences. Brands must maintain complete alignment with these norms.</p>
+
+  <p>Beyond domestic politics, the UAE's position as a meeting point for nationalities from conflicting regions makes geopolitical neutrality absolutely essential. Any content that could be perceived as taking sides in international conflicts — however obliquely — must be avoided.</p>
+
+  <p>The political neutrality rule extends to ambassadors and content partners: any partner who makes public political statements during the partnership period requires immediate review.</p>
+
+  <h2 class="sub">Gender and Representation</h2>
+
+  <p>The UAE has made significant progress on gender equality in recent years, with women holding prominent positions in government, business, and public life. Financial advertising should reflect this reality — women should be shown as active, capable financial decision-makers, not as secondary or dependent.</p>
+
+  <p>However, visual representation should respect cultural norms around modesty. This is not a restriction on showing women — it is a requirement to show them in a way that is culturally appropriate for the UAE market.</p>
+
+  <h2 class="sub">Sensitive Language and Terminology</h2>
+
+  <p><strong>"Guaranteed"</strong> and <strong>"risk-free"</strong> in the context of investment products are prohibited by both DFSA and CBUAE regulations. These terms will trigger regulatory scrutiny and undermine brand credibility with a financially sophisticated audience.</p>
+
+  <p><strong>"Easy money"</strong> or any framing that makes investing or borrowing sound consequence-free is prohibited by Skyro's own standards and by regulatory expectations. It also reads as scam-adjacent in a market with active online fraud concerns.</p>
+
+  <p><strong>"Tax-free income"</strong> — while the UAE does have zero personal income tax, using this phrase in advertising requires care. Skyro should not provide tax advice and should frame the tax environment as context ("You're earning in a zero-income-tax jurisdiction") rather than as a product benefit ("Tax-free returns!").</p>
+
+  <p><strong>"Exclusive"</strong> and <strong>"VIP"</strong> as engagement mechanics are overused in the UAE market and carry diminishing returns. Dubai's entire marketing ecosystem runs on exclusivity language; Skyro differentiates by not using it.</p>
+</div>
+
+<!-- ════════ 13 · THE FIVE FILTERS ════════ -->
+<div class="sec" id="s13">
+  <div class="sec-header">
+    <span class="sec-num">13</span>
+    <h1 class="sec-title">The Five Filters — UAE Version</h1>
+  </div>
+
+  <p>The global TOV Guide offers five questions to ask before any piece of writing is published. Here is how those filters apply specifically to the UAE market.</p>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 01</div>
+    <h4>The Golden Rule — Could Revolut or Wio have written this?</h4>
+    <p>If the answer is yes, rewrite it. What makes Skyro UAE distinctive is not just what it offers but how it speaks: with specific cross-border intelligence, genuine cultural fluency across a two-hundred-nationality market, and a voice that treats financial communication as a conversation between equals. If a line could belong to any international neobank, it does not yet belong to Skyro.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 02</div>
+    <h4>The Kitchen Table — Would a McKinsey consultant in DIFC and an engineer in Dubai Silicon Oasis both understand this clearly?</h4>
+    <p>This is the UAE version of the global filter. If the answer is no — if the language is too jargon-heavy, too niche, too finance-insider — simplify. The audience is financially literate, but not everyone is a fund manager. Use concrete numbers. Use real situations. The best Skyro communication works for the entire professional expat spectrum from the first read.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 03</div>
+    <h4>The Promise Check — Does this communication imply that the user needs to change who they are?</h4>
+    <p>In a market with intense pressure to conform to a particular vision of success — the Dubai dream — this filter matters especially. Any hint that the user's current financial life, current savings rate, or current lifestyle is inadequate will be felt as judgment. The question to ask: if someone read this while already anxious about their financial future in the UAE, would they feel supported and capable?</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 04</div>
+    <h4>The Substance Test — Is there a specific, verifiable claim here?</h4>
+    <p>UAE professionals are sophisticated readers of financial communication. Vague promises are actively distrusted. Every claim needs a real proof point. "AED 25,000 invested across three portfolios with a 7.2% return since March" is real. "We help expats achieve their financial goals" is not. If a piece of copy cannot pass this test, it is not ready.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 05</div>
+    <h4>The Channel Fit — Does the tone match the moment?</h4>
+    <p>A Ramadan Zakat calculator and a portfolio performance update are not the same moment. A summer check-up campaign and a visa-expiry financial planning notification are not the same moment. Eid content and a payment decline message are not the same moment. Before publishing anything, ask whether this piece of communication would feel appropriate to receive at the specific time and in the specific context it will reach its audience. If it would feel wrong, it is wrong.</p>
+  </div>
+</div>
+
+<!-- ════════ CLOSING ════════ -->
+<div class="sec" id="closing">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Closing</h1>
+  </div>
+
+  <div class="closing-block">
+    <p>Skyro came to the UAE not as a foreign fintech adapting to a local market — but as a brand built for people whose financial lives cross borders by definition. The UAE market is not an edge case for Skyro. It is the archetypal case: a market of ten million people, two hundred nationalities, extraordinary earning potential, structural impermanence, and a financial life that no traditional institution was ever designed to serve.</p>
+    <p>The local team's job is to express the brand — clearly, specifically, and with genuine respect for the intelligence and the cultural diversity of the people it is speaking to. <strong>Every piece of communication should be able to answer three questions:</strong></p>
+    <ul class="closing-questions">
+      <li>Does this respect the intelligence and the cultural reality of the person reading it?</li>
+      <li>Does this make the complexity of cross-border financial life feel more manageable, not more overwhelming?</li>
+      <li>Does this sound like something a smart, honest person would actually say to a peer?</li>
+    </ul>
+    <p style="margin-top:24px;font-family:'Fraunces',serif;font-size:18px;color:var(--gold-light);">If yes — it is Skyro.</p>
+  </div>
+
+  <div class="footer">
+    Skyro UAE · Brand & Communications Team · Q1 2026<br>
+    This document is a living guide — it should be updated as the market evolves, as new research becomes available, and as the team learns what resonates. The best localization insights will always come from listening to real UAE users.
+  </div>
+</div>
+
+</div><!-- .main-inner -->
+</main>
+</div><!-- .page-wrap -->
+
+<!-- ════════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════════ -->
+<script>
+// ── Smooth scroll helper (for scenario buttons) ──
+function smoothNav(e, id) {
+  e.preventDefault();
+  const target = document.getElementById(id);
+  if (target) {
+    document.getElementById('main').scrollTo({
+      top: target.offsetTop - 40,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// ── Accordion ──
+function toggleAcc(header) {
+  const item = header.parentElement;
+  const body = item.querySelector('.acc-body');
+  const isOpen = item.classList.contains('open');
+
+  if (isOpen) {
+    body.style.maxHeight = '0';
+    item.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
+}
+
+// ── Observers ──
+(function() {
+  const mainEl = document.getElementById('main');
+  const sections = mainEl.querySelectorAll('.sec[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  // Active nav highlighting
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(n => {
+          n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => navObs.observe(s));
+
+  // Fade-up on scroll
+  const allSecs = mainEl.querySelectorAll('.sec');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.05
+  });
+
+  allSecs.forEach(s => fadeObs.observe(s));
+})();
+
+// ── Sidebar nav smooth scroll ──
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = item.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      document.getElementById('main').scrollTo({
+        top: target.offsetTop - 40,
+        behavior: 'smooth'
+      });
+    }
+
+    // Close mobile nav
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+// ── Hamburger ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+});
+</script>
+</body>
+</html>
