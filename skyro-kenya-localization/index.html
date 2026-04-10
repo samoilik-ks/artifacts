@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro Kenya — Brand Communication Localization Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #3A2818;
+  --forest-light: #543A22;
+  --forest-dark: #241810;
+  --cream: #F4EAD4;
+  --cream-dark: #E8D9B8;
+  --gold: #B8732A;
+  --gold-light: #D08A3D;
+  --gold-pale: #F5E4CC;
+  --charcoal: #1C1C1A;
+  --ink: #2D2D2A;
+  --muted: #6B6860;
+  --border: #DCC9A6;
+  --red: #C0392B;
+  --red-pale: #FDECEA;
+  --green-ok: #1A7A52;
+  --green-pale: #E8F5EE;
+  --amber: #D4711A;
+  --amber-pale: #FDF3E7;
+  --nav-w: 260px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+  --r: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .025;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── HERO ──────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  background-color: var(--forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  opacity: .8;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--gold-light);
+  font-weight: 300;
+  font-style: italic;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(248,244,238,.5);
+  font-weight: 300;
+  max-width: 500px;
+  position: relative;
+  letter-spacing: .01em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(248,244,238,.35);
+  font-size: 11px;
+  letter-spacing: .12em;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll svg { opacity: .5; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.page-wrap {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────── */
+nav.side {
+  width: var(--nav-w);
+  height: 100%;
+  overflow-y: auto;
+  background: var(--forest-dark);
+  flex-shrink: 0;
+  padding: 28px 0 40px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.3) transparent;
+  z-index: 100;
+}
+
+nav.side::-webkit-scrollbar { width: 4px; }
+nav.side::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radius: 2px; }
+
+.nav-logo {
+  padding: 0 24px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 16px;
+}
+
+.nav-logo span {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.nav-logo small {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,.6);
+  margin-top: 2px;
+}
+
+.nav-item {
+  display: block;
+  padding: 9px 24px;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-item:hover { background: rgba(255,255,255,.05); }
+
+.nav-item.active {
+  border-left-color: var(--gold);
+  background: rgba(201,168,76,.08);
+}
+
+.nav-n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(201,168,76,.5);
+  letter-spacing: .1em;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.nav-t {
+  font-size: 12.5px;
+  color: rgba(248,244,238,.75);
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.nav-item.active .nav-t { color: var(--cream); }
+
+/* ── HAMBURGER (mobile) ─────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  width: 40px; height: 40px;
+  background: var(--forest);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+  transition: transform .2s, opacity .2s;
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+/* ── MAIN ─────────────────────────────────────────── */
+main {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 120px;
+  min-width: 0;
+  scroll-behavior: smooth;
+}
+
+.main-inner {
+  max-width: 860px;
+  padding: 64px 60px 0;
+}
+
+/* ── SECTIONS ─────────────────────────────────────── */
+.sec {
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.sec.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sec-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+}
+
+h2.sub {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 40px 0 16px;
+  line-height: 1.3;
+}
+
+h3.sub2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin: 28px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+p { margin-bottom: 16px; color: var(--ink); font-size: 15.5px; }
+p:last-child { margin-bottom: 0; }
+
+p.lead {
+  font-size: 17.5px;
+  color: var(--ink);
+  line-height: 1.75;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+em { font-style: italic; }
+strong { font-weight: 600; color: var(--charcoal); }
+
+/* ── CALLOUT ─────────────────────────────────────── */
+.call {
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  margin: 24px 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.call.big {
+  font-size: 20px;
+  text-align: center;
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  border-left: none;
+  padding: 32px 40px;
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── INSIGHT QUOTE ────────────────────────────────── */
+.insight-quote {
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.5;
+  padding: 40px 32px;
+  margin: 32px 0;
+  background: var(--gold-pale);
+  border-radius: var(--r);
+  border: 1px solid rgba(201,168,76,.3);
+}
+
+/* ── PERSONA CARD ─────────────────────────────────── */
+.persona-card {
+  background: var(--cream-dark);
+  border-radius: var(--r);
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+
+.persona-summary {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.persona-summary strong { color: var(--gold-light); }
+
+/* ── CARDS / GRID ────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.card p, .card li { font-size: 14px; color: var(--muted); }
+.card ol { padding-left: 18px; margin-bottom: 16px; }
+.card ol li { margin-bottom: 6px; line-height: 1.5; }
+
+/* ── VALUE CARD ──────────────────────────────────── */
+.value-block {
+  margin: 40px 0;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+}
+
+.value-block h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.value-block .value-sub {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.value-block .what-means {
+  background: var(--cream);
+  border-radius: var(--r);
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 3px solid var(--gold);
+}
+
+.value-block .what-means h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.value-block .what-means ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.value-block .what-means li {
+  font-size: 14.5px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.copy-dir {
+  margin: 16px 0;
+  padding: 16px 20px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.copy-dir .copy-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+  font-style: normal;
+}
+
+/* ── DO/DON'T ────────────────────────────────────── */
+.dd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.dd-col { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm); }
+
+.dd-hdr {
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dd-hdr.do { background: var(--forest); color: var(--gold-light); }
+.dd-hdr.dont { background: #3a1010; color: #e88; }
+
+.dd-i {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.55;
+}
+
+.dd-i strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14.5px;
+}
+
+.dd-col.do-col .dd-i { border-left: 3px solid var(--green-ok); background: var(--green-pale); }
+.dd-col.dont-col .dd-i { border-left: 3px solid var(--red); background: var(--red-pale); }
+
+.dd-i:last-child { border-bottom: none; }
+
+/* ── TABLES ──────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--r); box-shadow: var(--shadow-sm); }
+
+table.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+table.tbl thead tr { background: var(--forest); color: var(--cream); }
+
+table.tbl thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+table.tbl tbody tr { border-bottom: 1px solid var(--border); background: #fff; }
+table.tbl tbody tr:nth-child(even) { background: var(--cream); }
+table.tbl tbody tr:hover { background: var(--gold-pale); }
+table.tbl td { padding: 11px 16px; color: var(--ink); vertical-align: top; }
+table.tbl td:first-child { font-weight: 600; color: var(--forest); }
+
+/* ── BADGE ───────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.badge.peak { background: var(--red); color: #fff; }
+.badge.very-high { background: var(--amber); color: #fff; }
+.badge.high { background: var(--gold); color: var(--charcoal); }
+.badge.medium { background: var(--cream-dark); color: var(--muted); }
+.badge.low { background: var(--cream-dark); color: var(--muted); }
+.badge.constant { background: var(--forest); color: var(--gold-light); }
+
+/* ── ACCORDION ───────────────────────────────────── */
+.acc-item {
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.acc-header {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  transition: background .15s;
+  user-select: none;
+}
+
+.acc-header:hover { background: var(--cream); }
+
+.acc-header .acc-arrow {
+  transition: transform .25s;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.acc-item.open .acc-header { background: var(--cream); border-bottom: 1px solid var(--border); }
+.acc-item.open .acc-arrow { transform: rotate(180deg); }
+
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.acc-body-inner {
+  padding: 20px;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.acc-body-inner h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 16px 0 8px;
+}
+
+.acc-body-inner h4:first-child { margin-top: 0; }
+
+.acc-body-inner blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 10px 16px;
+  margin: 10px 0;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ── CHANNEL CARD ────────────────────────────────── */
+.channel-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.channel-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.channel-card p { font-size: 14.5px; color: var(--ink); }
+
+/* ── ACTIVATION CARD ─────────────────────────────── */
+.activation-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.activation-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.activation-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+
+.activation-card .act-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.activation-card h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 18px 0 8px;
+}
+
+.activation-card p { font-size: 14.5px; }
+
+/* ── FILTER CARD ─────────────────────────────────── */
+.filter-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--r);
+  padding: 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-card .filter-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.filter-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.filter-card p { font-size: 14.5px; }
+
+/* ── CLOSING ─────────────────────────────────────── */
+.closing-block {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 40px;
+  margin: 40px 0;
+}
+
+.closing-block p { color: rgba(248,244,238,.85); font-size: 15.5px; }
+.closing-block strong { color: var(--cream); }
+
+.closing-questions {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.closing-questions li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.5;
+}
+
+/* ── SCENARIO BUTTONS ──────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.scenario-btn {
+  display: block;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+  cursor: pointer;
+}
+
+.scenario-btn:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+.scenario-btn .sc-icon {
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.scenario-btn .sc-title {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  display: block;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.scenario-btn .sc-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ── WARNING BOX ─────────────────────────────────── */
+.warning-box {
+  background: var(--amber-pale);
+  border: 1px solid var(--amber);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.warning-box strong { color: var(--amber); }
+
+/* ── RTB CARD ────────────────────────────────────── */
+.rtb-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rtb-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.rtb-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.rtb-card li {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.rtb-card p { font-size: 14.5px; }
+
+/* ── SEGMENT CARD ────────────────────────────────── */
+.segment-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.segment-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.segment-card .seg-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .08em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.segment-card p { font-size: 14.5px; }
+
+/* ── FOOTER ──────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .08em;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .dd { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .main-inner { padding: 40px 24px 0; }
+
+  nav.side {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    height: 100%;
+    transition: left .3s ease;
+    z-index: 150;
+  }
+
+  nav.side.open { left: 0; }
+
+  .hamburger { display: flex; }
+
+  .page-wrap { display: block; height: auto; overflow: auto; }
+  main { height: auto; overflow: visible; }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 32px; }
+  .hero-sub { font-size: 20px; }
+  .main-inner { padding: 32px 16px 0; }
+  .value-block { padding: 20px; }
+  .activation-card { padding: 20px; }
+  .closing-block { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     PAGE WRAP: SIDEBAR + MAIN
+     ════════════════════════════════════════════════════ -->
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrap">
+
+<!-- ── SIDEBAR ──────────────────────────────────────── -->
+<nav class="side" id="sidebar">
+  <div class="nav-logo">
+    <span>Skyro</span>
+    <small>Kenya Localization</small>
+  </div>
+  <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
+  <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
+  <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
+  <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
+  <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
+  <a class="nav-item" href="#s05b"><span class="nav-n">05b</span><span class="nav-t">Do / Don't — Visual</span></a>
+  <a class="nav-item" href="#s06"><span class="nav-n">06</span><span class="nav-t">Communication Examples</span></a>
+  <a class="nav-item" href="#s07"><span class="nav-n">07</span><span class="nav-t">Trust Distribution</span></a>
+  <a class="nav-item" href="#s08"><span class="nav-n">08</span><span class="nav-t">Activations</span></a>
+  <a class="nav-item" href="#s09"><span class="nav-n">09</span><span class="nav-t">Communication Calendar</span></a>
+  <a class="nav-item" href="#s10"><span class="nav-n">10</span><span class="nav-t">Channel Guidance</span></a>
+  <a class="nav-item" href="#s11"><span class="nav-n">11</span><span class="nav-t">Competitor Communications</span></a>
+  <a class="nav-item" href="#s12"><span class="nav-n">12</span><span class="nav-t">Advertising Restrictions</span></a>
+  <a class="nav-item" href="#s13"><span class="nav-n">13</span><span class="nav-t">The Five Filters</span></a>
+  <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+</nav>
+
+<!-- ── MAIN CONTENT ─────────────────────────────────── -->
+<main id="main">
+
+<!-- ════════ HERO ════════ -->
+<div id="hero">
+  <div class="hero-eyebrow">Skyro · Kenya · Q1 2026</div>
+  <h1 class="hero-title">Brand Communication<br><em>Localization Guide</em></h1>
+  <div class="hero-sub">Skyro Kenya</div>
+  <div class="hero-desc">How the Global Brand Platform Lives on the Kenyan Market</div>
+  <div class="hero-scroll">
+    Scroll
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+  </div>
+</div>
+
+<div class="main-inner">
+
+<!-- PRE-NOTES -->
+<div class="sec visible">
+  <div class="call">
+    <strong>How to Use This Document</strong><br><br>
+    This guide is built for the Skyro Kenya team. Its purpose is to show how the global brand platform translates, sounds, and behaves specifically on this market — not to replace the Global TOV Guide or the master brand, but to sit on top of them as a layer of cultural interpretation.<br><br>
+    The structure is straightforward: we start by grounding the global brand promise in the Kenyan reality (Global Mind, Local Heart). We then move to a brand persona, brand values, RTBs, do/don'ts, communication examples, ambassador criteria, and creative activations.<br><br>
+    <strong>The core principle: we don't change the brand to fit the market. We find where the brand and the market already meet — and amplify that intersection.</strong>
+  </div>
+
+  <div class="warning-box">
+    <p><strong>A note on language:</strong> All copy examples in this document are written in English. However, Kenya operates in a multilingual reality far more complex than most markets Skyro serves. Kiswahili is the national language and the language of trust, warmth, and belonging. English is the language of business, education, and aspirational professional identity. Sheng — a dynamic urban youth dialect mixing Kiswahili, English, and ethnic languages — is the voice of Gen Z and the Hustler generation on social media. In actual execution, product names should default to Kiswahili (following the M-Pesa, Fuliza, and Lipa na M-Pesa precedent). Brand positioning and professional communications use English. Mass-market campaigns, radio, and community activations use Kiswahili. Social media for the 18–28 demographic uses Sheng. Radio in agricultural counties uses local mother tongues (Kikuyu, Dholuo, Luhya, Kamba, Kalenjin).</p>
+  </div>
+
+  <div class="warning-box">
+    <p><strong>A note on the product:</strong> This guide focuses on <strong>Skyro as a standalone brand</strong> on the Kenyan market. Skyro enters Kenya targeting a broad retail network — Samsung, Huawei, shopping malls, online platforms — with an expanding product suite including BNPL, consumer credit, B2B lending, and insurance. All products are M-Pesa-native by design.</p>
+  </div>
+
+  <h2 class="sub" style="margin-top:36px;">Where Do You Start?</h2>
+  <p>Depending on what you're working on right now — jump straight to the section that helps most:</p>
+
+  <div class="scenario-grid">
+    <a class="scenario-btn" href="#s01" onclick="smoothNav(event,'s01')">
+      <span class="sc-icon">🌍</span>
+      <span class="sc-title">Dive into the market</span>
+      <span class="sc-desc">Audience, values, cultural context — everything you need to understand the Kenyan reality</span>
+    </a>
+    <a class="scenario-btn" href="#s06" onclick="smoothNav(event,'s06')">
+      <span class="sc-icon">✍️</span>
+      <span class="sc-title">Write copy</span>
+      <span class="sc-desc">Tone of voice, Do/Don't, communication examples and templates</span>
+    </a>
+    <a class="scenario-btn" href="#s07" onclick="smoothNav(event,'s07')">
+      <span class="sc-icon">📡</span>
+      <span class="sc-title">Plan a campaign</span>
+      <span class="sc-desc">Referral, agents, channels, seasonal calendar, activation ideas</span>
+    </a>
+    <a class="scenario-btn" href="#s13" onclick="smoothNav(event,'s13')">
+      <span class="sc-icon">✅</span>
+      <span class="sc-title">Review before launch</span>
+      <span class="sc-desc">Five Filters checklist — every creative must pass all five</span>
+    </a>
+    <a class="scenario-btn" href="#s08" onclick="smoothNav(event,'s08')">
+      <span class="sc-icon">💡</span>
+      <span class="sc-title">Get activation ideas</span>
+      <span class="sc-desc">Ready-made creative concepts tied to Kenyan cultural moments</span>
+    </a>
+    <a class="scenario-btn" href="#s12" onclick="smoothNav(event,'s12')">
+      <span class="sc-icon">⚖️</span>
+      <span class="sc-title">Check regulations</span>
+      <span class="sc-desc">CBK, NDTCP, Consumer Protection — advertising restrictions and compliance</span>
+    </a>
+  </div>
+</div>
+
+<!-- ════════ 01 · GLOBAL MIND, LOCAL HEART ════════ -->
+<div class="sec" id="s01">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h1 class="sec-title">Global Mind, Local Heart</h1>
+  </div>
+
+  <h2 class="sub">The Global Promise, Read Through Kenyan Eyes</h2>
+
+  <p class="lead"><em>Celebrate who you are. Grow from where you stand.</em></p>
+
+  <p>In Kenya, this line hits differently — because the reality it speaks to is shaped by one word: hustle.</p>
+
+  <p>Fifty-five million people. Median age twenty. Sub-Saharan Africa's most sophisticated digital economy and the birthplace of M-Pesa — and simultaneously a country where 60%+ of the working population depends on agriculture, the informal economy is larger than the formal one, and community structures like chamas shape financial behaviour more powerfully than any product feature.</p>
+
+  <p>Kenyans are extraordinarily financially literate at the practical level — every mama mboga counts every shilling, every boda boda rider manages daily cash flow with precision. And yet the market has been over-targeted by predatory lenders: between 2015 and 2022, over one hundred unregulated digital lenders operated in Kenya with effective APRs of 60–500%. Four million Kenyans ended up on CRB blacklists — some for defaults as small as KES 100. The CBK's 2022 regulatory intervention cleaned up the supply side. The trust deficit on the demand side remains.</p>
+
+  <p>Traditional finance was not built for a tea farmer who receives two payments per year, a boda boda rider who earns KES 800 one day and KES 200 the next, or a chama of fifteen women who pool KES 500 weekly to fund each other's school fees and medical bills. Skyro is built for exactly this life — seasonal rhythms, irregular income, communal savings, and celebrations that are not budget leaks but expressions of identity.</p>
+
+  <p><em>Celebrate who you are</em> in Kenya means: your hustle, your chama, your way of making money work across seasons and setbacks are not problems to be fixed. They are your financial life, and they deserve a partner that respects them. <em>Grow from where you stand</em> means: start from your current daily earnings, your chama's savings balance, your harvest. Growth doesn't require a formal salary. It requires a partner built for how Kenyans actually live.</p>
+
+  <h2 class="sub">The Kenyan Consumer Insight</h2>
+
+  <p>Skyro's primary research — 36 in-depth interviews and 15 mystery-shopping purchases across four competitors — reveals four distinct audience segments in Kenya's device financing market:</p>
+
+  <div class="segment-card">
+    <h4>Family Freelancers</h4>
+    <span class="seg-pct">40–50% of the market</span>
+    <p>Aged 24–36. Irregular income of KES 40,000–70,000/month from freelance and informal work. They have dependents — parents, siblings, children — and 50–70% of their budget goes to rent and basic needs. Their phone is their livelihood: without it, they cannot work, communicate with clients, or support their family. They take credit reluctantly, only when the phone is broken or stolen and there is no alternative. Their deepest fear: that irregular income will make them miss payments and the phone will be blocked — cutting off the very tool they need to earn.</p>
+  </div>
+
+  <div class="segment-card">
+    <h4>Supported Youth</h4>
+    <span class="seg-pct">25–30%</span>
+    <p>Aged 18–28. Students or recent graduates with irregular income of KES 20,000–30,000 (including support from family). They want a modern, brand-name phone (Samsung, Infinix) for studies, side hustles, and social life. They do not read contracts — they trust the agent's explanation. They hide credit from parents. Their deepest fear: hidden fees they did not understand at sign-up.</p>
+  </div>
+
+  <div class="segment-card">
+    <h4>Autonomous Survivors</h4>
+    <span class="seg-pct">15–20%</span>
+    <p>Aged 25–44. Freelancers with irregular income of KES 20,000–40,000. They may have multiple existing credits. The phone is a survival tool — for finding work, communicating with clients, and staying connected. They buy urgently, when the old phone breaks or is stolen. Their deepest need: partial phone functionality even during payment delays — receiving calls, making payments — because a fully blocked phone means zero income.</p>
+  </div>
+
+  <div class="segment-card">
+    <h4>The Prudent</h4>
+    <span class="seg-pct">5–10%</span>
+    <p>Aged 20–31. Stable income of KES 30,000–60,000. They plan budgets carefully, understand total credit cost, and take credit only as a last resort. They read reviews, compare providers, and choose based on reputation and transparent conditions. They are the most brand-conscious segment and the hardest to acquire — but once acquired, the most loyal.</p>
+  </div>
+
+  <p>Across all four segments, one finding is universal: <strong>the phone is not a luxury. It is the infrastructure of daily survival.</strong> A blocked phone means lost income, broken family communication, and social isolation. Every product decision, every communication choice, every collection policy must be built on this reality.</p>
+
+  <p>Skyro exists to be the partner that understands this.</p>
+
+  <h2 class="sub">The Core Consumer Tension</h2>
+
+  <div class="insight-quote">
+    "I need a phone to work, to earn, to stay connected with my family — but I can't afford the full price. The providers who offer credit either charge hidden fees I discover too late, block my phone the moment I'm one day late, or sell me a model I didn't want. I need someone who shows me the real cost upfront, gives me a phone I actually want, and doesn't punish me for one bad week."
+  </div>
+
+  <p>This tension sits at the center of Skyro's Kenya positioning. The desire is clear: Kenyans need device financing that works with their irregular income reality. The barrier is equally clear: existing providers have normalised opacity (hidden fees, unclear total cost), punitive lockout policies (full phone block for one missed payment), and limited device choice. Skyro closes that gap — with radical pricing transparency, flexible payment structures, humane grace periods, and the device brands people actually want.</p>
+</div>
+
+<!-- ════════ 02 · BRAND PERSONA ════════ -->
+<div class="sec" id="s02">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h1 class="sec-title">Brand Persona — Who Is Skyro on the Kenyan Market?</h1>
+  </div>
+
+  <p class="lead">If Skyro were a person on this market, who would she be?</p>
+
+  <div class="persona-card">
+    <p>Her name is <strong>Wanjiku</strong>. She's 29, from Nyeri, educated at Strathmore, running a small consultancy from Westlands. Her father is a retired tea farmer in Kericho. Money for her is not a number — it is a web of obligations: chama contributions every second Saturday, monthly M-Pesa to her parents, annual harambee for weddings and funerals. Her bank account receives client payments; M-Pesa handles 90% of her financial life.</p>
+
+    <p>Wanjiku is sharp, warm, and practical. She calculates margins in her head, has zero patience for jargon, and will never again use a financial product whose total cost she cannot see upfront — she was burned once by a digital lender and the lesson was permanent. Her humour is situational — navigating Nairobi traffic while sending her chama contribution and laughing about it over nyama choma on Friday. She trusts brands that are honest, not brands that try to be funny.</p>
+
+    <p>Her chama is her emergency fund, her investment vehicle, and her accountability system. This is not a social club — it is the most sophisticated informal financial system in Africa, and Wanjiku knows it. She is proud to be Kenyan, realistic about its challenges, and does not need a brand to tell her Kenya is great. She needs a brand that understands Kenya as it actually is.</p>
+
+    <div class="persona-summary">
+      <strong>In communication terms:</strong> Skyro Kenya is warm, practical, and honest. M-Pesa-fluent. Community-aware. Warmth expressed through transparency and reliability, not corporate enthusiasm. Grounded in real Kenyan life — speaking always to the person building something with whatever they have, wherever they are.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 03 · FOCUS VALUES ════════ -->
+<div class="sec" id="s03">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h1 class="sec-title">Focus Values — The Skyro Brand Values in Kenyan Context</h1>
+  </div>
+
+  <p>Skyro's five global brand values do not change from market to market. What changes is the specific texture of how they are expressed — the cultural references, the emotional register, the moments they speak to. Here is how each value lives on the Kenyan market.</p>
+
+  <!-- FLOW -->
+  <div class="value-block">
+    <h2>Flow</h2>
+    <div class="value-sub">Move with nature, not against it</div>
+
+    <p>Globally, Flow is about rhythm — working with the natural patterns of life rather than imposing artificial structures on top of them.</p>
+
+    <p>In Kenya, Flow is the most literally resonant of all five values — because Kenya's financial life is, for the majority of the population, governed by natural rhythms in the most direct sense. Tea farmers in Kericho receive two main payments per year. Coffee farmers in Nyeri receive one. Maize farmers in the Rift Valley harvest twice annually. The fishing communities around Lake Victoria follow seasonal fish migration patterns. Pastoralist communities in the arid north move with their herds. These are not metaphors. These are the actual financial rhythms that determine when sixty percent of Kenya's working population has money and when they don't.</p>
+
+    <p>Even in urban Kenya, financial life follows rhythms that have nothing to do with conventional monthly budgeting. The 25th of the month — payday — reshapes Nairobi's economy for a week. December (Christmas through January 10th) is the year's highest spending period, when school fees, family gatherings, and year-end chama distributions converge. Ramadan creates a distinct financial rhythm for Kenya's 5.5 million Muslims. The informal economy — boda boda riders, mama mbogas, phone repair kiosks — runs on daily cash flow, not monthly.</p>
+
+    <p>Most financial products are designed around a single rhythm: monthly salary, monthly payment, monthly statement. Skyro's answer is different: products that adapt to the way Kenyans actually earn and spend. A credit product that knows a tea farmer's payment calendar. A savings tool that accepts daily micro-deposits from a boda boda rider's M-Pesa. A repayment schedule that flexes around harvest season. These are not features. They are an expression of this value.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Speak to the real rhythms of Kenyan financial life — seasonal harvests, daily hustles, monthly salaries, weekly chama contributions — without romanticising the difficulty. Acknowledge the irregular income reality without making it sound like a problem to be fixed. Show that Skyro adjusts to the rhythm — because that is what a partner built for Kenyan lives does. And critically: never treat a payment delay as a reason to cut someone off from their livelihood. A locked phone is not a collection tool — it is a life disrupted. Skyro's flow means the phone keeps working even when the payment rhythm stutters.
+    </div>
+  </div>
+
+  <!-- GROWTH -->
+  <div class="value-block">
+    <h2>Growth</h2>
+    <div class="value-sub">Like a garden, not a machine</div>
+
+    <p>Globally, Growth is about organic, sustainable progress — growth that has roots, that happens at the right pace, that does not require you to become something you are not.</p>
+
+    <p>In Kenya, Growth carries the specific weight of a market where entrepreneurship is not optional — it is survival. Kenya's Hustler identity celebrates informal entrepreneurship, resourcefulness, and self-determination in the face of formal economy exclusion. The government named a national credit programme after it. The 18–40 demographic does not aspire to corporate employment — they aspire to building something of their own. A stall, a salon, a boda boda fleet, a digital business.</p>
+
+    <p>Growth for Kenyans is not abstract. It is the mama mboga who started with a single wheelbarrow of vegetables and now has a permanent stall at the market. It is the boda boda rider who saved through his chama for a year and bought a second motorcycle to rent out. It is the young woman in Nairobi who used a small loan to buy equipment for her catering business and now employs three people.</p>
+
+    <p>This growth is organic, communal, and patient. It happens through chama savings, through reinvested profits, through the slow accumulation of assets and reputation. It does not happen through get-rich-quick schemes, high-risk leverage, or financial products that promise overnight transformation. Kenya has seen enough of those.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Make growth concrete and tied to real Kenyan milestones. Not "grow your wealth" — but "Your chama's savings just passed KES 100,000. Six months ago, you started with 20,000. That's what steady looks like." Celebrate incremental progress. Never promise overnight transformation — in a post-predatory-lending market, any promise that sounds too good is automatically distrusted.
+    </div>
+  </div>
+
+  <!-- CELEBRATION -->
+  <div class="value-block">
+    <h2>Celebration</h2>
+    <div class="value-sub">Honor who you are, not who you should be</div>
+
+    <p>Globally, Celebration is the value that most directly challenges the conventional finance narrative. It says: the way you live, the things you spend on, the cultural obligations you honor — these are not financial mistakes. They are expressions of your values.</p>
+
+    <p>In Kenya, Celebration is not abstract — it is woven into the texture of daily life with a vividness that few countries match. Kenya is a nation of 40+ ethnic groups, each with its own traditions of music, dance, dress, and communal gathering. The Maasai adumu (jumping dance) is a celebration of strength and community. The coastal chakacha is danced at weddings and festivals, hip movements telling stories of joy and invitation. The Luo nyatiti (eight-stringed lyre) accompanies songs of love and lineage at lakeside gatherings. The kanga — the rectangular cotton cloth worn by women across Kenya — carries Swahili proverbs printed along its border, turning everyday dress into a form of communication and self-expression. Matatu art — the wildly painted minibuses of Nairobi, covered in graffiti portraits of musicians, footballers, and cultural heroes — is a uniquely Kenyan art form that turns the daily commute into a gallery of popular culture.</p>
+
+    <p>This is not a country that celebrates quietly. Harambee gatherings — collective fundraising for a neighbour's school fees, a community building project, a family medical bill — are simultaneously financial events and social celebrations, with food, music, and speeches. Chama meetings mix financial business with friendship and laughter. Weddings are multi-day, multi-community events that carry real financial weight. December is not just Christmas — it is the convergence of school fees, family reunions, year-end chama distributions, and the single most joyful and expensive month of the Kenyan calendar.</p>
+
+    <p>Traditional finance treats all of this as liability. Chama contributions are invisible in credit scoring. Harambee obligations don't appear on planning templates. Wedding costs are categorised as overspending. Skyro's answer is different: help people honour their community obligations and cultural celebrations within a financial structure they can manage. Make December celebrations, Eid gifts, and wedding harambees things to plan for with confidence — not sources of financial shame.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Never imply that communal or cultural spending is impractical. Do not frame celebrations as the reason for financial difficulty. Frame Skyro's products as the tools that make celebration possible without the aftermath of financial stress. Understand that in Kenya, money is never just individual — it is always, fundamentally, communal. The research reveals a powerful emotional truth: across every segment, the phone purchase is rarely about the individual — it is about connection. Stephen bought a phone for his mother so she wouldn't be cut off in the village. Lynn needed to stay reachable for her children. Celebration in Kenya starts with connection.
+    </div>
+  </div>
+
+  <!-- INNOVATION -->
+  <div class="value-block">
+    <h2>Innovation</h2>
+    <div class="value-sub">Technology that anticipates, not just reacts</div>
+
+    <p>Globally, Innovation is about technology that is genuinely useful — that solves real problems before they become crises, that learns from how people actually behave rather than how they are supposed to behave.</p>
+
+    <p>In Kenya, Innovation carries a unique weight: this is the country that invented mobile money. M-Pesa launched in 2007, and in seventeen years it has achieved what banking infrastructure alone could not — financial inclusion for 86–88% of the population. Kenyan consumers are not impressed by technology for its own sake. They are impressed by technology that works — instantly, reliably, on any phone, including the KES 3,000 feature phone that runs on 2G and operates M-Pesa via USSD (*334#).</p>
+
+    <p>This last point is critical: approximately 40% of Kenyans outside Nairobi and Mombasa still use feature phones. M-Pesa works on all of them because it runs on USSD, not the internet. Any financial product that requires a smartphone and an internet connection to function has already excluded a significant portion of the Kenyan market. Innovation on the Kenyan market does not mean "app-first." It means "M-Pesa-compatible, USSD-accessible where needed, and smartphone-optimised where possible."</p>
+
+    <p>For Skyro, Innovation in Kenya means: a BNPL product that is accessible through M-Pesa and a broad retail network — Samsung, Huawei, shopping malls, and online. A credit product with transparent pricing visible before the user commits — not after. Onboarding that respects the user's time and data costs — Kenyans are acutely cost-conscious about mobile data, and a heavy app download is a real barrier. Technology that works on a 2G network in Kericho county, not just on 4G in Westlands.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Show technology through what it enables, not what it is. "See the total cost before you commit. Every fee. Every payment. One screen." is better than "AI-powered credit assessment platform." Show the simplicity. Show the result. Show the M-Pesa compatibility. In a market that invented mobile money, the bar for "innovative" is higher than anywhere else in Africa.
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="value-block">
+    <h2>Trust</h2>
+    <div class="value-sub">You know best. We walk beside you</div>
+
+    <p>Globally, Trust is the value that defines Skyro's relationship with its users: we do not position ourselves as the authority. We position ourselves as a partner who respects the user's intelligence, their choices, and their knowledge of their own life.</p>
+
+    <p>In Kenya, Trust is not a brand attribute. It is the single most valuable and most difficult currency in the market. The digital credit crisis of 2015–2022 — over one hundred unregulated lenders, predatory pricing, four million CRB blacklistings — has left a population that is deeply, structurally sceptical of any new financial product. Scam awareness is extremely high. Fraud is a persistent concern, both online and through M-Pesa social engineering schemes.</p>
+
+    <p>But Trust in the Kenyan context has a positive dimension too: the chama. Kenya's 300,000+ informal savings groups manage an estimated $2 billion in annual savings flows — more than many formal financial institutions. Chamas are Kenya's most trusted financial institution — more trusted than banks, more trusted than mobile money providers, more trusted than the government. The trust is earned through three qualities: transparency (every member sees every contribution and every disbursement), accountability (the group enforces its own rules), and reciprocity (you give, and you receive in turn).</p>
+
+    <p>Skyro's Trust in Kenya must follow the chama model, not the bank model. This means: every fee visible before commitment. Every payment schedule clear from the start. No hidden charges discovered after the fact. No CRB blacklisting for small defaults without a clear grace period and human communication. These are not differentiators in Kenya — they are minimum entry requirements in a market that has been traumatised by opaque financial products.</p>
+
+    <div class="copy-dir">
+      <span class="copy-label">In communication</span>
+      Always lead with transparency and honesty. Frame trust not as a claim but as a demonstrable practice — "See every fee before you commit" is a trust statement. "Your trust is our priority" is not. In every interaction — from onboarding to repayment to collections — be the clearest, most honest voice the customer has ever heard from a financial product. In Kenya, the brand that earns trust first wins everything else second.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 04 · RTBs ════════ -->
+<div class="sec" id="s04">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <h1 class="sec-title">Focus RTBs — Reasons to Believe</h1>
+  </div>
+
+  <p>RTBs are the specific, verifiable claims that make Skyro's promise concrete and credible. They are divided into rational RTBs (what the product does) and emotional RTBs (how it makes people feel). Both are necessary. In Kenya, the rational layer is paramount: this is a market that has been over-promised to and under-delivered by financial technology. Emotion matters — but only after credibility has been established through substance.</p>
+
+  <h2 class="sub">Rational RTBs — What Skyro Delivers</h2>
+
+  <div class="rtb-card">
+    <h4>A full credit ecosystem — not just one product.</h4>
+    <p>Skyro enters Kenya with a suite of credit products designed for different financial moments: BNPL and point-of-sale financing for device and retail purchases. A credit line that flexes with irregular income. Payday loans for the salaried segment. Cash loans for urgent needs. All accessible through a single app and a digital wallet that stores, transfers, and pays — becoming the container for the user's entire financial life within Skyro.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Point-of-sale financing: buy what you need today, pay at your pace.</h4>
+    <p>Available through Samsung, Huawei, shopping malls, and online platforms. The customer picks the item, sees the total cost on one screen — every fee, every payment, the full amount — and decides before committing. M-Pesa payments. No hidden fees. No surprises after sign-up.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Digital wallet: store, transfer, pay — all in one place.</h4>
+    <p>The Skyro wallet is the base layer of the user's financial relationship with Skyro. Receive funds, make payments, track credit balances, and manage repayment schedules — all in the same interface. Integrated with M-Pesa from day one.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>M-Pesa compatibility as a non-negotiable foundation.</h4>
+    <p>Skyro's products are built on M-Pesa's rails. Payments received via M-Pesa, repayments made via M-Pesa. The customer does not need to learn a new system. They use the system they already trust.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>An app that is genuinely simple to use.</h4>
+    <p>The research shows: agents of competing providers routinely have to explain complex conditions because the product interface does not make them clear. Skyro's UX is designed so that a first-time user understands the full cost, the payment schedule, and the grace period without anyone explaining it to them. Clean screens. Large text. Kiswahili language option. Total cost visible before any commitment. If the interface needs an agent to explain it, the interface has failed.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Transparent pricing — the single most important product feature in Kenya.</h4>
+    <p>In a market where four million people were CRB-blacklisted by opaque lenders, transparent pricing is not a feature — it is the brand. Skyro shows the total cost of every credit product on one screen, before the customer commits. No hidden charges. No fees discovered after the fact. The research confirms: the most common complaint across all four competitors is "the agent didn't tell me about all the conditions." Skyro's app tells you everything the agent should have.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Humane support — not punitive collection.</h4>
+    <p>When a customer misses a payment, Skyro does not immediately block the phone. There is a grace period. Partial functionality remains available — incoming calls, payment capability. Communication is human: a reminder, a conversation about options, a path forward. CRB reporting happens only after a documented process with customer notification. This is not generosity — it is the research-proven competitive advantage. Watu Simu's partial-functionality policy was the number one reason customers chose them over M-Kopa. Skyro should exceed it.</p>
+  </div>
+
+  <h2 class="sub">Emotional RTBs — How Skyro Makes People Feel</h2>
+
+  <div class="rtb-card">
+    <h4>Respected as someone who manages money intelligently — regardless of how much money they manage.</h4>
+    <p>The emotional goal of a Skyro interaction in Kenya is not excitement — it is dignity. The quiet recognition that a boda boda rider managing KES 800 in daily cash flow deserves the same quality of financial product as a Westlands tech professional managing a monthly salary. Skyro treats every customer's financial intelligence with respect.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Safe to trust a financial product again.</h4>
+    <p>For the millions of Kenyans who were burned by predatory lenders — who saw loans of KES 2,000 become debts of KES 10,000 through hidden fees and compounding — the emotional payoff of a Skyro interaction is the absence of fear. I can see everything. I understand everything. There are no surprises. I am safe here.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Understood as someone whose financial life is communal, seasonal, and informal.</h4>
+    <p>The specific emotional reality of the Kenyan consumer — the chama obligations, the harvest cycles, the daily hustle, the family responsibilities — is rarely acknowledged by financial products designed in Nairobi boardrooms or Silicon Valley offices. Skyro treats these rhythms as the defining feature of the user's financial life, and designs accordingly.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Proud to use a product that speaks my language — literally and culturally.</h4>
+    <p>In a market where financial products have historically spoken in English corporate-speak, a brand that uses Kiswahili naturally, that names its products in Kiswahili, and that communicates with the warmth and directness of Kenyan conversation earns a specific kind of loyalty: the loyalty that comes from being seen.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Confident that paying little by little is not a sign of weakness — it is a smart financial strategy.</h4>
+    <p>Skyro's emotional promise is to reinforce and dignify incremental progress: paying in instalments is not because you can't afford something. It is because you are managing your money wisely across multiple obligations, multiple seasons, and multiple responsibilities. That is not a compromise. It is intelligence.</p>
+  </div>
+</div>
+
+<!-- ════════ 05 · DO/DON'T VERBAL ════════ -->
+<div class="sec" id="s05">
+  <div class="sec-header">
+    <span class="sec-num">05</span>
+    <h1 class="sec-title">Do / Don'ts for the Kenyan Market</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">Do — Speak About This</div>
+      <div class="dd-i"><strong>The hustle as a legitimate financial identity.</strong> Kenya's informal economy is not a problem to be formalised — it is how 60%+ of the population earns a living. Any brand that treats informal income as a risk factor, a data gap, or a market segment to be "upgraded" will fail. Speak to the hustle with respect. "Your daily earnings. Your daily savings. Your way." is the register.</div>
+      <div class="dd-i"><strong>M-Pesa as the starting point, not the limitation.</strong> Every Kenyan financial conversation begins with M-Pesa. Skyro should acknowledge this reality directly: "Works with the M-Pesa you already use." M-Pesa is not a competitor — it is the utility layer. Build on it, don't fight it.</div>
+      <div class="dd-i"><strong>The chama as financial intelligence.</strong> Kenya's 300,000+ chamas represent the most sophisticated grassroots financial system on the continent. Speak to chama life with genuine understanding — the rotating contributions, the emergency fund, the collective investment. A brand that understands chamas understands Kenya.</div>
+      <div class="dd-i"><strong>Transparency as the primary trust signal.</strong> After the predatory lending crisis, the single most powerful thing a financial brand can say in Kenya is: "See every fee before you commit." Say it. Repeat it. Build the entire trust narrative around it. In Kenya, transparency is not a feature. It is the brand.</div>
+      <div class="dd-i"><strong>Seasonal financial rhythms — specifically and practically.</strong> Tea payment months. Coffee harvest. Maize season. December school fees. Payday (the 25th). These are the moments that define Kenyan financial life. Content timed to these rhythms — "Harvest payment coming? Here's how to make it last" — has organically higher resonance because it speaks to what people are actually living.</div>
+      <div class="dd-i"><strong>Financial independence as community strength.</strong> For Kenyans, "celebrate who you are" means being able to fulfil your obligations — to family, to chama, to community — on your own terms. Financial independence is not individual isolation. It is the ability to contribute, to support, and to be recognised by your community as someone who handles their responsibilities.</div>
+      <div class="dd-i"><strong>Kiswahili product naming and communication warmth.</strong> Following the M-Pesa, Fuliza, and Pochi la Biashara precedent: Kiswahili product names signal cultural belonging. Any Skyro sub-product names for the Kenyan market should be Kiswahili-first.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">Don't — Avoid This at All Costs</div>
+      <div class="dd-i"><strong>Position Skyro as a foreign company bringing solutions to Kenya.</strong> The colonial resonance is real and immediate. Any communication that implies "we've come to help Kenya" or "we're bringing better technology to Africa" will generate backlash. Skyro should present as a partner that is learning from Kenya — not teaching it. Kenya invented mobile money. Kenya does not need lessons in financial technology.</div>
+      <div class="dd-i"><strong>Use racial imagery or language that evokes colonial dynamics.</strong> The interview data is explicit: avoid any positioning that could be perceived as "the white colonist bringing civilisation." This includes using predominantly non-Kenyan faces in advertising, referencing international benchmarks as superior, or framing Kenyan financial practices as primitive or in need of modernisation.</div>
+      <div class="dd-i"><strong>Make promises without proof.</strong> "Best rates in Kenya." "Guaranteed approval." "Zero risk." In a market with four million CRB blacklistings from predatory lenders, any unsubstantiated claim will be immediately identified as a scam signal. Every claim needs a specific, demonstrable proof point. The Kenyan consumer has heard every promise. They now judge only by evidence.</div>
+      <div class="dd-i"><strong>Sell the product before demonstrating the benefit.</strong> In Kenya, "show me what I get right now" is the first filter. Any communication that leads with the product's features rather than the user's immediate, tangible benefit will fail. "Apply for credit" is a product statement. "Get the phone you need. Pay KES 500 a week. See the full cost now." is a benefit statement.</div>
+      <div class="dd-i"><strong>Trivialise M-Pesa or position Skyro as a replacement.</strong> M-Pesa has 40 million active users and seventeen years of trust. No challenger has displaced M-Pesa. Any brand that positions itself against M-Pesa — even implicitly — is fighting a losing battle. Skyro works with M-Pesa. Period.</div>
+      <div class="dd-i"><strong>Use financial jargon or English corporate language in mass communications.</strong> "Leverage your financial portfolio." "Optimise your credit utilisation ratio." These phrases mean nothing to 90% of the Kenyan market and signal "this product was not built for me." Use plain language. Use Kiswahili where it communicates better. If a rice farmer in Kisumu and a tech worker in Nairobi can't both understand the sentence, rewrite it.</div>
+      <div class="dd-i"><strong>Touch tribal or ethnic politics.</strong> Kenya's ethnic dynamics — Kikuyu, Luo, Kalenjin, Luhya, Kamba — are politically charged in ways that can make even well-intentioned cultural references dangerous. Skyro communications should be ethnically neutral. National identity (Kenyan) and linguistic community (Kiswahili) are safe common ground. Tribal identity is not a brand territory.</div>
+      <div class="dd-i"><strong>Treat December as just another spending season.</strong> December in Kenya is not Christmas the way Western brands understand it. It is the convergence of school fees (January term), family obligations, year-end chama distributions, holiday travel, and the single most expensive month in the Kenyan financial calendar. A brand that treats December as a promotional opportunity rather than a genuine financial pressure point will be perceived as tone-deaf.</div>
+      <div class="dd-i"><strong>Ignore the digital credit trust deficit.</strong> Any communication that does not actively address — or at least implicitly acknowledge — the Kenyan consumer's scepticism toward new financial products is incomplete. The default assumption of every potential Skyro customer is: "This is probably another predatory lender with a nicer app." Every piece of communication must answer this unspoken objection.</div>
+      <div class="dd-i"><strong>Import Western fintech tone.</strong> "Hey bestie! Let's get your finances sorted!" does not work in Kenya. Nor does the Silicon Valley techno-optimist register. Skyro's Kenyan voice is warm, direct, and grounded — like a conversation with a trusted friend at a nyama choma joint. Not like a VC pitch.</div>
+      <div class="dd-i"><strong>Use "guaranteed," "risk-free," or "instant approval" in any credit communication.</strong> CBK regulations require accurate, non-misleading advertising for all credit products. These terms will trigger regulatory scrutiny and are automatically identified as scam signals by Kenyan consumers. Use "fast approval" or "quick access" instead of "instant." Never imply guaranteed outcomes.</div>
+      <div class="dd-i"><strong>Advertise credit without disclosing effective APR and total cost.</strong> CBK's DCP Regulations (2022) and the pending NDTCP framework require all digital credit advertising to prominently display the effective annual percentage rate and total cost of credit. This is a legal obligation, not a design preference.</div>
+      <div class="dd-i"><strong>Threaten or imply CRB reporting as a collection tool in marketing.</strong> CRB reporting is a regulatory requirement, not a weapon. Under CBK rules, customers must be notified at least 30 days before negative information is shared with credit bureaus. Any communication that uses CRB as a threat will generate backlash in a market traumatised by predatory CRB practices.</div>
+      <div class="dd-i"><strong>Collect or reference personal data beyond what is needed.</strong> Kenya's Data Protection Act (2019) requires consent, purpose limitation, and data minimisation. The predatory lenders of 2015–2022 were notorious for accessing customers' phone contacts and calling family members about debts. Any hint of this practice will destroy trust instantly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 05b · DO/DON'T VISUAL ════════ -->
+<div class="sec" id="s05b">
+  <div class="sec-header">
+    <span class="sec-num">05b</span>
+    <h1 class="sec-title">Do / Don'ts — Visual Language, Creative Campaigns, and Photo Style</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">Do — Show This</div>
+      <div class="dd-i"><strong>Real Kenyans in recognisable Kenyan contexts.</strong> A mama mboga arranging her stall at Gikomba Market. A boda boda rider checking his M-Pesa on a dusty roadside. A young professional at a café in Westlands. A chama meeting at someone's home on a Saturday afternoon. A family at a matatu stage. Authenticity in setting carries more trust than production polish.</div>
+      <div class="dd-i"><strong>Genuine diversity of Kenyan life — urban and rural, formal and informal.</strong> Kenya is not Nairobi. Visuals should show the tea fields of Kericho, the fishing boats on Lake Victoria, the market stalls in Mombasa's Old Town — alongside Nairobi's skyline. A brand that only shows urban Kenya signals "we don't understand 70% of this country."</div>
+      <div class="dd-i"><strong>The warmth and energy of communal celebration.</strong> Chama meetings where the money-counting is followed by laughter and chai. A harambee gathering with food, speeches, and contributions being recorded in a notebook. A family cooking together before a Sunday meal. Women in bright kitenge and kanga fabrics at a wedding. Children in new school uniforms in January. Nyama choma Fridays — friends around the grill, phones on the table, the week's hustle behind them.</div>
+      <div class="dd-i"><strong>The mobile phone as the centre of connection — not just finance.</strong> The research shows: the phone's value is not financial transactions alone. It is the video call to a mother in the village. The WhatsApp group where the chama coordinates. The M-Pesa notification that means someone sent love in the form of shillings. Show the phone in the middle of human connection, not in isolation.</div>
+      <div class="dd-i"><strong>Specifically Kenyan visual symbols — beyond the savannah.</strong> The kanga with its printed Swahili proverb. The matatu — Nairobi's painted minibuses, covered in pop-culture graffiti, a rolling art gallery that is uniquely, unmistakably Kenyan. The red earth of the highlands. Tea plantations in neat rows against green hills. The dhow sail on the Mombasa coast. The corrugated-iron kiosk painted in a provider's colours. A Maasai beaded bracelet on a wrist holding a smartphone — tradition and technology coexisting. These are the visual markers that signal "this brand lives here" rather than "this brand visited here."</div>
+      <div class="dd-i"><strong>Bright, warm colour palette that reflects Kenyan visual culture.</strong> Kenya's visual world is vivid: the red of Maasai shuka cloth, the blues and greens of kitenge fabrics, the warm earth tones of the highlands, the turquoise of the Indian Ocean coast, the yellow-green of tea fields. Skyro's visual presence should match this warmth. However, avoid generic "African" patterns or pan-African textile motifs that flatten the continent's diversity. Use textures that are specifically Kenyan.</div>
+      <div class="dd-i"><strong>Celebration as everyday life, not as a special occasion.</strong> In Kenya, joy is not reserved for festivals. It is in the mama mboga who dances briefly to the radio while arranging her tomatoes. It is in the boda boda riders who gather at their stage and share jokes between fares. It is in the laughter at a chama meeting after the treasurer announces the pot has grown. Skyro's visual world should show this ordinary, daily joy — not performed happiness, but the real lightness that Kenyans carry through the hustle.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">Don't — Avoid This</div>
+      <div class="dd-i"><strong>Safari imagery as default visual shorthand.</strong> Giraffes, elephants, safari vehicles, Maasai warriors in ceremonial regalia — these are the images every international brand uses when it enters Kenya. They signal tourism, not partnership. The savannah can appear — but only as a lived landscape (a farmer walking through it, a boda boda on the red-earth road), not as a National Geographic backdrop.</div>
+      <div class="dd-i"><strong>Maasai-as-decoration.</strong> Using Maasai imagery (jumping warriors, beaded women in traditional dress) as visual shorthand for "authentic Africa" is the single most overused visual trope in Kenya-facing marketing. The Maasai are a real community, not a stock photo category. If Maasai people appear in Skyro visuals, they should be shown as customers — checking their phone, making a payment — not as cultural ornaments.</div>
+      <div class="dd-i"><strong>Poverty imagery or "African development" tropes.</strong> No barefoot children. No cracked earth. No "help Africa" visual register. Skyro is not an NGO. Its visual world shows Kenyans as they are — resilient, entrepreneurial, ambitious, and financially active.</div>
+      <div class="dd-i"><strong>Stock photography that reads as "generic Africa."</strong> Images of ambiguously African settings, unrecognisable cityscapes, or people in clothing that doesn't match Kenyan style are immediately identified as inauthentic. West African dashiki ≠ Kenyan kitenge. Nigerian gele headwrap ≠ Kenyan headscarf. Kenyan audiences spot the difference instantly.</div>
+      <div class="dd-i"><strong>Exclusively urban, exclusively affluent imagery.</strong> The majority of Skyro's Kenyan audience lives in peri-urban and rural settings. Show them.</div>
+      <div class="dd-i"><strong>Aspirational luxury.</strong> Aspiration in Kenya looks like: a new motorcycle. A permanent market stall. A child in school uniform. A family home with a corrugated roof upgraded to tiles. These are the milestones that matter — not luxury cars or penthouse terraces.</div>
+      <div class="dd-i"><strong>Staged celebration that looks performed.</strong> If a visual shows people celebrating, it must feel real — friends at a table, a family gathered for a meal, a chama group laughing together. Not models in traditional dress posing for a diversity campaign. Kenyans celebrate constantly and naturally — the visual register should match that energy, not perform it.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 06 · COMMUNICATION EXAMPLES ════════ -->
+<div class="sec" id="s06">
+  <div class="sec-header">
+    <span class="sec-num">06</span>
+    <h1 class="sec-title">Communication Examples</h1>
+  </div>
+
+  <p>All examples below are written in English. In actual execution, Kiswahili versions should be produced for mass-market and community channels, and Sheng-inflected versions for Gen Z social media.</p>
+
+  <h2 class="sub">The Tagline in Market-Specific Communications — "Naturally, It's Yours"</h2>
+
+  <h3 class="sub2">Approach 1 — Lead with a cultural or financial life insight</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>You didn't start this hustle to stand still. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Hatua kwa hatua. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Your friends have Samsung. Now you do too. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>No phone, no work. No work, no money. We start with the phone. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Your chama saves. Your harvest pays. Your phone connects it all. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Grocery list. Client calls. School updates. One phone runs your whole life. Naturally, it's yours.</div>
+
+  <h3 class="sub2">Approach 2 — Lead with a specific product offer</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>Get it today &amp; pay day by day through M-Pesa. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Choose now. Pay later. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Three minutes to apply. One screen to see every fee. M-Pesa to pay. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Send money to mama. Answer the client. Check the chama balance. All from the phone you're paying KES 75 a day for. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Pick the phone. See the price. Take it home. Naturally, it's yours.</div>
+
+  <h2 class="sub">Product and Campaign Copy</h2>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Skyro BNPL — Retail Network <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Facebook / Mass Market</h4>
+      <blockquote>You found the phone you want. Skyro makes it yours — KES 500 a week, total cost on screen before you say yes. Walk into any partner store. Walk out with what you need. Skyro. Pay at your pace.</blockquote>
+      <h4>Radio Script — Kiswahili adaptation direction</h4>
+      <blockquote>[Warm, conversational, 30 seconds.] You know how you've been wanting that new phone? Or that fridge your mama keeps talking about? Skyro makes it simple. Walk into a partner store. Pick what you need. See exactly what you'll pay — no hidden fees, no surprises. Skyro. Pay at your pace. Hatua kwa hatua.</blockquote>
+      <h4>WhatsApp / Community Referral</h4>
+      <blockquote>Your friend told you about Skyro? Here's what it is: walk into a partner store, pick the item you need, see the full cost and every payment — clear, on one screen — and take it home today. M-Pesa payments. No hidden fees. That's it.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Skyro Standalone — Wider Retail <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Instagram / Urban Professional</h4>
+      <blockquote>Your hustle is real. Your finances should match it. Skyro gives you credit that sees your actual income — side hustle, main hustle, all of it. Transparent fees. M-Pesa payments. Apply once, know the full cost immediately.</blockquote>
+      <h4>TikTok / Gen Z direction</h4>
+      <blockquote>[Quick, Sheng-inflected, 15 seconds.] Bro wants a new phone but doesn't want to get CRB'd. Skyro shows you the FULL cost before you commit. No hidden fees, no surprises. Just the real price. That's it. That's the whole thing.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Seasonal Communications <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>December — Pre-School-Fees Season</h4>
+      <blockquote>January school fees start in December. Your budget planner is ready — fees, uniforms, books, and everything in between. Start planning now. Breathe easier in January.</blockquote>
+      <h4>Harvest Season — Tea/Coffee</h4>
+      <blockquote>Your harvest payment just arrived. Before it disappears into a hundred small needs, take two minutes: set aside next season's inputs, your chama contribution, and the school fee reserve. The rest is yours.</blockquote>
+      <h4>Payday (25th of the month)</h4>
+      <blockquote>Payday. Before the balance starts moving, check your Skyro payments, your savings, and your chama status. Two minutes now saves stress later.</blockquote>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Support / Service Communications <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Payment Due Reminder — No Pressure</h4>
+      <blockquote>Your Skyro payment is due tomorrow. If you need to adjust the schedule, here are your options. No penalties. No surprises. Pick what works.</blockquote>
+      <h4>Account Milestone</h4>
+      <blockquote>KES 10,000 saved through your daily M-Pesa deposits. That's the target you set two months ago. Whatever comes next — you've already proved you can do this.</blockquote>
+      <h4>CRB-Safe Messaging — Critical for Kenya</h4>
+      <blockquote>Missed a payment? Here's what happens next: we send you a reminder. You get 7 days to catch up. No CRB listing until we've spoken to you directly and offered alternatives. We believe in second chances.</blockquote>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 07 · TRUST DISTRIBUTION ════════ -->
+<div class="sec" id="s07">
+  <div class="sec-header">
+    <span class="sec-num">07</span>
+    <h1 class="sec-title">Trust Distribution: Referral, Agent Network, and Community Channels</h1>
+  </div>
+
+  <h2 class="sub">Why This Section Replaces a Traditional Ambassador Strategy</h2>
+
+  <p>A conventional ambassador model assumes the audience consumes content from opinion leaders online and makes considered brand choices based on that content. In Kenya's device financing market, this assumption breaks at every level.</p>
+
+  <p>The core audience — Family Freelancers (40–50%) and Autonomous Survivors (15–20%) — is buying a phone precisely because they do not have a working one. Before the purchase, many are on feature phones or temporarily without a phone at all. They are not scrolling TikTok. They are not following influencers. They are asking a neighbour, a friend, a chama member: "Where did you buy your phone? Was it good? How much did you really pay?"</p>
+
+  <div class="call">
+    The research is unequivocal: <strong>word of mouth is the number one distribution driver in this market</strong> — above advertising, above social media, above agent outreach. M-Kopa's entire distribution model is built on this: "neighbour sells to neighbour." Safaricom rides institutional trust. Watu grows through dealer networks in rural areas.
+  </div>
+
+  <p>This means Skyro's "ambassador" is not a person with a following. It is a person who bought a Skyro phone, had a good experience, and told five friends. The marketing strategy must be designed to maximise the probability and frequency of that conversation happening.</p>
+
+  <h2 class="sub">01 · Referral Programme — The Primary Growth Engine</h2>
+
+  <div class="rtb-card">
+    <h4>Mechanic</h4>
+    <p>When a Skyro customer refers a friend who completes a purchase, the referrer receives a credit toward their daily payments — for example, 7 days of free payments. The referred friend receives a reduced initial deposit. Both benefits are concrete, immediate, and tied to the product itself.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Why this works better than ambassadors</h4>
+    <p>Steve (Family Freelancer, 32, irregular income) is paying KES 70/day for his phone. If referring a friend means 7 free days — that is KES 490 he does not have to find during a tough week. Steve is not motivated by brand affinity. He is motivated by KES 490. And his friend trusts Steve's recommendation infinitely more than any content creator.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Critical design detail</h4>
+    <p>The referral bonus should be usable for daily payments, not as a separate reward. The bonus must reduce the thing the customer is anxious about — the daily payment obligation — not add a disconnected reward.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Chama integration</h4>
+    <p>The referral programme should have a group variant. If a chama of 15 members collectively brings 5 new customers, the entire group receives a benefit — reduced payments for a period, or a contribution to the chama's treasury. This aligns with Kenya's communal financial logic: the group benefits when the group acts together.</p>
+  </div>
+
+  <h2 class="sub">02 · Agent Network — The Real Face of the Brand</h2>
+
+  <p>In device financing, the agent IS the brand. The research is explicit: across all four competitors, the agent's behaviour during the sale determines customer perception of the entire company. Agents who explain all conditions honestly build trust. Agents who withhold information or pressure the sale create lasting resentment — even when the customer proceeds with the purchase.</p>
+
+  <div class="call big">Skyro's agent is not a salesperson. Skyro's agent is a trust builder.</div>
+
+  <p>Agent selection criteria should prioritise: honesty and communication clarity (over "aggressiveness in sales"), knowledge of the local community and local language, and personal use of a Skyro product (the agent should be a customer first). The M-Kopa model — recruiting local residents who sell to people they personally know — is the right structural approach. Skyro should adopt it and elevate it: agents who are trained not just to sell, but to show the full cost transparently and explain the grace period honestly.</p>
+
+  <p><strong>Agent as content source:</strong> The most authentic Skyro content will come not from paid creators but from agents sharing real customer stories (with permission) on their personal WhatsApp status and local community groups. An agent in Kericho who posts a 15-second WhatsApp video of a customer receiving their new Samsung — in Kiswahili, shot on a phone, no production — is more persuasive for that local community than any national campaign.</p>
+
+  <h2 class="sub">03 · Radio — The Mass-Reach Authority Channel</h2>
+
+  <p>Eighty percent of Kenyan adults listen to radio weekly, including in rural areas without electricity (battery and solar radios). For the 60–70% of the target audience outside Nairobi and Mombasa, radio is the primary media channel — and for many, the only one.</p>
+
+  <p>If Skyro needs a "voice of authority" — the equivalent of an ambassador — it is a trusted radio presenter on a popular Kiswahili station (Radio Citizen, Radio Jambo, Milele FM) or a local-language station in agricultural counties (Kameme FM for Kikuyu areas, Kass FM for Kalenjin areas, Ramogi FM for Luo areas). A 30-second conversational spot in the morning show, in Kiswahili, from a presenter the audience already trusts, reaches more of Skyro's core audience than a month of Instagram activity.</p>
+
+  <div class="copy-dir">
+    <span class="copy-label">Format example</span>
+    "Mmesikia kuhusu Skyro? Unaweza kupata simu mpya, uone bei yote kabla hujajiunga. Hakuna hidden fees. Nenda kwa duka lao." (Have you heard about Skyro? You can get a new phone, see the full price before you sign up. No hidden fees. Go to their shop.)
+  </div>
+
+  <h2 class="sub">04 · WhatsApp — The Peer-to-Peer Trust Layer</h2>
+
+  <p>WhatsApp is used by approximately 20 million Kenyans and is the primary channel for community communication: chama group updates, M-Pesa money requests, family coordination, and — critically — product recommendations. A satisfied customer sharing their experience in a WhatsApp group is the most trusted form of endorsement in Kenya.</p>
+
+  <p>Skyro should design shareable assets optimised for WhatsApp forwarding: a simple image showing "I bought my Samsung through Skyro — total cost KES X, daily payment KES Y, no hidden fees" that a customer can forward to their group with a personal note. A referral link that works via WhatsApp. A short video template (15 seconds, Kiswahili) that a customer can record themselves and share.</p>
+
+  <p>The key: Skyro does not create this content centrally and push it. Skyro provides the tools for customers to create and share it themselves. The authenticity is the point.</p>
+
+  <h2 class="sub">05 · Targeted Seeding — "Supported Youth" Segment Only</h2>
+
+  <p>The one segment where digital content seeding has genuine reach is "Supported Youth" — students and recent graduates, 18–28, who actively consume TikTok, Instagram, and YouTube content about phones.</p>
+
+  <p>This is not an ambassador programme. It is a targeted micro-influencer seeding for a specific product moment: when a student is choosing which phone to buy and which provider to use.</p>
+
+  <div class="rtb-card">
+    <h4>Format</h4>
+    <p>Partnerships with 5–10 Kiswahili/Sheng-language phone reviewers on TikTok and YouTube who already make content comparing phone models, unboxing devices, and reviewing financing options. The content is: "I got this Samsung through Skyro — here's the total cost, here's the daily payment, here's what the app looks like, here's what happens if you miss a payment." Honest, specific, in the language the audience speaks.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Selection criteria</h4>
+    <p>The creator must already make phone review content (not lifestyle or comedy content repurposed for a brand deal). They must speak Kiswahili or Sheng naturally. Follower count is secondary to audience trust — a creator with 15,000 engaged followers in the phone review niche is more effective than a comedian with 500,000 followers who has never discussed financial products.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Budget allocation</h4>
+    <p>This should be a small, experimental budget — no more than 10–15% of total marketing spend. The remaining 85–90% should go to the referral programme, agent network, radio, and physical presence. If seeding for the youth segment shows measurable conversion (tracked via unique referral codes per creator), it can scale.</p>
+  </div>
+
+  <p><strong>What this is NOT:</strong> It is not a brand ambassador programme. There is no "face of Skyro Kenya." There is no Tier 1 celebrity. There are no long-term partnership contracts. It is tactical product seeding for one segment, measured by conversion, and scaled only on evidence.</p>
+</div>
+
+<!-- ════════ 08 · ACTIVATIONS ════════ -->
+<div class="sec" id="s08">
+  <div class="sec-header">
+    <span class="sec-num">08</span>
+    <h1 class="sec-title">Activations: What Works, What Doesn't, and Why</h1>
+  </div>
+
+  <h2 class="sub">Why Traditional PR Activations Don't Work for This Audience</h2>
+
+  <p>Festival sponsorships, art installations, branded experiences at cultural events — the tools that work in the UAE (Alserkal Avenue, Art Dubai, specialty coffee collaborations) are structurally mismatched to Kenya's device financing audience.</p>
+
+  <p>The core audience — Family Freelancers (40–50%) and Autonomous Survivors (15–20%) — does not attend festivals, art fairs, or branded events. They work six days a week. Their entertainment is community-based: nyama choma with friends, a chama meeting, church on Sunday. The Supported Youth segment (25–30%) attends some events but is price-sensitive and sceptical of branded activations. The Prudent (5–10%) researches online and makes independent decisions — they are not influenced by experiential marketing.</p>
+
+  <p>Kenya does have a vibrant festival calendar — Lamu Cultural Festival, Mombasa Carnival, Lake Turkana Festival, Safaricom Jazz Festival — but these events serve tourism, cultural preservation, and middle-to-upper-class urban audiences. They are not where Skyro's customers are.</p>
+
+  <div class="call big">The effective "activation" for this market is not an event. It is a presence.</div>
+
+  <p>Being at the matatu stage, the market stall, the M-Pesa agent shop. Being visible where the customer already goes — not asking them to come somewhere new. The activations below are designed for the reality of the audience: high foot traffic, low attention span, immediate tangible value, and physical proximity to where people already spend money.</p>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 01</div>
+    <h4>"Duka la Skyro" — Market Stall Pop-Up × First Purchase Mechanic</h4>
+    <div class="act-meta">January, September, major agricultural market days · Gikomba, Kongowea, Eldoret, Kisumu</div>
+    <h5>When</h5>
+    <p>January (post-holiday financial recovery), September (back-to-school), and during major agricultural market days.</p>
+    <h5>Where</h5>
+    <p>Gikomba Market (Nairobi), Kongowea Market (Mombasa), Eldoret Town Market, Kisumu Main Market — high-footfall open-air markets where the target audience shops daily.</p>
+    <h5>What</h5>
+    <p>A Skyro-branded market stall — not a corporate booth, but an actual market stall, designed to blend in with the market's texture while carrying minimal, recognisable Skyro branding. The stall offers free chai (tea) and mandazi — Kenya's universal hospitality gesture — and a simple conversation about Skyro's products.</p>
+    <p>Inside the stall: one table, one tablet showing the Skyro interface, and a market trader (real or trained) who walks interested customers through the process. The pitch is not a pitch — it is a demonstration: "Pick an item on the screen. See the total cost. See every payment. That's it. No hidden fees."</p>
+    <h5>The hook</h5>
+    <blockquote style="border-left:3px solid var(--gold);padding:10px 16px;margin:10px 0;background:var(--gold-pale);border-radius:0 var(--r) var(--r) 0;font-style:italic;font-size:14px;line-height:1.6;color:var(--ink);">"You know how to count every shilling. We built a product that counts them with you."</blockquote>
+    <p>The first 500 visitors who complete the demo receive a branded khanga (traditional fabric wrap) with a Kiswahili phrase: <em>"Skyro — Hatua kwa hatua"</em> (Step by step). The khanga is a culturally significant item — it communicates brand messaging through an object that is genuinely used and valued, not discarded like a flyer.</p>
+    <h5>Why this works</h5>
+    <p>Open-air markets are where Kenya's informal economy lives. A brand that shows up at Gikomba — not at a Westlands shopping mall — signals that it is built for the entire market, not just the urban professional tier. Chai and mandazi are the universal gesture of hospitality and trust. And the khanga turns every recipient into a walking brand presence in a culturally appropriate way.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 02</div>
+    <h4>"Mkulima Smart" — Agricultural Harvest Season Financial Planning Tool</h4>
+    <div class="act-meta">Tea (Apr–May, Oct–Nov), Coffee (Oct–Dec), Maize (Jul–Aug, Dec–Jan)</div>
+    <h5>When</h5>
+    <p>Timed to major harvest payment periods.</p>
+    <h5>Where</h5>
+    <p>Agricultural cooperative offices, M-Pesa agent shops in farming counties (Kericho, Nyeri, Nakuru, Trans-Nzoia).</p>
+    <h5>What</h5>
+    <p>A simple mobile tool — accessible via USSD (no internet required) — that helps farmers plan their harvest payment. The farmer enters their expected payment amount, and the tool generates a suggested allocation: input costs for next season, chama contribution, school fees reserve, emergency fund, and discretionary spending. The tool does not make decisions for the farmer — it makes the farmer's own decisions visible.</p>
+    <p>Skyro branding is minimal: "Mkulima Smart. Powered by Skyro." The tool is free. It requires no account creation. It builds awareness and trust before any product conversion.</p>
+    <h5>Why this works</h5>
+    <p>Sixty percent of Kenya's working population is agricultural. Their financial planning need is acute and seasonal — a harvest payment must last six months. No financial brand currently owns this moment. The USSD accessibility ensures the tool reaches feature-phone users in rural areas. And the name "Mkulima Smart" (Smart Farmer) dignifies the audience rather than patronising them.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 03</div>
+    <h4>"Chama ya Skyro" — Chama Financial Toolkit Activation</h4>
+    <div class="act-meta">Rolling year-round · Community spaces across Kenya</div>
+    <h5>When</h5>
+    <p>Rolling — chamas meet year-round, typically weekly or biweekly.</p>
+    <h5>Where</h5>
+    <p>Community spaces across Kenya. Activation through women's groups, church savings groups, and SACCO networks.</p>
+    <h5>What</h5>
+    <p>A simple, free financial toolkit for chama treasurers: a printable record-keeping template (for chamas that still use notebooks), an M-Pesa transaction tracking guide, and a simple savings goal calculator. Distributed through chama networks, SACCO officers, and community events.</p>
+    <p>The toolkit carries minimal Skyro branding and a single message: <em>"Your chama is the strongest financial tool in Kenya. Skyro is here to make it even stronger."</em></p>
+    <p>No product push in the first interaction. The toolkit builds awareness, demonstrates understanding, and earns permission for future product conversations. When Skyro's chama-facing products are ready, the audience is already warm.</p>
+    <h5>Why this works</h5>
+    <p>Kenya's 300,000+ chamas represent 4.5 million+ potential users. The chama that trusts Skyro becomes a distribution channel to every member. And the toolkit demonstrates that Skyro understands the most important financial institution in Kenyan life — before asking for anything in return.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 04</div>
+    <h4>"Skyro Kwa Stage" — Matatu Stage and Transport Hub Presence</h4>
+    <div class="act-meta">Rolling · Morning rush (6–9 AM), evening rush (5–7 PM)</div>
+    <h5>When</h5>
+    <p>Rolling. Prioritise morning rush (6–9 AM) and evening rush (5–7 PM).</p>
+    <h5>Where</h5>
+    <p>High-traffic matatu stages in Nairobi (Kencom, Railways, Odeon), Mombasa (Likoni Ferry terminal, Mwembe Tayari), Kisumu (main stage), Eldoret, Nakuru. Also boda boda waiting points at major intersections.</p>
+    <h5>What</h5>
+    <p>A small, non-intrusive branded presence at the places where tens of thousands of Kenyans wait every day. Not a booth — a branded umbrella (for shade or rain) and a single agent with a demo phone. The umbrella carries Skyro's colours and one line: "Simu mpya. Bei wazi. M-Pesa." (New phone. Clear price. M-Pesa.)</p>
+    <p>The agent is not hard-selling. They are answering questions from people who are already waiting and have 5–15 minutes to kill. "How does it work?" — agent hands them the demo phone, shows the app, shows the total cost screen. "Is it real?" — agent shows their badge and the laminated price card. "Where's your shop?" — agent gives directions to the nearest Skyro point.</p>
+    <p>At boda boda stages, the approach is peer-driven: identify one or two boda riders who are already Skyro customers and give them a small countertop sign for their motorcycle stand. Riders talk to riders. The sign makes Skyro visible at the exact moment someone is waiting and scrolling a cracked screen.</p>
+    <h5>Why this works</h5>
+    <p>The research shows "on hearing / seeing everywhere" is a key trust criterion for choosing a provider. Matatu stages are the highest-footfall locations in Kenya that don't require rent or significant infrastructure. The audience is captive (waiting), has time (5–15 minutes), and is often holding the very phone they wish they could upgrade. The branded umbrella is functional (shade), the agent is present but not pushy, and the cost per contact is lower than any digital ad — with higher trust conversion.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 05</div>
+    <h4>"Pima Simu Yako" (Check Your Phone) — Free Phone Health Check at Markets</h4>
+    <div class="act-meta">Monthly · Saturday mornings · Open-air markets nationwide</div>
+    <h5>When</h5>
+    <p>Monthly, rotating across markets. Best on Saturday mornings (peak market footfall).</p>
+    <h5>Where</h5>
+    <p>Open-air markets and trading centres — Gikomba, Toi Market (Nairobi), Kongowea (Mombasa), Eldoret Main Market, Kisumu's Kibuye Market, and smaller trading centres in peri-urban areas.</p>
+    <h5>What</h5>
+    <p>A market stall offering a free phone "health check" — a simple 3-minute diagnostic where a Skyro technician checks battery health, available storage, screen responsiveness, and whether the phone's software is up to date. The service is genuinely useful and costs nothing. At the end, the technician gives an honest assessment: "Your phone is fine, take care of the battery" or "Your battery is at 40% capacity — it's going to start dying fast. Here's what a new phone would cost through Skyro, if you're interested."</p>
+    <p>The technician has a tablet with the Skyro app showing current models and full pricing. If the customer is interested, the technician connects them with the nearest Skyro agent. If not, the customer walks away with a genuinely useful service and a positive impression.</p>
+    <p>For customers whose phone is genuinely deteriorating (which the research shows is the primary purchase trigger — "the screen broke," "the battery died," "it keeps hanging"), the timing is precise: the health check reveals a problem the customer was already sensing, and presents a solution at the exact moment of awareness.</p>
+    <p>A free phone case or screen protector for the first 100 visitors per market day adds a tangible giveaway that has real value. Branded with a small Skyro logo on the packaging: "Skyro. Bei wazi. Simu nzuri." (Skyro. Clear price. Good phone.) A phone case stays on the customer's device for months — a daily brand reminder that is genuinely useful.</p>
+    <h5>Why this works</h5>
+    <p>The activation solves a real problem (phone diagnostics), reaches the audience at the place they already go (the market), costs almost nothing per interaction, and creates a natural conversation about upgrading. And the honest assessment — "your phone is fine" when it is fine — builds the trust that Skyro's entire positioning depends on. Competitors never tell you your current phone is fine. Skyro's honesty in this moment is worth more than any advertisement.</p>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 06</div>
+    <h4>"Naturally, It's Yours" — Real Kenyan Stories Film Series</h4>
+    <div class="act-meta">Year-round · Two to three films per quarter</div>
+    <h5>When</h5>
+    <p>Year-round rolling release. Two to three films per quarter. Seeded on YouTube, Facebook, and TikTok with platform-specific cuts (60 seconds for TikTok, 90 seconds–3 minutes for YouTube and Facebook).</p>
+    <h5>The insight</h5>
+    <p>Kenya is a country where every person has a financial story — and most of those stories have never been told by a brand with honesty. Safaricom's "Twaweza" campaign films are the closest: institutional testimony to M-Pesa's role in national progress. But Twaweza is Safaricom's story told through people. "Naturally, It's Yours" is people's stories — with Skyro present only as the frame. The difference matters: Kenyans are tired of being used as props in brand narratives. They want to see themselves — specifically, locally, honestly — in a way that acknowledges the difficulty and the beauty of their financial lives without either romanticising or pitying them.</p>
+    <h5>What Skyro does</h5>
+    <p>A series of short documentary films about real Kenyans who made a financial choice that was theirs — not the expected one, not the safe one, not the one a bank would have recommended. Not success stories in the corporate sense. Stories about the decision itself: the moment when the cost was clear, the risk was real, and the person chose anyway — because they knew what they needed.</p>
+    <p>Each film is shot in the person's real environment — their market stall, their roadside, their home, their chama meeting, their matatu route. No studio. No aspirational set dressing. Kiswahili is the primary language, with Sheng for younger subjects and local languages where they carry more emotional truth. No voiceover. No product demonstration. Near the end of each film, one moment: the subject says something honest about money, choice, and what they built — and it resonates because it is true.</p>
+
+    <h5>Story directions</h5>
+
+    <div class="copy-dir">
+      <span class="copy-label">The mama mboga in Gikomba</span>
+      She tracks daily profits in a notebook. She has never missed a chama contribution in four years. When her phone broke, she needed a new one within a day — because without WhatsApp, her wholesale suppliers couldn't reach her and she'd lose her morning delivery slot. She paid KES 75 a day for six months and never missed a payment. The phone paid for itself in the first week.<br><br>
+      <strong style="color:var(--gold-light);">Final frame:</strong> "Hii simu si ya kupiga simu tu. Ni duka yangu." (This phone is not just for calling. It is my shop.) Skyro. Naturally, it's yours.
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">The boda boda rider in Kisumu</span>
+      He rides six days a week and saves KES 200 daily through his chama. His first phone was stolen. The second one's screen cracked. The third one he bought through device financing — and for the first time, he saw the total cost before he signed. He's four months from owning it outright. The second motorcycle he's saving for? That's not a purchase. That's two years of discipline.<br><br>
+      <strong style="color:var(--gold-light);">Final frame:</strong> "Kama unajua bei yote kabla ya kusign, hakuna wasiwasi." (If you know the full price before you sign, there's no worry.) Skyro. Naturally, it's yours.
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">The student in Mombasa</span>
+      She needed a phone for online classes and part-time work photographing events. Her parents couldn't help — the cost was unplanned. She chose a provider because a friend had used them and because the Samsung had the camera she needed. She pays from her photography earnings. Nobody at home knows she has credit. She's not ashamed — she's proud. She solved her own problem.<br><br>
+      <strong style="color:var(--gold-light);">Final frame:</strong> "Sikuhitaji ruhusa. Nilihitaji simu." (I didn't need permission. I needed a phone.) Skyro. Naturally, it's yours.
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">The teacher in Kericho</span>
+      She plans her budget with the 50/30/20 rule: 50% needs, 30% wants, 20% savings. She took credit for a phone only because her old one broke and she needed storage for students' files. She compared three providers, read every condition, and chose the one with the clearest total cost. She paid it off two months early. She's the kind of customer who tells six friends exactly what she paid, down to the last shilling.<br><br>
+      <strong style="color:var(--gold-light);">Final frame:</strong> "Mimi si mtu wa kukopa. Lakini nikijua bei yote — naweza kupanga." (I'm not a person who borrows. But if I know the full cost — I can plan.) Skyro. Naturally, it's yours.
+    </div>
+
+    <div class="copy-dir">
+      <span class="copy-label">The chama chairwoman in Nakuru</span>
+      She runs a merry-go-round of 20 women. Every Saturday they meet, contribute, and rotate the pot. Three members bought phones through device financing in the last year — all recommended by another member. The chama is their credit bureau: if you pay your chama on time, you're trustworthy. If you don't, the group knows before any CRB.<br><br>
+      <strong style="color:var(--gold-light);">Final frame:</strong> "Chama yetu ndio banki yetu. Na sisi ndio hukumu." (Our chama is our bank. And we are the judgment.) Skyro. Naturally, it's yours.
+    </div>
+
+    <h5>How subjects are found</h5>
+    <p>Through Skyro's customer base and agent network — agents nominate customers whose stories represent the real experience. Through chama networks — the chairwoman who nominates a member. Through open submissions on WhatsApp — "Share your story, and we may come tell it." The nomination process itself generates word of mouth before a single film is produced.</p>
+
+    <h5>Why this works</h5>
+    <p>Three things no rate campaign or billboard can achieve. First, it proves that Skyro knows what Kenyan financial life actually looks like — in Gikomba, in Kisumu, in Kericho, not just in Westlands. Second, each film adds to an archive that compounds trust over time: the more stories, the more communities see themselves, the stronger the brand. Third, the subjects themselves become genuine advocates — not paid ambassadors, but real people who told their real story and were treated with respect.</p>
+
+    <p><strong>Production note:</strong> These films must be inexpensive to produce — one camera, one interviewer, natural light, the subject's real location. The production value comes from the honesty, not the equipment. A polished studio film would undermine the entire premise.</p>
+  </div>
+</div>
+
+<!-- ════════ 09 · COMMUNICATION CALENDAR ════════ -->
+<div class="sec" id="s09">
+  <div class="sec-header">
+    <span class="sec-num">09</span>
+    <h1 class="sec-title">Communication Calendar — Key Annual Moments</h1>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Period</th><th>Priority</th><th>Tone and Angle</th></tr></thead>
+      <tbody>
+        <tr><td>January — Back to school</td><td><span class="badge very-high">Very High</span></td><td>School fees pressure. Practical. "January is always expensive. Here's how to plan it."</td></tr>
+        <tr><td>February–March — Pre-long-rains</td><td><span class="badge medium">Medium</span></td><td>Agricultural input planning. Farmer-facing content.</td></tr>
+        <tr><td>March–May — Long rains / Tea first flush</td><td><span class="badge high">High</span></td><td>Harvest payment planning. Mkulima Smart activation.</td></tr>
+        <tr><td>Ramadan (varies)</td><td><span class="badge very-high">Very Careful</span></td><td>Deep respect. Minimal product push. Zakat tools. Community-first content. Zero promotional tone.</td></tr>
+        <tr><td>Eid al-Fitr</td><td><span class="badge high">High</span></td><td>Warm celebration. Genuine, not branded.</td></tr>
+        <tr><td>May–June — Mid-year</td><td><span class="badge medium">Medium</span></td><td>Financial check-up. Chama mid-year reviews.</td></tr>
+        <tr><td>July–August — Maize harvest / Cold season</td><td><span class="badge high">High</span></td><td>Harvest payment planning. Back-to-school prep for September.</td></tr>
+        <tr><td>September — Third term school fees</td><td><span class="badge very-high">Very High</span></td><td>School fees pressure. Budget tools. Skyro device campaigns (students need devices).</td></tr>
+        <tr><td>October–November — Tea second flush / Coffee</td><td><span class="badge high">High</span></td><td>Agricultural payment season. Savings activation.</td></tr>
+        <tr><td>October — Mashujaa Day (Heroes' Day, Oct 20)</td><td><span class="badge low">Low–Medium</span></td><td>Respectful national moment. "Kenya's heroes are the 55 million who hustle every day."</td></tr>
+        <tr><td>November — Pre-December planning</td><td><span class="badge very-high">Very High</span></td><td>December budget planning. Harambee prep. Travel planning. "December doesn't have to be a financial crisis."</td></tr>
+        <tr><td>December 12 — Jamhuri Day</td><td><span class="badge medium">Medium</span></td><td>National pride. Not promotional.</td></tr>
+        <tr><td>Dec 25 – Jan 10 — Holiday / Quiet period</td><td><span class="badge low">Low</span></td><td>Reduced activity. Warm, family-oriented content. Light touch.</td></tr>
+        <tr><td>Payday — 25th of every month</td><td><span class="badge constant">Recurring High</span></td><td>Monthly financial check-in. Payment reminders. Savings prompts.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ 10 · CHANNEL GUIDANCE ════════ -->
+<div class="sec" id="s10">
+  <div class="sec-header">
+    <span class="sec-num">10</span>
+    <h1 class="sec-title">Channel Guidance</h1>
+  </div>
+
+  <p>One voice, different registers — depending on the platform and the moment.</p>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Radio <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">the single most important mass-reach channel in Kenya</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Radio reaches approximately 80% of Kenyan adults weekly — including rural communities that cannot receive internet or television signals. Kiswahili-language stations (Radio Citizen, Radio Jambo, Milele FM) for national reach. Local language stations (Kameme FM for Kikuyu, Ramogi FM for Luo, Mulembe FM for Luhya, Inooro FM for Kikuyu, Kass FM for Kalenjin) for agricultural county targeting. Radio is where Skyro must win if it wants to reach Kenya beyond Nairobi. The tone on radio is warm, conversational, and Kiswahili-dominant. Think: a trusted friend explaining something clearly, not a corporate advertisement.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Facebook <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">primary social platform, ~15M Kenyan users</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Facebook is Kenya's most-used social platform. Community groups, chama pages, market women networks, and local business groups are the primary engagement contexts. Kiswahili and English mixed. Carousel posts with practical financial tips outperform promotional content. Community management in Kiswahili is essential.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">WhatsApp <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">~20M Kenyan users — the real community channel</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>WhatsApp is where word-of-mouth lives in Kenya. Chama group updates, M-Pesa money requests, product referrals — all happen here. Skyro should create shareable content designed for WhatsApp forwarding: simple graphics, short explainer videos, and referral mechanics that work via WhatsApp links. This is not a broadcast channel. It is a peer-to-peer trust channel.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">TikTok <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">fastest-growing platform for Gen Z financial content</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Kenyan financial literacy TikTok — in Kiswahili and Sheng — is among the platform's most-shared content types. Short-form content that explains real financial concepts, debunks predatory lending tactics, or shows how to use Skyro in 30 seconds performs well. Never use TikTok trends that trivialise financial topics. The Hustler identity lives here.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">YouTube <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">long-form storytelling and financial education</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>"Hadithi Yako" documentary series lives here. Financial education content in Kiswahili. Product walkthroughs. The Kenyan audience will watch long-form content if the quality and relevance justify it.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Television <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">Citizen TV, NTV, KTN — urban and peri-urban</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Television reaches approximately 55% of Kenyan adults. Kiswahili news programming is dominant. Emotional brand films — in the Safaricom/M-Pesa tradition — belong here if the budget justifies it. TV is a credibility channel: a brand that appears on Citizen TV earns institutional trust.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">M-Pesa agent shops <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">the physical touchpoint</span> <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>250,000+ M-Pesa agent locations across Kenya are the primary physical financial infrastructure. Branded materials at partner agent locations — small counter cards, simple posters — are the most efficient way to build awareness in rural and peri-urban areas where digital advertising does not reach.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Push notifications and in-app messaging <span class="acc-arrow">&#9660;</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Ultra-short, concrete, and genuinely useful. Payment reminders with clear options work. "Exciting new feature!" does not. Data cost consciousness is critical — any notification that triggers unnecessary data usage will be resented. The rule: if it contains nothing the user could not have learned more quickly from their M-Pesa SMS, do not send it.</p>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 11 · COMPETITOR COMMUNICATIONS ════════ -->
+<div class="sec" id="s11">
+  <div class="sec-header">
+    <span class="sec-num">11</span>
+    <h1 class="sec-title">Competitor Communications — How They Sound, How We Don't</h1>
+  </div>
+
+  <div class="rtb-card" style="margin-top:24px;">
+    <h4>M-Kopa — The Market Leader</h4>
+    <p><strong>Core message:</strong> Affordable technology access through daily payments.</p>
+    <p>M-Kopa is the dominant player in Kenya's device financing market and Skyro's primary competitor. Starting as a pay-as-you-go solar company, M-Kopa has evolved into a consumer finance platform serving 3 million+ active customers across Kenya, Nigeria, and Ghana. Revenue reached $416 million in 2025. In device financing, M-Kopa operates through a massive agent network using a "neighbour sells to neighbour" model — regional managers recruit local agents who sell to people they personally know and trust. Products include smartphones (primarily Samsung and Nokia), solar systems, and e-motorbikes. The business model centres on daily M-Pesa payments and device locking as the primary collection mechanism.</p>
+    <p><strong>The gap:</strong> M-Kopa's device selection is limited — primarily budget Samsung and Nokia models. The total credit cost is high (a phone worth KES 25,000 may cost KES 45,000 through M-Kopa's credit). Phone lockout is aggressive — full block on missed payment. Research respondents report that M-Kopa was chosen primarily because of physical proximity (shop near home), brand recognition, and peer recommendation — not because of product superiority. The brand is trusted but not loved.</p>
+    <p><strong>How Skyro sounds different:</strong> Where M-Kopa locks your phone on day one of a missed payment, Skyro offers a grace period and partial functionality. Where M-Kopa limits device choice to budget models, Skyro offers the brands and models people actually want. Where M-Kopa's total cost is opaque until after commitment, Skyro shows every fee on one screen before you say yes. The positioning: same accessibility, radically better experience.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Safaricom — Lipa Mdogo Mdogo ("Pay Little by Little")</h4>
+    <p><strong>Core message:</strong> Trust and scale of Kenya's largest telecoms brand.</p>
+    <p>Safaricom's device financing product, Lipa Mdogo Mdogo, leverages the company's extraordinary institutional trust — 20+ years as Kenya's dominant mobile operator, M-Pesa infrastructure, and a network of dealer-partners across the country. The product offers daily payment plans with low initial deposits, accessible through the M-Pesa ecosystem. Safaricom's agent onboarding is the most professional in the market (2–3 weeks of training, background checks). The brand association with Safaricom gives customers an immediate sense of safety and legitimacy.</p>
+    <p><strong>The gap:</strong> Despite the brand power, Lipa Mdogo Mdogo's device range is constrained. The product experience is tied to the Safaricom ecosystem, which creates scale but limits flexibility. Research shows that customers chose Safaricom primarily for brand trust and low entry cost — but were sometimes surprised by the total credit cost. The institutional formality can feel distant compared to the personal agent relationships that M-Kopa and Watu offer.</p>
+    <p><strong>How Skyro sounds different:</strong> Safaricom's strength is institutional trust. Skyro cannot match Safaricom's brand recognition — but can beat it on product experience: wider device selection, clearer total-cost communication, more flexible payment schedules, and a more personal customer relationship. Where Safaricom says "trust our name," Skyro says "trust what you can see — every fee, every payment, before you commit."</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Watu Simu (Watu Credit) — The Flexible Challenger</h4>
+    <p><strong>Core message:</strong> Accessible credit through independent dealer networks.</p>
+    <p>Watu operates through a network of independent dealer-partners who hire their own agent teams. The key differentiator that emerged from research: Watu allows partial phone functionality during payment delays — customers can still receive incoming calls even when the phone is locked for non-payment. This single feature was cited by multiple research respondents as the decisive reason for choosing Watu over competitors. Watu's agent network reaches rural areas where other providers have limited presence, and total credit costs are perceived as lower than M-Kopa.</p>
+    <p><strong>The gap:</strong> Watu's dealer-driven model creates inconsistency in customer experience — agent quality varies significantly. The brand itself is less recognised than M-Kopa or Safaricom. Watu's agents are selected for "aggressiveness in sales" and "door-to-door" capability, which can create a pushy experience.</p>
+    <p><strong>How Skyro sounds different:</strong> Skyro should match and exceed Watu's grace-period functionality — partial phone access during payment delays should be a baseline, not a differentiator. Where Watu relies on aggressive agent sales, Skyro builds trust through transparent digital communication and word-of-mouth referral. The research is clear: "call capability during lockout" is a hygiene factor, not a luxury. Skyro should own it from day one.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Onfon Mobile — The Niche Player</h4>
+    <p><strong>Core message:</strong> Device financing with flexible payment terms.</p>
+    <p>Onfon is a smaller player that competes on payment flexibility and association with the Safaricom ecosystem (research shows some customers perceive Onfon as connected to Safaricom, which boosts trust). Onfon's debt collection approach is notably aggressive — dedicated collection teams are separate from sales. The company offers competitive models including Infinix and Itel, targeting price-sensitive consumers.</p>
+    <p><strong>The gap:</strong> Onfon's brand recognition is the weakest of the four competitors. Its aggressive collection practices create anxiety among customers. Full phone lockout on missed payments (no partial functionality). Research respondents reported that agents sometimes did not disclose all conditions upfront. The Infinix devices offered by Onfon are more vulnerable to software hacking, creating a security weakness.</p>
+    <p><strong>How Skyro sounds different:</strong> Where Onfon relies on aggressive collection, Skyro leads with empathy and communication — "we'd rather help you find a way to pay than punish you for one bad week." Where Onfon's agents withhold information, Skyro's agents are trained to show the full cost and all conditions before the customer commits. Transparency is Skyro's structural advantage over every player in this market.</p>
+  </div>
+
+  <h2 class="sub">What the Competitive Landscape Reveals — Skyro's White Space</h2>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Brand</th><th>Owns</th><th>Leaves Open</th></tr></thead>
+      <tbody>
+        <tr><td>M-Kopa</td><td>Market leadership, agent density, brand recognition, solar+phone ecosystem</td><td>Device choice, total cost transparency, humane lockout policy, premium segment</td></tr>
+        <tr><td>Safaricom (Lipa Mdogo Mdogo)</td><td>Institutional trust, M-Pesa integration, professional agent network</td><td>Device range, pricing transparency, flexible payment structures, personal touch</td></tr>
+        <tr><td>Watu Simu</td><td>Partial phone function during lockout, rural reach, competitive pricing</td><td>Brand recognition, agent quality consistency, digital experience</td></tr>
+        <tr><td>Onfon</td><td>Payment flexibility, Safaricom association perception</td><td>Brand awareness, transparency, collection approach, device security</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:24px;">The white space Skyro can own: <strong>the device financing provider that is radically transparent, offers the phones people actually want, and treats payment difficulties as a conversation rather than a punishment.</strong> Every competitor locks phones aggressively. Every competitor has opacity in total cost. Every competitor limits device choice. Skyro can differentiate on all three simultaneously — and build a brand that people choose not because it's the only option nearby, but because it's the provider they actually trust.</p>
+
+  <p>The research confirms: word of mouth is the primary distribution driver. The first thousand customers who have a genuinely better experience with Skyro become the marketing engine for the next ten thousand. In Kenya's device financing market, the product experience IS the marketing strategy.</p>
+
+  <p>That is the position. The work of this guide is to help Skyro Kenya hold it.</p>
+</div>
+
+<!-- ════════ 12 · ADVERTISING RESTRICTIONS ════════ -->
+<div class="sec" id="s12">
+  <div class="sec-header">
+    <span class="sec-num">12</span>
+    <h1 class="sec-title">Advertising Restrictions in the Kenyan Market</h1>
+  </div>
+
+  <p>Skyro operates within the regulatory framework set by the Central Bank of Kenya (CBK) and additional Kenyan advertising and consumer protection legislation. The team should treat this section as a standing reference and consult legal counsel before any campaign.</p>
+
+  <h2 class="sub">CBK Digital Credit Provider Regulations (2022) and NDTCP Reclassification (2024–2025)</h2>
+
+  <p>The Central Bank of Kenya's Digital Credit Provider Regulations, gazetted in March 2022, established the licensing and oversight framework for previously unregulated digital lenders. All DCPs were required to apply for CBK licensing by September 2022. The regulations mandate disclosure of all fees including effective annual percentage rates, reporting of all loans to licensed Credit Reference Bureaus, and maintenance of a customer complaints mechanism. CBK can suspend or revoke licences for non-compliance.</p>
+
+  <div class="warning-box">
+    <p><strong>Critical 2024–2025 update:</strong> In December 2024, the CBK Act was amended to reclassify Digital Credit Providers as <strong>Non-Deposit Taking Credit Providers (NDTCPs)</strong>. Draft NDTCP Regulations published in 2025 introduce a tiered structure: entities with paid-up capital of KES 20 million or more require a full CBK licence; entities below this threshold may apply for registration. The draft regulations propose raising minimum capital for licensed NDTCPs to KES 100 million and introduce significantly higher fees (application fee KES 100,000, annual fee KES 500,000 for licensed entities). A compliance deadline of June 2025 was set. As of early 2025, only 126 of over 700 DCP applicants had been licensed by CBK.</p>
+  </div>
+
+  <p>For Skyro's communications, this means: every advertisement for a credit product must disclose the effective APR and total cost of credit. Fee disclosures must be prominent, not buried in fine print. Claims about approval speed or ease of access must be accurate and verifiable. The regulatory environment is actively evolving — legal counsel should be consulted before every campaign to ensure compliance with the latest NDTCP framework.</p>
+
+  <h2 class="sub">Consumer Protection Act (2012)</h2>
+
+  <p>Kenya's Consumer Protection Act prohibits misleading or deceptive advertising, unconscionable representations, and false claims about the performance or characteristics of financial products. This act applies to all marketing materials, including social media posts, radio advertisements, and influencer content.</p>
+
+  <h2 class="sub">Interest Rate Environment</h2>
+
+  <p>Kenya removed its interest rate cap in 2019 (repealing the Banking (Amendment) Act 2016), allowing market-rate pricing on credit products. However, the Hustler Fund's government-subsidised rates have set a near-zero-cost credit floor in consumer expectations. Any private lender advertising credit rates must be aware that Gen Z consumers benchmark all rates against the Hustler Fund. Comparative advertising that references the Hustler Fund directly should be avoided.</p>
+
+  <h2 class="sub">CRB and Credit Reporting</h2>
+
+  <p>CBK's Gazette Notice of April 2020 removed negative CRB listings for amounts below KES 1,000 and the 2022 DCP Regulations strengthened consumer dispute rights and CRB reporting requirements. Digital credit providers must notify customers at least 30 days before sharing negative credit information. Skyro's communications should explicitly address CRB practices — this is a top consumer concern. Any communication that is perceived as threatening CRB listing as a coercive tool will generate immediate backlash and regulatory scrutiny.</p>
+
+  <h2 class="sub">Political Restrictions</h2>
+
+  <p>Kenya has a dynamic and often polarised political environment. Financial brands must maintain absolute political neutrality. No association with political parties, political figures, or political movements. The "Hustler" identity — while appropriated by a political party — has since become a general cultural term. Use it as a cultural descriptor, not as a political reference.</p>
+
+  <p>Ethnic neutrality is equally essential. Kenya's ethnic dynamics make any content that could be perceived as favouring one community over another a brand risk. National identity (Kenyan) and national language (Kiswahili) are the safe common ground.</p>
+
+  <h2 class="sub">Religious Considerations</h2>
+
+  <p>Kenya is a Christian-majority country (~85%) with a significant Muslim minority (~11%). Christmas and Easter are national holidays and can be acknowledged respectfully. Ramadan and Eid should be addressed with genuine respect for the Muslim community, particularly in Coast Province and North Eastern Province communications. Content during Ramadan should be subdued and community-oriented — no promotional campaigns during Ramadan that appear to capitalise on the holy month.</p>
+
+  <h2 class="sub">Sensitive Language and Terminology</h2>
+
+  <p><strong>"Guaranteed"</strong> in the context of credit products is misleading and will attract CBK scrutiny. Avoid.</p>
+
+  <p><strong>"Instant loan"</strong> — while Kenyan digital lenders have used this phrase extensively, it carries predatory connotations post-2022. Skyro should use "fast approval" or "quick access" rather than "instant."</p>
+
+  <p><strong>"Easy money"</strong> — scam-adjacent in a market with high fraud awareness. Never use.</p>
+
+  <p><strong>"CRB-free"</strong> — if Skyro reports to CRBs (as CBK requires), claiming to be "CRB-free" is misleading. Instead, communicate the grace period and human process before any negative listing.</p>
+</div>
+
+<!-- ════════ 13 · THE FIVE FILTERS ════════ -->
+<div class="sec" id="s13">
+  <div class="sec-header">
+    <span class="sec-num">13</span>
+    <h1 class="sec-title">The Five Filters — Kenya Version</h1>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 01</div>
+    <h4>The Golden Rule — Could M-Kopa, Safaricom, or Watu have written this?</h4>
+    <p>If the answer is yes, rewrite it. What makes Skyro Kenya distinctive is: radical pricing transparency, humane grace periods with partial phone functionality, wider device choice, and a voice that treats every Kenyan's financial intelligence with respect — from the Westlands tech worker to the Kericho tea farmer. If a line could belong to any device financing provider in Kenya, it does not yet belong to Skyro.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 02</div>
+    <h4>The Kitchen Table — Would a mama mboga in Gikomba Market and a software developer in Kilimani both understand this clearly?</h4>
+    <p>This is the Kenya version of the global filter. If the answer is no — if the language is too corporate, too English, too jargon-heavy — simplify. Use Kiswahili where it communicates better. Use real numbers. Use real situations. The best Skyro communication works for the entire Kenyan economic spectrum from the first read.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 03</div>
+    <h4>The Promise Check — Does this communication imply that the user needs to change who they are?</h4>
+    <p>In a market where informal income is the norm, where chama savings are the primary wealth-building tool, and where the hustle is the national identity — any hint that the user's current financial life is inadequate will be felt as judgment. The question to ask: if someone read this while stressed about their irregular income, would they feel supported and capable — or would they feel judged?</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 04</div>
+    <h4>The Substance Test — Is there a specific, verifiable claim here?</h4>
+    <p>Kenyan consumers have been over-promised to by a decade of digital lenders. Vague promises are not just distrusted — they are interpreted as scam signals. Every claim needs a real proof point. "See the total cost before you commit — KES 15,000 for a phone, KES 850 per week for 20 weeks, total repayment KES 17,000" is real. "Affordable credit for your lifestyle" is not. If a piece of copy cannot pass this test, it is not ready for the Kenyan market.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 05</div>
+    <h4>The Channel Fit — Does the tone match the moment?</h4>
+    <p>A December school-fee budget tool and a Friday payday check-in are not the same moment. A harvest planning calculator and a CRB grace period notification are not the same moment. Ramadan content and a product promotion are not the same moment. Before publishing anything, ask whether this piece of communication would feel appropriate to receive at the specific time and in the specific context it will reach its audience. If it would feel wrong, it is wrong.</p>
+  </div>
+</div>
+
+<!-- ════════ CLOSING ════════ -->
+<div class="sec" id="closing">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Closing</h1>
+  </div>
+
+  <div class="closing-block">
+    <p>Skyro enters Kenya not as a foreign fintech adapting to a local market — but as a brand built for people whose financial lives are shaped by seasons, community, and the daily hustle. Kenya is not an edge case for Skyro. It is the archetypal case: a market of 55 million people who are extraordinarily financially active, deeply distrustful of promises without proof, and waiting for a financial partner that respects their intelligence, their rhythms, and their way of building wealth.</p>
+    <p>The four segments from primary research — Family Freelancers (40–50%), Supported Youth (25–30%), Autonomous Survivors (15–20%), and The Prudent (5–10%) — are not abstractions. They are Steve, who borrowed for a phone because his broke and he couldn't call clients. They are Shirlly, who chose M-Kopa because the kiosk was next to her house and friends recommended it. They are Beatrice, who picked Watu because she could still receive calls when the phone was locked. Every communication decision in this guide should be tested against their reality.</p>
+    <p>The local team's job is to express the brand — clearly, specifically, and with genuine respect for the intelligence and the cultural texture of the people it is speaking to. <strong>Every piece of communication should be able to answer three questions:</strong></p>
+    <ul class="closing-questions">
+      <li>Does this respect the intelligence and the financial reality of the person reading it?</li>
+      <li>Does this make the complexity of seasonal, communal, informal financial life feel more manageable, not more overwhelming?</li>
+      <li>Does this sound like something a real, honest, warm person would actually say to a peer over chai?</li>
+    </ul>
+    <p style="margin-top:24px;font-family:'Fraunces',serif;font-size:18px;color:var(--gold-light);">If yes — it is Skyro.</p>
+  </div>
+
+  <div class="footer">
+    Skyro Kenya · Brand & Communications Team · Q1 2026<br>
+    This document is a living guide — it should be updated as the market evolves, as new research becomes available, and as the team learns what resonates. The best localization insights will always come from listening to real Kenyan users.
+  </div>
+</div>
+
+</div><!-- .main-inner -->
+</main>
+</div><!-- .page-wrap -->
+
+<!-- ════════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════════ -->
+<script>
+// ── Smooth scroll helper (for scenario buttons) ──
+function smoothNav(e, id) {
+  e.preventDefault();
+  const target = document.getElementById(id);
+  if (target) {
+    document.getElementById('main').scrollTo({
+      top: target.offsetTop - 40,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// ── Accordion ──
+function toggleAcc(header) {
+  const item = header.parentElement;
+  const body = item.querySelector('.acc-body');
+  const isOpen = item.classList.contains('open');
+
+  if (isOpen) {
+    body.style.maxHeight = '0';
+    item.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
+}
+
+// ── Observers ──
+(function() {
+  const mainEl = document.getElementById('main');
+  const sections = mainEl.querySelectorAll('.sec[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  // Active nav highlighting
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(n => {
+          n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => navObs.observe(s));
+
+  // Fade-up on scroll
+  const allSecs = mainEl.querySelectorAll('.sec');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.05
+  });
+
+  allSecs.forEach(s => fadeObs.observe(s));
+})();
+
+// ── Sidebar nav smooth scroll ──
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = item.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      document.getElementById('main').scrollTo({
+        top: target.offsetTop - 40,
+        behavior: 'smooth'
+      });
+    }
+
+    // Close mobile nav
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+// ── Hamburger ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+});
+</script>
+</body>
+</html>
