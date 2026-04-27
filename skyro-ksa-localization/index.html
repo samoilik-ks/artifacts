@@ -223,6 +223,73 @@ nav.side::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radi
 
 .nav-item.active .nav-t { color: var(--cream); }
 
+/* ── NAV GROUPS (collapsible sections) ────────────── */
+.nav-group { margin-bottom: 4px; }
+
+.nav-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+
+.nav-group-header:hover { background: rgba(255,255,255,.05); }
+
+.nav-group-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.nav-group-arrow {
+  font-size: 10px;
+  color: rgba(201,168,76,.5);
+  transition: transform .25s;
+}
+
+.nav-group.open .nav-group-arrow { transform: rotate(180deg); }
+
+.nav-group-items {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.nav-group.open .nav-group-items {
+  max-height: 600px;
+}
+
+.nav-group .nav-item {
+  padding: 6px 24px 6px 36px;
+}
+
+.nav-group .nav-item .nav-n {
+  font-size: 8px;
+}
+
+.nav-group .nav-item .nav-t {
+  font-size: 11.5px;
+}
+
+.nav-tbd {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .1em;
+  color: rgba(201,168,76,.7);
+  background: rgba(201,168,76,.12);
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
 /* ── HAMBURGER (mobile) ─────────────────────────────── */
 .hamburger {
   display: none;
@@ -843,6 +910,34 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
 
 .competitor-card .skyro-diff strong { color: var(--gold-light); }
 
+/* ── DESIGN KIT TBD ────────────────────────────────── */
+.tbd-placeholder {
+  text-align: center;
+  padding: 60px 40px;
+  background: var(--cream-dark);
+  border: 2px dashed var(--border);
+  border-radius: var(--r);
+  margin: 24px 0;
+}
+
+.tbd-placeholder .tbd-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: .5;
+}
+
+.tbd-placeholder h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.tbd-placeholder p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
 /* ── CLOSING ─────────────────────────────────────── */
 .closing-block {
   background: var(--forest);
@@ -944,21 +1039,69 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
     <span>Skyro</span>
     <small>Saudi Arabia Localization</small>
   </div>
-  <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
-  <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
-  <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
-  <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
-  <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
-  <a class="nav-item" href="#s05b"><span class="nav-n">05b</span><span class="nav-t">Do / Don't — Visual</span></a>
-  <a class="nav-item" href="#s06"><span class="nav-n">06</span><span class="nav-t">Communication Examples</span></a>
-  <a class="nav-item" href="#s07"><span class="nav-n">07</span><span class="nav-t">Ambassador Strategy</span></a>
-  <a class="nav-item" href="#s08"><span class="nav-n">08</span><span class="nav-t">Creative Activations</span></a>
-  <a class="nav-item" href="#s09"><span class="nav-n">09</span><span class="nav-t">Communication Calendar</span></a>
-  <a class="nav-item" href="#s10"><span class="nav-n">10</span><span class="nav-t">Channel Guidance</span></a>
-  <a class="nav-item" href="#s11"><span class="nav-n">11</span><span class="nav-t">Competitor Communications</span></a>
-  <a class="nav-item" href="#s12"><span class="nav-n">12</span><span class="nav-t">Advertising Restrictions</span></a>
-  <a class="nav-item" href="#s13"><span class="nav-n">13</span><span class="nav-t">The Five Filters</span></a>
-  <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+
+  <!-- OVERVIEW -->
+  <div class="nav-group open" data-group="overview">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Overview</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
+      <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
+      <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
+      <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
+    </div>
+  </div>
+
+  <!-- BRAND VOICE -->
+  <div class="nav-group" data-group="voice">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Brand Voice</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
+      <a class="nav-item" href="#s05b"><span class="nav-n">05b</span><span class="nav-t">Do / Don't — Visual</span></a>
+      <a class="nav-item" href="#s06"><span class="nav-n">06</span><span class="nav-t">Communication Examples</span></a>
+    </div>
+  </div>
+
+  <!-- MARKETING & ACTIVATIONS -->
+  <div class="nav-group" data-group="marketing">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Marketing & Activations</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s07"><span class="nav-n">07</span><span class="nav-t">Ambassador Strategy</span></a>
+      <a class="nav-item" href="#s08"><span class="nav-n">08</span><span class="nav-t">Creative Activations</span></a>
+      <a class="nav-item" href="#s09"><span class="nav-n">09</span><span class="nav-t">Communication Calendar</span></a>
+      <a class="nav-item" href="#s10"><span class="nav-n">10</span><span class="nav-t">Channel Guidance</span></a>
+      <a class="nav-item" href="#s11"><span class="nav-n">11</span><span class="nav-t">Competitor Communications</span></a>
+      <a class="nav-item" href="#s12"><span class="nav-n">12</span><span class="nav-t">Advertising Restrictions</span></a>
+    </div>
+  </div>
+
+  <!-- QUALITY CONTROL -->
+  <div class="nav-group" data-group="quality">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Quality Control</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s13"><span class="nav-n">13</span><span class="nav-t">The Five Filters</span></a>
+      <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+    </div>
+  </div>
+
+  <!-- DESIGN KIT -->
+  <div class="nav-group" data-group="designkit">
+    <a class="nav-item" href="#designkit" style="padding:10px 24px;">
+      <span class="nav-group-title" style="display:inline;">Design Kit</span>
+      <span class="nav-tbd">TBD</span>
+    </a>
+  </div>
 </nav>
 
 <!-- ── MAIN CONTENT ─────────────────────────────────── -->
@@ -1838,6 +1981,21 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
 </div>
 
 <!-- ════════ CLOSING ════════ -->
+<!-- ════════ DESIGN KIT (TBD) ════════ -->
+<div class="sec" id="designkit">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Design Kit</h1>
+  </div>
+
+  <div class="tbd-placeholder">
+    <div class="tbd-icon">🎨</div>
+    <h3>Coming Soon</h3>
+    <p>Visual assets, templates, colour palettes, and typography guidelines for the Saudi market will be added here.<br>This section is currently under development by the design team.</p>
+  </div>
+</div>
+
+<!-- ════════ CLOSING ════════ -->
 <div class="sec" id="closing">
   <div class="sec-header">
     <span class="sec-num">—</span>
@@ -1886,19 +2044,32 @@ function toggleAcc(header) {
   }
 }
 
+// ── Nav group toggle ──
+function toggleNavGroup(header) {
+  const group = header.parentElement;
+  group.classList.toggle('open');
+}
+
 // ── Observers ──
 (function() {
   const mainEl = document.getElementById('main');
   const sections = mainEl.querySelectorAll('.sec[id]');
   const navItems = document.querySelectorAll('.nav-item');
 
-  // Active nav highlighting
+  // Active nav highlighting + auto-open parent group
   const navObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
         navItems.forEach(n => {
-          n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+          const isActive = n.getAttribute('href') === '#' + id;
+          n.classList.toggle('active', isActive);
+          if (isActive) {
+            const group = n.closest('.nav-group');
+            if (group && !group.classList.contains('open')) {
+              group.classList.add('open');
+            }
+          }
         });
       }
     });

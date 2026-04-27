@@ -223,6 +223,73 @@ nav.side::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radi
 
 .nav-item.active .nav-t { color: var(--cream); }
 
+/* ── NAV GROUPS (collapsible sections) ────────────── */
+.nav-group { margin-bottom: 4px; }
+
+.nav-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+
+.nav-group-header:hover { background: rgba(255,255,255,.05); }
+
+.nav-group-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.nav-group-arrow {
+  font-size: 10px;
+  color: rgba(201,168,76,.5);
+  transition: transform .25s;
+}
+
+.nav-group.open .nav-group-arrow { transform: rotate(180deg); }
+
+.nav-group-items {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.nav-group.open .nav-group-items {
+  max-height: 600px;
+}
+
+.nav-group .nav-item {
+  padding: 6px 24px 6px 36px;
+}
+
+.nav-group .nav-item .nav-n {
+  font-size: 8px;
+}
+
+.nav-group .nav-item .nav-t {
+  font-size: 11.5px;
+}
+
+.nav-tbd {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .1em;
+  color: rgba(201,168,76,.7);
+  background: rgba(201,168,76,.12);
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
 /* ── HAMBURGER (mobile) ─────────────────────────────── */
 .hamburger {
   display: none;
@@ -347,8 +414,7 @@ strong { font-weight: 600; color: var(--charcoal); }
   border-radius: 0 var(--r) var(--r) 0;
   margin: 24px 0;
   font-size: 15px;
-  color: #4A4A46;
-  line-height: 1.7;
+  color: var(--ink);
 }
 
 .call.big {
@@ -844,6 +910,34 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
 
 .competitor-card .skyro-diff strong { color: var(--gold-light); }
 
+/* ── DESIGN KIT TBD ────────────────────────────────── */
+.tbd-placeholder {
+  text-align: center;
+  padding: 60px 40px;
+  background: var(--cream-dark);
+  border: 2px dashed var(--border);
+  border-radius: var(--r);
+  margin: 24px 0;
+}
+
+.tbd-placeholder .tbd-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: .5;
+}
+
+.tbd-placeholder h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.tbd-placeholder p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
 /* ── CLOSING ─────────────────────────────────────── */
 .closing-block {
   background: var(--forest);
@@ -885,53 +979,6 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
 
 .warning-box strong { color: var(--amber); }
 
-/* ── SCENARIO NAV ───────────────────────────────── */
-.scenario-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
-  margin: 24px 0;
-}
-
-.scenario-btn {
-  display: block;
-  text-decoration: none;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 18px 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.06);
-  transition: box-shadow .2s, transform .2s, border-color .2s;
-  cursor: pointer;
-}
-
-.scenario-btn:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,.1);
-  transform: translateY(-2px);
-  border-color: var(--gold);
-}
-
-.scenario-btn .sc-icon {
-  font-size: 22px;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.scenario-btn .sc-title {
-  font-family: 'Fraunces', serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--forest);
-  margin-bottom: 4px;
-  line-height: 1.3;
-}
-
-.scenario-btn .sc-desc {
-  font-size: 12.5px;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
 /* ── FOOTER ──────────────────────────────────────── */
 .footer {
   text-align: center;
@@ -947,7 +994,6 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
   .grid-3 { grid-template-columns: 1fr; }
   .dd { grid-template-columns: 1fr; }
   .main-inner { padding: 40px 24px 0; }
-  .scenario-grid { grid-template-columns: 1fr; }
 
   nav.side {
     position: fixed;
@@ -993,21 +1039,69 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
     <span>Skyro</span>
     <small>Saudi Arabia Localization</small>
   </div>
-  <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
-  <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
-  <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
-  <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
-  <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
-  <a class="nav-item" href="#s05b"><span class="nav-n">05b</span><span class="nav-t">Do / Don't — Visual</span></a>
-  <a class="nav-item" href="#s06"><span class="nav-n">06</span><span class="nav-t">Communication Examples</span></a>
-  <a class="nav-item" href="#s07"><span class="nav-n">07</span><span class="nav-t">Ambassador Strategy</span></a>
-  <a class="nav-item" href="#s08"><span class="nav-n">08</span><span class="nav-t">Creative Activations</span></a>
-  <a class="nav-item" href="#s09"><span class="nav-n">09</span><span class="nav-t">Communication Calendar</span></a>
-  <a class="nav-item" href="#s10"><span class="nav-n">10</span><span class="nav-t">Channel Guidance</span></a>
-  <a class="nav-item" href="#s11"><span class="nav-n">11</span><span class="nav-t">Competitor Communications</span></a>
-  <a class="nav-item" href="#s12"><span class="nav-n">12</span><span class="nav-t">Advertising Restrictions</span></a>
-  <a class="nav-item" href="#s13"><span class="nav-n">13</span><span class="nav-t">The Five Filters</span></a>
-  <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+
+  <!-- OVERVIEW -->
+  <div class="nav-group open" data-group="overview">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Overview</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
+      <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
+      <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
+      <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
+    </div>
+  </div>
+
+  <!-- BRAND VOICE -->
+  <div class="nav-group" data-group="voice">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Brand Voice</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
+      <a class="nav-item" href="#s05b"><span class="nav-n">05b</span><span class="nav-t">Do / Don't — Visual</span></a>
+      <a class="nav-item" href="#s06"><span class="nav-n">06</span><span class="nav-t">Communication Examples</span></a>
+    </div>
+  </div>
+
+  <!-- MARKETING & ACTIVATIONS -->
+  <div class="nav-group" data-group="marketing">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Marketing & Activations</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s07"><span class="nav-n">07</span><span class="nav-t">Ambassador Strategy</span></a>
+      <a class="nav-item" href="#s08"><span class="nav-n">08</span><span class="nav-t">Creative Activations</span></a>
+      <a class="nav-item" href="#s09"><span class="nav-n">09</span><span class="nav-t">Communication Calendar</span></a>
+      <a class="nav-item" href="#s10"><span class="nav-n">10</span><span class="nav-t">Channel Guidance</span></a>
+      <a class="nav-item" href="#s11"><span class="nav-n">11</span><span class="nav-t">Competitor Communications</span></a>
+      <a class="nav-item" href="#s12"><span class="nav-n">12</span><span class="nav-t">Advertising Restrictions</span></a>
+    </div>
+  </div>
+
+  <!-- QUALITY CONTROL -->
+  <div class="nav-group" data-group="quality">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Quality Control</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s13"><span class="nav-n">13</span><span class="nav-t">The Five Filters</span></a>
+      <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+    </div>
+  </div>
+
+  <!-- DESIGN KIT -->
+  <div class="nav-group" data-group="designkit">
+    <a class="nav-item" href="#designkit" style="padding:10px 24px;">
+      <span class="nav-group-title" style="display:inline;">Design Kit</span>
+      <span class="nav-tbd">TBD</span>
+    </a>
+  </div>
 </nav>
 
 <!-- ── MAIN CONTENT ─────────────────────────────────── -->
@@ -1045,42 +1139,6 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
     <strong>Phase 2 (expat remittance product):</strong> Add Urdu. One language that opens two of the largest corridors — Pakistani (~1.5M, $5B) and a significant portion of the Indian (Urdu-speaking Muslims are the largest single segment among Indian blue-collar workers). One language, $13–15B corridor.<br>
     <strong>Phase 3 (scaling):</strong> Bengali and Hindi as the product grows. Amharic only if the Ethiopian corridor becomes a strategic priority.<br><br>
     <strong>A cost-effective accelerator:</strong> full app localization in 4+ languages is expensive. But marketing campaigns in corridor languages — with the app remaining in Arabic + English — deliver 80% of the emotional effect at a fraction of the cost. A Snapchat ad in Urdu costs the same as one in Arabic but communicates something fundamentally different: <em>"we made this for you."</em> This tactic can and should launch ahead of full product localization.
-  </div>
-
-  <h2 class="sub" style="margin-top:36px;">Where Do You Start?</h2>
-  <p>Depending on what you're working on right now — jump straight to the section that helps most:</p>
-
-  <div class="scenario-grid">
-    <a class="scenario-btn" href="#s01" onclick="smoothNav(event,'s01')">
-      <span class="sc-icon">🕌</span>
-      <span class="sc-title">Dive into the market</span>
-      <span class="sc-desc">Audience, values, cultural context — everything you need to understand Saudi Arabia</span>
-    </a>
-    <a class="scenario-btn" href="#s05" onclick="smoothNav(event,'s05')">
-      <span class="sc-icon">✍️</span>
-      <span class="sc-title">Write copy</span>
-      <span class="sc-desc">Tone of voice, Do/Don't, communication examples and templates</span>
-    </a>
-    <a class="scenario-btn" href="#s09" onclick="smoothNav(event,'s09')">
-      <span class="sc-icon">📡</span>
-      <span class="sc-title">Plan a campaign</span>
-      <span class="sc-desc">Calendar, channels, ambassadors, seasonal activations</span>
-    </a>
-    <a class="scenario-btn" href="#s11" onclick="smoothNav(event,'s11')">
-      <span class="sc-icon">⚔️</span>
-      <span class="sc-title">Know the competition</span>
-      <span class="sc-desc">Al Rajhi, STC Bank, Tabby, Tamara, D360, Urpay — how they sound, how we don't</span>
-    </a>
-    <a class="scenario-btn" href="#s13" onclick="smoothNav(event,'s13')">
-      <span class="sc-icon">✅</span>
-      <span class="sc-title">Review before launch</span>
-      <span class="sc-desc">Five Filters checklist — every creative must pass all five</span>
-    </a>
-    <a class="scenario-btn" href="#s08" onclick="smoothNav(event,'s08')">
-      <span class="sc-icon">💡</span>
-      <span class="sc-title">Get activation ideas</span>
-      <span class="sc-desc">Ready-made creative concepts tied to Saudi cultural moments</span>
-    </a>
   </div>
 </div>
 
@@ -1382,9 +1440,9 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
     </div>
     <div class="dd-col dont-col">
       <div class="dd-hdr dont">✗ Don't — Avoid This at All Costs</div>
-      <div class="dd-i"><strong>Use interest-based language.</strong> Riba is religiously prohibited and culturally loaded. Never use "interest rate." Strategic note on "interest-free": avoiding it is a brand best practice (it still centres the concept of riba in the consumer's mind), but it is not a regulatory prohibition — many Islamic institutions do use "interest-free" in communications. For Skyro, we recommend framing around what Islamic finance IS (profit-sharing, asset-backed) rather than what it is NOT.</div>
+      <div class="dd-i"><strong>Use interest-based language.</strong> Riba is religiously prohibited and culturally loaded. Never use "interest rate" or "interest-free" — even negatively framed ("zero interest") still invokes the prohibited concept. This is non-negotiable.</div>
       <div class="dd-i"><strong>Show or encourage israf (wasteful spending).</strong> Israf — extravagant, thoughtless consumption — is prohibited in Islamic culture and carries social stigma in Saudi Arabia. Even in Celebration-oriented communications, spending must be shown as intentional and purposeful, never reckless.</div>
-      <div class="dd-i"><strong>Include any gambling or chance-based mechanics.</strong> Maysir (gambling) is prohibited under Shariah and Saudi criminal law (fines SAR 100K-400K). No spin-to-win wheels, no lotteries, no "lucky draw" promotions, no random-reward gamification. Important nuance: gamification as such is not prohibited — progress bars, achievement badges, and loyalty points are permissible. What's prohibited is specifically chance-based reward mechanics (outcomes determined by randomness). If a mechanic could be interpreted as maysir by a conservative user, it must be removed.</div>
+      <div class="dd-i"><strong>Include any gambling or chance-based mechanics.</strong> Maysir (gambling) is a major taboo. No spin-to-win wheels, no lotteries, no "lucky draw" promotions, no random-reward gamification. If a mechanic could be interpreted as maysir by a conservative user, it must be removed.</div>
       <div class="dd-i"><strong>Expose financial vulnerability.</strong> Izzah means that any communication implying the user is struggling will be felt as a violation of dignity. Late payment reminders must be private, specific, and solution-oriented.</div>
       <div class="dd-i"><strong>Allow hidden fees or unclear conditions.</strong> In Saudi Arabia, hidden fees are perceived as khida (deception). The cultural reaction to discovering an undisclosed fee is not annoyance but betrayal. Every cost, every condition, every obligation must be visible before commitment. There is no second chance.</div>
       <div class="dd-i"><strong>Commoditize remittance.</strong> Never show expat remittance as a neutral financial transfer without acknowledging the human reality behind it.</div>
@@ -1776,51 +1834,43 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
   </div>
 
   <div class="competitor-card">
-    <h4>Al Rajhi Bank — The Institutional Giant Modernizing</h4>
-    <div class="comp-msg">"Unbank the Bank" (ما بعد المصرفية) — brand platform since 2021. Three values: Prosperity, Ease, Value.</div>
-    <p>19M+ customers. $278B assets (SAR 1,043B). Deep green palette with gold. Ramadan campaigns remain the gold standard ("The Blue Bank" — 30M views). Urpay (6.5M users) serves as the expat digital wallet via Neoleap subsidiary. Tahweel Al Rajhi (230+ centres) handles remittances to 50 countries. Gamers Card (+1,295% issuance), Blue Week on X, Mokafaa loyalty (14.7M members) demonstrate active modernization.</p>
-    <p><strong>The gap:</strong> Al Rajhi can be fun (Blue Week, Gamers Card) but can't be personal at 19M-customer scale. Expats are served functionally (Urpay, Tahweel, Western Union partnership) but are not included in the emotional brand narrative — they are users of remittance infrastructure, not characters in the Al Rajhi story. The gap between declared "Unbank the Bank" tone and institutional DNA is narrowing but real.</p>
-    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Where Al Rajhi is institutional trying to be modern, Skyro is personal by design. Where Al Rajhi serves expats as a utility segment, Skyro includes them in the brand story. Al Rajhi addresses the institution's customer — Skyro addresses the person.</div>
+    <h4>Al Rajhi Bank — The Heritage Islamic Powerhouse</h4>
+    <div class="comp-msg">"Your Islamic bank — always."</div>
+    <p>14M+ customers. $200B+ assets. Deep green palette with gold. Ramadan campaigns are the gold standard. Neoleap sub-brand attempts youth relevance but feels like an afterthought.</p>
+    <p><strong>The gap:</strong> Trusted, not loved by young Saudis. Perceived as "for Saudi nationals." Legacy culture coexists with digital ambition. Scale creates formality.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Where Al Rajhi speaks from heritage, Skyro speaks from now. Where Al Rajhi addresses the institution's customer, Skyro addresses the person.</div>
   </div>
 
   <div class="competitor-card">
-    <h4>STC Bank — The Telecom Transitioning to Bank</h4>
-    <div class="comp-msg">"Transform your banking solutions" — tagline reads as B2B copy, not consumer brand.</div>
-    <p>12M+ users. Full SAMA banking license January 2025 (not 2023). STC royal blue. 27M+ stc mobile subscribers as distribution base. One standout cultural win: Digital Eidiyah — P2P transfers repackaged as digital gift envelopes (500K transfers in 3 days, 400% above target). Instagram: 104K followers, predominantly product-focused content.</p>
-    <p><strong>The gap:</strong> Telecom brand DNA persists — feature-driven, functional tone. Digital Eidiyah proved ability for cultural innovation, but it's one campaign, not a system. No systematic emotional warmth. Social media uses Saudi dialect but without distinctive personality.</p>
-    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro arrives as what it is. STC Bank has one cultural win (Eidiyah) and a hundred functional posts. Skyro builds emotional consistency into every touchpoint — not just seasonal moments.</div>
+    <h4>STC Bank — The Telecom Transitioning</h4>
+    <div class="comp-msg">"Your digital bank, beyond payments."</div>
+    <p>STC royal blue. Telecom distribution advantage. Strong expat remittance product. But "bills app" baggage persists.</p>
+    <p><strong>The gap:</strong> Must overcome telecom utility perception. Feels like it's becoming something rather than being something. Expat product is strong on function, weak on emotion.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro arrives as what it is. Where STC Bank says "beyond payments," Skyro says "built for your life."</div>
   </div>
 
   <div class="competitor-card">
-    <h4>Tabby — The BNPL Platform Evolving into Financial Services</h4>
-    <div class="comp-msg">"Pace your payments" / "قسّم دفعاتك على الرايق" (Saudi dialect) — evolved from "Shop Smarter."</div>
-    <p>Purple palette. 15M+ users. $4.5B valuation (Oct 2025). HQ relocated from Dubai to Riyadh. IPO on Tadawul in preparation. Acquired Tweeq digital wallet (Sep 2024) — first step toward banking. Tabby Card (digital Visa, 10K AED limit), Tabby+ subscription (49 AED/mo), 40,000+ merchants. Anti-credit-card positioning: "traditional cards charge 30-40% APR." Tone: casual, lifestyle-brand, Saudi dialect in copywriting.</p>
-    <p><strong>The gap:</strong> Evolving from shopping companion to financial platform, but no banking/savings products launched yet despite Tweeq acquisition. Core brand still anchored to shopping moments. Casual lifestyle tone — strong with Gen Z, less credible for serious financial decisions. Window closing: 12-18 months before Tabby fills its own gap.</p>
-    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro's relationship does not end at checkout. Where Tabby owns the shopping moment and is racing toward financial services, Skyro is built as a financial life partner from day one — not retrofitted from a payments product.</div>
+    <h4>Tabby — The BNPL Champion</h4>
+    <div class="comp-msg">"Shop smarter."</div>
+    <p>Purple palette. 10M users. Precise cultural insight: reframe credit as smart shopping. Playfulness at 90/100.</p>
+    <p><strong>The gap:</strong> Shopping companion, not life partner. No deposit products. No banking. Trust still lower than traditional institutions.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro's relationship does not end at checkout. Where Tabby owns the shopping moment, Skyro owns the financial life that surrounds it.</div>
   </div>
 
   <div class="competitor-card">
-    <h4>D360 Bank — The Mass-Market Disruptor with Premium Skin</h4>
-    <div class="comp-msg">"A bank with you in mind." Vision: "Accessible & fair to all."</div>
-    <p>Dark charcoal palette with gold — looks premium, acts mass-market. 1M+ customers in 4 months (record for Saudi digital bank). PIF-backed (not Kingdom Holding). Sanabil savings account (up to 6% promo rate). Zero-fee travel banking ("best travel bank"). Thmanyah partnership — exclusive banking sponsor of Saudi Pro League broadcasts. Promo codes (SAUDI95, SM26). App 3.9/5 — lower than competitors, complaints about account freezes and transfer limits.</p>
-    <p><strong>The gap:</strong> No emotional depth — performance marketing (promo codes, rate comparisons), not storytelling. Tech-forward but culturally shallow. Operational trust deficit: account freezes, 5K SAR/day transfer limits, poor customer service. Says "a bank with you in mind" but doesn't demonstrate cultural understanding beyond functional features. Football sponsorship secures entertainment territory but isn't translating into brand warmth.</p>
-    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Where D360 says "a bank with you in mind" through promo codes, Skyro demonstrates understanding through cultural fluency. Where D360 is tech-forward without roots, Skyro is rooted in Saudi rhythms — prayers, Ramadan, Hajj, Eid — and expat realities.</div>
+    <h4>D360 Bank — The Digital Native</h4>
+    <div class="comp-msg">"Banking without walls."</div>
+    <p>Dark charcoal palette. Premium. AI-first. Innovation 95/100. Most distinctive identity in the market.</p>
+    <p><strong>The gap:</strong> Trust from zero. Premium risks alienating mass market and expats. Innovation is a positioning, not yet a relationship.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro's innovation serves people, not brand identity. Where D360 says "banking without walls," Skyro says "banking that knows your walls — the ones you live inside, the ones you're building."</div>
   </div>
 
   <div class="competitor-card">
-    <h4>Tamara — The Saudi-First BNPL Unicorn</h4>
-    <div class="comp-msg">Saudi-born. 20M+ users. First SAMA-licensed BNPL. $2.4B Shariah-compliant financing (Goldman Sachs, Citi, Apollo).</div>
-    <p>Teal-green palette — warmer than Tabby's purple, more locally grounded. 30,000+ merchants. Tamara Card (physical + virtual). Voluntary SIMAH credit reporting — building credit infrastructure, not just processing payments. Saudi dialect copywriting more consistently Saudi than Tabby's GCC-neutral approach. SNB Capital backing provides banking-channel distribution.</p>
-    <p><strong>The gap:</strong> Product differentiation from Tabby remains thin — both offer split payments. Brand personality is warmer than Tabby but less distinctive. Trails Tabby in ecosystem ambition (no wallet acquisition, no IPO pipeline). Lower visibility outside KSA.</p>
-    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Where both Tabby and Tamara own the purchase moment, Skyro owns the financial life before and after the purchase — the saving, the planning, the sending home, the growing.</div>
-  </div>
-
-  <div class="competitor-card">
-    <h4>Urpay — The Expat Utility Without a Soul</h4>
-    <div class="comp-msg">"A digital wallet for all your needs." — maximally generic tagline.</div>
-    <p>Conservative blue. Owned by Al Rajhi Bank (via Neoleap) — not ANB as sometimes misattributed. 6.5M+ users. 140+ countries via MoneyGram, Western Union (Feb 2025 partnership), Ria, Tahweel Al Rajhi. 1% cashback. App 4.7/5 (10,671 reviews) — high satisfaction driven by utility, not brand love. Arabic + English only: no Urdu, Hindi, Bengali, or Tagalog despite 80%+ expat user base.</p>
-    <p><strong>The gap:</strong> Zero brand personality — generic feature-list messaging, no storytelling, no cultural resonance. Critical language gap: not localized in any expat native language. Family wallet limited to one parent. Despite 6.5M users and Al Rajhi infrastructure behind it, there is no emotional brand — just a pipe.</p>
-    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro speaks to expat workers as people, not as salary-receivers. In their language — literally. About their families. With dignity. Urpay has Al Rajhi's infrastructure. Skyro has what infrastructure can't buy: a voice that sees you.</div>
+    <h4>Urpay — The Expat Utility</h4>
+    <div class="comp-msg">"Send home, simply."</div>
+    <p>Conservative blue. Zero brand personality. 1.5M users from 13.4M market. Pure utility.</p>
+    <p><strong>The gap:</strong> Everything. No brand equity. No emotional connection. No loyalty. The most vulnerable incumbent.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro speaks to expat workers as people, not as salary-receivers. In their language. About their families. Urpay is a pipe. Skyro is a partner.</div>
   </div>
 
   <h2 class="sub">What the Competitive Landscape Reveals — Skyro's White Space</h2>
@@ -1829,18 +1879,17 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
     <table class="tbl">
       <thead><tr><th>Brand</th><th>Owns</th><th>Leaves Open</th></tr></thead>
       <tbody>
-        <tr><td>Al Rajhi</td><td>Heritage trust, Shariah credibility, "Unbank the Bank" platform, 19M+ base</td><td>Personal warmth (not institutional warmth), expat emotional inclusion, intimacy at scale</td></tr>
-        <tr><td>STC Bank</td><td>Telecom distribution, 12M+ users, full bank license</td><td>Systematic emotional warmth (one cultural win isn't a system), brand identity beyond telco DNA</td></tr>
-        <tr><td>Tabby</td><td>BNPL category, 15M+ users, $4.5B, evolving financial control frame</td><td>Full financial life beyond checkout, banking/savings, credibility for serious decisions</td></tr>
-        <tr><td>Tamara</td><td>Saudi-first BNPL, 20M+ users, first SAMA license, SIMAH reporting</td><td>Life beyond purchases, ecosystem ambition, international expansion</td></tr>
-        <tr><td>D360</td><td>Mass-market digital bank, PIF backing, 1M in 4 months, travel banking</td><td>Cultural rootedness, emotional depth, operational trust, storytelling</td></tr>
-        <tr><td>Urpay</td><td>Al Rajhi infrastructure, 6.5M users, 140+ country transfers</td><td>Brand personality, language localization, dignity, emotional connection</td></tr>
+        <tr><td>Al Rajhi</td><td>Heritage trust, Shariah credibility</td><td>Youth warmth, expat inclusion, digital-native experience</td></tr>
+        <tr><td>STC Bank</td><td>Telecom distribution, digital infrastructure</td><td>Emotional connection, brand identity beyond transition</td></tr>
+        <tr><td>Tabby</td><td>Shopping moment, BNPL category</td><td>Full financial life, banking, savings, remittance</td></tr>
+        <tr><td>D360</td><td>Innovation, premium digital identity</td><td>Mass-market relevance, warmth, expat population</td></tr>
+        <tr><td>Urpay</td><td>Expat captive utility</td><td>Everything — brand, experience, dignity, ambition</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="call big">
-    The white space Skyro can own: <strong>the brand that actually gets how people here live.</strong> Warm without being heritage-dependent. Shariah-compliant without being institutional. Modern without being cold. Present in Saudi life — in its prayer rhythms, its Ramadan transformation, its Eid joy — and present in expat life — in its languages, its family sacrifices, its quiet hopes. Not smarter than the competition. Just closer. The kind of brand people describe as "ours" — because it speaks like it belongs here.
+    The white space Skyro can own: <strong>genuine cultural intelligence that serves everyone on this market.</strong> A brand that is warm without being heritage-dependent. Shariah-compliant without being institutional. Modern without being cold. Present in Saudi life — in its rhythms, its faith, its transformation — and present in expat life — in its languages, its sacrifices, its hopes — in a way that no competitor has yet managed to be consistently, structurally, and across every touchpoint.
   </div>
 </div>
 
@@ -1852,7 +1901,7 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
   </div>
 
   <h2 class="sub">Financial Advertising Regulations (SAMA)</h2>
-  <p>All advertised profit rates, fees, and charges must be accurate, current, and not misleading (per SAMA Rules for Advertising Products and Services). Shariah compliance requires each institution to maintain its own internal Shariah board under the SAMA Shariah Governance Framework — AAOIFI standards are a voluntary best-practice benchmark, not a mandatory certification in Saudi Arabia. Any promotional rate must clearly state its duration. BNPL advertising must comply with the 2023 BNPL Regulatory Framework (Decision No. 450360390000) — minimum capital SAR 5M, maximum financing SAR 5,000 per consumer, Saudization requirements (50% initially, rising to 75%). Note: SIMAH reporting for BNPL is directionally expected but not yet mandatory — some providers (Tamara) report voluntarily. Comparative advertising is legally permissible but culturally risky.</p>
+  <p>All advertised profit rates, fees, and charges must be accurate, current, and not misleading. Shariah compliance claims must be backed by AAOIFI-certified Shariah board review. Any promotional rate must clearly state its duration. BNPL advertising must comply with the 2023 BNPL Regulatory Framework — including clear disclosure of total cost, repayment obligations, and SIMAH reporting consequences. Comparative advertising is legally permissible but culturally risky.</p>
 
   <h2 class="sub">Religious Considerations</h2>
   <p>Saudi Arabia is governed by Islamic law. 100% of banking products must be Shariah-compliant. Financial advertising must never use interest-based language. Products must use Islamic finance terminology. Ramadan advertising requires particular sensitivity during fasting hours. Zakat and sadaqah references must be handled with genuine understanding. Hajj-related advertising must never trivialize or commercialize the pilgrimage.</p>
@@ -1861,7 +1910,7 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
   <p>Saudi Arabia requires strict neutrality in commercial communications. All communication must respect the Saudi leadership and Vision 2030 without crossing into political commentary. Ambassador partnerships must be vetted for political associations.</p>
 
   <h2 class="sub">Gender and Representation</h2>
-  <p>Following the 2017-2019 guardianship reforms (2017: royal decree limiting guardian requirements for government services; 2018: right to drive; August 2019: right to passport and independent travel without guardian), Saudi women are legally able to open accounts, access financial products, and conduct business independently. By Global Findex 2021, 63.5% of Saudi women held bank accounts; the number has grown significantly since. Skyro communications should reflect this naturally. Show Saudi women in professional and financial contexts as a default. Avoid framing that implies women need male permission. Gender-mixed visual content has become normalized under Vision 2030 — follow the lead of successful Saudi brands.</p>
+  <p>Post-2018 guardianship reforms, Saudi women are legally able to open accounts, access financial products, and conduct business independently. Skyro communications should reflect this naturally. Show Saudi women in professional and financial contexts as a default. Avoid framing that implies women need male permission. Gender-mixed visual content has become normalized under Vision 2030 — follow the lead of successful Saudi brands.</p>
 
   <h2 class="sub">Sensitive Language and Terminology</h2>
 
@@ -1932,6 +1981,21 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
 </div>
 
 <!-- ════════ CLOSING ════════ -->
+<!-- ════════ DESIGN KIT (TBD) ════════ -->
+<div class="sec" id="designkit">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Design Kit</h1>
+  </div>
+
+  <div class="tbd-placeholder">
+    <div class="tbd-icon">🎨</div>
+    <h3>Coming Soon</h3>
+    <p>Visual assets, templates, colour palettes, and typography guidelines for the Saudi market will be added here.<br>This section is currently under development by the design team.</p>
+  </div>
+</div>
+
+<!-- ════════ CLOSING ════════ -->
 <div class="sec" id="closing">
   <div class="sec-header">
     <span class="sec-num">—</span>
@@ -1965,18 +2029,6 @@ table.tbl td:first-child { font-weight: 600; color: var(--forest); }
      JAVASCRIPT
      ════════════════════════════════════════════════════ -->
 <script>
-// ── Smooth scroll helper (for scenario buttons) ──
-function smoothNav(e, id) {
-  e.preventDefault();
-  var target = document.getElementById(id);
-  if (target) {
-    document.getElementById('main').scrollTo({
-      top: target.offsetTop - 40,
-      behavior: 'smooth'
-    });
-  }
-}
-
 // ── Accordion ──
 function toggleAcc(header) {
   const item = header.parentElement;
@@ -1992,19 +2044,32 @@ function toggleAcc(header) {
   }
 }
 
+// ── Nav group toggle ──
+function toggleNavGroup(header) {
+  const group = header.parentElement;
+  group.classList.toggle('open');
+}
+
 // ── Observers ──
 (function() {
   const mainEl = document.getElementById('main');
   const sections = mainEl.querySelectorAll('.sec[id]');
   const navItems = document.querySelectorAll('.nav-item');
 
-  // Active nav highlighting
+  // Active nav highlighting + auto-open parent group
   const navObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
         navItems.forEach(n => {
-          n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+          const isActive = n.getAttribute('href') === '#' + id;
+          n.classList.toggle('active', isActive);
+          if (isActive) {
+            const group = n.closest('.nav-group');
+            if (group && !group.classList.contains('open')) {
+              group.classList.add('open');
+            }
+          }
         });
       }
     });
