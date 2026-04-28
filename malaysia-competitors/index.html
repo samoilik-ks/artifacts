@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Malaysia Competitors — Brand Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --ink: #111;
+    --muted: #6b6b6b;
+    --line: #e2e0d8;
+    --accent: #111;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== Top Bar ===== */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .topbar .title { font-weight: 600; }
+  .topbar nav a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 18px;
+    transition: color .15s;
+  }
+  .topbar nav a:hover { color: var(--ink); }
+
+  /* ===== Brand Section ===== */
+  .brand {
+    min-height: 100vh;
+    padding: 56px 32px 80px;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 40px;
+  }
+
+  .brand-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 24px;
+  }
+  .brand-header .index {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .brand-header .name {
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    flex: 1;
+    margin: 0 32px;
+  }
+  .brand-header .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .brand-header .url:hover { color: var(--ink); text-decoration: underline; }
+
+  .brand-body {
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  /* ===== Left column: brand info ===== */
+  .info { display: flex; flex-direction: column; gap: 28px; }
+  .info .overview {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .info .meta-block {
+    display: flex; flex-direction: column; gap: 6px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .info .meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .info .meta-value {
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .info .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .info .pill {
+    font-size: 12px;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    background: #fff;
+  }
+  .info .font-sample {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .info .font-sample small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== Right column: creatives mosaic (CSS columns) ===== */
+  .creatives {
+    column-count: 3;
+    column-gap: 12px;
+  }
+  .creative {
+    position: relative;
+    display: block;
+    margin: 0 0 12px 0;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: zoom-in;
+    transition: transform .2s ease;
+  }
+  .creative:hover { transform: translateY(-2px); }
+  .creative img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .creative .caption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 8px 10px 10px;
+    font-size: 10px;
+    line-height: 1.3;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .creative:hover .caption { opacity: 1; }
+
+  /* ===== Lightbox ===== */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 100;
+    padding: 40px;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  .lightbox .lb-caption {
+    position: absolute;
+    bottom: 24px; left: 50%; transform: translateX(-50%);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    background: rgba(0,0,0,0.6);
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+  .lightbox .lb-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    color: #fff;
+    background: none; border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    width: 40px; height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 960px) {
+    .brand-body { grid-template-columns: 1fr; gap: 40px; }
+    .creatives { column-count: 2; }
+    .brand-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .brand-header .name { margin: 0; }
+  }
+  @media (max-width: 560px) {
+    .brand { padding: 40px 20px 60px; }
+    .topbar { padding: 12px 20px; flex-wrap: wrap; gap: 8px; }
+    .topbar nav a { margin-left: 0; margin-right: 14px; }
+    .creatives { column-count: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="title">Malaysia Competitors</div>
+  <nav>
+    <a href="#maybank">01 Maybank</a>
+    <a href="#touch-n-go">02 Touch ’n Go</a>
+    <a href="#gxbank">03 GXBank</a>
+    <a href="#boost-bank">04 Boost Bank</a>
+    <a href="#aeon-bank">05 AEON Bank</a>
+    <a href="#cimb">06 CIMB</a>
+    <a href="#bigpay">07 BigPay</a>
+    <a href="#grab">08 Grab</a>
+  </nav>
+</header>
+
+<!-- ============ 01 / MAYBANK ============ -->
+<section class="brand" id="maybank">
+  <div class="brand-header">
+    <span class="index">01 / 08</span>
+    <h2 class="name">Maybank</h2>
+    <a class="url" href="https://www.maybank.com/en/index.page" target="_blank" rel="noopener">maybank.com ↗</a>
+  </div>
+
+  <div class="brand-body">
+    <aside class="info">
+      <p class="overview">Maybank (Malayan Banking Berhad) is a leading financial services group in Southeast Asia offering solutions including consumer, corporate, and Islamic banking. Established in 1960, the bank is dedicated to humanising financial services by providing accessible, intuitive facilities that empower communities and support regional growth across the ASEAN region.</p>
+
+      <div class="meta-block">
+        <span class="meta-label">Brand values</span>
+        <div class="pill-row">
+          <span class="pill">Humanising Financial Services</span>
+          <span class="pill">Sustainability</span>
+          <span class="pill">Inclusivity</span>
+          <span class="pill">TIGER Core Values</span>
+          <span class="pill">Empowering Communities</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Tone of voice</span>
+        <div class="pill-row">
+          <span class="pill">Professional</span>
+          <span class="pill">Trustworthy</span>
+          <span class="pill">Mission-driven</span>
+          <span class="pill">Community-focused</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Visual aesthetics</span>
+        <div class="pill-row">
+          <span class="pill">Humanising</span>
+          <span class="pill">Bold</span>
+          <span class="pill">Community-centric</span>
+          <span class="pill">Cinematic</span>
+          <span class="pill">Professional</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <div class="creatives">
+      <figure class="creative" data-title="The Tiger by Your Side — Putra Brand Awards 2025">
+        <img src="assets/maybank/01-tiger-by-your-side.png" alt="The Tiger by Your Side — Putra Brand Awards 2025">
+        <figcaption class="caption">The Tiger by Your Side — Putra Brand Awards 2025</figcaption>
+      </figure>
+      <figure class="creative" data-title="Idea Barang Hantaran Terpaling Green Flag">
+        <img src="assets/maybank/02-green-flag-cat.png" alt="Idea Barang Hantaran Terpaling Green Flag">
+        <figcaption class="caption">Idea Barang Hantaran Terpaling Green Flag</figcaption>
+      </figure>
+      <figure class="creative" data-title="8% Cash Back on Wellness — myimpact Card">
+        <img src="assets/maybank/03-cashback-wellness.png" alt="8% Cash Back on Wellness — myimpact Card">
+        <figcaption class="caption">8% Cash Back on Wellness — myimpact Card</figcaption>
+      </figure>
+      <figure class="creative" data-title="TIME World’s Best Companies 2025">
+        <img src="assets/maybank/04-times-best-companies.png" alt="TIME World’s Best Companies 2025">
+        <figcaption class="caption">TIME World’s Best Companies 2025</figcaption>
+      </figure>
+      <figure class="creative" data-title="Live Your Stripes">
+        <img src="assets/maybank/05-live-your-stripes.png" alt="Live Your Stripes">
+        <figcaption class="caption">Live Your Stripes</figcaption>
+      </figure>
+      <figure class="creative" data-title="Empowering Hopes, Realising Dreams">
+        <img src="assets/maybank/06-empowering-hopes.png" alt="Empowering Hopes, Realising Dreams">
+        <figcaption class="caption">Empowering Hopes, Realising Dreams</figcaption>
+      </figure>
+      <figure class="creative" data-title="Hear the Roar of Our Community">
+        <img src="assets/maybank/07-hear-the-roar.png" alt="Hear the Roar of Our Community">
+        <figcaption class="caption">Hear the Roar of Our Community</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 / TOUCH 'N GO ============ -->
+<section class="brand" id="touch-n-go">
+  <div class="brand-header">
+    <span class="index">02 / 08</span>
+    <h2 class="name">Touch ’n Go</h2>
+    <a class="url" href="https://www.touchngo.com.my/ewallet/" target="_blank" rel="noopener">touchngo.com.my ↗</a>
+  </div>
+
+  <div class="brand-body">
+    <aside class="info">
+      <p class="overview">Touch ’n Go Group is Malaysia’s fintech leader providing a unified ecosystem for mobility, digital payments, and financial services. Through its eWallet and contactless solutions, the brand facilitates seamless daily transactions and promotes financial inclusion for millions of individuals and micro-SMEs across the nation.</p>
+
+      <div class="meta-block">
+        <span class="meta-label">Brand values</span>
+        <div class="pill-row">
+          <span class="pill">LEAP (Love · Entrepreneurship · Agility · Passion)</span>
+          <span class="pill">Financial &amp; Digital Inclusion</span>
+          <span class="pill">Innovation</span>
+          <span class="pill">Sustainability</span>
+          <span class="pill">Customer Centricity</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Tone of voice</span>
+        <div class="pill-row">
+          <span class="pill">Empowering</span>
+          <span class="pill">Secure</span>
+          <span class="pill">Innovative</span>
+          <span class="pill">Inclusive</span>
+          <span class="pill">Professional</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Visual aesthetics</span>
+        <div class="pill-row">
+          <span class="pill">Modern Fintech</span>
+          <span class="pill">Urban Mobility</span>
+          <span class="pill">Digital Empowerment</span>
+          <span class="pill">Vibrant Professionalism</span>
+          <span class="pill">Community-Centric Fintech</span>
+          <span class="pill">High-Contrast Modernity</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <div class="creatives">
+      <figure class="creative" data-title="Reload your card via NFC on phone">
+        <img src="assets/touch-n-go/01-reload-nfc.png" alt="Reload your card via NFC on phone">
+        <figcaption class="caption">Reload your card via NFC on phone</figcaption>
+      </figure>
+      <figure class="creative" data-title="What would you do? — fake APK warning">
+        <img src="assets/touch-n-go/02-fake-apk-warning.png" alt="What would you do? — fake APK warning">
+        <figcaption class="caption">What would you do? — fake APK warning</figcaption>
+      </figure>
+      <figure class="creative" data-title="Can you share the OTP? — never share">
+        <img src="assets/touch-n-go/03-otp-warning.png" alt="Can you share the OTP? — never share">
+        <figcaption class="caption">Can you share the OTP? — never share</figcaption>
+      </figure>
+      <figure class="creative" data-title="Year End Bonanza — free cat charm">
+        <img src="assets/touch-n-go/04-year-end-bonanza.png" alt="Year End Bonanza — free cat charm">
+        <figcaption class="caption">Year End Bonanza — free cat charm</figcaption>
+      </figure>
+      <figure class="creative" data-title="Enhanced Touch ’n Go Card">
+        <img src="assets/touch-n-go/05-enhanced-card.png" alt="Enhanced Touch ’n Go Card">
+        <figcaption class="caption">Enhanced Touch ’n Go Card</figcaption>
+      </figure>
+      <figure class="creative" data-title="Extendable Charm — Cat Edition">
+        <img src="assets/touch-n-go/06-extendable-charm.png" alt="Extendable Charm — Cat Edition">
+        <figcaption class="caption">Extendable Charm — Cat Edition</figcaption>
+      </figure>
+      <figure class="creative" data-title="New Shop, Who Dis? — Touch ’n Go Shop">
+        <img src="assets/touch-n-go/07-new-shop.png" alt="New Shop, Who Dis? — Touch ’n Go Shop">
+        <figcaption class="caption">New Shop, Who Dis? — Touch ’n Go Shop</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 / GXBANK ============ -->
+<section class="brand" id="gxbank">
+  <div class="brand-header">
+    <span class="index">03 / 08</span>
+    <h2 class="name">GXBank</h2>
+    <a class="url" href="https://gxbank.my/" target="_blank" rel="noopener">gxbank.my ↗</a>
+  </div>
+
+  <div class="brand-body">
+    <aside class="info">
+      <p class="overview">GXBank is a digital bank licensed by Bank Negara Malaysia that provides accessible financial services to over 1 million Malaysians. The bank offers personal and business accounts, daily interest savings, debit cards, and instant credit facilities through a secure mobile application protected by PIDM.</p>
+
+      <div class="meta-block">
+        <span class="meta-label">Brand values</span>
+        <div class="pill-row">
+          <span class="pill">Security</span>
+          <span class="pill">Transparency</span>
+          <span class="pill">Inclusion</span>
+          <span class="pill">Innovation</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Tone of voice</span>
+        <div class="pill-row">
+          <span class="pill">Professional</span>
+          <span class="pill">Reassuring</span>
+          <span class="pill">Accessible</span>
+          <span class="pill">Modern</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <div class="creatives">
+      <figure class="creative" data-title="Discover the bank in your pocket">
+        <img src="assets/gxbank/01-bank-in-your-pocket.png" alt="Discover the bank in your pocket">
+        <figcaption class="caption">Discover the bank in your pocket</figcaption>
+      </figure>
+      <figure class="creative" data-title="From RM7/day travel insurance">
+        <img src="assets/gxbank/02-rm7-travel-insurance.png" alt="From RM7/day travel insurance">
+        <figcaption class="caption">From RM7/day travel insurance</figcaption>
+      </figure>
+      <figure class="creative" data-title="Bonus Pocket — see what you love">
+        <img src="assets/gxbank/03-bonus-pocket.png" alt="Bonus Pocket — see what you love">
+        <figcaption class="caption">Bonus Pocket — see what you love</figcaption>
+      </figure>
+      <figure class="creative" data-title="Biz FlexiLoan for businesses">
+        <img src="assets/gxbank/04-biz-flexiloan.png" alt="Biz FlexiLoan for businesses">
+        <figcaption class="caption">Biz FlexiLoan for businesses</figcaption>
+      </figure>
+
+      <figure class="creative" data-title="Every Malaysian deserves a chance">
+        <img src="assets/gxbank/05-every-malaysian-deserves.png" alt="Every Malaysian deserves a chance">
+        <figcaption class="caption">Every Malaysian deserves a chance</figcaption>
+      </figure>
+      <figure class="creative" data-title="Powering 1 Million+ Malaysian Dreams">
+        <img src="assets/gxbank/06-1-million-dreams.png" alt="Powering 1 Million+ Malaysian Dreams">
+        <figcaption class="caption">Powering 1 Million+ Malaysian Dreams</figcaption>
+      </figure>
+      <figure class="creative" data-title="Up to RM225 referral reward">
+        <img src="assets/gxbank/07-rm225-referral.png" alt="Up to RM225 referral reward">
+        <figcaption class="caption">Up to RM225 referral reward</figcaption>
+      </figure>
+      <figure class="creative" data-title="Personal Banking — 4% p.a. savings">
+        <img src="assets/gxbank/08-personal-banking.png" alt="Personal Banking — 4% p.a. savings">
+        <figcaption class="caption">Personal Banking — 4% p.a. savings</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 / BOOST BANK ============ -->
+<section class="brand" id="boost-bank">
+  <div class="brand-header">
+    <span class="index">04 / 08</span>
+    <h2 class="name">Boost Bank</h2>
+    <a class="url" href="https://myboostbank.co/" target="_blank" rel="noopener">myboostbank.co ↗</a>
+  </div>
+
+  <div class="brand-body">
+    <aside class="info">
+      <p class="overview">Boost Bank is a primarily Malaysian-owned digital bank providing seamless financial solutions like high-interest savings accounts, debit cards, and SME financing. By integrating fintech innovation with banking wisdom, it aims to empower individuals and underserved businesses through inclusive, embedded digital banking experiences.</p>
+
+      <div class="meta-block">
+        <span class="meta-label">Brand values</span>
+        <div class="pill-row">
+          <span class="pill">Inclusion</span>
+          <span class="pill">Transparency</span>
+          <span class="pill">Innovation</span>
+          <span class="pill">Stability</span>
+          <span class="pill">Honesty</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Tone of voice</span>
+        <div class="pill-row">
+          <span class="pill">Human</span>
+          <span class="pill">Inspiring</span>
+          <span class="pill">Clear</span>
+          <span class="pill">Innovative</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Visual aesthetics</span>
+        <div class="pill-row">
+          <span class="pill">Digitally Seamless</span>
+          <span class="pill">Community-Focused</span>
+          <span class="pill">Vibrantly Inclusive</span>
+          <span class="pill">Warm Modernism</span>
+          <span class="pill">Lifestyle-Oriented</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="creatives">
+      <figure class="creative" data-title="RM10 Reward For You — Boost Bank Debit Card">
+        <img src="assets/boost-bank/01-rm10-reward.png" alt="RM10 Reward For You — Boost Bank Debit Card">
+        <figcaption class="caption">RM10 Reward For You — Boost Bank Debit Card</figcaption>
+      </figure>
+      <figure class="creative" data-title="2% Cashback All Day, Everyday">
+        <img src="assets/boost-bank/02-2-percent-cashback.png" alt="2% Cashback All Day, Everyday">
+        <figcaption class="caption">2% Cashback All Day, Everyday</figcaption>
+      </figure>
+      <figure class="creative" data-title="Earn High Daily Interest — Savings Jars">
+        <img src="assets/boost-bank/03-high-daily-interest-jars.png" alt="Earn High Daily Interest — Savings Jars">
+        <figcaption class="caption">Earn High Daily Interest — Savings Jars</figcaption>
+      </figure>
+      <figure class="creative" data-title="Bank Like You Never Have To — Partner Benefits">
+        <img src="assets/boost-bank/04-partner-benefits-app.png" alt="Bank Like You Never Have To — Partner Benefits">
+        <figcaption class="caption">Bank Like You Never Have To — Partner Benefits</figcaption>
+      </figure>
+      <figure class="creative" data-title="Bank Like You Never Have To — About Us">
+        <img src="assets/boost-bank/05-bank-like-you-never-have-to.png" alt="Bank Like You Never Have To — About Us">
+        <figcaption class="caption">Bank Like You Never Have To — About Us</figcaption>
+      </figure>
+      <figure class="creative" data-title="SME Financing — Fuel your business">
+        <img src="assets/boost-bank/06-sme-financing.png" alt="SME Financing — Fuel your business">
+        <figcaption class="caption">SME Financing — Fuel your business</figcaption>
+      </figure>
+      <figure class="creative" data-title="Kalau Nak Kena Scam, Jangan Update Phone">
+        <img src="assets/boost-bank/07-scam-update-phone.png" alt="Kalau Nak Kena Scam, Jangan Update Phone">
+        <figcaption class="caption">Kalau Nak Kena Scam, Jangan Update Phone</figcaption>
+      </figure>
+      <figure class="creative" data-title="61% of Malaysians can’t cover RM1,000 emergency">
+        <img src="assets/boost-bank/08-61-percent-emergency.png" alt="61% of Malaysians can’t cover RM1,000 emergency">
+        <figcaption class="caption">61% of Malaysians can’t cover RM1,000 emergency</figcaption>
+      </figure>
+      <figure class="creative" data-title="All you need to know about TravelProtect Lite">
+        <img src="assets/boost-bank/09-travel-protect-lite.png" alt="All you need to know about TravelProtect Lite">
+        <figcaption class="caption">All you need to know about TravelProtect Lite</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 / AEON BANK ============ -->
+<section class="brand" id="aeon-bank">
+  <div class="brand-header">
+    <span class="index">05 / 08</span>
+    <h2 class="name">AEON Bank</h2>
+    <a class="url" href="https://www.aeonbank.com.my/" target="_blank" rel="noopener">aeonbank.com.my ↗</a>
+  </div>
+
+  <div class="brand-body">
+    <aside class="info">
+      <p class="overview">AEON Bank is Malaysia’s first digital Islamic bank, offering a full suite of Shariah-compliant financial products for personal and business customers. As part of the AEON Group, it provides 100% digital banking services including savings accounts, financing, and insurance, integrated with a nationwide retail ecosystem and gamified rewards.</p>
+
+      <div class="meta-block">
+        <span class="meta-label">Brand values</span>
+        <div class="pill-row">
+          <span class="pill">Shariah-compliance</span>
+          <span class="pill">Financial Inclusion</span>
+          <span class="pill">Community Empowerment</span>
+          <span class="pill">Continuous Innovation</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Tone of voice</span>
+        <div class="pill-row">
+          <span class="pill">Modern</span>
+          <span class="pill">Supportive</span>
+          <span class="pill">Secure</span>
+          <span class="pill">Accessible</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Visual aesthetics</span>
+        <div class="pill-row">
+          <span class="pill">Modern</span>
+          <span class="pill">Digital-First</span>
+          <span class="pill">Clean</span>
+          <span class="pill">Human-Centric</span>
+          <span class="pill">Minimalist</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="creatives">
+      <figure class="creative" data-title="Licensed and regulated by Bank Negara Malaysia">
+        <img src="assets/aeon-bank/01-licensed-bnm.png" alt="Licensed and regulated by Bank Negara Malaysia">
+        <figcaption class="caption">Licensed and regulated by Bank Negara Malaysia</figcaption>
+      </figure>
+      <figure class="creative" data-title="SURI × AEON Bank — SRI Program">
+        <img src="assets/aeon-bank/02-sri-program.png" alt="SURI × AEON Bank — SRI Program">
+        <figcaption class="caption">SURI × AEON Bank — SRI Program</figcaption>
+      </figure>
+      <figure class="creative" data-title="Welcome to Better Banking — RM1 to begin">
+        <img src="assets/aeon-bank/03-welcome-better-banking.png" alt="Welcome to Better Banking — RM1 to begin">
+        <figcaption class="caption">Welcome to Better Banking — RM1 to begin</figcaption>
+      </figure>
+      <figure class="creative" data-title="e-Duit Raya — digital kan ada">
+        <img src="assets/aeon-bank/04-e-duit-raya.png" alt="e-Duit Raya — digital kan ada">
+        <figcaption class="caption">e-Duit Raya — digital kan ada</figcaption>
+      </figure>
+      <figure class="creative" data-title="Niat Di Hati, Budi Terpateri">
+        <img src="assets/aeon-bank/05-niat-di-hati.png" alt="Niat Di Hati, Budi Terpateri">
+        <figcaption class="caption">Niat Di Hati, Budi Terpateri</figcaption>
+      </figure>
+      <figure class="creative" data-title="Bayar Zakat Fitrah melalui aplikasi AEON Bank">
+        <img src="assets/aeon-bank/06-bayar-zakat.png" alt="Bayar Zakat Fitrah melalui aplikasi AEON Bank">
+        <figcaption class="caption">Bayar Zakat Fitrah melalui aplikasi AEON Bank</figcaption>
+      </figure>
+      <figure class="creative" data-title="Last Chance to Claim — RM100+ in rewards">
+        <img src="assets/aeon-bank/07-rm100-rewards.png" alt="Last Chance to Claim — RM100+ in rewards">
+        <figcaption class="caption">Last Chance to Claim — RM100+ in rewards</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 / CIMB ============ -->
+<section class="brand" id="cimb">
+  <div class="brand-header">
+    <span class="index">06 / 08</span>
+    <h2 class="name">CIMB</h2>
+    <a class="url" href="https://www.cimb.com.my/en/personal/home.html" target="_blank" rel="noopener">cimb.com.my ↗</a>
+  </div>
+
+  <div class="brand-body">
+    <aside class="info">
+      <p class="overview">CIMB is a leading ASEAN financial services provider that offers a comprehensive suite of personal and business banking, Islamic finance, and investment solutions. The group is dedicated to driving financial inclusion and sustainable growth through digital-first tools like the OCTO app and specialized Shariah-compliant products.</p>
+
+      <div class="meta-block">
+        <span class="meta-label">Brand values</span>
+        <div class="pill-row">
+          <span class="pill">Sustainability</span>
+          <span class="pill">Financial Inclusion</span>
+          <span class="pill">Shariah-compliance</span>
+          <span class="pill">Community Empowerment</span>
+          <span class="pill">Security &amp; Fraud Awareness</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Tone of voice</span>
+        <div class="pill-row">
+          <span class="pill">Professional</span>
+          <span class="pill">Helpful</span>
+          <span class="pill">Empowering</span>
+          <span class="pill">Reliable</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Visual aesthetics</span>
+        <div class="pill-row">
+          <span class="pill">Professional</span>
+          <span class="pill">Secure</span>
+          <span class="pill">Forward-Thinking</span>
+          <span class="pill">Community-Centric</span>
+          <span class="pill">Vibrant</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="creatives">
+      <figure class="creative" data-title="3.70% p.a. savings">
+        <img src="assets/cimb/01-3-70-pa.png" alt="3.70% p.a. savings">
+        <figcaption class="caption">3.70% p.a. savings</figcaption>
+      </figure>
+      <figure class="creative" data-title="Cashback just got bigger — up to RM120 monthly">
+        <img src="assets/cimb/02-rm120-cashback.png" alt="Cashback just got bigger — up to RM120 monthly">
+        <figcaption class="caption">Cashback just got bigger — up to RM120 monthly</figcaption>
+      </figure>
+      <figure class="creative" data-title="OCTO App — Your Loan Is Approved">
+        <img src="assets/cimb/03-octo-loan-approved.png" alt="OCTO App — Your Loan Is Approved">
+        <figcaption class="caption">OCTO App — Your Loan Is Approved</figcaption>
+      </figure>
+      <figure class="creative" data-title="Youth Savers">
+        <img src="assets/cimb/04-youth-savers.png" alt="Youth Savers">
+        <figcaption class="caption">Youth Savers</figcaption>
+      </figure>
+      <figure class="creative" data-title="Jom jimat RM1,970 — CIMB PETRONAS Visa × Penang Autoshow 2026">
+        <img src="assets/cimb/05-petronas-visa-autoshow.png" alt="Jom jimat RM1,970 — CIMB PETRONAS Visa × Penang Autoshow 2026">
+        <figcaption class="caption">Jom jimat RM1,970 — CIMB PETRONAS Visa × Penang Autoshow 2026</figcaption>
+      </figure>
+      <figure class="creative" data-title="You could win up to RM1,000!">
+        <img src="assets/cimb/06-win-rm1000.png" alt="You could win up to RM1,000!">
+        <figcaption class="caption">You could win up to RM1,000!</figcaption>
+      </figure>
+      <figure class="creative" data-title="A greener Raya starts at home">
+        <img src="assets/cimb/07-greener-raya.png" alt="A greener Raya starts at home">
+        <figcaption class="caption">A greener Raya starts at home</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 / BIGPAY ============ -->
+<section class="brand" id="bigpay">
+  <div class="brand-header">
+    <span class="index">07 / 08</span>
+    <h2 class="name">BigPay</h2>
+    <a class="url" href="https://bigpayme.com/" target="_blank" rel="noopener">bigpayme.com ↗</a>
+  </div>
+
+  <div class="brand-body">
+    <aside class="info">
+      <p class="overview">BigPay is a Southeast Asian neobank and digital wallet that provides users with a prepaid Visa or Mastercard, budgeting tools, and low-cost international remittance services. Regulated by Bank Negara Malaysia and the Monetary Authority of Singapore, it offers a transparent, mobile-first alternative to traditional banking for everyday spending and travel.</p>
+
+      <div class="meta-block">
+        <span class="meta-label">Brand values</span>
+        <div class="pill-row">
+          <span class="pill">Transparency</span>
+          <span class="pill">Financial Wellbeing</span>
+          <span class="pill">Empowerment</span>
+          <span class="pill">Fairness</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Tone of voice</span>
+        <div class="pill-row">
+          <span class="pill">Friendly</span>
+          <span class="pill">Savvy</span>
+          <span class="pill">Transparent</span>
+          <span class="pill">Ambitious</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Visual aesthetics</span>
+        <div class="pill-row">
+          <span class="pill">Modern</span>
+          <span class="pill">Fintech</span>
+          <span class="pill">Clean</span>
+          <span class="pill">Digital-First</span>
+          <span class="pill">Vibrant</span>
+          <span class="pill">Polished</span>
+          <span class="pill">User-Centric</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="creatives">
+      <figure class="creative" data-title="Fulfil Your Qurban with BigPay × ikhlas.com">
+        <img src="assets/bigpay/01-qurban-bigpay.png" alt="Fulfil Your Qurban with BigPay × ikhlas.com">
+        <figcaption class="caption">Fulfil Your Qurban with BigPay × ikhlas.com</figcaption>
+      </figure>
+      <figure class="creative" data-title="Pembiayaan Peribadi-i InstaCash — Bank Rakyat × BigPay">
+        <img src="assets/bigpay/02-instacash-bank-rakyat.png" alt="Pembiayaan Peribadi-i InstaCash — Bank Rakyat × BigPay">
+        <figcaption class="caption">Pembiayaan Peribadi-i InstaCash — Bank Rakyat × BigPay</figcaption>
+      </figure>
+      <figure class="creative" data-title="Introducing BigPay Transfer — Malaysia ↔ Singapore">
+        <img src="assets/bigpay/03-bigpay-transfer-msia-sg.png" alt="Introducing BigPay Transfer — Malaysia ↔ Singapore">
+        <figcaption class="caption">Introducing BigPay Transfer — Malaysia ↔ Singapore</figcaption>
+      </figure>
+      <figure class="creative" data-title="The power to manage your money anywhere">
+        <img src="assets/bigpay/04-power-to-manage-money.png" alt="The power to manage your money anywhere">
+        <figcaption class="caption">The power to manage your money anywhere</figcaption>
+      </figure>
+      <figure class="creative" data-title="Do it all, and then more with the BigPay card">
+        <img src="assets/bigpay/05-do-it-all-card.png" alt="Do it all, and then more with the BigPay card">
+        <figcaption class="caption">Do it all, and then more with the BigPay card</figcaption>
+      </figure>
+      <figure class="creative" data-title="Pay in under a second — you can’t overspend">
+        <img src="assets/bigpay/06-pay-under-second.png" alt="Pay in under a second — you can’t overspend">
+        <figcaption class="caption">Pay in under a second — you can’t overspend</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 / GRAB ============ -->
+<section class="brand" id="grab">
+  <div class="brand-header">
+    <span class="index">08 / 08</span>
+    <h2 class="name">Grab</h2>
+    <a class="url" href="https://www.grab.com/my/about/" target="_blank" rel="noopener">grab.com/my ↗</a>
+  </div>
+
+  <div class="brand-body">
+    <aside class="info">
+      <p class="overview">Grab is Southeast Asia’s leading superapp, uniting mobility, food and grocery delivery, digital payments, and financial services in a single ecosystem. In Malaysia, it connects millions of consumers with driver-partners and merchants — advancing economic empowerment, financial inclusion and everyday convenience under the brand promise “Making every day better.”</p>
+
+      <div class="meta-block">
+        <span class="meta-label">Brand values</span>
+        <div class="pill-row">
+          <span class="pill">Economic Empowerment</span>
+          <span class="pill">Sustainability</span>
+          <span class="pill">Financial Inclusion</span>
+          <span class="pill">Safety &amp; Trust</span>
+          <span class="pill">Community Impact</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Tone of voice</span>
+        <div class="pill-row">
+          <span class="pill">Forward-Thinking</span>
+          <span class="pill">Inclusive</span>
+          <span class="pill">Aspirational</span>
+          <span class="pill">Approachable</span>
+        </div>
+      </div>
+
+      <div class="meta-block">
+        <span class="meta-label">Visual aesthetics</span>
+        <div class="pill-row">
+          <span class="pill">Superapp Ecosystem</span>
+          <span class="pill">Vibrant Green</span>
+          <span class="pill">Lifestyle-Driven</span>
+          <span class="pill">Community-Centric</span>
+          <span class="pill">Pragmatic Modernism</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="creatives">
+      <figure class="creative" data-title="Earn GrabRewards Points everywhere — GrabPay">
+        <img src="assets/grab/01-grabrewards-everywhere.png" alt="Earn GrabRewards Points everywhere — GrabPay">
+        <figcaption class="caption">Earn GrabRewards Points everywhere — GrabPay</figcaption>
+      </figure>
+      <figure class="creative" data-title="GrabMart Month-End Deal — RM50 off">
+        <img src="assets/grab/02-grabmart-month-end-deal.png" alt="GrabMart Month-End Deal — RM50 off">
+        <figcaption class="caption">GrabMart Month-End Deal — RM50 off</figcaption>
+      </figure>
+      <figure class="creative" data-title="GrabMart × Jaya Grocer — RM20 off first order">
+        <img src="assets/grab/03-grabmart-jaya-grocer.png" alt="GrabMart × Jaya Grocer — RM20 off first order">
+        <figcaption class="caption">GrabMart × Jaya Grocer — RM20 off first order</figcaption>
+      </figure>
+      <figure class="creative" data-title="GrabFood × Mobile Legends — GrabRecall keychain at MPL MY S17">
+        <img src="assets/grab/04-grabrecall-mlbb.png" alt="GrabFood × Mobile Legends — GrabRecall keychain at MPL MY S17">
+        <figcaption class="caption">GrabFood × Mobile Legends — GrabRecall keychain at MPL MY S17</figcaption>
+      </figure>
+      <figure class="creative" data-title="RM35 OFF online shopping — Raya">
+        <img src="assets/grab/05-rm35-online-shopping-raya.png" alt="RM35 OFF online shopping — Raya">
+        <figcaption class="caption">RM35 OFF online shopping — Raya</figcaption>
+      </figure>
+      <figure class="creative" data-title="Penjimatan untuk beli-belah Raya — PayLater × GrabPay">
+        <img src="assets/grab/06-paylater-grabpay-raya.png" alt="Penjimatan untuk beli-belah Raya — PayLater × GrabPay">
+        <figcaption class="caption">Penjimatan untuk beli-belah Raya — PayLater × GrabPay</figcaption>
+      </figure>
+      <figure class="creative" data-title="Grab. Making every day better.">
+        <img src="assets/grab/07-making-every-day-better.png" alt="Grab. Making every day better.">
+        <figcaption class="caption">Grab. Making every day better.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Lightbox ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" aria-label="Close">×</button>
+  <img alt="">
+  <div class="lb-caption"></div>
+</div>
+
+<script>
+  (function() {
+    /* ===== Lightbox ===== */
+    const lb = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('img');
+    const lbCap = lb.querySelector('.lb-caption');
+
+    document.querySelectorAll('.creative').forEach(c => {
+      c.addEventListener('click', () => {
+        const img = c.querySelector('img');
+        if (!img) return;
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbCap.textContent = c.dataset.title || '';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    lb.addEventListener('click', () => {
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lb.classList.contains('open')) {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
