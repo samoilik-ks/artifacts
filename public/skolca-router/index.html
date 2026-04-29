@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СКОЛКА — Редакционный роутер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2EC;
+  --surface: #FFFFFF;
+  --surface2: #EDE9E0;
+  --ink: #1A1814;
+  --ink2: #6B6760;
+  --ink3: #A8A49E;
+  --accent: #1A1814;
+  --green: #2D6A4F;
+  --green-bg: #D8F3DC;
+  --green-ink: #1B4332;
+  --blue: #1565C0;
+  --blue-bg: #DBEAFE;
+  --blue-ink: #1E3A5F;
+  --purple: #5B21B6;
+  --purple-bg: #EDE9FE;
+  --purple-ink: #3B0764;
+  --amber: #92400E;
+  --amber-bg: #FEF3C7;
+  --amber-ink: #78350F;
+  --pink: #9D174D;
+  --pink-bg: #FCE7F3;
+  --pink-ink: #831843;
+  --red: #991B1B;
+  --red-bg: #FEE2E2;
+  --red-ink: #7F1D1D;
+  --gray-bg: #F3F4F6;
+  --gray-ink: #6B7280;
+  --border: rgba(26,24,20,0.1);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Golos Text', sans-serif;
+  min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+header {
+  background: var(--ink);
+  color: #fff;
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.logo span { color: #C8FF57; }
+.header-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Golos Text', sans-serif;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.progress-wrap { margin-bottom: 40px; }
+.progress-steps {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.progress-dot {
+  height: 3px;
+  flex: 1;
+  background: var(--border);
+  border-radius: 2px;
+  transition: background 0.4s ease;
+}
+.progress-dot.done { background: var(--ink); }
+.progress-dot.active { background: var(--ink); opacity: 0.4; }
+.progress-label {
+  font-size: 12px;
+  color: var(--ink3);
+  font-family: 'Unbounded', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.step {
+  display: none;
+  animation: fadeSlide 0.35s ease;
+}
+.step.visible { display: block; }
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.step-header { margin-bottom: 32px; }
+.step-eyebrow {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.step-question {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.option {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+  width: 100%;
+}
+.option:hover {
+  border-color: var(--ink);
+  background: var(--surface2);
+  transform: translateX(4px);
+}
+.option.selected {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+  transform: translateX(0);
+}
+.option-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.18s;
+  position: relative;
+}
+.option:hover .option-radio { border-color: var(--ink); }
+.option.selected .option-radio {
+  border-color: #C8FF57;
+  background: #C8FF57;
+}
+.option.selected .option-radio::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.option-text { flex: 1; }
+.option-main {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.option-sub {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.45;
+}
+.option.selected .option-sub { color: rgba(255,255,255,0.6); }
+
+.trail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 28px;
+  min-height: 28px;
+}
+.trail-chip {
+  font-size: 12px;
+  padding: 4px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--ink2);
+  white-space: nowrap;
+}
+
+.examples-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 40px;
+}
+.examples-label {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.examples-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ex-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-family: 'Golos Text', sans-serif;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ex-btn:hover {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.result { display: none; animation: fadeSlide 0.4s ease; }
+.result.visible { display: block; }
+
+.result-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.result-subtitle {
+  font-size: 14px;
+  color: var(--ink2);
+  margin-bottom: 32px;
+}
+
+.media-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+
+.media-item {
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.mi-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.mi-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.mi-name {
+  font-weight: 500;
+  font-size: 15px;
+}
+.mi-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+.mi-platforms {
+  font-size: 12px;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+.mi-why {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+.mi-fmt-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 3px;
+  opacity: 0.65;
+}
+.mi-fmt {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mi-primary { background: var(--green-bg); }
+.mi-primary .mi-icon { background: rgba(45,106,79,0.15); }
+.mi-primary .mi-name { color: var(--green-ink); }
+.mi-primary .mi-platforms,.mi-primary .mi-why,.mi-primary .mi-fmt { color: var(--green); }
+.mi-primary .mi-fmt-label { color: var(--green-ink); }
+.mi-primary .mi-badge { background: var(--green-ink); color: var(--green-bg); }
+
+.mi-secondary { background: var(--blue-bg); }
+.mi-secondary .mi-icon { background: rgba(21,101,192,0.12); }
+.mi-secondary .mi-name { color: var(--blue-ink); }
+.mi-secondary .mi-platforms,.mi-secondary .mi-why,.mi-secondary .mi-fmt { color: var(--blue); }
+.mi-secondary .mi-fmt-label { color: var(--blue-ink); }
+.mi-secondary .mi-badge { background: var(--blue-ink); color: var(--blue-bg); }
+
+.mi-internal { background: var(--purple-bg); }
+.mi-internal .mi-icon { background: rgba(91,33,182,0.12); }
+.mi-internal .mi-name { color: var(--purple-ink); }
+.mi-internal .mi-platforms,.mi-internal .mi-why,.mi-internal .mi-fmt { color: var(--purple); }
+.mi-internal .mi-fmt-label { color: var(--purple-ink); }
+.mi-internal .mi-badge { background: var(--purple-ink); color: var(--purple-bg); }
+
+.mi-product { background: var(--amber-bg); }
+.mi-product .mi-icon { background: rgba(146,64,14,0.1); }
+.mi-product .mi-name { color: var(--amber-ink); }
+.mi-product .mi-platforms,.mi-product .mi-why,.mi-product .mi-fmt { color: var(--amber); }
+.mi-product .mi-fmt-label { color: var(--amber-ink); }
+.mi-product .mi-badge { background: var(--amber-ink); color: var(--amber-bg); }
+
+.mi-prozhector { background: var(--pink-bg); }
+.mi-prozhector .mi-icon { background: rgba(157,23,77,0.1); }
+.mi-prozhector .mi-name { color: var(--pink-ink); }
+.mi-prozhector .mi-platforms,.mi-prozhector .mi-why,.mi-prozhector .mi-fmt { color: var(--pink); }
+.mi-prozhector .mi-fmt-label { color: var(--pink-ink); }
+.mi-prozhector .mi-badge { background: var(--pink-ink); color: var(--pink-bg); }
+
+.mi-skip { background: var(--gray-bg); }
+.mi-skip .mi-icon { background: rgba(107,114,128,0.12); }
+.mi-skip .mi-name { color: var(--gray-ink); }
+.mi-skip .mi-why,.mi-skip .mi-fmt { color: var(--gray-ink); }
+
+.badge-rec { opacity: 0.9; }
+.badge-opt { background: var(--gray-bg) !important; color: var(--gray-ink) !important; }
+
+.pzh-callout {
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  margin-top: 8px;
+}
+.pzh-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.pzh-emoji { font-size: 24px; }
+.pzh-heading {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #C8FF57;
+  letter-spacing: -0.01em;
+}
+.pzh-body {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.pzh-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.pzh-task {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.pzh-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #C8FF57;
+  min-width: 22px;
+  margin-top: 2px;
+}
+.pzh-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.55;
+}
+.pzh-timing {
+  display: inline-block;
+  background: rgba(200,255,87,0.15);
+  border: 1px solid rgba(200,255,87,0.3);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #C8FF57;
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.btn-reset {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-family: 'Golos Text', sans-serif;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-reset:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.btn-print {
+  background: var(--ink);
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-family: 'Golos Text', sans-serif;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-print:hover { opacity: 0.85; }
+
+.section-sep {
+  height: 1px;
+  background: var(--border);
+  margin: 40px 0;
+}
+
+@media (max-width: 600px) {
+  header { padding: 20px 20px; }
+  .container { padding: 32px 16px 60px; }
+  .step-question { font-size: 18px; }
+  .media-item { grid-template-columns: 1fr; gap: 10px; }
+  .mi-icon { width: 36px; height: 36px; font-size: 17px; }
+  .result-actions { flex-direction: column; }
+}
+
+@media print {
+  header { background: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .examples-block, .step, .trail, .progress-wrap, .result-actions { display: none !important; }
+  .result { display: block !important; }
+  .media-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+  .pzh-callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">СКОЛ<span>КА</span></div>
+    <div class="header-sub">Редакционный роутер — куда направить публикацию</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="examples-block">
+    <p class="examples-label">Попробовать готовый сценарий</p>
+    <div class="examples-grid">
+      <button class="ex-btn" onclick="runExample('maslenitsa')">🥞 Масленица (открытое)</button>
+      <button class="ex-btn" onclick="runExample('shanghai')">✈️ Поездка в Шанхай</button>
+      <button class="ex-btn" onclick="runExample('expert')">🎓 Запуск курса Эксперт</button>
+      <button class="ex-btn" onclick="runExample('olympiad')">🏆 Победа на олимпиаде</button>
+      <button class="ex-btn" onclick="runExample('mars')">🚀 МКС-2045</button>
+      <button class="ex-btn" onclick="runExample('skolarium')">📚 Курс Сколариума</button>
+      <button class="ex-btn" onclick="runExample('partner')">🤝 Новый партнёр</button>
+      <button class="ex-btn" onclick="runExample('sport')">⚽ Спортсмена (внутри)</button>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-steps" id="progress-dots"></div>
+    <div class="progress-label" id="progress-label">Шаг 1 из 6</div>
+  </div>
+
+  <div class="trail" id="trail"></div>
+
+  <div id="s0" class="step visible">
+    <div class="step-header">
+      <div class="step-eyebrow">Вопрос 1 / 6 · Продукт</div>
+      <h2 class="step-question">К какому продукту или направлению СКОЛКИ относится новость?</h2>
+    </div>
+    <div class="options">
+      <button class="option" onclick="go(0,'school')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Школа СКОЛКА</div>
+          <div class="option-sub">Жизнь школы, ученики, педагоги, события, поступление</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(0,'expert')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">СКОЛКА Эксперт</div>
+          <div class="option-sub">Педагоги, методисты, программы переподготовки, конференции</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(0,'products')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Продуктовое направление</div>
+          <div class="option-sub">СКОЛКА Смарт / Сколариум / СКОЛКА Тревел / Лето</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(0,'partner')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Партнёрство</div>
+          <div class="option-sub">Новый партнёр, совместный проект с индустриальной компанией</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(0,'community')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Сколмьюнити / внутренняя жизнь</div>
+          <div class="option-sub">Только для действующих семей, педагогов, внутренние события</div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div id="s1" class="step">
+    <div class="step-header">
+      <div class="step-eyebrow">Вопрос 2 / 6 · Аудитория</div>
+      <h2 class="step-question">Кто целевая аудитория этой конкретной публикации?</h2>
+    </div>
+    <div class="options">
+      <button class="option" onclick="go(1,'parents_ext')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Родители потенциальных учеников</div>
+          <div class="option-sub">Ещё не в школе — формирование имиджа, привлечение, поступление</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(1,'parents_int')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Родители действующих учеников</div>
+          <div class="option-sub">Уже в школе — информирование, сервис, вовлечение в Сколмьюнити</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(1,'kids')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Ученики (дети)</div>
+          <div class="option-sub">Школьники — анонс события, активности, UGC, живое участие</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(1,'teachers')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Педагоги / профессионалы образования</div>
+          <div class="option-sub">Учителя, методисты, директора — методика, профессиональный рост</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(1,'all')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Все сразу</div>
+          <div class="option-sub">Новость важна для всех аудиторий одновременно</div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div id="s2" class="step">
+    <div class="step-header">
+      <div class="step-eyebrow">Вопрос 3 / 6 · Имидж</div>
+      <h2 class="step-question">Усиляет ли эта публикация имидж школы для внешней аудитории?</h2>
+    </div>
+    <div class="options">
+      <button class="option" onclick="go(2,'yes')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Да — яркое и значимое</div>
+          <div class="option-sub">Победа, уникальный проект, wow-событие, крутой партнёр, эмоциональный контент</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(2,'maybe')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Частично — полезно, но только для уже заинтересованных</div>
+          <div class="option-sub">Расписание, напоминание, рутинное объявление, технические детали</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(2,'no')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Нет — сугубо внутренняя информация</div>
+          <div class="option-sub">Только для тех, кто уже «внутри» — не работает на внешних</div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div id="s3" class="step">
+    <div class="step-header">
+      <div class="step-eyebrow">Вопрос 4 / 6 · Тип</div>
+      <h2 class="step-question">Это анонс, отчёт или текущие продажи?</h2>
+    </div>
+    <div class="options">
+      <button class="option" onclick="go(3,'announce')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Анонс — событие ещё впереди</div>
+          <div class="option-sub">Нужна регистрация, приглашение, призыв прийти или записаться</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(3,'report')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Отчёт / итог — событие уже прошло</div>
+          <div class="option-sub">Фото, впечатления, результаты, истории участников, кейс</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(3,'ongoing')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Текущий процесс / продажи</div>
+          <div class="option-sub">Идёт набор, открыта регистрация, продаётся прямо сейчас</div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div id="s4" class="step">
+    <div class="step-header">
+      <div class="step-eyebrow">Вопрос 5 / 6 · Доступ</div>
+      <h2 class="step-question">Могут ли прийти внешние люди — не только ученики школы?</h2>
+    </div>
+    <div class="options">
+      <button class="option" onclick="go(4,'open')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Да — открытое для всех</div>
+          <div class="option-sub">Друзья учеников, внешние родители, широкая аудитория</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(4,'closed')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Нет — только действующие ученики и их семьи</div>
+          <div class="option-sub">Закрытое мероприятие для сообщества школы</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(4,'na')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Не применимо — не событие</div>
+          <div class="option-sub">Новость, публикация, кейс — регистрация не нужна</div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div id="s5" class="step">
+    <div class="step-header">
+      <div class="step-eyebrow">Вопрос 6 / 6 · Прожектор</div>
+      <h2 class="step-question">Есть ли живой момент, который команда Прожектора может снять изнутри?</h2>
+    </div>
+    <div class="options">
+      <button class="option" onclick="go(5,'yes_live')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Да — там будет что-то живое и яркое</div>
+          <div class="option-sub">Эмоции, процесс, закулисье, реакции детей, движуха, атмосфера</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(5,'maybe_live')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Возможно — если заранее договориться</div>
+          <div class="option-sub">Не самоочевидно, но при подготовке можно снять интересно</div>
+        </div>
+      </button>
+      <button class="option" onclick="go(5,'no_live')">
+        <div class="option-radio"></div>
+        <div class="option-text">
+          <div class="option-main">Нет — формальное или без визуального потенциала</div>
+          <div class="option-sub">Документ, объявление, цифры, текстовая публикация</div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div id="result" class="result">
+    <div class="section-sep"></div>
+    <div class="result-title">Медиамикс готов</div>
+    <div class="result-subtitle" id="result-subtitle"></div>
+    <div class="media-list" id="media-list"></div>
+    <div id="pzh-block"></div>
+    <div class="result-actions">
+      <button class="btn-reset" onclick="reset()">↺ Новая публикация</button>
+      <button class="btn-print" onclick="window.print()">Распечатать / PDF</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const S = {};
+const STEP_LABELS = ['Продукт','Аудитория','Имидж','Тип','Доступ','Прожектор'];
+const TOTAL = 6;
+
+function updateProgress(currentStep) {
+  const dots = document.getElementById('progress-dots');
+  const label = document.getElementById('progress-label');
+  dots.innerHTML = Array.from({length: TOTAL}, (_,i) =>
+    `<div class="progress-dot ${i < currentStep ? 'done' : i === currentStep ? 'active' : ''}"></div>`
+  ).join('');
+  if (currentStep < TOTAL) label.textContent = `Шаг ${currentStep + 1} из ${TOTAL}`;
+  else label.textContent = 'Готово';
+}
+
+function updateTrail() {
+  const trail = document.getElementById('trail');
+  trail.innerHTML = STEP_LABELS.map((l, i) =>
+    S[i] ? `<span class="trail-chip">${l}: ${S[i].split(' — ')[0].substring(0,26)}</span>` : ''
+  ).join('');
+}
+
+function go(step, val) {
+  S[step] = val;
+  document.getElementById('s' + step).querySelectorAll('.option').forEach(b => {
+    const main = b.querySelector('.option-main').textContent;
+    b.classList.toggle('selected', main === val.split(' — ')[0].split(', ')[0]);
+  });
+  updateTrail();
+  updateProgress(step + 1);
+
+  if (step < 5) {
+    setTimeout(() => {
+      document.getElementById('s' + step).classList.remove('visible');
+      const next = document.getElementById('s' + (step + 1));
+      next.classList.add('visible');
+      next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 200);
+  } else {
+    buildResult();
+  }
+}
+
+function buildResult() {
+  const p = S[0]||'', a = S[1]||'', img = S[2]||'', type = S[3]||'',
+        access = S[4]||'', live = S[5]||'';
+
+  const isOpen = access === 'open';
+  const isImage = img === 'yes';
+  const isPartial = img === 'maybe';
+  const isNoImg = img === 'no';
+  const isAnnounce = type === 'announce';
+  const isReport = type === 'report';
+  const isOngoing = type === 'ongoing';
+  const isKids = a === 'kids';
+  const isAll = a === 'all';
+  const isParentsInt = a === 'parents_int';
+  const isTeachers = a === 'teachers';
+  const hasLive = live === 'yes_live';
+  const maybeLive = live === 'maybe_live';
+
+  let cards = [];
+  let pzh = null;
+
+  function card(icon, name, cls, badge, platforms, why, fmt) {
+    const badgeMap = {
+      must: '<span class="mi-badge badge-must">обязательно</span>',
+      rec:  '<span class="mi-badge badge-rec">рекомендуем</span>',
+      opt:  '<span class="mi-badge badge-opt">опционально</span>',
+      skip: ''
+    };
+    return `<div class="media-item mi-${cls}">
+      <div class="mi-icon">${icon}</div>
+      <div class="mi-body">
+        <div class="mi-top"><span class="mi-name">${name}</span>${badgeMap[badge]||''}</div>
+        <div class="mi-platforms">${platforms}</div>
+        <div class="mi-why">${why}</div>
+        <div class="mi-fmt-label">Формат</div>
+        <div class="mi-fmt">${fmt}</div>
+      </div>
+    </div>`;
+  }
+
+  if (p === 'partner') {
+    if (isImage) {
+      cards.push(card('🏫','Школа СКОЛКА — основное медиа','primary','must',
+        'TG + VK + Instagram + MAX',
+        'Партнёрство усиляет имидж: показывает реальную индустриальную связь, которой нет у конкурентов.',
+        isReport ? 'Кейс-пост: что делали вместе, что получили ученики. Фото с партнёром. Имена.' : 'Анонс коллаборации: кто партнёр, что это даёт ученикам.'));
+      cards.push(card('🏠','Сколмьюнити','internal','rec',
+        'Закрытый TG / MAX',
+        'Действующие семьи узнают первыми — это правило уважения к сообществу.',
+        'Короткое сообщение + ссылка на основной пост. Детали, которых нет снаружи.'));
+    } else {
+      cards.push(card('🏠','Сколмьюнити','internal','must',
+        'Закрытый TG / MAX',
+        'Внутренняя новость о партнёре — актуальна для сообщества.',
+        'Краткое информирование.'));
+      cards.push(card('⊘','Не публиковать в открытом медиа','skip','skip','—',
+        'Партнёры работают через email и личные встречи, не через публичные посты.','—'));
+    }
+  } else if (p === 'community') {
+    cards.push(card('🏠','Сколмьюнити','internal','must',
+      'Закрытый TG / MAX',
+      'Это внутренняя история — принадлежит Сколмьюнити и только ему.',
+      'Тёплый, доверительный пост. Без официоза.'));
+    if (isImage)
+      cards.push(card('🏫','Школа СКОЛКА — основное медиа','primary','opt',
+        'TG + VK + Instagram + MAX',
+        'Если история яркая — можно показать дух сообщества внешней аудитории.',
+        'Без личных данных, акцент на атмосферу и ценности школы.'));
+  } else if (p === 'expert') {
+    cards.push(card('🎓','СКОЛКА Эксперт','product','must',
+      'TG-канал + VK (TBD — с сентября)',
+      'Прямо относится к продукту для педагогов — это его основное медиа.',
+      isAnnounce ? 'Анонс: дата, программа, спикеры, ссылка на регистрацию.' :
+      isReport   ? 'Кейс: что дала программа, цифры, отзывы участников.' :
+                   'Пост о наборе + УТП лицензии на переподготовку.'));
+    if (isImage || isReport)
+      cards.push(card('🏫','Школа СКОЛКА — основное медиа','primary','rec',
+        'TG + VK + Instagram + MAX',
+        'Крупное событие (конференция «Спутник», лицензия) усиляет имидж школы как методического лидера.',
+        'Короткий анонс или итог со ссылкой на канал Эксперт. Не дублировать целиком.'));
+  } else if (p === 'products') {
+    cards.push(card('🛒','Продуктовое направление (Смарт / Сколариум / Тревел)','product','must',
+      'TG / MAX (TBD — отдельные каналы по направлениям)',
+      'Новость прямо относится к конкретному продукту — это его нативное место.',
+      isAnnounce ? 'Анонс: что, когда, как записаться. Условия абонемента.' :
+      isOngoing  ? 'Продающий пост: место, цена, кнопка действия, дедлайн.' :
+                   'Отчёт с фото и впечатлениями. Герои-ученики с именами и классами.'));
+    cards.push(card('✉️','Email-рассылка по внутренней базе','secondary','must',
+      'Внутренняя база родителей',
+      'Для продуктовых направлений email — основной канал продаж. Родители действующих учеников здесь.',
+      isAnnounce ? 'Письмо: анонс + кнопка «Записаться». Коротко и по делу.' :
+                   'Дайджест: итоги направления + что открывается следующим.'));
+    if (isImage)
+      cards.push(card('🏫','Школа СКОЛКА — основное медиа','primary','rec',
+        'TG + VK + Instagram + MAX',
+        'Яркий контент (Шанхай, уникальный опыт) работает на имидж школы в целом.',
+        'Отдельный пост с лучшими фото. Нарратив: что это было, почему только в СКОЛКЕ.'));
+    if (isParentsInt || isKids || isAll)
+      cards.push(card('🏠','Сколмьюнити','internal','rec',
+        'Закрытый TG / MAX',
+        'Действующие семьи — первая аудитория продуктов. Анонс приходит к ним раньше.',
+        isAnnounce ? 'Первый анонс в Сколмьюнити (за день до публичного). Доп. детали для «своих».' :
+                     'Тёплый итог: «наши дети, наш опыт».'));
+  } else {
+    if ((isOpen && isImage) || (isAll && isImage)) {
+      cards.push(card('🏫','Школа СКОЛКА — основное медиа','primary','must',
+        'TG + VK + Instagram + MAX',
+        'Открытое яркое событие = максимальный охват. Основное медиа обязательно.',
+        isAnnounce ? 'Анонс за 7–10 дней + напоминание за 1–2 дня. Ссылка на регистрацию.' :
+                     'Пост-итог с лучшими фото. Герои с именами и классами.'));
+      cards.push(card('🏠','Сколмьюнити','internal','must',
+        'Закрытый TG / MAX',
+        'Действующие семьи узнают первыми — это правило приоритета сообщества.',
+        isAnnounce ? 'Первый анонс (за сутки до публичного). Детали, которых нет снаружи.' :
+                     'Тёплый итог внутри сообщества.'));
+    } else if (isOpen && !isImage) {
+      cards.push(card('🏫','Школа СКОЛКА — основное медиа','primary','must',
+        'TG + VK + Instagram + MAX',
+        'Открытая регистрация требует максимального охвата даже без wow-контента.',
+        isAnnounce ? 'Анонс с датой и ссылкой на регистрацию. Чётко и по делу.' :
+                     'Пост-итог: что было, сколько пришло.'));
+      cards.push(card('🏠','Сколмьюнити','internal','rec',
+        'Закрытый TG / MAX',
+        'Сообщество узнаёт первым.',
+        'Анонс внутри за сутки до публичного.'));
+    } else if (!isOpen && isImage) {
+      cards.push(card('🏫','Школа СКОЛКА — основное медиа','primary','must',
+        'TG + VK + Instagram + MAX',
+        'Яркий контент работает на имидж даже если событие закрытое — показывает жизнь школы изнутри.',
+        isReport ? 'Пост с лучшими фото. Нарратив: что это за проект, почему это важно для СКОЛКИ.' :
+                   'Рассказ о том, что происходит внутри — без закрытых деталей.'));
+      cards.push(card('🏠','Сколмьюнити','internal','must',
+        'Закрытый TG / MAX',
+        'Закрытое событие — в первую очередь для участников сообщества.',
+        isAnnounce ? 'Детальный анонс с расписанием и условиями.' : 'Итог с фото и эмоциями участников.'));
+    } else if (isPartial) {
+      cards.push(card('🏠','Сколмьюнити','internal','must',
+        'Закрытый TG / MAX',
+        'Сервисный контент работает только внутри — те, кому нужно, прочитают здесь.',
+        'Краткое информирование: что, когда, что нужно сделать.'));
+      cards.push(card('✉️','Email-рассылка','secondary','rec',
+        'Внутренняя база родителей',
+        'Для сервисных объявлений email эффективнее публичных постов.',
+        'Короткое письмо с ключевой информацией и ссылкой.'));
+      cards.push(card('⊘','Не публиковать в основном медиа','skip','skip','—',
+        'Рутинный контент снижает ER основного канала. Не засоряем ленту.','—'));
+    } else if (isNoImg) {
+      cards.push(card('🏠','Сколмьюнити','internal','must',
+        'Закрытый TG / MAX',
+        'Только внутри — публикация не работает на внешнюю аудиторию.',
+        'Краткое информирование.'));
+      cards.push(card('⊘','Не публиковать в открытом медиа','skip','skip','—',
+        'Внутренняя информация в публичных каналах не нужна.','—'));
+    } else {
+      cards.push(card('🏫','Школа СКОЛКА — основное медиа','primary','must',
+        'TG + VK + Instagram + MAX',
+        'Базовый выбор для школьных новостей.',
+        isAnnounce ? 'Анонс с деталями и датой.' : 'Пост-итог с фото.'));
+      if (isParentsInt || isKids)
+        cards.push(card('🏠','Сколмьюнити','internal','rec',
+          'Закрытый TG / MAX',
+          'Действующие семьи первыми.',
+          'Анонс или итог для сообщества.'));
+    }
+
+    if ((isKids || isAll) && !isNoImg && !isPartial) {
+      cards.push(card('📱','Прожектор / СКОЛКА Live','prozhector','rec',
+        'TG + TikTok (TBD)',
+        'Ученики — аудитория Прожектора. Неформальный взгляд изнутри дополняет официальный пост.',
+        isAnnounce ? 'Короткий неформальный анонс от ребят — «идём на масленицу, вот что будет».' :
+        isReport   ? 'Видео или карусель глазами учеников: эмоции, закулисье, реакции.' :
+                     'Живой репортаж в момент события.'));
+    }
+  }
+
+  if (hasLive && p !== 'expert' && p !== 'partner') {
+    const tasks = [
+      isAnnounce ? 'За 2–3 дня до события: короткий анонс от учеников — «что это вообще такое и почему мы идём».' : null,
+      'В день события: лайв-репортаж или истории — эмоции, атмосфера, закулисье.',
+      isReport ? 'На следующий день: монтаж итогового видео с комментариями участников.' :
+                 'Sneak-peek: короткое видео о том, что происходит прямо сейчас.',
+    ].filter(Boolean);
+    pzh = {
+      title: 'Задание для Прожектора',
+      body: 'В этой истории есть живой момент — самое время подключить команду Прожектора. Их контент дополняет официальный пост и создаёт взгляд изнутри, который редакция не может дать.',
+      tasks,
+      timing: isAnnounce ? '⏱ Запланировать звонок с командой Прожектора за 5–7 дней до события' :
+                           '⏱ Передать задачу команде Прожектора в течение 24 часов'
+    };
+  } else if (maybeLive && p !== 'expert' && p !== 'partner') {
+    pzh = {
+      title: 'Прожектор — проверить потенциал',
+      body: 'Возможно здесь есть материал для лайф-контента. Стоит обсудить с командой Прожектора — они лучше знают, что снимать интересно.',
+      tasks: [
+        'Провести короткий созвон с куратором Прожектора: есть ли идея для видео?',
+        isAnnounce ? 'Если да — договориться о присутствии на событии заранее.' :
+                     'Если есть архивный материал — попросить сделать короткий монтаж.',
+      ],
+      timing: '⏱ Обсудить с куратором Прожектора за 3–5 дней'
+    };
+  }
+
+  document.getElementById('media-list').innerHTML = cards.join('');
+
+  const pzhEl = document.getElementById('pzh-block');
+  if (pzh) {
+    pzhEl.innerHTML = `<div class="pzh-callout">
+      <div class="pzh-header">
+        <div class="pzh-emoji">🎬</div>
+        <div class="pzh-heading">${pzh.title}</div>
+      </div>
+      <div class="pzh-body">${pzh.body}</div>
+      <div class="pzh-tasks">${pzh.tasks.map((t,i) =>
+        `<div class="pzh-task"><div class="pzh-num">0${i+1}</div><div class="pzh-text">${t}</div></div>`
+      ).join('')}</div>
+      <div class="pzh-timing">${pzh.timing}</div>
+    </div>`;
+  } else {
+    pzhEl.innerHTML = '';
+  }
+
+  const subtitles = {
+    school: 'Школа СКОЛКА',
+    expert: 'СКОЛКА Эксперт',
+    products: 'Продуктовое направление',
+    partner: 'Партнёрство',
+    community: 'Сколмьюнити'
+  };
+  document.getElementById('result-subtitle').textContent =
+    `${subtitles[p] || 'Школа СКОЛКА'} · ${cards.filter(c => !c.includes('mi-skip')).length} канала в миксе`;
+
+  document.getElementById('s5').classList.remove('visible');
+  const res = document.getElementById('result');
+  res.classList.add('visible');
+  updateProgress(TOTAL);
+  setTimeout(() => res.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+
+function reset() {
+  for (let k in S) delete S[k];
+  for (let i = 0; i < 6; i++) {
+    const s = document.getElementById('s' + i);
+    s.classList.toggle('visible', i === 0);
+    s.querySelectorAll('.option').forEach(b => b.classList.remove('selected'));
+  }
+  document.getElementById('result').classList.remove('visible');
+  document.getElementById('media-list').innerHTML = '';
+  document.getElementById('pzh-block').innerHTML = '';
+  document.getElementById('trail').innerHTML = '';
+  updateProgress(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const EX = {
+  maslenitsa: [0,'school',1,'all',2,'yes',3,'announce',4,'open',5,'yes_live'],
+  shanghai:   [0,'products',1,'parents_int',2,'yes',3,'report',4,'na',5,'yes_live'],
+  expert:     [0,'expert',1,'teachers',2,'yes',3,'ongoing',4,'na',5,'no_live'],
+  olympiad:   [0,'school',1,'all',2,'yes',3,'report',4,'na',5,'maybe_live'],
+  mars:       [0,'school',1,'all',2,'yes',3,'report',4,'open',5,'yes_live'],
+  skolarium:  [0,'products',1,'parents_int',2,'maybe',3,'announce',4,'closed',5,'no_live'],
+  partner:    [0,'partner',1,'parents_ext',2,'yes',3,'report',4,'na',5,'no_live'],
+  sport:      [0,'community',1,'kids',2,'yes',3,'report',4,'closed',5,'yes_live'],
+};
+const OPT_MAP = [
+  {school:'Школа СКОЛКА',expert:'СКОЛКА Эксперт',products:'Продуктовое направление',partner:'Партнёрство',community:'Сколмьюнити / внутренняя жизнь'},
+  {parents_ext:'Родители потенциальных учеников',parents_int:'Родители действующих учеников',kids:'Ученики (дети)',teachers:'Педагоги / профессионалы образования',all:'Все сразу'},
+  {yes:'Да — яркое и значимое',maybe:'Частично — полезно, но только для уже заинтересованных',no:'Нет — сугубо внутренняя информация'},
+  {announce:'Анонс — событие ещё впереди',report:'Отчёт / итог — событие уже прошло',ongoing:'Текущий процесс / продажи'},
+  {open:'Да — открытое для всех',closed:'Нет — только действующие ученики и их семьи',na:'Не применимо — не событие'},
+  {yes_live:'Да — там будет что-то живое и яркое',maybe_live:'Возможно — если заранее договориться',no_live:'Нет — формальное или без визуального потенциала'},
+];
+
+function runExample(key) {
+  reset();
+  const steps = EX[key];
+  let delay = 80;
+  for (let i = 0; i < 6; i++) {
+    const val = OPT_MAP[i][steps[i * 2 + 1]];
+    if (val) setTimeout(() => go(i, val), delay);
+    delay += 320;
+  }
+}
+
+updateProgress(0);
+</script>
+</body>
+</html>
