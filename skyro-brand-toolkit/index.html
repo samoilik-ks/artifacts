@@ -592,7 +592,7 @@ function addSec(id,n,t,subs,h) {
 </tbody></table>
 </div>
 
-<div data-id="lang" data-n="07" data-t="TOV" data-subs="">
+<div data-id="lang" data-n="07" data-t="TOV" data-subs="tov-global,tov-philippines,tov-kenya,tov-malaysia,tov-ksa,tov-uae">
 
 <p class="lead">This section is a portal to Skyro language system. The Tone of Voice lives in dedicated documents &mdash; one global, five local. Start with the global guide to ground yourself in the principles, then go deep into the market that matters for your work.</p>
 
@@ -1034,7 +1034,17 @@ var subNames = {
   "mkt-invariants":"What Never Changes","mkt-adapts":"What Adapts","mkt-risks":"Regional Risks",
   "ms-trust":"Trust Metrics","ms-consistency":"Consistency",
   "faq-hard":"Hard Questions",
-  "rtb-claims":"Claims Library","rtb-flags":"Red Flags"
+  "rtb-claims":"Claims Library","rtb-flags":"Red Flags",
+  "tov-global":"Global TOV","tov-philippines":"Philippines","tov-kenya":"Kenya","tov-malaysia":"Malaysia","tov-ksa":"Saudi Arabia","tov-uae":"UAE"
+};
+
+var subLinks = {
+  "tov-global":"https://samoilik-ks.github.io/artifacts/skyro-tov-landing/",
+  "tov-philippines":"https://samoilik-ks.github.io/artifacts/skyro-philippines-localization-v2/",
+  "tov-kenya":"https://samoilik-ks.github.io/artifacts/skyro-kenya-localization/",
+  "tov-malaysia":"https://samoilik-ks.github.io/artifacts/skyro-malaysia-localization-v2/",
+  "tov-ksa":"https://samoilik-ks.github.io/artifacts/skyro-ksa-localization/",
+  "tov-uae":"https://samoilik-ks.github.io/artifacts/skyro-uae-localization/"
 };
 
 var currentAccess = "r";
@@ -1071,7 +1081,11 @@ function buildNav(){
       html += '<div class="nav-sub" data-p="'+s.id+'">';
       for(var j=0;j<s.subs.length;j++){
         var u = s.subs[j];
-        html += '<div class="nav-sub-item" data-sub="'+u+'">'+(subNames[u]||u)+'</div>';
+        if(subLinks[u]){
+          html += '<a class="nav-sub-item" href="'+subLinks[u]+'" target="_blank" rel="noopener" data-sub="'+u+'" data-external="1">'+(subNames[u]||u)+'</a>';
+        } else {
+          html += '<div class="nav-sub-item" data-sub="'+u+'">'+(subNames[u]||u)+'</div>';
+        }
       }
       html += '</div>';
     }
@@ -1099,6 +1113,7 @@ function buildNav(){
   for(var i=0;i<subItems.length;i++){
     subItems[i].addEventListener("click", function(e){
       e.stopPropagation();
+      if(this.dataset.external) return;
       spyPaused = true;
       jumpTo(this.dataset.sub);
       setTimeout(function(){spyPaused=false},800);
