@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro Saudi Arabia — Brand Communication Localization Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #4E1520;
+  --forest-light: #6B1D2A;
+  --forest-dark: #35101A;
+  --cream: #FBF6F0;
+  --cream-dark: #F0E8DC;
+  --gold: #D4782A;
+  --gold-light: #E89850;
+  --gold-pale: #FDF0E2;
+  --charcoal: #1C1C1A;
+  --ink: #2D2D2A;
+  --muted: #6B6860;
+  --border: #DDD4C6;
+  --red: #C0392B;
+  --red-pale: #FDECEA;
+  --green-ok: #1A7A52;
+  --green-pale: #E8F5EE;
+  --amber: #D4711A;
+  --amber-pale: #FDF3E7;
+  --nav-w: 260px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+  --r: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .025;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── HERO ──────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  background-color: var(--forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  opacity: .8;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--gold-light);
+  font-weight: 300;
+  font-style: italic;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(248,244,238,.5);
+  font-weight: 300;
+  max-width: 500px;
+  position: relative;
+  letter-spacing: .01em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(248,244,238,.35);
+  font-size: 11px;
+  letter-spacing: .12em;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll svg { opacity: .5; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.page-wrap {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────── */
+nav.side {
+  width: var(--nav-w);
+  height: 100%;
+  overflow-y: auto;
+  background: var(--forest-dark);
+  flex-shrink: 0;
+  padding: 28px 0 40px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.3) transparent;
+  z-index: 100;
+}
+
+nav.side::-webkit-scrollbar { width: 4px; }
+nav.side::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radius: 2px; }
+
+.nav-logo {
+  padding: 0 24px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 16px;
+}
+
+.nav-logo span {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.nav-logo small {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,.6);
+  margin-top: 2px;
+}
+
+.nav-item {
+  display: block;
+  padding: 9px 24px;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-item:hover { background: rgba(255,255,255,.05); }
+
+.nav-item.active {
+  border-left-color: var(--gold);
+  background: rgba(201,168,76,.08);
+}
+
+.nav-n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(201,168,76,.5);
+  letter-spacing: .1em;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.nav-t {
+  font-size: 12.5px;
+  color: rgba(248,244,238,.75);
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.nav-item.active .nav-t { color: var(--cream); }
+
+/* ── NAV GROUPS (collapsible sections) ────────────── */
+.nav-group { margin-bottom: 4px; }
+
+.nav-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+
+.nav-group-header:hover { background: rgba(255,255,255,.05); }
+
+.nav-group-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.nav-group-arrow {
+  font-size: 10px;
+  color: rgba(201,168,76,.5);
+  transition: transform .25s;
+}
+
+.nav-group.open .nav-group-arrow { transform: rotate(180deg); }
+
+.nav-group-items {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.nav-group.open .nav-group-items {
+  max-height: 600px;
+}
+
+.nav-group .nav-item {
+  padding: 6px 24px 6px 36px;
+}
+
+.nav-group .nav-item .nav-n {
+  font-size: 8px;
+}
+
+.nav-group .nav-item .nav-t {
+  font-size: 11.5px;
+}
+
+.nav-tbd {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .1em;
+  color: rgba(201,168,76,.7);
+  background: rgba(201,168,76,.12);
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+/* ── HAMBURGER (mobile) ─────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  width: 40px; height: 40px;
+  background: var(--forest);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+  transition: transform .2s, opacity .2s;
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+/* ── MAIN ─────────────────────────────────────────── */
+main {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 120px;
+  min-width: 0;
+  scroll-behavior: smooth;
+}
+
+.main-inner {
+  max-width: 860px;
+  padding: 64px 60px 0;
+}
+
+/* ── SECTIONS ─────────────────────────────────────── */
+.sec {
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.sec.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sec-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+}
+
+h2.sub {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 40px 0 16px;
+  line-height: 1.3;
+}
+
+h3.sub2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin: 28px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+p { margin-bottom: 16px; color: var(--ink); font-size: 15.5px; }
+p:last-child { margin-bottom: 0; }
+
+p.lead {
+  font-size: 17.5px;
+  color: var(--ink);
+  line-height: 1.75;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+em { font-style: italic; }
+strong { font-weight: 600; color: var(--charcoal); }
+
+/* ── CALLOUT ─────────────────────────────────────── */
+.call {
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  margin: 24px 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.call.big {
+  font-size: 20px;
+  text-align: center;
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  border-left: none;
+  padding: 32px 40px;
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── INSIGHT QUOTE ────────────────────────────────── */
+.insight-quote {
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.5;
+  padding: 40px 32px;
+  margin: 32px 0;
+  background: var(--gold-pale);
+  border-radius: var(--r);
+  border: 1px solid rgba(201,168,76,.3);
+}
+
+/* ── PERSONA CARD ─────────────────────────────────── */
+.persona-card {
+  background: var(--cream-dark);
+  border-radius: var(--r);
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+
+.persona-summary {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.persona-summary strong { color: var(--gold-light); }
+
+/* ── CARDS / GRID ────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.card p, .card li { font-size: 14px; color: var(--muted); }
+.card ol { padding-left: 18px; margin-bottom: 16px; }
+.card ol li { margin-bottom: 6px; line-height: 1.5; }
+
+/* ── VALUE CARD ──────────────────────────────────── */
+.value-block {
+  margin: 40px 0;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+}
+
+.value-block h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.value-block .value-sub {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.value-block .what-means {
+  background: var(--cream);
+  border-radius: var(--r);
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 3px solid var(--gold);
+}
+
+.value-block .what-means h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.value-block .what-means ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.value-block .what-means li {
+  font-size: 14.5px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.copy-dir {
+  margin: 16px 0;
+  padding: 16px 20px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.copy-dir .copy-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+  font-style: normal;
+}
+
+/* ── DO/DON'T ────────────────────────────────────── */
+.dd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.dd-col { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm); }
+
+.dd-hdr {
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dd-hdr.do { background: var(--forest); color: var(--gold-light); }
+.dd-hdr.dont { background: #3a1010; color: #e88; }
+
+.dd-i {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.55;
+}
+
+.dd-i strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14.5px;
+}
+
+.dd-col.do-col .dd-i { border-left: 3px solid var(--green-ok); background: var(--green-pale); }
+.dd-col.dont-col .dd-i { border-left: 3px solid var(--red); background: var(--red-pale); }
+
+.dd-i:last-child { border-bottom: none; }
+
+/* ── TABLES ──────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--r); box-shadow: var(--shadow-sm); }
+
+table.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+table.tbl thead tr { background: var(--forest); color: var(--cream); }
+
+table.tbl thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+table.tbl tbody tr { border-bottom: 1px solid var(--border); background: #fff; }
+table.tbl tbody tr:nth-child(even) { background: var(--cream); }
+table.tbl tbody tr:hover { background: var(--gold-pale); }
+table.tbl td { padding: 11px 16px; color: var(--ink); vertical-align: top; }
+table.tbl td:first-child { font-weight: 600; color: var(--forest); }
+
+/* ── BADGE ───────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.badge.peak { background: var(--red); color: #fff; }
+.badge.very-high { background: var(--amber); color: #fff; }
+.badge.high { background: var(--gold); color: var(--charcoal); }
+.badge.medium { background: var(--cream-dark); color: var(--muted); }
+.badge.constant { background: var(--forest); color: var(--gold-light); }
+.badge.low-medium { background: var(--cream-dark); color: var(--muted); }
+
+/* ── ACCORDION ───────────────────────────────────── */
+.acc-item {
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.acc-header {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  transition: background .15s;
+  user-select: none;
+}
+
+.acc-header:hover { background: var(--cream); }
+
+.acc-header .acc-arrow {
+  transition: transform .25s;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.acc-item.open .acc-header { background: var(--cream); border-bottom: 1px solid var(--border); }
+.acc-item.open .acc-arrow { transform: rotate(180deg); }
+
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.acc-body-inner {
+  padding: 20px;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.acc-body-inner h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 16px 0 8px;
+}
+
+.acc-body-inner h4:first-child { margin-top: 0; }
+
+.acc-body-inner blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 10px 16px;
+  margin: 10px 0;
+  background: var(--gold-pale);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ── CHANNEL CARD ────────────────────────────────── */
+.channel-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.channel-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.channel-card p { font-size: 14.5px; color: var(--ink); }
+
+/* ── ACTIVATION CARD ─────────────────────────────── */
+.activation-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.activation-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.activation-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+
+.activation-card .act-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.activation-card h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--forest);
+  margin: 18px 0 8px;
+}
+
+.activation-card p { font-size: 14.5px; }
+
+/* ── FILTER CARD ─────────────────────────────────── */
+.filter-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--r);
+  padding: 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-card .filter-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.filter-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.filter-card p { font-size: 14.5px; }
+
+/* ── RTB CARD ────────────────────────────────────── */
+.rtb-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rtb-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.rtb-card p { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+.rtb-card p:last-child { margin-bottom: 0; }
+
+.rtb-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.rtb-card li {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+/* ── COMPETITOR CARD ─────────────────────────────── */
+.competitor-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.competitor-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.competitor-card .comp-msg {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.competitor-card p { font-size: 14.5px; }
+
+.competitor-card .skyro-diff {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 14px 18px;
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.competitor-card .skyro-diff strong { color: var(--gold-light); }
+
+/* ── DESIGN KIT TBD ────────────────────────────────── */
+.tbd-placeholder {
+  text-align: center;
+  padding: 60px 40px;
+  background: var(--cream-dark);
+  border: 2px dashed var(--border);
+  border-radius: var(--r);
+  margin: 24px 0;
+}
+
+.tbd-placeholder .tbd-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: .5;
+}
+
+.tbd-placeholder h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.tbd-placeholder p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── CLOSING ─────────────────────────────────────── */
+.closing-block {
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: var(--r);
+  padding: 40px;
+  margin: 40px 0;
+}
+
+.closing-block p { color: rgba(248,244,238,.85); font-size: 15.5px; }
+.closing-block strong { color: var(--cream); }
+
+.closing-questions {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.closing-questions li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.5;
+}
+
+/* ── WARNING BOX ─────────────────────────────────── */
+.warning-box {
+  background: var(--amber-pale);
+  border: 1px solid var(--amber);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.warning-box strong { color: var(--amber); }
+
+/* ── FOOTER ──────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .08em;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .dd { grid-template-columns: 1fr; }
+  .main-inner { padding: 40px 24px 0; }
+
+  nav.side {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    height: 100%;
+    transition: left .3s ease;
+    z-index: 150;
+  }
+
+  nav.side.open { left: 0; }
+
+  .hamburger { display: flex; }
+
+  .page-wrap { display: block; height: auto; overflow: auto; }
+  main { height: auto; overflow: visible; }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 32px; }
+  .hero-sub { font-size: 20px; }
+  .main-inner { padding: 32px 16px 0; }
+  .value-block { padding: 20px; }
+  .activation-card { padding: 20px; }
+  .closing-block { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     PAGE WRAP: SIDEBAR + MAIN
+     ════════════════════════════════════════════════════ -->
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrap">
+
+<!-- ── SIDEBAR ──────────────────────────────────────── -->
+<nav class="side" id="sidebar">
+  <div class="nav-logo">
+    <span>Skyro</span>
+    <small>Saudi Arabia Localization</small>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="nav-group open" data-group="overview">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Overview</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s01"><span class="nav-n">01</span><span class="nav-t">Global Mind, Local Heart</span></a>
+      <a class="nav-item" href="#s02"><span class="nav-n">02</span><span class="nav-t">Brand Persona</span></a>
+      <a class="nav-item" href="#s03"><span class="nav-n">03</span><span class="nav-t">Focus Values</span></a>
+      <a class="nav-item" href="#s04"><span class="nav-n">04</span><span class="nav-t">Reasons to Believe</span></a>
+    </div>
+  </div>
+
+  <!-- BRAND VOICE -->
+  <div class="nav-group" data-group="voice">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Brand Voice</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s05"><span class="nav-n">05</span><span class="nav-t">Do / Don't — Verbal</span></a>
+      <a class="nav-item" href="#s05b"><span class="nav-n">05b</span><span class="nav-t">Do / Don't — Visual</span></a>
+      <a class="nav-item" href="#s06"><span class="nav-n">06</span><span class="nav-t">Communication Examples</span></a>
+    </div>
+  </div>
+
+  <!-- MARKETING & ACTIVATIONS -->
+  <div class="nav-group" data-group="marketing">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Marketing & Activations</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s07"><span class="nav-n">07</span><span class="nav-t">Ambassador Strategy</span></a>
+      <a class="nav-item" href="#s08"><span class="nav-n">08</span><span class="nav-t">Creative Activations</span></a>
+      <a class="nav-item" href="#s09"><span class="nav-n">09</span><span class="nav-t">Communication Calendar</span></a>
+      <a class="nav-item" href="#s10"><span class="nav-n">10</span><span class="nav-t">Channel Guidance</span></a>
+      <a class="nav-item" href="#s11"><span class="nav-n">11</span><span class="nav-t">Competitor Communications</span></a>
+      <a class="nav-item" href="#s12"><span class="nav-n">12</span><span class="nav-t">Advertising Restrictions</span></a>
+    </div>
+  </div>
+
+  <!-- QUALITY CONTROL -->
+  <div class="nav-group" data-group="quality">
+    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+      <span class="nav-group-title">Quality Control</span>
+      <span class="nav-group-arrow">▾</span>
+    </div>
+    <div class="nav-group-items">
+      <a class="nav-item" href="#s13"><span class="nav-n">13</span><span class="nav-t">The Five Filters</span></a>
+      <a class="nav-item" href="#closing"><span class="nav-n">—</span><span class="nav-t">Closing</span></a>
+    </div>
+  </div>
+
+  <!-- DESIGN KIT -->
+  <div class="nav-group" data-group="designkit">
+    <a class="nav-item" href="#designkit" style="padding:10px 24px;">
+      <span class="nav-group-title" style="display:inline;">Design Kit</span>
+      <span class="nav-tbd">TBD</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ── MAIN CONTENT ─────────────────────────────────── -->
+<main id="main">
+
+<!-- ════════ HERO ════════ -->
+<div id="hero">
+  <div class="hero-eyebrow">Skyro · Saudi Arabia · Q1 2026</div>
+  <h1 class="hero-title">Brand Communication<br><em>Localization Guide</em></h1>
+  <div class="hero-sub">Skyro Saudi Arabia</div>
+  <div class="hero-desc">How the Global Brand Platform Lives on the Saudi Market</div>
+  <div class="hero-scroll">
+    Scroll
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+  </div>
+</div>
+
+<div class="main-inner">
+
+<!-- PRE-NOTES -->
+<div class="sec visible">
+  <div class="warning-box">
+    <p><strong>Confidential · Internal Use Only · Q1 2026</strong></p>
+    <p>Global Brand Platform → Local Execution · For the Saudi Arabia local team</p>
+  </div>
+
+  <div class="call">
+    <strong>How to Use This Document</strong><br><br>
+    This guide is built for the Skyro Saudi Arabia team. Its purpose is to show how the global brand platform translates, sounds, and behaves specifically on this market — not to replace the Global TOV Guide or the master brand, but to sit on top of them as a layer of cultural interpretation.<br><br>
+    The structure is straightforward: we start by grounding the global brand promise in the Saudi reality (Global Mind, Local Heart). We then move to a brand persona, brand values, RTBs, do/don'ts, communication examples, ambassador criteria, and creative activations.<br><br>
+    <strong>The core principle: we don't change the brand to fit the market. We find where the brand and the market already meet — and amplify that intersection.</strong><br><br>
+    <strong>A note on language:</strong> all copy examples in this document are written in English to allow the global and local teams to evaluate meaning and tone. In actual execution, Saudi Arabic dialect is strongly recommended for mass-market communications — the closer a message is to the emotional core of the brand, the more Saudi the language should be. Modern Standard Arabic (MSA) reads as formal, distant, and institutional on this market. Saudi dialect reads as <em>ours</em>. The examples here show the idea and the register; local copywriters should feel free to translate the spirit, not just the words.<br><br>
+    <strong>Language strategy — three-phase model:</strong><br>
+    <strong>Phase 1 (launch):</strong> Saudi dialect Arabic + English. This covers Saudi national consumers (~22M), Egyptian expats (~1M), professional expats (~3–4M), and Filipino expats (~700K). Together — ~75% of the population (~27M of ~36M). Arabic is the first language of the interface and all communication. English is a full second language. This is sufficient for launch.<br>
+    <strong>Phase 2 (expat remittance product):</strong> Add Urdu. One language that opens two of the largest corridors — Pakistani (~1.5M, $5B) and a significant portion of the Indian (Urdu-speaking Muslims are the largest single segment among Indian blue-collar workers). One language, $13–15B corridor.<br>
+    <strong>Phase 3 (scaling):</strong> Bengali and Hindi as the product grows. Amharic only if the Ethiopian corridor becomes a strategic priority.<br><br>
+    <strong>A cost-effective accelerator:</strong> full app localization in 4+ languages is expensive. But marketing campaigns in corridor languages — with the app remaining in Arabic + English — deliver 80% of the emotional effect at a fraction of the cost. A Snapchat ad in Urdu costs the same as one in Arabic but communicates something fundamentally different: <em>"we made this for you."</em> This tactic can and should launch ahead of full product localization.
+  </div>
+</div>
+
+<!-- ════════ 01 · GLOBAL MIND, LOCAL HEART ════════ -->
+<div class="sec" id="s01">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h1 class="sec-title">Global Mind, Local Heart</h1>
+  </div>
+
+  <h2 class="sub">The Global Promise, Read Through Saudi Eyes</h2>
+
+  <p class="lead"><em>Celebrate who you are. Grow from where you stand.</em></p>
+
+  <p>This is what Skyro believes everywhere it operates. But in Saudi Arabia, this line carries a particular weight — because the reality it speaks to is not abstract. It is specific, daily, and deeply felt.</p>
+
+  <p>Saudi life moves to a rhythm most financial products were not built for. Prayer shapes the day. Ramadan reshapes the month. Eid arrives as a financial event, not a holiday. The week pivots around Friday. The calendar follows the Hijri year. And 13.4 million expatriate workers send $33.5 billion home each year — money that crosses borders and carries the weight of family. None of this needs explaining to a Saudi audience. It needs to be designed for.</p>
+
+  <p>Traditional finance was not built for this reality. It was built for interest-based products in a country where interest is religiously prohibited. It was built for stable single-currency lives in a country where a third of the population earns in riyals and sends home in rupees, pesos, and taka. It was built, essentially, for someone else.</p>
+
+  <p>Skyro is built for this reality. Every Saudi story is different — shaped by whether you were born in Riyadh or arrived from Lahore, whether you are a young Saudi woman opening her first independent bank account after the 2018 reforms, or a construction worker from Bangladesh sending SAR 1,200 home every month through a sarafa that charges 7%. Skyro moves with people — confidently, responsibly, and in their own rhythm. Skyro believes financial technology should meet people where they are, not where the system expects them to be.</p>
+
+  <div class="call">
+    In Saudi Arabia, <em>celebrate who you are</em> is a collective statement — about culture, country, generation, and faith. It is the pride of being Saudi at this particular moment in history: building something the world is watching, rooted in a civilization that precedes any modern nation. It is the pride of an expat community that sustains families across continents through discipline and sacrifice. "Be who you are" on this market means: be proud of what we are building together — as a nation, as a community, as a generation following Shariah principles and shaping the future.
+  </div>
+
+  <p><em>Celebrate who you are</em> on this market speaks to: your faith, your financial rhythms, your cultural obligations, your family responsibilities, your collective identity — these are the shape of your life and your community, and they deserve a financial partner that respects them.</p>
+
+  <p><em>Grow from where you stand</em> is a practical invitation. Start from today. From your WPS salary, your first split payment, your small business in Jeddah, your Eid savings plan, your startup idea funded by the Misk Foundation. Growth doesn't require becoming someone else first.</p>
+
+  <h2 class="sub">The Saudi Consumer Insight</h2>
+
+  <p>The Saudi audience today is younger, more globally exposed, and more confident than any previous generation. 67% of nationals are under 35. New careers — entertainment, tech, hospitality, creative work — exist that didn't five years ago. Women are building professional lives that the system once excluded them from. Startups are launching out of Riyadh and Jeddah and reaching regional scale. None of this requires hedging between tradition and modernity. People here are doing both, naturally, without asking for permission.</p>
+
+  <p>And alongside them, 13.4 million expatriate workers navigate a parallel financial reality — earning in a country that is not theirs, sending money to families they cannot always see, and managing financial lives through systems that were not designed for them.</p>
+
+  <div class="insight-quote">
+    The right financial partner here does not ask people to choose between Islamic principles and modern product design, or between Saudi identity and global standards. It builds tools that fit around the life already being lived — the new job, the rent due, the Eid approaching, the wedding being planned, the school fees being sent home, the appliance that broke last week, the salary that just arrived.
+  </div>
+
+  <p>Skyro exists to be exactly that partner.</p>
+
+  <h2 class="sub">The Governing Principle — Izzah</h2>
+
+  <p>Before any value, any tone choice, any campaign — there is one principle that governs everything Skyro says and does on this market: <strong>izzah</strong>. Dignity. Self-respect. The protection of how a person is seen by others, especially in matters of money.</p>
+
+  <p>In Saudi culture, financial difficulty is private. Debt carries social weight. Vulnerability is not for public consumption. Izzah is not a feature of Saudi life — it is the air. Every Skyro touchpoint, from a Snapchat ad to a late-payment SMS to a loan-decline screen, has to leave the user with their dignity intact. This is not one of five principles. It is the principle the other five are read through.</p>
+
+  <div class="call">
+    <strong>Practically, izzah means:</strong> Skyro never frames a product as a rescue. Never implies the user is struggling. Never exposes a financial situation, even by inference. Always shows conditions before commitment. Always treats decline as a calm conversation, not a verdict. Always respects that money is private — between the user, their family, and their financial partner. Nothing else.
+  </div>
+</div>
+
+<!-- ════════ 02 · BRAND PERSONA ════════ -->
+<div class="sec" id="s02">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h1 class="sec-title">Brand Persona — Who Is Skyro on the Saudi Market?</h1>
+  </div>
+
+  <p class="lead">If Skyro were a person on this market, who would he be?</p>
+
+  <div class="persona-card">
+    <p>His name is <strong>Faisal</strong>. He's 30, born and raised in Riyadh, from a steady family with roots in Qassim. He did his bachelor's at King Saud University and his master's abroad — like most of his generation, on a government or family-funded path through London, Boston, or Toronto. He came back home with a degree, a Revolut card he still uses for travel, and a working sense of how Monzo, Chime, and N26 actually feel in the hand. That exposure is unremarkable in his circle — most of his closest friends studied abroad too — but it shapes what he expects from a financial product at home. He follows Saudi fintech news on X, has a Tabby account and a savings plan he started during Ramadan, and has opinions about how the Al Rajhi app works versus D360. On the side, he buys and sells cars — the kind of practical hustle many young Saudis maintain alongside their primary work.</p>
+
+    <p>When Faisal recommends something, his community listens. Not because he's loud, but because he's seen the global version and chose this one anyway. In a market where 30% of bank selection runs on wasta, a recommendation from someone with international exposure carries unusual weight — and his peers are the highest-value first-wave customers any Saudi fintech can win.</p>
+
+    <p>Faisal is equally comfortable talking with a Ministry of Commerce official and a Pakistani delivery driver, and he listens to both with the same attention. He understands that in Saudi Arabia, connections are currency — wasta is how community works. He judges brands by whether they feel like they belong in that network or whether they are trying to sell into it from the outside.</p>
+
+    <p>He is smart and capable — and careful never to let that create distance. When a colleague from Egypt asks how the Kafala transfer process works, he doesn't lecture — he sits down and figures it out together. He knows that financial knowledge is unevenly distributed, and he feels no pride in knowing more — only a desire to share what he knows in a way that leaves the other person feeling capable.</p>
+
+    <p>He has quiet confidence. Humor is dry, observational, never at anyone's expense. He respects the rhythms of the day — prayer, family, work — without making a performance of it. He understands <em>izzah</em> instinctively — he would never put someone in a position where their financial difficulty was visible to others.</p>
+
+    <p>He is proud to be Saudi in a way that is genuine and forward-looking. He is excited about Vision 2030 because he can feel his country changing — in the concerts, in the new jobs, in the women in his office, in the startups launching every month. He believes the best of Saudi Arabia is ahead.</p>
+
+    <div class="persona-summary">
+      <strong>In communication terms, this means:</strong> Skyro Saudi Arabia talks to an audience with global fintech literacy — people who have used Revolut, Monzo, and Chime, and who expect a product at home to meet that standard, not catch up to it. Skyro is culturally fluent — at ease with the rhythms of prayer, Ramadan, and Islamic finance, never performing piety. Skyro is grounded in real life — specific, concrete, present. Skyro is warm and dignified — a presence that makes financial conversations feel natural, never exposing vulnerability. Skyro's confidence comes from genuine understanding of Saudi life, not from borrowed authority. And Skyro sees everyone on this market — Saudi national, professional expat, blue-collar worker — as equally deserving of a financial partner that respects them.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 03 · FOCUS VALUES ════════ -->
+<div class="sec" id="s03">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h1 class="sec-title">Focus Values — The Skyro Brand Values in Saudi Context</h1>
+  </div>
+
+  <p>Skyro's five global brand values do not change from market to market. What changes is the specific texture of how they are expressed — the cultural references, the emotional register, the moments they speak to. Here is how each value lives on the Saudi market.</p>
+
+  <!-- FLOW -->
+  <div class="value-block">
+    <h2>Flow</h2>
+    <div class="value-sub">Move with nature, not against it</div>
+
+    <p>Globally, Flow is about rhythm — working with the natural patterns of life rather than imposing artificial structures on top of them.</p>
+
+    <p>In Saudi Arabia, Flow is the recognition that life moves to a rhythm older and deeper than any financial product. The day is structured by five prayers — Fajr before dawn, Dhuhr at midday, Asr in the afternoon, Maghrib at sunset, Isha at night. Business pauses. Commerce resumes. The week pivots around Friday, not Sunday. Ramadan transforms every schedule for thirty days: the night becomes active, the day becomes quiet, spending patterns invert completely. Hajj season creates a financial and emotional event with no parallel in any other market. And for 13.4 million expat workers, the financial month has its own rhythm: WPS salary on the 25th–30th, remittance home within days, then stretching what remains until the next cycle.</p>
+
+    <p>Most financial products treat these rhythms as edge cases. Skyro treats them as the shape of real Saudi financial life — and builds tools that move with that shape rather than against it. Flexible payment schedules that adjust around Ramadan. Remittance products timed to salary cycles. Products that respect the fact that spending peaks at Eid, not Christmas.</p>
+
+    <div class="what-means">
+      <h4>In communication</h4>
+      <ul>
+        <li>Speak to the real rhythms of Saudi and expat life without romanticizing the difficulty</li>
+        <li>Acknowledge the seasonality without reducing it to a marketing calendar</li>
+        <li>Show that Skyro adjusts — because that is what a good financial partner does</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GROWTH -->
+  <div class="value-block">
+    <h2>Growth</h2>
+    <div class="value-sub">Like a garden, not a machine</div>
+
+    <p>Globally, Growth is about organic, sustainable progress — growth that has roots, that happens at the right pace, that does not require you to become something you are not.</p>
+
+    <p>In Saudi Arabia, growth is visible everywhere. The first day at a new job. The side business that started on Instagram and now has real customers. The shop in Jeddah that opened last summer. The young woman opening her first independent account, running her own freelance income, applying for her own home. The careers that did not exist five years ago — in entertainment, tech, hospitality, creative work — that are now mainstream choices for under-35s. And for the expat worker, growth is the family house in Kerala or Lahore being built one remittance at a time, over years. Skyro's role across all of this is to be a quiet, reliable presence — the financial tool that does not get in the way.</p>
+
+    <p>Growth on this market has a face — a young woman opening her first business, a Saudi freelancer earning internationally for the first time, an Indian worker whose family's house in Kerala was built riyal by riyal from Riyadh. Skyro's role is to be a quiet but reliable presence on that journey.</p>
+
+    <div class="what-means">
+      <h4>In communication</h4>
+      <ul>
+        <li>Make growth concrete and personal. Not "reach your financial goals" — but "SAR 4,200 saved since Ramadan. Enough for Eid with no surprises."</li>
+        <li>Celebrate small milestones as genuinely as large ones</li>
+        <li>Connect personal growth to the broader story of a changing Saudi Arabia — through what people are doing, not the official language behind it</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CELEBRATION -->
+  <div class="value-block">
+    <h2>Celebration</h2>
+    <div class="value-sub">Honor who you are, not who you should be</div>
+
+    <p>Globally, Celebration is the value that most directly challenges the conventional finance narrative. It says: the way you live, the things you spend on, the cultural obligations you honor — these are not financial mistakes. They are expressions of your values.</p>
+
+    <p>In Saudi Arabia, Celebration is the rhythm of the year itself — Ramadan, Eid al-Fitr, Eid al-Adha, Hajj, National Day on September 23rd. Each one moves real money: iftar gatherings, zakat, new clothing, gifts, travel, the Hajj saving plan, the Eid transfer sent home by a father working far from his children. Skyro's role is not to interpret these moments. It is to make sure the financial side of them works — quietly, without pressure, without israf.</p>
+
+    <p>Conventional finance treats these as spending spikes to be managed. Skyro's answer is different: help people celebrate fully, within a structure they can manage. Make Eid a moment to plan for with confidence. Make the zakat obligation something handled smoothly and with dignity. Make the Hajj saving plan a journey, not a burden.</p>
+
+    <div class="warning-box">
+      <p><strong>Important:</strong> never show or encourage <strong>israf</strong> (wasteful, thoughtless spending). In Islamic culture, israf is as taboo as riba. Celebration in the Skyro world is generous and intentional — never reckless. The frame is "celebrate wisely," not "spend wildly."</p>
+    </div>
+
+    <div class="what-means">
+      <h4>In communication</h4>
+      <ul>
+        <li>Never imply that Saudi cultural or religious spending is impractical or excessive</li>
+        <li>Do not frame celebrations as the reason for financial difficulty</li>
+        <li>Frame Skyro's products as the tools that make celebration possible without the aftermath of financial stress</li>
+        <li>Acknowledge zakat, Hajj savings, and Eid gifting as expressions of values — not costs to be minimized</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INNOVATION -->
+  <div class="value-block">
+    <h2>Innovation</h2>
+    <div class="value-sub">Technology that anticipates, not just reacts</div>
+
+    <p>Globally, Innovation is about technology that is genuinely useful — that solves real problems before they become crises, that learns from how people actually behave rather than how they are supposed to behave.</p>
+
+    <p>In Saudi Arabia, this takes a specific form. The country has 99% internet penetration, 98% smartphone ownership, 99% 5G coverage, and a population that consumes 7 hours of digital media daily. 42% of Saudis use ChatGPT monthly. The digital infrastructure is among the most advanced in the world. Yet 13.4 million expat workers remain largely excluded from full banking services, the only expat-focused digital product (Urpay) has captured just 11% of its addressable market, and 75% of remittance senders still use traditional money transfer operators charging 5–7% fees.</p>
+
+    <p>For Skyro, Innovation on the Saudi market means: Shariah-compliant product architecture that is native, not bolted on; an Arabic-first, RTL-native interface (with Urdu and further corridor languages added as the remittance product scales); remittance that settles in minutes at a fraction of the sarafa fee; AI-powered credit assessment that uses WPS salary data to serve people that conventional banks cannot score; and a product experience that works on the 25th of the month — when salary arrives and remittance needs to go home — without failure.</p>
+
+    <div class="what-means">
+      <h4>In communication</h4>
+      <ul>
+        <li>Show technology through what it enables, not what it is. "Send home in 3 minutes, not 3 days" over "AI-powered remittance platform."</li>
+        <li>Show the result. Let the simplicity speak</li>
+        <li>Always — always — lead with Shariah compliance in the Saudi national segment. Shariah compliance is the prerequisite for any conversation</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="value-block">
+    <h2>Trust</h2>
+    <div class="value-sub">You know best. We walk beside you</div>
+
+    <p>Globally, Trust is the value that defines Skyro's relationship with its users: we do not position ourselves as the authority. We position ourselves as a partner who respects the user's intelligence, their choices, and their knowledge of their own life.</p>
+
+    <p>In Saudi Arabia, Trust has a specific architecture. Saudi consumers verify three things before they consider any financial product: SAMA license (regulatory legitimacy — 84% check this), Shariah compliance certificate (religious legitimacy — 79%), and app store rating (peer legitimacy — 71%). Trust is the gate through which every financial relationship must pass.</p>
+
+    <p>But Trust in the Skyro sense goes deeper than certificates. It means understanding <em>izzah</em> — the Saudi concept of dignity — and designing every financial interaction so that vulnerability is never exposed. It means never framing a BNPL purchase as "debt" in a culture where debt signals weakness. It means showing conditions clearly and completely, in Arabic, in the Saudi dialect, before anyone commits to anything. It means treating an expat worker's SAR 1,500 salary with the same respect as a Saudi professional's SAR 25,000. It means being the financial partner that protects dignity in every interaction — from approval to decline, from onboarding to collections.</p>
+
+    <div class="what-means">
+      <h4>In communication</h4>
+      <ul>
+        <li>Always lead with the user's intelligence and capability. Never frame financial products as a rescue</li>
+        <li>Frame them as tools in the hands of someone who already knows what they're doing</li>
+        <li>Show the SAMA license. Show the Shariah compliance</li>
+        <li>In every difficult moment — rejection, late payment, account issue — be the most dignified voice in the room</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 04 · RTBs ════════ -->
+<div class="sec" id="s04">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <h1 class="sec-title">Reasons to Believe — Saudi Proof Points</h1>
+  </div>
+
+  <p>RTBs are the specific, verifiable claims that make Skyro's promise concrete and credible. They are divided into rational RTBs (what the product does) and emotional RTBs (how it makes people feel). Both are necessary. In Saudi Arabia, the rational layer — particularly regulatory and Shariah credentials — carries more weight at the consideration stage than in many markets: <strong>55% functional / 45% emotional.</strong></p>
+
+  <div class="call">
+    <strong>Products launching in KSA:</strong><br><br>
+    <strong>Skyro Credit</strong> — Credit products for individuals: credit line, payday loans, BNPL, instalment plans at point of sale. Digital wallet: store, transfer, pay. The base container for the user's financial life in Skyro.<br><br>
+    <strong>Skyro Connect</strong> — API platform for embedding Skyro products into partner ecosystems: retail, telco, agri, marketplaces. Skyro's financial products appear where users already shop and transact — without requiring them to leave the partner's app or store.
+  </div>
+
+  <h2 class="sub">Rational RTBs — What Skyro Delivers</h2>
+
+  <div class="rtb-card">
+    <h4>Finance tailored to local habits, cultural expectations, and real lives.</h4>
+    <p>Shariah-compliant product architecture — murabahah for lending, mudarabah for savings — built natively, not adapted from conventional products. Products designed for the rhythms of this market: Ramadan spending, Eid gifting, Hajj saving, zakat obligations, WPS salary cycles for 13.4M expat workers.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>A complete financial toolkit in one place — Skyro Credit.</h4>
+    <p>Credit line, payday loans, BNPL at point of sale, instalment plans — all Shariah-compliant. Plus a digital wallet to store, transfer, and pay. One app that covers the full cycle: earn, spend, split, save. The base container for a user's financial life in Skyro.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Flexible solutions shaped by your goals.</h4>
+    <p>Lending, payments, and savings options that adjust to the user's actual financial rhythm. Choose your repayment date. Adjust your schedule during Ramadan, when everything else adjusts too. Flexibility is a design decision that reflects the reality of Saudi financial life.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Skyro where you already are — embedded through Skyro Connect.</h4>
+    <p>Through Skyro Connect, Skyro's credit and payment products are embedded directly into partner ecosystems — retail, telco, agri, marketplaces. Split a purchase at the point of sale without downloading a new app. Access a credit line inside the telco app you already use. Skyro meets people where they transact.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Finance that understands how Saudi families actually work.</h4>
+    <p>In Saudi Arabia, financial decisions are often intergenerational. A young person takes a loan for a parent's medical treatment because banks won't lend to older applicants. A family pools resources for a wedding or a home. A brother's connections open doors that money alone cannot. Skyro understands that the person on the application form is not always the person with the need — and designs products that serve the family, not just the individual.</p>
+  </div>
+
+  <div class="call">
+    <strong>A note on market positioning:</strong> Skyro's marketing image in Saudi Arabia should read as <strong>premium-accessible</strong>: premium in visual quality, tone, and brand perception — but accessible in product terms and conditions. Competitors in this market orient toward middle-to-high income segments. Skyro's positioning should compete at that visual level while serving a broader audience. The brand should never read as "for people who can't afford a bank" — it should read as "for people who deserve better than what banks offer."
+  </div>
+
+  <div class="rtb-card">
+    <h4>Products that understand cultural rhythms: Ramadan, Eid, Hajj, payday.</h4>
+    <p>Most financial products are designed for a financial calendar that does not match Saudi life. Skyro builds for the calendar that does: WPS salary on the 25th–30th, Ramadan spending and charitable obligations, Eid al-Fitr and Eid al-Adha peaks, Hajj saving plans, back-to-school September, and Saudi National Day. Products timed to these rhythms are respect.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Reliable, secure technology — built on credentials Saudi consumers trust.</h4>
+    <p>SAMA-licensed. Shariah board certified. Data protected under SAMA cybersecurity standards. Biometric KYC with full identity verification. Every condition shown in full — in Arabic, in the Saudi dialect — before anyone commits to anything. Arabic-first, RTL-native interface with English as a full second language; Urdu added when the remittance product launches. In a market where 84% of consumers verify the SAMA license and 79% check Shariah compliance before opening any financial product, the technology has to match the level of scrutiny — and the brand has to earn that scrutiny, not bypass it.</p>
+    <p><strong>A note on speed:</strong> in Saudi Arabia, "fast and easy" works for transactional moments where speed is real value — sending a remittance, paying a bill, splitting a checkout. In credit, the same phrase carries the wrong signal: the promise of a fast, easy loan is the language of informal lenders, not modern Islamic finance. Skyro never sells credit on speed. Credit is sold on transparency, Shariah integrity, and respect for the user's situation. Speed, where it exists, is a consequence of good engineering — not a marketing claim.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Clear, upfront conditions: no hidden fees, no surprises.</h4>
+    <p>Every condition is shown before any commitment is made. The amount. The schedule. The total cost. Shariah compliance certification visible. SAMA license displayed. In a market where trust is built through specificity and credentials, transparency is a moral obligation.</p>
+  </div>
+
+  <h2 class="sub">Emotional RTBs — How Skyro Makes People Feel</h2>
+
+  <div class="rtb-card">
+    <h4>Seen and understood, not judged.</h4>
+    <p>Financial products in Saudi Arabia have historically been designed for Saudi nationals with stable salaries. Expat workers were either invisible or served by utility products with no warmth or ambition. Saudi women were recently excluded entirely from independent financial services. Skyro communicates and operates in a way that says: your financial life, whatever shape it takes, is valid. We designed for you specifically.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Pride in a financial partner that respects your faith and culture.</h4>
+    <p>Skyro was built Shariah-first — not adapted from a conventional product, but designed that way from day one. Ramadan, Eid, zakat, and Hajj are not "cultural considerations" — they are the calendar the product runs on. When a financial brand demonstrates that it actually understands Saudi life as a genuine operational reality, it earns a loyalty that no promotional rate can replicate.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Freedom to grow your way, without shame.</h4>
+    <p>Growth looks different for different people on this market. For a young Saudi woman, it's her first independent investment account. For a Saudi freelancer, it's income management for a gig career that didn't exist five years ago. For a Pakistani construction worker, it's the family home being built one remittance at a time. For all of them, Skyro's role is to provide the tool and trust the user to decide what it's for — without ever making the user feel that their financial situation is a problem.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Lightness and dignity — money as a quiet presence in the background.</h4>
+    <p>The emotional goal of a Skyro interaction is not excitement — it is <em>izzah</em> preserved. The quiet confidence that comes from having a financial plan that works, from knowing what you owe and when, from sending money home without losing 7% to fees, from being able to handle Eid spending without the whole month unraveling. Money should be a quiet helper in the background of a life being lived. That is what Skyro works toward.</p>
+  </div>
+
+  <div class="rtb-card">
+    <h4>Confidence in your own choices — finance that trusts you back.</h4>
+    <p>Skyro does not position itself as the authority in the room. The user knows their own life. Skyro provides the tools, the information, and the support — and then steps back and trusts the user to make the right decision for themselves.</p>
+  </div>
+</div>
+
+<!-- ════════ 05 · DO/DON'T VERBAL ════════ -->
+<div class="sec" id="s05">
+  <div class="sec-header">
+    <span class="sec-num">05</span>
+    <h1 class="sec-title">Do / Don't for the Saudi Market — Verbal</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Do — Speak About This</div>
+      <div class="dd-i"><strong>Ramadan and Eid treated with the spiritual weight they carry.</strong> Ramadan is the most significant month of the Islamic year — a period of fasting, prayer, charity, and community that reshapes every aspect of daily life. Any brand that treats these as promotional opportunities without demonstrating genuine understanding will be rejected. Any brand that speaks to them with real depth will be remembered.</div>
+      <div class="dd-i"><strong>Izzah — dignity — as the governing principle of all financial communication.</strong> In Saudi culture, financial difficulty is a private matter. Debt carries stigma. Vulnerability is not shared publicly. Every piece of Skyro communication must be designed so that no user ever feels their financial situation has been exposed, judged, or used as a narrative device.</div>
+      <div class="dd-i"><strong>The expat community with the respect and specificity they deserve.</strong> 13.4 million people. $33.5 billion in annual remittances. Five major nationality corridors — Indian, Pakistani, Bangladeshi, Egyptian, Filipino — each with distinct languages, incomes, and financial needs. Speaking to this community means speaking in their languages, understanding their salary cycles, and recognizing that the money they send home is sacrifice made tangible.</div>
+      <div class="dd-i"><strong>The new Saudi identity — shown through life, not slogans.</strong> Show what the new generation is actually doing: new careers, women in professional environments, startups, weekend trips inside the country, a modern Saudi lifestyle that is confident and unselfconscious. Skip the official program language — the audience already lives this, they don't need to be told they're living it.</div>
+      <div class="dd-i"><strong>Specific numbers, real places, concrete timelines.</strong> "Sub-2% remittance fees to the India corridor" beats "low-cost transfers." "Every term shown before you commit. SAMA-licensed. Shariah board certified" beats "fast and easy approval." "SAR 5,000 saved since Ramadan" beats "flexible financial solutions."</div>
+      <div class="dd-i"><strong>Shariah compliance — proactively, prominently, and without apology.</strong> It is the first thing a Saudi consumer looks for. SAMA license and Shariah board certification should be visible, prominent, and consistently communicated.</div>
+      <div class="dd-i"><strong>Saudi dialect for mass-market, MSA for formal — and marketing in corridor languages ahead of full localization.</strong> Saudi Arabic dialect outperforms MSA significantly for under-35s. One wrong word, one unnatural construction — and the audience concludes the brand is foreign. Arabic copywriting must be reviewed by native Saudi speakers, not just Arabic speakers. For expat corridors: Snapchat and TikTok campaigns in Urdu, Tagalog, Bengali can launch before the app is localized — delivering a powerful emotional signal at a fraction of the cost.</div>
+      <div class="dd-i"><strong>Payday cycles and the rhythm of the Saudi financial month.</strong> WPS salary on the 25th–30th. Remittance within days. Eid spending clusters. Content timed to these moments has organically higher engagement.</div>
+      <div class="dd-i"><strong>Use correct Shariah-compliant terminology.</strong> "Tawarruq" and "murabaha" for commercial lending structures. "Profit rate" (نسبة ربح) instead of anything interest-related. "Cost structure" or "fee" for pricing. The specific Arabic terms matter — using the wrong Islamic finance vocabulary is as damaging as using "interest" directly.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Don't — Avoid This at All Costs</div>
+      <div class="dd-i"><strong>Use interest-based language.</strong> Riba is religiously prohibited. Never use "interest rate" or "interest-free" — even negatively framed ("zero interest") still invokes the concept. Use "profit rate" (نسبة ربح), "cost", or "fee" instead.</div>
+      <div class="dd-i"><strong>Show or encourage israf (wasteful spending).</strong> Israf — extravagant, thoughtless consumption — is prohibited in Islamic culture and carries social stigma in Saudi Arabia. Even in Celebration-oriented communications, spending must be shown as intentional and purposeful, never reckless.</div>
+      <div class="dd-i"><strong>Include any gambling or chance-based mechanics.</strong> Maysir (gambling) is a major taboo. No spin-to-win wheels, no lotteries, no "lucky draw" promotions, no random-reward gamification. If a mechanic could be interpreted as maysir by a conservative user, it must be removed.</div>
+      <div class="dd-i"><strong>Expose financial vulnerability.</strong> Izzah means that any communication implying the user is struggling will be felt as a violation of dignity. Late payment reminders must be private, specific, and solution-oriented.</div>
+      <div class="dd-i"><strong>Allow hidden fees or unclear conditions.</strong> In Saudi Arabia, hidden fees are perceived as khida (deception). The cultural reaction to discovering an undisclosed fee is not annoyance but betrayal. Every cost, every condition, every obligation must be visible before commitment. There is no second chance.</div>
+      <div class="dd-i"><strong>Commoditize remittance.</strong> Never show expat remittance as a neutral financial transfer without acknowledging the human reality behind it.</div>
+      <div class="dd-i"><strong>Import Western financial assumptions.</strong> "Build your credit score." "Live within your means." These frames do not map to Saudi reality.</div>
+      <div class="dd-i"><strong>Try to solve every objective with one channel.</strong> Snapchat is the awareness channel — it is not where trust, acquisition, or B2B credibility are built. Distribute by objective: Snapchat and TikTok for awareness, X for trust and reputation, Google for high-intent acquisition, Instagram for brand identity, LinkedIn for partnerships and credibility.</div>
+      <div class="dd-i"><strong>Touch Shariah compliance superficially.</strong> Mentioning it without genuine product architecture behind it is worse than not mentioning it at all.</div>
+      <div class="dd-i"><strong>Make humor at the expense of cultural or religious obligations.</strong> Ramadan, Hajj, and zakat are sacred. Lightness must come from shared everyday experiences, not from religious practices.</div>
+      <div class="dd-i"><strong>Put the product before the person in any scenario.</strong> "Ahmed needed to send his daughter's school fees to Karachi before the deadline. The money arrived in 4 minutes" is Skyro communication. "Skyro's AI-powered remittance engine enables real-time cross-border settlement" is not.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 05b · DO/DON'T VISUAL ════════ -->
+<div class="sec" id="s05b">
+  <div class="sec-header">
+    <span class="sec-num">05b</span>
+    <h1 class="sec-title">Do / Don't — Visual Language, Creative Campaigns, and Photo Style</h1>
+  </div>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Show This</div>
+      <div class="dd-i"><strong>Real people in recognizable Saudi and expat contexts.</strong> A family at an iftar table. A young Saudi woman at her office. An expat worker sending money home. A couple choosing appliances in a Riyadh mall. Authenticity in setting carries more trust than production quality alone.</div>
+      <div class="dd-i"><strong>The new Saudi everyday.</strong> Young Saudis in new-economy careers: entertainment, hospitality, tech startups, creative work. Saudi women in professional settings — naturally, not performatively. The transformation is visible in how people live; show that, not the policy behind it.</div>
+      <div class="dd-i"><strong>Multi-generational family dynamics.</strong> A father and son at an appliance store. A family gathering for Eid. A grandmother receiving a video call from an expat grandchild.</div>
+      <div class="dd-i"><strong>Expats inside Saudi everyday life — not in a separate frame.</strong> The expat is not "on the margins." Show expats and Saudis in the same scenes: at work, in stores, at a corner kiosk, in a cafe, sending a remittance, calling family back home. The expat story is about connection maintained — not distance endured, and never pity or loneliness.</div>
+      <div class="dd-i"><strong>Architectural and environmental diversity across Saudi Arabia.</strong> Riyadh is not Saudi Arabia. Show Jeddah's historic Al-Balad district. The Eastern Province's industrial landscape. The green highlands of Abha and Asir. The dramatic mountains and ancient ruins of Al-Ula and Tabuk. The coastal beauty of the Red Sea. Saudi Arabia contains deserts, mountains, coastline, and greenery — and Saudis are proud of all of it.</div>
+      <div class="dd-i"><strong>Nature metaphors and animal symbols grounded in Saudi culture.</strong> The <strong>Arabian horse</strong> — nobility, endurance, loyalty, ancient heritage. The <strong>falcon</strong> (صقر) — precision, freedom, vision; falconry is a living Saudi tradition. The <strong>Arabian wolf</strong> — loyalty and devotion. The <strong>gazelle</strong> — grace and beauty. These carry real cultural weight — not generic trees or rivers.</div>
+      <div class="dd-i"><strong>Islamic geometric patterns and Arabic typography as design elements — not decoration.</strong></div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Avoid This</div>
+      <div class="dd-i"><strong>Stock photography that reads as non-Saudi.</strong> Saudi audiences recognize when a campaign was adapted from another GCC market.</div>
+      <div class="dd-i"><strong>Aspirational luxury as the primary register.</strong> Aspiration in the Skyro visual world should be achievable: a new apartment, a better phone, a family celebrating Eid without financial stress.</div>
+      <div class="dd-i"><strong>The "happy person looking at phone" template.</strong> It communicates nothing specific about Skyro.</div>
+      <div class="dd-i"><strong>Imagery that exposes financial difficulty.</strong> Financial difficulty is private. Skyro's visual world acknowledges it through the solution, not the problem.</div>
+      <div class="dd-i"><strong>Western financial lifestyle imagery.</strong> Rooftop scenes with alcohol visible, culturally inappropriate mixed-gender social contexts.</div>
+      <div class="dd-i"><strong>Heavy promotional graphic design.</strong> Starburst graphics and "LIMITED TIME OFFER" — the visual language of aggressive sales, not a brand that respects its audience.</div>
+      <div class="dd-i"><strong>Expat imagery that aestheticizes loneliness.</strong> The expat story should be about connection maintained, not distance endured.</div>
+      <div class="dd-i"><strong>Expats visually separated from Saudi society.</strong> Don't frame the expat as a parallel audience with its own visual world. Expats are part of daily Saudi life — at work, in stores, on the street, in the community. The visual language should reflect that, not segregate it.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 06 · COMMUNICATION EXAMPLES ════════ -->
+<div class="sec" id="s06">
+  <div class="sec-header">
+    <span class="sec-num">06</span>
+    <h1 class="sec-title">Communication Examples</h1>
+  </div>
+
+  <p>All examples below are written in English. In actual execution, Saudi dialect Arabic is the recommended default for Saudi nationals. At launch, the product operates in Arabic + English. Expat-facing marketing campaigns in corridor languages (Urdu, Tagalog, Bengali) can launch ahead of full app localization — see the language strategy in the introduction.</p>
+
+  <h2 class="sub">The Tagline in Market-Specific Communications — "Naturally, It's Yours"</h2>
+
+  <h3 class="sub2">Approach 1 — Lead with a cultural or emotional insight</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>The zakat is calculated. The Eid list is ready. The plan holds. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Your sister's first independent account. Your mother's savings finally in her own name. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>From the side hustle in Riyadh to the storefront in Jeddah — every step counted. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Hajj is not next year's plan anymore. It's this year's reality. Naturally, it's yours.</div>
+
+  <h3 class="sub2">Approach 2 — Lead with a specific product offer</h3>
+  <div class="copy-dir"><span class="copy-label">Example</span>Split it at the store. Pay over 6 months. The total cost — right here, before you commit. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Credit line ready on day one. Use it when you need it. Pay back on your schedule. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>SAR 4,200 saved since Ramadan. Enough for Eid with no surprises. Naturally, it's yours.</div>
+  <div class="copy-dir"><span class="copy-label">Example</span>Send home in 3 minutes. Under 2% fees. See what arrives before you send. Naturally, it's yours.</div>
+
+  <h2 class="sub">Product and Campaign Copy</h2>
+
+  <!-- ACCORDION: BNPL -->
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">BNPL / Split Payments — Core Product <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Snapchat / Mass Reach</h4>
+      <blockquote>You've been looking at that phone for weeks. Split it over the months that work for your salary. Every cost shown before you commit. SAMA-licensed. Shariah board certified. No riba. No surprises.</blockquote>
+      <h4>In-Store Banner / Point of Sale (Skyro Connect partner)</h4>
+      <blockquote>Take it home today. Pay it out over the months that work for you. Split it right here — no extra app needed.</blockquote>
+      <h4>Credit Line — Snapchat</h4>
+      <blockquote>Your Skyro credit line is ready when you are. Use it for what matters — this month's car repair, next month's Eid. You decide. We don't ask why.</blockquote>
+      <h4>TikTok / Gen Z Saudi</h4>
+      <blockquote>POV: The gadget you've been wanting is right there. You read the terms. You saw the total. You chose your schedule. Then you took it home. [Show real flow: found it → checked the terms → picked the months → took it home. No voice-over needed.]</blockquote>
+      <h4>Payday Moment (25th–30th) — Push Notification</h4>
+      <blockquote>Salary's in. If there's something you've been holding off on — now's the time. Check what's available near you.</blockquote>
+      <h4>Digital Wallet — Functional</h4>
+      <blockquote>Store it. Send it. Split it. Pay it. One wallet, everything in one place. Your Skyro balance, your credit line, your split payments — all here.</blockquote>
+    </div></div>
+  </div>
+
+  <!-- ACCORDION: Remittance -->
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Remittance — Expat Product <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Emotional / Family Connection</h4>
+      <blockquote>The school fee is due in Lahore. The rent is due in Dhaka. Your family doesn't see the hours — they see the money that arrives on time. Send it in minutes, not days.</blockquote>
+      <h4>Functional / Trust</h4>
+      <blockquote>SAMA-licensed. Sub-2% fees to India, Pakistan, Philippines, Bangladesh. Arrives in minutes. See the exact amount your family receives before you send. No surprises on either end.</blockquote>
+      <h4>Corridor-Specific — Tagalog</h4>
+      <blockquote>[In Tagalog] Para sa pamilya mo. Mabilis. Mura. Walang tago. — For your family. Fast. Affordable. Nothing hidden.</blockquote>
+    </div></div>
+  </div>
+
+  <!-- ACCORDION: Ramadan -->
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Ramadan Context <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Pre-Ramadan (2 weeks before)</h4>
+      <blockquote>Ramadan is close. The iftar plans are forming. The zakat is being calculated. The Eid list is already in your head. We're with you from here.</blockquote>
+      <h4>Ramadan Weeks 1–2</h4>
+      <blockquote>The nights are long and full. The giving is generous. Your zakat, your sadaqah, your family obligations — handled simply, with dignity. Skyro is here for the quiet financial side of a sacred month.</blockquote>
+      <h4>Ramadan Weeks 3–4 / Eid Preparation</h4>
+      <blockquote>Eid won't wait. The gifts, the new clothes, the gathering that brings everyone together. Start planning now — Eid hits lighter when you're ready for it.</blockquote>
+      <h4>Eid al-Fitr</h4>
+      <blockquote>Eid Mubarak. However you celebrate — with family gathered close or money sent to family far away — we're here to make sure the season feels the way it's supposed to.</blockquote>
+    </div></div>
+  </div>
+
+  <!-- ACCORDION: Support -->
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Support / Service Communications <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <h4>Payment Due Reminder — No Pressure</h4>
+      <blockquote>Your payment is due tomorrow. If you need more time or need to adjust the schedule, here are your options. Pick what works for your situation.</blockquote>
+      <h4>First Successful Payment</h4>
+      <blockquote>First payment cleared. SAR [amount] done. That's what steady looks like.</blockquote>
+      <h4>Savings Milestone</h4>
+      <blockquote>SAR 10,000 reached. You set a goal and you hit it. Whatever comes next — you're already ahead of where you were.</blockquote>
+      <h4>Loan Declined — Respectful Tone</h4>
+      <blockquote>We can't approve this one right now. Here's the specific reason: [concrete reason]. Here are the steps that would change this — and we'll be ready when you are.</blockquote>
+    </div></div>
+  </div>
+
+  <h2 class="sub">Life Moments — Communication Across Real Saudi Scenarios</h2>
+
+  <p>Real life, real voice. The way Skyro talks when nothing dramatic is happening — when the AC just died, the salary just landed, the cousins are already asking about Eid. Friendly, a little dry, specific. Like a friend who happens to be very good with money.</p>
+
+  <!-- ACCORDION: Life Moments -->
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Life Moments — Daily Saudi Scenarios <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+
+      <h4>Salary Received — Push (25th–30th)</h4>
+      <blockquote>Salary's in. Breathe out. The rent already has its corner reserved. The rest is listening to whatever you tell it.</blockquote>
+
+      <h4>Rent Due — In-App Reminder (3 days before)</h4>
+      <blockquote>Rent in three days. Already handled. We're just letting you know — not because we're worried, but because somebody should.</blockquote>
+
+      <h4>Eid Approaching — Snapchat / Push (3 weeks before)</h4>
+      <blockquote>Three weeks to Eid. Your mother's list is somehow longer than last year. Split the bigger items across the months after — keep Eid feeling like Eid, not like a receipt.</blockquote>
+
+      <h4>Broken Appliance — In-Store BNPL / Push (summer)</h4>
+      <blockquote>AC down. In July. In Riyadh. The universe has a sense of humour. Pick the new one, split it over six months, sleep tonight — every cost on screen before you tap.</blockquote>
+
+      <h4>Sending Money Home — Remittance Push</h4>
+      <blockquote>It's the 27th. WhatsApp is already lighting up. SAR 1,500 to Lahore lands in 4 minutes — under 2% in fees. They see the exact amount before you do.</blockquote>
+
+      <h4>School Fees — Remittance (late August)</h4>
+      <blockquote>Term starts in two weeks. The fees don't negotiate. Send them direct, on time, in your name — your kid has enough to think about with the new class.</blockquote>
+
+      <h4>Marriage — Savings Plan (long horizon)</h4>
+      <blockquote>The wedding is set. The aunties already have opinions about the venue. The dowry, the gold, the catering — build it month by month. We'll handle the numbers; you handle the aunties.</blockquote>
+
+      <h4>Home Furnishing — BNPL at Retail (IKEA, Home Centre, SACO)</h4>
+      <blockquote>A new rental in Riyadh comes with the walls and the floor — the rest is on you. Couch, fridge, bed, dining table. Split it across the months that suit your salary, at the store, before the delivery truck even finds the building.</blockquote>
+
+      <h4>Domestic Travel — Savings or Split (AlUla, Asir, Red Sea)</h4>
+      <blockquote>AlUla in November. Yes, everyone is going. Yes, you should too. Save it month by month, or split it once you book — the canyons aren't moving.</blockquote>
+
+      <h4>Starting a New Job — Onboarding Push (first paycheque)</h4>
+      <blockquote>First salary. The number is finally yours. Some goes to family, some to the rent, some stays. Set the plan once — next month it knows what to do.</blockquote>
+
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 07 · AMBASSADOR STRATEGY ════════ -->
+<div class="sec" id="s07">
+  <div class="sec-header">
+    <span class="sec-num">07</span>
+    <h1 class="sec-title">Ambassador Criteria and Approach</h1>
+  </div>
+
+  <p>In Saudi Arabia, celebrity endorsement is powerful but culturally specific. 44% of Saudi consumers cite celebrity endorsement as a decision factor — but the celebrity must be Saudi or regionally recognized. International celebrities carry little trust transfer in financial services. In a market where wasta (personal connections and social influence) drives 30% of bank selection, the right ambassador functions as a scaled version of a trusted recommendation.</p>
+
+  <p>The question is not "who is famous?" but "who feels genuinely like us, and who does our audience genuinely trust?"</p>
+
+  <h2 class="sub">Ambassador Selection Criteria</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>New Saudi identity — without losing the roots</h4>
+      <p>The right Skyro ambassador has achieved something meaningful inside the new Saudi economy — a real career, a real business, real impact — but reads as someone still grounded in Saudi values. Faith, family, community. Not performing modernity. Living it naturally.</p>
+    </div>
+    <div class="card">
+      <h4>Cross-demographic credibility</h4>
+      <p>On Snapchat (21M+ users) and X/Twitter (the opinion-leadership platform), cross-demographic credibility matters. Trusted across the Saudi national and young-adult demographic.</p>
+    </div>
+    <div class="card">
+      <h4>Authentically Saudi</h4>
+      <p>Saudi dialect, not performed MSA. Natural humor, natural warmth, natural cultural references. Speaks and carries themselves in a way that is genuinely Saudi.</p>
+    </div>
+    <div class="card">
+      <h4>Community, faith, or national pride</h4>
+      <p>The cultural value of izzah and the confidence of the new Saudi generation should be readable in the ambassador's public persona — not manufactured through a campaign, but already present.</p>
+    </div>
+    <div class="card">
+      <h4>Clean financial and public history</h4>
+      <p>No financial controversy or scandal. Saudi audiences have long memories. A public figure who made negative comments about Saudi Arabia — even years ago, even casually — will be remembered and rejected. Full audit of public history is mandatory.</p>
+    </div>
+    <div class="card">
+      <h4>Durability over time</h4>
+      <p>Consistent public trust matters more than viral moments.</p>
+    </div>
+  </div>
+
+  <h2 class="sub">Ambassador Examples (directional, not confirmed)</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Tier 1 — National Trust Anchor</h4>
+      <p>Saudi creators or public figures who embody the new generation — successful in new-economy fields, grounded in Saudi identity, cross-generationally respected. Saudi tech entrepreneurs, respected financial commentators on X/Twitter, culturally rooted entertainers from the new Saudi creative economy.</p>
+    </div>
+    <div class="card">
+      <h4>Tier 2 — Segment and Community</h4>
+      <p>Saudi female entrepreneurs and professionals (women's financial independence segment); Saudi personal finance creators on Snapchat and YouTube; expat content creators based in Saudi Arabia speaking to home communities in Urdu, Tagalog, Bengali; Saudi gig economy workers sharing real financial journeys.</p>
+    </div>
+  </div>
+
+  <h2 class="sub">Ambassador Do / Don't</h2>
+
+  <div class="dd">
+    <div class="dd-col do-col">
+      <div class="dd-hdr do">✓ Do</div>
+      <div class="dd-i"><strong>Use the ambassador to make Skyro's values emotionally accessible.</strong></div>
+      <div class="dd-i"><strong>Give the ambassador real creative input.</strong> Scripted content is detected instantly.</div>
+      <div class="dd-i"><strong>Build a sustained partnership across multiple campaigns.</strong> Trust infrastructure takes time.</div>
+      <div class="dd-i"><strong>Create content that shows the ambassador in a natural context.</strong></div>
+      <div class="dd-i"><strong>Engage segment-specific ambassadors alongside the Tier 1 face.</strong> A Saudi female entrepreneur. An expat content creator in Riyadh. A Saudi financial educator on X/Twitter.</div>
+    </div>
+    <div class="dd-col dont-col">
+      <div class="dd-hdr dont">✗ Don't</div>
+      <div class="dd-i"><strong>Don't attach Skyro to any ambassador with political associations.</strong></div>
+      <div class="dd-i"><strong>Don't choose solely based on follower count.</strong></div>
+      <div class="dd-i"><strong>Don't cast ambassadors known primarily for luxury aesthetics.</strong></div>
+      <div class="dd-i"><strong>Don't treat the ambassador's community as a captive audience.</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 08 · CREATIVE ACTIVATIONS ════════ -->
+<div class="sec" id="s08">
+  <div class="sec-header">
+    <span class="sec-num">08</span>
+    <h1 class="sec-title">Creative Activations</h1>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 01</div>
+    <h4>"Cool Down" — Branded Cooling Stations for Expat Workers</h4>
+    <div class="act-meta">July–August · Peak summer, temperatures 45–52°C · Riyadh, Jeddah, Dammam</div>
+    <h5>What</h5>
+    <p>Skyro installs 20–30 branded cooling stations in areas with high concentrations of blue-collar workers — industrial zones, warehouse districts, construction site perimeters, and delivery rider rest points across Riyadh, Jeddah, and Dammam. Each station provides free cold water, shade canopies, misting fans, and phone charging points. Branding is minimal and respectful: the Skyro logo and a single line in Arabic and Urdu — <em>"You work hard. Stay cool."</em></p>
+    <p>The stations are designed to be genuinely useful, not decorative. They are placed where workers actually rest — not in high-visibility commercial areas but in the real geography of expat labour. A small card at each station, available in Urdu, Bengali, Tagalog, and Arabic, introduces Skyro with a single sentence and a QR code — but the station works as a gesture whether or not anyone scans.</p>
+    <h5>Why it works</h5>
+    <p>Saudi summer heat is a genuine health hazard for outdoor workers. And these workers — 9–10 million blue-collar expats — are invisible to every financial brand in the market. No bank, no fintech, no BNPL company has ever made a public gesture of care toward this population. Skyro's cooling stations say something that no advertisement can: <em>we see you, we know your reality, and we showed up where you actually are.</em></p>
+    <p>The cost is minimal compared to digital advertising. The PR effect — a fintech brand that cares about construction workers in 50-degree heat — is disproportionately large. And the emotional connection it creates with the expat community precedes any product conversation. When Skyro later launches a remittance product, the brand is not a stranger. It is the company that gave them shade when nobody else did.</p>
+    <div class="call">
+      <strong>TOV note:</strong> this activation must never be loud, self-congratulatory, or positioned as charity. It is not "Skyro helps the less fortunate." It is "Skyro is here." The tone is quiet, practical, and dignified — the same tone we use in every interaction with every user.
+    </div>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 02</div>
+    <h4>"Celebrate Every Moment" — Skyro-Branded Viewpoints Across Saudi Arabia</h4>
+    <div class="act-meta">Year-round · Permanent installations · Marketing peaks during travel seasons</div>
+    <h5>What</h5>
+    <p>Skyro installs beautifully designed branded benches and rest points at scenic viewpoints across Saudi Arabia — not only on hiking trails, but in any location where people pause to take in a view. Mountain lookouts in Abha and the Asir highlands. Red Sea coastal promenades. Desert overlooks outside Riyadh. Urban rooftop terraces and corniche walkways in Jeddah. The new public parks and green spaces being built under Vision 2030 in every major city.</p>
+    <p>Each bench carries a small, elegant plaque with a single line — <em>"Some views are worth the pause. So is everything you're building."</em> — and the Skyro logo. No QR code. No call-to-action. No product mention. A pure brand gesture.</p>
+    <p>On hiking trails and nature routes, Skyro provides free branded water bottles featuring a trail map on the label and the tagline <em>"Naturally, it's yours."</em> At coastal viewpoints, the bottles carry a map of the coastline. The design is clean, useful, and collectible — the kind of bottle people keep rather than discard.</p>
+    <p>The benches are designed in collaboration with a Saudi industrial designer — visually distinctive, comfortable, and built to withstand the climate. They become part of the landscape, not an interruption of it.</p>
+    <h5>Why it works</h5>
+    <p>Saudi Arabia is experiencing a domestic tourism revolution. Saudis are discovering their own country — the green mountains they didn't know existed, the coastline they'd never visited, the desert landscapes they'd only driven past. This is a point of national pride: the country is more beautiful and more diverse than the world assumes.</p>
+    <p>Skyro's viewpoint benches place the brand at the exact moment when that pride is felt most intensely — when someone stops, looks at the view, and thinks: <em>this is ours.</em> The bench makes that moment slightly more comfortable, and the line on the plaque connects it to a larger truth about building something worth pausing for. The photos happen organically — people photograph beautiful views, and when a well-designed bench with a memorable line is in the frame, it travels on social media without any paid promotion.</p>
+    <p>Over time, the benches become landmarks. "Meet me at the Skyro bench on the Abha lookout" is the kind of sentence that embeds a brand into daily life more deeply than any campaign.</p>
+    <div class="call">
+      <strong>TOV note:</strong> the plaque copy must be in Saudi Arabic dialect, not MSA. The tone is reflective, warm, and unhurried — it matches the moment of sitting and looking, not the moment of scrolling and buying.
+    </div>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 03</div>
+    <h4>Skyro Oasis at MDLBeast Soundstorm</h4>
+    <div class="act-meta">Annually at MDLBeast Soundstorm · December, Riyadh · 300K+ attendees, fully outdoor, desert setting</div>
+    <h5>What</h5>
+    <p>Skyro creates an "Oasis" — a dedicated cool-down zone between the main stages at Soundstorm. A genuine rest space: shaded seating, cold water, phone charging stations, ambient lighting, and a vibe that feels like a natural extension of the festival rather than a brand intrusion. The Oasis is designed to be the place people go when they need a break — and the place they remember afterward.</p>
+    <p>Inside the Oasis, a merchandise collaboration with a Saudi designer — a limited-edition line (caps, tote bags, lightweight scarves for the desert night cold) that carries Skyro branding in a way that feels like festival merch, not corporate swag. Available for purchase through the Skyro app with split payment — the product itself demonstrates the BNPL mechanic in a low-stakes, enjoyable context.</p>
+    <p>Content captured at the Oasis and across the festival: behind-the-scenes conversations with Saudi DJs, producers, and visual artists — the new creative economy that Vision 2030 made possible. Short-form for Snapchat and TikTok, longer cuts for YouTube. The subjects talk about building a career in music in a country where public concerts were illegal five years ago. Near the end, one of them mentions how they manage the financial reality of a creative career. The tagline closes: <em>Naturally, it's yours.</em></p>
+    <h5>Why it works</h5>
+    <p>MDLBeast Soundstorm is the single most concentrated gathering of young, digitally native, culturally confident Saudis — the exact demographic Skyro wants. Every major brand fights for stage sponsorship (expensive, forgettable). Skyro takes the opposite approach: instead of being the loudest thing at the festival, it becomes the most useful. The Oasis creates a positive physical memory — shade, water, a charged phone at 2 AM in the desert — that no banner ad can replicate.</p>
+    <p>The merch collaboration signals that Skyro understands Saudi creative culture and supports it. The documentary content creates assets that live far beyond the event itself. And the split-payment mechanic for merch introduces the product in a context where the user is relaxed, happy, and choosing to engage — the opposite of a hard sell.</p>
+    <div class="call">
+      <strong>TOV note:</strong> festival energy is high, playful, and young. The Oasis is the calm inside that energy — Skyro's tone here is warm, unhurried, and generous. The content tone for the documentary pieces is curious and admiring. No corporate language anywhere in the activation.
+    </div>
+  </div>
+
+  <div class="activation-card">
+    <div class="activation-num">ACTIVATION 04</div>
+    <h4>"Naturally, It's Yours" — New Saudi Stories</h4>
+    <div class="act-meta">Year-round rolling release · Two to three films per quarter · Snapchat, YouTube, and X with platform-specific cuts</div>
+    <h5>What</h5>
+    <p>A series of short documentary films — 90 seconds to three minutes each — about real Saudis who are building something new inside the Vision 2030 transformation. Not profiles of millionaires or celebrities. Stories about the choice itself — the moment someone decided to do something that wasn't on the expected path, and what their life looks like now because of it.</p>
+    <p>The woman who left a banking career to open a ceramics studio in Al-Ula. The young man from Tabuk who became a freelance graphic designer on Upwork and now earns internationally without leaving his hometown. The couple in Dammam who turned a weekend side project — selling Saudi coffee blends online — into a business that ships across the GCC. The Saudi woman who started a fitness coaching practice from her apartment and now runs a studio.</p>
+    <p>Each film is shot in the person's actual environment — their studio, their kitchen, their co-working space, their neighbourhood. No studio lighting. No aspirational set dressing. The visual grammar is close, warm, and observational: hands at work, regular customers, the family in the background. The subject speaks directly to camera in Saudi dialect — unscripted, unpolished, and real.</p>
+    <p>The films have no voiceover. No product demonstration. No Skyro branding until the final moments. Near the end, one moment where the subject says something true about how they manage the financial side of their choice — not as a Skyro endorsement, but as a genuine part of their story. Something like: <em>"The hardest part wasn't starting. It was the three months before revenue came in — figuring out how to cover rent and materials at the same time."</em> The line sits there, honest and unresolved. Then cut to black.</p>
+    <div class="copy-dir" style="margin-top:16px;">
+      <span class="copy-label">Final frame example</span>
+      "She went back to Al-Ula. Opened the studio she always talked about. Three years in, she's never looked back."<br><br>
+      <span style="font-size:17px;color:var(--gold-light);font-style:normal;font-weight:600;">Naturally, it's yours.</span>
+    </div>
+    <p>Subjects found through three channels: Skyro's existing user and merchant network, regional creative communities and entrepreneurship hubs (Misk Foundation alumni, LEAP participants, Monsha'at small business registry), and open submissions — Saudis nominating someone in their community whose story deserves to be heard. This both widens the talent pool and generates organic community investment in the series before a single film is released.</p>
+    <h5>Why it works</h5>
+    <p>Saudi Arabia is in the middle of the most visible cultural transformation of any country this century. Young Saudis are making choices — new careers, new cities, new financial realities — that their parents' generation could not have imagined. The startup dream that Skyro's own Saudi team describes as the defining aspiration of their generation is real, but the reality is more nuanced than the Instagram version: it involves risk, financial uncertainty, side hustles alongside main jobs, and the quiet discipline of building something from nothing.</p>
+    <p>A documentary series about these choices connects Skyro's global promise — <em>Naturally, it's yours</em> — to the most emotionally resonant narrative on the Saudi market: the pride of building something new, on your own terms, inside a country that is doing the same. Each film adds to the brand's story. Each subject becomes a genuine community advocate. And the series creates a content archive that compounds over time — unlike a campaign that runs for a month and disappears, these stories remain relevant for years.</p>
+    <p>The open-submission mechanic also creates a pipeline for future ambassador relationships — people who were already telling their story authentically before Skyro asked them to.</p>
+    <div class="call">
+      <strong>TOV note:</strong> these films should feel like a real person filmed them on their phone and posted them. No professional cinematography, no dramatic lighting, no polished editing. The aesthetic is UGC: vertical format for Snapchat and TikTok, shaky handheld for YouTube, natural sound, the subject talking to camera the way they would talk to a friend on a video call. If a film looks like it was made by a production company, it has failed. The power is in the rawness — this is a real person in their real space telling their real story, and the audience can feel the difference between that and a scripted brand film instantly. The financial moment near the end should never feel planted. If the subject doesn't naturally touch on money in their story, don't force it — some films carry the brand connection through the choice itself, without any explicit financial reference.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 09 · COMMUNICATION CALENDAR ════════ -->
+<div class="sec" id="s09">
+  <div class="sec-header">
+    <span class="sec-num">09</span>
+    <h1 class="sec-title">Communication Calendar — Key Annual Moments</h1>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Period</th><th>Priority</th><th>Tone and Angle</th></tr></thead>
+      <tbody>
+        <tr><td>Muharram — Islamic New Year</td><td><span class="badge medium">Medium</span></td><td>Reflective, forward-looking. "A new year. What are you building?"</td></tr>
+        <tr><td>February — LEAP Conference</td><td><span class="badge high">High</span></td><td>Vision 2030 startup energy. "Building in Public" campaign. Credibility and ecosystem presence.</td></tr>
+        <tr><td>Ramadan (30 days)</td><td><span class="badge peak">Peak</span></td><td>Maximum spiritual and financial engagement. Charity, zakat, savings challenges, Eid prep. Night-active schedule.</td></tr>
+        <tr><td>Eid al-Fitr</td><td><span class="badge peak">Peak</span></td><td>Celebration, family, gifting. Expat remittance peak. "Celebrate fully — you planned for this."</td></tr>
+        <tr><td>Eid al-Adha</td><td><span class="badge very-high">Very High</span></td><td>Second major peak. Sacrifice and gratitude. Hajj-adjacent content.</td></tr>
+        <tr><td>Hajj season (Dhul Hijjah)</td><td><span class="badge high">High</span></td><td>Hajj savings product. Spiritual journey framing.</td></tr>
+        <tr><td>25th–30th every month — WPS Payday</td><td><span class="badge constant">Constant</span></td><td>Energetic, practical. Remittance activation. Financial product awareness.</td></tr>
+        <tr><td>1st–15th every month — Post-remittance</td><td><span class="badge constant">Constant</span></td><td>Period when expat workers stretch. Calm, practical, zero pressure.</td></tr>
+        <tr><td>September 23 — Saudi National Day</td><td><span class="badge high">High</span></td><td>Patriotic, celebratory, Vision 2030 aligned. "Proud to be building this with you."</td></tr>
+        <tr><td>September — Back to School</td><td><span class="badge medium">Medium</span></td><td>Family investment in education. Practical support.</td></tr>
+        <tr><td>Wedding season (year-round, peaks post-Eid)</td><td><span class="badge medium">Medium</span></td><td>Weddings are major financial events. Practical, warm, dignity-preserving. "The celebration you planned for."</td></tr>
+        <tr><td>Birth of a child (year-round)</td><td><span class="badge low-medium">Low-Medium</span></td><td>Gifts from friends and family. Light, celebratory, warm. Gifting transfer features.</td></tr>
+        <tr><td>December — MDLBeast Soundstorm</td><td><span class="badge high">High</span></td><td>Skyro Oasis activation. Young Saudi demographic. Festival energy, split-payment merch, documentary content.</td></tr>
+        <tr><td>July–August — Peak Summer</td><td><span class="badge high">High</span></td><td>"Cool Down" cooling stations for expat workers. Quiet, dignified presence in industrial zones.</td></tr>
+        <tr><td>Q4 / Year-end</td><td><span class="badge medium">Medium</span></td><td>Savings, investment, planning.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ 10 · CHANNEL GUIDANCE ════════ -->
+<div class="sec" id="s10">
+  <div class="sec-header">
+    <span class="sec-num">10</span>
+    <h1 class="sec-title">Channel Guidance</h1>
+  </div>
+
+  <p>One voice, different registers. In financial marketing in Saudi Arabia, channels are assigned by <strong>objective</strong>, not by audience size. Snapchat reaches the most people, but it does not, on its own, do everything a financial brand needs. Awareness, trust, acquisition, identity, partnerships — each lives on a different channel, and the brand has to show up on all of them in the right register.</p>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Snapchat <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">awareness · mass reach</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> mass awareness. 21M+ Saudi users. Saudi dialect mandatory. Stories and Spotlight are the primary formats. The brand has to show up here — but Snapchat is a top-of-funnel channel. Use it to be seen and remembered. Trust and acquisition are built elsewhere.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">TikTok <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">awareness · culture</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> awareness with cultural relevance — especially Gen Z and creators. Maximum energy, minimum script. Saudi dialect. Real scenarios. Paired with Snapchat as the awareness layer.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">X / Twitter <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">trust · reputation</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> trust and reputation. The opinion-leadership platform in Saudi Arabia. Substantive, specific, and credible. Senior financial voices. Not promotional. This is where the brand earns the respect of analysts, journalists, and the people whose endorsement actually moves the market.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Google <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">acquisition</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> high-intent acquisition. When a Saudi user types "BNPL Saudi Arabia" or "halal personal loan," the brand has to be there with the right answer — clear, Shariah-compliant, regulator-credible. Search is where consideration converts.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Instagram <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">brand identity</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> brand identity and craft. The channel where the visual world of Skyro is built — photography, design, the consistent aesthetic that signals a premium brand. Less for performance, more for how the brand looks to anyone who checks the profile before they sign up.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">LinkedIn <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">partnerships · credibility</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> partnerships, B2B credibility, talent. Where Skyro Connect partners, regulators, retailers, and senior hires look. The tone is sober and confident — financial sector seriousness, not promotional energy.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">YouTube <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">consideration · education</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> consideration and financial literacy. Arabic-language tutorials and "how to use" content drive the highest-quality acquisition. Long-form documentary content. The channel that supports the trust X earns.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">WhatsApp <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">service · retention</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> customer service and community. The most human channel. A support interaction done right creates advocacy no campaign can buy.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">In-store / POS <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">conversion at the moment of purchase</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> conversion. Minimum text, maximum clarity. Arabic and English bilingual. QR codes to seamless experience.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Push notifications and SMS <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">retention</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p><strong>Role:</strong> retention and reactivation. Ultra-short, concrete, genuinely useful — or they will be disabled.</p>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">Facebook <span style="font-family:'Outfit',sans-serif;font-weight:400;font-size:13px;color:var(--muted);margin-left:8px;">low priority</span> <span class="acc-arrow">▼</span></div>
+    <div class="acc-body"><div class="acc-body-inner">
+      <p>Not the primary channel for anyone under 30 in Saudi Arabia. Basic presence for discovery only.</p>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════════ 11 · COMPETITOR COMMUNICATIONS ════════ -->
+<div class="sec" id="s11">
+  <div class="sec-header">
+    <span class="sec-num">11</span>
+    <h1 class="sec-title">Competitor Communications — How They Sound, How We Don't</h1>
+  </div>
+
+  <div class="competitor-card">
+    <h4>Al Rajhi Bank — The Heritage Islamic Powerhouse</h4>
+    <div class="comp-msg">"Your Islamic bank — always."</div>
+    <p>14M+ customers. $200B+ assets. Deep green palette with gold. Ramadan campaigns are the gold standard. Neoleap sub-brand attempts youth relevance but feels like an afterthought.</p>
+    <p><strong>The gap:</strong> Trusted, not loved by young Saudis. Perceived as "for Saudi nationals." Legacy culture coexists with digital ambition. Scale creates formality.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Where Al Rajhi speaks from heritage, Skyro speaks from now. Where Al Rajhi addresses the institution's customer, Skyro addresses the person.</div>
+  </div>
+
+  <div class="competitor-card">
+    <h4>STC Bank — The Telecom Transitioning</h4>
+    <div class="comp-msg">"Your digital bank, beyond payments."</div>
+    <p>STC royal blue. Telecom distribution advantage. Strong expat remittance product. But "bills app" baggage persists.</p>
+    <p><strong>The gap:</strong> Must overcome telecom utility perception. Feels like it's becoming something rather than being something. Expat product is strong on function, weak on emotion.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro arrives as what it is. Where STC Bank says "beyond payments," Skyro says "built for your life."</div>
+  </div>
+
+  <div class="competitor-card">
+    <h4>Tabby — The BNPL Champion</h4>
+    <div class="comp-msg">"Shop smarter."</div>
+    <p>Purple palette. 10M users. Precise cultural insight: reframe credit as smart shopping. Playfulness at 90/100.</p>
+    <p><strong>The gap:</strong> Shopping companion, not life partner. No deposit products. No banking. Trust still lower than traditional institutions.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro's relationship does not end at checkout. Where Tabby owns the shopping moment, Skyro owns the financial life that surrounds it.</div>
+  </div>
+
+  <div class="competitor-card">
+    <h4>D360 Bank — The Digital Native</h4>
+    <div class="comp-msg">"Banking without walls."</div>
+    <p>Dark charcoal palette. Premium. AI-first. Innovation 95/100. Most distinctive identity in the market.</p>
+    <p><strong>The gap:</strong> Trust from zero. Premium risks alienating mass market and expats. Innovation is a positioning, not yet a relationship.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro's innovation serves people, not brand identity. Where D360 says "banking without walls," Skyro says "banking that knows your walls — the ones you live inside, the ones you're building."</div>
+  </div>
+
+  <div class="competitor-card">
+    <h4>Urpay — The Expat Utility</h4>
+    <div class="comp-msg">"Send home, simply."</div>
+    <p>Conservative blue. Zero brand personality. 1.5M users from 13.4M market. Pure utility.</p>
+    <p><strong>The gap:</strong> Everything. No brand equity. No emotional connection. No loyalty. The most vulnerable incumbent.</p>
+    <div class="skyro-diff"><strong>How Skyro sounds different:</strong> Skyro speaks to expat workers as people, not as salary-receivers. In their language. About their families. Urpay is a pipe. Skyro is a partner.</div>
+  </div>
+
+  <h2 class="sub">What the Competitive Landscape Reveals — Skyro's White Space</h2>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Brand</th><th>Owns</th><th>Leaves Open</th></tr></thead>
+      <tbody>
+        <tr><td>Al Rajhi</td><td>Heritage trust, Shariah credibility</td><td>Youth warmth, expat inclusion, digital-native experience</td></tr>
+        <tr><td>STC Bank</td><td>Telecom distribution, digital infrastructure</td><td>Emotional connection, brand identity beyond transition</td></tr>
+        <tr><td>Tabby</td><td>Shopping moment, BNPL category</td><td>Full financial life, banking, savings, remittance</td></tr>
+        <tr><td>D360</td><td>Innovation, premium digital identity</td><td>Mass-market relevance, warmth, expat population</td></tr>
+        <tr><td>Urpay</td><td>Expat captive utility</td><td>Everything — brand, experience, dignity, ambition</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="call big">
+    The white space Skyro can own: <strong>genuine cultural intelligence that serves everyone on this market.</strong> A brand that is warm without being heritage-dependent. Shariah-compliant without being institutional. Modern without being cold. Present in Saudi life — in its rhythms, its faith, its transformation — and present in expat life — in its languages, its sacrifices, its hopes — in a way that no competitor has yet managed to be consistently, structurally, and across every touchpoint.
+  </div>
+</div>
+
+<!-- ════════ 12 · ADVERTISING RESTRICTIONS ════════ -->
+<div class="sec" id="s12">
+  <div class="sec-header">
+    <span class="sec-num">12</span>
+    <h1 class="sec-title">Advertising Restrictions in the Saudi Market</h1>
+  </div>
+
+  <h2 class="sub">Financial Advertising Regulations (SAMA)</h2>
+  <p>All advertised profit rates, fees, and charges must be accurate, current, and not misleading. Shariah compliance claims must be backed by AAOIFI-certified Shariah board review. Any promotional rate must clearly state its duration. BNPL advertising must comply with the 2023 BNPL Regulatory Framework — including clear disclosure of total cost, repayment obligations, and SIMAH reporting consequences. Comparative advertising is legally permissible but culturally risky.</p>
+
+  <h2 class="sub">Religious Considerations</h2>
+  <p>Saudi Arabia is governed by Islamic law. 100% of banking products must be Shariah-compliant. Financial advertising must never use interest-based language. Products must use Islamic finance terminology. Ramadan advertising requires particular sensitivity during fasting hours. Zakat and sadaqah references must be handled with genuine understanding. Hajj-related advertising must never trivialize or commercialize the pilgrimage.</p>
+
+  <h2 class="sub">Political Restrictions and Considerations</h2>
+  <p>Saudi Arabia requires strict neutrality in commercial communications. All communication must respect the Saudi leadership and Vision 2030 without crossing into political commentary. Ambassador partnerships must be vetted for political associations.</p>
+
+  <h2 class="sub">Gender and Representation</h2>
+  <p>Post-2018 guardianship reforms, Saudi women are legally able to open accounts, access financial products, and conduct business independently. Skyro communications should reflect this naturally. Show Saudi women in professional and financial contexts as a default. Avoid framing that implies women need male permission. Gender-mixed visual content has become normalized under Vision 2030 — follow the lead of successful Saudi brands.</p>
+
+  <h2 class="sub">Sensitive Language and Terminology</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>"Interest" (فائدة)</h4>
+      <p>Carries religious stigma. Use "profit rate" (نسبة ربح). Non-negotiable.</p>
+    </div>
+    <div class="card">
+      <h4>"Debt" (دين)</h4>
+      <p>Deep cultural stigma connected to izzah. Favor "installment," "repayment plan," or "split payment."</p>
+    </div>
+    <div class="card">
+      <h4>"Guaranteed" / "Zero risk"</h4>
+      <p>Carries SAMA regulatory exposure. Must be narrowly defined.</p>
+    </div>
+    <div class="card">
+      <h4>"Easy money"</h4>
+      <p>Reads as predatory in a market with strong Islamic finance values.</p>
+    </div>
+    <div class="card">
+      <h4>"Gambling" / chance-based language</h4>
+      <p>Maysir is strictly prohibited. Includes in-app mechanics, social media contests with random winners, and "lottery-style" rewards.</p>
+    </div>
+    <div class="card">
+      <h4>"Israf"-adjacent language</h4>
+      <p>Any communication encouraging wasteful spending conflicts with Islamic values. Position as enabling intentional spending — never impulse consumption.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 13 · THE FIVE FILTERS ════════ -->
+<div class="sec" id="s13">
+  <div class="sec-header">
+    <span class="sec-num">13</span>
+    <h1 class="sec-title">The Five Filters — Saudi Version</h1>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 01</div>
+    <h4>The Golden Rule — Could Al Rajhi or STC Bank have written this?</h4>
+    <p>If yes, rewrite it. What makes Skyro KSA distinctive is specific cultural intelligence, genuine understanding of both Saudi and expat life, and a voice that treats financial communication as a conversation between equals.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 02</div>
+    <h4>The Kitchen Table — Would a young Saudi woman in Riyadh and a Pakistani construction worker in Jeddah both understand this clearly?</h4>
+    <p>If no — if the language is too MSA, too institutional, too Saudi-only or too expat-only — simplify. Use Saudi dialect for nationals. Use corridor languages for expats. Use concrete numbers. Use real situations.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 03</div>
+    <h4>The Promise Check — Does this communication imply that the user needs to change who they are?</h4>
+    <p>In a market with deep izzah sensitivity, this filter matters especially. The question: if someone read this while anxious about money, would they feel their dignity was intact?</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 04</div>
+    <h4>The Substance Test — Is there a specific, verifiable claim here?</h4>
+    <p>Saudi consumers evaluate trust through credentials. Vague promises are distrusted. "Sub-2% fees to the India corridor, arriving in under 5 minutes" is real. "We help you manage your financial life" is not.</p>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-num">FILTER 05</div>
+    <h4>The Channel Fit — Does the tone match the moment?</h4>
+    <p>A payday Snapchat story and a payment overdue notification are not the same moment. A Ramadan charity campaign and a loan decline message are not the same moment. Before publishing, ask whether this communication would feel appropriate at the specific time and context — especially during prayer times or sacred periods.</p>
+  </div>
+</div>
+
+<!-- ════════ CLOSING ════════ -->
+<!-- ════════ DESIGN KIT (TBD) ════════ -->
+<div class="sec" id="designkit">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Design Kit</h1>
+  </div>
+
+  <div class="tbd-placeholder">
+    <div class="tbd-icon">🎨</div>
+    <h3>Coming Soon</h3>
+    <p>Visual assets, templates, colour palettes, and typography guidelines for the Saudi market will be added here.<br>This section is currently under development by the design team.</p>
+  </div>
+</div>
+
+<!-- ════════ CLOSING ════════ -->
+<div class="sec" id="closing">
+  <div class="sec-header">
+    <span class="sec-num">—</span>
+    <h1 class="sec-title">Closing</h1>
+  </div>
+
+  <div class="closing-block">
+    <p>Skyro came to Saudi Arabia not as a foreign fintech adapting to a local market — but as a brand that was built, from the beginning, around the reality of people whose financial lives do not fit the standard template. The Saudi market is not an edge case. It is the core case.</p>
+    <p>A country where every financial product must be structured differently from conventional finance. A country where 13.4 million people send $33.5 billion home every year through infrastructure that charges them too much. A country where 8 million women are accessing independent financial services for the first time in their lives. A country where the rhythm of daily life — prayer, fasting, pilgrimage, celebration — shapes financial behavior in ways no other market replicates.</p>
+    <p>The local team's job is to express the brand — fluently, specifically, and with genuine care for the people it is speaking to.</p>
+    <p><strong>Every piece of communication should be able to answer three questions:</strong></p>
+    <ul class="closing-questions">
+      <li>Does this respect the intelligence, the faith, and the culture of the person reading it?</li>
+      <li>Does this make financial life feel lighter and more dignified, not heavier?</li>
+      <li>Does this sound like something a real, thoughtful person would actually say to a friend?</li>
+    </ul>
+    <p style="margin-top:24px;font-family:'Fraunces',serif;font-size:18px;color:var(--gold-light);">If yes — it is Skyro.</p>
+  </div>
+
+  <div class="footer">
+    Skyro Saudi Arabia · Brand & Communications Team · Q1 2026<br>
+    This document is a living guide — it should be updated as the market evolves, as new research becomes available, and as the team learns what resonates. The best localization insights will always come from listening to real Saudi and expat users.
+  </div>
+</div>
+
+</div><!-- .main-inner -->
+</main>
+</div><!-- .page-wrap -->
+
+<!-- ════════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════════ -->
+<script>
+// ── Accordion ──
+function toggleAcc(header) {
+  const item = header.parentElement;
+  const body = item.querySelector('.acc-body');
+  const isOpen = item.classList.contains('open');
+
+  if (isOpen) {
+    body.style.maxHeight = '0';
+    item.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
+}
+
+// ── Nav group toggle ──
+function toggleNavGroup(header) {
+  const group = header.parentElement;
+  group.classList.toggle('open');
+}
+
+// ── Observers ──
+(function() {
+  const mainEl = document.getElementById('main');
+  const sections = mainEl.querySelectorAll('.sec[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  // Active nav highlighting + auto-open parent group
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(n => {
+          const isActive = n.getAttribute('href') === '#' + id;
+          n.classList.toggle('active', isActive);
+          if (isActive) {
+            const group = n.closest('.nav-group');
+            if (group && !group.classList.contains('open')) {
+              group.classList.add('open');
+            }
+          }
+        });
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => navObs.observe(s));
+
+  // Fade-up on scroll
+  const allSecs = mainEl.querySelectorAll('.sec');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    root: mainEl,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.05
+  });
+
+  allSecs.forEach(s => fadeObs.observe(s));
+})();
+
+// ── Sidebar nav smooth scroll ──
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = item.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      document.getElementById('main').scrollTo({
+        top: target.offsetTop - 40,
+        behavior: 'smooth'
+      });
+    }
+
+    // Close mobile nav
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+// ── Hamburger ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+});
+</script>
+</body>
+</html>
