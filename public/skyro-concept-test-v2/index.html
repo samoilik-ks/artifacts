@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro × Shuka — Visual Concept v2 · Deep Interview Simulation · 36 Personas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07070f;
+  --s1: #0d0d1c;
+  --s2: #13132a;
+  --s3: #191934;
+  --bd: #222240;
+  --bd2: #2c2c50;
+  --tx: #ddddf5;
+  --td: #7070a0;
+  --tm: #404068;
+  --blue: #1a1aff;
+  --blu2: #5555ff;
+  --blu3: #9090ff;
+  --cyan: #00d4ff;
+  --green: #00e676;
+  --yel: #ffe600;
+  --ora: #ff8c00;
+  --red: #ff3d5a;
+  --pur: #b54dff;
+  --pnk: #ff4da0;
+  --sa: #d4aa47;
+  --my: #3dffa0;
+  --ph: #ff6b6b;
+  --ke: #a855f7;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.hdr{padding:80px 52px 60px;border-bottom:1px solid var(--bd);position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(26,26,255,.16) 0%,transparent 70%);pointer-events:none;}
+.hdr-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--blu3);margin-bottom:20px;}
+.iter-badge{display:inline-block;font-family:'Syne',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;color:var(--green);background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);padding:4px 10px;border-radius:4px;margin-left:10px;vertical-align:middle;}
+h1{font-family:'Syne',sans-serif;font-size:clamp(30px,5vw,56px);font-weight:800;line-height:1.05;margin-bottom:14px;}
+h1 em{color:var(--blu2);font-style:normal;}
+.hdr-sub{font-size:15px;color:var(--td);max-width:680px;line-height:1.75;margin-bottom:32px;}
+.concept-pill{display:inline-flex;align-items:center;gap:12px;padding:10px 20px;border-radius:100px;background:var(--s2);border:1px solid var(--bd2);font-size:13px;color:var(--td);}
+.concept-pill strong{color:var(--tx);}
+.stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:40px;}
+.st-num{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--blu2);line-height:1;}
+.st-num.up{color:var(--green);}
+.st-lbl{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+.st-delta{font-size:11px;color:var(--green);margin-top:2px;font-weight:600;}
+.platform-bar{background:var(--s1);border-bottom:1px solid var(--bd);padding:24px 52px;display:flex;gap:40px;flex-wrap:wrap;align-items:center;}
+.pb-item{display:flex;flex-direction:column;gap:3px;}
+.pb-label{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:1px;}
+.pb-value{font-size:13px;color:var(--tx);font-weight:500;}
+.filters{padding:28px 52px 0;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--bd);padding-bottom:20px;}
+.f-btn{display:flex;align-items:center;gap:8px;padding:7px 14px;border-radius:6px;border:1px solid var(--bd);background:transparent;color:var(--td);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.f-btn .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.f-btn:hover,.f-btn.active{background:var(--s2);color:var(--tx);border-color:var(--bd2);}
+.f-btn[data-m="SA"].active{border-color:var(--sa);color:var(--sa);background:rgba(212,170,71,.08);}
+.f-btn[data-m="MY"].active{border-color:var(--my);color:var(--my);background:rgba(61,255,160,.08);}
+.f-btn[data-m="PH"].active{border-color:var(--ph);color:var(--ph);background:rgba(255,107,107,.08);}
+.f-btn[data-m="KE"].active{border-color:var(--ke);color:var(--ke);background:rgba(168,85,247,.08);}
+.f-btn[data-m="SA"] .dot{background:var(--sa);}
+.f-btn[data-m="MY"] .dot{background:var(--my);}
+.f-btn[data-m="PH"] .dot{background:var(--ph);}
+.f-btn[data-m="KE"] .dot{background:var(--ke);}
+.seg-filters{padding:14px 52px;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--bd);}
+.sf-btn{padding:5px 12px;border-radius:4px;border:1px solid var(--bd);background:transparent;color:var(--tm);font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:.5px;cursor:pointer;transition:all .2s;}
+.sf-btn:hover,.sf-btn.active{background:var(--s2);color:var(--tx);border-color:var(--bd2);}
+.count-line{padding:14px 52px;font-size:12px;color:var(--tm);border-bottom:1px solid var(--bd);}
+.count-line span{color:var(--blu3);font-weight:600;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:1px;background:var(--bd);}
+.card{background:var(--bg);transition:background .15s;position:relative;}
+.card:hover{background:var(--s1);}
+.card.hidden{display:none;}
+.card-top{padding:26px 26px 0;cursor:pointer;display:flex;align-items:flex-start;gap:14px;}
+.avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:800;flex-shrink:0;color:#fff;letter-spacing:-0.5px;}
+.cname-block{flex:1;min-width:0;}
+.cname{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.crole{font-size:11px;color:var(--td);margin-top:2px;}
+.mbadge{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px;flex-shrink:0;}
+.m-SA{background:rgba(212,170,71,.15);color:var(--sa);}
+.m-MY{background:rgba(61,255,160,.1);color:var(--my);}
+.m-PH{background:rgba(255,107,107,.1);color:var(--ph);}
+.m-KE{background:rgba(168,85,247,.1);color:var(--ke);}
+.delta-mini{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;margin-left:6px;font-family:'Syne',sans-serif;letter-spacing:.5px;}
+.delta-up{background:rgba(0,230,118,.12);color:var(--green);}
+.delta-down{background:rgba(255,61,90,.12);color:var(--red);}
+.delta-flat{background:rgba(112,112,160,.12);color:var(--td);}
+.score-strip{padding:14px 26px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;cursor:pointer;}
+.sc-item{display:flex;flex-direction:column;gap:4px;}
+.sc-lbl{font-size:9px;color:var(--tm);text-transform:uppercase;letter-spacing:.5px;}
+.sc-bar{height:3px;background:var(--s3);border-radius:2px;overflow:hidden;}
+.sc-fill{height:100%;border-radius:2px;transition:width .5s ease;}
+.q-preview{padding:14px 26px 22px;cursor:pointer;}
+.q-preview p{font-size:13px;color:var(--td);font-style:italic;line-height:1.6;padding-left:14px;position:relative;}
+.q-preview p::before{content:'"';position:absolute;left:0;top:-3px;font-size:22px;line-height:1;color:var(--blu3);font-style:normal;opacity:.5;}
+.toggle{width:100%;padding:9px 26px;background:transparent;border:none;border-top:1px solid var(--bd);color:var(--tm);font-size:10px;font-family:'DM Sans',sans-serif;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;}
+.toggle:hover{color:var(--tx);background:var(--s2);}
+.toggle .arr{margin-left:auto;transition:transform .2s;font-size:12px;}
+.card.open .toggle .arr{transform:rotate(180deg);}
+.body{display:none;padding:0 26px 26px;border-top:1px solid var(--bd);}
+.card.open .body{display:block;}
+.slbl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin:22px 0 10px;}
+.rblock{background:var(--s2);border-radius:8px;padding:14px 16px;margin-bottom:8px;}
+.rblock-good{background:rgba(0,230,118,.06);border-left:2px solid var(--green);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px;}
+.rblock-bad{background:rgba(255,61,90,.06);border-left:2px solid var(--red);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px;}
+.rblock-why{background:rgba(144,144,255,.06);border-left:2px solid var(--blu3);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px;}
+.rblock-logo{background:rgba(144,144,255,.06);border-left:2px solid var(--blu3);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px;}
+.rblock-logo .rblock-lbl{color:var(--blu3);}
+.rblock-delta{background:rgba(0,230,118,.06);border-left:2px solid var(--green);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px;}
+.rblock-delta .rblock-lbl{color:var(--green);}
+.rblock-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.rblock-good .rblock-lbl{color:var(--green);}
+.rblock-bad .rblock-lbl{color:var(--red);}
+.rblock-why .rblock-lbl{color:var(--blu3);}
+.rtext{font-size:13px;color:var(--td);line-height:1.65;}
+.quote-full{background:var(--s2);border-left:3px solid var(--blu2);border-radius:0 8px 8px 0;padding:14px 18px;margin:8px 0;}
+.quote-full p{font-size:13.5px;color:var(--tx);line-height:1.7;font-style:italic;}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.tag{font-size:10px;padding:3px 9px;border-radius:3px;border:1px solid var(--bd2);color:var(--td);}
+.tag.res{border-color:rgba(0,230,118,.3);color:var(--green);background:rgba(0,230,118,.05);}
+.tag.bar{border-color:rgba(255,61,90,.3);color:var(--red);background:rgba(255,61,90,.05);}
+.score-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.sc-card{background:var(--s3);border-radius:8px;padding:12px 14px;}
+.sc-card-lbl{font-size:9px;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.sc-card-val{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;line-height:1;}
+.sc-card-bar{height:2px;background:var(--bd);border-radius:2px;margin-top:8px;overflow:hidden;}
+.sc-card-fill{height:100%;border-radius:2px;}
+.summary{padding:60px 52px;border-top:1px solid var(--bd);}
+.sum-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:800;margin-bottom:6px;}
+.sum-sub{font-size:14px;color:var(--td);margin-bottom:48px;}
+.mkt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px;}
+.mkt-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:24px;}
+.mkt-flag{font-size:28px;margin-bottom:10px;}
+.mkt-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:3px;}
+.mkt-avg{font-size:12px;color:var(--td);margin-bottom:14px;}
+.delta-pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;margin-left:6px;font-family:'Syne',sans-serif;letter-spacing:.5px;}
+.mkt-insight{font-size:13px;color:var(--tx);line-height:1.65;padding:12px;background:var(--s2);border-radius:6px;border-left:2px solid;}
+.b-SA{border-left-color:var(--sa);}
+.b-MY{border-left-color:var(--my);}
+.b-PH{border-left-color:var(--ph);}
+.b-KE{border-left-color:var(--ke);}
+.findings{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.find-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:22px;}
+.find-num{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;color:var(--blu2);line-height:1;margin-bottom:10px;}
+.find-txt{font-size:13px;color:var(--td);line-height:1.65;}
+.find-txt strong{color:var(--tx);}
+.footer{text-align:center;padding:36px;border-top:1px solid var(--bd);font-size:11px;color:var(--tm);letter-spacing:.5px;}
+.delta-banner{margin:24px 52px 0;padding:24px 28px;background:linear-gradient(135deg,rgba(0,230,118,.08),rgba(85,85,255,.04));border:1px solid rgba(0,230,118,.25);border-radius:12px;}
+.delta-banner h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:14px;}
+.delta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+@media(max-width:900px){.delta-grid{grid-template-columns:1fr;gap:18px;}}
+.delta-col{background:var(--s2);border-radius:8px;padding:16px 18px;}
+.delta-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.delta-col.fixed h4{color:var(--green);}
+.delta-col.stayed h4{color:var(--red);}
+.delta-col.new h4{color:var(--cyan);}
+.delta-col ul{list-style:none;padding:0;margin:0;}
+.delta-col li{font-size:12.5px;color:var(--td);line-height:1.6;padding:6px 0;border-bottom:1px dashed var(--bd);}
+.delta-col li:last-child{border-bottom:none;}
+.delta-col li strong{color:var(--tx);}
+@media(max-width:768px){.hdr,.platform-bar,.filters,.seg-filters,.count-line,.summary,.delta-banner{padding-left:20px;padding-right:20px;}.grid{grid-template-columns:1fr;}.score-strip{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-label">Skyro × Shuka · Visual Concept · Qualitative Simulation <span class="iter-badge">ITERATION 2</span></div>
+  <h1>Deep Interview<br><em>Simulation · v2</em></h1>
+  <p class="hdr-sub">Second iteration. The same 36 personas were re-interviewed against the revised concept. Methodology unchanged: brand DNA brief first, then the new visual — OOH, lifestyle frames, mobile product screens (Philippines onboarding), the new Skyro Visa card, and the new Banner 17 hero. Scored on Emotion, Visual, Clarity, Trust.</p>
+  <div class="concept-pill"><strong>v2 Visual Concept</strong> · «Naturally, it's yours» · Real local people + Skyro Visa card + PH-localized onboarding</div>
+  <div class="stats">
+    <div><div class="st-num">36</div><div class="st-lbl">Personas</div></div>
+    <div><div class="st-num">4</div><div class="st-lbl">Markets</div></div>
+    <div><div class="st-num up">6.3</div><div class="st-lbl">Avg concept score</div><div class="st-delta">+0.4 vs v1</div></div>
+    <div><div class="st-num up">14</div><div class="st-lbl">Strong resonances (7+)</div><div class="st-delta">+3 vs v1</div></div>
+  </div>
+</div>
+<div class="platform-bar">
+  <div class="pb-item"><div class="pb-label">Pre-show brief</div><div class="pb-value">Finance That Celebrates You · «BE WHO YOU ARE»</div></div>
+  <div class="pb-item"><div class="pb-label">Belief (read to respondents)</div><div class="pb-value">You are not a problem to solve. You are a person to celebrate.</div></div>
+  <div class="pb-item"><div class="pb-label">What was shown (v2)</div><div class="pb-value">OOH billboards · Skyro Visa card · 6 lifestyle visuals · PH onboarding (5) · Banner 17 · Logo + App icon</div></div>
+  <div class="pb-item"><div class="pb-label">Archetype</div><div class="pb-value">Wild Explorer (Explorer 50% + Lover 30% + Rebel 20%)</div></div>
+</div>
+<div class="delta-banner">
+  <h3>Delta vs Iteration 1 — What Changed</h3>
+  <div class="delta-grid">
+    <div class="delta-col fixed">
+      <h4>✓ Fixed</h4>
+      <ul>
+        <li><strong>«Shop like a boss» removed</strong> — the slogan most criticised in v1 is gone from every new asset</li>
+        <li><strong>Onboarding now in Philippines format</strong> — ₱ 3,000 instead of RM 10,000, Filipino faces in frame</li>
+        <li><strong>«For loved ones» elder is now SEA</strong> — Filipino / Malay archetype instead of Western</li>
+        <li><strong>«Buy now, pay later» woman is Asian</strong> — reads as local for PH / MY</li>
+        <li><strong>«Buy goods with no fees»</strong> — two Asian friends on a tropical backdrop instead of LA-skyline</li>
+        <li><strong>«Naturally, it's yours»</strong> — comma added, reads more breathable</li>
+      </ul>
+    </div>
+    <div class="delta-col stayed">
+      <h4>✗ Still Broken</h4>
+      <ul>
+        <li><strong>App icon — same diagonal stripes</strong>, still mistaken for sport / logistics</li>
+        <li><strong>No halal / Shariah signal</strong> anywhere — KSA and MY Muslim audience still locked out</li>
+        <li><strong>No hijab on any woman in frame</strong> — Fatima, Siti still can't see themselves</li>
+        <li><strong>No M-Pesa integration</strong> visible anywhere — Kenya mass market still outside</li>
+        <li><strong>No Kenyan or Saudi faces</strong> — only SEA representation</li>
+        <li><strong>No B2B / SME track</strong> — Wei Chen, Khalid still asking for it</li>
+      </ul>
+    </div>
+    <div class="delta-col new">
+      <h4>+ Newly Introduced</h4>
+      <ul>
+        <li><strong>Skyro Visa Card</strong> — virtual card with S-curve design. First time the product is shown as a physical object</li>
+        <li><strong>Banner 17 hero shot</strong> — young Asian man in a creative studio (freelancer / creator archetype)</li>
+        <li><strong>Magenta / pink accent</strong> — appears in Banner 17 alongside electric blue. New colour signal</li>
+        <li><strong>Standalone OOH «Buy now, pay later»</strong> — pure brand poster, no people. Reads as confident</li>
+        <li><strong>Malaysia onboarding lost</strong> in switch to PH — new risk for MY market positioning</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="sum-all" style="padding:40px 52px;border-bottom:1px solid var(--bd);">
+  <div class="mkt-grid">
+    <div class="mkt-card"><div class="mkt-flag">🇸🇦</div><div class="mkt-name">Saudi Arabia</div><div class="mkt-avg">Avg score: <strong>6.0 / 10</strong><span class="delta-pill" style="background:rgba(0,230,118,.12);color:var(--green)">+0.1</span></div><div class="mkt-insight b-SA">Marginal improvement, driven by two things: «Shop like a boss» is gone (Ahmed and Siti's most-cited rejection trigger), and the Skyro Visa card finally gives Mohammed a concrete product object to evaluate. But the structural gaps remain unchanged: <strong>no halal badge, no hijab, no Saudi faces, no SAR onboarding</strong>. Khalid moves up to 7.5 thanks to the card. Fatima holds at 5.5 — she noticed the slogan was removed but the women still don't wear hijab. KSA needs its own localization pass, not just slogan hygiene.</div></div>
+    <div class="mkt-card"><div class="mkt-flag">🇲🇾</div><div class="mkt-name">Malaysia</div><div class="mkt-avg">Avg score: <strong>5.9 / 10</strong><span class="delta-pill" style="background:rgba(255,61,90,.12);color:var(--red)">−0.3</span></div><div class="mkt-insight b-MY">The only market that dropped. Reason: <strong>the Malaysia-specific onboarding (RM 10,000, TouchnGo-relevant QR pay) was removed</strong> in favour of Philippines localization. Ahmad's 7.5 in v1 was almost entirely driven by that flow — he drops to 6.5 («where did my RM screens go?»). Siti gains slightly from «Shop like a boss» removal but loses ground without MY localization. Wei Chen unchanged — B2B is still invisible. Net: the concept's MY win in v1 was a localization win, not a brand win. Lose the localization, lose the score.</div></div>
+    <div class="mkt-card"><div class="mkt-flag">🇵🇭</div><div class="mkt-name">Philippines</div><div class="mkt-avg">Avg score: <strong>7.2 / 10</strong><span class="delta-pill" style="background:rgba(0,230,118,.12);color:var(--green)">+1.2</span></div><div class="mkt-insight b-PH">The biggest jump in the study. <strong>Three changes lifted the entire PH segment</strong>: (1) ₱ 3,000 onboarding amount finally relevant to DC3 (Driver, Sari-Sari, Call Center Agent move from rejection to engagement); (2) Filipino faces on the onboarding screens — Teacher, Nurse, Housewife say «this is us»; (3) the elder for «For loved ones» now reads as a lolo / lola figure. OFW holds at 9.0, Content Creator at 8.8, but the real story is the lift across the DC3 mass: average DC3 score went from 4.5 to 5.8. Government Employee still skeptical — regulatory credentials remain the unsolved problem for cautious borrowers.</div></div>
+    <div class="mkt-card"><div class="mkt-flag">🇰🇪</div><div class="mkt-name">Kenya</div><div class="mkt-avg">Avg score: <strong>5.7 / 10</strong><span class="delta-pill" style="background:rgba(0,230,118,.12);color:var(--green)">+0.3</span></div><div class="mkt-insight b-KE">Modest lift, but for the wrong reason: the warmer SEA-cast frames are more relatable than v1's global stock, even though no Kenyan face appears. Brian Otieno moves to 9.0+ (he sees Banner 17 — the young man in the studio — as exactly his identity). Faith Wambui responds strongly to the Skyro Visa card («now I can sell this next to iPhone accessories»). But for the mass market (Kimani, Akinyi, Kamau, Odhiambo), <strong>the PH-localized onboarding is now a negative signal</strong> — «if it's for Philippines, it's not for us yet». M-Pesa absence remains the deal-breaker.</div></div>
+  </div>
+  <div class="findings" style="margin-top:16px;">
+    <div class="find-card"><div class="find-num">14</div><div class="find-txt"><strong>of 36 personas scored 7+</strong> (vs 11 in v1). Heavy positives: OFW (9.0), Brian Otieno (9.0+), Content Creator (8.8), Faith Wambui (8.0), Freelancer (7.8), Nurse PH (7.8), Khalid (7.5), Alice Njeri (7.0+), Teacher PH (7.5), Housewife (7.0), Call Center Agent (7.5), Ahmad (6.5↓ from 7.1), Corporate Manager PH (7.5), Corporate Employee PH (7.5).</div></div>
+    <div class="find-card"><div class="find-num">2</div><div class="find-txt">personas still <strong>did not identify the product as financial</strong> (vs 4 in v1) — Rural Worker and Construction Worker. The remaining two from v1's «category gap» (Security, Factory) now identify it thanks to the visible ₱ 3,000 onboarding amount. <strong>Skyro Visa card</strong> closed most of the residual ambiguity for everyone else.</div></div>
+    <div class="find-card"><div class="find-num">★</div><div class="find-txt"><strong>Skyro Visa card — the breakout new asset.</strong> 21 of 36 respondents reacted positively, unprompted. The S-curve as a card-face design makes the brand mark suddenly meaningful: «that\'s a card I want to carry». Faith Wambui (KE electronics retail): «That sits next to an iPhone display». Mohammed (KSA banker): «Finally something tangible to evaluate». <strong>The card should be the next hero asset of the campaign.</strong></div></div>
+    <div class="find-card"><div class="find-num">⟡</div><div class="find-txt"><strong>Banner 17 — the new emotional centre.</strong> The young man in the creative studio resonated strongly with 9 personas (Content Creator, Freelancer, Brian, Faith, Alice, Corporate Employee, Call Center Agent, Khalid, Ahmad). It reads as «creator at work, not consumer at play» — a different emotional register from the rest of the assets, and a stronger one for the aspirational young-professional segment.</div></div>
+    <div class="find-card"><div class="find-num">↑</div><div class="find-txt"><strong>Philippines: +1.2 avg.</strong> The largest single-market jump in the study, driven by three precise interventions: ₱ 3,000 onboarding, Filipino faces, SEA elder. This proves the diagnostic: <strong>localized money + localized faces = mass-segment engagement</strong>. Replicate the same intervention for KE (KES + M-Pesa + Kenyan faces) and KSA (SAR + Arabic + hijab) — and those markets will move similarly.</div></div>
+    <div class="find-card"><div class="find-num">↓</div><div class="find-txt"><strong>Malaysia: −0.3.</strong> The drop is mechanical, not strategic — the team localized for PH at the cost of MY. Ahmad's score fell from 7.1 to 6.5 because his RM screens are gone. Recommendation: <strong>maintain market-specific onboarding sets in parallel</strong>, not as a swap. Each market needs its own onboarding visuals shipped in the same brand kit.</div></div>
+    <div class="find-card"><div class="find-num">♡</div><div class="find-txt"><strong>«Naturally, it's yours» — the comma helped.</strong> 12 of the v1's 19 «what does this mean?» complaints are gone. The slogan now reads as a complete thought instead of a fragment. But the deeper recommendation from v1 still stands: pair it with a product explainer where it appears alone — «Naturally, it's yours · Finance that fits how you live».</div></div>
+    <div class="find-card"><div class="find-num">∅</div><div class="find-txt"><strong>Halal / Shariah signal — still missing.</strong> Unchanged from v1. Fatima, Siti, Ahmad all flagged this in the first 60 seconds again. For KSA and Malaysia launch this is not negotiable — and the Skyro Visa card without a Shariah marker is now an additional risk for those markets, not a neutral asset.</div></div>
+    <div class="find-card"><div class="find-num">◎</div><div class="find-txt"><strong>App icon — still wrong.</strong> Unchanged from v1. The brand mark grew in stature in v2 (it's on the Visa card now, and on the OOH), but the icon with three diagonal stripes still reads as sport / logistics / civic infrastructure. Replacing the icon with the S-mark is now the single highest-ROI brand fix remaining.</div></div>
+  </div>
+</div>
+<div class="filters">
+  <button class="f-btn active" data-m="all"><div class="dot" style="background:var(--blu2)"></div> All markets</button>
+  <button class="f-btn" data-m="SA"><div class="dot"></div> 🇸🇦 Saudi Arabia <span style="margin-left:4px;opacity:.6">(6)</span></button>
+  <button class="f-btn" data-m="MY"><div class="dot"></div> 🇲🇾 Malaysia <span style="margin-left:4px;opacity:.6">(3)</span></button>
+  <button class="f-btn" data-m="PH"><div class="dot"></div> 🇵🇭 Philippines <span style="margin-left:4px;opacity:.6">(17)</span></button>
+  <button class="f-btn" data-m="KE"><div class="dot"></div> 🇰🇪 Kenya <span style="margin-left:4px;opacity:.6">(10)</span></button>
+</div>
+<div class="seg-filters">
+  <button class="sf-btn active" data-s="all">All</button>
+  <button class="sf-btn" data-s="pos">😊 Concept landed (7+)</button>
+  <button class="sf-btn" data-s="mid">😐 Neutral (5–6.9)</button>
+  <button class="sf-btn" data-s="neg">😞 Concept missed (≤4.9)</button>
+  <button class="sf-btn" data-s="high">↑ High income</button>
+  <button class="sf-btn" data-s="low">↓ Lower income</button>
+  <button class="sf-btn" data-s="up">▲ Lifted vs v1</button>
+  <button class="sf-btn" data-s="down">▼ Dropped vs v1</button>
+</div>
+<div class="count-line">Showing <span id="cnt">36</span> of 36 interviews</div>
+<div class="grid" id="grid"></div>
+
+<!-- COUNTRY SUMMARIES -->
+<div class="summary country-summary" id="sum-SA" style="display:none;">
+  <h2 class="sum-title">🇸🇦 Saudi Arabia — v2 Findings</h2>
+  <p class="sum-sub">6 personas · Avg: <strong style="color:var(--yel)">6.0 / 10</strong> <span class="delta-pill" style="background:rgba(0,230,118,.12);color:var(--green)">+0.1 vs v1</span></p>
+  <div class="findings" style="margin-bottom:32px;">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">DELTA</div><div class="find-txt"><strong>Two upgrades, three structural gaps unchanged.</strong> «Shop like a boss» removed (Ahmed +0.4, Siti-type effect). Skyro Visa card now visible (Mohammed +0.4, Khalid +0.6). But halal, hijab, Saudi faces, SAR onboarding — all unchanged.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">VISA CARD WIN</div><div class="find-txt"><strong>Mohammed (banker): «Finally a tangible product».</strong> The Visa card on the OOH gave him the first concrete artifact to evaluate. He still wants product differentiation, but the brand crossed from «aesthetic» into «product» in his eyes.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">FATIMA HOLDS</div><div class="find-txt"><strong>Fatima 5.5 → 5.5.</strong> The «Shop like a boss» relief is real, but it's exactly offset by the fact that the same women in frame still wear no hijab. She named both changes unprompted in the same minute.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">RAJESH STILL OUT</div><div class="find-txt"><strong>Rajesh 4.4 → 4.5.</strong> The PH onboarding is irrelevant to him — he\'s an Indian expat in KSA. The concept still has no remittance-to-India scenario and no micro-loan flow. v2 didn't address his use case.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">RECOMMENDATION</div><div class="find-txt"><strong>(1)</strong> Ship KSA-specific onboarding set: SAR amounts, Sharia-compliant savings, Salam financing. <strong>(2)</strong> Halal badge on Visa card and on all KSA creatives. <strong>(3)</strong> Saudi-cast photo: family at iftar, abaya, father-daughter. <strong>(4)</strong> Add a remittance-to-India scenario for the expat segment.</div></div>
+  </div>
+</div>
+<div class="summary country-summary" id="sum-MY" style="display:none;">
+  <h2 class="sum-title">🇲🇾 Malaysia — v2 Findings</h2>
+  <p class="sum-sub">3 personas · Avg: <strong style="color:var(--yel)">5.9 / 10</strong> <span class="delta-pill" style="background:rgba(255,61,90,.12);color:var(--red)">−0.3 vs v1</span></p>
+  <div class="findings" style="margin-bottom:32px;">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">DELTA</div><div class="find-txt"><strong>The only market that lost ground.</strong> Reason is mechanical: the RM 10,000 + QR pay onboarding flow was replaced by the PH version. Ahmad's v1 score (7.1) was almost entirely a localization-driven win. Without it, he drops to 6.5.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">LOCALIZATION LESSON</div><div class="find-txt"><strong>This is the cleanest evidence in the study that localized money screens drive scores.</strong> Show MY their RM, MY moves up. Take it away, MY moves down. Same logic must be applied to KE (KES) and KSA (SAR) — and parallel onboarding kits must be maintained, not swapped.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">SHARIAH STILL ABSENT</div><div class="find-txt"><strong>Three respondents, three unsolved Shariah questions.</strong> Ahmad: «Last mile — Shariah-compliance». Siti: «Where\'s the halal badge?». Even Wei Chen, who isn\'t Muslim, notes: «If you launch without it, you lose 60% of the customer base».</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">SLOGAN RELIEF</div><div class="find-txt"><strong>«Shop like a boss» removal helped Siti +0.5 on emotion.</strong> She was the most vocal v1 critic of that line. v2 feels less hostile to her values even without other changes.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">RECOMMENDATION</div><div class="find-txt"><strong>(1)</strong> Restore MY onboarding (RM, QR pay) in parallel with PH version. <strong>(2)</strong> Shariah-compliance badge — mandatory before launch. <strong>(3)</strong> Photoshoot with Malay, Chinese, Indian faces. <strong>(4)</strong> SME track for Wei Chen segment — separate onboarding flow.</div></div>
+  </div>
+</div>
+<div class="summary country-summary" id="sum-PH" style="display:none;">
+  <h2 class="sum-title">🇵🇭 Philippines — v2 Findings</h2>
+  <p class="sum-sub">17 personas · Avg: <strong style="color:var(--green)">7.2 / 10</strong> <span class="delta-pill" style="background:rgba(0,230,118,.12);color:var(--green)">+1.2 vs v1</span></p>
+  <div class="findings" style="margin-bottom:32px;">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">DELTA</div><div class="find-txt"><strong>+1.2 — the largest single-market lift in the study.</strong> Three precise interventions: ₱ 3,000 onboarding, Filipino faces on onboarding screens, SEA elder for «For loved ones». DC3 average went from 4.5 to 5.8.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">DC3 BREAKTHROUGH</div><div class="find-txt"><strong>Driver 5.5 (+0.9), Sari-Sari 6.0 (+1.2), Call Center 7.5 (+1.2).</strong> ₱ 3,000 is a credible nano-loan amount for daily-income earners. The previous RM 10,000 read as «not for me» — now «that\'s exactly my Friday emergency».</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">FILIPINO FACES LANDED</div><div class="find-txt"><strong>Teacher PH +1.0, Housewife +0.6, Nurse +0.9.</strong> «I see myself» moved these personas from neutral to engaged. The lola figure under the sunset sky is consistently named as the emotional peak of v2.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">OFW UNCHANGED</div><div class="find-txt"><strong>OFW holds at 9.0.</strong> Already the top scorer in v1. «For loved ones · Send money to kinfolks with no fees» is still the most powerful line in the entire study. Should remain the central PH campaign.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">REGULATORY GAP</div><div class="find-txt"><strong>Government Employee 4.5 → 4.5.</strong> Faces and currency don\'t close his gap. He needs BSP / SEC credentials in visible place — a credentials footer on creatives and onboarding.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">RECOMMENDATION</div><div class="find-txt"><strong>(1)</strong> Replicate the PH playbook for KE (KES, M-Pesa, Kenyan faces) and KSA (SAR, hijab, halal). <strong>(2)</strong> Hero the OFW «For loved ones» line as the central PH campaign. <strong>(3)</strong> Add BSP / SEC credentials footer. <strong>(4)</strong> Add nano-loan flow (₱ 500 - ₱ 3,000) prominently — it\'s the DC3 acquisition wedge.</div></div>
+  </div>
+</div>
+<div class="summary country-summary" id="sum-KE" style="display:none;">
+  <h2 class="sum-title">🇰🇪 Kenya — v2 Findings</h2>
+  <p class="sum-sub">10 personas · Avg: <strong style="color:var(--yel)">5.7 / 10</strong> <span class="delta-pill" style="background:rgba(0,230,118,.12);color:var(--green)">+0.3 vs v1</span></p>
+  <div class="findings" style="margin-bottom:32px;">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">DELTA</div><div class="find-txt"><strong>Modest lift, accidental driver.</strong> The warmer SEA cast is more emotionally relatable than v1's global stock — even though no Kenyan face appears. Brian Otieno and Faith Wambui benefited directly from Banner 17 and the Visa card. But the mass market gap is unchanged.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">PH ONBOARDING = NEGATIVE FOR KE</div><div class="find-txt"><strong>Kimani, Akinyi, Kamau, Odhiambo</strong> all flagged: «If the onboarding is for Philippines, it\'s not for us yet». The PH-only localization in v2 is a regression for KE mass market — it makes their absence more pronounced.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">VISA CARD = FAITH\'S MOMENT</div><div class="find-txt"><strong>Faith Wambui 7.4 → 8.0.</strong> «Now I can put this next to an iPhone». The Skyro Visa card is exactly the asset she\'d display in her electronics shop. She is the natural KE Gen Z ambassador if M-Pesa lands.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">BRIAN HEROES THE BANNER</div><div class="find-txt"><strong>Brian 8.5 → 9.0+.</strong> Banner 17 (young Asian man in creative studio) is read by Brian as «that\'s my life, that\'s my generation». Even with no Kenyan face, the energy and posture match Nairobi Gen Z hustler-creator identity.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">M-PESA STILL ENTRY TICKET</div><div class="find-txt"><strong>9 of 10 respondents asked about M-Pesa in the first minute.</strong> Unchanged from v1. No M-Pesa = no trust = no scale. The Visa card without M-Pesa pairing is a partial story for Kenya.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">RECOMMENDATION</div><div class="find-txt"><strong>(1)</strong> Ship KE onboarding kit (KES + M-Pesa green tick) in parallel — same priority as PH version. <strong>(2)</strong> Local photoshoot: boda boda, mama mboga, duka, Nairobi skyline. <strong>(3)</strong> Pair Skyro Visa card with M-Pesa integration message on KE creatives. <strong>(4)</strong> Brian / Faith as first-wave KE ambassadors.</div></div>
+  </div>
+</div>
+
+<div class="footer">Skyro × Shuka · Visual Concept v2 Simulation · 36 Personas × 4 Markets · May 2026 · Iteration 2 · Internal Research Tool by Shuka Brand Bureau</div>
+
+<script>
+function scoreColor(v){if(v>=7)return'#00e676';if(v>=5)return'#ffe600';return'#ff3d5a';}
+function deltaPill(d){if(d>0.05)return`<span class="delta-mini delta-up">▲ +${d.toFixed(1)}</span>`;if(d<-0.05)return`<span class="delta-mini delta-down">▼ ${d.toFixed(1)}</span>`;return`<span class="delta-mini delta-flat">— flat</span>`;}
+const DATA=[
+{id:1,market:'SA',seg:'high',income:'SAR 8k/mo',name:'Ahmed Al-Mansour',role:'Middle Manager · KSA Citizen · 29',avatar:'AA',avatarBg:'linear-gradient(135deg,#d4aa47,#a07820)',v1avg:6.1,scores:{emotion:7,visual:6.5,clarity:6.5,trust:6},preview:'«Removing «Shop like a boss» — thank you. That was the line I couldn\'t defend at home. Now I see a serious bank with a real card. Still no halal mark, still no Saudi face — but I\'m closer.»',delta:'«Shop like a boss» removed — primary v1 rejection trigger gone. Skyro Visa card now visible. Same structural gaps remain (halal, Saudi face, SAR).',good:'The Visa card on the OOH suddenly makes Skyro a product, not just a brand. The «Shop like a boss» line — my biggest v1 objection — is gone. The comma in «Naturally, it\'s yours» helps the slogan breathe.',bad:'Halal signal still absent. No Saudi face in any frame. Onboarding now in PHP — even less my currency than RM was.',why:'v2 fixed the rhetorical problem and added a product proof point. The cultural localization problem is untouched. I went from neutral to leaning yes — but a yes requires Sharia signal.',quotes:['"Get me a halal-marked Skyro Visa, SAR onboarding, one frame with a Saudi family — and I\'m a customer. v2 cleared the rejection, v3 needs to close the sale."'],resonates:['«Shop like a boss» removed','Skyro Visa card — tangible product','«Naturally, it\'s yours» — comma helps','S-curve as orbital line'],barriers:['No halal signal','No Saudi face','PHP instead of SAR','No remittance feature']},
+{id:2,market:'SA',seg:'mid',income:'SAR 6.5k/mo',name:'Fatima Al-Zahrani',role:'Teacher · KSA Citizen · 26',avatar:'FA',avatarBg:'linear-gradient(135deg,#e84393,#a01060)',v1avg:5.6,scores:{emotion:6,visual:5.5,clarity:6,trust:5},preview:'«The "boss" slogan is gone — I noticed immediately. But the same women, still no hijab. One step forward, zero steps for me.»',delta:'«Shop like a boss» relief offset by unchanged hijab / Saudi-face gap. Net: held at v1 level.',good:'«Shop like a boss» is gone. The lola figure for «For loved ones» reads warmer now — Asian elder feels closer to family. Skyro Visa card is a nice tangible.',bad:'Women in frame still without hijab. Still no Saudi face. PHP onboarding feels not-for-me.',why:'v2 removed the line that offended me, but didn\'t add the marker that includes me. I\'m back to neutral — not rejection, not enthusiasm.',quotes:['"You took away the offence. Now add the invitation. One hijab, one abaya, one halal mark — and I switch from polite to genuine."'],resonates:['«Shop like a boss» removed','SEA elder feels closer to family','«For loved ones»','Onboarding buttons clear'],barriers:['No hijab on any woman','No Saudi face','No halal marker','PHP not SAR']},
+{id:3,market:'SA',seg:'high',income:'SAR 12k/mo',name:'Mohammed Al-Qahtani',role:'Banking Specialist · KSA Citizen · 34',avatar:'MQ',avatarBg:'linear-gradient(135deg,#4a7cff,#1a3aaa)',v1avg:5.6,scores:{emotion:6,visual:6.5,clarity:6.5,trust:6},preview:'«Visa card on the OOH — that\'s the proof I asked for. As a banker I now have something to compare against my own products. Brand crossed from concept to product in v2.»',delta:'Skyro Visa card materializes the product — Mohammed\'s main v1 critique addressed.',good:'Skyro Visa card finally gives the brand a concrete object. Card design uses the S-curve well — distinctive. The clean «Buy now, pay later» OOH reads as confident, mature positioning.',bad:'Still a single product category (BNPL). No Sharia signal on the Visa card. No consolidation story for my 3 cards.',why:'v2 closed the «philosophy without product» gap with a real card. But it\'s a single SKU shown as a card — still doesn\'t differentiate Skyro from Tabby + Tamara + Postpay.',quotes:['"Show me «Skyro Visa = your three cards consolidated, Sharia-compliant, one bill» — that\'s a product I\'d switch to. The card is the foundation, now build the differentiation on top of it."'],resonates:['Skyro Visa card — tangible','Card design uses S-curve smartly','Clean OOH «Buy now, pay later»','Premium brand identity'],barriers:['Single SKU BNPL positioning','No Sharia signal on card','No consolidation feature','No SME track']},
+{id:4,market:'SA',seg:'low',income:'SAR 3k/mo',name:'Rajesh Kumar',role:'Driver / Courier · Indian Expat · 32',avatar:'RK',avatarBg:'linear-gradient(135deg,#ffa502,#c05000)',v1avg:4.4,scores:{emotion:4,visual:5,clarity:5,trust:4},preview:'«I see the Visa card. I see the slogan. Nice. But still no app for sending 100 SAR to India. The whole concept is about people richer than me.»',delta:'No change in his use case. Visa card visible but irrelevant to micro-remittance needs.',good:'Concept still reads as a bank (Visa card helps). Onboarding buttons big and clear.',bad:'Onboarding shows ₱ 3,000 — Philippines. I\'m in KSA, sending to India. Still no remittance flow, no micro-loan flow, no Hindi / Urdu option.',why:'v2 doubled down on consumer credit. My segment (low-income expat with remittance + micro-loan needs) is invisible in this concept.',quotes:['"₱ 3,000 ya RM 10,000 — same difference for me. I need 200 SAR to India for fee of 2 SAR. Skyro doesn\'t see me yet."'],resonates:['Skyro Visa card looks legit','Brand identifies as a bank'],barriers:['No India remittance','No micro-loan','No Hindi / Urdu','Showcase amounts too large']},
+{id:5,market:'SA',seg:'high',income:'SAR 15–25k/mo',name:'Khalid Al-Rashid',role:'Digital Entrepreneur · SME Owner · 32',avatar:'KA',avatarBg:'linear-gradient(135deg,#b54dff,#7020cc)',v1avg:6.9,scores:{emotion:8,visual:7.5,clarity:7,trust:7},preview:'«Skyro Visa card — that\'s the artifact I wanted. The whole concept is now ready to ship. Still no B2B track, but as a consumer product I\'m sold. Where do I sign up first?»',delta:'+0.6 — Visa card materializes the product, Khalid moves from «brand ambassador» to «pre-order customer».',good:'Skyro Visa card with S-curve design is the missing piece. Banner 17 (young man in studio) reads as «people like me». Clean OOH posters feel international-grade.',bad:'Still B2C-focused. No B2B card, no expense card, no business onboarding. Khalid the consumer is sold; Khalid the SME owner is still waiting.',why:'v2 made the consumer offer complete. The brand now has identity, products, and a card. The next gap is the second track for SME — same brand, different flow.',quotes:['"Add «Skyro Business Visa» with the same design language — and you have two products, two segments, one brand. That\'s how Revolut did it. I\'ll be your KSA test customer."'],resonates:['Skyro Visa card with S-curve','Banner 17 = creator energy','Clean OOH brand poster','Premium international brand','Wild Explorer fit'],barriers:['Still B2C only','No business card','No SME onboarding']},
+{id:6,market:'SA',seg:'high',income:'SAR 12k/mo',name:'Omar Al-Harbi',role:'IT Specialist · Telecom · 28',avatar:'OH',avatarBg:'linear-gradient(135deg,#00d4ff,#0060aa)',v1avg:6.5,scores:{emotion:6.5,visual:7,clarity:6.5,trust:6.5},preview:'«The Visa card is elegant — S-curve on a card face is clever. But I save more than I spend. v2 is more polished BNPL — and I\'m still looking for halal investing.»',delta:'+0.1 — Visa card design appreciation, but core positioning still wrong segment for him.',good:'S-curve on Visa card is a strong design moment. «Buy now, pay later» pure OOH reads as confident. Banner 17 has good craft energy.',bad:'Still BNPL-positioned. No halal investing, no robo-advisor, no savings goals. Visa card itself isn\'t shown as Sharia-compliant.',why:'v2 made the BNPL product better, but didn\'t address the savings segment. For someone optimizing for capital growth, Skyro v2 is the wrong product, beautifully done.',quotes:['"Build «Skyro Savings» with halal funds, robo-advice, and the same S-curve visual language — and you have me. The BNPL track is for someone else."'],resonates:['Visa card S-curve design','Pure OOH brand poster','Banner 17 craft','Bold electric blue'],barriers:['Still BNPL-only','No halal investing','No savings flow','Visa card not Sharia-marked']},
+{id:7,market:'MY',seg:'high',income:'MYR 6k/mo',name:'Ahmad Ibrahim',role:'IT Specialist · 32 · Planning family',avatar:'AI',avatarBg:'linear-gradient(135deg,#3dffa0,#007040)',v1avg:7.1,scores:{emotion:6.5,visual:7,clarity:6.5,trust:6},preview:'«Where did my RM 10,000 screens go? In v1 you spoke Malay to me. In v2 you switched to Filipino. The card is nice. But the localization win was the reason I was ready to sign.»',delta:'−0.6 — primary win of v1 (MY-specific onboarding) was reversed for PH version.',good:'Skyro Visa card is great — would carry it. «Shop like a boss» gone — relief. Brand identity stayed strong.',bad:'Malaysia onboarding (RM, QR pay) is gone. PHP onboarding doesn\'t speak to me. Halal still missing. Still no Malay face.',why:'v1\'s 7.1 was a localization win, not a brand win. v2 removed the localization. The brand is still strong but the «built for Malaysia» signal disappeared.',quotes:['"Bring back the RM screens. Don\'t make me choose between PH onboarding and MY localization — I need both, in parallel. And add the Shariah badge on the Visa card."'],resonates:['Skyro Visa card','«Shop like a boss» removed','Strong brand identity','Banner 17'],barriers:['MY onboarding removed','PHP screens not for MY','No Shariah signal','No Malay face']},
+{id:8,market:'MY',seg:'mid',income:'MYR 4.5k/mo',name:'Siti Nurhaliza',role:'Teacher · 28 · Married, 1 child',avatar:'SN',avatarBg:'linear-gradient(135deg,#ff6b9d,#aa1055)',v1avg:6.0,scores:{emotion:6.5,visual:6,clarity:6.5,trust:5.5},preview:'«No more «boss» talk — alhamdulillah. The elder for «For loved ones» feels like a Malaysian uncle. But the onboarding now talks pesos — not my country. And still no hijab.»',delta:'+0.1 — slogan relief + warmer elder image, offset by lost MY localization.',good:'«Shop like a boss» — gone. The lolo figure could be a Malay uncle. Visa card looks credible. Comma in «Naturally, it\'s yours» helps the line breathe.',bad:'Onboarding now in PHP, not RM. Still no hijab on any woman. Still no halal signal. Still no Malay face.',why:'v2 healed the slogan wound and warmed the photography. But the localization that made v1 feel «built for us» was traded for PH version. Net: flat.',quotes:['"Give me back the ringgit. Add a hijab. Mark the Visa as Shariah. Then I open the app — until then I\'m polite but not converted."'],resonates:['«Shop like a boss» removed','SEA elder warmer','Visa card credible','«Naturally, it\'s yours» with comma'],barriers:['MY onboarding removed','No hijab still','No halal signal','PHP not RM']},
+{id:9,market:'MY',seg:'high',income:'MYR 8k/mo',name:'Wei Chen',role:'Restaurant Owner · SME · 35 · Chinese Malaysian',avatar:'WC',avatarBg:'linear-gradient(135deg,#ffa502,#aa5500)',v1avg:5.5,scores:{emotion:5,visual:6,clarity:5.5,trust:5.5},preview:'«Visa card is nice for my daughter. PHP screens not for my restaurant in KL. Same B2C concept, prettier in v2. Still nothing for my business.»',delta:'No change. Wei Chen\'s SME need stays unaddressed.',good:'Skyro Visa card looks premium. «Buy now, pay later» OOH is clean and international. Brand has matured visually.',bad:'PHP onboarding (was RM in v1) — even further from me. No B2B card, no SME flow, no «Skyro Business». «Pay with QR» is still TouchnGo territory.',why:'v2 added more consumer assets — that\'s not my segment. The SME track is still invisible, and now Malaysia-specific signals are also gone.',quotes:['"Show me «Skyro Business» — a corporate Visa, a supplier-payment flow, RM 50,000 cash-flow loan approved in 24h. v1 had MY consumer; v2 has PH consumer; I\'m still waiting for MY business."'],resonates:['Visa card looks premium','Clean OOH','Brand visually mature'],barriers:['MY onboarding removed','No SME / B2B track','No cash-flow loan','No Chinese Malaysian face']},
+{id:10,market:'PH',seg:'high',income:'₱84–150k/mo',name:'Corporate Manager',role:'Middle Management · Banks / Tech / FMCG · 30–45',avatar:'CM',avatarBg:'linear-gradient(135deg,#00e676,#006030)',v1avg:7.0,scores:{emotion:7.5,visual:7.5,clarity:7.5,trust:7.5},preview:'«PHP onboarding + Filipino faces + Visa card. This is now a proper Philippine fintech with international polish. I\'m moving my BNPL spend to Skyro on launch.»',delta:'+0.5 — PHP localization removed the «not for our market» friction.',good:'PHP onboarding screens with Filipino faces. Skyro Visa card. Premium brand still differentiates from GCash green. Banner 17 reads as «people like me at work».',bad:'Cashback numbers still vague. Regulatory credentials (BSP / SEC) not visible. Filipino-specific photoshoot for hero OOH still missing.',why:'v2 closed the localization gap that held Corporate Manager at 7.0 in v1. The Visa card adds product weight. Ready-to-convert subject to BSP credentials.',quotes:['"Show BSP license + cashback rates + the first 30 days are 0% — I open an account week one. The brand is already there, just close the credibility loop."'],resonates:['PHP onboarding','Filipino faces in onboarding','Skyro Visa card','Premium brand vs GCash','Banner 17 = professional energy'],barriers:['Cashback rates vague','No BSP / SEC visible','No PH-specific hero OOH']},
+{id:11,market:'PH',seg:'high',income:'₱100–241k/mo',name:'Medium Business Owner',role:'Entrepreneur · Unstable cash flow · 35–50',avatar:'MB',avatarBg:'linear-gradient(135deg,#00e676,#004020)',v1avg:6.1,scores:{emotion:6.5,visual:7,clarity:6.5,trust:6.5},preview:'«The lola figure feels Filipino now — that\'s my mother\'s generation. PHP screens for my sari-sari spend, fine. But I run a real business — where\'s a ₱ 500,000 supplier-payment line?»',delta:'+0.4 — PH localization + warmer elder image. B2B still unaddressed.',good:'PHP onboarding shows the brand respects local market. SEA elder reads as Filipino lola. Skyro Visa card is a serious artifact. Brand has matured.',bad:'B2B fully absent. No invoice financing, no supplier payment, no business loan. ₱ 3,000 onboarding is for my employees, not for me.',why:'v2 fixed the consumer-localization gap. The B2B gap is the same as v1. For an SME owner with ₱ 500K monthly turnover, the concept is still about someone else.',quotes:['"Skyro Business Visa, ₱ 500K supplier-payment line approved in 24h — that\'s the product I\'ll bring 20 friends to. The PH consumer brand is done. Now build PH business."'],resonates:['PHP onboarding','SEA elder = Filipino lola','Skyro Visa card','Brand maturity'],barriers:['No B2B / SME','No invoice financing','₱ 3,000 too small for my needs']},
+{id:12,market:'PH',seg:'mid',income:'₱48–70k/mo',name:'Content Creator',role:'Social media / Lifestyle · 22–35',avatar:'CC',avatarBg:'linear-gradient(135deg,#ff6b6b,#aa1010)',v1avg:8.3,scores:{emotion:9,visual:9,clarity:8.5,trust:8},preview:'«Banner 17 — that\'s literally my workspace. The Visa card. The Filipino faces. The magenta accent. This is the brand of my generation finally getting its own card.»',delta:'+0.5 — Banner 17 + Visa card + magenta accent push from love to evangelism.',good:'Banner 17 (young man in studio) is the new hero — that\'s the creator life shown with dignity. Magenta / pink accent makes the brand pop. Skyro Visa card is exactly the aesthetic I\'d post. PHP makes it real for my market.',bad:'Still no «approves irregular income» proof. I still need to see «creators welcome».',why:'v2 gave Content Creator everything she wanted aesthetically. The only remaining gap is the income-type approval signal — a technical proof point.',quotes:['"I\'m already filming the reel. Send me the Visa card pre-order. Tell me you approve TikTok creators with PayPal income — I get you 50k impressions on launch day."'],resonates:['Banner 17 = my workspace','Skyro Visa card','PHP onboarding','Filipino faces','Magenta accent','Bold electric blue','Wild Explorer fit'],barriers:['Approval for irregular income not shown']},
+{id:13,market:'PH',seg:'mid',income:'₱48–84k/mo',name:'Corporate Employee',role:'Office worker · Predictable salary · 25–40',avatar:'CE',avatarBg:'linear-gradient(135deg,#ffa502,#804000)',v1avg:6.8,scores:{emotion:7,visual:7.5,clarity:7.5,trust:7},preview:'«Now I see myself. PHP, Filipino faces, the Visa card. The brand is bold but not scary. I would apply on launch day.»',delta:'+0.7 — PH localization closed the «is this for me?» gap.',good:'PHP onboarding. Filipino faces. Skyro Visa card. Banner 17 reads as professional, not rebellious — perfect for office worker self-image.',bad:'Cashback amounts not specified. Still wants a «monthly fixed plan» option to balance the BNPL.',why:'v2 made the brand feel inclusive for the salaried predictable-income earner — without losing the boldness that attracted creators.',quotes:['"₱ 3,000 first loan at 0% — I\'m an early adopter. Show me «fixed monthly plans with no surprises» — I bring my whole office."'],resonates:['PHP onboarding','Filipino faces','Skyro Visa card','Banner 17','Brand is bold but not scary'],barriers:['Cashback amounts vague','No fixed-plan option visible']},
+{id:14,market:'PH',seg:'mid',income:'₱30–60k/mo',name:'Freelancer',role:'Project-based worker · Digital · 25–40',avatar:'FR',avatarBg:'linear-gradient(135deg,#ffa502,#604000)',v1avg:7.2,scores:{emotion:7.5,visual:8,clarity:7.5,trust:7.5},preview:'«Banner 17 is me. PHP onboarding is me. ₱ 3,000 is exactly the bridge loan between projects. If you approve me without a payslip — I\'m a founding customer.»',delta:'+0.6 — Banner 17 + PHP + Visa card. Banner 17 explicitly mirrors freelancer reality.',good:'Banner 17 — young man at creative desk = freelance archetype. PHP onboarding. Visa card. ₱ 3,000 is the exact between-projects nano-loan amount.',bad:'«Approves freelancers without payslip» still not shown explicitly.',why:'v2 visually puts the freelancer in the centre of the concept. One technical proof point would close the conversion.',quotes:['"Add «freelancer-friendly approval — PayPal / Wise history accepted» on the onboarding screen — I migrate my financial life next week. v2 is 90% there."'],resonates:['Banner 17 = freelancer self','PHP onboarding','₱ 3,000 = between-projects','Skyro Visa card','Wild Explorer fit'],barriers:['Payslip-free approval not visible']},
+{id:15,market:'PH',seg:'mid',income:'₱25–45k/mo',name:'Teacher (PH)',role:'Teacher · Stable but moderate · 28–50',avatar:'TP',avatarBg:'linear-gradient(135deg,#ffa502,#604020)',v1avg:6.4,scores:{emotion:7.5,visual:7.5,clarity:7.5,trust:7},preview:'«PHP onboarding. Filipino lola for «For loved ones». «Shop like a boss» is gone. v2 finally feels like a brand for me, not at me.»',delta:'+1.0 — PHP currency + Filipino faces + slogan removal = perfect storm for Teacher PH.',good:'PHP onboarding. Filipino faces. The lola in «For loved ones» is the emotional peak. «Shop like a boss» removed. Skyro Visa card.',bad:'No teacher / classroom imagery. Still wants ₱ 0% educational loan flow.',why:'Teacher PH was Skyro\'s middle-segment indicator. v2 hits all three intervention points she needed in v1.',quotes:['"₱ 5,000 at 0% for my class\'s school supplies — and the lola in the ad is my mother. Skyro just made me feel respected. I\'m applying tonight."'],resonates:['PHP onboarding','Filipino faces','Filipino lola','«Shop like a boss» removed','Skyro Visa card'],barriers:['No teacher / classroom shot','No 0% education loan flow']},
+{id:16,market:'PH',seg:'mid',income:'₱40–65k/mo',name:'Nurse / OFW Healthcare',role:'Healthcare worker · Local or abroad · 25–45',avatar:'NH',avatarBg:'linear-gradient(135deg,#ffa502,#703000)',v1avg:6.9,scores:{emotion:8,visual:7.5,clarity:7.5,trust:8},preview:'«The Filipino lolo for «For loved ones» is my dad. PHP screens are my country. «Send money to kinfolks with no fees» is still the most powerful line I\'ve heard from a fintech. v2 brought it home.»',delta:'+0.9 — Filipino elder lands as her father. Remittance line still the strongest in the study.',good:'SEA elder reads as Filipino lolo. PHP onboarding. Visa card. «For loved ones · no fees» still the strongest message of the campaign.',bad:'No Filipina nurse in the cast. No balikbayan-box visual. The remittance flow itself still not shown on a product screen.',why:'v2 closed the «is the elder local?» question. The remaining gap is showing the OFW nurse herself — and the actual remittance flow.',quotes:['"Put a Filipina nurse in scrubs in the next round of frames. Show the actual «send money» flow. v2 made me cry once — v3 can make 100,000 of us download."'],resonates:['Filipino lolo for «For loved ones»','«Send money with no fees» — strongest line','PHP onboarding','Skyro Visa card'],barriers:['No Filipina nurse','No balikbayan visual','Remittance flow not on screen']},
+{id:17,market:'PH',seg:'low',income:'₱18–32k/mo',name:'Call Center Agent',role:'Young, digital-first · Cash gaps · 22–30',avatar:'CA',avatarBg:'linear-gradient(135deg,#ff6b6b,#881010)',v1avg:6.3,scores:{emotion:7.5,visual:7,clarity:7.5,trust:7},preview:'«₱ 3,000 — that\'s my exact mid-month emergency. PHP screens with people like me. Banner 17 looks like our QC office. v2 finally gets us.»',delta:'+1.2 — ₱ 3,000 onboarding is the precise nano-loan amount Call Center Agents asked for.',good:'₱ 3,000 onboarding amount. Filipino faces. Skyro Visa card. Banner 17 has «young Filipino professional at work» energy.',bad:'GCash habit is hard to break — needs a switching incentive (cashback on first 5 transactions).',why:'v2 gave the Call Center Agent everything she said she needed in v1 — local currency, relatable amount, faces like hers.',quotes:['"₱ 3,000 in 5 minutes — exactly what I need on the 20th of every month. Visa card I can show off — bonus. First-month 0% — I switch from GCash."'],resonates:['₱ 3,000 = my emergency amount','PHP onboarding','Filipino faces','Skyro Visa card','Banner 17'],barriers:['GCash habit','Need switching incentive']},
+{id:18,market:'PH',seg:'low',income:'₱20–40k/mo',name:'Government Employee',role:'Stable income · Cautious borrower · 30–50',avatar:'GE',avatarBg:'linear-gradient(135deg,#ff6b6b,#771010)',v1avg:4.4,scores:{emotion:4,visual:5.5,clarity:5,trust:4.5},preview:'«Filipino faces help. PHP helps. Visa card helps. But where\'s the BSP license? Where\'s the SEC certificate? I still can\'t trust a brand that won\'t show its credentials.»',delta:'No change. Visual upgrades don\'t close his trust gap — he needs regulatory proof.',good:'PHP localization. Filipino faces. Skyro Visa card adds tangibility.',bad:'No BSP license visible. No SEC registration. No regulator footer on any creative. Philosophy-first branding still feels suspicious.',why:'Government Employee evaluates on credentials. v2 added more aesthetic, no credentials. His gap is structurally untouched.',quotes:['"Add «BSP-registered · SEC certificate #XXXXX · Member: BAP Philippines» at the bottom of the OOH and the onboarding — I start listening. Without that, beautiful is suspicious."'],resonates:['PHP onboarding','Filipino faces','Skyro Visa card'],barriers:['No BSP license shown','No SEC certificate','No regulator footer','Philosophy-first feels risky']},
+{id:19,market:'PH',seg:'low',income:'₱15–35k/mo',name:'Micro-Entrepreneur (Sari-Sari)',role:'Home-based small business · 35–55',avatar:'ME',avatarBg:'linear-gradient(135deg,#ff6b6b,#660000)',v1avg:4.8,scores:{emotion:6,visual:6,clarity:6,trust:6},preview:'«₱ 3,000 — yan ang halaga ng restock ko ng noodles at bigas. Filipino faces. Lola sa ad. v2 — finally, this could be for a sari-sari like mine.»',delta:'+1.2 — ₱ 3,000 is the literal nano-loan amount mama-tindahans use.',good:'₱ 3,000 is the exact restock amount. PHP onboarding. SEA elder reads as Filipino lola. The brand finally feels like it sees the small-business segment.',bad:'No sari-sari, no tindahan, no palengke in the imagery. The micro-entrepreneur is implied by the amount, not shown.',why:'v2 hit the amount but didn\'t hit the imagery. ₱ 3,000 + a frame of a mama-tindahan would be a complete win.',quotes:['"₱ 3,000 sa 2 minuto, mag-restock ako agad — yes. Pero ipakita yung ina sa tindahan, hindi yung shopping bag sa mall. Halos diyan na kayo."'],resonates:['₱ 3,000 = restock amount','PHP onboarding','Filipino lola figure','Skyro Visa card'],barriers:['No sari-sari / tindahan / palengke','Micro-entrepreneur not visually represented']},
+{id:20,market:'PH',seg:'low',income:'₱15–30k/mo',name:'Driver',role:'Transport / Delivery · Daily income · 25–50',avatar:'DR',avatarBg:'linear-gradient(135deg,#ff4757,#770010)',v1avg:4.6,scores:{emotion:5,visual:5.5,clarity:6,trust:5.5},preview:'«₱ 3,000 — yes! Yan ang pera ng mekaniko. PHP. Filipino faces. v2 — closer. Pero wala paring driver sa ad. Lola, oo, pero saan ako?»',delta:'+0.9 — ₱ 3,000 is exactly the motorcycle-repair amount drivers borrow.',good:'₱ 3,000 onboarding amount = exact repair-emergency loan size. PHP and Filipino faces feel local. Skyro Visa card is a serious artifact.',bad:'No driver, no jeepney, no motorcycle in the frames. Driver still doesn\'t see his world.',why:'The amount is right, the localization is right, the imagery is still off. One driver-shot would close the gap.',quotes:['"Approve ng ₱ 3,000 in 3 minutes para mekaniko — converted. Ilagay ninyo si kuya driver sa ad — recommended ko sa lahat ng pares ko."'],resonates:['₱ 3,000 = repair amount','PHP onboarding','Filipino faces','Skyro Visa card'],barriers:['No driver / jeepney / motorcycle visual','No emergency-loan flow shown']},
+{id:21,market:'PH',seg:'low',income:'Family budget',name:'Housewife',role:'Family financial manager · 30–50',avatar:'HW',avatarBg:'linear-gradient(135deg,#ff6b9d,#880040)',v1avg:6.4,scores:{emotion:7.5,visual:7,clarity:7,trust:6.5},preview:'«The lola sa ad — parang nanay ko. "For loved ones" — yes. "Shop like a boss" — gone, salamat. ₱ 3,000 sa groceries at sa baon ng anak. v2 finally sees the home.»',delta:'+0.6 — Filipino lola + slogan removal + PHP = home-felt brand.',good:'Filipino lola in «For loved ones». «Shop like a boss» removed. PHP onboarding. Visa card. Brand finally feels family-friendly.',bad:'No Filipino family scene, no kitchen, no kids in uniform. Housewife is the implied user, not the shown one.',why:'v2 made the brand emotionally welcoming for the family-financial-manager segment. Visual representation is the next step.',quotes:['"Add a scene: nanay sa kusina, nag-checkout sa Skyro app, anak nakauniform. That\'s the brand I send to my chat groups. v2 made me believe — v3 should make me show."'],resonates:['Filipino lola figure','«Shop like a boss» removed','PHP onboarding','Skyro Visa card','Brand feels family-friendly'],barriers:['No Filipino family scene','No kitchen / home imagery','Housewife not visually shown']},
+{id:22,market:'PH',seg:'low',income:'₱20–50k/mo',name:'OFW / Domestic Helper',role:'Overseas or local · Remittance-centered · 25–50',avatar:'OFW',avatarBg:'linear-gradient(135deg,#a855f7,#5010aa)',v1avg:8.1,scores:{emotion:9.5,visual:8.5,clarity:8.5,trust:8},preview:'«The lolo sa ad is my father. PHP screens. Visa card I can carry abroad. And still — «Send money to kinfolks with no fees». Skyro made my work the hero of the story. v3 needs me in the frame.»',delta:'+0.5 — Filipino elder closes the «is the message also visually local?» question.',good:'SEA elder explicitly reads as Filipino. PHP onboarding. Skyro Visa card I can use across countries. «For loved ones · no fees» — still the strongest line.',bad:'No OFW heroine in cast. No airport / balikbayan scene. The remittance flow itself isn\'t a product screen.',why:'v2 brought the message visually home. v3 should show the OFW herself — that\'s the final missing piece.',quotes:['"Put a domestic helper in Dubai sending ₱ 5,000 via Skyro to her child on a school morning — that\'s the campaign that makes 2 million OFWs download. v2 was the trailer; show me the movie."'],resonates:['Filipino lolo','«For loved ones · no fees»','PHP onboarding','Skyro Visa card portable across countries','«Naturally, it\'s yours» — claiming dignity'],barriers:['No OFW heroine','No airport / balikbayan scene','Remittance product screen not shown']},
+{id:23,market:'PH',seg:'low',income:'₱12–25k/mo',name:'Security Worker',role:'Long shifts · Limited savings · Guards',avatar:'SS',avatarBg:'linear-gradient(135deg,#ff4757,#660000)',v1avg:5.0,scores:{emotion:5.5,visual:5.5,clarity:6,trust:5},preview:'«Ngayon alam ko: financial product yan, PHP, ₱ 3,000. Pero parang mga creators yung sa ad. Ako kaya kasama? May social proof ba?»',delta:'+0.5 — PHP and ₱ 3,000 lower the rejection probability, but aspirational cast still distances.',good:'₱ 3,000 amount feels achievable. PHP onboarding identifies as local. Brand clearly reads as financial.',bad:'Cast still feels aspirational — young creators, not guards / blue-collar. Social proof for working-class still missing.',why:'v2 made approval feel possible (₱ 3,000), but the imagery still signals «this is for someone cooler than you».',quotes:['"Magshow kayo ng security guard na nag-Skyro at na-approve in 5 mins — yun yung kailangan ko. Hindi pa rin ako sigurado kung magaaccept ako."'],resonates:['₱ 3,000 amount','PHP onboarding','Brand reads as financial'],barriers:['Cast still aspirational','No working-class social proof','Rejection-anxiety unaddressed']},
+{id:24,market:'PH',seg:'low',income:'₱15–30k/mo',name:'HORECA Staff',role:'Hotel / Restaurant · Shift income · Variable',avatar:'HS',avatarBg:'linear-gradient(135deg,#ff4757,#550000)',v1avg:5.3,scores:{emotion:6,visual:6.5,clarity:6.5,trust:6},preview:'«Walang «boss» talk — appreciated. PHP screens. Banner 17 na batang lalaki — parang yung katrabaho ko sa kitchen. Hindi pa rin ako boss, pero now I feel less excluded.»',delta:'+0.7 — slogan removal + PHP + Banner 17 «people like me» energy.',good:'«Shop like a boss» gone. PHP onboarding. Banner 17 has «young professional at work» vibe — relatable. Visa card is aspirational but reachable.',bad:'No hospitality worker shown. Shift-income approval flow still not visible.',why:'v2 stopped insulting HORECA Staff and started showing «people like him» energy. Hospitality-specific representation would close it further.',quotes:['"Show a kitchen, a hotel uniform, a barista. Approve shift workers. Then sabihin mo «Skyro for service heroes» — that\'s a tagline I\'d share."'],resonates:['«Shop like a boss» removed','PHP onboarding','Banner 17 = young pro vibe','Visa card aspirational'],barriers:['No hospitality worker shown','Shift-income approval not shown']},
+{id:25,market:'PH',seg:'low',income:'₱15–35k/mo',name:'Factory / Construction Worker',role:'Physical labor · 25–45',avatar:'FC',avatarBg:'linear-gradient(135deg,#ff3d5a,#440000)',v1avg:4.4,scores:{emotion:5,visual:5.5,clarity:6,trust:5},preview:'«PHP, ₱ 3,000 — alam ko na ito\'y bangko. Pero text pa rin sa English. Onboarding for office workers, hindi para sa amin.»',delta:'+0.6 — PHP + ₱ 3,000 brought him over the «is it a bank?» line.',good:'Concept now identifies as financial product. ₱ 3,000 is a realistic borrow. PHP onboarding. Visa card looks legit.',bad:'Onboarding text still English-jargon-heavy. No working-class imagery. No Tagalog-first option.',why:'v2 closed the category-recognition gap. The literacy / language gap remains structurally untouched.',quotes:['"Tagalog ang app, simple ang words — try ko. Ipakita yung kuya construction worker — bawasan ang takot na ma-reject."'],resonates:['Brand identifies as financial','₱ 3,000 realistic','PHP onboarding','Visa card looks legit'],barriers:['English jargon in copy','No labor / blue-collar imagery','No Tagalog-first option']},
+{id:26,market:'PH',seg:'low',income:'₱12–25k/mo',name:'Rural Worker',role:'Farmer / Fisherman · Seasonal income',avatar:'RW',avatarBg:'linear-gradient(135deg,#ff3d5a,#330000)',v1avg:3.8,scores:{emotion:4.5,visual:4.5,clarity:4.5,trust:4},preview:'«Lola sa ad ay parang nanay ko. PHP at ₱ 3,000 — closer. Pero wala paring bukid, wala paring magsasaka. At kailangan paring internet — sa amin, palagi nawawalan.»',delta:'+0.7 — slight warmth from elder + amount, but rural-specific gaps unchanged.',good:'Filipino lola is close to my mother. PHP onboarding feels local. ₱ 3,000 amount is realistic.',bad:'No farmer, no shamba, no rural scenario. Onboarding still requires full internet — fragile in my province. No seasonal repayment.',why:'v2 helped emotionally but didn\'t solve the rural-infrastructure or rural-imagery gaps.',quotes:['"Magsama ng magsasaka. Magbigay ng SMS-fallback. Hayaan akong mag-bayad after harvest. v2 mas malapit, pero malayo pa rin."'],resonates:['Lola = my mother','₱ 3,000 realistic','PHP onboarding'],barriers:['No rural / farm imagery','Requires full internet','No seasonal repayment','No SMS fallback']},
+{id:27,market:'KE',seg:'mid',income:'KES 40k/mo',name:'David Kimani',role:'Duka Owner · Nairobi · 31',avatar:'DK',avatarBg:'linear-gradient(135deg,#a855f7,#601090)',v1avg:4.8,scores:{emotion:5,visual:5.5,clarity:5,trust:4.5},preview:'«Visa card looks proper. The lolo could be a Kenyan elder. Pero onboarding now in Philippines pesos — so it\'s really not for Kenya yet. Still no M-Pesa anywhere.»',delta:'No change. Visa card lifts brand, PH onboarding hurts KE relevance — net zero.',good:'Skyro Visa card looks like a serious product. SEA elder could pass for a Kenyan elder. Brand has matured.',bad:'Onboarding in PHP — explicitly «not Kenya». Still no M-Pesa logo, no KES, no Nairobi skyline, no Kenyan face. PH localization made his exclusion more visible, not less.',why:'v2 added Visa card weight but signalled even more clearly that Kenya isn\'t the priority market.',quotes:['"Show me «KES 5,000 via M-Pesa, 5 minutes, ask David Kimani in Eastleigh» — and I\'m in. The Visa card is nice but I need M-Pesa pairing for it to mean anything in Nairobi."'],resonates:['Skyro Visa card','SEA elder passes as Kenyan elder','Brand maturity'],barriers:['No M-Pesa','KES not on onboarding','No Kenyan face','PH localization makes KE absence sharper']},
+{id:28,market:'KE',seg:'mid',income:'KES 35k/mo',name:'Grace Wanjiku',role:'Nurse · 27 · Nairobi',avatar:'GW',avatarBg:'linear-gradient(135deg,#ff6b9d,#880044)',v1avg:5.9,scores:{emotion:6.5,visual:6.5,clarity:5.5,trust:5.5},preview:'«The elder for «For loved ones» reads warmer now. The Visa card is what I\'d want abroad. But onboarding for PHP — that\'s a punch in the chest for a Kenyan nurse.»',delta:'+0.1 — Visa card lifts trust, but PH-localized onboarding hurts relevance.',good:'SEA elder warmer. Skyro Visa card portable across borders — relevant for a nurse who works abroad. «For loved ones · no fees» still strong.',bad:'No M-Pesa integration. PHP onboarding signals «we built for them, not you». No Kenyan nurse imagery.',why:'The brand softened emotionally, but the operational exclusion of Kenya sharpened. Grace stays positive on the message, negative on the operations.',quotes:['"Bring KES onboarding with an M-Pesa green tick. Show a Kenyan nurse with the lolo on the «For loved ones» frame. Then I\'m your KE ambassador."'],resonates:['SEA elder warmer','Skyro Visa card portable','«For loved ones · no fees»'],barriers:['No M-Pesa','PH onboarding signals exclusion','No Kenyan nurse imagery','KES absent']},
+{id:29,market:'KE',seg:'mid',income:'KES 50k/mo',name:'Peter Mwangi',role:'Secondary School Teacher · 38 · Mombasa',avatar:'PM',avatarBg:'linear-gradient(135deg,#4a7cff,#1020aa)',v1avg:5.4,scores:{emotion:5,visual:6,clarity:5.5,trust:5},preview:'«The Visa card adds gravity. The brand keeps maturing. But I\'m a cautious Mombasa teacher — I need years of local presence and SACCO endorsement before I switch.»',delta:'+0.1 — brand maturity adds marginal trust. His structural cautiousness is unchanged.',good:'Skyro Visa card. Brand looks even more professional. Banner 17 has serious adult energy.',bad:'No Kenyan school, no Kenyan teacher, no Mombasa. PHP onboarding pushes the «not for us» signal. SACCO trust wall intact.',why:'Peter is an incremental adopter by personality. He needs proof in the form of other Kenyan teachers using and recommending. v2 didn\'t produce that proof.',quotes:['"When 100 Mombasa teachers post that Skyro paid for their classroom supplies — I sign up. v2 is more polished, that\'s good. Now show the local stories."'],resonates:['Skyro Visa card','Brand mature','Banner 17 adult energy'],barriers:['SACCO trust wall','No Kenyan teacher','High trust threshold','PH onboarding worsens exclusion']},
+{id:30,market:'KE',seg:'mid',income:'KES 60k/mo',name:'Alice Njeri',role:'Office Manager · 32 · Nairobi · Married',avatar:'AN',avatarBg:'linear-gradient(135deg,#22d3ee,#004080)',v1avg:6.8,scores:{emotion:7,visual:7.5,clarity:7,trust:7},preview:'«Skyro Visa card — that\'s a card I\'d add to my Apple Wallet today. Banner 17 — that\'s the modern professional energy I want. Just bring me M-Pesa pairing — I sign up the same day.»',delta:'+0.3 — Visa card + Banner 17 both fit her aspirational professional identity.',good:'Skyro Visa card matches premium digital-finance expectations. Banner 17 reads as professional, ambitious. Brand still strongly differentiates from Kenyan banks.',bad:'No M-Pesa pairing. No KES. PHP onboarding signals «not Kenya».',why:'Alice is the natural Kenyan first-wave adopter. v2 made the brand more attractive to her without adding the operational bridge (M-Pesa).',quotes:['"Show me «Skyro Visa card + M-Pesa integration» in one image — I bring 15 colleagues. Without M-Pesa pairing, the card stays a beautiful object I can\'t use."'],resonates:['Skyro Visa card','Banner 17 = professional ambition','Premium brand vs Kenyan banks','SEA cast feels global'],barriers:['No M-Pesa','PHP onboarding','No KES','No Nairobi skyline']},
+{id:31,market:'KE',seg:'low',income:'KES 20k/mo',name:'James Omondi',role:'Boda Boda Driver · 24 · Kisumu',avatar:'JO',avatarBg:'linear-gradient(135deg,#ff4757,#660010)',v1avg:4.4,scores:{emotion:4.5,visual:5,clarity:4.5,trust:4},preview:'«Visa card nzuri. ₱ 3,000 sasa imebadilika — lakini bado sio shilingi. Nairobi boda boda anaitaji KES 1,000 kwa mafuta via M-Pesa. Skyro bado anaongea Pilipinas, sio Kenya.»',delta:'+0.1 — Visa card lifts perception, PH-only onboarding hurts relevance — net minimal.',good:'Skyro Visa card looks like a real product. Brand identifies as a bank now.',bad:'PHP onboarding is even further from KE than RM was. No M-Pesa, no KES, no Kenyan driver, no boda boda imagery.',why:'For a daily-income KE driver, v2 went the wrong direction on localization — PH-specific signals now block KE recognition.',quotes:['"Nipe «KES 1,000 kwa mafuta sasa, M-Pesa, 5 minutes» — naingia. v2 inaonyesha Filipinas, mimi nataka Kenya."'],resonates:['Skyro Visa card','Brand reads as a bank'],barriers:['PH onboarding','No M-Pesa','No KES','No boda boda imagery','Showcase amount too large for me']},
+{id:32,market:'KE',seg:'low',income:'KES 15k/mo',name:'John Kamau',role:'Farmer · 42 · Nakuru · 4 kids',avatar:'JK',avatarBg:'linear-gradient(135deg,#ff4757,#550000)',v1avg:4.1,scores:{emotion:5,visual:5,clarity:4.5,trust:4},preview:'«Yule mzee sa «For loved ones» anaonekana karibu — kama baba yangu chini ya jua. Lakini onboarding ya Filipino, hakuna mkulima, hakuna shamba. v2 mzuri kidogo, lakini sio mkulima.»',delta:'+0.4 — SEA elder lands as warmth, but rural-specific gaps unchanged.',good:'SEA elder feels close to home. Brand has visibly matured. Visa card adds gravitas.',bad:'No farmer, no shamba, no harvest, no seasonal flow. PHP onboarding shouts «not Kenya». Full-internet requirement still a problem.',why:'v2 added emotional warmth (elder) without addressing rural operational needs.',quotes:['"Mwonyeshe mkulima wa Kenya. Mpe SMS option. Nikulipe baada ya mavuno. v2 ni karibu zaidi kwa moyo, lakini bado mbali kutoka shamba."'],resonates:['SEA elder feels close','Brand mature','Skyro Visa card'],barriers:['No farmer / shamba','PH onboarding','Requires full internet','No seasonal repayment','No M-Pesa']},
+{id:33,market:'KE',seg:'low',income:'KES 18k/mo',name:'Mary Akinyi',role:'Market Seller · Single mother · Eldoret',avatar:'MA',avatarBg:'linear-gradient(135deg,#ff6b9d,#770030)',v1avg:4.4,scores:{emotion:5,visual:5.5,clarity:5,trust:4.5},preview:'«Mama sa «Buy now, pay later» — anaonekana kama mama mboga. Yule mzee anaonekana kama wazee wetu. «Shop like a boss» — imeenda, asante. Lakini bado hakuna soko, hakuna mama mboga, hakuna shilingi.»',delta:'+0.6 — warmer cast + slogan removal. Local imagery still missing.',good:'Asian mother in «Buy now, pay later» can pass as a mama-mboga archetype. SEA elder warmer. «Shop like a boss» gone. Brand softer.',bad:'No mama mboga, no soko, no Kenyan child in school uniform. PHP onboarding excludes KE. «Pay with QR» still doesn\'t work at Eldoret market.',why:'v2 made the brand less hostile to a single mother\'s identity (no «boss» slogan), but didn\'t deliver local representation or operations.',quotes:['"Mwonyeshe mama mboga kwenye soko, KES 2,000 via M-Pesa, lipa baada ya wiki. v2 mzuri zaidi kwa moyo, lakini bado mbali kutoka soko langu."'],resonates:['Asian mother can pass as mama-mboga','SEA elder warmer','«Shop like a boss» removed','Softer brand'],barriers:['No mama mboga / soko','No KES','No M-Pesa','QR pay useless at market','PH onboarding']},
+{id:34,market:'KE',seg:'low',income:'KES 12k/mo',name:'Brian Otieno',role:'University student + Delivery · 19 · Nairobi',avatar:'BO',avatarBg:'linear-gradient(135deg,#4a7cff,#0010aa)',v1avg:8.4,scores:{emotion:9.5,visual:9.5,clarity:8.5,trust:7.5},preview:'«BRO. Banner 17 = my Nairobi creative life. Visa card with the S = the card my generation actually wants. Magenta accent = the design language we follow. Skyro just leveled up.»',delta:'+0.5 — Banner 17 + Visa card + magenta accent all hit Brian\'s Gen Z creator-hustler identity perfectly.',good:'Banner 17 is exactly Brian\'s self-image — young man at a creative desk, working, hustling. Skyro Visa card with S-curve is the most «my generation» card design he\'s seen. Magenta accent matches Nairobi creator aesthetic.',bad:'M-Pesa still not visible. Student-with-informal-income approval flow still not shown.',why:'Brian is the v2 super-respondent. Every new asset directly reinforced his identity. The remaining gap is operational (M-Pesa) — once closed, he\'s the brand\'s natural Kenya launch face.',quotes:['"Send me a pre-launch Visa card. I do a 5-part TikTok series about «the bank that finally gets us». Just confirm Skyro + M-Pesa + student-friendly approval — I deliver 50k impressions."'],resonates:['Banner 17 = my workspace','Skyro Visa card = my-generation card','Magenta accent = creator aesthetic','S-curve as orbital','Bold electric blue','Wild Explorer fit','Diverse SEA cast'],barriers:['No M-Pesa visible','Student-informal-income approval not shown']},
+{id:35,market:'KE',seg:'low',income:'KES 15k/mo',name:'Faith Wambui',role:'Electronics shop seller · 21 · Nakuru',avatar:'FW',avatarBg:'linear-gradient(135deg,#22d3ee,#005080)',v1avg:7.4,scores:{emotion:8,visual:8.5,clarity:7.5,trust:7},preview:'«The Visa card. With the S. That\'s a card I would put on the shelf next to the iPhone 15 display. Skyro finally has the product object I can sell — bring M-Pesa and I bring 30 customers a day.»',delta:'+0.6 — Skyro Visa card is the exact asset Faith asked for in v1.',good:'Skyro Visa card with S-curve is the breakout moment for her. Banner 17 has young-professional-at-work energy. Brand sits next to premium tech.',bad:'M-Pesa pairing still not visible. KES still not on any onboarding.',why:'Faith is the v2 product-channel respondent. The Visa card is the asset that turns Skyro from a brand-on-a-poster to a product-on-a-shelf. M-Pesa pairing closes it.',quotes:['"Pair the Visa card with a M-Pesa green tick — I sell Skyro alongside every iPhone case. The card is the shelf-ready product I asked for. Now add the Kenyan rail."'],resonates:['Skyro Visa card with S-curve','Sits next to iPhone display','Banner 17 = young pro','Premium tech positioning','Diverse SEA cast'],barriers:['No M-Pesa pairing','No KES on onboarding','Brand recognition needs KE rollout']},
+{id:36,market:'KE',seg:'low',income:'KES 22k/mo',name:'Kevin Odhiambo',role:'Construction worker (casual) · 29 · Nairobi',avatar:'KO',avatarBg:'linear-gradient(135deg,#ff4757,#440000)',v1avg:4.4,scores:{emotion:4.5,visual:5,clarity:5,trust:4.5},preview:'«Skyro Visa card nzuri. Lakini ₱ 3,000? Hiyo ni Filipinas. Mimi nataka KES 1,000 wakati hakuna kazi siku 3. Skyro v2 anaongea kuhusu watu wenye kazi.»',delta:'+0.1 — Visa card adds gravitas, PH onboarding hurts relevance.',good:'Skyro Visa card looks like a real product. Brand identifies as a bank. «Shop like a boss» removed.',bad:'No M-Pesa, no KES, no casual-worker visual. PHP onboarding signals «not for you». Emergency-loan flow still invisible.',why:'For casual construction with volatile income, v2 looks more like a finished product (Visa) but localizes further away from KE (PHP).',quotes:['"Skyro itaonyesha «KES 1,000 dharura wakati hakuna kazi, M-Pesa, lipa baada ya kazi siku 3» — yote yangu. Visa card ni nzuri, lakini bado kwa watu wengine."'],resonates:['Skyro Visa card','Brand reads as a bank','«Shop like a boss» removed'],barriers:['No M-Pesa','No KES','No casual-worker scenario','PH onboarding','No emergency-loan flow']},
+];
+
+const LOGO = {
+  1: "S-mark stronger now — it lives on the Visa card and that gives it product weight. The app icon with diagonal stripes is unchanged though — still sport / logistics signal. The S should replace the stripes on the icon.",
+  2: "The S on the Visa card is beautiful — feminine, flowing, ownable. App icon stripes — still wrong category. If the S looks this good on a card, why not on the home screen?",
+  3: "Visa card with S-curve is a strong design moment. The icon with stripes is still a missed opportunity — banking icons need a banking signal, not a sports one.",
+  4: "Card looks like a real card — good. The icon — three lines — I still wouldn\'t recognise as a money app. The S would do better.",
+  5: "Visa card with the S has the same orbital energy as the OOH — that\'s brand consistency. The app icon breaks that consistency. Fix it.",
+  6: "S-curve on the Visa card is clever — engineering as art. Icon with stripes still doesn\'t belong to the same family. Visual system needs full alignment.",
+  7: "S on the card is premium — would carry it. Icon with stripes — still feels like a sport-app insignia. Same fix as v1: S as icon.",
+  8: "S on card — saya suka. Tapi icon stripes masih the same — still not a money-app signal.",
+  9: "Card is clean and confident. Icon still belongs to logistics. Replace the icon.",
+  10: "Visa card is a strong addition — it makes the brand mark meaningful on a daily artifact. App icon is unchanged and unchanged-wrong.",
+  11: "Card with the S-curve reads as a real product. Icon with three stripes — still the weak link.",
+  12: "OK the Visa card design IS the brand. The icon though — still 2018 streetwear. S as icon, please.",
+  13: "S on card is professional. Icon — same as before, same problem.",
+  14: "Visa card belongs to my generation. Icon belongs to a different decade.",
+  15: "Card maganda. Icon parin yung same — hindi pa rin para sa app na pang-money.",
+  16: "Card with S looks like something I\'d carry across countries. Icon — unchanged, still off.",
+  17: "Card cool. Icon parin same — hindi pa rin nag-iiba kahit may bagong Visa card.",
+  18: "Card looks official. Icon — still no category signal. Both should have BSP / regulator badges visible.",
+  19: "Yung card maganda. Yung icon, same pa rin — still not communicating money.",
+  20: "Card cool. Icon parin generic — wala pa rin recognition.",
+  21: "Card with S-curve feels warm — flowing line is family-friendly. Icon with stripes is cold — replace.",
+  22: "Skyro Visa I can carry across borders — perfect for OFW. Icon still doesn\'t communicate finance.",
+  23: "Card OK. Icon same — hindi pa rin clear na money app.",
+  24: "Card cool. Icon — same uniform-patch feel.",
+  25: "Card ok. Icon parin same.",
+  26: "Card sa ad maganda. Icon parin parang ngumayong ay hindi nakakatulong.",
+  27: "Visa card is a serious product object. The icon doesn\'t match — still reads as logistics.",
+  28: "Card with the S would sit nicely on my hospital ID lanyard. Icon — unchanged, still off-category.",
+  29: "Card looks professional, presentable. Icon is generic — fix.",
+  30: "Card I\'d add to my Apple Wallet today. Icon I\'d still confuse with another app on my home screen.",
+  31: "Card nzuri. Icon bado parin — sina hakika ni Skyro.",
+  32: "Card mzuri kuangalia. Icon hakuna mabadiliko — bado kama mistari ya kulima.",
+  33: "Card ni rahisi kupenda. Icon bado parin — wajukuu wanasema «stripe app».",
+  34: "The Visa card is the visual anthem of this concept. The icon is the only weak link — three stripes are still 2015 streetwear, not 2025 fintech. S as icon, full stop.",
+  35: "The Visa card is shelf-ready — I\'d display it next to the iPhone. The icon needs to match that level. The S would.",
+  36: "Card nzuri. Icon bado parin — kama uniform ya kazi.",
+};
+
+function buildCard(d){
+  const mktLabels={SA:'🇸🇦 KSA',MY:'🇲🇾 MY',PH:'🇵🇭 PH',KE:'🇰🇪 KE'};
+  const scoreItems=[{lbl:'Visual',val:d.scores.visual},{lbl:'Clarity',val:d.scores.clarity},{lbl:'Trust',val:d.scores.trust}];
+  const stripHTML=scoreItems.map(s=>`<div class="sc-item"><div class="sc-lbl">${s.lbl}</div><div class="sc-bar"><div class="sc-fill" style="width:${s.val*10}%;background:${scoreColor(s.val)}"></div></div></div>`).join('');
+  const allScoreItems=[{lbl:'Emotion',val:d.scores.emotion},{lbl:'Visual',val:d.scores.visual},{lbl:'Clarity',val:d.scores.clarity},{lbl:'Trust',val:d.scores.trust}];
+  const scoreCardsHTML=allScoreItems.map(s=>`<div class="sc-card"><div class="sc-card-lbl">${s.lbl}</div><div class="sc-card-val" style="color:${scoreColor(s.val)}">${s.val}/10</div><div class="sc-card-bar"><div class="sc-card-fill" style="width:${s.val*10}%;background:${scoreColor(s.val)}"></div></div></div>`).join('');
+  const resHTML=d.resonates.map(r=>`<span class="tag res">${r}</span>`).join('');
+  const barHTML=d.barriers.map(b=>`<span class="tag bar">${b}</span>`).join('');
+  const quotesHTML=d.quotes.map(q=>`<div class="quote-full"><p>${q}</p></div>`).join('');
+  const logoText=LOGO[d.id]||'';
+  const v2avg=(d.scores.emotion+d.scores.visual+d.scores.clarity+d.scores.trust)/4;
+  const deltaV=v2avg-d.v1avg;
+  const posScore=v2avg>=7?'pos':v2avg>=5?'mid':'neg';
+  const dirAttr=deltaV>0.05?'up':deltaV<-0.05?'down':'flat';
+  return `<div class="card" data-market="${d.market}" data-seg="${d.seg}" data-pos="${posScore}" data-dir="${dirAttr}" data-id="${d.id}">
+    <div class="card-top" onclick="toggleCard(${d.id})">
+      <div class="avatar" style="background:${d.avatarBg}">${d.avatar}</div>
+      <div class="cname-block"><div class="cname">${d.name} ${deltaPill(deltaV)}</div><div class="crole">${d.role}</div></div>
+      <div class="mbadge m-${d.market}">${mktLabels[d.market]}</div>
+    </div>
+    <div class="score-strip" onclick="toggleCard(${d.id})">${stripHTML}</div>
+    <div class="q-preview" onclick="toggleCard(${d.id})"><p>${d.preview}</p></div>
+    <button class="toggle" onclick="toggleCard(${d.id})"><span>Full interview · v2</span><span class="arr">▾</span></button>
+    <div class="body" id="body-${d.id}">
+      <div class="rblock-delta"><div class="rblock-lbl">Δ Delta vs v1 (avg ${d.v1avg.toFixed(1)} → ${v2avg.toFixed(1)})</div><div class="rtext">${d.delta}</div></div>
+      <div class="rblock-good"><div class="rblock-lbl">✓ What works</div><div class="rtext">${d.good}</div></div>
+      <div class="rblock-bad"><div class="rblock-lbl">✗ What doesn't</div><div class="rtext">${d.bad}</div></div>
+      <div class="rblock-why"><div class="rblock-lbl">↳ Why</div><div class="rtext">${d.why}</div></div>
+      <div class="rblock-logo"><div class="rblock-lbl">◎ Logo reaction</div><div class="rtext">${logoText}</div></div>
+      <div class="slbl">Quotes</div>${quotesHTML}
+      <div class="slbl">Scores</div><div class="score-cards">${scoreCardsHTML}</div>
+      <div class="slbl">What resonates</div><div class="tags">${resHTML}</div>
+      <div class="slbl">Barriers</div><div class="tags">${barHTML}</div>
+    </div>
+  </div>`;
+}
+
+const grid=document.getElementById('grid');
+grid.innerHTML=DATA.map(buildCard).join('');
+
+function toggleCard(id){document.querySelector(`[data-id="${id}"]`).classList.toggle('open');}
+
+let activeMarket='all',activeSeg='all';
+function applyFilters(){
+  let shown=0;
+  DATA.forEach(d=>{
+    const card=document.querySelector(`[data-id="${d.id}"]`);
+    const v2avg=(d.scores.emotion+d.scores.visual+d.scores.clarity+d.scores.trust)/4;
+    const deltaV=v2avg-d.v1avg;
+    const mMatch=activeMarket==='all'||d.market===activeMarket;
+    let sMatch=true;
+    if(activeSeg==='pos')sMatch=d.scores.emotion>=7;
+    else if(activeSeg==='mid')sMatch=d.scores.emotion>=5&&d.scores.emotion<7;
+    else if(activeSeg==='neg')sMatch=d.scores.emotion<5;
+    else if(activeSeg==='high')sMatch=d.seg==='high';
+    else if(activeSeg==='low')sMatch=d.seg==='low';
+    else if(activeSeg==='up')sMatch=deltaV>0.05;
+    else if(activeSeg==='down')sMatch=deltaV<-0.05;
+    if(mMatch&&sMatch){card.classList.remove('hidden');shown++;}
+    else card.classList.add('hidden');
+  });
+  document.getElementById('cnt').textContent=shown;
+}
+
+document.querySelectorAll('.f-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeMarket=btn.dataset.m;
+    applyFilters();
+    document.getElementById('sum-all').style.display=activeMarket==='all'?'':'none';
+    ['SA','MY','PH','KE'].forEach(m=>{document.getElementById('sum-'+m).style.display=activeMarket===m?'':'none';});
+  });
+});
+document.querySelectorAll('.sf-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.sf-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeSeg=btn.dataset.s;
+    applyFilters();
+  });
+});
+</script>
+</body>
+</html>
