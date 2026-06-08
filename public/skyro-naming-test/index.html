@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro × Shuka — Naming Test · 4 Names × 36 Personas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07070f;
+  --s1: #0d0d1c;
+  --s2: #13132a;
+  --s3: #191934;
+  --bd: #222240;
+  --bd2: #2c2c50;
+  --tx: #ddddf5;
+  --td: #7070a0;
+  --tm: #404068;
+  --blue: #1a1aff;
+  --blu2: #5555ff;
+  --blu3: #9090ff;
+  --cyan: #00d4ff;
+  --green: #00e676;
+  --yel: #ffe600;
+  --ora: #ff8c00;
+  --red: #ff3d5a;
+  --pur: #b54dff;
+  --pnk: #ff4da0;
+  --sa: #d4aa47;
+  --my: #3dffa0;
+  --ph: #ff6b6b;
+  --ke: #a855f7;
+  /* Name colors */
+  --n-cl: #ffa502;
+  --n-scl: #5555ff;
+  --n-sl: #ff6b6b;
+  --n-sc: #00d4ff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.hdr{padding:80px 52px 60px;border-bottom:1px solid var(--bd);position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(85,85,255,.16) 0%,transparent 70%);pointer-events:none;}
+.hdr-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--blu3);margin-bottom:20px;}
+h1{font-family:'Syne',sans-serif;font-size:clamp(30px,5vw,56px);font-weight:800;line-height:1.05;margin-bottom:14px;}
+h1 em{color:var(--blu2);font-style:normal;}
+.hdr-sub{font-size:15px;color:var(--td);max-width:720px;line-height:1.75;margin-bottom:32px;}
+.concept-pill{display:inline-flex;align-items:center;gap:12px;padding:10px 20px;border-radius:100px;background:var(--s2);border:1px solid var(--bd2);font-size:13px;color:var(--td);}
+.concept-pill strong{color:var(--tx);}
+.stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:40px;}
+.st-num{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--blu2);line-height:1;}
+.st-lbl{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+
+.brief-bar{background:var(--s1);border-bottom:1px solid var(--bd);padding:24px 52px;display:flex;gap:40px;flex-wrap:wrap;align-items:center;}
+.bb-item{display:flex;flex-direction:column;gap:3px;}
+.bb-label{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:1px;}
+.bb-value{font-size:13px;color:var(--tx);font-weight:500;}
+
+.names-banner{margin:24px 52px 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border-radius:12px;overflow:hidden;border:1px solid var(--bd);}
+.nb-cell{background:var(--s1);padding:18px 20px;}
+.nb-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:6px;}
+.nb-desc{font-size:11px;color:var(--td);line-height:1.5;}
+.nb-cell[data-n="cl"] .nb-name{color:var(--n-cl);}
+.nb-cell[data-n="scl"] .nb-name{color:var(--n-scl);}
+.nb-cell[data-n="sl"] .nb-name{color:var(--n-sl);}
+.nb-cell[data-n="sc"] .nb-name{color:var(--n-sc);}
+
+/* Verdict block */
+.verdict{margin:40px 52px 0;padding:36px 40px;background:linear-gradient(135deg,rgba(85,85,255,.12),rgba(85,85,255,.04));border:1px solid rgba(85,85,255,.35);border-radius:14px;}
+.v-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blu3);margin-bottom:10px;}
+.v-name{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--tx);margin-bottom:14px;letter-spacing:-0.02em;}
+.v-name em{color:var(--blu2);font-style:normal;}
+.v-vote{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:18px;}
+.v-vote-item{font-size:12px;color:var(--td);}
+.v-vote-item strong{font-family:'Syne',sans-serif;color:var(--tx);font-size:20px;display:block;}
+.v-rat{font-size:14px;color:var(--td);line-height:1.7;max-width:900px;}
+.v-rat strong{color:var(--tx);}
+
+/* Scorecard 4x6 */
+.scorecard-wrap{padding:60px 52px 0;}
+.sc-title{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:800;margin-bottom:6px;}
+.sc-sub{font-size:13px;color:var(--td);margin-bottom:28px;}
+.scorecard{display:grid;grid-template-columns:300px repeat(4,1fr);background:var(--bd);gap:1px;border-radius:12px;overflow:hidden;border:1px solid var(--bd);}
+.sc-hcell{background:var(--s2);padding:14px 16px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--tm);}
+.sc-hcell.name-h{color:var(--tx);text-align:center;}
+.sc-hcell.name-h[data-n="cl"]{color:var(--n-cl);}
+.sc-hcell.name-h[data-n="scl"]{color:var(--n-scl);}
+.sc-hcell.name-h[data-n="sl"]{color:var(--n-sl);}
+.sc-hcell.name-h[data-n="sc"]{color:var(--n-sc);}
+.sc-qcell{background:var(--s1);padding:18px 16px;font-size:13px;color:var(--td);line-height:1.5;}
+.sc-qcell strong{display:block;color:var(--tx);font-size:13px;margin-bottom:4px;font-weight:600;}
+.sc-cell{background:var(--s1);padding:18px 16px;text-align:center;}
+.sc-val{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;line-height:1;margin-bottom:6px;}
+.sc-verdict{font-size:11px;color:var(--td);line-height:1.4;}
+
+/* Heatmap */
+.heatmap-wrap{padding:60px 52px 0;}
+.heatmap{display:grid;grid-template-columns:160px repeat(4,1fr);background:var(--bd);gap:1px;border-radius:12px;overflow:hidden;border:1px solid var(--bd);}
+.hm-hcell{background:var(--s2);padding:14px 16px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--tm);text-align:center;}
+.hm-hcell[data-n="cl"]{color:var(--n-cl);}
+.hm-hcell[data-n="scl"]{color:var(--n-scl);}
+.hm-hcell[data-n="sl"]{color:var(--n-sl);}
+.hm-hcell[data-n="sc"]{color:var(--n-sc);}
+.hm-mcell{background:var(--s1);padding:18px 16px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.hm-cell{background:var(--s1);padding:18px 12px;text-align:center;position:relative;}
+.hm-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;line-height:1;}
+.hm-pct{font-size:10px;color:var(--td);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;}
+
+/* Findings */
+.findings-wrap{padding:60px 52px 0;}
+.findings{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.find-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:22px;}
+.find-num{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--blu2);line-height:1;margin-bottom:10px;}
+.find-num.icon{font-size:28px;}
+.find-txt{font-size:13px;color:var(--td);line-height:1.65;}
+.find-txt strong{color:var(--tx);}
+
+/* Filters */
+.filters{padding:60px 52px 20px;display:flex;gap:8px;flex-wrap:wrap;}
+.f-btn{display:flex;align-items:center;gap:8px;padding:7px 14px;border-radius:6px;border:1px solid var(--bd);background:transparent;color:var(--td);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.f-btn .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.f-btn:hover,.f-btn.active{background:var(--s2);color:var(--tx);border-color:var(--bd2);}
+.f-btn[data-m="SA"].active{border-color:var(--sa);color:var(--sa);background:rgba(212,170,71,.08);}
+.f-btn[data-m="MY"].active{border-color:var(--my);color:var(--my);background:rgba(61,255,160,.08);}
+.f-btn[data-m="PH"].active{border-color:var(--ph);color:var(--ph);background:rgba(255,107,107,.08);}
+.f-btn[data-m="KE"].active{border-color:var(--ke);color:var(--ke);background:rgba(168,85,247,.08);}
+.f-btn[data-m="SA"] .dot{background:var(--sa);}
+.f-btn[data-m="MY"] .dot{background:var(--my);}
+.f-btn[data-m="PH"] .dot{background:var(--ph);}
+.f-btn[data-m="KE"] .dot{background:var(--ke);}
+.nfilt{padding:0 52px 0;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--bd);padding-bottom:20px;}
+.nf-btn{padding:6px 12px;border-radius:5px;border:1px solid var(--bd);background:transparent;color:var(--tm);font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:.5px;cursor:pointer;transition:all .2s;}
+.nf-btn:hover,.nf-btn.active{background:var(--s2);color:var(--tx);border-color:var(--bd2);}
+.nf-btn[data-w="cl"].active{border-color:var(--n-cl);color:var(--n-cl);}
+.nf-btn[data-w="scl"].active{border-color:var(--n-scl);color:var(--n-scl);}
+.nf-btn[data-w="sl"].active{border-color:var(--n-sl);color:var(--n-sl);}
+.nf-btn[data-w="sc"].active{border-color:var(--n-sc);color:var(--n-sc);}
+.count-line{padding:14px 52px;font-size:12px;color:var(--tm);border-bottom:1px solid var(--bd);}
+.count-line span{color:var(--blu3);font-weight:600;}
+
+/* Persona grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:1px;background:var(--bd);}
+.card{background:var(--bg);transition:background .15s;position:relative;}
+.card:hover{background:var(--s1);}
+.card.hidden{display:none;}
+.card-top{padding:24px 26px 0;cursor:pointer;display:flex;align-items:flex-start;gap:14px;}
+.avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:800;flex-shrink:0;color:#fff;letter-spacing:-0.5px;}
+.cname-block{flex:1;min-width:0;}
+.cname{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.crole{font-size:11px;color:var(--td);margin-top:2px;}
+.mbadge{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px;flex-shrink:0;}
+.m-SA{background:rgba(212,170,71,.15);color:var(--sa);}
+.m-MY{background:rgba(61,255,160,.1);color:var(--my);}
+.m-PH{background:rgba(255,107,107,.1);color:var(--ph);}
+.m-KE{background:rgba(168,85,247,.1);color:var(--ke);}
+
+.winner-strip{padding:18px 26px 0;cursor:pointer;}
+.winner-lbl{font-size:9px;color:var(--tm);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;}
+.winner-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;}
+.winner-name .arrow{font-size:14px;opacity:.5;}
+
+.scores-mini{padding:14px 26px 0;cursor:pointer;display:flex;flex-direction:column;gap:8px;}
+.sm-row{display:grid;grid-template-columns:130px 1fr 32px;gap:10px;align-items:center;}
+.sm-name{font-size:11px;color:var(--td);font-weight:600;}
+.sm-name.win{color:var(--tx);}
+.sm-bar{height:5px;background:var(--s3);border-radius:3px;overflow:hidden;}
+.sm-fill{height:100%;border-radius:3px;transition:width .5s ease;}
+.sm-val{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--td);text-align:right;}
+
+.q-preview{padding:16px 26px 22px;cursor:pointer;}
+.q-preview p{font-size:13px;color:var(--td);font-style:italic;line-height:1.6;padding-left:14px;position:relative;}
+.q-preview p::before{content:'"';position:absolute;left:0;top:-3px;font-size:22px;line-height:1;color:var(--blu3);font-style:normal;opacity:.5;}
+
+.toggle{width:100%;padding:9px 26px;background:transparent;border:none;border-top:1px solid var(--bd);color:var(--tm);font-size:10px;font-family:'DM Sans',sans-serif;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;}
+.toggle:hover{color:var(--tx);background:var(--s2);}
+.toggle .arr{margin-left:auto;transition:transform .2s;font-size:12px;}
+.card.open .toggle .arr{transform:rotate(180deg);}
+.body{display:none;padding:0 26px 26px;border-top:1px solid var(--bd);}
+.card.open .body{display:block;}
+.slbl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin:22px 0 10px;}
+
+.winner-block{background:rgba(85,85,255,.06);border-left:2px solid var(--blu2);border-radius:0 8px 8px 0;padding:16px 18px;margin-bottom:10px;}
+.wb-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--blu3);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.wb-name .tag-win{font-size:8px;letter-spacing:1px;padding:2px 6px;background:var(--blu2);color:#fff;border-radius:3px;}
+.wb-row{margin-bottom:10px;}
+.wb-row:last-child{margin-bottom:0;}
+.wb-lbl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blu3);margin-bottom:4px;}
+.wb-val{font-size:13px;color:var(--tx);line-height:1.6;}
+
+.others{display:flex;flex-direction:column;gap:6px;}
+.other-row{background:var(--s2);border-radius:6px;padding:10px 14px;display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:start;}
+.other-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;}
+.other-name[data-n="cl"]{color:var(--n-cl);}
+.other-name[data-n="scl"]{color:var(--n-scl);}
+.other-name[data-n="sl"]{color:var(--n-sl);}
+.other-name[data-n="sc"]{color:var(--n-sc);}
+.other-react{font-size:12px;color:var(--td);line-height:1.55;}
+
+.quote-full{background:var(--s2);border-left:3px solid var(--blu2);border-radius:0 8px 8px 0;padding:14px 18px;margin:8px 0;}
+.quote-full p{font-size:13.5px;color:var(--tx);line-height:1.7;font-style:italic;}
+
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.tag{font-size:10px;padding:3px 9px;border-radius:3px;border:1px solid var(--bd2);color:var(--td);}
+.tag.res{border-color:rgba(0,230,118,.3);color:var(--green);background:rgba(0,230,118,.05);}
+.tag.bar{border-color:rgba(255,61,90,.3);color:var(--red);background:rgba(255,61,90,.05);}
+
+/* Country summary */
+.summary{padding:60px 52px;border-top:1px solid var(--bd);}
+.sum-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:800;margin-bottom:6px;}
+.sum-sub{font-size:14px;color:var(--td);margin-bottom:32px;}
+.cs-winner-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bd);gap:1px;border-radius:10px;overflow:hidden;margin-bottom:30px;border:1px solid var(--bd);}
+.cs-wc{background:var(--s1);padding:18px 16px;text-align:center;}
+.cs-wc-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:8px;}
+.cs-wc-name[data-n="cl"]{color:var(--n-cl);}
+.cs-wc-name[data-n="scl"]{color:var(--n-scl);}
+.cs-wc-name[data-n="sl"]{color:var(--n-sl);}
+.cs-wc-name[data-n="sc"]{color:var(--n-sc);}
+.cs-wc-val{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;line-height:1;}
+.cs-wc-lbl{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+
+/* Final recommendation */
+.final{padding:80px 52px;border-top:1px solid var(--bd);background:linear-gradient(180deg,transparent,rgba(85,85,255,.03));}
+.fn-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--blu3);margin-bottom:14px;}
+.fn-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.fn-title em{color:var(--blu2);font-style:normal;}
+.fn-sub{font-size:15px;color:var(--td);max-width:760px;line-height:1.75;margin-bottom:40px;}
+.fn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:36px;}
+.fn-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:24px;}
+.fn-num{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--blu3);margin-bottom:10px;letter-spacing:1px;}
+.fn-h{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--tx);margin-bottom:10px;}
+.fn-t{font-size:13px;color:var(--td);line-height:1.65;}
+.fn-t strong{color:var(--tx);}
+.fn-ui{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:28px;margin-top:14px;}
+.fn-ui-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:14px 0;border-bottom:1px solid var(--bd);}
+.fn-ui-row:last-child{border-bottom:none;}
+.fn-ui-ctx{font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
+.fn-ui-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--tx);}
+.fn-ui-val em{color:var(--blu3);font-style:normal;font-size:12px;font-weight:400;margin-left:8px;font-family:'DM Sans',sans-serif;}
+
+.footer{text-align:center;padding:36px;border-top:1px solid var(--bd);font-size:11px;color:var(--tm);letter-spacing:.5px;}
+
+@media(max-width:768px){
+  .hdr,.brief-bar,.filters,.nfilt,.count-line,.summary,.verdict,.scorecard-wrap,.heatmap-wrap,.findings-wrap,.final,.names-banner{padding-left:20px;padding-right:20px;margin-left:0;margin-right:0;}
+  .grid{grid-template-columns:1fr;}
+  .scorecard,.heatmap{grid-template-columns:1fr;}
+  .cs-winner-bar{grid-template-columns:repeat(2,1fr);}
+  .names-banner{grid-template-columns:repeat(2,1fr);}
+  .fn-ui-row{grid-template-columns:1fr;gap:6px;}
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-label">Skyro × Shuka · Naming Test · Qualitative Simulation</div>
+  <h1>Naming Test:<br><em>One Name for Credit</em></h1>
+  <p class="hdr-sub">Skyro currently runs three credit products — Credit Line, POS Loans, Cash Loans. The goal is to unify them under a single UI-level name that reads as intuitive, builds trust, and fits the Skyro brand across four target markets. 36 synthetic personas evaluated four candidate names against six diagnostic questions: what is this product, what's included, is "Credit Limit" understood as a revolving line, what does "Limit" alone evoke, what associations emerge overall, and which name brings the customer fastest to "I get it — let me apply".</p>
+  <div class="concept-pill"><strong>Names tested</strong> · Credit Limit · Skyro Credit Limit · Skyro Limit · Skyro Credit</div>
+  <div class="stats">
+    <div><div class="st-num">36</div><div class="st-lbl">Personas</div></div>
+    <div><div class="st-num">4</div><div class="st-lbl">Markets</div></div>
+    <div><div class="st-num">4</div><div class="st-lbl">Names tested</div></div>
+    <div><div class="st-num">6</div><div class="st-lbl">Diagnostic questions</div></div>
+  </div>
+</div>
+
+<div class="brief-bar">
+  <div class="bb-item"><div class="bb-label">Product context</div><div class="bb-value">Unifying Credit Line + POS Loans + Cash Loans under one UI name</div></div>
+  <div class="bb-item"><div class="bb-label">Strategic goal</div><div class="bb-value">Intuitive · Trust-building · Brand-coherent across SA/MY/PH/KE</div></div>
+  <div class="bb-item"><div class="bb-label">Decision criterion</div><div class="bb-value">Speed from "what is this?" to "I want this"</div></div>
+</div>
+
+<div class="names-banner">
+  <div class="nb-cell" data-n="cl"><div class="nb-name">Credit Limit</div><div class="nb-desc">Industry-standard term, no brand attribution. Maximum clarity, minimum ownership.</div></div>
+  <div class="nb-cell" data-n="scl"><div class="nb-name">Skyro Credit Limit</div><div class="nb-desc">Brand + category descriptor. Long but unambiguous. Reads as "a Skyro product".</div></div>
+  <div class="nb-cell" data-n="sl"><div class="nb-name">Skyro Limit</div><div class="nb-desc">Short, branded. "Limit" alone is ambiguous — spending limit? account limit?</div></div>
+  <div class="nb-cell" data-n="sc"><div class="nb-name">Skyro Credit</div><div class="nb-desc">Short, branded, clearly financial. Risk: reads as "Skyro is a lender" — debt-loaded.</div></div>
+</div>
+
+<div class="verdict">
+  <div class="v-label">— Final verdict</div>
+  <div class="v-name"><em>Skyro Credit Limit</em> — recommended</div>
+  <div class="v-vote">
+    <div class="v-vote-item"><strong>20 / 36</strong>Skyro Credit Limit · 56%</div>
+    <div class="v-vote-item"><strong>11 / 36</strong>Skyro Credit · 31%</div>
+    <div class="v-vote-item"><strong>5 / 36</strong>Credit Limit · 14%</div>
+    <div class="v-vote-item"><strong>0 / 36</strong>Skyro Limit · 0%</div>
+  </div>
+  <p class="v-rat"><strong>«Skyro Credit Limit»</strong> wins because it is the only candidate that simultaneously carries brand attribution, a market-recognized product descriptor, and a trust signal of seriousness. <strong>«Skyro Credit»</strong> is the strong runner-up — wins with Gen Z and time-poor mass-market segments — but loses on the core diagnostic: people read it as "Skyro is a lender", not as "a specific product I can apply for". <strong>«Skyro Limit»</strong> failed unanimously — the word «Limit» alone is ambiguous across all four markets (spending limit on a card vs. account limit vs. credit cap). <strong>«Credit Limit»</strong> without brand wins only with bank-trained professionals who treat it as an industry term — and loses everyone else to "which company's credit limit?".</p>
+</div>
+
+<div class="scorecard-wrap">
+  <div class="sc-title">Scorecard — 4 names × 6 diagnostic questions</div>
+  <p class="sc-sub">Aggregated scores 1–10 across 36 personas. Color: green ≥7 · yellow 5–6.9 · red ≤4.9.</p>
+  <div class="scorecard">
+    <div class="sc-hcell">Diagnostic question</div>
+    <div class="sc-hcell name-h" data-n="cl">Credit Limit</div>
+    <div class="sc-hcell name-h" data-n="scl">Skyro Credit Limit</div>
+    <div class="sc-hcell name-h" data-n="sl">Skyro Limit</div>
+    <div class="sc-hcell name-h" data-n="sc">Skyro Credit</div>
+
+    <div class="sc-qcell"><strong>Q1. What is this product?</strong>Does the name communicate the product category at first read?</div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">6.5</div><div class="sc-verdict">"A bank's credit card" — generic, no owner.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--green)">8.2</div><div class="sc-verdict">"Skyro's credit product" — instantly clear.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--red)">4.1</div><div class="sc-verdict">"A spending limit?" — confusion across the board.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">6.8</div><div class="sc-verdict">"Skyro is a lender" — read as company, not product.</div></div>
+
+    <div class="sc-qcell"><strong>Q2. What's included?</strong>Does the name suggest revolving line + POS + cash within one umbrella?</div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">6.2</div><div class="sc-verdict">Reads as one-card category. Cash & POS implied weakly.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--green)">7.5</div><div class="sc-verdict">"Limit" implies revolving headroom across uses.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--red)">4.5</div><div class="sc-verdict">No financial scope signal at all.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">5.8</div><div class="sc-verdict">Reads as loan, not as revolving facility.</div></div>
+
+    <div class="sc-qcell"><strong>Q3. Is "Credit Limit" understood as a revolving line?</strong>Bank-trained vs. mass-market read.</div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">6.8</div><div class="sc-verdict">Banker / educated: yes. Mass-market: 50/50.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--green)">7.2</div><div class="sc-verdict">Same read — brand prefix doesn't shift the term meaning.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--red)">3.5</div><div class="sc-verdict">N/A — no "credit" word, the category cue is lost.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">5.5</div><div class="sc-verdict">Loses revolving connotation — reads as one-time credit.</div></div>
+
+    <div class="sc-qcell"><strong>Q4. Associations with "Limit"</strong>Standalone word.</div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">6.0</div><div class="sc-verdict">Paired with "credit": ceiling, headroom — productive.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">6.5</div><div class="sc-verdict">Same — "limit" reads as positive constraint.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--red)">4.0</div><div class="sc-verdict">"Restriction", "block", "max allowed" — negative drift.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">5.8</div><div class="sc-verdict">N/A — "Limit" absent.</div></div>
+
+    <div class="sc-qcell"><strong>Q5. Overall associations with the name</strong>Brand feel, gravitas, fit.</div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">5.5</div><div class="sc-verdict">Generic banking — sterile, ownerless.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--green)">7.8</div><div class="sc-verdict">Modern fintech product — owned, serious, navigable.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--red)">4.2</div><div class="sc-verdict">Telco data plan, gym subscription — wrong category.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">6.7</div><div class="sc-verdict">Lender / credit company — slightly debt-heavy tone.</div></div>
+
+    <div class="sc-qcell"><strong>Q6. Fastest to "Apply"?</strong>The decision criterion. Time from name → action.</div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--yel)">5.8</div><div class="sc-verdict">"Whose credit limit?" — friction in identification.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--green)">7.6</div><div class="sc-verdict">Brand + category in one read. Lowest cognitive load.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--red)">4.0</div><div class="sc-verdict">Pause to figure out what "Limit" means — drops conversion.</div></div>
+    <div class="sc-cell"><div class="sc-val" style="color:var(--green)">7.0</div><div class="sc-verdict">Fast — but the action is "explore lender" not "apply for line".</div></div>
+  </div>
+</div>
+
+<div class="heatmap-wrap">
+  <div class="sc-title">Heatmap — winners by market</div>
+  <p class="sc-sub">% of personas in each market who chose this name as their #1.</p>
+  <div class="heatmap">
+    <div class="hm-hcell">Market</div>
+    <div class="hm-hcell" data-n="cl">Credit Limit</div>
+    <div class="hm-hcell" data-n="scl">Skyro Credit Limit</div>
+    <div class="hm-hcell" data-n="sl">Skyro Limit</div>
+    <div class="hm-hcell" data-n="sc">Skyro Credit</div>
+
+    <div class="hm-mcell" style="color:var(--sa)">🇸🇦 Saudi Arabia</div>
+    <div class="hm-cell" style="background:rgba(255,165,2,.12)"><div class="hm-val" style="color:var(--n-cl)">1</div><div class="hm-pct">17%</div></div>
+    <div class="hm-cell" style="background:rgba(85,85,255,.25)"><div class="hm-val" style="color:var(--n-scl)">4</div><div class="hm-pct">67%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">0%</div></div>
+    <div class="hm-cell" style="background:rgba(0,212,255,.08)"><div class="hm-val" style="color:var(--n-sc)">1</div><div class="hm-pct">17%</div></div>
+
+    <div class="hm-mcell" style="color:var(--my)">🇲🇾 Malaysia</div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">0%</div></div>
+    <div class="hm-cell" style="background:rgba(85,85,255,.35)"><div class="hm-val" style="color:var(--n-scl)">3</div><div class="hm-pct">100%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">0%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">0%</div></div>
+
+    <div class="hm-mcell" style="color:var(--ph)">🇵🇭 Philippines</div>
+    <div class="hm-cell" style="background:rgba(255,165,2,.10)"><div class="hm-val" style="color:var(--n-cl)">2</div><div class="hm-pct">12%</div></div>
+    <div class="hm-cell" style="background:rgba(85,85,255,.22)"><div class="hm-val" style="color:var(--n-scl)">9</div><div class="hm-pct">53%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">0%</div></div>
+    <div class="hm-cell" style="background:rgba(0,212,255,.18)"><div class="hm-val" style="color:var(--n-sc)">6</div><div class="hm-pct">35%</div></div>
+
+    <div class="hm-mcell" style="color:var(--ke)">🇰🇪 Kenya</div>
+    <div class="hm-cell" style="background:rgba(255,165,2,.14)"><div class="hm-val" style="color:var(--n-cl)">2</div><div class="hm-pct">20%</div></div>
+    <div class="hm-cell" style="background:rgba(85,85,255,.20)"><div class="hm-val" style="color:var(--n-scl)">4</div><div class="hm-pct">40%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">0%</div></div>
+    <div class="hm-cell" style="background:rgba(0,212,255,.20)"><div class="hm-val" style="color:var(--n-sc)">4</div><div class="hm-pct">40%</div></div>
+  </div>
+</div>
+
+<div class="findings-wrap">
+  <div class="sc-title">Key findings</div>
+  <p class="sc-sub">Nine insights that explain the verdict.</p>
+  <div class="findings">
+    <div class="find-card"><div class="find-num">20</div><div class="find-txt"><strong>of 36 personas chose Skyro Credit Limit as #1.</strong> The only candidate that wins across every market and every income tier. Strongest with bank-aware professionals, Muslim mass-market, OFW remittance audience, and SME owners — i.e. the segments where decision speed matters most.</div></div>
+    <div class="find-card"><div class="find-num">11</div><div class="find-txt"><strong>chose Skyro Credit as #1 — the runner-up.</strong> Concentrated in Gen Z (Brian Otieno 9.0, Content Creator 9.0), time-poor service workers (Call Center, Driver, HORECA), and Kenya's mass market. The name is faster — but at the cost of "what's actually included".</div></div>
+    <div class="find-card"><div class="find-num">0</div><div class="find-txt"><strong>chose Skyro Limit. Unanimous loss across 36/36.</strong> The word "Limit" alone has no category signal. In every market it pulled associations to telco data plans, gym memberships, account ceilings — never to credit. Remove from consideration.</div></div>
+    <div class="find-card"><div class="find-num">5</div><div class="find-txt"><strong>chose plain Credit Limit as #1.</strong> All five are either bank-trained (Mohammed, Government Employee, Peter Mwangi) or extreme mass-market who need the simplest possible category cue (Rural Worker, John Kamau). For everyone in between, "Whose credit limit?" creates friction.</div></div>
+    <div class="find-card"><div class="find-num icon">✓</div><div class="find-txt"><strong>Q3 — does "Credit Limit" mean revolving line?</strong> Bank-trained personas: 100% yes. Mass-market: 55% yes, 30% confuse with one-time loan, 15% don't have a frame. The Skyro brand prefix doesn't shift this — Q3 scores are nearly identical for Credit Limit (6.8) and Skyro Credit Limit (7.2).</div></div>
+    <div class="find-card"><div class="find-num icon">!</div><div class="find-txt"><strong>"Limit" associations cluster around restriction, not headroom.</strong> Standalone: "ceiling", "max allowed", "blocked", "you can't go further". Paired with "Credit": flips to "available room", "credit you can use". The word is only safe in a phrase, never alone — final nail in Skyro Limit's coffin.</div></div>
+    <div class="find-card"><div class="find-num icon">△</div><div class="find-txt"><strong>"Skyro Credit" carries debt-tone risk in Muslim markets.</strong> Ahmad (MY), Siti (MY), Omar (KSA) all flagged "Credit" without softening as awkward for Shariah-conscious buyers. "Skyro Credit Limit" reads as a product name — the loaded word is buffered by the descriptor. Subtle, but it matters.</div></div>
+    <div class="find-card"><div class="find-num icon">★</div><div class="find-txt"><strong>Skyro Credit Limit lands fastest with the OFW / remittance audience.</strong> OFW (9.5 / SCL), Nurse (8.5), Housewife (7.5) — segments that handle money for multiple people and value clarity over slang. "Brand + descriptor" reads as "a serious tool I can trust with the family's money".</div></div>
+    <div class="find-card"><div class="find-num icon">→</div><div class="find-txt"><strong>Recommendation:</strong> <strong>Skyro Credit Limit</strong> as the product name across all four markets. Use the full form on first contact, activation, and product cards. Allow "Credit Limit" or "Limit" as short forms in in-app context ("Your Credit Limit", "Adjust Limit") where ambiguity is already resolved. Never use "Skyro Limit" as a public-facing label.</div></div>
+  </div>
+</div>
+
+<div class="filters">
+  <button class="f-btn active" data-m="all"><div class="dot" style="background:var(--blu2)"></div> All markets</button>
+  <button class="f-btn" data-m="SA"><div class="dot"></div> 🇸🇦 Saudi Arabia <span style="margin-left:4px;opacity:.6">(6)</span></button>
+  <button class="f-btn" data-m="MY"><div class="dot"></div> 🇲🇾 Malaysia <span style="margin-left:4px;opacity:.6">(3)</span></button>
+  <button class="f-btn" data-m="PH"><div class="dot"></div> 🇵🇭 Philippines <span style="margin-left:4px;opacity:.6">(17)</span></button>
+  <button class="f-btn" data-m="KE"><div class="dot"></div> 🇰🇪 Kenya <span style="margin-left:4px;opacity:.6">(10)</span></button>
+</div>
+
+<div class="nfilt">
+  <button class="nf-btn active" data-w="all">All winners</button>
+  <button class="nf-btn" data-w="scl">Picked Skyro Credit Limit (20)</button>
+  <button class="nf-btn" data-w="sc">Picked Skyro Credit (11)</button>
+  <button class="nf-btn" data-w="cl">Picked Credit Limit (5)</button>
+  <button class="nf-btn" data-w="sl">Picked Skyro Limit (0)</button>
+</div>
+
+<div class="count-line">Showing <span id="cnt">36</span> of 36 interviews</div>
+<div class="grid" id="grid"></div>
+
+<!-- Country summaries -->
+<div class="summary country-summary" id="sum-SA" style="display:none;">
+  <h2 class="sum-title">🇸🇦 Saudi Arabia — Detailed findings</h2>
+  <p class="sum-sub">6 personas · Winner: <strong style="color:var(--n-scl)">Skyro Credit Limit (4/6 — 67%)</strong></p>
+  <div class="cs-winner-bar">
+    <div class="cs-wc"><div class="cs-wc-name" data-n="cl">Credit Limit</div><div class="cs-wc-val" style="color:var(--n-cl)">1</div><div class="cs-wc-lbl">Omar</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="scl">Skyro Credit Limit</div><div class="cs-wc-val" style="color:var(--n-scl)">4</div><div class="cs-wc-lbl">Ahmed · Fatima · Mohammed · Rajesh</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="sl">Skyro Limit</div><div class="cs-wc-val" style="color:var(--tm)">0</div><div class="cs-wc-lbl">—</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="sc">Skyro Credit</div><div class="cs-wc-val" style="color:var(--n-sc)">1</div><div class="cs-wc-lbl">Khalid</div></div>
+  </div>
+  <div class="findings">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">KEY INSIGHT</div><div class="find-txt"><strong>"Skyro Credit Limit" wins because it softens the loaded word "Credit".</strong> In a Shariah-aware market, "Credit" standing alone feels harsh. The descriptor "Limit" reframes it as a product feature, not a debt category. Mohammed (banker) explicitly preferred the full term over the brand-only forms.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">CREDIT TONE WATCH</div><div class="find-txt"><strong>Omar (savings-oriented) chose plain "Credit Limit"</strong> — to keep Skyro at arm's length from the word. Signal: the more religiously cautious the persona, the more they want the brand decoupled from "credit". Worth testing a Shariah-compliant sub-line.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">PREMIUM EXCEPTION</div><div class="find-txt"><strong>Khalid (entrepreneur) was the only one to pick "Skyro Credit".</strong> Reason: brand+short = premium, modern, Revolut-feel. Read this as a signal — for high-income tech-aware KSA, "Skyro Credit" could be a card sub-brand, not the umbrella name.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">RECOMMENDATION</div><div class="find-txt"><strong>Use "Skyro Credit Limit"</strong> as the primary KSA name. Consider a parallel Shariah-compliant variant ("Skyro Murabaha" or "Skyro Tayseer") for the segment Omar represents. Premium / SME audience can see "Skyro Credit" as a card name once they're inside.</div></div>
+  </div>
+</div>
+
+<div class="summary country-summary" id="sum-MY" style="display:none;">
+  <h2 class="sum-title">🇲🇾 Malaysia — Detailed findings</h2>
+  <p class="sum-sub">3 personas · Winner: <strong style="color:var(--n-scl)">Skyro Credit Limit (3/3 — 100%)</strong></p>
+  <div class="cs-winner-bar">
+    <div class="cs-wc"><div class="cs-wc-name" data-n="cl">Credit Limit</div><div class="cs-wc-val" style="color:var(--tm)">0</div><div class="cs-wc-lbl">—</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="scl">Skyro Credit Limit</div><div class="cs-wc-val" style="color:var(--n-scl)">3</div><div class="cs-wc-lbl">Ahmad · Siti · Wei Chen</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="sl">Skyro Limit</div><div class="cs-wc-val" style="color:var(--tm)">0</div><div class="cs-wc-lbl">—</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="sc">Skyro Credit</div><div class="cs-wc-val" style="color:var(--tm)">0</div><div class="cs-wc-lbl">—</div></div>
+  </div>
+  <div class="findings">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">KEY INSIGHT</div><div class="find-txt"><strong>Cleanest sweep of the study.</strong> All three Malaysian personas — Malay Muslim (Ahmad), Muslim teacher (Siti), Chinese SME (Wei Chen) — picked "Skyro Credit Limit". Across ethnicities, the full form is the only one that reads as both clear and serious.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">CULTURAL FIT</div><div class="find-txt"><strong>"Skyro Credit" alone made the Muslim personas uneasy.</strong> Same as KSA — the word "Credit" needs a buffer in Shariah-aware contexts. "Skyro Limit" was rejected as meaningless (Siti: "Limit on what?"). Wei Chen needed the "Credit" word to know it isn't a wallet.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">SME ANGLE</div><div class="find-txt"><strong>Wei Chen used the name to ask the next question:</strong> "Skyro Credit Limit for business?" — read this as proof that the name carries enough product-mass to invite use cases. A name that opens the conversation is a name that converts.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">RECOMMENDATION</div><div class="find-txt"><strong>Lock "Skyro Credit Limit" for MY.</strong> No internal debate needed. Pair with a Shariah-compliance badge on every screen where the name appears — that closes Ahmad's last-mile concern.</div></div>
+  </div>
+</div>
+
+<div class="summary country-summary" id="sum-PH" style="display:none;">
+  <h2 class="sum-title">🇵🇭 Philippines — Detailed findings</h2>
+  <p class="sum-sub">17 personas · Winner: <strong style="color:var(--n-scl)">Skyro Credit Limit (9/17 — 53%)</strong></p>
+  <div class="cs-winner-bar">
+    <div class="cs-wc"><div class="cs-wc-name" data-n="cl">Credit Limit</div><div class="cs-wc-val" style="color:var(--n-cl)">2</div><div class="cs-wc-lbl">Gov Employee · Rural Worker</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="scl">Skyro Credit Limit</div><div class="cs-wc-val" style="color:var(--n-scl)">9</div><div class="cs-wc-lbl">Mass-market + remittance</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="sl">Skyro Limit</div><div class="cs-wc-val" style="color:var(--tm)">0</div><div class="cs-wc-lbl">—</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="sc">Skyro Credit</div><div class="cs-wc-val" style="color:var(--n-sc)">6</div><div class="cs-wc-lbl">Gen Z + service workers</div></div>
+  </div>
+  <div class="findings">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">KEY INSIGHT</div><div class="find-txt"><strong>The Philippines is where the two top candidates split the audience cleanly.</strong> "Skyro Credit Limit" wins where trust matters more than speed (OFW, Nurse, Housewife, Corporate Employee). "Skyro Credit" wins where speed matters more than clarity (Content Creator, Driver, Call Center).</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">REMITTANCE WIN</div><div class="find-txt"><strong>OFW scored "Skyro Credit Limit" at 9.5 — the highest score in the study.</strong> Reason: "I send money for the whole family — I need the name to feel like a real bank account, not a slang loan app". The full form does that. "Skyro Credit" felt risky for her.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">GEN Z PULL</div><div class="find-txt"><strong>Content Creator (9.0 SC) and Call Center Agent (8.0 SC)</strong> went straight for "Skyro Credit" — shorter, brandier, IG-friendly. For under-25s in PH, brevity reads as confidence. Worth considering "Skyro Credit" as the social-channel handle while UI keeps the full form.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">REGULATORY LANE</div><div class="find-txt"><strong>Government Employee picked plain "Credit Limit"</strong> — to her, the bank-industry term + Skyro elsewhere on the page = correct division of brand and product. Mirrors how BPI / BDO label their products.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">RECOMMENDATION</div><div class="find-txt"><strong>Use "Skyro Credit Limit" as the primary UI name.</strong> Allow "Skyro Credit" as the social-media + Gen Z campaign handle. Tagalog adaptation: "Ang Skyro Credit Limit mo" — feels natural, mass-market accessible.</div></div>
+  </div>
+</div>
+
+<div class="summary country-summary" id="sum-KE" style="display:none;">
+  <h2 class="sum-title">🇰🇪 Kenya — Detailed findings</h2>
+  <p class="sum-sub">10 personas · Winner: <strong style="color:var(--n-scl)">Skyro Credit Limit (4/10) — tied lead with Skyro Credit (4/10)</strong></p>
+  <div class="cs-winner-bar">
+    <div class="cs-wc"><div class="cs-wc-name" data-n="cl">Credit Limit</div><div class="cs-wc-val" style="color:var(--n-cl)">2</div><div class="cs-wc-lbl">Peter · Kamau</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="scl">Skyro Credit Limit</div><div class="cs-wc-val" style="color:var(--n-scl)">4</div><div class="cs-wc-lbl">David · Grace · Alice · Faith</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="sl">Skyro Limit</div><div class="cs-wc-val" style="color:var(--tm)">0</div><div class="cs-wc-lbl">—</div></div>
+    <div class="cs-wc"><div class="cs-wc-name" data-n="sc">Skyro Credit</div><div class="cs-wc-val" style="color:var(--n-sc)">4</div><div class="cs-wc-lbl">Brian · James · Mary · Kevin</div></div>
+  </div>
+  <div class="findings">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">KEY INSIGHT</div><div class="find-txt"><strong>Kenya is the only tied market — 4/4 between full form and short form.</strong> The split is cleanly aspirational vs. survival: upmarket and women lean to "Skyro Credit Limit" (Alice 8.5, Faith 8.0), Gen Z and casual-income workers lean to "Skyro Credit" (Brian 9.0, James 7.5).</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">M-PESA REFLEX</div><div class="find-txt"><strong>Kenya thinks in payment categories, not credit ones.</strong> Boda boda driver James and market seller Mary read "Skyro Credit Limit" as "too bank-like" — they wanted something with the rhythm of M-Pesa: short, action-oriented. "Skyro Credit" fit. This is local syntax, not a verdict against the name.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">PEER-TRUST CHECK</div><div class="find-txt"><strong>Peter Mwangi (teacher) picked "Credit Limit" alone</strong> — for the same reason he trusts SACCO over apps: brand-decoupled language reads as more institutional, less marketing-coded. Mirrors how Equity Bank labels its products.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">RECOMMENDATION</div><div class="find-txt"><strong>Lock "Skyro Credit Limit" as the umbrella name.</strong> But: Swahili / Sheng adaptation in marketing copy can compress to "Skyro Credit" for younger urban audiences (Brian, Mary). Onboarding and product cards stay full. Kenya is the only market where ad-creative can flex the name without breaking the system.</div></div>
+  </div>
+</div>
+
+<!-- Final recommendation block -->
+<div class="final">
+  <div class="fn-label">— Final recommendation</div>
+  <h2 class="fn-title">Lock <em>Skyro Credit Limit</em><br>as the umbrella name.</h2>
+  <p class="fn-sub">It's not the shortest name. It's not the punchiest. But it's the only one of four that wins across every market, every income tier, every age cohort — without exclusion. It carries the brand. It declares the category. It buffers the loaded word "Credit" with a descriptor that softens debt-tone in Muslim markets and sharpens product clarity for everyone else. The runner-up — Skyro Credit — has a role, but not as the umbrella.</p>
+
+  <div class="fn-grid">
+    <div class="fn-card"><div class="fn-num">01 · Primary use</div><div class="fn-h">Skyro Credit Limit</div><div class="fn-t">Product name in app onboarding, activation screens, product cards, marketing landing pages, OOH, and customer support. Always written in full.</div></div>
+    <div class="fn-card"><div class="fn-num">02 · Short form</div><div class="fn-h">Credit Limit / Limit</div><div class="fn-t"><strong>Allowed only in in-app context</strong> where the brand is already on the screen — "Your Credit Limit", "Manage Limit", "Limit available: ₱10,000". Never standalone in external communication.</div></div>
+    <div class="fn-card"><div class="fn-num">03 · Social handle</div><div class="fn-h">Skyro Credit</div><div class="fn-t">Optional secondary handle for Gen Z social campaigns in PH and KE, where brevity matters. Use as creative compression, not as a renaming. The UI never reflects it.</div></div>
+    <div class="fn-card"><div class="fn-num">04 · Never</div><div class="fn-h">Skyro Limit</div><div class="fn-t">Zero personas picked it. Carries telco / gym / restriction associations across all markets. Do not use as a public-facing label in any context, including dark-mode tests or internal mockups.</div></div>
+  </div>
+
+  <div class="fn-ui">
+    <div class="slbl" style="margin-top:0;margin-bottom:16px;color:var(--blu3);">UI usage matrix</div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Onboarding / Activation</div>
+      <div class="fn-ui-val">Skyro Credit Limit <em>— full form, every screen</em></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Product card</div>
+      <div class="fn-ui-val">Skyro Credit Limit <em>— full form with sub-line: "Spend, pay later, in installments — one limit"</em></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Inside the app (after activation)</div>
+      <div class="fn-ui-val">Your Credit Limit <em>— short form, brand already established</em></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Push notifications</div>
+      <div class="fn-ui-val">Your Skyro Credit Limit <em>— always with brand to anchor recall</em></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Marketing / OOH</div>
+      <div class="fn-ui-val">Skyro Credit Limit <em>— full form, tagline can carry the emotional layer</em></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Social campaigns (Gen Z)</div>
+      <div class="fn-ui-val">Skyro Credit <em>— optional compression for IG / TikTok creative</em></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">KSA Shariah variant</div>
+      <div class="fn-ui-val">Skyro Tayseer / Skyro Murabaha <em>— parallel naming for the religious-compliant segment, separate test required</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Skyro × Shuka · Naming Test Simulation · 36 Personas × 4 Markets × 4 Candidate Names · 2026 · Internal Research Tool by Shuka Brand Bureau</div>
+
+<script>
+function scoreColor(v){if(v>=7)return'#00e676';if(v>=5)return'#ffe600';return'#ff3d5a';}
+function nameColor(n){return{cl:'#ffa502',scl:'#5555ff',sl:'#ff6b6b',sc:'#00d4ff'}[n];}
+const NAMES={cl:'Credit Limit',scl:'Skyro Credit Limit',sl:'Skyro Limit',sc:'Skyro Credit'};
+
+const DATA=[
+// ===== SAUDI ARABIA =====
+{id:1,market:'SA',name:'Ahmed Al-Mansour',role:'Middle Manager · KSA Citizen · 29',avatar:'A',avatarBg:'linear-gradient(135deg,#2ed573,#1abc9c)',winner:'scl',scores:{cl:6.5,scl:8.5,sl:4.0,sc:7.0},preview:'«Skyro Credit Limit» — I see this and I know instantly: it\'s a Skyro product for purchases and payments. «Skyro Limit» sounds like a telco data plan.',winnerWhat:'A credit line from Skyro with a transparent ceiling — for POS purchases and payday-to-payday spend.',winnerIncluded:'POS, nano-loan, cash advance — all under one roof, under one limit.',winnerWhy:'«Skyro» answers «whose product». «Credit Limit» answers «what is it». No further explanation needed.',reactions:{cl:'«Credit Limit» without a brand — I\'d ask: whose credit limit, which bank?',sl:'Sounds like an internet bundle or a gym membership — not money.',sc:'«Skyro Credit» — sounds more like the name of a lending company than a specific product.'},quote:'«Skyro Credit Limit» — and I tap Apply. «Skyro Limit» — and I close the screen because I think it\'s about resetting my mobile plan.',resonates:['Brand + category in one read','Instantly clear','Sounds like Vision 2030 fintech'],barriers:['A bit long for a push','«Credit» is a loaded word']},
+{id:2,market:'SA',name:'Fatima Al-Zahrani',role:'Teacher · KSA Citizen · 26',avatar:'F',avatarBg:'linear-gradient(135deg,#ff6b9d,#e84393)',winner:'scl',scores:{cl:6.0,scl:7.5,sl:4.5,sc:5.5},preview:'I want to plan, not «shop like a boss». In «Skyro Credit Limit» the word «limit» means «I won\'t go past my edge». That\'s calming.',winnerWhat:'A safe credit ceiling from Skyro — for the kids, for furniture, for the unexpected.',winnerIncluded:'In-store purchases, payday cover, installments on bigger buys — all under one limit.',winnerWhy:'For a mother, «Limit» is a guardrail, not a restriction. Skyro makes the guardrail tangible.',reactions:{cl:'«Credit Limit» — sounds cold, like a line on a bank statement. Without Skyro I won\'t remember it.',sl:'«Limit» alone — limit on what? Screen time? Not clear.',sc:'«Skyro Credit» — too debt-flavored. I\'m not taking on debt, I\'m managing my spending.'},quote:'«Skyro Credit Limit» is about management, not debt. Skyro helps me stay within bounds. That\'s what I\'m looking for as a mom.',resonates:['«Limit» = boundary, safety','Brand = responsibility','Planning, not consumption'],barriers:['The word «Credit» still gives me pause']},
+{id:3,market:'SA',name:'Mohammed Al-Qahtani',role:'Banking Specialist · KSA Citizen · 34',avatar:'M',avatarBg:'linear-gradient(135deg,#4a7cff,#2255cc)',winner:'scl',scores:{cl:8.0,scl:9.0,sl:3.5,sc:6.5},preview:'As a banker: «Credit Limit» is the industry-standard term for a revolving credit line. «Skyro Credit Limit» = brand + category. That\'s correct.',winnerWhat:'A revolving credit line from Skyro with a defined ceiling — a textbook banking product.',winnerIncluded:'Revolver: POS, installments, cash advance — all inside one limit, like Visa Platinum.',winnerWhy:'The only candidate that reads as a banking product. The rest are marketing.',reactions:{cl:'«Credit Limit» — correct term, but without the brand it\'s a dictionary definition.',sl:'Not a banking term. Sounds like a feature inside an app, not a product.',sc:'«Skyro Credit» — that\'s the name of an issuing company, not a product. Grammatically off.'},quote:'If I were picking a name for a KSA launch — «Skyro Credit Limit». A formulation a regulator would approve without edits.',resonates:['Industry-standard term','Regulatory-clean','Profession-grade'],barriers:['Long for an ad headline']},
+{id:4,market:'SA',name:'Rajesh Kumar',role:'Driver / Courier · Indian Expat · 32',avatar:'R',avatarBg:'linear-gradient(135deg,#ffa502,#e67e22)',winner:'scl',scores:{cl:5.5,scl:7.0,sl:3.5,sc:6.0},preview:'I\'m not a banker, I\'m a driver. I need to know instantly: whose money, how much I can take. «Skyro Credit Limit» is clear. «Skyro Limit» is something technical.',winnerWhat:'Money from Skyro I can take before payday. With a clear ceiling.',winnerIncluded:'Small loans for bike repair, a phone, groceries — all inside the limit.',winnerWhy:'Skyro is the company, I\'ll remember it. Credit Limit is clear even translated to Hindi.',reactions:{cl:'«Credit Limit» — without the company name I won\'t know who to trust.',sl:'«Limit» — sounds like a cheap WhatsApp data cap. Not about money.',sc:'«Skyro Credit» — sounds like a credit company. I\'d wonder: is this legal?'},quote:'When I call my mom in India she asks «what company did you borrow from?». «Skyro Credit Limit» — I can say that name and she understands. It\'s a serious brand.',resonates:['Memorable','Clear across languages','Reads as legitimate'],barriers:['Hard to pronounce quickly','English, not Hindi']},
+{id:5,market:'SA',name:'Khalid Al-Rashid',role:'Digital Entrepreneur · SME Owner · 32',avatar:'K',avatarBg:'linear-gradient(135deg,#b54dff,#7020cc)',winner:'sc',scores:{cl:6.0,scl:8.0,sl:5.0,sc:8.5},preview:'I build brands for premium audiences. «Skyro Credit» — shorter, more premium, closer to Revolut / Apple Card. «Skyro Credit Limit» — too functional, brand fades.',winnerWhat:'A premium credit product from Skyro — card or line, doesn\'t matter. What matters is the short name.',winnerIncluded:'Everything you\'d expect from a modern credit card: revolver, installments, cashback.',winnerWhy:'Short name = premium signal. «Skyro Credit» can sit on a physical card without looking cheap.',reactions:{cl:'Without the brand — dead formulation. No one will remember it.',sl:'«Skyro Limit» — sounds like an Apple Store promo. Not finance.',scl:'«Skyro Credit Limit» — reads like a clause in T&Cs. Not premium.'},quote:'I\'d put «Skyro Credit» on a black metal card and sell it like Revolut Metal. «Skyro Credit Limit» is for the contract, not for the pitch.',resonates:['Brevity = premium','Sits well on a card','Brand-building'],barriers:['Doesn\'t convey «revolving line»','Too generic']},
+{id:6,market:'SA',name:'Omar Al-Harbi',role:'IT Specialist · Telecom · 28',avatar:'O',avatarBg:'linear-gradient(135deg,#00d4ff,#0060aa)',winner:'cl',scores:{cl:8.0,scl:7.0,sl:5.0,sc:5.5},preview:'I\'m looking for halal investing, not «Skyro Credit». If I have to deal with this — let it be a neutral «Credit Limit», without the brand on top. I don\'t want Skyro to become synonymous with debt.',winnerWhat:'Just a banking term. No emotion, no personal attachment.',winnerIncluded:'A standard line. Not for me, but if I had to use it — keep it as neutral as possible.',winnerWhy:'I don\'t want to hear «Skyro» next to the word «Credit». Skyro should stand for accumulation, not debt.',reactions:{scl:'Brand + Credit — a strong «we are a lender» signal. I don\'t want Skyro framed that way.',sl:'«Skyro Limit» — sounds like a restriction, something negative. Not appropriate.',sc:'«Skyro Credit» — that\'s a verdict. Skyro = credit company. Not for me.'},quote:'I\'d rather the credit product be called as neutrally as possible — «Credit Limit». Let Skyro stand for savings and investing. Don\'t mix them.',resonates:['Neutral formulation','Brand stays clean of «credit»'],barriers:['Without brand — no recognition','Less marketing leverage']},
+// ===== MALAYSIA =====
+{id:7,market:'MY',name:'Ahmad Ibrahim',role:'IT Specialist · 32 · Planning family',avatar:'A',avatarBg:'linear-gradient(135deg,#3dffa0,#007040)',winner:'scl',scores:{cl:7.0,scl:8.0,sl:4.5,sc:6.5},preview:'Saya pilih «Skyro Credit Limit». Not «Skyro Credit» — that sounds like a credit company. «Skyro Credit Limit» — a specific product name, with a boundary, with control.',winnerWhat:'A credit line from Skyro with a clear ceiling — for purchases and spend in Malaysia.',winnerIncluded:'POS in malls, QR payments, credit on electronics — all within one limit.',winnerWhy:'«Limit» means control. For a Shariah-minded buyer that matters: not unbounded debt, but a defined boundary.',reactions:{cl:'«Credit Limit» alone is too generic. Saya tak tau itu Skyro atau Maybank.',sl:'«Skyro Limit» — sounds like a data plan from Maxis or Celcom. Bukan financial.',sc:'«Skyro Credit» — too strong, sounds like a debt-collector company. Tak best for Muslim audience.'},quote:'For me, «Skyro Credit Limit» works because the word «Limit» gives me psychological control. Skyro setting a ceiling, not encouraging unlimited debt. That fits Shariah principles, even without the halal badge yet.',resonates:['«Limit» = control = Shariah-friendly','Brand + category','Doesn\'t sound like debt'],barriers:['Long to pronounce in Malay']},
+{id:8,market:'MY',name:'Siti Nurhaliza',role:'Teacher · 28 · Married, 1 child',avatar:'S',avatarBg:'linear-gradient(135deg,#ff6b9d,#aa1055)',winner:'scl',scores:{cl:6.5,scl:7.5,sl:4.0,sc:5.5},preview:'Saya cikgu, saya count every ringgit. «Skyro Credit Limit» — sounds like a budget tool. «Skyro Credit» — sounds like utang.',winnerWhat:'A family budgeting tool from Skyro with a defined ceiling.',winnerIncluded:'Kids\' clothes, groceries, emergencies — all within a safe limit.',winnerWhy:'For a mother and teacher, «Limit» is a plan, not a restriction. Skyro = trust.',reactions:{cl:'«Credit Limit» — sounds like a bank statement. Cold. Tak personal.',sl:'«Skyro Limit» — saya tak faham. Limit pada apa? Time? Money? Anak?',sc:'«Skyro Credit» — itu utang. Saya cikgu, saya tak nak ambik utang.'},quote:'«Skyro Credit Limit» lets me say to my husband: «We have a RM5,000 limit — we won\'t go past it». That\'s not debt, that\'s a family plan.',resonates:['Family financial plan','«Limit» = safety','Brand = trust'],barriers:['The word «Credit» still grabs me']},
+{id:9,market:'MY',name:'Wei Chen',role:'Restaurant Owner · SME · 35 · Chinese Malaysian',avatar:'W',avatarBg:'linear-gradient(135deg,#ffa502,#aa5500)',winner:'scl',scores:{cl:7.0,scl:8.0,sl:4.0,sc:6.5},preview:'I run a restaurant — I need clear product names. «Skyro Credit Limit» — I immediately ask «is there a business version?». A name that invites the next question.',winnerWhat:'A Skyro credit product with a ceiling — fits B2C and potentially SME.',winnerIncluded:'Purchases, supplier payments, installments on equipment — all in one.',winnerWhy:'The name is broad enough to carry different use cases. Doesn\'t box you in.',reactions:{cl:'«Credit Limit» without brand — I\'d assume it\'s Maybank or Public Bank.',sl:'«Skyro Limit» — what limit? Reservation? Order? Confusing.',sc:'«Skyro Credit» — sounds like the company is a moneylender. Not professional.'},quote:'«Skyro Credit Limit» — let it be one name for me (consumer) and for my restaurant (business). One product across use cases — that\'s smart fintech.',resonates:['Allows multiple use cases','Sounds like a product, not a company','Professional'],barriers:['Long to print on a receipt']},
+// ===== PHILIPPINES =====
+{id:10,market:'PH',name:'Corporate Manager',role:'Middle Management · Banks / Tech / FMCG · 30-45',avatar:'CM',avatarBg:'linear-gradient(135deg,#00e676,#006030)',winner:'scl',scores:{cl:7.0,scl:8.5,sl:4.5,sc:7.5},preview:'«Skyro Credit Limit» — Revolut-style naming convention. Brand + product feature. I\'d expect this on a debit card or product page. Clean, professional.',winnerWhat:'A premium credit line from Skyro — product-level, not a marketing slogan.',winnerIncluded:'Revolver: POS, installments, cash advance — all with one statement cycle.',winnerWhy:'This name travels across markets — KSA, MY, KE, PH. Global architecture.',reactions:{cl:'Without brand — feels generic, like a BPI product page.',sl:'«Skyro Limit» — sounds like a Globe Telecom data add-on.',sc:'«Skyro Credit» — slightly less premium, sounds like a credit-card company name.'},quote:'I\'d put «Skyro Credit Limit» on my LinkedIn next to my new role. «Skyro Credit» — too short, sounds like a moneylender. «Skyro Limit» — sounds like I hit a wall.',resonates:['Premium product naming','LinkedIn-worthy','Works across markets'],barriers:['Wordy on small screens']},
+{id:11,market:'PH',name:'Medium Business Owner',role:'Entrepreneur · Unstable cash flow · 35-50',avatar:'MB',avatarBg:'linear-gradient(135deg,#00e676,#004020)',winner:'scl',scores:{cl:6.5,scl:8.0,sl:4.0,sc:7.0},preview:'I deal with banks every week. «Skyro Credit Limit» — recognizable, file-able, regulatory-clean. «Skyro Credit» — sounds informal. I need formal.',winnerWhat:'A Skyro credit instrument with a limit — a format banks and auditors recognize.',winnerIncluded:'Working capital, supplier payments, emergency expenses — all under one limit.',winnerWhy:'I can use it in financial reporting without explanation. Big plus for business.',reactions:{cl:'«Credit Limit» — generic, my BPI account has one. Need brand to differentiate.',sl:'«Skyro Limit» — non-financial vibe. Like an Uber promo.',sc:'«Skyro Credit» — sounds like a meme lender. Not for my books.'},quote:'Business credit should sound clean enough that I can tell my accountant the name without explaining. «Skyro Credit Limit» — she puts it on the P&L without questions.',resonates:['Regulatory-clean','Auditable','Business-friendly'],barriers:['Doesn\'t surface B2B features']},
+{id:12,market:'PH',name:'Content Creator',role:'Social media / Lifestyle · 22-35',avatar:'CC',avatarBg:'linear-gradient(135deg,#ff6b6b,#aa1010)',winner:'sc',scores:{cl:6.0,scl:8.0,sl:5.5,sc:9.0},preview:'«Skyro Credit» — that\'s my IG bio fit. Short, branded, sexy. «Skyro Credit Limit» — too corporate for my feed. I\'d still use it for the app, but for socials — go shorter.',winnerWhat:'A premium credit product from Skyro I\'m not embarrassed to feature in stories.',winnerIncluded:'Everything a lifestyle needs: installments, cashback, instant approval.',winnerWhy:'A short name has viral potential. «Skyro Credit» rhymes with #SkyroCredit.',reactions:{cl:'«Credit Limit» — sounds like my mom\'s BDO statement. Not aesthetic.',sl:'«Skyro Limit» — too negative for my brand. «Limit» = restriction.',scl:'«Skyro Credit Limit» — IT\'S TOO LONG for a hashtag. Use it for legal, not for Reels.'},quote:'«Skyro Credit» — I can say it on TikTok in one second. «Skyro Credit Limit» — that\'s something you read in T&Cs. Two different contexts.',resonates:['Made for social','Brand-friendly','Vibe matches my feed'],barriers:['Doesn\'t convey revolving line','Can read as debt']},
+{id:13,market:'PH',name:'Corporate Employee',role:'Office worker · Predictable salary · 25-40',avatar:'CE',avatarBg:'linear-gradient(135deg,#ffa502,#804000)',winner:'scl',scores:{cl:6.5,scl:8.0,sl:4.5,sc:7.0},preview:'I want predictability. «Skyro Credit Limit» — I know exactly how much I can spend. «Skyro Credit» — sounds open-ended, no ceiling.',winnerWhat:'A clear credit product from Skyro with a fixed ceiling — predictable.',winnerIncluded:'POS, installments, emergency spend — all inside one limit.',winnerWhy:'The word «Limit» lowers anxiety. I know what I\'m signing up for.',reactions:{cl:'Without brand — generic. Could be any bank\'s product.',sl:'«Skyro Limit» — sounds like a restriction, not an opportunity.',sc:'«Skyro Credit» — too open-ended. I\'d worry about getting pulled into debt.'},quote:'«Skyro Credit Limit» means «take what we agreed on». That\'s a contract with myself. «Skyro Credit» means «take as much as you want». That\'s scary.',resonates:['Predictability','«Limit» = contract with self','Brand = trust'],barriers:['Long for a push notification']},
+{id:14,market:'PH',name:'Freelancer',role:'Project-based worker · Digital · 25-40',avatar:'FR',avatarBg:'linear-gradient(135deg,#ffa502,#604000)',winner:'sc',scores:{cl:5.5,scl:7.5,sl:5.0,sc:8.5},preview:'«Skyro Credit» — that\'s me. Short, modern, like Stripe or Wise. «Skyro Credit Limit» — too office, I don\'t work in an office.',winnerWhat:'A flexible credit tool from Skyro — no bureaucracy, like Stripe Capital.',winnerIncluded:'Equipment buys, paying contractors, cash until next payout.',winnerWhy:'A short name = digital-first product. For people who don\'t work 9-to-5.',reactions:{cl:'«Credit Limit» — bank-speak. Not for freelance vibe.',sl:'«Skyro Limit» — neutral, but without «credit» I have no idea what it\'s about.',scl:'«Skyro Credit Limit» — too formal. I don\'t do Excel, I do projects.'},quote:'«Skyro Credit» sounds like a modern fintech product that understands I don\'t work in a bank. A short name = brand confidence.',resonates:['Digital-first vibe','Modern naming','Freelancer-friendly'],barriers:['Doesn\'t convey revolving','Can read as debt-trap']},
+{id:15,market:'PH',name:'Teacher',role:'Teacher · Stable but moderate · 28-50',avatar:'T',avatarBg:'linear-gradient(135deg,#ffa502,#604020)',winner:'scl',scores:{cl:6.0,scl:7.5,sl:4.0,sc:6.0},preview:'I\'m a teacher, I explain things to kids. A good name is one I can explain to a child. «Skyro Credit Limit» — I can. «Skyro Limit» — I can\'t.',winnerWhat:'A clear Skyro credit line — for school supplies, furniture, emergencies.',winnerIncluded:'School expenses, appliances, medical — all under one limit.',winnerWhy:'I can explain it to parents of my students. Transparent name = transparent product.',reactions:{cl:'«Credit Limit» alone — sounds like a BPI textbook example. Impersonal.',sl:'«Skyro Limit» — pwede ba? Limit on what? Cannot explain to students.',sc:'«Skyro Credit» — sounds like a lender. I don\'t trust lenders.'},quote:'I need a simple explanation for parents. «Skyro Credit Limit — it\'s like a wallet Skyro gives me, and I know how much money is inside». Easy.',resonates:['Explains in simple words','Transparent','Trustworthy'],barriers:['Long in Tagalog']},
+{id:16,market:'PH',name:'Nurse / OFW Healthcare',role:'Healthcare worker · Local or abroad · 25-45',avatar:'N',avatarBg:'linear-gradient(135deg,#ffa502,#703000)',winner:'scl',scores:{cl:6.0,scl:8.0,sl:4.0,sc:7.0},preview:'I\'m a nurse, I\'m responsible for people. I need a name that sounds serious. «Skyro Credit Limit» — serious. «Skyro Credit» — flippant.',winnerWhat:'A serious Skyro credit tool — for family, medical, kids\' education.',winnerIncluded:'Medical expenses, school fees, remittance buffer — all with a clear ceiling.',winnerWhy:'I work with lives. I want my financial product to sound just as responsible.',reactions:{cl:'Without brand — faceless. I want to know who I\'m trusting with my money.',sl:'«Skyro Limit» — could cap me in an emergency. I don\'t want a limit on medical.',sc:'«Skyro Credit» — sounds like a loan shark. Not for a medical family.'},quote:'«Skyro Credit Limit» — I can explain to my husband: «It\'s like an insurance policy, just financial. Skyro gave me a ceiling, and I know I\'m safe».',resonates:['Sounds responsible','Family-grade','Trustworthy'],barriers:['Hard to say quickly']},
+{id:17,market:'PH',name:'Call Center Agent',role:'Young, digital-first · Cash gaps · 22-30',avatar:'CA',avatarBg:'linear-gradient(135deg,#ff6b6b,#881010)',winner:'sc',scores:{cl:5.5,scl:7.0,sl:5.0,sc:8.0},preview:'«Skyro Credit» — feels fast. At my call center it\'s all about speed. I won\'t read «Skyro Credit Limit» — I\'ll open the app with the simpler name.',winnerWhat:'A fast credit product from Skyro — for shift workers with no time for banks.',winnerIncluded:'Quick cash, phone installments, emergency spend — all in 5 seconds.',winnerWhy:'A short name = fast signup = fast pick. I\'m tired after a shift.',reactions:{cl:'«Credit Limit» — sounds like my mom\'s BPI card. Boring.',sl:'«Skyro Limit» — could mean they\'re limiting me. Don\'t want that.',scl:'«Skyro Credit Limit» — too long. On a night shift I won\'t even finish reading.'},quote:'After a 12-hour shift I want a simple name. «Skyro Credit» — 3 seconds. «Skyro Credit Limit» — that\'s homework. I pick the first.',resonates:['Reads fast','Matches digital-native vibe','Memorable'],barriers:['Doesn\'t convey «safe limit»']},
+{id:18,market:'PH',name:'Government Employee',role:'Stable income · Cautious borrower · 30-50',avatar:'GE',avatarBg:'linear-gradient(135deg,#ff6b6b,#771010)',winner:'cl',scores:{cl:8.0,scl:7.5,sl:4.0,sc:5.5},preview:'I work for the government. I trust industry-standard terminology. «Credit Limit» — that\'s what I see in banking documents. That\'s correct.',winnerWhat:'A standard banking credit line — no marketing layer on top.',winnerIncluded:'Standard revolver, like any proper bank.',winnerWhy:'Less «branding» = more trust. Skyro can sit in the corner, but the product name should be neutral.',reactions:{scl:'«Skyro Credit Limit» — over-branded. Sounds like marketing, not product.',sl:'«Skyro Limit» — nonsense. Not a banking term at all.',sc:'«Skyro Credit» — sounds like a credit company name. Not professional.'},quote:'BPI doesn\'t call its product «BPI Credit Limit». They call it «Credit Card with ₱500,000 limit». Skyro should do the same — lead with the product, not the brand.',resonates:['Industry-standard','Professional','Less marketing'],barriers:['Without brand — not memorable','Less brand equity']},
+{id:19,market:'PH',name:'Micro-Entrepreneur (Sari-Sari)',role:'Home-based small business · 35-55',avatar:'ME',avatarBg:'linear-gradient(135deg,#ff6b6b,#660000)',winner:'scl',scores:{cl:5.5,scl:7.0,sl:3.5,sc:6.5},preview:'Ako, may sari-sari ako. Kailangan ko pang-restock. «Skyro Credit Limit» — naiintindihan ko. Skyro, credit, limit. Lahat clear.',winnerWhat:'A small Skyro credit with a clear ceiling — for restocking the tindahan.',winnerIncluded:'Buying from suppliers, emergencies, electricity bills.',winnerWhy:'I\'m not strong in English. I need a simple name made of simple words.',reactions:{cl:'«Credit Limit» — alone sounds like a big-bank thing. Not for a small business.',sl:'«Skyro Limit» — wala akong gets. Anong limit?',sc:'«Skyro Credit» — sounds like 5-6 lender. Hindi safe.'},quote:'Ako, hindi ako marunong mag-English. Pero «Skyro Credit Limit» — naiintindihan ko: Skyro gives credit, with a limit on how much. Simple.',resonates:['Simple words','Clear structure','Doesn\'t read as a 5-6 lender'],barriers:['Long','Needs Tagalog adaptation']},
+{id:20,market:'PH',name:'Driver (Transport/Delivery)',role:'Transport / Delivery · Daily income · 25-50',avatar:'DR',avatarBg:'linear-gradient(135deg,#ff4757,#770010)',winner:'sc',scores:{cl:5.5,scl:6.5,sl:4.5,sc:7.5},preview:'Pasaway na pasaway na ako sa banks. «Skyro Credit» — short. When it\'s an emergency I want fast. I won\'t read «Skyro Credit Limit» when my bike is broken.',winnerWhat:'Fast credit from Skyro — for emergency bike repair, medical, fuel.',winnerIncluded:'Nano-loan in 5 minutes — that\'s all I need.',winnerWhy:'A short name = fast signup. When the bike is down, I need cash in 10 minutes.',reactions:{cl:'«Credit Limit» — sounds like a bank you can\'t get through to.',sl:'«Skyro Limit» — limit on what? Off the point.',scl:'«Skyro Credit Limit» — fine, but slow to read in an emergency.'},quote:'When my bike broke down, I had 30 seconds to decide. «Skyro Credit» I can read. «Skyro Credit Limit» — already too long.',resonates:['Speed-friendly','Emergency-appropriate','Easy to type'],barriers:['Sounds like a debt trap']},
+{id:21,market:'PH',name:'Housewife',role:'Family financial manager · 30-50',avatar:'H',avatarBg:'linear-gradient(135deg,#ff6b9d,#880040)',winner:'scl',scores:{cl:6.5,scl:7.5,sl:4.5,sc:6.0},preview:'Akong manager ng pera sa bahay. «Skyro Credit Limit» — I can tell my husband: «We have a Skyro Credit Limit of ₱20,000 we can use». Clear conversation.',winnerWhat:'A family financial tool from Skyro with a defined ceiling — for budgeting.',winnerIncluded:'Groceries, school fees, emergencies — all under a shared family limit.',winnerWhy:'«Limit» helps me talk to my husband about money. It\'s a shared plan, not my debt.',reactions:{cl:'«Credit Limit» — sounds like an individual product, not a family one.',sl:'«Skyro Limit» — too abstract for a family conversation.',sc:'«Skyro Credit» — sounds like «the wife took out a loan». Don\'t want that framing.'},quote:'«Skyro Credit Limit» — the word «Limit» keeps the conversation calm. «We have a limit, we\'re inside it» is a different conversation from «the wife took Skyro Credit».',resonates:['Family-conversation-friendly','«Limit» = shared plan','Safe for family'],barriers:['Long']},
+{id:22,market:'PH',name:'OFW / Domestic Helper',role:'Overseas or local · Remittance-centered · 25-50',avatar:'OFW',avatarBg:'linear-gradient(135deg,#a855f7,#5010aa)',winner:'scl',scores:{cl:6.5,scl:9.5,sl:4.0,sc:7.0},preview:'Akong OFW, hindi ako bumagal sa pera. But «Skyro Credit Limit» sounds like a real bank account. I can tell my family «we have a Skyro Credit Limit». They\'ll be proud.',winnerWhat:'A serious Skyro credit product — for sending money home, medical, kids\' education.',winnerIncluded:'Remittance, nano-loan, installments — all under one family limit.',winnerWhy:'When I send money home, I want it to sound like a real bank. Not a promo app.',reactions:{cl:'«Credit Limit» alone — too cold for family money.',sl:'«Skyro Limit» — sounds like a data plan. Hindi serious.',sc:'«Skyro Credit» — sounds like a 5-6 lender. Hindi pwede sa family.'},quote:'«Skyro Credit Limit» — I can write my mom on WhatsApp: «We have a Skyro Credit Limit of ₱30,000». That sounds dignified. I work far away, and I want my family to know I found a serious tool.',resonates:['Family pride','Real-bank vibe','Sounds dignified'],barriers:['Long for a push']},
+{id:23,market:'PH',name:'Security/Service Worker',role:'Long shifts · Limited savings · Guards',avatar:'SS',avatarBg:'linear-gradient(135deg,#ff4757,#660000)',winner:'sc',scores:{cl:5.0,scl:6.5,sl:4.0,sc:7.0},preview:'Pagod ako pagkatapos shift. «Skyro Credit» — I can read it. «Skyro Credit Limit» — I won\'t remember.',winnerWhat:'A credit product from Skyro for the shift worker — no extra words.',winnerIncluded:'Cash until payday, installments on essentials — nothing extra.',winnerWhy:'After a 12-hour shift I want a 2-word name, not a 3-word one.',reactions:{cl:'«Credit Limit» — hindi ko alam sino yan. No brand.',sl:'«Skyro Limit» — anong klaseng limit? Confusing.',scl:'«Skyro Credit Limit» — matagal basahin pagkatapos shift.'},quote:'I want a simple name. «Skyro Credit» is simple. After a shift I want simplicity, not three English words.',resonates:['Simplicity','Memorable','Shift-worker friendly'],barriers:['Doesn\'t convey «safe limit»']},
+{id:24,market:'PH',name:'HORECA Staff',role:'Hotel / Restaurant · Shift income · Variable',avatar:'HS',avatarBg:'linear-gradient(135deg,#ff4757,#550000)',winner:'sc',scores:{cl:5.5,scl:6.5,sl:4.5,sc:7.5},preview:'Magulo ang shifts ko. «Skyro Credit» — I can use it on a break. Simple, fast, brandy.',winnerWhat:'A flexible Skyro credit product for shift workers with variable income.',winnerIncluded:'Cash until payday, emergencies, uniform expenses.',winnerWhy:'A short name fits a life lived between shifts.',reactions:{cl:'«Credit Limit» — bank-speak. Not for me.',sl:'«Skyro Limit» — sounds restrictive. Don\'t want that.',scl:'«Skyro Credit Limit» — too formal for a waiter\'s app.'},quote:'«Skyro Credit» — I can memorize it in one shift. «Skyro Credit Limit» — I have to repeat it. I don\'t have time to repeat.',resonates:['Flexible','Fits shift life','Memorable'],barriers:['Doesn\'t reflect revolving']},
+{id:25,market:'PH',name:'Factory/Construction Worker',role:'Physical labor · 25-45',avatar:'FC',avatarBg:'linear-gradient(135deg,#ff3d5a,#440000)',winner:'sc',scores:{cl:5.0,scl:6.0,sl:4.0,sc:7.0},preview:'Walang time. Hands na dirty. Phone na crack. «Skyro Credit» — okay. «Skyro Credit Limit» — too long.',winnerWhat:'Simple credit from Skyro — for the working class, no bureaucracy.',winnerIncluded:'Cash until payday, emergency tool repairs.',winnerWhy:'I can remember a simple English name. A long one — no.',reactions:{cl:'«Credit Limit» — hindi pang-construction worker.',sl:'«Skyro Limit» — wala naman ako limit sa life.',scl:'«Skyro Credit Limit» — matagal basahin sa break.'},quote:'Dirty hands, cracked phone, 30-second break. «Skyro Credit» I can manage. «Skyro Credit Limit» — no.',resonates:['Simple English','Memorable','Not intimidating'],barriers:['Tagalog adaptation needed']},
+{id:26,market:'PH',name:'Rural Worker',role:'Farmer / Fisherman · Seasonal income',avatar:'RW',avatarBg:'linear-gradient(135deg,#ff3d5a,#330000)',winner:'cl',scores:{cl:6.5,scl:6.0,sl:4.0,sc:5.5},preview:'Akong mag-aalaga ng baka. I don\'t know English well. «Credit Limit» — I\'ve heard it from SSS. Familiar. «Skyro» is new, I don\'t know it yet.',winnerWhat:'A familiar banking term — what I\'ve heard from SSS or SACCO.',winnerIncluded:'A simple loan from planting to harvest.',winnerWhy:'I don\'t know Skyro. I know «Credit Limit». A familiar word = trust.',reactions:{scl:'«Skyro Credit Limit» — Skyro? Anong yan? Hindi familiar.',sl:'«Skyro Limit» — wala akong gets.',sc:'«Skyro Credit» — sounds like a loan shark sa probinsiya.'},quote:'I know «Credit Limit» from SSS. I don\'t know Skyro yet. Before adding a brand — let it become familiar first.',resonates:['Familiar term','Trust through familiarity'],barriers:['Without brand — no equity','Skyro needs introduction first']},
+// ===== KENYA =====
+{id:27,market:'KE',name:'David Kimani',role:'Duka Owner · Nairobi · 31',avatar:'D',avatarBg:'linear-gradient(135deg,#a855f7,#601090)',winner:'scl',scores:{cl:6.0,scl:7.5,sl:4.0,sc:7.0},preview:'I run a duka, I need to remember product names. «Skyro Credit Limit» — clear, brandable, can stack against M-Shwari Loan. Tofauti kabisa na «Skyro Credit» peke yake.',winnerWhat:'Brand + product descriptor from Skyro — competitive against M-Shwari, KCB-M-Pesa.',winnerIncluded:'Credit for restocking inventory, emergencies, M-Pesa-based payouts.',winnerWhy:'Skyro is a new brand in Kenya. The full name helps me understand quickly that it\'s about money.',reactions:{cl:'«Credit Limit» peke yake — could be M-Shwari, KCB, anyone. Bila brand, hakuna ownership.',sl:'«Skyro Limit» — sounds like a Safaricom data bundle limit. Confusing.',sc:'«Skyro Credit» — sounds like a competitor to Tala, Branch. Loan-app vibe, not bank-grade.'},quote:'When I tell my customers «Skyro Credit Limit», they ask «like M-Shwari?». Yes — that\'s exactly the framing I want. Familiar category, new brand.',resonates:['Stacks against M-Shwari','Brand + category','Duka-friendly'],barriers:['Long for shop signage']},
+{id:28,market:'KE',name:'Grace Wanjiku',role:'Nurse · 27 · Nairobi',avatar:'G',avatarBg:'linear-gradient(135deg,#ff6b9d,#880044)',winner:'scl',scores:{cl:6.0,scl:8.0,sl:4.0,sc:6.5},preview:'I send money home. I need a product name that sounds serious — not like Tala or Branch. «Skyro Credit Limit» does that. «Skyro Credit» — sounds like another loan app.',winnerWhat:'A serious Skyro credit tool — for a nurse sending money home.',winnerIncluded:'Remittance buffer, medical expenses, school fees — for a daughter carrying her parents\' weight.',winnerWhy:'I work with lives. I want a financial product that sounds just as responsible.',reactions:{cl:'«Credit Limit» — generic. Could be Equity, KCB, anyone.',sl:'«Skyro Limit» — sounds restrictive. Not for sending money home.',sc:'«Skyro Credit» — sounds like a fast-cash app. Not for family money.'},quote:'When my mom asks «which product do you use?», «Skyro Credit Limit» sounds like a real banking facility. «Skyro Credit» sounds like a quick loan I should be ashamed of.',resonates:['Sounds bank-grade','Family-trust language','Differentiates from loan apps'],barriers:['M-Pesa integration not implied']},
+{id:29,market:'KE',name:'Peter Mwangi',role:'Secondary School Teacher · 38 · Mombasa',avatar:'P',avatarBg:'linear-gradient(135deg,#4a7cff,#1020aa)',winner:'cl',scores:{cl:7.5,scl:7.0,sl:4.0,sc:5.5},preview:'I trust SACCO. SACCO uses simple terms — «Credit Limit», «Member Loan», «Dividend». «Skyro Credit Limit» is marketing-coded. «Credit Limit» — institutional. I prefer institutional.',winnerWhat:'A standard banking credit limit — SACCO-style terminology.',winnerIncluded:'A standard revolver, like Equity, like a SACCO.',winnerWhy:'I trust institutional language more than branded. Skyro is a brand. «Credit Limit» is an institution.',reactions:{scl:'«Skyro Credit Limit» — over-branded. Marketing-coded, less trustworthy for me.',sl:'«Skyro Limit» — non-financial. Sounds like a phone-app feature.',sc:'«Skyro Credit» — sounds like a moneylender brand, not a bank product.'},quote:'My SACCO doesn\'t call its product «KUSCCO Credit Limit». It calls it «Credit Limit». That\'s what trust sounds like. Brand goes in the corner, product goes in the centre.',resonates:['SACCO-style','Institutional','Less marketing'],barriers:['Without brand — no recognition']},
+{id:30,market:'KE',name:'Alice Njeri',role:'Office Manager · 32 · Nairobi · Married',avatar:'AN',avatarBg:'linear-gradient(135deg,#22d3ee,#004080)',winner:'scl',scores:{cl:6.5,scl:8.5,sl:4.5,sc:7.5},preview:'I work in finance. «Skyro Credit Limit» reads like a Revolut-Wise-N26 product. Premium, modern, regulator-friendly. «Skyro Credit» — sounds like SimbaPay or a Branch-style app.',winnerWhat:'A premium digital credit product from Skyro — competing with Equity Mobile, KCB-M-Pesa at the premium tier.',winnerIncluded:'Revolver: POS, installments, cash, online payments — all under one limit.',winnerWhy:'A name I can sit next to Wise / Revolut on my LinkedIn without looking out of place.',reactions:{cl:'«Credit Limit» without brand — fine but generic. Could be anyone\'s product.',sl:'«Skyro Limit» — sounds like a Safaricom add-on. Off-category.',sc:'«Skyro Credit» — sounds like a credit-app, not a credit-product. Slight downgrade.'},quote:'«Skyro Credit Limit» — I\'d put that next to Wise and Revolut and not blush. «Skyro Credit» sounds like Branch / Tala / Zenka. Loan-app territory.',resonates:['Wise / Revolut tier','Premium fintech','LinkedIn-worthy'],barriers:['M-Pesa integration not visible']},
+{id:31,market:'KE',name:'James Omondi',role:'Boda Boda Driver · 24 · Kisumu',avatar:'J',avatarBg:'linear-gradient(135deg,#ff4757,#660010)',winner:'sc',scores:{cl:5.5,scl:6.5,sl:4.5,sc:7.5},preview:'Mimi ni boda boda. Nataka pesa haraka, sitaki kusoma. «Skyro Credit» — short, fast, ni kama M-Pesa. «Skyro Credit Limit» — too long, kama bank.',winnerWhat:'Fast credit from Skyro — for a boda boda with no time to read.',winnerIncluded:'Nano-loan for fuel, repairs, emergencies.',winnerWhy:'A short name = fast signup = fast cash.',reactions:{cl:'«Credit Limit» peke yake — bank language. Sitaelewi.',sl:'«Skyro Limit» — sounds like Safaricom data limit.',scl:'«Skyro Credit Limit» — too long, kama mortgage application.'},quote:'Nikiwa boda boda, nina seconds 30 kufanya decision. «Skyro Credit» nitasoma. «Skyro Credit Limit» — hapana, ni mortgage paperwork.',resonates:['Fast registration','M-Pesa rhythm','Boda-friendly'],barriers:['Sounds like a loan-app','Doesn\'t convey revolving']},
+{id:32,market:'KE',name:'John Kamau',role:'Farmer · 42 · Nakuru · 4 kids',avatar:'JK',avatarBg:'linear-gradient(135deg,#ff4757,#550000)',winner:'cl',scores:{cl:6.5,scl:6.0,sl:3.5,sc:5.0},preview:'Sijawahi kusikia Skyro. «Credit Limit» — nilisikia hii kwa SACCO yangu. Sikupanga kumtumia Skyro. But «Credit Limit» — familiar.',winnerWhat:'A familiar term from SACCO — no new brand to figure out.',winnerIncluded:'A simple loan from planting to harvest.',winnerWhy:'I don\'t know Skyro. I know «Credit Limit». Trust through familiarity.',reactions:{scl:'«Skyro Credit Limit» — Skyro? Nani? Hatujui.',sl:'«Skyro Limit» — wala maelezo.',sc:'«Skyro Credit» — sounds like a mobile loan-shark.'},quote:'Sijui Skyro bado. «Credit Limit» — nilisikia kwa SACCO yangu. Familiar = trust. Brand can come later.',resonates:['SACCO familiarity','Trust through known terms'],barriers:['Without brand — no equity','Skyro needs to be introduced first']},
+{id:33,market:'KE',name:'Mary Akinyi',role:'Market Seller · Single mother · Eldoret',avatar:'MA',avatarBg:'linear-gradient(135deg,#ff6b9d,#770030)',winner:'sc',scores:{cl:5.5,scl:6.0,sl:4.0,sc:7.0},preview:'Mimi mama mboga. Sina time. «Skyro Credit» — fupi, naelewi. «Skyro Credit Limit» — kama wakili anaongea.',winnerWhat:'A short credit from Skyro — for the mama mboga.',winnerIncluded:'Inventory restock, emergencies.',winnerWhy:'A short name = a fast decision = I don\'t miss a customer while I\'m thinking.',reactions:{cl:'«Credit Limit» — bank-speak. Sina time.',sl:'«Skyro Limit» — sounds restrictive. Tayari nina limited budget.',scl:'«Skyro Credit Limit» — too long. Soko speed needs faster names.'},quote:'Soko ni speed. Mteja akija — naomba pesa kwa M-Pesa, lazima nimwage hapo hapo. «Skyro Credit» — naitumia. «Skyro Credit Limit» — itanichukua dakika kusoma.',resonates:['Matches market tempo','M-Pesa rhythm'],barriers:['Doesn\'t convey revolving','Loan-app vibe']},
+{id:34,market:'KE',name:'Brian Otieno',role:'University student + Delivery · 19 · Nairobi',avatar:'BO',avatarBg:'linear-gradient(135deg,#4a7cff,#0010aa)',winner:'sc',scores:{cl:6.0,scl:8.0,sl:5.5,sc:9.0},preview:'BRO. «Skyro Credit» — that\'s for my generation. Short, IG-friendly, brandable. «Skyro Credit Limit» — that\'s for my parents. Too long-form.',winnerWhat:'A premium digital credit for Gen Z — short name, like Apple Card.',winnerIncluded:'Everything a student needs: gadget installments, expenses between gigs.',winnerWhy:'I can hashtag #SkyroCredit and make a TikTok. #SkyroCreditLimit — won\'t hit.',reactions:{cl:'«Credit Limit» — corporate, not Gen Z.',sl:'«Skyro Limit» — sounds negative, like blocked from spending.',scl:'«Skyro Credit Limit» — too formal for my generation\'s feed.'},quote:'«Skyro Credit» — I can flex this on TikTok. «Skyro Credit Limit» — that\'s a legal disclaimer, not a product name.',resonates:['Gen Z brand vibe','TikTok-friendly','Apple Card-style brevity'],barriers:['Doesn\'t convey revolving','Can read as loan-app']},
+{id:35,market:'KE',name:'Faith Wambui',role:'Electronics shop seller · 21 · Nakuru',avatar:'FW',avatarBg:'linear-gradient(135deg,#22d3ee,#005080)',winner:'scl',scores:{cl:6.0,scl:8.0,sl:4.5,sc:7.5},preview:'I sell iPhones. «Skyro Credit Limit» — sounds like the financial product that goes next to an iPhone. Premium, complete. «Skyro Credit» — sounds like a Branch competitor.',winnerWhat:'A premium credit product from Skyro — for gadgets, installments.',winnerIncluded:'POS, installments on electronics, premium use cases.',winnerWhy:'I sell premium phones. The product name should sound like a premium accessory.',reactions:{cl:'«Credit Limit» — fine, but hard to sell without a brand.',sl:'«Skyro Limit» — sounds like phone storage limit. Off-brand.',sc:'«Skyro Credit» — sounds like a loan-app. I can\'t pair it with an iPhone sale.'},quote:'When I tell a customer «you can buy this iPhone using Skyro Credit Limit», it sounds like the natural pair. «Skyro Credit» sounds like a payday loan. Doesn\'t fit the iPhone.',resonates:['Pairs with premium products','iPhone-grade naming','Retail-friendly'],barriers:['Long for shop signage']},
+{id:36,market:'KE',name:'Kevin Odhiambo',role:'Construction worker (casual) · 29 · Nairobi',avatar:'KO',avatarBg:'linear-gradient(135deg,#ff4757,#440000)',winner:'sc',scores:{cl:5.0,scl:6.0,sl:4.0,sc:7.0},preview:'Sina kazi siku tatu kwa wiki. Nataka jina rahisi. «Skyro Credit» — fupi, naweza tumia hata kwa simu mbaya.',winnerWhat:'Simple credit for a casual day-laborer — without complex terms.',winnerIncluded:'Cash until the next gig, emergencies.',winnerWhy:'A short name = fast use on a broken phone. That matters for a casual worker.',reactions:{cl:'«Credit Limit» — bank-speak. Sina maana kwangu.',sl:'«Skyro Limit» — sounds like another restriction in my life.',scl:'«Skyro Credit Limit» — too long for an emergency need.'},quote:'When I have no work — I want a simple name. «Skyro Credit» — I get it. «Skyro Credit Limit» — that\'s mortgage paperwork. No thanks.',resonates:['Simplicity','Emergency-friendly'],barriers:['Doesn\'t convey revolving','Loan-app vibe']},
+];
+
+function buildCard(d){
+  const mktLabels={SA:'🇸🇦 KSA',MY:'🇲🇾 MY',PH:'🇵🇭 PH',KE:'🇰🇪 KE'};
+  const order=['scl','sc','cl','sl'];
+  const miniRows=order.map(n=>{
+    const v=d.scores[n];
+    const isWin=n===d.winner;
+    return `<div class="sm-row">
+      <div class="sm-name${isWin?' win':''}">${isWin?'★ ':''}${NAMES[n]}</div>
+      <div class="sm-bar"><div class="sm-fill" style="width:${v*10}%;background:${nameColor(n)}"></div></div>
+      <div class="sm-val" style="color:${nameColor(n)}">${v.toFixed(1)}</div>
+    </div>`;
+  }).join('');
+
+  const losers=order.filter(n=>n!==d.winner);
+  const othersHTML=losers.map(n=>`<div class="other-row">
+    <div class="other-name" data-n="${n}">${NAMES[n]}</div>
+    <div class="other-react">${d.reactions[n]||''}</div>
+  </div>`).join('');
+
+  return `<div class="card" data-market="${d.market}" data-winner="${d.winner}" data-id="${d.id}">
+    <div class="card-top" onclick="toggleCard(${d.id})">
+      <div class="avatar" style="background:${d.avatarBg}">${d.avatar}</div>
+      <div class="cname-block"><div class="cname">${d.name}</div><div class="crole">${d.role}</div></div>
+      <div class="mbadge m-${d.market}">${mktLabels[d.market]}</div>
+    </div>
+    <div class="winner-strip" onclick="toggleCard(${d.id})">
+      <div class="winner-lbl">— Personal pick</div>
+      <div class="winner-name" style="color:${nameColor(d.winner)}"><span class="arrow">→</span> ${NAMES[d.winner]}</div>
+    </div>
+    <div class="scores-mini" onclick="toggleCard(${d.id})">${miniRows}</div>
+    <div class="q-preview" onclick="toggleCard(${d.id})"><p>${d.preview}</p></div>
+    <button class="toggle" onclick="toggleCard(${d.id})"><span>Full reaction</span><span class="arr">⌄</span></button>
+    <div class="body" id="body-${d.id}">
+      <div class="winner-block">
+        <div class="wb-name">${NAMES[d.winner]} <span class="tag-win">PICKED</span></div>
+        <div class="wb-row"><div class="wb-lbl">What is this product?</div><div class="wb-val">${d.winnerWhat}</div></div>
+        <div class="wb-row"><div class="wb-lbl">What's included?</div><div class="wb-val">${d.winnerIncluded}</div></div>
+        <div class="wb-row"><div class="wb-lbl">Why this name?</div><div class="wb-val">${d.winnerWhy}</div></div>
+      </div>
+      <div class="slbl">Quick reactions to the other three</div>
+      <div class="others">${othersHTML}</div>
+      <div class="slbl">Quote</div>
+      <div class="quote-full"><p>${d.quote}</p></div>
+      <div class="slbl">What resonates</div>
+      <div class="tags">${d.resonates.map(r=>`<span class="tag res">${r}</span>`).join('')}</div>
+      <div class="slbl">Barriers</div>
+      <div class="tags">${d.barriers.map(b=>`<span class="tag bar">${b}</span>`).join('')}</div>
+    </div>
+  </div>`;
+}
+
+const grid=document.getElementById('grid');
+grid.innerHTML=DATA.map(buildCard).join('');
+
+function toggleCard(id){document.querySelector(`[data-id="${id}"]`).classList.toggle('open');}
+
+let activeMarket='all',activeWinner='all';
+function applyFilters(){
+  let shown=0;
+  DATA.forEach(d=>{
+    const card=document.querySelector(`[data-id="${d.id}"]`);
+    const mMatch=activeMarket==='all'||d.market===activeMarket;
+    const wMatch=activeWinner==='all'||d.winner===activeWinner;
+    if(mMatch&&wMatch){card.classList.remove('hidden');shown++;}
+    else card.classList.add('hidden');
+  });
+  document.getElementById('cnt').textContent=shown;
+}
+
+document.querySelectorAll('.f-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeMarket=btn.dataset.m;
+    applyFilters();
+    ['SA','MY','PH','KE'].forEach(m=>{
+      const el=document.getElementById('sum-'+m);
+      if(el)el.style.display=activeMarket===m?'':'none';
+    });
+  });
+});
+document.querySelectorAll('.nf-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.nf-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeWinner=btn.dataset.w;
+    applyFilters();
+  });
+});
+</script>
+</body>
+</html>
