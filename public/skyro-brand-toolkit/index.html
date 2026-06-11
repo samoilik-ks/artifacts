@@ -725,17 +725,17 @@ function addSec(id,n,t,subs,h) {
 <p>Money stress is personal and deeply felt. When someone is facing a missed payment, a declined application, or a financial setback, be steady, clear, and kind. Forced optimism in these moments feels dismissive &mdash; and it is.</p>
 
 <h2 id="tov-tagline"><span class="pill pill-a">Partner</span> 7.6 The Global Tagline</h2>
-<div class="call" style="font-size:24px;text-align:center;font-style:italic;font-weight:500">Naturally, it's yours.</div>
+<div class="call" style="font-size:24px;text-align:center;font-style:italic;font-weight:500">Naturally yours.</div>
 <p>Skyro returns finance to its natural state &mdash; one that feels instinctively right rather than engineered or imposed. No overbuilt systems, no forced habits, no financial product that demands you reshape your life to fit it.</p>
-<p>"Naturally" carries the conversational sense of "of course" &mdash; something self-evident. It also reaches back to the brand platform: the best financial tools move with the rhythms of nature and real life. "It's yours" makes the claim personal and unconditional.</p>
+<p>"Naturally" carries the conversational sense of "of course" &mdash; something self-evident. It also reaches back to the brand platform: the best financial tools move with the rhythms of nature and real life. "Yours" makes the claim personal and unconditional.</p>
 
 <h3>Using the tagline in market-specific work</h3>
-<p>Lead with the most relevant product truth or cultural insight for each market, then close with "Naturally, it's yours." The opening line does the specific work; the tagline closes with the universal one.</p>
+<p>Lead with the most relevant product truth or cultural insight for each market, then close with "Naturally yours." The opening line does the specific work; the tagline closes with the universal one.</p>
 <div class="grid">
-<div class="card"><h4>Saudi Arabia &mdash; Sharia</h4><p>"Finance that aligns with your faith. Naturally, it's yours."<br>"Profit-sharing, not interest. The way it should be. Naturally, it's yours."<br>"Built on principles you've always lived by. Naturally, it's yours."</p></div>
-<div class="card"><h4>Kenya &mdash; Mobile-first</h4><p>"Every financial need. One tap away. Naturally, it's yours."<br>"Your bank is wherever your phone is. Naturally, it's yours."</p></div>
-<div class="card"><h4>BNPL</h4><p>"Split into 4. No interest, no catch. Naturally, it's yours."<br>"0% instalments. Up to 24 months. Naturally, it's yours."<br>"Buy it today. Pay when it makes sense for you. Naturally, it's yours."</p></div>
-<div class="card"><h4>Insurance</h4><p>"Coverage that starts the moment you need it &mdash; not a week later. Naturally, it's yours."</p></div>
+<div class="card"><h4>Saudi Arabia &mdash; Sharia</h4><p>"Finance that aligns with your faith. Naturally yours."<br>"Profit-sharing, not interest. The way it should be. Naturally yours."<br>"Built on principles you've always lived by. Naturally yours."</p></div>
+<div class="card"><h4>Kenya &mdash; Mobile-first</h4><p>"Every financial need. One tap away. Naturally yours."<br>"Your bank is wherever your phone is. Naturally yours."</p></div>
+<div class="card"><h4>BNPL</h4><p>"Split into 4. No interest, no catch. Naturally yours."<br>"0% instalments. Up to 24 months. Naturally yours."<br>"Buy it today. Pay when it makes sense for you. Naturally yours."</p></div>
+<div class="card"><h4>Insurance</h4><p>"Coverage that starts the moment you need it &mdash; not a week later. Naturally yours."</p></div>
 </div>
 
 <h3>Five rules for generating new Skyro taglines</h3>
@@ -1367,13 +1367,33 @@ function setAccess(level){
     var show = visible.indexOf(blocks[i].dataset.access) > -1;
     blocks[i].classList.toggle("hidden", !show);
   }
+  var subItemsBySub = {};
+  for(var i=0;i<blocks.length;i++){
+    var h2 = blocks[i].querySelector("h2[id]");
+    if(h2) subItemsBySub[h2.id] = !blocks[i].classList.contains("hidden");
+  }
+  var navSubItems = document.querySelectorAll(".nav-sub-item");
+  for(var i=0;i<navSubItems.length;i++){
+    var sub = navSubItems[i].dataset.sub;
+    if(sub in subItemsBySub){
+      navSubItems[i].style.display = subItemsBySub[sub] ? "" : "none";
+    }
+  }
   var secs = document.querySelectorAll(".sec");
   for(var i=0;i<secs.length;i++){
     var sb = secs[i].querySelectorAll(".sub-block");
-    if(!sb.length) continue;
-    var allHidden = true;
-    for(var j=0;j<sb.length;j++){ if(!sb[j].classList.contains("hidden")){allHidden=false;break;} }
-    secs[i].style.display = allHidden ? "none" : "";
+    var hideSec = false;
+    if(sb.length){
+      var allHidden = true;
+      for(var j=0;j<sb.length;j++){ if(!sb[j].classList.contains("hidden")){allHidden=false;break;} }
+      hideSec = allHidden;
+    }
+    secs[i].style.display = hideSec ? "none" : "";
+    var navA = document.querySelector('.nav-a[data-id="'+secs[i].id+'"]');
+    if(navA){
+      var navWrap = navA.parentElement;
+      if(navWrap) navWrap.style.display = hideSec ? "none" : "";
+    }
   }
 }
 
