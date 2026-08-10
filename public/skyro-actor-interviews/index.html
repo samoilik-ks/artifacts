@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro × Shuka — Deep Interview · Financial Life & Nature · 36 Personas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07070f;
+  --s1: #0d0d1c;
+  --s2: #13132a;
+  --s3: #191934;
+  --bd: #222240;
+  --bd2: #2c2c50;
+  --tx: #ddddf5;
+  --td: #7070a0;
+  --tm: #404068;
+  --blue: #1a1aff;
+  --blu2: #5555ff;
+  --blu3: #9090ff;
+  --cyan: #00d4ff;
+  --green: #00e676;
+  --yel: #ffe600;
+  --ora: #ff8c00;
+  --red: #ff3d5a;
+  --pur: #b54dff;
+  --pnk: #ff4da0;
+  --sa: #d4aa47;
+  --my: #3dffa0;
+  --ph: #ff6b6b;
+  --ke: #a855f7;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.hdr{padding:80px 52px 60px;border-bottom:1px solid var(--bd);position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(0,230,118,.14) 0%,transparent 70%);pointer-events:none;}
+.hdr-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--blu3);margin-bottom:20px;}
+h1{font-family:'Syne',sans-serif;font-size:clamp(30px,5vw,56px);font-weight:800;line-height:1.05;margin-bottom:14px;}
+h1 em{color:var(--green);font-style:normal;}
+.hdr-sub{font-size:15px;color:var(--td);max-width:720px;line-height:1.75;margin-bottom:32px;}
+.concept-pill{display:inline-flex;align-items:center;gap:12px;padding:10px 20px;border-radius:100px;background:var(--s2);border:1px solid var(--bd2);font-size:13px;color:var(--td);}
+.concept-pill strong{color:var(--tx);}
+.stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:40px;}
+.st-num{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--blu2);line-height:1;}
+.st-num.g{color:var(--green);}
+.st-lbl{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+.brief-bar{background:var(--s1);border-bottom:1px solid var(--bd);padding:24px 52px;display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start;}
+.bb-item{display:flex;flex-direction:column;gap:3px;max-width:340px;}
+.bb-label{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:1px;}
+.bb-value{font-size:13px;color:var(--tx);font-weight:500;line-height:1.55;}
+.bb-value em{color:var(--blu3);font-style:italic;}
+
+/* Verdict block */
+.verdict{margin:40px 52px 0;padding:36px 40px;background:linear-gradient(135deg,rgba(0,230,118,.10),rgba(85,85,255,.04));border:1px solid rgba(0,230,118,.3);border-radius:14px;}
+.v-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.v-name{font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,42px);font-weight:800;color:var(--tx);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.15;}
+.v-name em{color:var(--green);font-style:normal;}
+.v-vote{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:18px;}
+.v-vote-item{font-size:12px;color:var(--td);}
+.v-vote-item strong{font-family:'Syne',sans-serif;color:var(--tx);font-size:20px;display:block;}
+.v-rat{font-size:14px;color:var(--td);line-height:1.75;max-width:920px;}
+.v-rat strong{color:var(--tx);}
+
+/* Heatmap */
+.heatmap-wrap{padding:60px 52px 0;}
+.hm-title{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:800;margin-bottom:6px;}
+.hm-sub{font-size:13px;color:var(--td);margin-bottom:28px;}
+.heatmap{display:grid;grid-template-columns:140px repeat(4,1fr);background:var(--bd);gap:1px;border-radius:12px;overflow:hidden;border:1px solid var(--bd);}
+.hm-hcell{background:var(--s2);padding:14px 12px;font-family:'Syne',sans-serif;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--tm);text-align:center;}
+.hm-mcell{background:var(--s2);padding:16px 14px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.hm-cell{background:var(--s1);padding:16px 10px;text-align:center;}
+.hm-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;line-height:1;}
+.hm-pct{font-size:10px;color:var(--td);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;}
+
+/* Findings */
+.findings-wrap{padding:60px 52px 0;}
+.fw-title{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:800;margin-bottom:24px;}
+.findings{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.find-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:22px;}
+.find-num{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--green);line-height:1;margin-bottom:10px;}
+.find-txt{font-size:13px;color:var(--td);line-height:1.65;}
+.find-txt strong{color:var(--tx);}
+
+/* Filters */
+.filters{padding:60px 52px 0;display:flex;gap:8px;flex-wrap:wrap;}
+.f-btn{display:flex;align-items:center;gap:8px;padding:7px 14px;border-radius:6px;border:1px solid var(--bd);background:transparent;color:var(--td);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.f-btn .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.f-btn:hover,.f-btn.active{background:var(--s2);color:var(--tx);border-color:var(--bd2);}
+.f-btn[data-m="SA"].active{border-color:var(--sa);color:var(--sa);background:rgba(212,170,71,.08);}
+.f-btn[data-m="MY"].active{border-color:var(--my);color:var(--my);background:rgba(61,255,160,.08);}
+.f-btn[data-m="PH"].active{border-color:var(--ph);color:var(--ph);background:rgba(255,107,107,.08);}
+.f-btn[data-m="KE"].active{border-color:var(--ke);color:var(--ke);background:rgba(168,85,247,.08);}
+.f-btn[data-m="SA"] .dot{background:var(--sa);}
+.f-btn[data-m="MY"] .dot{background:var(--my);}
+.f-btn[data-m="PH"] .dot{background:var(--ph);}
+.f-btn[data-m="KE"] .dot{background:var(--ke);}
+.sf-row{padding:14px 52px;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--bd);}
+.sf-btn{padding:5px 12px;border-radius:4px;border:1px solid var(--bd);background:transparent;color:var(--tm);font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:.5px;cursor:pointer;transition:all .2s;}
+.sf-btn:hover,.sf-btn.active{background:var(--s2);color:var(--tx);border-color:var(--bd2);}
+.count-line{padding:14px 52px;font-size:12px;color:var(--tm);border-bottom:1px solid var(--bd);}
+.count-line span{color:var(--green);font-weight:600;}
+
+/* Persona grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:1px;background:var(--bd);}
+.card{background:var(--bg);transition:background .15s;position:relative;}
+.card:hover{background:var(--s1);}
+.card.hidden{display:none;}
+.card-top{padding:26px 26px 0;cursor:pointer;display:flex;align-items:flex-start;gap:14px;}
+.avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:800;flex-shrink:0;color:#07070f;letter-spacing:-0.5px;}
+.cname-block{flex:1;min-width:0;}
+.cname{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.crole{font-size:11px;color:var(--td);margin-top:2px;}
+.mbadge{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px;flex-shrink:0;}
+.m-SA{background:rgba(212,170,71,.15);color:var(--sa);}
+.m-MY{background:rgba(61,255,160,.1);color:var(--my);}
+.m-PH{background:rgba(255,107,107,.1);color:var(--ph);}
+.m-KE{background:rgba(168,85,247,.1);color:var(--ke);}
+.badge-row{padding:14px 26px 0;display:flex;gap:8px;flex-wrap:wrap;cursor:pointer;}
+.badge{font-size:10.5px;padding:4px 10px;border-radius:5px;border:1px solid var(--bd2);color:var(--td);background:var(--s2);}
+.badge.anchor-A{border-color:rgba(212,170,71,.35);color:var(--sa);background:rgba(212,170,71,.08);}
+.badge.anchor-B{border-color:rgba(0,230,118,.35);color:var(--green);background:rgba(0,230,118,.08);}
+.badge.anchor-C{border-color:rgba(0,212,255,.35);color:var(--cyan);background:rgba(0,212,255,.08);}
+.badge.anchor-F{border-color:var(--bd2);color:var(--tm);}
+.q-preview{padding:14px 26px 22px;cursor:pointer;}
+.q-preview p{font-size:13px;color:var(--td);font-style:italic;line-height:1.6;padding-left:14px;position:relative;}
+.q-preview p::before{content:'"';position:absolute;left:0;top:-3px;font-size:22px;line-height:1;color:var(--green);font-style:normal;opacity:.6;}
+.toggle{width:100%;padding:9px 26px;background:transparent;border:none;border-top:1px solid var(--bd);color:var(--tm);font-size:10px;font-family:'DM Sans',sans-serif;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;}
+.toggle:hover{color:var(--tx);background:var(--s2);}
+.toggle .arr{margin-left:auto;transition:transform .2s;font-size:12px;}
+.card.open .toggle .arr{transform:rotate(180deg);}
+.body{display:none;padding:0 26px 26px;border-top:1px solid var(--bd);}
+.card.open .body{display:block;}
+.slbl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin:22px 0 10px;}
+.rblock-day{background:rgba(144,144,255,.06);border-left:2px solid var(--blu3);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px;}
+.rblock-day .rblock-lbl{color:var(--blu3);}
+.rblock-money{background:var(--s2);border-left:2px solid var(--td);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px;}
+.rblock-money .rblock-lbl{color:var(--td);}
+.rblock-nature{background:rgba(0,230,118,.07);border-left:2px solid var(--green);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px;}
+.rblock-nature .rblock-lbl{color:var(--green);}
+.rblock-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.rtext{font-size:13px;color:var(--td);line-height:1.65;}
+.quote-full{background:var(--s2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:14px 18px;margin:8px 0;}
+.quote-full p{font-size:13.5px;color:var(--tx);line-height:1.7;font-style:italic;}
+.quote-full .qtag{display:block;font-style:normal;font-size:10.5px;color:var(--tm);margin-top:8px;letter-spacing:.5px;}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.tag{font-size:10px;padding:3px 9px;border-radius:3px;border:1px solid var(--bd2);color:var(--td);}
+.tag.res{border-color:rgba(0,230,118,.3);color:var(--green);background:rgba(0,230,118,.05);}
+.tag.bar{border-color:rgba(255,61,90,.3);color:var(--red);background:rgba(255,61,90,.05);}
+.tag.muted{border-color:var(--bd2);color:var(--tm);}
+
+/* Country summary */
+.summary{padding:60px 52px;border-top:1px solid var(--bd);}
+.sum-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:800;margin-bottom:6px;}
+.sum-sub{font-size:14px;color:var(--td);margin-bottom:30px;}
+.anchor-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bd);gap:1px;border-radius:10px;overflow:hidden;margin-bottom:30px;border:1px solid var(--bd);}
+.ab-c{background:var(--s1);padding:18px 14px;text-align:center;}
+.ab-name{font-family:'Syne',sans-serif;font-size:11.5px;font-weight:700;margin-bottom:8px;}
+.ab-val{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;line-height:1;}
+.ab-lbl{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+
+/* Final recommendation */
+.final{padding:80px 52px;border-top:1px solid var(--bd);background:linear-gradient(180deg,transparent,rgba(0,230,118,.03));}
+.fn-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:14px;}
+.fn-title{font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,42px);font-weight:800;line-height:1.15;margin-bottom:14px;}
+.fn-title em{color:var(--green);font-style:normal;}
+.fn-sub{font-size:15px;color:var(--td);max-width:800px;line-height:1.75;margin-bottom:40px;}
+.fn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:36px;}
+.fn-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:24px;}
+.fn-num{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--green);margin-bottom:10px;letter-spacing:1px;}
+.fn-h{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--tx);margin-bottom:10px;}
+.fn-t{font-size:13px;color:var(--td);line-height:1.65;}
+.fn-t strong{color:var(--tx);}
+.fn-ui{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:28px;margin-top:14px;}
+.fn-ui-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:16px 0;border-bottom:1px solid var(--bd);}
+.fn-ui-row:last-child{border-bottom:none;}
+.fn-ui-ctx{font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
+.fn-ui-val{font-size:13px;color:var(--td);line-height:1.6;}
+.fn-ui-val .before{color:var(--tm);text-decoration:line-through;display:block;margin-bottom:4px;}
+.fn-ui-val .after{color:var(--tx);font-weight:500;}
+.fn-ui-val .after em{color:var(--green);font-style:normal;}
+
+.footer{text-align:center;padding:36px;border-top:1px solid var(--bd);font-size:11px;color:var(--tm);letter-spacing:.5px;}
+
+@media(max-width:768px){
+  .hdr,.brief-bar,.filters,.sf-row,.count-line,.summary,.verdict,.heatmap-wrap,.findings-wrap,.final{padding-left:20px;padding-right:20px;}
+  .grid{grid-template-columns:1fr;}
+  .heatmap{grid-template-columns:1fr;}
+  .anchor-bar{grid-template-columns:repeat(2,1fr);}
+  .fn-ui-row{grid-template-columns:1fr;gap:6px;}
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-label">Skyro × Shuka · Deep Interview · Qualitative Simulation</div>
+  <h1>Money Has<br><em>a Season</em></h1>
+  <p class="hdr-sub">36 personas, 4 markets, one open conversation: what does your financial life consist of, and how does it show up in your daily routine? No question named nature, season, or weather until the very last one. It didn't need to be named — it showed up on its own, in 31 of 36 interviews.</p>
+  <div class="concept-pill"><strong>Interview topic</strong> · The composition of a financial life — income, obligations, savings, daily rhythm, planning horizon</div>
+  <div class="stats">
+    <div><div class="st-num g">31/36</div><div class="st-lbl">Nature-organized (86%)</div></div>
+    <div><div class="st-num">36</div><div class="st-lbl">Personas</div></div>
+    <div><div class="st-num">4</div><div class="st-lbl">Markets</div></div>
+    <div><div class="st-num">3</div><div class="st-lbl">Distinct anchor families</div></div>
+  </div>
+</div>
+
+<div class="brief-bar">
+  <div class="bb-item"><div class="bb-label">Opening frame (neutral)</div><div class="bb-value">"Walk me through what your financial life is made of, and where money shows up in an ordinary day." No mention of season, weather, or calendar.</div></div>
+  <div class="bb-item"><div class="bb-label">Closing question (asked last, unprompted before)</div><div class="bb-value"><em>"If your money had a season, what would it be?"</em> — the only question that names time of year, deliberately asked after everything else.</div></div>
+  <div class="bb-item"><div class="bb-label">Why this order matters</div><div class="bb-value">For 24 of the 31 nature-organized personas, a seasonal or natural anchor already surfaced in questions 1–4 — before the closing question ever ran. The finding isn't manufactured by the last question. It's confirmed by it.</div></div>
+  <div class="bb-item"><div class="bb-label">Methodology</div><div class="bb-value">Synthetic simulation across Skyro's 36-persona library (6 SA · 3 MY · 17 PH · 10 KE). Directional and qualitative — a triage tool, not a substitute for fieldwork. Philippines is nearly half the sample (17/36) — but its own nature-organized rate (82%) sits <em>below</em> the 86% overall, so the finding isn't a PH-driven artifact of an uneven sample.</div></div>
+</div>
+
+<div class="verdict">
+  <div class="v-label">— Verdict</div>
+  <div class="v-name"><em>Nature</em>, not the paycheck, runs the financial year</div>
+  <div class="v-vote">
+    <div class="v-vote-item"><strong>19 / 36</strong>Monsoon, rain & typhoon · 53%</div>
+    <div class="v-vote-item"><strong>7 / 36</strong>Harvest & planting cycle · 19%</div>
+    <div class="v-vote-item"><strong>5 / 36</strong>Lunar & religious calendar · 14%</div>
+    <div class="v-vote-item"><strong>5 / 36</strong>No spontaneous link · 14%</div>
+  </div>
+  <p class="v-rat">Across three continents and four markets that share no common weather, no common faith, and no common crop, <strong>31 of 36 personas organized their financial year around a natural cycle before they organized it around a payday.</strong> Saudi and Malaysian Muslims plan around Ramadan and Eid — a lunar calendar. Filipino personas, from a corporate manager to a rice farmer, plan around typhoon season and the rains. Kenyan personas, from a nurse to a shop owner who has never held a hoe, plan around the long rains and the harvest that follows them — because their customers, their students' parents, or their own family upcountry do. <strong>Across four markets with nothing else in common, nature is the one recurring actor in how money actually moves</strong> — not a metaphor to bolt onto Skyro's brand after the fact, but a pattern that already runs underneath it, independent of anything Skyro has said or shown. The job this finding hands off is carrying that actor deliberately into communication and visual design — whatever positioning or language eventually names it, this is the brief it will need to answer to. The 5 who didn't reach for nature share one thing in common: their financial lives are the most fully absorbed into man-made, artificial-time systems — banking amortization tables, government payroll dates, graveyard-shift BPO schedules — which makes their absence a finding in itself, not a gap in the data.</p>
+</div>
+
+<div class="heatmap-wrap">
+  <div class="hm-title">Where each natural calendar dominates</div>
+  <p class="hm-sub">Count of personas per market whose <em>primary</em> anchor falls in each family. Percentages are of that market's own sample size — not of the full 36, so small markets aren't drowned out by Philippines' 17.</p>
+  <div class="heatmap">
+    <div class="hm-hcell">Market</div>
+    <div class="hm-hcell" style="color:var(--sa)">Lunar / Religious</div>
+    <div class="hm-hcell" style="color:var(--green)">Harvest / Planting</div>
+    <div class="hm-hcell" style="color:var(--cyan)">Monsoon / Rain</div>
+    <div class="hm-hcell" style="color:var(--tm)">No link</div>
+
+    <div class="hm-mcell">🇸🇦 Saudi <span style="color:var(--tm);font-weight:400;font-size:10px;">n=6</span></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--sa)">4</div><div class="hm-pct">67%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">—</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--cyan)">1</div><div class="hm-pct">17%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">1</div><div class="hm-pct">17%</div></div>
+
+    <div class="hm-mcell">🇲🇾 Malaysia <span style="color:var(--tm);font-weight:400;font-size:10px;">n=3</span></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--sa)">1</div><div class="hm-pct">33%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">—</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--cyan)">2</div><div class="hm-pct">67%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">—</div></div>
+
+    <div class="hm-mcell">🇵🇭 Philippines <span style="color:var(--tm);font-weight:400;font-size:10px;">n=17</span></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">—</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--green)">1</div><div class="hm-pct">6%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--cyan)">13</div><div class="hm-pct">76%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">3</div><div class="hm-pct">18%</div></div>
+
+    <div class="hm-mcell">🇰🇪 Kenya <span style="color:var(--tm);font-weight:400;font-size:10px;">n=10</span></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">0</div><div class="hm-pct">—</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--green)">6</div><div class="hm-pct">60%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--cyan)">3</div><div class="hm-pct">30%</div></div>
+    <div class="hm-cell"><div class="hm-val" style="color:var(--tm)">1</div><div class="hm-pct">10%</div></div>
+  </div>
+</div>
+
+<div class="findings-wrap">
+  <h2 class="fw-title">Key findings</h2>
+  <div class="findings">
+    <div class="find-card"><div class="find-num">86%</div><div class="find-txt"><strong>31 of 36 personas named a natural or seasonal rhythm as the true organizing structure of their financial year</strong> — not the Gregorian month, not the salary date. Three unrelated natural calendars (lunar-religious, monsoon, harvest) each dominate a different market, but the underlying shape is identical everywhere.</div></div>
+    <div class="find-card"><div class="find-num">24</div><div class="find-txt">personas surfaced their natural anchor <strong>before the interview ever asked about time of year</strong> — in response to "what does your financial life consist of" or "describe an ordinary day". The closing season-question only confirmed what was already said, which is what makes the finding credible rather than led.</div></div>
+    <div class="find-card"><div class="find-num">3</div><div class="find-txt"><strong>One brand, three calendars.</strong> Saudi Arabia and Malaysia's Muslim personas run on the lunar Ramadan/Eid cycle. The Philippines runs on typhoon season. Kenya runs on the long and short rains. Skyro operates across all three without a single shared "financial season" of its own — a real gap between how the brand currently talks and how these markets actually live, and the clearest argument for building the next campaign calendar around nature instead of the Gregorian year.</div></div>
+    <div class="find-card"><div class="find-num">✦</div><div class="find-txt"><strong>Nature doesn't require a farm.</strong> David Kimani (Nairobi shop owner) and Faith Wambui (Nakuru electronics retail) have never planted anything — but their sales calendars mirror the harvest exactly, because their customers' wallets do. The natural anchor travels through the local economy, not just through soil.</div></div>
+    <div class="find-card"><div class="find-num">↔</div><div class="find-txt"><strong>The anchor survives migration — displaced, not deleted.</strong> Rajesh Kumar, an Indian driver in Riyadh, times remittances to his family's monsoon planting season in India — a natural calendar 3,000km away that still governs a Saudi-market persona's cash flow.</div></div>
+    <div class="find-card"><div class="find-num">⇄</div><div class="find-txt"><strong>Rain is a two-way lever, not a one-way loss.</strong> James Omondi (Kisumu boda boda) and Ronel-type PH drivers both report rain cutting road access but raising fares from people avoiding the walk — the same weather event taxes and pays the same person in the same afternoon.</div></div>
+    <div class="find-card"><div class="find-num">5</div><div class="find-txt"><strong>The exceptions prove the rule.</strong> The 5 personas with no spontaneous nature link — a KSA debt-consolidating banker, a PH government employee, a PH graveyard-shift call center agent, a PH corporate manager, a Nairobi office manager — are the 5 whose financial lives are most fully engineered around artificial, human-made time: amortization tables, fixed payroll dates, and a work shift that inverts day and night entirely.</div></div>
+    <div class="find-card"><div class="find-num">☾</div><div class="find-txt"><strong>The lunar calendar is a financial instrument, not just a religious one.</strong> Omar Al-Harbi's Zakat obligation runs on a lunar year (hawl), independent of the Gregorian tax year he also has to track. For Muslim-market personas, "natural calendar" and "religious calendar" are frequently the same calendar.</div></div>
+    <div class="find-card"><div class="find-num">↓</div><div class="find-txt"><strong>Every single "calendar mismatch" tag in this study points the same direction:</strong> reminders, due dates and repayment schedules are all built around the Gregorian month-end. Not one persona's natural rhythm runs on a 30-day cycle. That gap is the clearest, most actionable line from research to product.</div></div>
+  </div>
+</div>
+
+<div class="filters">
+  <button class="f-btn active" data-m="all"><div class="dot" style="background:var(--green)"></div> All markets</button>
+  <button class="f-btn" data-m="SA"><div class="dot"></div> 🇸🇦 Saudi Arabia <span style="margin-left:4px;opacity:.6">(6)</span></button>
+  <button class="f-btn" data-m="MY"><div class="dot"></div> 🇲🇾 Malaysia <span style="margin-left:4px;opacity:.6">(3)</span></button>
+  <button class="f-btn" data-m="PH"><div class="dot"></div> 🇵🇭 Philippines <span style="margin-left:4px;opacity:.6">(17)</span></button>
+  <button class="f-btn" data-m="KE"><div class="dot"></div> 🇰🇪 Kenya <span style="margin-left:4px;opacity:.6">(10)</span></button>
+</div>
+<div class="sf-row">
+  <button class="sf-btn active" data-s="all">All anchors</button>
+  <button class="sf-btn" data-s="A">☾ Lunar / Religious</button>
+  <button class="sf-btn" data-s="B">🌾 Harvest / Planting</button>
+  <button class="sf-btn" data-s="C">🌧 Monsoon / Rain</button>
+  <button class="sf-btn" data-s="F">— No spontaneous link</button>
+</div>
+<div class="count-line">Showing <span id="cnt">36</span> of 36 interviews</div>
+<div class="grid" id="grid"></div>
+
+<div class="summary country-summary" id="sum-SA" style="display:none;">
+  <h2 class="sum-title">🇸🇦 Saudi Arabia — Detailed findings</h2>
+  <p class="sum-sub">6 personas · Nature-organized: <strong style="color:var(--sa)">5/6 — 83%</strong></p>
+  <div class="anchor-bar">
+    <div class="ab-c"><div class="ab-name" style="color:var(--sa)">Lunar / Religious</div><div class="ab-val" style="color:var(--sa)">4</div><div class="ab-lbl">Ahmed · Fatima · Khalid · Omar</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--green)">Harvest / Planting</div><div class="ab-val" style="color:var(--tm)">0</div><div class="ab-lbl">—</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--cyan)">Monsoon / Rain</div><div class="ab-val" style="color:var(--cyan)">1</div><div class="ab-lbl">Rajesh (displaced)</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--tm)">No link</div><div class="ab-val" style="color:var(--tm)">1</div><div class="ab-lbl">Mohammed</div></div>
+  </div>
+  <div class="findings">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">KEY INSIGHT</div><div class="find-txt"><strong>Ramadan/Eid is the real fiscal year start in KSA</strong> — not January 1. Ahmed frames his whole year around it; Khalid's business revenue peaks around it exactly like Western retail peaks at Christmas, except the date moves every year on the Gregorian calendar Skyro's systems use.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">THE ZAKAT LAYER</div><div class="find-txt"><strong>Omar tracks a second, lunar financial year nobody's app tracks</strong> — his Zakat obligation runs on the hawl (lunar year), independent of any Gregorian tax or billing cycle. For the savings-minded segment, "natural calendar" and "religious calendar" are the same thing.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">THE DISPLACED CASE</div><div class="find-txt"><strong>Rajesh's natural anchor lives in India, not Riyadh.</strong> He times remittances to his family's monsoon planting season 3,000km away — proof the nature-anchor travels with a migrant worker rather than disappearing at the border.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">THE EXCEPTION</div><div class="find-txt"><strong>Mohammed is the most "banked" mindset in the study.</strong> A debt-consolidating banking specialist juggling three cards and an auto loan, his year is due-dates and interest rates — the closest thing KSA has to a control case for what crowds nature out.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--sa)">RECOMMENDATION</div><div class="find-txt"><strong>Anchor the SA comms calendar to "one month before Ramadan," not January.</strong> Add Zakat-cycle savings nudges for the Omar segment. Any seasonal campaign language must stay Shariah-safe and lunar-date-aware — a fixed Gregorian "spring sale" will misfire here every single year.</div></div>
+  </div>
+</div>
+
+<div class="summary country-summary" id="sum-MY" style="display:none;">
+  <h2 class="sum-title">🇲🇾 Malaysia — Detailed findings</h2>
+  <p class="sum-sub">3 personas · Nature-organized: <strong style="color:var(--my)">3/3 — 100%</strong></p>
+  <div class="anchor-bar">
+    <div class="ab-c"><div class="ab-name" style="color:var(--sa)">Lunar / Religious</div><div class="ab-val" style="color:var(--sa)">1</div><div class="ab-lbl">Wei Chen (CNY)</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--green)">Harvest / Planting</div><div class="ab-val" style="color:var(--tm)">0</div><div class="ab-lbl">—</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--cyan)">Monsoon / Rain</div><div class="ab-val" style="color:var(--cyan)">2</div><div class="ab-lbl">Ahmad · Siti</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--tm)">No link</div><div class="ab-val" style="color:var(--tm)">0</div><div class="ab-lbl">—</div></div>
+  </div>
+  <div class="findings">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">KEY INSIGHT</div><div class="find-txt"><strong>Clean sweep — 3 for 3.</strong> Malaysia's smallest sample produced the highest nature-organized rate in the study, and it's triangulated across three different natural calendars in one small market: Islamic lunar, monsoon, and Chinese lunar.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">TWO CALENDARS AT ONCE</div><div class="find-txt"><strong>Siti named it herself, unprompted:</strong> "our money runs on two calendars — my daughter's school year and the rainy season." Neither is optional, and they rarely move in sync.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">CNY AS FISCAL YEAR</div><div class="find-txt"><strong>Wei Chen's restaurant runs on Chinese New Year</strong> for revenue and ang pow/staff-bonus costs, stacked on top of a monsoon season that swings his seafood prices and foot traffic all year.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--my)">RECOMMENDATION</div><div class="find-txt"><strong>Malaysia is the proof-of-concept market for multi-calendar tone.</strong> Comms should hold Islamic lunar and Chinese lunar cycles side by side without picking one — the market itself doesn't pick one, and a single-calendar campaign will read as incomplete to two-thirds of this sample.</div></div>
+  </div>
+</div>
+
+<div class="summary country-summary" id="sum-PH" style="display:none;">
+  <h2 class="sum-title">🇵🇭 Philippines — Detailed findings</h2>
+  <p class="sum-sub">17 personas · Nature-organized: <strong style="color:var(--ph)">14/17 — 82%</strong></p>
+  <div class="anchor-bar">
+    <div class="ab-c"><div class="ab-name" style="color:var(--sa)">Lunar / Religious</div><div class="ab-val" style="color:var(--tm)">0</div><div class="ab-lbl">—</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--green)">Harvest / Planting</div><div class="ab-val" style="color:var(--green)">1</div><div class="ab-lbl">Danilo</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--cyan)">Monsoon / Rain</div><div class="ab-val" style="color:var(--cyan)">13</div><div class="ab-lbl">Every income tier</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--tm)">No link</div><div class="ab-val" style="color:var(--tm)">3</div><div class="ab-lbl">Corp Manager · Gov Employee · Call Center</div></div>
+  </div>
+  <div class="findings">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">KEY INSIGHT</div><div class="find-txt"><strong>Typhoon/monsoon dominates every income tier</strong> — from a corporate employee whose Christmas spending shifts with the cooler air, to a casual construction worker for whom rain is a same-day pay cut. One weather system, one financial calendar, top to bottom.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">THE HARVEST OUTLIER</div><div class="find-txt"><strong>Danilo is the only pure-harvest case</strong> — rice income lands twice a year, in full, with one typhoon capable of erasing an entire season. No monthly paycheck has ever existed in his financial life.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">THE THREE WHO DIDN'T</div><div class="find-txt"><strong>Corporate Manager, Government Employee and Call Center Agent</strong> share one trait: the most artificial, human-engineered schedules in the sample — KPI quarters, fixed civil-service paydays, and an inverted graveyard-shift clock that severs even day from night.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">THE PUSH-PULL</div><div class="find-txt"><strong>The Driver's rain relationship is two-way, not one-way</strong> — the same downpour that raises his fares also wrecks his motorbike. Nature isn't only a loss in this market; sometimes it's the best part of the week and the worst part of the month at once.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ph)">RECOMMENDATION</div><div class="find-txt"><strong>Anchor PH comms to typhoon season (Jun–Nov) and the "Ber months" (Sep–Dec) together</strong>, not to Christmas alone. Repayment-flexibility messaging matters most here, given how many personas describe a single storm or rained-out day as a direct, same-day income stop.</div></div>
+  </div>
+</div>
+
+<div class="summary country-summary" id="sum-KE" style="display:none;">
+  <h2 class="sum-title">🇰🇪 Kenya — Detailed findings</h2>
+  <p class="sum-sub">10 personas · Nature-organized: <strong style="color:var(--ke)">9/10 — 90%</strong></p>
+  <div class="anchor-bar">
+    <div class="ab-c"><div class="ab-name" style="color:var(--sa)">Lunar / Religious</div><div class="ab-val" style="color:var(--tm)">0</div><div class="ab-lbl">—</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--green)">Harvest / Planting</div><div class="ab-val" style="color:var(--green)">6</div><div class="ab-lbl">Kimani · Mwangi · Kamau · Akinyi · Otieno · Wambui</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--cyan)">Monsoon / Rain</div><div class="ab-val" style="color:var(--cyan)">3</div><div class="ab-lbl">Wanjiku · Omondi · Odhiambo</div></div>
+    <div class="ab-c"><div class="ab-name" style="color:var(--tm)">No link</div><div class="ab-val" style="color:var(--tm)">1</div><div class="ab-lbl">Alice</div></div>
+  </div>
+  <div class="findings">
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">KEY INSIGHT</div><div class="find-txt"><strong>Kenya has the highest nature-organized rate of the four markets, at 90%</strong> — and the harvest/rains cycle reaches deep into urban, non-farming lives through customers' and family's pockets, not just farmers' fields.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">NATURE WITHOUT A FARM</div><div class="find-txt"><strong>David Kimani (Nairobi duka) and Faith Wambui (Nakuru electronics)</strong> have never planted anything, yet both read the harvest off their own till — David through customers finally repaying credit, Faith through a predictable post-harvest phone-buying spike.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">THE JANUARY GAP</div><div class="find-txt"><strong>Peter Mwangi named a precise, structural mismatch:</strong> school fees are due at term-opening, exactly when the short-rains harvest hasn't monetized yet. "January disease" is two calendars — neither of them Skyro's — failing to line up.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">THE ONE EXCEPTION</div><div class="find-txt"><strong>Alice Njeri is the most de-natured financial life in the Kenyan sample</strong> — an urban office manager whose calendar is entirely her daughter's private-school terms and her own payslip, with nothing from the land in between.</div></div>
+    <div class="find-card"><div class="find-num" style="font-size:16px;margin-bottom:10px;color:var(--ke)">RECOMMENDATION</div><div class="find-txt"><strong>Kenya is the most concretely actionable market for a harvest-aligned repayment option</strong>, not just copy — speak explicitly to the long/short rains and to the January gap Peter describes, and consider seasonal-income flagging for customers like Kamau, Akinyi and Kimani.</div></div>
+  </div>
+</div>
+
+<div class="final">
+  <div class="fn-label">— Final recommendation</div>
+  <h2 class="fn-title">One actor, four markets:<br><em>nature runs the financial year.</em></h2>
+  <p class="fn-sub">This interview wasn't built to test a slogan — it was built to find out what actually organizes a financial life. The answer was the same across four markets that share no language, no religion and no crop: nature. That's the finding this research can responsibly claim. What Skyro names it, and when, is a separate and later decision — but whichever positioning or tagline eventually carries it, the brief is already written by these 31 conversations. Nature has to travel into <strong>how Skyro talks</strong> — dates, reminders, campaign timing — and into <strong>how Skyro looks</strong>, not as decoration but as the organizing logic. The four steps below are where the language layer can start now; visual identity is the next, separate study this research should hand off to.</p>
+  <div class="fn-grid">
+    <div class="fn-card"><div class="fn-num">01 · What changes</div><div class="fn-h">Dates get a second name</div><div class="fn-t">Every customer-facing date pairs the Gregorian date with its local natural marker where one exists — "before Ramadan", "start of the long rains", "after harvest" — the way Ahmed already describes his own year.</div></div>
+    <div class="fn-card"><div class="fn-num">02 · Where first</div><div class="fn-h">Repayment language, before campaigns</div><div class="fn-t">Start with the copy customers see when money is tight, not the copy that sells them — reminders, grace-period offers, restructuring language. That's where a mismatched calendar does the most damage to trust.</div></div>
+    <div class="fn-card"><div class="fn-num">03 · What not to do</div><div class="fn-h">No generic "seasons"</div><div class="fn-t">A single global "autumn sale" banner would prove the opposite of this finding. Ramadan copy for SA/MY, typhoon/harvest copy for PH, long-rains copy for KE — market-specific or don't run it at all.</div></div>
+    <div class="fn-card"><div class="fn-num">04 · How to verify</div><div class="fn-h">Re-test the copy, not the concept</div><div class="fn-t">Run the revised microcopy past this same panel next cycle. Success looks like the "calendar mismatch" tags disappearing from the transcripts — not a new survey score.</div></div>
+    <div class="fn-card"><div class="fn-num">05 · Next, not now</div><div class="fn-h">Visual identity is the parallel track</div><div class="fn-t">This study tested lived experience and language, not imagery — it can name nature as the actor, but not yet the colour, motion or iconography that should carry it. That's a follow-on concept test against this same panel, not an assumption this report can make for it.</div></div>
+  </div>
+  <div class="fn-ui">
+    <div class="slbl" style="margin-top:0;margin-bottom:6px;color:var(--green);">Tone matrix — where the natural calendar shows up</div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Onboarding copy</div>
+      <div class="fn-ui-val"><span class="before">"Your limit resets on the 1st of every month."</span><span class="after">"Your limit resets every month — <em>and we'll flag Ramadan and harvest season for you, so it never catches you off guard.</em>"</span></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Payment reminder</div>
+      <div class="fn-ui-val"><span class="before">"Payment due in 3 days."</span><span class="after">"Payment due in 3 days — <em>before Eid</em> / <em>before the rains close the roads</em> / <em>right after harvest lands.</em>" (market-specific)</span></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Repayment scheduling</div>
+      <div class="fn-ui-val"><span class="before">Fixed 30-day installments, no exceptions.</span><span class="after">Optional harvest-aligned or Ramadan-aware installment plans for flagged seasonal-income segments — <em>David, Kamau and Danilo's segment, specifically.</em></span></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Marketing calendar</div>
+      <div class="fn-ui-val"><span class="before">One global campaign calendar, translated four ways.</span><span class="after">Four campaign calendars, anchored to Eid, the "Ber months", and the long/short rains — <em>translation happens inside the calendar, not just the copy.</em></span></div>
+    </div>
+    <div class="fn-ui-row">
+      <div class="fn-ui-ctx">Customer support scripts</div>
+      <div class="fn-ui-val"><span class="before">"I see your account is past due."</span><span class="after">"I see the harvest hasn't landed yet — <em>let's look at what fits your calendar,</em>" for flagged seasonal-income customers.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Skyro × Shuka · Deep Interview Simulation · 36 Personas × 4 Markets · Financial Life & Daily Routine · 2026 · Internal Research Tool by Shuka Brand Bureau</div>
+
+<script>
+const MGRAD={SA:'linear-gradient(135deg,#d4aa47,#a07820)',MY:'linear-gradient(135deg,#3dffa0,#0d9b57)',PH:'linear-gradient(135deg,#ff6b6b,#c0392b)',KE:'linear-gradient(135deg,#a855f7,#7c3aed)'};
+const ANAME={A:'☾ Lunar / Religious',B:'🌾 Harvest / Planting',C:'🌧 Monsoon / Rain',F:'— No spontaneous link'};
+
+const DATA = [
+{id:1,market:'SA',seg:'high',income:'SAR 8,000/mo',name:'Ahmed Al-Mansour',role:'Middle Manager · 29 · KSA Citizen',rhythm:'Salary + Ramadan/Eid spend cycle',anchor:'A',
+  tagsAnchor:['Ramadan pre-season saving','Eid gifting (eidiya)','Lunar fiscal year'],tagsMismatch:['App resets on Jan 1, not before Ramadan'],
+  preview:"My year doesn't start in January. It starts a month before Ramadan.",
+  day:"His day splits around the five prayers more than around office hours — money decisions cluster right after Maghrib, when the family group chat starts planning the evening's shopping.",
+  money:"Salary, a car payment, and a wedding fund he's building — but the real financial planning starts a month before Ramadan, when grocery, gifting and hosting costs all spike at once.",
+  nature:"Ahmed doesn't describe a fiscal year that starts in January. He describes one that starts when the moon signals Ramadan is close — Eid gifts to nieces and nephews, new clothes, hosting iftar. The lunar calendar isn't a cultural detail for him. It's his actual budget cycle.",
+  quotes:["My year doesn't start in January. It starts a month before Ramadan."]},
+{id:2,market:'SA',seg:'mid',income:'SAR 6,500/mo',name:'Fatima Al-Zahrani',role:'Teacher · 26 · KSA Citizen',rhythm:'Teacher salary + Ramadan/school-year overlap',anchor:'A',
+  tagsAnchor:['Ramadan grocery spike','Summer heat / utility costs','School-year costs'],tagsMismatch:["Reminders don't flag the Ramadan grocery spike"],
+  preview:"By the time the electricity bill catches up with the heat, Ramadan has already emptied the fridge twice.",
+  day:"Her spending day is bookended by fajr and maghrib — she checks the banking app before dawn, and the real grocery run happens after sunset once the family breaks the fast.",
+  money:"Teacher salary, her son's school costs, and a home she's furnishing in installments — but two costs collide every year: summer heat pushes the electricity bill up right as Ramadan pushes the grocery bill up, in the same stretch of months.",
+  nature:"Fatima brought up Ramadan before any question about seasons — it came up when asked what a hard month looks like. Heat and the lunar calendar squeeze her from two directions at once, and neither shows up on the bank's calendar the way it shows up on hers.",
+  quotes:["The month the electricity bill doubles is the same month Ramadan empties the fridge twice a day. The bank doesn't know that. I do."]},
+{id:3,market:'SA',seg:'high',income:'SAR 12,000/mo',name:'Mohammed Al-Qahtani',role:'Banking Specialist · 34 · KSA Citizen',rhythm:'Debt & repayment amortization calendar',anchor:'F',
+  tagsAnchor:['No spontaneous nature link'],tagsMismatch:["Nothing to mismatch — his calendar already is the bank's"],
+  preview:"Ask me about my year and I'll show you three statement due dates, not a season.",
+  day:"His day is due-date triage — three credit cards and one auto loan, each on a different billing cycle, checked every morning before anything else.",
+  money:"Salary against three cards and a car loan — his financial life is entirely a stack of interest rates and payment dates he's trying to consolidate into one line.",
+  nature:"Unprompted, Mohammed never reached for a season. Asked directly what time of year is hardest, he answered with a due-date, not a month. Of everyone interviewed, he's spent the most years inside the banking system's own abstractions — which may be exactly why nature never came up.",
+  quotes:["Ask me what's hard and I'll tell you the 5th, the 12th and the 20th — that's when the cards come due. I don't think about the year. I think about the cycle."]},
+{id:4,market:'SA',seg:'low',income:'SAR 3,000/mo',name:'Rajesh Kumar',role:'Driver/Courier · 32 · Indian Expat',rhythm:'Wages + cross-border remittance',anchor:'C',
+  tagsAnchor:["India's monsoon (via remittance)",'Riyadh summer heat costs','Displaced natural calendar'],tagsMismatch:["Remittance reminders ignore India's planting season"],
+  preview:"My money lives here. My year still lives there.",
+  day:"Riyadh's heat sets his day — he starts deliveries before sunrise to avoid the worst of it, since a breakdown at midday costs him both the repair and the shift.",
+  money:"Wages here, remittances to Uttar Pradesh — the two don't run on the same clock. He sends more before his family's planting season and again around their harvest festival, regardless of what's happening in Riyadh.",
+  nature:"Rajesh doesn't farm. His family does, three thousand kilometers away, and his remittance calendar still bends to their monsoon — seed money before planting, extra after harvest. The natural anchor didn't disappear when he migrated. It moved with him, invisibly, inside a wire transfer.",
+  quotes:["Here, it's just hot or less hot. But I know exactly when the rains start at home, because that's when my brother needs the money for seeds."]},
+{id:5,market:'SA',seg:'high',income:'SAR 15–25k/mo',name:'Khalid Al-Rashid',role:'Digital Entrepreneur · 32 · SME Owner',rhythm:'SME revenue (Eid-driven)',anchor:'A',
+  tagsAnchor:['Eid retail spike','Lunar business fiscal year'],tagsMismatch:['Business loan terms assume flat monthly revenue'],
+  preview:"Eid is my Black Friday. Everything else is just keeping the lights on until then.",
+  day:"His day is dashboard-watching — order volume, ad spend, cash position — but the dashboard he actually trusts is the countdown to Eid, not the countdown to month-end.",
+  money:"Business cash flow that lives and dies by one stretch of weeks — Eid retail demand is the single biggest revenue event of his year, bigger than any single month outside it.",
+  nature:"Khalid's business has a fiscal year, and it isn't the Gregorian one. It starts ramping the moment Ramadan is announced and peaks at Eid. Financing built around flat monthly revenue assumptions doesn't match a business whose real season is lunar.",
+  quotes:["Every serious merchant here plans around Eid the way Western retail plans around Christmas. Except our date moves every year, and the banks still act like it doesn't."]},
+{id:6,market:'SA',seg:'high',income:'SAR 12,000/mo',name:'Omar Al-Harbi',role:'IT Specialist · 28 · Savings-focused',rhythm:'Salary + halal investment/Zakat cycle',anchor:'A',
+  tagsAnchor:['Zakat lunar year (hawl)','Halal investment timing'],tagsMismatch:['No Zakat-cycle reminder or savings nudge'],
+  preview:"My money has two closing dates a year — the tax year everyone talks about, and my own, which nobody's app tracks.",
+  day:"His day is spreadsheet-quiet — small automatic transfers into savings, checked once in the evening, no drama until his own private closing date approaches.",
+  money:"Salary split between rent, halal-fund investing, and a house deposit — but running underneath all of it is Zakat, the obligatory giving he has to calculate once his savings complete a full lunar year.",
+  nature:"Omar is the most numbers-driven, least visibly cultural persona in the Saudi set — and he's the one who introduced a second, non-Gregorian calendar without being asked. Zakat's lunar year is a real financial deadline for him, tracked separately from any bank statement.",
+  quotes:["Nobody's banking app asks when my Zakat year closes. I track it myself, on paper, because it's older than any of their reminders."]},
+
+{id:7,market:'MY',seg:'high',income:'MYR 6,000/mo',name:'Ahmad Ibrahim',role:'IT Specialist · 32 · Planning a family',rhythm:'Salary + monsoon risk planning',anchor:'C',
+  tagsAnchor:['Monsoon flood season (Nov–Mar)','Ramadan spend'],tagsMismatch:['No flood-season repayment flexibility'],
+  preview:"November is when I stop buying anything I can't carry up a flight of stairs.",
+  day:"During monsoon months his commute planning IS his financial planning — a flooded route means a late clock-in, and a late clock-in at his company means a real deduction.",
+  money:"Salary, BNPL purchases on Lazada/Shopee, and savings toward a first home — but big purchases quietly pause every November, because flood season makes anything expensive feel like a bad bet until March.",
+  nature:"Ahmad brought up flooding before he brought up Ramadan, in answer to a plain question about hard months. Monsoon season in KL isn't background weather to him — it's a recurring, dated item on his financial calendar, with a start and end month he can name.",
+  quotes:["From November to March I just wait. Not because I don't have the money — because I don't know if the shop, or the road to it, will still be there next week.","Musim tengkujuh ni, kita kena berjaga-jaga — during monsoon season, we all have to be careful."]},
+{id:8,market:'MY',seg:'mid',income:'MYR 4,500/mo',name:'Siti Nurhaliza',role:'Teacher · 28 · Married, 1 child',rhythm:'Teacher salary + dual calendar (school + monsoon)',anchor:'C',
+  tagsAnchor:['Rainy season','School-year costs','Dual calendar'],tagsMismatch:["Bills don't distinguish dry vs rainy-season months"],
+  preview:"Our money runs on two calendars: my daughter's school year and the rainy season. The season doesn't ask if I'm ready.",
+  day:"Her evenings are the real budget meeting — she and her husband go through the week's spending after their daughter is asleep, and the conversation changes completely once the rains start.",
+  money:"Teacher salary against school fees, uniforms, and household costs — but the rainy season adds its own line items, from transport delays to the odd flooded-out school day that costs her unpaid leave.",
+  nature:"Siti named it herself, unprompted, before any question about seasons: her financial life is governed by two calendars that don't ask permission — the school year, and the rain.",
+  quotes:["Our money runs on two calendars: my daughter's school year and the rainy season. The season doesn't ask if I'm ready."]},
+{id:9,market:'MY',seg:'high',income:'MYR 8,000/mo',name:'Wei Chen',role:'Restaurant Owner · 35 · Chinese Malaysian SME',rhythm:'SME revenue (CNY-driven)',anchor:'A',
+  tagsAnchor:['Chinese New Year fiscal peak','Monsoon supply/foot-traffic swings'],tagsMismatch:['Business credit assumes even monthly cash flow'],
+  preview:"Chinese New Year pays for the rest of my year. The monsoon decides how much the rest of my year costs.",
+  day:"His morning starts with two numbers before anything else — that day's seafood price and yesterday's covers — because both move with the weather more than with the day of the week.",
+  money:"Restaurant cash flow that's sharply lunar — Chinese New Year is his single biggest revenue and cost event, with ang pow, stock-up, and staff bonuses all timed to it — layered under a monsoon season that swings seafood prices and foot traffic all year.",
+  nature:"Wei Chen runs on two natural calendars stacked on top of each other: the Chinese lunar year for revenue, and the monsoon for cost. Neither is the Gregorian financial year his business loan is structured around.",
+  quotes:["Ask any restaurant owner here — CNY is when we make the year's money. The rain decides what it costs us to keep making it the other eleven months."]},
+
+{id:10,market:'PH',seg:'high',income:'₱84–150k/mo',name:'Corporate Manager',role:'Middle Management · 30–45',rhythm:'Corporate salary + bonus/KPI cycle',anchor:'F',
+  tagsAnchor:['No spontaneous nature link'],tagsMismatch:['Nothing to mismatch — already runs on a corporate calendar'],
+  preview:"My year has four quarters and one bonus. I couldn't tell you what season we're in without checking a weather app.",
+  day:"His day is meetings and dashboards — spending decisions get made against quarterly targets and a year-end bonus projection, not against anything happening outside the office.",
+  money:"Salary plus a performance bonus tracked against KPIs — big purchases like electronics or a car upgrade get timed to bonus payout, full stop.",
+  nature:"Of everyone in the Philippine sample, he's closest to a pure salaried-professional mindset — his financial year is entirely corporate, and even asked directly about hard months, he named a slow sales quarter, not a season.",
+  quotes:["Ber months are for shopping, not for planning. My planning happens every quarter, regardless of what's happening outside."]},
+{id:11,market:'PH',seg:'high',income:'₱100–241k/mo',name:'Medium Business Owner',role:'Entrepreneur · 35–50',rhythm:'Business cash flow (typhoon-exposed)',anchor:'C',
+  tagsAnchor:['Typhoon supply-chain risk','Ber-months demand spike'],tagsMismatch:["Business loan terms don't flex around typhoon disruption"],
+  preview:"One typhoon can undo three good months of cash flow in a single week.",
+  day:"Every morning during typhoon season starts with a weather check before a sales check — a coming storm changes today's restocking decision more than yesterday's numbers do.",
+  money:"Business cash flow that's naturally lumpy — the Ber-months retail surge is his best stretch of the year, but typhoon season, which overlaps it, can wipe out a shipment or a week of foot traffic without warning.",
+  nature:"He described his best and worst months in the same breath, because they're often the same months — the run-up to Christmas is also the tail of typhoon season, and one storm can cancel what three good weeks built.",
+  quotes:["We plan for Christmas demand and typhoon disruption in the same spreadsheet, because they land in the same three months."]},
+{id:12,market:'PH',seg:'mid',income:'₱48–70k/mo',name:'Content Creator',role:'Social/Lifestyle · 22–35',rhythm:'Brand-deal income (seasonal advertiser calendar)',anchor:'C',
+  tagsAnchor:['Amihan (dry season) = peak shoot income','Weather-cancelled shoots'],tagsMismatch:['Income tools assume steady monthly freelance pay'],
+  preview:"Brands book their campaigns around amihan, not around my invoice schedule — so I do too.",
+  day:"A rained-out shoot day is a lost-income day, full stop — no shoot means no content means no invoice, so the weather app gets checked before the camera bag is packed.",
+  money:"Brand-deal and ad-revenue income that's naturally irregular between projects — but the biggest deals cluster in the cooler, drier amihan months, when travel and outdoor content is easiest to shoot and sell.",
+  nature:"She didn't describe farming or fishing, but her income calendar still tracks a season — amihan is when brands want outdoor, travel-adjacent content, so it's also when her bookings and her income both peak.",
+  quotes:["Nobody asks me about the weather when they book a campaign, but the good bookings only come in the dry months. I've stopped pretending that's a coincidence."]},
+{id:13,market:'PH',seg:'mid',income:'₱48–84k/mo',name:'Corporate Employee',role:'Office Worker · 25–40',rhythm:'Salary + 13th-month/Ber-months spend',anchor:'C',
+  tagsAnchor:['Ber-months spend shift','Provincial harvest-season family trips'],tagsMismatch:["Savings app doesn't flag the Ber-months spend spike"],
+  preview:"The day it starts feeling like Christmas in Manila is the day my budget stops behaving.",
+  day:"Payday Fridays are sacred in the office chat all year, but from September the same payday triggers a completely different spending pattern — gift lists instead of grocery lists.",
+  money:"Predictable salary and 13th-month pay — but from the «Ber months» on, the cooler evenings and Christmas lights change what that same salary goes toward, well before actual holiday spending starts.",
+  nature:"He connects the «Ber months» explicitly to the weather turning cooler, not just the calendar turning to September — for him the shift in air temperature is what cues the shift in spending, even though his salary date never moves.",
+  quotes:["The moment the evenings cool down, everyone at the office starts talking gift budgets. Same paycheck, completely different math."]},
+{id:14,market:'PH',seg:'mid',income:'₱30–60k/mo',name:'Freelancer',role:'Project-based Digital Worker · 25–40',rhythm:'Project income (weather-disrupted)',anchor:'C',
+  tagsAnchor:['Rainy-season power/internet outages','Client fiscal seasons'],tagsMismatch:['No allowance for weather-caused missed deadlines'],
+  preview:"A brownout during rainy season doesn't just cost me the afternoon. It costs me the invoice.",
+  day:"His workday and his income are both hostage to the socket in the wall — a rainy-season brownout mid-deadline is lost billable hours with no employer to absorb it.",
+  money:"Project-based income, already irregular between contracts — rainy season adds a second layer of irregularity, since outages and connectivity drops directly cut into billable time.",
+  nature:"Unprompted, he brought up brownouts before he brought up any single client — for a freelancer, the rain doesn't just wet the street, it can wipe an entire day of income with no fallback.",
+  quotes:["Employees get paid whether or not the power goes out. I don't. Rainy season is a pay cut I never agreed to."]},
+{id:15,market:'PH',seg:'mid',income:'₱25–45k/mo',name:'Teacher (PH)',role:'Teacher · 28–50',rhythm:'Teacher salary + school-year/rain overlap',anchor:'C',
+  tagsAnchor:['School year starts with the rains','Enrollment-cost spike'],tagsMismatch:['Back-to-school and rain-damage costs never separated'],
+  preview:"The school year and the rain start in the same week. So does my hardest month.",
+  day:"Her commute during June's opening weeks is a daily bet against flooding, timed around whether it's safer to leave before or after the afternoon downpour.",
+  money:"Stable teacher salary against school-year costs for her own kids and supplies for her classroom — the two collide precisely in June, when enrollment fees are due and the rains have just started.",
+  nature:"She named the coincidence herself: the Philippine school year opens exactly as the rainy season starts, so her single most expensive month is also her most weather-disrupted one, every single year.",
+  quotes:["Enrollment week and the first big rains always land together. I don't think that's an accident anymore — I think that's just when the year turns for us."]},
+{id:16,market:'PH',seg:'mid',income:'₱40–65k/mo',name:'Nurse / OFW Healthcare',role:'Healthcare Worker · 25–45',rhythm:'Healthcare wages + rainy-season costs',anchor:'C',
+  tagsAnchor:['Dengue/flu season family costs','Typhoon-timed remittance (if OFW)'],tagsMismatch:['Medical-cost loans ignore seasonal illness spikes'],
+  preview:"Rainy season doesn't just fill my shifts at the hospital. It empties my own wallet at home.",
+  day:"Her shift load and her home budget move together during the wet months — more dengue and flu admissions at work means more out-of-pocket medicine for her own family at the same time.",
+  money:"Healthcare wages, plus remittance obligations if working abroad — but rainy-season illness spikes hit her twice, once as overtime at the hospital and once as medical spending at home.",
+  nature:"She sees the rain arrive twice — once on the admissions board at work, once in her own household's medicine budget a week or two later. The lag between the two is short enough that she's stopped being surprised by it.",
+  quotes:["When the rains start, I know two things for certain: more patients, and a bigger pharmacy bill at home. It happens every single year."]},
+{id:17,market:'PH',seg:'low',income:'₱18–32k/mo',name:'Call Center Agent',role:'BPO Agent · 22–30',rhythm:'Graveyard-shift BPO payroll',anchor:'F',
+  tagsAnchor:['No spontaneous nature link'],tagsMismatch:["Financial app assumes a daylight life he doesn't have"],
+  preview:"I sleep when the sun's up. Half the time I couldn't tell you what season it is without checking my phone.",
+  day:"His day is inverted entirely — shift bids and queue metrics structure his hours, and he's often asleep through the only daylight his body gets to see.",
+  money:"Predictable bi-monthly BPO pay, mostly going to family support and gadgets — his money moves on a payroll clock, not a daylight one.",
+  nature:"Of the whole Philippine sample, he's the clearest case of nature being crowded out by an artificial schedule — graveyard shifts serving US time zones have detached his day, and by extension his spending rhythm, from the sun as much as from any season.",
+  quotes:["Ask me if it's rainy season and I'd have to check outside. I live on Eastern Time. My body doesn't really know what month it is here."]},
+{id:18,market:'PH',seg:'low',income:'₱20–40k/mo',name:'Government Employee',role:'Civil Servant · 30–50',rhythm:'Government payroll (15th/30th)',anchor:'F',
+  tagsAnchor:['No spontaneous nature link'],tagsMismatch:['Nothing to mismatch — this predictability is the whole point for her'],
+  preview:"I chose this job for the 15th and the 30th. I don't want my finances depending on anything less certain than that.",
+  day:"Her day is administrative and unhurried — the predictability of government payroll is precisely the point, and spending is structured in a fixed, almost ritual way around the two fixed paydays.",
+  money:"Stable government salary, cautious borrowing, and a strong preference for products with fixed, predictable schedules over anything flexible or seasonal.",
+  nature:"She's cautious by identity, and that caution is explicitly about avoiding anything unpredictable — including, in her own words, «anything that depends on weather or luck». Her financial posture is a deliberate opt-out of the seasonal volatility other personas describe.",
+  quotes:["I picked government work because the 15th and the 30th never move, rain or shine. I don't want my money depending on anything the weather can touch."]},
+{id:19,market:'PH',seg:'low',income:'₱15–35k/mo',name:'Micro-Entrepreneur (Sari-Sari)',role:'Home-based Retailer · 35–55',rhythm:'Sari-sari daily cash flow (typhoon-exposed inventory)',anchor:'C',
+  tagsAnchor:['Pre-typhoon stocking (candles, canned goods)','Harvest-linked customer spending'],tagsMismatch:["Inventory loans don't flex for storm-season stock-up"],
+  preview:"Two weeks before a typhoon, my shelves change completely. Canned goods and candles push everything else out.",
+  day:"Her whole day is restocking math done in small cash amounts — and the mix of what she restocks changes the moment a storm signal is announced on the radio.",
+  money:"Small, frequent nano-loans to keep stock flowing — the biggest single swing in her year is pre-typhoon buying, which is also the riskiest, since a bad storm can damage the stock she just bought.",
+  nature:"She reads storm warnings the way other people read sales forecasts — a typhoon isn't background news to her, it's a direct instruction on what to buy for the store in the next 48 hours.",
+  quotes:["The moment they announce a signal number, I know exactly what to stock. Rice, candles, canned goods. The barangay buys the same way every single time."]},
+{id:20,market:'PH',seg:'low',income:'₱15–30k/mo',name:'Driver',role:'Transport/Delivery · 25–50',rhythm:'Daily fares (rain-linked surge & repair)',anchor:'C',
+  tagsAnchor:['Rain-driven fare surge','Flood damage to vehicle'],tagsMismatch:["Repair-loan terms don't anticipate rainy-season vehicle damage"],
+  preview:"Rain gives me my best fares and my worst repair bills, sometimes in the same week.",
+  day:"His daily income literally rises and falls with the sky — a downpour means more app bookings from people avoiding the walk, but it also means worse roads eating at his motorbike.",
+  money:"Daily fares, no fixed salary — rainy season is simultaneously his highest-earning season, because demand surges, and his highest-cost season, because flooding and potholes wreck his vehicle faster.",
+  nature:"He described the rain as both his best friend and his biggest expense in the same breath, unprompted — a single weather event taxes and pays him in the same afternoon.",
+  quotes:["When it rains hard, bookings go up right away — everyone wants a ride instead of getting wet. But the same rain is what breaks my bike a month later."]},
+{id:21,market:'PH',seg:'low',income:'Family budget',name:'Housewife',role:'Household Financial Manager · 30–50',rhythm:'Household budget (wet/dry season swings)',anchor:'C',
+  tagsAnchor:['Wet/dry season price swings','Fiesta/harvest family obligations'],tagsMismatch:['No seasonal grocery-budget flexibility built into loans'],
+  preview:"Vegetables cost differently in June than in December. Everyone budgets like they don't.",
+  day:"Her day is the market run — and she reads produce prices the way a trader reads a ticker, because the same basket costs meaningfully more in wet months.",
+  money:"She manages the entire household budget — food, utilities, her children's needs — and the biggest swing factor isn't a single bill, it's how the wet and dry seasons move grocery prices all year.",
+  nature:"She's the family's de facto financial manager, and her mental model of expensive months is built almost entirely around the wet season's effect on food prices, not around any bill's due date.",
+  quotes:["Everyone talks about the 13th month pay like it's the only thing that matters. Nobody talks about how much more the same vegetables cost in July.","Mahal na mahal ang gulay pag tag-ulan — vegetables get so expensive during the rainy season."]},
+{id:22,market:'PH',seg:'low',income:'₱20–50k/mo',name:'OFW / Domestic Helper',role:'Overseas/Local Worker · 25–50',rhythm:'Remittance income (typhoon & planting cycles)',anchor:'C',
+  tagsAnchor:['Pre-typhoon repair-fund remittance','Pre-planting seed-capital remittance'],tagsMismatch:["Remittance product doesn't flag home-country storm season"],
+  preview:"I don't live there anymore, but my money still follows their weather, not mine.",
+  day:"Her workday abroad is fixed and foreign, but every evening call home resets her sense of what her money needs to do next — set by conditions in the province, not the city she's standing in.",
+  money:"A steady wage abroad, almost entirely routed home — but the size and timing of what she sends spikes twice a year, once before typhoon season for repairs, once before planting season for seed money.",
+  nature:"She's physically removed from the weather that drives her spending — her own days are unaffected by rain or storm — but her remittance calendar is entirely shaped by a natural cycle happening somewhere she isn't.",
+  quotes:["I haven't seen a real typhoon in years. But I know exactly when one's coming for my family, because that's when they call and I know what the money is for."]},
+{id:23,market:'PH',seg:'low',income:'₱12–25k/mo',name:'Security/Service Worker',role:'Guard/Service Staff',rhythm:'Hourly wage (rain-linked attendance)',anchor:'C',
+  tagsAnchor:['Flooding-driven missed shifts (docked pay)'],tagsMismatch:['No paid allowance for weather-related absence'],
+  preview:"If the water's too high to get to the gate, I lose the shift and the pay, same day.",
+  day:"His commute is the financial risk of his day — a flooded route home to check on family, or a flooded route to work, both cost him money either way.",
+  money:"Hourly, shift-based pay with no cushion — the single biggest threat to a stable month isn't a big expense, it's a missed shift, and flooding is the most common reason he misses one.",
+  nature:"His link to nature is thinner than most, but real and direct: heavy rain doesn't cost him more money, it costs him the ability to earn any that day at all.",
+  quotes:["No rain, no problem. Heavy rain, and I might not even make it to clock in — and then that whole day is just gone."]},
+{id:24,market:'PH',seg:'low',income:'₱15–30k/mo',name:'HORECA Staff',role:'Hotel/Restaurant Staff',rhythm:'Tourism-season wages',anchor:'C',
+  tagsAnchor:['Dry-season tourist peak','Wet-season hours cut'],tagsMismatch:["Wages don't smooth the dry/wet tourism swing"],
+  preview:"Dry season, I can't get enough shifts covered. Wet season, I can't get enough shifts, period.",
+  day:"His schedule literally is the tourist calendar — more shifts and better tips land in the dry months, and hours quietly shrink once the wet season keeps visitors away.",
+  money:"Base wage plus tips that swing hard with tourist volume — dry season is when he can actually save something; wet season is stretching the same wage further.",
+  nature:"He ties his income directly to which season it is, because tourists do — the dry, cooler months bring the visitors who tip, and the wet months take them away along with the extra hours.",
+  quotes:["Amihan season, I pick up every shift I can and the tips are good. Habagat season, there's barely enough shifts to go around."]},
+{id:25,market:'PH',seg:'low',income:'₱15–35k/mo',name:'Factory/Construction Worker',role:'Physical Labor · 25–45',rhythm:'Day-rate wages (rain-stopped)',anchor:'C',
+  tagsAnchor:['Rain halts outdoor work entirely'],tagsMismatch:['No rain-day income protection'],
+  preview:"No work in the rain means no pay in the rain. It's that direct.",
+  day:"His morning starts with a look at the sky before a look at the site — heavy rain means the crew is sent home, and being sent home means the day earns nothing.",
+  money:"Day-rate wages with zero cushion — his income calendar is, in effect, a weather forecast, since a rained-out day is simply an unpaid one.",
+  nature:"Of everyone interviewed, his relationship to weather is the most mechanically direct: no metaphor, no delay — rain falls, work stops, pay stops, in that order, same day.",
+  quotes:["Rain isn't inconvenient for me. Rain is a pay cut. If it rains hard enough, I made nothing today."]},
+{id:26,market:'PH',seg:'low',income:'₱12–25k/mo',name:'Danilo',role:'Farmer/Fisherman · 47 · Nueva Ecija',rhythm:'Harvest income (2x/year)',anchor:'B',
+  tagsAnchor:['Rice harvest (2x/year)','Typhoon risk to entire season'],tagsMismatch:['Loan terms assume a monthly income he has never had'],
+  preview:"Money comes twice a year — with the harvest. One typhoon can take the whole season.",
+  day:"His day starts and ends with the field and the sky — everything from what he eats to what he can promise to pay depends on the same two things.",
+  money:"No monthly paycheck, ever — his entire year's income lands twice, at each rice harvest, and everything in between is spent managing what's left of the last one.",
+  nature:"Danilo doesn't describe a seasonal factor in his finances. He describes finances that only exist because of a season — twice a year, in full, with nothing evening it out in between, and one bad typhoon capable of erasing the whole thing.",
+  quotes:["Money comes twice a year — with the harvest. One typhoon can take the whole season.","Pag may ani, may pera. Pag wala, wala — when there's harvest, there's money. When there isn't, there isn't."]},
+
+{id:27,market:'KE',seg:'mid',income:'KES 40,000/mo',name:'David Kimani',role:'Duka Owner · 31 · Nairobi',rhythm:'Duka cash flow (harvest-linked demand)',anchor:'B',
+  tagsAnchor:["Customer purchasing power tracks harvest",'Staple food price swings with rains'],tagsMismatch:["Business loan doesn't flex around the county harvest calendar"],
+  preview:"I've never planted anything in my life. My shop still runs on the harvest — just somebody else's.",
+  day:"His stock-restocking decisions are really a read of his customers' pockets — and their pockets fill and empty with the same rains that never touch his own shop floor.",
+  money:"Duka cash flow that depends entirely on foot traffic and credit repayment from neighbors — both improve sharply right after harvest season, when relatives upcountry send money to the city or families finally settle their tab.",
+  nature:"David has never farmed, but his shop's best and worst weeks map almost exactly onto Nakuru County's harvest calendar — nature reaches him through his customers, not through his own hands.",
+  quotes:["When the harvest is good upcountry, my customers finally pay what they owe me. When the rains fail, I feel it in my till before I hear about it on the news.","Mavuno mazuri, biashara nzuri — good harvest, good business. It has always been like that here."]},
+{id:28,market:'KE',seg:'mid',income:'KES 35,000/mo',name:'Grace Wanjiku',role:'Nurse · 27 · Nairobi',rhythm:'Nurse salary + rainy-season family costs',anchor:'C',
+  tagsAnchor:['Malaria/flu season family medical costs'],tagsMismatch:['No seasonal buffer for family medical remittances'],
+  preview:"The rains fill the hospital wards first. Two weeks later, they empty my wallet.",
+  day:"Her shift intensity during the rains previews her own month — a busier ward now usually means a call from her parents about medicine money a couple of weeks later.",
+  money:"Steady nurse salary, split between her own costs and regular support to her parents — the support spikes specifically in the weeks after the rains, when malaria and flu cases rise at home too.",
+  nature:"She sees the pattern from both directions, professionally and personally: the same rains that fill her hospital's wards also, with a short lag, empty her own account through calls for help from home.",
+  quotes:["I know the rains are bad for my family before they even call, because I've already seen it in how full the ward is that week."]},
+{id:29,market:'KE',seg:'mid',income:'KES 50,000/mo',name:'Peter Mwangi',role:'Secondary Teacher · 38 · Mombasa',rhythm:'Teacher salary + school-fee/harvest gap',anchor:'B',
+  tagsAnchor:['School-fee due dates vs harvest timing','«January disease»'],tagsMismatch:['No product bridges the fee-vs-harvest timing gap'],
+  preview:"School fees are due exactly when the harvest money hasn't landed yet. Every January, without fail.",
+  day:"January mornings start with the same math — fees due at term-opening, and the short-rains harvest that would help pay them still weeks from being sold.",
+  money:"Stable teaching salary, but term-start school fees for his own two children always land in the gap between one payday and the harvest income his wider family is counting on to help.",
+  nature:"He named a very specific, very real seasonal mismatch: two calendars he doesn't control — the school term and the harvest — that never quite line up, and January is where the gap hurts most.",
+  quotes:["Every January it's the same story — school wants its fees, and the harvest money hasn't come in yet. We call it January disease for a reason."]},
+{id:30,market:'KE',seg:'mid',income:'KES 60,000/mo',name:'Alice Njeri',role:'Office Manager · 32 · Nairobi',rhythm:'Household salary + private-school term budget',anchor:'F',
+  tagsAnchor:['No spontaneous nature link'],tagsMismatch:['Nothing to mismatch — her calendar is already fully urban'],
+  preview:"I haven't been to a farm since I was a child. My year is my daughter's term dates and my payslip, full stop.",
+  day:"Her day is entirely urban-professional — school drop-off, office hours, and an evening budgeting-app check, with no part of it touched by rain or harvest.",
+  money:"A stable office salary against her daughter's private-school fees and household upgrades — both run on fixed, human-made schedules with no seasonal give in either direction.",
+  nature:"Of the ten Kenyan personas, Alice is the clear outlier — the most urban, most insulated financial life in the sample, with a calendar built entirely from a school's term dates and her own payslip, and nothing from the land in between.",
+  quotes:["My parents still talk about the rains like it matters for the family budget. For me, honestly, it's just weather. My year is fees and payday."]},
+{id:31,market:'KE',seg:'low',income:'KES 20,000/mo',name:'James Omondi',role:'Boda Boda Driver · 24 · Kisumu',rhythm:'Boda boda daily fares (rain-linked)',anchor:'C',
+  tagsAnchor:['Rain cuts road access','Rain raises fares from walkers avoiding rain'],tagsMismatch:['Motorbike repair loans ignore the rain-damage cycle'],
+  preview:"Rain either doubles my fares or wrecks my bike on the way to earn them.",
+  day:"His whole day's earning potential is a bet placed at sunrise against the sky — muddy roads slow him down and damage the bike, but rain also pushes more people to pay for a ride instead of walking.",
+  money:"Purely daily fares, no fixed income — the same rainy week can be his best-earning week and his most expensive repair week, depending on how the roads hold up.",
+  nature:"He described the exact same double-edge that Manila's drivers describe an ocean away — rain pays him more per ride and costs him more in repairs, often within the same 48 hours.",
+  quotes:["When it rains, more people want a ride instead of walking through the mud — good for me. But the mud is also what breaks my bike. It's never just good or just bad."]},
+{id:32,market:'KE',seg:'low',income:'KES 15,000/mo',name:'John Kamau',role:'Farmer · 42 · Nakuru',rhythm:'Harvest income (long/short rains)',anchor:'B',
+  tagsAnchor:['Long/short rains planting calendar','Lunar planting signals'],tagsMismatch:["Loan terms assume income banks don't recognize as formal"],
+  preview:"I plant by the long rains. The moon tells me when to plant and when to harvest.",
+  day:"His day, every day, starts by reading the sky and the state of the field before anything else — the plan for the day depends entirely on what the rains are doing.",
+  money:"Seasonal farm income only — money for seeds and fertilizer before planting, then a long gap with no income until the next harvest, with school fees for four children spread awkwardly across that gap.",
+  nature:"For Kamau, nature isn't a factor in his financial life. It is his financial life — the long rains decide when money starts moving, and the moon, in his own words, tells him exactly when to plant and when to harvest.",
+  quotes:["I plant by the long rains. The moon tells me when to plant and when to harvest.","Bila mvua, hakuna pesa — without the rain, there's no money. It has always been this simple."]},
+{id:33,market:'KE',seg:'low',income:'KES 18,000/mo',name:'Mary Akinyi',role:'Market Seller · 35 · Eldoret',rhythm:'Market-stall cash flow (harvest-priced stock)',anchor:'B',
+  tagsAnchor:['Wholesale price swings with harvest supply'],tagsMismatch:["Stock-restocking loan doesn't track harvest pricing"],
+  preview:"My stock is only ever as cheap as the last harvest was good.",
+  day:"Every morning at the wholesale market is a direct reading of the harvest — what's abundant and cheap that day decides what she can afford to stock and resell that day.",
+  money:"Daily, irregular sales income entirely dependent on produce bought at prices set by that week's harvest supply — a bad harvest season doesn't just reduce her stock, it raises what little stock costs.",
+  nature:"She's not a farmer, but her entire daily cash flow is a direct pass-through of the harvest — she buys at harvest-set prices every morning and resells the same day, with no buffer in between.",
+  quotes:["I don't grow anything myself, but every price I pay at the market that morning tells me exactly how the harvest went that season."]},
+{id:34,market:'KE',seg:'low',income:'KES 12,000/mo',name:'Brian Otieno',role:'Student + Delivery · 19 · Nairobi',rhythm:'Gig income + upcountry harvest top-ups',anchor:'B',
+  tagsAnchor:['Family harvest top-ups','Rain-linked delivery demand'],tagsMismatch:["Student finance products don't recognize irregular family top-ups"],
+  preview:"My allowance from home isn't monthly. It shows up when the harvest does.",
+  day:"His day-to-day is gig-app logic — accept more deliveries when it's raining because demand jumps — but the bigger picture of his budget still depends on when a top-up arrives from home.",
+  money:"Delivery-app earnings that fluctuate with weather, plus occasional but meaningful top-ups from his family upcountry, timed loosely to their own harvest income rather than to any date on his side.",
+  nature:"He's young, urban and thinks in gig-app terms — but scratch the surface and his baseline financial safety net is still his family's harvest, arriving as an unscheduled but expected top-up.",
+  quotes:["When it rains I get more delivery orders, so that's the easy part. The harder part is that my top-up from home still depends on how their harvest went, not on my exam schedule."]},
+{id:35,market:'KE',seg:'low',income:'KES 15,000/mo',name:'Faith Wambui',role:'Electronics Retail · 21 · Nakuru',rhythm:'Retail wages (post-harvest spend spike)',anchor:'B',
+  tagsAnchor:['Post-harvest retail spend spike'],tagsMismatch:["Sales targets don't account for harvest-timed demand"],
+  preview:"Right after harvest, everyone in town suddenly has a phone budget.",
+  day:"Her sales floor gets visibly busier in a predictable window after harvest — customers she recognizes from previous slow months come back in with cash to spend.",
+  money:"Hourly retail wages with a commission component — the commission swings hard around the weeks just after harvest, when rural customers cash in and come to town for phones and small electronics.",
+  nature:"She doesn't farm and rarely leaves Nakuru town, but her commission check every quarter tells her, indirectly but clearly, exactly how the surrounding county's harvest went.",
+  quotes:["I can tell you if the harvest was good without reading the news. I just look at how many people walked into the shop that month with cash for a new phone."]},
+{id:36,market:'KE',seg:'low',income:'KES 22,000/mo',name:'Kevin Odhiambo',role:'Casual Construction · 29 · Nairobi',rhythm:'Casual day-rate (rain-stopped)',anchor:'C',
+  tagsAnchor:['Rain halts outdoor construction'],tagsMismatch:['No rain-day income protection for casual labor'],
+  preview:"Heavy rain and a stalled construction site look the same on my payslip — nothing.",
+  day:"His day starts at the site gate, checking whether the ground is workable — a washed-out site sends the crew home before the day has even started.",
+  money:"Casual day-rate wages with two children to support — the single biggest threat to a stable week isn't a bad client, it's three or four rained-out days in a row.",
+  nature:"His story is nearly identical to a construction worker's a continent away in the Philippines — rain doesn't cost him money directly, it removes the chance to earn any, which feels far more precarious than any single bill.",
+  quotes:["Three rainy days in a row and I've already lost the week. It's not that things get more expensive — it's that there's no pay at all those days."]},
+];
+
+function buildCard(d){
+  const mktLabels={SA:'🇸🇦 KSA',MY:'🇲🇾 MY',PH:'🇵🇭 PH',KE:'🇰🇪 KE'};
+  const anchorTagClass = d.anchor==='F' ? 'tag muted' : 'tag res';
+  const mismatchClass = d.anchor==='F' ? 'tag muted' : 'tag bar';
+  const anchorTagsHTML = d.tagsAnchor.map(t=>`<span class="${anchorTagClass}">${t}</span>`).join('');
+  const mismatchHTML = d.tagsMismatch.map(t=>`<span class="${mismatchClass}">${t}</span>`).join('');
+  const quotesHTML = d.quotes.map(q=>`<div class="quote-full"><p>${q}</p><span class="qtag">${d.name} · ${d.role.split(' · ')[0]}</span></div>`).join('');
+  const natureLbl = d.anchor==='F' ? '↳ What organizes their year instead' : '✦ The nature thread';
+  const initials = d.name.split(' ').map(w=>w[0]).slice(0,2).join('');
+  return `<div class="card" data-market="${d.market}" data-anchor="${d.anchor}" data-id="${d.id}">
+    <div class="card-top" onclick="toggleCard(${d.id})">
+      <div class="avatar" style="background:${MGRAD[d.market]}">${initials}</div>
+      <div class="cname-block"><div class="cname">${d.name}</div><div class="crole">${d.role}</div></div>
+      <div class="mbadge m-${d.market}">${mktLabels[d.market]}</div>
+    </div>
+    <div class="badge-row" onclick="toggleCard(${d.id})"><span class="badge">${d.rhythm}</span><span class="badge anchor-${d.anchor}">${ANAME[d.anchor]}</span></div>
+    <div class="q-preview" onclick="toggleCard(${d.id})"><p>${d.preview}</p></div>
+    <button class="toggle" onclick="toggleCard(${d.id})"><span>Full interview</span><span class="arr">▾</span></button>
+    <div class="body" id="body-${d.id}">
+      <div class="rblock-day"><div class="rblock-lbl">↳ Daily routine</div><div class="rtext">${d.day}</div></div>
+      <div class="rblock-money"><div class="rblock-lbl">↳ What their financial life consists of</div><div class="rtext">${d.money}</div></div>
+      <div class="rblock-nature"><div class="rblock-lbl">${natureLbl}</div><div class="rtext">${d.nature}</div></div>
+      <div class="slbl">Quotes</div>${quotesHTML}
+      <div class="slbl">Nature anchor</div><div class="tags">${anchorTagsHTML}</div>
+      <div class="slbl">Calendar mismatch</div><div class="tags">${mismatchHTML}</div>
+    </div>
+  </div>`;
+}
+
+const grid=document.getElementById('grid');
+grid.innerHTML=DATA.map(buildCard).join('');
+
+function toggleCard(id){document.querySelector(`[data-id="${id}"]`).classList.toggle('open');}
+
+let activeMarket='all', activeAnchor='all';
+function applyFilters(){
+  let shown=0;
+  DATA.forEach(d=>{
+    const card=document.querySelector(`[data-id="${d.id}"]`);
+    const mMatch = activeMarket==='all' || d.market===activeMarket;
+    const aMatch = activeAnchor==='all' || d.anchor===activeAnchor;
+    if(mMatch && aMatch){card.classList.remove('hidden');shown++;}
+    else card.classList.add('hidden');
+  });
+  document.getElementById('cnt').textContent=shown;
+}
+
+document.querySelectorAll('.f-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeMarket=btn.dataset.m;
+    applyFilters();
+    ['SA','MY','PH','KE'].forEach(m=>{document.getElementById('sum-'+m).style.display=activeMarket===m?'':'none';});
+  });
+});
+document.querySelectorAll('.sf-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.sf-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeAnchor=btn.dataset.s;
+    applyFilters();
+  });
+});
+</script>
+</body>
+</html>
